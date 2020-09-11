@@ -35,7 +35,7 @@ export class DonutChartComponent implements OnInit {
     @Input() centerLabels = 'Sep 1';
     @Input() height = 'auto';
     @Input() isView = false;
-    @Input() color = ['#44a95e', '#eaa706', '#DB2A30', '#41A0FC', '#a7a8a9'];
+    @Input() color = ['#44a95e', '#eaa706', '#0c1d42', '#41A0FC', '#2d57b9'];
     @Input() legend = false;
     @Input() legendPosition: 'bottom' | 'top' | 'right' | 'left' = 'bottom';
     constructor() { }
