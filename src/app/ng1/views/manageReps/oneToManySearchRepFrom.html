@@ -1,0 +1,18 @@
+<div class="form-group">
+	<label for="exampleInputName2">{{'manageReps.searchTerm'|
+		translate}} : </label> <input class="form-control input-md" type="text"
+		name="inviteRepSearchTerm" size="32" ng-model="oneToManySearchTearm" focus-me="true"
+		ng-change="searchOneToManyReps(oneToManySearchTearm,oneToManySearchColumn,'string')"
+		maxlength="100" />
+</div>
+<div class="form-group">
+	<select id="inviteRepSearchType" name="inviteRepSearchType"
+		class="form-control"
+		ng-change="searchOneToManyReps(oneToManySearchTearm,oneToManySearchColumn,'column')"
+		ng-model="oneToManySearchColumn">
+		<option value="firstName,lastName,userId">All Fields</option>
+		<option value="firstName">First Name</option>
+		<option value="lastName">Last Name</option>
+		<option value="userId">Email</option>
+	</select>
+</div>

@@ -1,0 +1,14 @@
+<div class="modal-content">
+	<div class="modal-header">
+		<button id="validationShoopingCartCloseIcon" id="viewAccountCloseIcon" type="button" class="close" data-dismiss="modal" aria-hidden="true" data-ng-click="closeAndReload();">&times;</button>
+		<h3 class="modal-title"><b>{{'shoppingCart.label.attention'| translate}} <img src="app/ng1/img/no.png" alt="no.png"></b></h3>
+	</div>
+	<div class="modal-body modelDialogScroll">
+		<div class="col-sm-12 col-md-12 col-lg-12">
+			<p>{{validationServicesErrorMessage}}</p>
+			<div class="text-center">
+				<button class="btn btn-info text-center" type="button" id="ok" data-ng-click="closeAndReload();" autofocus>{{'common.ok' | translate}}</button>
+			</div>
+		</div>
+	</div>
+</div>

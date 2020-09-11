@@ -1,0 +1,55 @@
+<div class="modal-content">
+	<div class="modal-header commonDialogHeader">
+		<button id="closeBtn" id="viewAccountCloseIcon" type="button"
+			class="close" data-dismiss="modal" aria-hidden="true"
+			data-ng-click="closeInviteStatusPopup();">&times;</button>
+		<h3 class="modal-title">
+			<b class="break-word">Status Details - {{errorPopupObject.firstName}}&nbsp;{{errorPopupObject.lastName}}</b>
+		</h3>
+		<h4 class="modal-title">
+			<b class="break-word">{{errorPopupObject.userId}}</b>
+		</h4>
+	</div>
+	<div class="modal-body modelDialogScroll">
+		<div ng-if="!errorPopupObject.needToShowGrid && errorPopupObject.invitationStatus !== 'tpmAlert' && errorPopupObject.errorMessage === 'DELETED_USER_ERROR_5183'" class="alert alert-danger tpmAlertIcon">
+			<div><i class="fa fa-warning margin"></i></div>
+			<div><span ng-bind-html="'manageReps.errorMessage.undeleteValidationRep' | translate"> </span></div>
+		</div>
+		<span ng-if="!errorPopupObject.needToShowGrid && errorPopupObject.invitationStatus !== 'tpmAlert' && errorPopupObject.errorMessage !== 'DELETED_USER_ERROR_5183'" class="break-word"><img src="app/ng1/img/no.png" />&nbsp;&nbsp;&nbsp;{{errorPopupObject.errorMessage}}</span>
+		<div ng-if="!errorPopupObject.needToShowGrid && errorPopupObject.invitationStatus === 'tpmAlert'" class="alert alert-danger tpmAlertIcon">
+			<div><i class="fa fa-warning margin"></i></div>
+			<div><span ng-bind-html="errorPopupObject.errorMessage | translate | trustAsHtml" ></span></div>
+		</div>
+		<div class="table-responsive" ng-if="errorPopupObject.needToShowGrid">
+			<vision-data-table local-data="errorPopupObject.errorMessageList" type="client"
+			id="errorGrid" initial-request='{"page":1,"count":5,"sorting":{"customerName":"asc"}}'>
+			<div class="table-responsive" style="margin-bottom: 0px;">
+				<div class="clearfix" ng-table-pagination="errorGrid"
+					template-url="'ng-table/style3.html'"></div>
+				<table ng-table="errorGrid" show-filter="false"
+					template-pagination="style1"
+					class="table table-striped table-bordered marginT1"
+					style="margin-bottom: 0px;">
+					<tbody>
+						<tr ng-repeat="list in $data">
+						<td data-title="'manageReps.label.accountName' | translate" sortable="'customerName'" class="text-left wrapword col-lg-2">
+							<p>{{list.customerName}}</p>
+						</td>
+						<td  data-title="'manageReps.label.statusMessage' | translate" sortable="'errorMessage'" class="text-left wrapword col-lg-2">
+							<p>{{list.errorMessage}}</p>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+				<div class="clearfix marginT1" ng-table-pagination="errorGrid"
+					template-url="'ng-table/style3.html'"></div>
+			</div>
+			</vision-data-table>
+		</div>
+		<div class="text-center">
+			<button class="btn btn-info" ng-if="!errorPopupObject.needToShowGrid"
+				ng-click="closeInviteStatusPopup();">{{'common.ok' |
+				translate}}</button>
+		</div>
+	</div>
+</div>

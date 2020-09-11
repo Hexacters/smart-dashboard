@@ -1,0 +1,26 @@
+{
+    "VisionResponse": {
+        "Status": "Ok",
+        "DocumentAlert": {
+            "requiredDoc": "true",
+			"docFileOid": "c0100007b66000007b82",
+			"docVerificationCode": "REJCT",
+			"templateAutoAssignable": "true",
+			"templateOid": "ACK-VC",
+			"docName": "Company OPVC Document",
+			"documentOid": "c0100007b65000007b81",
+			"docDefOid": "00000237260000005cc0",
+			"sortKey": "1",
+			"templateDocCategoryCode": "OPVC",
+			"uploadedDocSize": "0",
+			"disabled": "false",
+			"templateName": "Company OPVC Document",
+			"why": "Hepatitis B Vaccine: Three dose series given in the following sequence, dose #1 now, #2 in 1 month, #3 approximately 5 months after #2. Obtain anti-HBs serologic testing 1-2 months after the third dose. The vaccine does not expire after all three doses are administered.",
+			"how":"The hard copy of the document should be scanned into electronic format and then uploaded here.",
+			"type":"Individual",
+			"category":"Immunization",
+			"effectiveDate":"06/01/2013",
+			"expirationDate":"06/25/2013"
+		}
+    }
+}

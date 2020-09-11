@@ -1,0 +1,441 @@
+<link href="views/test/core_files/styles/displaytag.css"
+		rel="stylesheet"
+		type="text/css" />
+<link rel="stylesheet"
+		href="views/test/core_files/styles/vendorDash_appStyles.css"
+		type="text/css" />
+<link rel="stylesheet"
+		type="text/css"
+		href="views/test/core_files/styles/niftyCorners.css">
+<style type="text/css">
+	div#menu {
+		float: left;
+		width: 100%;
+		padding-top: 10px;
+	}
+
+	ul#nav,
+	ul#nav li {
+		list-style-type: none;
+		margin: 0;
+		padding: 0
+	}
+
+	ul#nav {
+		margin-left: 5px;
+		width: 100%
+	}
+
+	ul#nav li {
+		float: left;
+		margin-right: 5px;
+		text-align: center
+	}
+
+	ul#nav a {
+		float: left;
+		width: 8em;
+		padding: 2px 0;
+	}
+
+	.vmTopIntroText .selected,
+	.vmTopIntroText .unselected {
+		font-family: Arial, Helvetica, sans-serif;
+		font-size: 14px;
+		line-height: 18px;
+		border: 0;
+	}
+
+	.vmTopIntroText .selected {
+		color: #FFFFFF;
+		font-weight: bold;
+		background-color: #666666;
+		text-decoration: none;
+	}
+
+	.vmTopIntroText .unselected {
+		color: #000000;
+		background-color: #D1D1D1;
+		text-decoration: none;
+	}
+
+	ul#nav a:hover.unselected {
+		color: #FFFFFF;
+		text-decoration: none;
+	}
+</style>
+<div style="width: 920px; text-align: left; background-color: #FFFFFF">
+	<table border="0"
+			cellspacing="0"
+			cellpadding="0"
+			width="920px">
+		<tr valign="top">
+			<td class="vmTopIntroText"
+				width="920px">
+				<div id="menu"
+						class="white"
+						width="100%">
+					<ul id="nav">
+						<li id="genInfo"><a href="javascript:;"
+								onclick="javascript: displayGeneralInfo1();"
+								class="unselected"
+								style="padding-top: 0pt; background:#f0ff00;"><b style="margin-left: 0px; margin-right: 0px; background: none repeat scroll 0% 0% rgb(255, 255, 255); margin-bottom: -8px;"
+									class="niftycorners"><b class="rb1"
+										style="background-color: #f0ff00; border-color: rgb(232, 232, 232);"></b><b
+										class="rb2"
+										style="background-color: #f0ff00; border-color: rgb(232, 232, 232);"></b><b
+										class="rb3"
+										style="background-color: #f0ff00; border-color: rgb(232, 232, 232);"></b><b
+										class="rb4"
+										style="background-color: #f0ff00; border-color: rgb(232, 232, 232);"></b><b
+										class="rb5"
+										style="background-color: #f0ff00; border-color: rgb(232, 232, 232);"></b><b
+										class="rb6"
+										style="background-color: #f0ff00; border-color: rgb(232, 232, 232);"></b><b
+										class="rb7"
+										style="background-color: #f0ff00; border-color: rgb(232, 232, 232);"></b><b
+										class="rb8"
+										style="background-color: #f0ff00; border-color: rgb(232, 232, 232);"></b></b>
+								<span>General<br>Info</span></a>
+						</li>
+						<li id="yRelationship"><a href="javascript:;"
+								class="unselected"
+								style="padding-top: 0pt;background:#f0ff00;"><b style="margin-left: 0px; margin-right: 0px; background: none repeat scroll 0% 0% rgb(255, 255, 255); margin-bottom: -8px;"
+									class="niftycorners"><b class="rb1"
+										style="background-color: #f0ff00; border-color: rgb(232, 232, 232);"></b><b
+										class="rb2"
+										style="background-color: #f0ff00; border-color: rgb(232, 232, 232);"></b><b
+										class="rb3"
+										style="background-color: #f0ff00; border-color: rgb(232, 232, 232);"></b><b
+										class="rb4"
+										style="background-color: #f0ff00; border-color: rgb(232, 232, 232);"></b><b
+										class="rb5"
+										style="background-color: #f0ff00; border-color: rgb(232, 232, 232);"></b><b
+										class="rb6"
+										style="background-color: #f0ff00; border-color: rgb(232, 232, 232);"></b><b
+										class="rb7"
+										style="background-color: #f0ff00; border-color: rgb(232, 232, 232);"></b><b
+										class="rb8"
+										style="background-color: #f0ff00; border-color: rgb(232, 232, 232);"></b></b>
+								<span>Your<br>Relationship</span></a>
+						</li>
+						<li id="documents"><a href="javascript:;"
+								class="unselected"
+								style="padding-top: 0pt;background:#f0ff00;"><b style="margin-left: 0px; margin-right: 0px; background: none repeat scroll 0% 0% rgb(255, 255, 255); margin-bottom: -8px;"
+									class="niftycorners"><b class="rb1"
+										style="background-color: #f0ff00; border-color: rgb(232, 232, 232);"></b><b
+										class="rb2"
+										style="background-color: #f0ff00; border-color: rgb(232, 232, 232);"></b><b
+										class="rb3"
+										style="background-color: #f0ff00; border-color: rgb(232, 232, 232);"></b><b
+										class="rb4"
+										style="background-color: #f0ff00; border-color: rgb(232, 232, 232);"></b><b
+										class="rb5"
+										style="background-color: #f0ff00; border-color: rgb(232, 232, 232);"></b><b
+										class="rb6"
+										style="background-color: #f0ff00; border-color: rgb(232, 232, 232);"></b><b
+										class="rb7"
+										style="background-color: #f0ff00; border-color: rgb(232, 232, 232);"></b><b
+										class="rb8"
+										style="background-color: #f0ff00; border-color: rgb(232, 232, 232);"></b></b>
+								<span>Documents<br>and Policies</span></a>
+						</li>
+						<li id="coieula"><a href="javascript:;"
+								class="unselected"
+								style="padding-top: 0pt;background:#f0ff00;"><b style="margin-left: 0px; margin-right: 0px; background: none repeat scroll 0% 0% rgb(255, 255, 255); margin-bottom: -8px;"
+									class="niftycorners"><b class="rb1"
+										style="background-color: #f0ff00; border-color: rgb(232, 232, 232);"></b><b
+										class="rb2"
+										style="background-color: #f0ff00; border-color: rgb(232, 232, 232);"></b><b
+										class="rb3"
+										style="background-color: #f0ff00; border-color: rgb(232, 232, 232);"></b><b
+										class="rb4"
+										style="background-color: #f0ff00; border-color: rgb(232, 232, 232);"></b><b
+										class="rb5"
+										style="background-color: #f0ff00; border-color: rgb(232, 232, 232);"></b><b
+										class="rb6"
+										style="background-color: #f0ff00; border-color: rgb(232, 232, 232);"></b><b
+										class="rb7"
+										style="background-color: #f0ff00; border-color: rgb(232, 232, 232);"></b><b
+										class="rb8"
+										style="background-color: #f0ff00; border-color: rgb(232, 232, 232);"></b></b>
+								<span>Conflicts<br>Of Interest</span></a>
+						</li>
+						<li id="bRelationship"><a href="javascript:;"
+								class="unselected"
+								style="padding-top: 0pt;background:#f0ff00;"><b style="margin-left: 0px; margin-right: 0px; background: none repeat scroll 0% 0% rgb(255, 255, 255); margin-bottom: -8px;"
+									class="niftycorners"><b class="rb1"
+										style="background-color: #f0ff00; border-color: rgb(232, 232, 232);"></b><b
+										class="rb2"
+										style="background-color: #f0ff00; border-color: rgb(232, 232, 232);"></b><b
+										class="rb3"
+										style="background-color: #f0ff00; border-color: rgb(232, 232, 232);"></b><b
+										class="rb4"
+										style="background-color: #f0ff00; border-color: rgb(232, 232, 232);"></b><b
+										class="rb5"
+										style="background-color: #f0ff00; border-color: rgb(232, 232, 232);"></b><b
+										class="rb6"
+										style="background-color: #f0ff00; border-color: rgb(232, 232, 232);"></b><b
+										class="rb7"
+										style="background-color: #f0ff00; border-color: rgb(232, 232, 232);"></b><b
+										class="rb8"
+										style="background-color: #f0ff00; border-color: rgb(232, 232, 232);"></b></b>
+								<span>Business<br>Relationship</span></a>
+						</li>
+						<li id="receipts"><a href="javascript:;"
+								class="unselected"
+								style="padding-top: 0pt;background:#f0ff00;"><b style="margin-left: 0px; margin-right: 0px; background: none repeat scroll 0% 0% rgb(255, 255, 255); margin-bottom: -8px;"
+									class="niftycorners"><b class="rb1"
+										style="background-color: #f0ff00; border-color: rgb(232, 232, 232);"></b><b
+										class="rb2"
+										style="background-color: #f0ff00; border-color: rgb(232, 232, 232);"></b><b
+										class="rb3"
+										style="background-color: #f0ff00; border-color: rgb(232, 232, 232);"></b><b
+										class="rb4"
+										style="background-color: #f0ff00; border-color: rgb(232, 232, 232);"></b><b
+										class="rb5"
+										style="background-color: #f0ff00; border-color: rgb(232, 232, 232);"></b><b
+										class="rb6"
+										style="background-color: #f0ff00; border-color: rgb(232, 232, 232);"></b><b
+										class="rb7"
+										style="background-color: #f0ff00; border-color: rgb(232, 232, 232);"></b><b
+										class="rb8"
+										style="background-color: #f0ff00; border-color: rgb(232, 232, 232);"></b></b>
+								<span>Payment<br>Receipts</span></a>
+						</li>
+						<li id="cardProfile"><a href="javascript:;"
+								class="unselected"
+								style="padding-top: 0pt;background:#f0ff00;"><b style="margin-left: 0px; margin-right: 0px; background: none repeat scroll 0% 0% rgb(255, 255, 255); margin-bottom: -8px;"
+									class="niftycorners"><b class="rb1"
+										style="background-color: #f0ff00; border-color: rgb(232, 232, 232);"></b><b
+										class="rb2"
+										style="background-color: #f0ff00; border-color: rgb(232, 232, 232);"></b><b
+										class="rb3"
+										style="background-color: #f0ff00; border-color: rgb(232, 232, 232);"></b><b
+										class="rb4"
+										style="background-color: #f0ff00; border-color: rgb(232, 232, 232);"></b><b
+										class="rb5"
+										style="background-color: #f0ff00; border-color: rgb(232, 232, 232);"></b><b
+										class="rb6"
+										style="background-color: #f0ff00; border-color: rgb(232, 232, 232);"></b><b
+										class="rb7"
+										style="background-color: #f0ff00; border-color: rgb(232, 232, 232);"></b><b
+										class="rb8"
+										style="background-color: #f0ff00; border-color: rgb(232, 232, 232);"></b></b>
+								<span>Card<br>Profile</span></a>
+						</li>
+					</ul>
+				</div>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td class="vmTopIntroText"
+				align="left">
+				<script language="javascript"
+						type="text/javascript">
+							var functionArray = new Array();
+							var functionArrayIndex = 0;
+
+							function submitForm2(ele) {
+								ele.disabled = true;
+								ele.style.color = '#999999';
+								formObj = window.document.forms[0];
+								formObj.submit();
+							}
+
+							function submitForm2WithHidden(ele) {
+								ele.disabled = true;
+								ele.style.color = '#999999';
+								formObj = window.document.forms[0];
+								document.getElementById('testAreaHidden').innerHTML = "<input type='hidden' name='" + ele.name + "' value='" + ele.value + "'>";
+								//alert("preparing to submit with hidden field - name="+ele.name+" value="+ele.value); 
+								formObj.submit();
+							}
+							function displayGeneralInfo1() {
+								document.getElementById('replaceDiv1').innerHTML = document.getElementById("generalInfo1").innerHTML;
+								document.getElementById('generalInfotop1').innerHTML = document.getElementById("generalInfotop2").innerHTML;
+							}
+						</script>
+				<style type="text/css">
+					div#update a {
+						padding: 3px 0;
+						width: 100px;
+						text-decoration: none;
+						padding-top: 10px;
+						text-align: center;
+					}
+
+					div#update ul,
+					div#update ul li {
+						list-style-type: none;
+						margin: 0;
+						padding: 0
+					}
+
+					div#update ul {
+						margin-left: 20px;
+						width: 100%
+					}
+
+					div#update ul li {
+						float: left;
+						margin-right: 5px;
+						text-align: center
+					}
+
+					div#update ul a {
+						float: left;
+						width: 10em;
+						padding: 5px 0;
+					}
+
+					.generalInfotd {
+						padding: 7px;
+					}
+				</style>
+				<!-- begin content -->
+				<div id="replaceDiv1">
+					<form name="form1"
+							method="post"
+							action="">
+						<table border="0"
+								cellspacing="5px"
+								cellpadding="5px">
+							<tr valign="top">
+								<td width="50%">
+									<table border="0"
+											cellspacing="5px"
+											cellpadding="5px">
+										<tr valign="top">
+											<td align="right"
+												class="generalInfotd"><span class="vmSectionHead2">Registration URL</span></td>
+											<td align="left"
+												class="generalInfotd"><span class="vmFieldEntry">https://mayoclinic.vendormate.net/vm/login.do</span>
+											</td>
+										</tr>
+										<tr valign="top">
+											<td align="right"
+												class="generalInfotd"><span class="vmSectionHead2">Address</span></td>
+											<td align="left"
+												class="generalInfotd"><span class="vmFieldEntry">201= West Center
+													Street<br />
+													Rochester,&nbsp;MN&nbsp;&nbsp;55902</span>
+											</td>
+										</tr>
+										<tr valign="top">
+											<td align="right"
+												class="generalInfotd"><span class="vmSectionHead2">Contact Phone</span></td>
+											<td align="left"
+												class="generalInfotd"><span class="vmFieldEntry">888-476-0377</span></td>
+										</tr>
+										<tr valign="top">
+											<td align="right"
+												class="generalInfotd"><span class="vmSectionHead2">Customer Service
+													Email</span>
+											</td>
+											<td align="left"
+												class="generalInfotd"><span class="vmFieldEntry">mayoclinic@vendormate.com</span></td>
+										</tr>
+										<tr valign="top">
+											<td align="right"
+												class="generalInfotd"><span class="vmSectionHead2">Customer Website</span></td>
+											<td align="left"
+												class="generalInfotd"><span class="vmFieldEntry">http://www.mayoclinic.com</span></td>
+										</tr>
+									</table>
+								</td>
+								<td width="50%">
+									<table border="0"
+											cellspacing="5px"
+											cellpadding="5px">
+										<tr valign="top">
+											<td align="right"
+												class="generalInfotd"><span class="vmSectionHead2">My Registration
+													Status</span>
+											</td>
+											<td align="left"
+												class="generalInfotd"><span class="vmFieldName">Active</span></td>
+										</tr>
+										<tr valign="top">
+											<td align="right"
+												class="generalInfotd"><span class="vmSectionHead2">Company
+													Registration
+													Status</span></td>
+											<td align="left"
+												class="generalInfotd"><span class="vmFieldName">Active</span></td>
+										</tr>
+										<tr valign="top">
+											<td align="right"
+												class="generalInfotd"><span class="vmSectionHead2">Mayo Clinic and
+													Mayo Health
+													System<br />
+													Policies and Procedures</span>
+											</td>
+											<td align="left"
+												class="generalInfotd"><span class="vmFieldName">No Policies to
+													Download</span>
+											</td>
+										</tr>
+										<tr valign="top">
+											<td class="vmFieldEntry"
+												colspan="2"
+												align="center">
+												<div id="update">
+													<ul>
+														<li><a href="javascript:;"
+																onclick="javascript: displayInviteRepContent1();"
+																name="_eventId_update"
+																class="vmBtnSubmit"
+																style="padding-top: 0pt; padding-bottom: 0pt;"><b
+																	style="margin-left: 0px; margin-right: 0px; background: none repeat scroll 0% 0% rgb(255, 255, 255); margin-bottom: -5px;"
+																	class="niftycorners"><b class="r1"
+																		style="background-color: rgb(102, 102, 102); border-color: rgb(178, 178, 178);"></b><b
+																		class="r2"
+																		style="background-color: rgb(102, 102, 102); border-color: rgb(178, 178, 178);"></b><b
+																		class="r3"
+																		style="background-color: rgb(102, 102, 102); border-color: rgb(178, 178, 178);"></b><b
+																		class="r4"
+																		style="background-color: rgb(102, 102, 102); border-color: rgb(178, 178, 178);"></b></b><b
+																	style="margin-left: 0px; margin-right: 0px; background: none repeat scroll 0% 0% rgb(255, 255, 255); margin-bottom: 0px;"
+																	class="niftycorners"><b class="r1"
+																		style="background-color: rgb(102, 102, 102); border-color: rgb(178, 178, 178);"></b><b
+																		class="r2"
+																		style="background-color: rgb(102, 102, 102); border-color: rgb(178, 178, 178);"></b><b
+																		class="r3"
+																		style="background-color: rgb(102, 102, 102); border-color: rgb(178, 178, 178);"></b><b
+																		class="r4"
+																		style="background-color: rgb(102, 102, 102); border-color: rgb(178, 178, 178);"></b></b><span
+																		style=""
+																		class="vmBtnSubmit">Invite Rep</span><b style="margin-left: 0px; margin-right: 0px; background: none repeat scroll 0% 0% rgb(255, 255, 255); margin-top: 0px;"
+																	class="niftycorners"><b class="r4"
+																		style="background-color: rgb(102, 102, 102); border-color: rgb(178, 178, 178);"></b><b
+																		class="r3"
+																		style="background-color: rgb(102, 102, 102); border-color: rgb(178, 178, 178);"></b><b
+																		class="r2"
+																		style="background-color: rgb(102, 102, 102); border-color: rgb(178, 178, 178);"></b><b
+																		class="r1"
+																		style="background-color: rgb(102, 102, 102); border-color: rgb(178, 178, 178);"></b></b><b
+																	style="margin-left: 0px; margin-right: 0px; background: none repeat scroll 0% 0% rgb(255, 255, 255); margin-top: -5px;"
+																	class="niftycorners"><b class="r4"
+																		style="background-color: rgb(102, 102, 102); border-color: rgb(178, 178, 178);"></b><b
+																		class="r3"
+																		style="background-color: rgb(102, 102, 102); border-color: rgb(178, 178, 178);"></b><b
+																		class="r2"
+																		style="background-color: rgb(102, 102, 102); border-color: rgb(178, 178, 178);"></b><b
+																		class="r1"
+																		style="background-color: rgb(102, 102, 102); border-color: rgb(178, 178, 178);"></b></b></a>
+														</li>
+													</ul>
+												</div>
+											</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+						</table>
+					</form>
+				</div>
+			</td>
+		</tr>
+	</table>
+</div>

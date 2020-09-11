@@ -1,0 +1,98 @@
+<div class="row"  ng-controller="myProfileController">
+	<div class="col-sm-12 col-md-12 col-lg-12"
+		data-ng-class="{'dNone':!loading}">
+		<img align="absmiddle" src="app/ng1/img/partial-loading.gif" />&nbsp;{{'common.loading'
+		| translate}}
+	</div>
+	<div class="col-sm-12 col-md-12 col-lg-12" id="salesAndTerritoryEdit">
+		<div class="col-sm-8 col-md-6 col-lg-6">
+			<h3>
+				<b><sup class="asterisk">*</sup>{{'myProfile.salesTerritory.header.salesTerritoryTitle'
+					| translate}}</b>
+			</h3>
+		</div>
+		<div class="col-sm-4 col-md-6 col-lg-6">
+			<div class="pull-right marginT2">
+				<sup class="asterisk">*</sup>&nbsp;{{'common.required' | translate}} 
+				<a data-ui-sref="myProfile.salesTerritoryEdit.help" ng-show="!isFromManageReps">{{'common.help'
+					| translate}}</a>
+				<a data-ui-sref="manage.repAccountDetails.manageRepProfile.salesTerritoryEdit.help" ng-show="isFromManageReps">{{'common.help'
+					| translate}}</a>
+			</div>
+		</div>
+		<div class="col-sm-12 col-md-12 col-lg-12">
+			<p>{{'myProfile.salesTerritory.label.toWhatLocationsToSell'|translate}}</p>
+		</div>
+		<div class="col-sm-12 col-md-12 col-lg-12">
+			<vision-action> <get-data service="myProfileServices"
+				operation="getSalesTerritories" root-node="data.successData"
+				form-node="salesTerritoryList" request-formatter="getGeoSalesTerritoriesaParam" remove-keys=""></get-data>
+			<div class="col-sm-12 col-md-12 col-lg-12 padding0"
+				data-ng-if="saveSalesTerritoriesSubmitError.status === 'error'">
+				<div class="alert alert-danger">
+					{{saveSalesTerritoriesSubmitError.errorData.ResponseError[0].errorCode |
+					translate}}</div>
+			</div>
+			<form novalidate name="salesTerritoryForm" autocomplete="off"
+				class="form-horizontal">
+				<h5>
+					<b>{{'myProfile.salesTerritory.label.statesTerritoriesProvinces'
+						| translate}}</b>
+				</h5>
+				<div class="form-group text-left">
+					<div class="col-sm-12 col-md-8 col-lg-8 col-md-offset-2 col-lg-offset-2">
+						<input type="text" class="displayN"
+							data-ng-model="salesTerritoryList.stateSalesTerritories"
+							name="salesTerritoryState" id="salesTerritoryState"
+							validator="required"
+							required-error-message="{{'myProfile.salesTerritory.errorMessage.pleaseSelectState' | translate}}"
+							valid-method="watch" />
+						<multi-select mode='1-1' return-type="object"
+							return-fields="stateCode,stateName"
+							local-data="salesTerritoryLookup"
+							parent-data-field="$parent.salesTerritoryList.stateSalesTerritories"
+							initial-data-load="true"> <lpanel filter="fromLookup=true"
+							id="lpanelgeoSalesCountries" class-Name="MultiSelecterPanelHeight" label="" size="7"
+							order-by="stateName" value="stateCode" text="stateName"></lpanel>
+						<cpanel id="cpanelgeoSalesStates" class-Name="col-sm-1 cPanelMargin"></cpanel> <rpanel
+							id="assignedgeoSalesCountries" class-Name="MultiSelecterPanelHeight" label="" size="7"
+							order-by="stateName" value="stateCode" text="stateName"></rpanel>
+						</multi-select>
+					</div>
+				</div>
+				<h5>
+					<b>{{'myProfile.salesTerritory.label.countries' | translate}}</b>
+				</h5>
+				<div class="form-group text-left">
+					<div class="col-sm-12 col-md-8 col-lg-8 col-md-offset-2 col-lg-offset-2">
+						<input type="text" class="displayN"
+							ng-model="salesTerritoryList.countrySalesTerritories"
+							name="salesTerritoryList.countrySalesTerritories"
+							id="countryCodes" validator="required"
+							required-error-message="{{'myProfile.salesTerritory.errorMessage.pleaseSelectCountry' | translate}}"
+							valid-method="watch" />
+						<multi-select mode='1-1' return-type="object"
+							return-fields="countryCode,countryName"
+							local-data="countryLookup"
+							parent-data-field="$parent.salesTerritoryList.countrySalesTerritories"
+							initial-data-load="true"> <lpanel filter="fromLookup=true"
+							id="lpanelgeoSalesCountries" class-Name="MultiSelecterPanelHeight" label="" size="7"
+							order-by="countryName" value="countryCode" text="countryName"></lpanel>
+						<cpanel id="cpanelgeoSalesCountries" class-Name="col-sm-1 cPanelMargin"></cpanel> <rpanel
+							id="assignedgeoSalesCountries" class-Name="MultiSelecterPanelHeight" label="" size="7"
+							order-by="countryName" value="countryCode" text="countryName"></rpanel>
+						</multi-select>
+					</div>
+					<div
+						class="col-sm-8 col-md-8 col-lg-8 col-sm-offset-2 col-md-offset-2 col-lg-offset-2 paddingT1">
+						<div class="col-sm-5 col-md-5 col-lg-5 col-lg-offset-6 col-sm-offset-6 col-md-offset-6 padding0">
+							<button class="btn btn-success" id="geoSalesFormBtn" type="submit"
+								validation-submit="salesTerritoryForm" autofocus="true" data-ng-click="saveSalesTerritories(salesTerritoryList.countrySalesTerritories,salesTerritoryList.stateSalesTerritories,'myProfile.salesTerritoryView','myProfile');callGAPageTrack('saveSalesTerritory');">{{'common.save' | translate}}</button>
+						</div>
+					</div>
+				</div>
+			</form>
+			</vision-action>
+		</div>
+	</div>
+</div>

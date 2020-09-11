@@ -1,0 +1,60 @@
+<div ng-controller="googleAnalyticsController" data-ng-init="callGAPageTrack('healthSystemPoliciesLibrary');"></div>
+<div class="col-sm-12 col-md-12 col-lg-12 marginB2" ng-controller="resourceCenterController">
+    <vision-action>
+        <get-data service="resourceCenterServices" operation="getCustomers"></get-data>
+        <div data-ng-class="{'dNone':!loading}">
+            <img align="absmiddle" src="app/ng1/img/partial-loading.gif" />{{'common.loading' | translate}}
+        </div>
+		 <div data-ng-class="{'dNone':!resourceLoading}">
+            <img align="absmiddle" src="app/ng1/img/partial-loading.gif" />{{'common.loading' | translate}}
+        </div>
+		<div class="text-danger col-sm-7 col-md-7 col-lg-7 paddingL0" ng-show="getError.status == 'error'">
+            <strong><i class="fa fa-warning"></i></strong>&nbsp; {{getError.errorData.ResponseError[0].errorCode | translate}}
+        </div>
+		<div ng-show="data" class="form-group col-sm-12 col-md-12 col-lg-12 paddingL0">
+            <label class="col-sm-3 col-md-2 col-lg-2 paddingL0 paddingR0 marginTP5">{{'resourceCenter.policiesLibrary.label.selectHealthSystem'| translate}}</label>
+            <div class="col-sm-7 col-md-5 col-lg-4 paddingL0">
+                <select id="FA.FeinId" class="form-control" ng-init="healthSystem=''" ng-model="healthSystem" name="healthSystems" ng-change="getSinglePolicy(healthSystem);systemPolicy =''">
+                    <option value="">--- Select Health System ---</option>
+                    <option ng-repeat="customerList in data.successData.CustomerList" value="{{customerList.customerOid}}">{{customerList.companyName}}</option>
+                </select>
+            </div>
+        </div>
+		<div data-ng-class="{'dNone':resourceLoading}">
+		<div class="paddingL0 text-danger col-sm-7 col-md-7 col-lg-7 marginBP5" ng-show="systemPolicies.errorData.ResponseError[0].errorCode && !systemPolicies.errorData.CustomerConfigMetaDataSummary && healthSystem">
+            <strong><i class="fa fa-warning"></i></strong>&nbsp; {{systemPolicies.errorData.ResponseError[0].errorCode | translate}}
+        </div>
+		<div ng-show="systemPolicies.successData.CustomerPolicyList && systemPolicies.status =='success' && healthSystem" class="form-group col-sm-12 col-md-12 col-lg-12 paddingL0">
+            <label class="col-sm-3 col-md-2 col-lg-2 paddingL0 paddingR0 marginTP5">{{'resourceCenter.policiesLibrary.label.systemPolicy'| translate}}</label>
+            <div class="col-sm-7 col-md-5 col-lg-4 paddingL0" ng-init="systemPolicy=''">
+                <select id="FA.FeinId" class="form-control" ng-model="systemPolicy" name="systemPolicy" >
+                    <option value="">--- Select Policy ---</option>
+                    <option ng-repeat="customerPolicy in systemPolicies.successData.CustomerPolicyList" value="{{customerPolicy.oid}}">{{customerPolicy.name}}</option>
+                </select>
+            </div>
+        </div>
+		<div class="paddingL0 text-danger col-sm-7 col-md-7 col-lg-7 marginBP5" ng-show="systemPolicies.errorData.ResponseError[0].errorCode && systemPolicies.errorData.CustomerConfigMetaDataSummary && healthSystem">
+            <strong><i class="fa fa-warning"></i></strong>&nbsp; {{'resourceCenter.policiesLibrary.errorMessage.zipFileExistsButNoPolicies' | translate}}
+        </div>
+		<div class="paddingL0 text-danger col-sm-7 col-md-7 col-lg-7 marginBP5" ng-show="systemPolicies.successData.ResponseError[0].errorCode && systemPolicies.successData.CustomerPolicyList && healthSystem">
+            <strong><i class="fa fa-warning"></i></strong>&nbsp; {{systemPolicies.successData.ResponseError[0].errorCode | translate}}
+        </div>
+        <div class="form-group col-sm-12 col-md-12 col-lg-12 paddingL0 paddingR0" ng-show="systemPolicies.successData.CustomerPolicyList && healthSystem">
+            <div class="col-sm-offset-3 col-md-offset-2 col-lg-offset-2 col-sm-10 col-md-10 col-lg-10 paddingL0">
+                <button class="btn btn-primary marginB1" ng-disabled="systemPolicy == ''" id="viewSinglePolicyBtn" ng-click="getSinglePolicies(systemPolicy,'single')" type="button">{{'resourceCenter.policiesLibrary.label.viewSinglePolicy' | translate}}</button>
+					<span ng-show="systemPolicies.successData.CustomerConfigMetaDataSummary">
+				<button class="btn btn-primary marginB1" ng-click="getSinglePolicies(systemPolicies.successData.CustomerConfigMetaDataSummary.oid,'all')" id="DownloadAllPolicies" type="button">{{'resourceCenter.policiesLibrary.label.downloadAllPolicy' | translate}}</button>
+			</span>
+            </div>
+        </div>
+		<div class="form-group col-sm-12 col-md-12 col-lg-12 paddingL0 paddingR0" ng-show="systemPolicies.errorData.CustomerConfigMetaDataSummary && healthSystem">
+			<div class="col-sm-offset-3 col-md-offset-2 col-lg-offset-2 col-sm-10 col-md-10 col-lg-10 paddingL0">
+				<span ng-show="systemPolicies.errorData.CustomerConfigMetaDataSummary">
+					<button class="btn btn-primary" ng-click="getSinglePolicies(systemPolicies.errorData.CustomerConfigMetaDataSummary.oid,'all')" id="DownloadAllPolicies" type="button">{{'resourceCenter.policiesLibrary.label.downloadAllPolicy' | translate}}</button>
+				</span>	
+			</div>
+		</div>
+		</div>
+    </vision-action>
+</div>
+<iframe id="downloadPolicy" src="" style="display:none"></iframe>

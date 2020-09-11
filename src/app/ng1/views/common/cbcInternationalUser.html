@@ -1,0 +1,40 @@
+
+<div class="modal-content">
+	<div class="modal-header">
+		<button ng-if="!isCBCInternationalUser" id="sorAcknowledgeCloseIcon" type="button" class="close"
+			data-dismiss="modal" aria-hidden="true" data-ng-click="$close();">&times;</button>
+		<button ng-if="isCBCInternationalUser" id="sorAcknowledgeCloseIcon" type="button" class="close"
+			data-dismiss="modal" aria-hidden="true" data-ng-click="closeCBCInternationalPopup(nsorObject);">&times;</button>	
+		<h3 class="modal-title">
+			<b>{{'common.alert' | translate}}</b>
+		</h3>
+	</div>
+	<div class="col-sm-12 col-md-12 col-lg-12">
+		<div data-ng-class="{'dNone':!enableCBCInternationalUserLoading}">
+			<img align="absmiddle" src="app/ng1/img/partial-loading.gif">&nbsp;{{'common.loading'
+			| translate}}
+		</div>
+	</div>
+	<div class="modal-body">
+		<span class="text-danger"
+			ng-if="updateIntlCbcDetailsErrorData && updateIntlCbcDetailsErrorData.errorData.ResponseError[0]">{{updateIntlCbcDetailsErrorData.errorData.ResponseError[0].longMessage}}</span>
+		<div ng-if="!isCBCInternationalUser"
+			data-ng-bind-html="'nsor.label.cbcInternationUserCheck' | translate"></div>
+		<div ng-if="isCBCInternationalUser"
+			data-ng-bind-html="'nsor.label.cbcNotAnInternationUser' | translate"></div>
+		<div class="text-center marginT3">
+			<button ng-if="!isCBCInternationalUser" type="button" autofocus
+				ng-click="showSORAcknowlegePopup(nsorObject);"
+				data-ng-disabled="enableCBCInternationalUserLoading"
+				class="btn btn-success">{{'common.yes' | translate}}</button>
+			<button ng-if="!isCBCInternationalUser" type="button"
+				data-ng-disabled="enableCBCInternationalUserLoading"
+				ng-click="enableCBCInternationalUser()" class="btn btn-warning">{{'common.no'
+				| translate}}</button>
+			<button ng-if="isCBCInternationalUser" type="button" autofocus
+				ng-click="closeCBCInternationalPopup(nsorObject);"
+				data-ng-disabled="enableCBCInternationalUserLoading"
+				class="btn btn-success">{{'common.ok' | translate}}</button>
+		</div>
+	</div>
+</div>

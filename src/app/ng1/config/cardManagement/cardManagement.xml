@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<module id="cardManagementModule">
+	<routers>
+        <router id="myProfile.cardManagement" url="/cardManagement">
+			<views>
+				<view containerId="cardManagement" templateUrl="app/ng1/views/myProfile/cardManagement.html"></view>
+			</views>
+		</router>
+		<router id="myProfile.cardManagement.addNewCardPayment" url="/addNewCardPayment">
+			<views>
+				<view containerId="cardManagementDetails" templateUrl="app/ng1/views/myProfile/addNewCardPayment.html"></view>
+			</views>
+		</router>
+        <router id="myProfile.cardManagement.cardList" url="/cardList">
+			<views>
+				<view containerId="cardManagementDetails" templateUrl="app/ng1/views/myProfile/cardList.html"></view>
+			</views>
+		</router>
+        <router id="myProfile.cardManagement.paymentCardDetails" url="/paymentCardDetails">
+			<views>
+				<view containerId="cardManagementDetails" templateUrl="app/ng1/views/myProfile/paymentCardDetails.html"></view>
+			</views>
+		</router>
+		<router id="myProfile.cardManagement.paymentCardDetails.edit" url="/edit/{cardProfileOid}">
+			<views>
+				<view containerId="cardManagementDetails" templateUrl="app/ng1/views/myProfile/paymentCardDetails.html"></view>
+			</views>
+		</router>
+    </routers>
+    <services id="cardManagementServices">
+        <operations>
+            <operation name="getCardDetails" serviceName="cardManagement" method="GET"
+                url="VMClientProxyServlet" mockUrl="app/ng1/mock/cardManagement/getCardDetails.json" mock="false">
+            </operation>
+            <operation name="update" serviceName="cardManagement" method="POST"
+                url="VMClientProxyServlet" mockUrl="app/ng1/mock/cardManagement/updateCardDetails.json" mock="false">
+            </operation>
+            <operation name="deleteById" serviceName="cardManagement" method="POST"
+                url="VMClientProxyServlet" mockUrl="app/ng1/mock/cardManagement/deleteById.json" mock="false">
+            </operation>
+            <operation name="saveCardDetails" serviceName="cardManagement" method="POST"
+                url="VMClientProxyServlet" mockUrl="app/ng1/mock/cardManagement/saveCardDetails.json" mock="false">
+            </operation>
+            <operation name="updateCardDetails" serviceName="cardManagement" method="POST"
+                url="VMClientProxyServlet" mockUrl="app/ng1/mock/cardManagement/updateCardProfileDetails.json" mock="false">
+            </operation>
+            <operation name="updateTransactionStatus" serviceName="paymentTech" method="POST"
+                url="VMClientProxyServlet" mockUrl="app/ng1/mock/cardManagement/updateTransactionStatus.json" mock="false">
+            </operation>
+            <operation name="generateTransactionUid" serviceName="paymentTech" method="POST"
+                url="VMClientProxyServlet" mockUrl="app/ng1/mock/cardManagement/generateTransactionUid.json" mock="false">
+            </operation>
+            <operation name="submitCardDetails" serviceName="cardManagement" method="POST"
+                url="VMClientProxyServlet" mockUrl="app/ng1/mock/cardManagement/submitCardDetails.json" mock="false">
+                <params>
+                    <param name="cardManagementVO.oid" source="data" module="cardProfile" key="cardProfileOid"></param>
+                    <param name="cardManagementVO.billingAddress1" source="data" module="cardProfile" key="billingAddress1"></param>
+                    <param name="cardManagementVO.billingAddress2" source="data" module="cardProfile" key="billingAddress2"></param>
+                    <param name="cardManagementVO.billingZip" source="data" module="cardProfile" key="billingZip"></param>
+                    <param name="cardManagementVO.billingCountryCode" source="data" module="cardProfile" key="billingCountryCode"></param>
+                    <param name="cardManagementVO.billingStateCode" source="data" module="cardProfile" key="billingStateCode"></param>
+                    <param name="cardManagementVO.billingEmail" source="data" module="cardProfile" key="billingEmail"></param>
+                    <param name="cardManagementVO.billingCity" source="data" module="cardProfile" key="billingCity"></param>
+                    <param name="cardManagementVO.expirationMonthCode" source="data" module="cardProfile" key="expirationMonthCode"></param>
+                    <param name="cardManagementVO.expirationYearStr" source="data" module="cardProfile" key="expirationYearStr"></param>
+                    <param name="cardManagementVO.nameOnCard" source="data" module="cardProfile" key="nameOnCard"></param>
+                    <param name="cardManagementVO.cardTypeCode" source="data" module="cardProfile" key="cardTypeCode"></param>
+                    <param name="cardManagementVO.cardNumber" source="data" module="cardProfile" key="cardNumber"></param>
+                    <param name="cardManagementVO.verificationNumber" source="data" module="cardProfile" key="verificationNumber"></param>
+                </params>
+            </operation>
+        </operations>
+    </services>
+</module>

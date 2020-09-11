@@ -1,0 +1,169 @@
+<?xml version="1.0"?>
+<module id="homeModule">
+	<routers>
+		<router id="decideLanding" sticky="true" url="/decideLanding">
+			<views>
+				<view containerId="vendordash" templateUrl="app/ng1/decideLanding.html"></view>
+			</views>
+		</router>
+		<router id="home" sticky="true" url="/home">
+			<views>
+				<view containerId="vendordash" templateUrl="app/ng1/views/home/complianceStatus.html"></view>
+			</views>
+		</router>
+		<router id="home.documentAlert" url="/documentAlert" type="dialog" modalClass="commonDialogW60">
+			<views>
+				<view templateUrl="app/ng1/views/home/documentAlert.html"></view>
+			</views>
+		</router>
+		<router id="home.documentAlert.commonDocument" url="/commonDocument/{id}/{random}">	
+			<views>
+				<view containerId="commonDocumentAlertViewer@" templateUrl="app/ng1/views/home/commonDocumentAlertViewer.html"></view>
+			</views>
+		</router>
+		<router id="home.documentAlert.commonDocument.information" url="/information/{softKey}">
+			<views>
+				<view containerId="commonDocumentAlertInformation" templateUrl="app/ng1/views/home/documentsCautionUpdate.html"></view>
+			</views>
+		</router>
+		<router id="home.documentAlert.commonDocument.updateDocument" url="/information/{updateDocument}">
+			<views>
+				<view containerId="commonDocumentAlertInformation" templateUrl="app/ng1/views/home/documentsUpdate.html"></view>
+			</views>
+		</router>
+		<router id="home.documentAlert.commonDocument.badgePhoto" url="/badgePhoto">
+			<views>
+				<view containerId="commonDocumentAlertInformation" templateUrl="app/ng1/views/myProfile/badgePhoto.html"></view>
+			</views>
+		</router>
+		<router id="home.documentAlert.commonDocument.caution" url="/caution/{softKey}" type="dialog">
+			<views>
+				<view containerId="modal" templateUrl="app/ng1/views/home/complianceCaution.html"></view>
+			</views>
+		</router>
+		<router id="home.documentAlert.specific" url="/specificDocument/{id}/{random}">
+			<views>
+				<view containerId="commonDocumentAlertViewer@" templateUrl="app/ng1/views/home/accountSpecificDocumentViewer.html"></view>
+			</views>
+		</router>
+		<router id="home.documentAlert.backgroundCheck" url="/backgroundCheck/{id}/{random}">
+			<views>
+				<view containerId="commonDocumentAlertViewer@" templateUrl="app/ng1/views/home/backgroundCheckViewer.html"></view>
+			</views>
+		</router>
+		<router id="home.documentAlert.specific.information" url="/information/{softKey}">
+			<views>
+				<view containerId="commonDocumentAlertInformation" templateUrl="app/ng1/views/home/documentsCautionUpdate.html"></view>
+			</views>
+		</router>
+		<router id="home.documentAlert.backgroundCheck.uploadDocument" url="/information/{updateDocument}">
+			<views>
+				<view containerId="backgroundCheckDocumentUpload" templateUrl="app/ng1/views/home/backgroundCheckDocumentsUpdate.html"></view>
+			</views>
+		</router>
+		<router id="home.documentAlert.specific.updateDocument" url="/information/{updateDocument}">
+			<views>
+				<view containerId="commonDocumentAlertInformation" templateUrl="app/ng1/views/home/documentsUpdate.html"></view>
+			</views>
+		</router>
+		<router id="home.documentAlert.specific.caution" url="/caution/{softKey}" type="dialog">
+			<views>
+				<view templateUrl="app/ng1/views/home/complianceCaution.html"></view>
+			</views>
+		</router>
+		<router id="home.policy" url="/policy" type="dialog" >
+			<views>
+				<view templateUrl="app/ng1/views/home/policyAlert.html"></view>
+			</views>
+		</router>
+		<router id="home.policy.policyGrid" url="/policyAlert/{random}">
+			<views>
+				<view containerId="policyAlert@" templateUrl="app/ng1/views/home/policyAlertGrid.html"></view>
+			</views>
+		</router>
+		<router id="home.policy.policyGrid.acknowledge" url="/acknowledge" >
+			<views>
+				<view containerId="policyAlertAcknowledge" templateUrl="app/ng1/views/home/policyAlertAcknowledge.html"></view>
+			</views>
+		</router>
+		<router id="home.criticalPolicy" url="/criticalPolicy"  type="dialog" >
+			<views>
+				<view  templateUrl="app/ng1/views/home/criticalPolicyAlert.html"></view>
+			</views>
+		</router>
+		<router id="home.criticalPolicy.criticalPolicyGrid" url="/criticalPolicyGrid/{random}">
+			<views>
+				<view containerId="criticalPolicyContiner@"  templateUrl="app/ng1/views/home/criticalPolicyGrid.html"></view>
+			</views>
+		</router>
+		<router id="home.criticalPolicy.criticalPolicyGrid.acknowledge" url="/criticalPolicyAcknowledge">
+			<views>
+				<view containerId="criticalPolicyAlertAcknowledge" templateUrl="app/ng1/views/home/criticalPolicyAlertAcknowledge.html"></view>
+			</views>
+		</router>
+	</routers>
+		
+	<services id="complianceServices">
+		<operations>
+			<operation name="saveClearedForAccess" method="post" requestWrapper="request" responseWrapper="response"  url="" mockUrl="app/ng1/mocksuccess.json" mock="false"></operation>
+			<operation name="getUserComplianceStatus" requestType="json" requestWrapper="request" responseWrapper="response"  serviceName="user" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/home/getUserComplianceStatus.json" mock="false">
+			<!-- 	<params>
+					<param name="userOid" source="userProfile" key="id"></param>
+				</params> -->
+			</operation>
+			<operation name="getBackgroundCheckDetails" secure="true" serviceName="user" requestWrapper="request" responseWrapper="response" requestType="json" responseType="json" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/home/getBackgroundCheckDetails.json" mock="false">
+			</operation>
+			<operation name="updateIntlRepDeclaration" secure="true" serviceName="user" requestWrapper="request" responseWrapper="response" requestType="json" responseType="json" method="post" url="VMClientProxyServlet" mockUrl="app/ng1/mock/home/updateIntlCbcDetails.json" mock="false"></operation>
+			<operation name="getUserNonComplianceDocuments" secure="true" serviceName="user" requestWrapper="request" responseWrapper="response" requestType="json" responseType="json" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/home/getUserNonComplianceDocuments.json" mock="false">
+				<params>
+					<param name="userOid" source="userProfile" key="id"></param>
+				</params>
+			</operation>
+			<operation name="getNonCompliancePolicyCustomers" secure="true" serviceName="user" requestWrapper="request" responseWrapper="response" requestType="json" responseType="json" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/home/getNonCompliancePolicyCustomers.json" mock="false">
+				<params>
+					<param name="userOid" source="userProfile" key="id"></param>
+				</params>
+			</operation>
+			<operation name="getNonCompliancePoliciesDetails" secure="true" serviceName="user" requestWrapper="request" responseWrapper="response" requestType="json" responseType="json" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/home/getNonCompliancePoliciesDetails.json" mock="false">
+				<params>
+					<param name="userOid" source="userProfile" key="id"></param>
+				</params>
+			</operation>
+			<operation name="getBadgePhoto" requestType="json" requestWrapper="request" responseWrapper="response" serviceName="vendorrep" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/home/getBadgePhoto.json" mock="false" >
+				<params>
+					<param name="userOid" source="userProfile" key="id"></param>
+					<param name="thumbnail" source="static" value="true"></param>					
+				</params>
+			</operation>
+			<operation name="commonDocumentAlert" requestWrapper="request" responseWrapper="response"  requestType="json" method="get" url="mock/compliance/commonDocumentAlert" mockUrl="app/ng1/mock/home/commonDocumentAlert.json" mock="false"></operation>
+			<operation name="accountSpecificDocument" requestWrapper="request" responseWrapper="response"  requestType="json" method="get" url="mock/specificDocumentAlert" mockUrl="app/ng1/mock/home/commonDocumentAlert.json" mock="false"></operation>
+			<operation name="getCustomerPolicy" requestType="json" requestWrapper="request" responseWrapper="response"  method="get" url="mock/policy" mockUrl="app/ng1/mock/home/policy.json" mock="false"></operation>
+			<operation name="documentAlertInfo" requestType="json" method="get" requestWrapper="request" responseWrapper="response"  url="mock/documentAlertInfo" mockUrl="app/ng1/mock/home/commonDocumentAlertInfo.json" mock="false"></operation>
+			<operation name="viewAccounts" requestType="json" method="get" url="mock/viewAccounts" requestWrapper="request" responseWrapper="response"  mockUrl="app/ng1/mock/home/viewAccounts.json" mock="false"></operation>
+			<operation name="multipleUploadDocGrid" requestType="json" method="get" url="mock/multipleUploadDocGrid" requestWrapper="request" responseWrapper="response"  mockUrl="app/ng1/mock/home/multipleUploadDocGrid.json" mock="false"></operation>
+			<operation name="multipleUploadDocForm" requestType="json" method="get" url="mock/multipleUploadDocForm" requestWrapper="request" responseWrapper="response"  mockUrl="app/ng1/mock/home/multipleUploadDocForm.json" mock="false">
+				<params>
+					<param name="docDef" source="state" key="docDefOid"></param>
+				</params>
+			</operation>
+			<operation name="multipleUplaodDocFormSubmit" requestWrapper="request" responseWrapper="response" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mocksuccess.json" mock="false"></operation>
+			<operation name="savePolicyAcknowlegment" requestType="json" requestWrapper="request" responseWrapper="response" serviceName="documentrepository" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/home/savePolicyAcknowlegment.json" mock="false" targetOperation="saveDocumentMetaData">
+				<params>
+					<param name="templateOid" source="data" key="templateOid" module="Acknowledge"></param>
+					<param name="docDefOid" source="data" key="docDefOid" module="Acknowledge"></param>
+					<param name="isAcknowledge" source="data" key="isAcknowledge" module="Acknowledge"></param>
+				</params>
+			</operation>
+			<operation name="uploadFile" serviceName="common" method="post" operationType="file" url="services/uploadFile" requestWrapper="request"	responseWrapper="response" mockUrl="app/ng1/mock/common/uploadFile.json" mock="false"></operation>
+			<operation name="downloadFile" serviceName="common" method="get" operationType="file" url="services/downloadFile" requestWrapper="request"	responseWrapper="response" mockUrl="app/ng1/mock/common/success.json" mock="false"></operation>
+			<operation name="getGlobalPolicyEnabledCustomers" secure="true" serviceName="user" requestWrapper="request" responseWrapper="response" requestType="json" responseType="json" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/home/getUserNonComplianceDocuments.json" mock="false">
+				<params>
+					<param name="userOid" source="userProfile" key="id"></param>
+					<param name="credTempTypeCode" source="static" value="ACK" />
+				</params>
+			</operation>
+			<operation name="getGlobalPolicies" secure="true" serviceName="user" requestWrapper="request" responseWrapper="response" requestType="json" responseType="json" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/home/getUserNonComplianceDocuments.json" mock="false">	</operation>
+			<operation name="saveCredentialingUserDefinition" secure="true" serviceName="user" requestWrapper="request" responseWrapper="response" requestType="json" responseType="json" method="post" url="VMClientProxyServlet" mockUrl="app/ng1/mock/home/getUserNonComplianceDocuments.json" mock="false"></operation>
+		</operations>
+	</services>
+</module>

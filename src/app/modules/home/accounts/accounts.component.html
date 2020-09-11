@@ -1,0 +1,19 @@
+<div class="account" [ngClass]="{'hide': hideTab}">
+    <div class="row m-0">
+        <div class="col-md-12 p-4 content-shadow content">
+            <h5 class="m-0 text-primary"><b>ACCOUNT</b></h5>
+            <p class="text-light desc">your account relationships at a glance</p>
+            <div class="w-100">
+                <app-donut-chart
+                    [isView]="true"
+                    [legend]="true"
+                    [centerLabels]="'Total'"
+                    [height]="'300px'"
+                    [legendPosition]="'bottom'"
+                    [data]="[23, 11, 10]"
+                    [labels]="['Pass','Alert','Fail']">
+                </app-donut-chart>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,11 @@
+<div class="row" id="cardProfileContainer" ng-controller="cardProfileController">
+	<div class="col-sm-12 col-md-12 col-lg-12">
+		<accordion> <accordion-group is-open="true">
+		<accordion-heading> <span ng-if="$state.params.cardProfileOid !==''">{{'userHeader.label.updateCardProfile'
+			| translate}}</span>
+			<span ng-if="$state.params.cardProfileOid ===''">{{'cardProfile.label.setupCardProfile'
+			| translate}}</span> </accordion-heading>
+		<div ui-view="cardProfile"></div>
+		</accordion-group> </accordion>
+	</div>
+</div>

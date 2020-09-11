@@ -1,0 +1,130 @@
+<div class="col-sm-12 col-md-12 col-lg-12 padding0"
+     ng-controller="paymentReceiptController">
+	<div class="row">
+		<div class="col-sm-10 col-md-10 col-lg-10 marginL2 alert alert-danger"
+			data-ng-if="serviceResponseError">
+			<a href="#" id="closeErrorBtn" class="close" data-dismiss="alert"
+				aria-label="close"><i class="fa fa-close"></i></a> <strong><i
+				class="fa fa-warning"></i></strong> {{serviceResponseError}}
+		</div>
+	</div>
+	<div class="col-sm-12 col-md-12 col-lg-12 padding0"
+	     ng-if="$state.params.tabsState === 'accountDetail' || $state.params.tabsState === 'mangeAccountDetail'">
+		<a class="cursorPointer"
+		   ng-if="$state.params.tabsState === 'accountDetail'"
+		   data-ng-click="$state.go('accounts.accountDetails.documents.commonDocuments')"
+		   id="backToAccountDetails">{{::'common.backToAccountDetails' | translate}}</a>
+		<a class="cursorPointer"
+		   ng-if="$state.params.tabsState === 'mangeAccountDetail'"
+		   data-ng-click="$state.go('manage.repAccountDetails.repAccountsTab.documents.commonDocuments')"
+		   id="backToAccountDetails">{{::'common.backToAccountDetails' | translate}}</a>
+	</div>
+	<div class="col-sm-12 col-md-12 col-lg-12 padding0 marginT1">
+		<vision-data-table service="paymentReceiptServices"
+		                   operation="getPaymentReceiptDetails"
+		                   root-node="data.successData.paymentReceiptlDetails"
+		                   total-records-node="data.successData.noOfTotalRecords"
+		                   type="server"
+		                   request-formatter="formatRequest"
+		                   search-type="searchRequestWithPagination"
+		                   id="paymentReceiptList"
+		                   date-filter-read-only="false">
+			<div class="col-sm-12 col-md-12 col-lg-12 padding0">
+				<div data-ng-class="{'dNone':!loading}">
+					<img align="absmiddle"
+					     src="app/ng1/img/partial-loading.gif"> {{::'common.loading' | translate}}
+				</div>
+				<div ng-show="!loading">
+					<div class="col-sm-12 col-md-12 col-lg-12 padding0">
+						<div class="clearfix col-sm-6 col-md-6 col-lg-6 pull-left paddingL0">
+							<div ng-table-pagination="paymentReceiptList"
+							     template-url="'pagination1.html'"></div>
+						</div>
+						<div class="clearfix col-sm-6 col-md-6 col-lg-6 pull-left paddingR0">
+							<div ng-table-pagination="paymentReceiptList"
+							     template-url="'paginationCount1.html'"></div>
+							<div class="pull-right paddingR1">
+								<button id="refresh"
+								        ng-disabled="loading"
+								        ng-click="refreshTable();refreshBtn()"
+								        tooltip-placement="left"
+								        tooltip-append-to-body="true"
+								        tooltip="{{::'common.lastRefresh'|translate}} {{currentDate | date:'MMM dd yyyy, hh:mm:ss a'}}"
+								        class="btn"
+								        type="button"><i class="fa fa-refresh"></i>
+								</button>
+								<button class="btn"
+								        tooltip="Clear"
+								        tooltip-placement="top"
+								        tooltip-append-to-body="true"
+								        type="button"
+								        ng-click="clearFilterWithSortingParams()">
+									<img src="bower_components/images/clear-filters-16.png" />
+								</button>
+							</div>
+						</div>
+					</div>
+					<div class="clearfix marginBP5"
+					     id="paymentReceiptList"
+					     style="width: 100%; overflow: auto ! important;">
+						<table ng-table="paymentReceiptList"
+						       show-filter="true"
+						       template-pagination="style3"
+						       class="table table-striped table-bordered marginTP5 marginB0"
+						       width="100%">
+							<tbody ng-if="paymentReceiptList.data.length>0">
+								<tr ng-repeat="paymentReceipt in $data">
+									<td data-title="'paymentReceipt.label.date' | translate | unwrapFilter : 30"
+									    class="text-left"
+									    filter="{ 'date': 'dateRange' }">
+										<div class="width250px break-word">
+											<a ng-click="showPaymentReceipt(paymentReceipt.oid)">{{paymentReceipt.createdOn | dateFormate | date:'MMM dd, y'}}</a>
+										</div>
+									</td>
+									<td data-title="'paymentReceipt.label.customerName' | translate | unwrapFilter : 30"
+									    class="text-left"
+									    sortable="'customerName'">
+										<span>{{paymentReceipt.customerName}}</span>
+									</td>
+									<td data-title="'paymentReceipt.label.amount' | translate | unwrapFilter : 30"
+									    class="text-left">
+										<span ng-if="paymentReceipt.paymentAmount && paymentReceipt.paymentAmount !== ''">${{paymentReceipt.paymentAmount}}</span>
+									</td>
+									<td data-title="'paymentReceipt.label.paymentType' | translate | unwrapFilter : 30"
+									    class="text-left"
+									    filter="{ 'cardType': 'select'}"
+									    filter-data="[{id:'', title:'All'},
+											{id:'VI', title:'Visa'},
+											{id:'MC', title:'Mastercard'},
+                                            {id:'AX', title:'American Express'}]">
+										<span>{{paymentReceipt.cardType}}</span>
+									</td>
+									<td data-title="'paymentReceipt.label.cardNumber' | translate | unwrapFilter : 30"
+									    class="text-left">
+										<span>{{paymentReceipt.cardNumber}}</span>
+									</td>
+								</tr>
+							</tbody>
+							<tbody ng-if="paymentReceiptList.data.errorData.Status === 'Error'">
+								<tr>
+									<td colspan="5">
+										<div class="text-danger">
+											<span class="fa fa-warning"
+											      aria-hidden="true"></span>
+											{{paymentReceiptList.data.errorData.ResponseError[0].longMessage}}
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="row">
+						<div class="col-sm-12 col-md-12 col-lg-12 clearfix marginBP5"
+						     ng-table-pagination="paymentReceiptList"
+						     template-url="'ng-table/style1.html'"></div>
+					</div>
+				</div>
+			</div>
+		</vision-data-table>
+	</div>
+</div>

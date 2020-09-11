@@ -1,0 +1,135 @@
+<div >
+	<div class="col-sm-6 col-md-6 col-lg-6" ng-class="{divDisabled: inviteRepOverlay}">
+		<h4><b>{{'manageReps.selectRep' | translate}}</b></h4>
+		<p ng-hide="showAddRepForm"><a ng-click="!loadingOneToManyReps && !loadingOneToManyAccounts ? showAddForm(true) : return ;">{{'manageReps.addNewRep' | translate}}</a>
+		</p>
+		<p ng-show="showAddRepForm"><a ng-click="!loadingOneToManyAccounts ? showAddForm(false) : return;">{{'manageReps.backToList' | translate}}</a>
+		</p>
+		<div ng-hide="showAddRepForm" class="paddingL0 col-md-12 col-sm-12 col-lg-12 form-inline marginB1" ng-init="oneToManySearchColumn='firstName,lastName,userId';oneToManySearchTearm=''">
+			<div ng-include="'views/manageReps/oneToManySearchRepFrom.html?rnd='+randomOneToMany"></div>
+		</div>
+		<div class="col-sm-12 col-md-12 col-lg-12 padding0">
+			<div ng-hide="showAddRepForm">
+					<div data-ng-class="{'dNone':!loadingOneToManyReps}">
+						<img align="absmiddle" src="app/ng1/img/partial-loading.gif">&nbsp;{{'common.loading' | translate}}
+					</div>
+					<div ng-class="{'dNone':loadingOneToManyReps}"
+						ng-if="oneToManyRepsGrid.data.length > 0 && data.successData.actualRecords >= data.successData.paginationMessage.paginationMaxCount">
+						<p
+							class="text-left col-sm-12 col-md-12 col-lg-12 paddingL0 pagination-max-message">
+							<b> {{'paginationMaximumMessage' |
+								translate:data.successData.paginationMessage }}</b>
+						</p>
+					</div>
+					<div data-ng-show="maximumSelectedError.error == true && maximumSelectedError.usersError == true" class="alert alert-danger">
+						<i class="fa fa-exclamation-triangle"></i> You have exceeded the maximum number of reps (10) that may be invited in one invitation.
+					</div>
+					<div ng-show="!oneToManySearchRepValidateError" class="table-responsive">
+						<div class="clearfix" ng-table-pagination="oneToManyRepsGrid" template-url="'ng-table/style3.html'"></div>
+						<table ng-table="oneToManyRepsGrid" show-filter="false" template-pagination="style1" class="table table-striped table-bordered marginT1 marginB1">
+							<tbody ng-show="oneToManyRepsGrid.data.length>0">
+								<tr ng-repeat="selectedRep in $data">
+									<td class="text-center col-md-1" vision-form-extras>
+										<input ng-disabled="loadingOneToManyReps" type="radio" id="{{selectedRep.vendorOid}}" name="selectReps" ng-click="selectedOneToMany('repsGrid',selectedRep);selectRepsGrid(selectedRep);showAddtoListBtn()" value="{{selectedRep.vendorOid}}" data-ng-checked="{{selectedRep.checked}}" ng-model="selectedInviteRep" />
+									</td>
+									<td data-title="'First Name'" sortable="'firstName'" class="text-left col-md-3 wrapword" filter="{ 'firstName': 'text' }">{{selectedRep.firstName}}</td>
+									<td data-title="'Last Name'" sortable="'lastName'" class="text-left col-md-3 wrapword" filter="{ 'lastName': 'text' }">{{selectedRep.lastName}}</td>
+									<td data-title="'Email'" sortable="'userId'" class="text-left col-md-5 wrapword" filter="{ 'userId': 'text' }">{{selectedRep.userId}}</td>
+								</tr>
+							</tbody>
+							<tbody ng-show="oneToManyRepsGrid.data.errorData.Status=='Error'">
+								<tr>
+									<td colspan="11">
+										<div class="text-danger">
+											<span class="fa fa-warning" aria-hidden="true"></span>
+											<span>{{ oneToManyRepsGrid.data.errorData.ResponseError[0].errorCode | translate}}</span>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<div class="clearfix" ng-table-pagination="oneToManyRepsGrid" template-url="'ng-table/style3.html'"></div>
+					</div>
+					<div ng-show="oneToManySearchRepValidateError" class="table-responsive">
+						<table ng-table="OneToManyRepsErrorGrid" class="table table-striped table-bordered marginT1 marginB1">
+						 <thead>
+								<th class="text-left col-lg-1"></th>
+								<th class="col-lg-2">First Name</th>
+								<th class="col-lg-2">Last Name</th>
+								<th class="col-lg-2">Email</th>
+						  </thead>
+						  <tbody>
+							 <tr>
+								<td colspan="11">
+									<div class="text-danger">
+										<span class="fa fa-warning" aria-hidden="true"></span>
+										<span>{{'common.errorMessage.allowedSpecialCharacters' | translate}}</span>
+									</div>
+								</td>
+							 </tr>
+						  </tbody>
+						</table>
+					</div>
+					<p class="marginT1">{{'manageReps.10RepsMaximum'| translate}}&nbsp;<span ng-if="userSelectedList.length > 0">{{'manageReps.label.youHaveSelected' | translate}}:&nbsp;{{userSelectedList.length}}</span></p>
+			</div>
+			<div ng-if="showAddRepForm">
+				<div data-ng-include="'views/manageReps/addNewRep.html?rnd='+addNewRepRandom"></div>
+			</div>
+		</div>
+	</div>
+	<div class="col-sm-6 col-md-6 col-lg-6" ng-class="{divDisabled: inviteRepOverlay}" >
+		<div>
+			<div data-ng-include="'views/manageReps/oneToManySearchAccountFrom.html?rnd='+randomOneToMany"></div>
+		</div>
+		<div class="col-sm-12 col-md-12 col-lg-12 padding0">
+				<div data-ng-class="{'dNone':!loadingOneToManyAccounts}">
+					<img align="absmiddle" src="app/ng1/img/partial-loading.gif">&nbsp;{{'common.loading' | translate}}
+				</div>
+				<div data-ng-show="maximumSelectedError.error == true && maximumSelectedError.customerError == true" class="alert alert-danger">
+					<i class="fa fa-exclamation-triangle"></i> You have exceeded the maximum number of accounts (10) that a rep may be invited to in one invitation.
+				</div>
+				<div class="table-responsive" ng-show="!oneToManySearchAccountsValidateError">
+					<div class="clearfix" ng-table-pagination="oneToManyAccountsGrid" template-url="'ng-table/style3.html'"></div>
+					<table ng-table="oneToManyAccountsGrid" show-filter="false" template-pagination="style3" class="table table-striped table-bordered marginT1 marginB1">
+						<tbody ng-if="oneToManyAccountsGrid.data.length>0">
+							<tr ng-repeat="selectedAccount in $data">
+								<td class="text-center col-md-1" ng-click="showAddtoListBtn()">
+									<input ng-disabled="loadingOneToManyAccounts" id="{{selectedAccount.vendorOid}}" ng-model="selectedAccount.checked" type="checkbox" ng-click="oneToManyCheckedValue(selectedAccount.checked,selectedAccount);">
+								</td>
+								<td data-title="'Account'" sortable="'companyName'" class="text-left col-md-11 wrapword" filter="{ 'companyName': 'text' }">{{selectedAccount.companyName}}</td>
+							</tr>
+						</tbody>
+						<tbody ng-if="oneToManyAccountsGrid.data.errorData.Status=='Error'">
+							<tr>
+								<td colspan="11">
+									<div class="text-danger">
+										<span class="fa fa-warning" aria-hidden="true"></span>
+										<span>{{ oneToManyAccountsGrid.data.errorData.ResponseError[0].errorCode | translate}}</span>
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<div class="clearfix" ng-table-pagination="oneToManyAccountsGrid" template-url="'ng-table/style3.html'"></div>
+				</div>
+				<div ng-show="oneToManySearchAccountsValidateError" class="table-responsive">
+					<table ng-table="OneToManyAccountsErrorGrid" class="table table-striped table-bordered marginT1 marginB1">
+					 <thead>
+							<th class="col-lg-2">Account</th>
+					  </thead>
+					  <tbody>
+						 <tr>
+							<td colspan="11">
+								<div class="text-danger">
+									<span class="fa fa-warning" aria-hidden="true"></span>
+									<span>{{'common.errorMessage.allowedSpecialCharacters' | translate}}</span>
+								</div>
+							</td>
+						 </tr>
+					  </tbody>
+					</table>
+				</div>
+				<p class="marginT1">{{'manageReps.10AccountsMaximum'| translate}}&nbsp;<span ng-if="selectedAccountsCount > 0">{{'manageReps.label.youHaveSelected' | translate}}:&nbsp;{{selectedAccountsCount}}</span></p>
+		</div>
+	</div>	
+</div>

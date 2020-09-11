@@ -1,0 +1,52 @@
+<div ng-form="loginForm">
+	<div login form-id="loginForm">
+		<submit-data service="users" operation="login"></submit-data>
+		<div class="row navPad">
+			<div class="col-md-6 input-box right-border">
+				<div class="panel-title">
+					<h4 class="h4withoutmargin commonHomePageOrangeTitle">Existing Users</h4>
+				</div>
+				<div class="mainbox" id="loginbox">
+					<div class="panel-body" style="padding-right: 0px">
+						<div class="alert alert-danger col-sm-12 ng-hide" id="login-alert"></div>
+						<div class="col-md-10">
+							<div class="log-txt">Access all your Vendormate accounts from one location.</div>
+						</div>
+						<div autocomplete="off" class="form-horizontal login-form">
+							<div class="col-md-12">
+								<div class="col-md-2 input-box">
+									<label>{{'login.j_username'| translate}}</label>
+								</div>
+								<div class="col-md-10 input-box">
+									<input type="text" name="j_username" class="form-control" ng-model="data.j_username" required ng-pattern="/^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/" ng-keydown="$event.keyCode == 13 && submit()"/>
+									<span class="validation-invalid" ng-show="loginFormSubmitted && loginForm.j_username.$error.required">Username is required!</span>
+									<span class="validation-invalid" ng-show="loginFormSubmitted && loginForm.j_username.$error.pattern">Invalid email format!</span>
+								</div>
+							</div>
+							<div class="col-md-12">
+								<div class="col-md-2 input-box">
+									<label>{{'login.j_password'| translate}}</label>
+								</div>
+								<div class="col-md-10 input-box">
+									<input type="password" name="password" class="form-control" ng-model="data.j_password" required ng-keydown="$event.keyCode == 13 && submit();"/>
+									<span class="validation-invalid" ng-show="loginFormSubmitted && loginForm.password.$error.required">Password is required!</span>
+								</div>
+							</div>
+							<div class="col-md-12">
+								<div class="col-md-2"></div>
+								<div class="col-md-10 input-box">
+									<input id="login-remember" name="remember" type="checkbox" ng-model="data.rememberUsername"> {{'login.rememberMe'| translate}}
+								</div>
+							</div>
+							<div class="col-md-12 text-right">
+								<div class="input-button">
+									<button class="btn btn-warning" ng-click="submit()">{{'login.login'| translate}}</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

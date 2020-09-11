@@ -1,0 +1,211 @@
+<?xml version="1.0"?>
+<module id="profileModule">
+	<routers>
+		<router id="myProfile" sticky="true" url="/myProfile">
+			<views>
+				<view containerId="vendordash" templateUrl="app/ng1/views/myProfile/myProfile.html"></view>
+			</views>
+		</router>
+		<router id="myProfile.contactPersonalInfo" url="/contactPersonalInfo">
+			<views>
+				<view templateUrl="app/ng1/views/myProfile/contactPersonalInfo.html"></view>
+			</views>
+		</router>
+		<router id="myProfile.contactPersonalInfoView" url="/contactPersonalInfoView">
+			<views>
+				<view containerId="viewContactPersonalInfo" templateUrl="app/ng1/views/myProfile/contactPersonalInfoView.html"></view>
+			</views>
+		</router>
+		<router id="myProfile.contactPersonalInfoView.help" type="dialog" url="/contactPersonalViewHelp">
+			<views>
+				<view containerId="modal" templateUrl="app/ng1/views/myProfile/myProfileHelp.html"></view>
+			</views>
+		</router>
+		<router id="myProfile.contactPersonalInfoEdit.help" type="dialog" url="/contactPersonalEditHelp">
+			<views>
+				<view containerId="modal" templateUrl="app/ng1/views/myProfile/myProfileHelp.html"></view>
+			</views>
+		</router>
+		<router id="myProfile.contactPersonalInfoEdit" url="/contactPersonalInfoEdit">
+			<views>
+				<view containerId="editContactPersonalInfo" templateUrl="app/ng1/views/myProfile/contactPersonalInfoEdit.html"></view>
+			</views>
+		</router>
+		<router id="myProfile.accountInformationView" url="/accountInformationView">
+			<views>
+				<view containerId="viewAccountInformation" templateUrl="app/ng1/views/myProfile/accountInformationView.html"></view>
+			</views>
+		</router>
+		<router id="myProfile.accountInformationEdit" url="/accountInformationEdit">
+			<views>
+				<view containerId="editAccountInformation" templateUrl="app/ng1/views/myProfile/accountInformationEdit.html"></view>
+			</views>
+		</router>
+		<router id="myProfile.accountInformationView.help" type="dialog" url="/accountInformationViewHelp">
+			<views>
+				<view containerId="modal" templateUrl="app/ng1/views/myProfile/myProfileHelp.html"></view>
+			</views>
+		</router>
+		<router id="myProfile.accountInformationEdit.help" type="dialog" url="/accountInformationEditHelp">
+			<views>
+				<view containerId="modal" templateUrl="app/ng1/views/myProfile/myProfileHelp.html"></view>
+			</views>
+		</router>
+		<router id="myProfile.productServiceOfferingView" url="/productServiceOfferingView">
+			<views>
+				<view containerId="viewProductServiceOffering" templateUrl="app/ng1/views/myProfile/productServiceOfferingView.html"></view>
+			</views>
+		</router>
+		<router id="myProfile.productServiceOfferingEdit.help" type="dialog" url="/productServiceOfferingEditHelp">
+			<views>
+				<view containerId="modal" templateUrl="app/ng1/views/myProfile/productServiceOfferingHelp.html"></view>
+			</views>
+		</router>
+		<router id="myProfile.productServiceOfferingEdit" url="/productServiceOfferingEdit">
+			<views>
+				<view containerId="editProductServiceOffering" templateUrl="app/ng1/views/myProfile/productServiceOfferingEdit.html"></view>
+			</views>
+		</router>
+		<router id="myProfile.salesTerritoryView" url="/salesTerritoryView">
+			<views>
+				<view containerId="viewSalesTerritory" templateUrl="app/ng1/views/myProfile/salesTerritoryView.html"></view>
+			</views>
+		</router>
+		<router id="myProfile.salesTerritoryEdit" url="/salesTerritoryEdit">
+			<views>
+				<view containerId="editSalesTerritory" templateUrl="app/ng1/views/myProfile/salesTerritoryEdit.html"></view>
+			</views>
+		</router>
+		<router id="myProfile.salesTerritoryView.help" type="dialog" url="/salesTerritoryViewHelp">
+			<views>
+				<view containerId="modal" templateUrl="app/ng1/views/myProfile/myProfileHelp.html"></view>
+			</views>
+		</router>
+		<router id="myProfile.salesTerritoryEdit.help" type="dialog" url="/salesTerritoryEditHelp">
+			<views>
+				<view containerId="modal" templateUrl="app/ng1/views/myProfile/myProfileHelp.html"></view>
+			</views>
+		</router>
+		<router id="myProfile.supervisorInformationView" url="/supervisorInformationView">
+			<views>
+				<view containerId="viewSupervisorInformation" templateUrl="app/ng1/views/myProfile/supervisorInformationView.html"></view>
+			</views>
+		</router>
+		<router id="myProfile.supervisorInformationEdit" url="/supervisorInformationEdit">
+			<views>
+				<view containerId="editSupervisorInformation" templateUrl="app/ng1/views/myProfile/supervisorInformationEdit.html"></view>
+			</views>
+		</router>
+		<router id="myProfile.supervisorInformationView.supervisorInformationViewHelp" type="dialog" url="/supervisorInformationViewHelp">
+			<views>
+				<view containerId="modal" templateUrl="app/ng1/views/myProfile/myProfileHelp.html"></view>
+			</views>
+		</router>
+		<router id="myProfile.supervisorInformationEdit.supervisorInformationEditHelp" type="dialog" url="/supervisorInformationEditHelp">
+			<views>
+				<view containerId="modal" templateUrl="app/ng1/views/myProfile/myProfileHelp.html"></view>
+			</views>
+		</router>
+		<router id="myProfile.referencesView" url="/referencesView">
+			<views>
+				<view containerId="viewReferences" templateUrl="app/ng1/views/myProfile/referencesView.html"></view>
+			</views>
+		</router>
+		<router id="myProfile.referencesEdit" url="/referencesEdit">
+			<views>
+				<view containerId="editReferences" templateUrl="app/ng1/views/myProfile/referencesEdit.html"></view>
+			</views>
+		</router>
+		<router id="myProfile.referencesView.referencesViewHelp" type="dialog" url="/referencesViewHelp">
+			<views>
+				<view templateUrl="app/ng1/views/myProfile/myProfileHelp.html"></view>
+			</views>
+		</router>
+		<router id="myProfile.referencesEdit.referencesEditHelp" type="dialog" url="/referencesEditHelp">
+			<views>
+				<view templateUrl="app/ng1/views/myProfile/myProfileHelp.html"></view>
+			</views>
+		</router>
+		<router id="myProfile.badgePhoto" url="/badgePhoto/{tapsFrom}">
+			<views>
+				<view containerId="badgePhoto" templateUrl="app/ng1/views/myProfile/badgePhoto.html"></view>
+			</views>
+		</router>
+		<router id="myProfile.badgePhoto.badgePhotoHelp" type="dialog" url="/badgePhotoHelp">
+			<views>
+			    <view containerId="modal" templateUrl="app/ng1/views/myProfile/badgePhotoHelp.html"></view>
+			</views>
+		</router>
+	</routers>
+	<services id="myProfileServices">
+		<operations>			
+			<operation name="getUser" serviceName="user" method="get" url="VMClientProxyServlet" mock="false" mockUrl="app/ng1/mock/myProfile/getUser.json" requestType="json" requestWrapper="request" responseWrapper="response" >
+				<params>
+					<param name="userOid" source="data" key="userOid" module="userDetail"></param>
+				</params>
+			</operation>
+			<operation name="updateUserProcess" serviceName="user" method="post"  url="VMClientProxyServlet" mock="false" mockUrl="app/ng1/mock/myProfile/updateUserProcess.json" requestType="json" requestWrapper="request" responseWrapper="response">
+				<!-- <params>
+					<param name="User.dobstring" property="User.dob"></param>
+				</params> -->
+			</operation>
+			<operation name="getSalesTerritories" requestType="json" requestWrapper="request" responseWrapper="response"  serviceName="common" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/myProfile/getSalesTerritories.json" mock="false">
+			</operation>
+			<operation name="saveSalesTerritories" requestType="json" requestWrapper="request" responseWrapper="response"  serviceName="common" method="post" url="VMClientProxyServlet" mockUrl="app/ng1/mock/myProfile/saveSalesTerritories.json" mock="false">
+			</operation>
+			<operation name="getSupervisor" requestType="json" requestWrapper="request" responseWrapper="response"  serviceName="common" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/myProfile/getSupervisor.json" mock="false">
+				<params>
+					<param name="userOid" source="data" key="userOid" module="userDetail"></param>
+				</params>
+			</operation>
+			<operation name="getReferences" requestType="json" requestWrapper="request" responseWrapper="response"  serviceName="common" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/myProfile/getReferences.json" mock="false">
+				<params>
+					<param name="userOid" source="data" key="userOid" module="userDetail"></param>
+				</params>
+			</operation>
+			<operation name="getProductAndServiceCodes" requestType="json" requestWrapper="request" responseWrapper="response"  serviceName="user" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/myProfile/getProductAndServiceCodes.json" mock="false">
+				<params>
+					<param name="userOid" source="data" key="userOid" module="userDetail"></param>
+				</params>
+			</operation>
+			<operation name="saveSupervisor" requestType="json" requestWrapper="request" responseWrapper="response"  serviceName="common" method="post" url="VMClientProxyServlet" mockUrl="app/ng1/mock/users/success.json" mock="false">
+				<params>
+					<param name="userOid" source="data" key="userOid" module="userDetail"></param>
+				</params>
+			</operation>
+			<operation name="saveReferences" requestType="json" requestWrapper="request" responseWrapper="response"  serviceName="common" method="post" url="VMClientProxyServlet" mockUrl="app/ng1/mock/myProfile/saveReferences.json" mock="false"></operation>
+			<operation name="prdouctServiceOffer" requestWrapper="request" responseWrapper="response" method="get" url="mock/prdouctServiceOffer.json" mockUrl="app/ng1/mock/myProfile/prdouctServiceOffer.json" mock="false"></operation>
+			<operation name="prdouctServiceOfferUNSPSCCode" requestWrapper="request" responseWrapper="response" serviceName="user" requestType="json" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/myProfile/prdouctServiceOfferUNSPSCCode.json" mock="false"></operation>
+			<operation name="saveReference" requestWrapper="request" responseWrapper="response" method="get" url="mock/success.json" mockUrl="app/ng1/mocksuccess.json" mock="false"></operation>
+			<operation name="getBusinessAddressInformation" requestType="json" requestWrapper="request" responseWrapper="response"  serviceName="user" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/myProfile/getBusinessAddressInformation.json" mock="false">
+				<params>
+					<param name="userOid" source="data" key="userOid" module="userDetail"></param>
+					<param name="parentOid" source="data" key="vendorDetailOid" module="userDetail"></param>
+				</params>
+			</operation>
+			<operation name="saveUserWithAddress" requestType="json" requestWrapper="request" responseWrapper="response"  serviceName="user" method="post" url="VMClientProxyServlet" mockUrl="app/ng1/mock/myProfile/saveUserWithAddress.json" mock="false">
+				<params>
+					<param name="userOid" source="userProfile" key="id"></param>
+				</params>
+			</operation>
+			<operation name="saveProductsAndServices" requestType="json" requestWrapper="request" responseWrapper="response"  serviceName="user" method="post" url="VMClientProxyServlet" mockUrl="app/ng1/mock/myProfile/saveProductsAndServices.json" mock="false">
+				<params>
+					<param name="userOid" source="data" key="userOid" module="userDetail"></param>
+				</params>
+			</operation>
+			<operation name="searchProducts" requestType="json" requestWrapper="request" responseWrapper="response"  serviceName="common" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/users/searchProducts.json" mock="false">
+			</operation>
+			<operation name="getBadgePhoto" requestType="json" requestWrapper="request" responseWrapper="response"  serviceName="vendorrep" method="get" url="VMClientProxyServlet" operationType="file" mockUrl="app/ng1/mock/myProfile/getBadgePhoto.json" mock="false">
+			</operation>
+			<operation name="getBadgePhotoDoc" requestType="json" requestWrapper="request" responseWrapper="response"  serviceName="vendorrep" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/myProfile/getBadgePhotoDoc.json" mock="false">
+			</operation>
+			<operation name="downloadFileFromMongo" serviceName="common" method="get"  url="services/downloadFileFromMongo" requestWrapper="request" responseWrapper="response" operationType="file" mockUrl="img/download.jpg" mock="false"></operation>
+			<operation name="saveBadgePhotoProcess" serviceName="documentrepository" method="post" url="VMClientProxyServlet" mock="false" mockUrl="app/ng1/mock/myProfile/saveBadgePhotoProcess.json" requestType="json" requestWrapper="request" responseWrapper="response">
+				<params>
+					<param name="DocumentDetail.vendorOid" source="data" key="vendorOid" module="userDetail"></param>
+					<param name="DocumentDetail.userOid" source="data" key="userOid" module="userDetail"></param>
+				</params>
+			</operation>
+		</operations>
+	</services>
+</module>

@@ -1,0 +1,1664 @@
+{
+    "VisionResponse": {
+        "Status": "Ok",
+        "CustomerList": [
+            {
+                "customerOid": "bakersfield",
+                "companyName": "Bakersfield Heart Hospital"
+            },
+            {
+                "customerOid": "bronxleb",
+                "companyName": "Bronx Lebanon Health Care System"
+            },
+            {
+                "customerOid": "christushealth",
+                "companyName": "CHRISTUS Health"
+            },
+            {
+                "customerOid": "coshoctoncountymh",
+                "companyName": "Coshocton County Memorial Hospital"
+            },
+            {
+                "customerOid": "eliteorthospine",
+                "companyName": "Elite Ortho and Spine"
+            },
+            {
+                "customerOid": "erlangerhealthsys",
+                "companyName": "Erlanger Health System"
+            },
+            {
+                "customerOid": "frhg",
+                "companyName": "Fremont-Rideout Health Group"
+            },
+            {
+                "customerOid": "ghx",
+                "companyName": "GHX"
+            },
+            {
+                "customerOid": "gammasc",
+                "companyName": "Gamma Surgery Center"
+            },
+            {
+                "customerOid": "gcmh",
+                "companyName": "Garrett County Memorial Hospital"
+            },
+            {
+                "customerOid": "gahandshoulderelbow",
+                "companyName": "Georgia Surgical Center on Peachtree"
+            },
+            {
+                "customerOid": "greatersacramentosc",
+                "companyName": "Greater Sacramento Surgery Center"
+            },
+            {
+                "customerOid": "halifaxmedicalcenter",
+                "companyName": "Halifax Regional Medical Center"
+            },
+            {
+                "customerOid": "hoagorthopedic",
+                "companyName": "Hoag Orthopedic Institute"
+            },
+            {
+                "customerOid": "kaweahdelta",
+                "companyName": "Kaweah Delta Health Care District"
+            },
+            {
+                "customerOid": "knoxcommhosp",
+                "companyName": "Knox Community Hospital"
+            },
+            {
+                "customerOid": "lagunaniguelsurgery",
+                "companyName": "Laguna Niguel Surgery Center"
+            },
+            {
+                "customerOid": "libertyasc",
+                "companyName": "Liberty Surgery Center"
+            },
+            {
+                "customerOid": "lodioutpatientsurgic",
+                "companyName": "Lodi Outpatient Surgical Center"
+            },
+            {
+                "customerOid": "macombtownship",
+                "companyName": "Macomb Township ASC"
+            },
+            {
+                "customerOid": "mallardcreek",
+                "companyName": "Mallard Creek Surgery Center"
+            },
+            {
+                "customerOid": "marshfieldclinic",
+                "companyName": "Marshfield Clinic"
+            },
+            {
+                "customerOid": "mskcc",
+                "companyName": "Memorial Sloan-Kettering Cancer Center"
+            },
+            {
+                "customerOid": "midmichigan",
+                "companyName": "MidMichigan Health"
+            },
+            {
+                "customerOid": "mountsinaihealth",
+                "companyName": "Mount Sinai Health System"
+            },
+            {
+                "customerOid": "northstatesc",
+                "companyName": "North State Surgery Centers"
+            },
+            {
+                "customerOid": "northeasternplastic",
+                "companyName": "Northeastern Plastic Surgery"
+            },
+            {
+                "customerOid": "northside",
+                "companyName": "Northside Hospital"
+            },
+            {
+                "customerOid": "oklahomaspine",
+                "companyName": "Oklahoma Spine Hospital"
+            },
+            {
+                "customerOid": "ptwn",
+                "companyName": "Peters Township Surgery Center"
+            },
+            {
+                "customerOid": "pvhmc",
+                "companyName": "Pomona Valley Hospital Medical Center"
+            },
+            {
+                "customerOid": "postacutemedical",
+                "companyName": "Post Acute Medical, LLC"
+            },
+            {
+                "customerOid": "sanjoaquin",
+                "companyName": "San Joaquin General Hospital"
+            },
+            {
+                "customerOid": "sanmateosurgery",
+                "companyName": "San Mateo Surgery Center"
+            },
+            {
+                "customerOid": "southlakehospital",
+                "companyName": "South Lake Hospital"
+            },
+            {
+                "customerOid": "scchevychase",
+                "companyName": "The Surgery Center of Chevy Chase"
+            },
+            {
+                "customerOid": "utmedicalcenter",
+                "companyName": "The University of Tennessee Medical Center"
+            },
+            {
+                "customerOid": "tresantisurgical",
+                "companyName": "Tresanti Surgical Center"
+            },
+            {
+                "customerOid": "testcustomer",
+                "companyName": "Vision Test Customer"
+            },
+            {
+                "customerOid": "wesmark",
+                "companyName": "Wesmark Ambulatory Surgery Center"
+            },
+            {
+                "customerOid": "wilmed",
+                "companyName": "Wilson Medical Center"
+            },
+            {
+                "customerOid": "wch",
+                "companyName": "Wood County Hospital"
+            },
+            {
+                "customerOid": "apmhc",
+                "companyName": "Advanced Pain Management:"
+            },
+            {
+                "customerOid": "ahss",
+                "companyName": "Adventist Health System"
+            },
+            {
+                "customerOid": "adventisthealth",
+                "companyName": "Adventist Health_Clinical Research...."
+            },
+            {
+                "customerOid": "adventisthealthcare",
+                "companyName": "Adventist Healthcare"
+            },
+            {
+                "customerOid": "armc",
+                "companyName": "Alamance Regional Medical Center"
+            },
+            {
+                "customerOid": "alangday",
+                "companyName": "Alan G Day Corporation"
+            },
+            {
+                "customerOid": "alberteinstein",
+                "companyName": "Albert Einstein Institute Amerinet"
+            },
+            {
+                "customerOid": "einstein",
+                "companyName": "Albert Einstein Medical Center"
+            },
+            {
+                "customerOid": "altoonaregional",
+                "companyName": "Altoona Regional Health System"
+            },
+            {
+                "customerOid": "alvaradohospital",
+                "companyName": "Alvarado Hospital Medical System(CA)"
+            },
+            {
+                "customerOid": "amatel",
+                "companyName": "Amatel Inc"
+            },
+            {
+                "customerOid": "amerinet",
+                "companyName": "Amerinet"
+            },
+            {
+                "customerOid": "annearundel",
+                "companyName": "Anne Arundel Medical Center"
+            },
+            {
+                "customerOid": "avhospital",
+                "companyName": "Antelope Valley Hospital"
+            },
+            {
+                "customerOid": "arh",
+                "companyName": "Appalachian Regional Healthcare System"
+            },
+            {
+                "customerOid": "vcmrc",
+                "companyName": "Appolo with vcm"
+            },
+            {
+                "customerOid": "archcare",
+                "companyName": "Archcare's"
+            },
+            {
+                "customerOid": "acmhealth",
+                "companyName": "Ashtabula County Medical Center"
+            },
+            {
+                "customerOid": "arm",
+                "companyName": "Athens Regional Medical Center"
+            },
+            {
+                "customerOid": "aurorahealthcare",
+                "companyName": "Aurora Health Care"
+            },
+            {
+                "customerOid": "baptisthealth",
+                "companyName": "Baptist Health South Florida"
+            },
+            {
+                "customerOid": "basurgical",
+                "companyName": "Bay Area Surgical Management"
+            },
+            {
+                "customerOid": "bmhsc",
+                "companyName": "Beaufort Memorial Hospital"
+            },
+            {
+                "customerOid": "bellevuehospital",
+                "companyName": "Bellevue Hospital"
+            },
+            {
+                "customerOid": "beloithealthsystem",
+                "companyName": "Beloit Health System"
+            },
+            {
+                "customerOid": "beloitmemorialhosp",
+                "companyName": "Beloit South Medical"
+            },
+            {
+                "customerOid": "bchm",
+                "companyName": "Benewah Community Hospital and Institute"
+            },
+            {
+                "customerOid": "bergerhealth",
+                "companyName": "Berger health system"
+            },
+            {
+                "customerOid": "berrienhospital",
+                "companyName": "Berrien Mental County Amerinet"
+            },
+            {
+                "customerOid": "biofeet",
+                "companyName": "BIOFEET LLC"
+            },
+            {
+                "customerOid": "bizsense",
+                "companyName": "Bizsense Hospitals"
+            },
+            {
+                "customerOid": "bvhealthsystem",
+                "companyName": "Blanchard Valley Health System"
+            },
+            {
+                "customerOid": "brch",
+                "companyName": "Boca Raton Regional Hospital"
+            },
+            {
+                "customerOid": "botsford",
+                "companyName": "Botsford Hospital"
+            },
+            {
+                "customerOid": "brightkey",
+                "companyName": "BrightKey Inc"
+            },
+            {
+                "customerOid": "bronsonhealth",
+                "companyName": "Bronson Healthcare Group"
+            },
+            {
+                "customerOid": "butlerhealthsystem",
+                "companyName": "Butler Health System"
+            },
+            {
+                "customerOid": "cif",
+                "companyName": "Cancer Institute on Maui in Hawaii"
+            },
+            {
+                "customerOid": "cannonhospital",
+                "companyName": "Cannon Memorial Hospital"
+            },
+            {
+                "customerOid": "capecodhealth",
+                "companyName": "Cape Cod Healthcare"
+            },
+            {
+                "customerOid": "capitalhealth",
+                "companyName": "Capital Health System"
+            },
+            {
+                "customerOid": "cardinalhealth",
+                "companyName": "Cardinal Health"
+            },
+            {
+                "customerOid": "clcc",
+                "companyName": "Carolina Liquid Chemistries Corp"
+            },
+            {
+                "customerOid": "caromont",
+                "companyName": "CaroMont Health(Gaston Memorial)(NC)"
+            },
+            {
+                "customerOid": "casagrandehospital",
+                "companyName": "Casa Grande Regional Medical Center"
+            },
+            {
+                "customerOid": "catawbavalleymed",
+                "companyName": "Catawba Valley Medical Center"
+            },
+            {
+                "customerOid": "health-partners",
+                "companyName": "Catholic Healthcare Partners"
+            },
+            {
+                "customerOid": "cmmc",
+                "companyName": "Central Maine Healthcare"
+            },
+            {
+                "customerOid": "cwhs",
+                "companyName": "Central Washington Hospital"
+            },
+            {
+                "customerOid": "centrastate",
+                "companyName": "Centrastate Healthcare System"
+            },
+            {
+                "customerOid": "cghmc",
+                "companyName": "CGH Medical Center"
+            },
+            {
+                "customerOid": "charlottesweb",
+                "companyName": "Charlotte Hungerford Hospital"
+            },
+            {
+                "customerOid": "chesapeakeregional",
+                "companyName": "Chesapeake Regional Medical Center(VA)"
+            },
+            {
+                "customerOid": "thechildrenshosp",
+                "companyName": "Children's Hospital Colorado"
+            },
+            {
+                "customerOid": "choc",
+                "companyName": "Children's Hospital Orange County (CHOC)"
+            },
+            {
+                "customerOid": "childrens",
+                "companyName": "Children's Medical Center"
+            },
+            {
+                "customerOid": "seattlechildrens",
+                "companyName": "Childrens Hospital and Regional Medical Center"
+            },
+            {
+                "customerOid": "childrenshospoakland",
+                "companyName": "Childrens Hospital and Research Center Oakland"
+            },
+            {
+                "customerOid": "cmcclinicalresource",
+                "companyName": "Childrens Medical Center Dallas Clinical Resource Management {Vendor Program}"
+            },
+            {
+                "customerOid": "childrensmercy",
+                "companyName": "Childrens Mercy Hospitals and Clinics"
+            },
+            {
+                "customerOid": "chinesehospitalsf",
+                "companyName": "Chinese Hospital"
+            },
+            {
+                "customerOid": "christhospital",
+                "companyName": "Christ Hospital"
+            },
+            {
+                "customerOid": "cvhp",
+                "companyName": "Citrus Valley Health Partners"
+            },
+            {
+                "customerOid": "cityofhope",
+                "companyName": "City of Hope National Medical Center"
+            },
+            {
+                "customerOid": "coalingastatehosp",
+                "companyName": "Coalinga State Hospital"
+            },
+            {
+                "customerOid": "colquittregional",
+                "companyName": "Colquitt Regional Medical Center"
+            },
+            {
+                "customerOid": "nationwidechildrens",
+                "companyName": "Columbus Children's Hospital"
+            },
+            {
+                "customerOid": "columbusregional",
+                "companyName": "Columbus Regional Healthcare System"
+            },
+            {
+                "customerOid": "crh",
+                "companyName": "Columbus Regional Hospital"
+            },
+            {
+                "customerOid": "chcbc",
+                "companyName": "Community Health Center of Branch County"
+            },
+            {
+                "customerOid": "chs",
+                "companyName": "Community Health Systems"
+            },
+            {
+                "customerOid": "chwchospital",
+                "companyName": "Community Hospitals and Wellness Centers"
+            },
+            {
+                "customerOid": "cmhshealth",
+                "companyName": "Community Memorial Health System"
+            },
+            {
+                "customerOid": "cmh",
+                "companyName": "Community Memorial Healthcenter"
+            },
+            {
+                "customerOid": "conemaugh",
+                "companyName": "Conemaugh Health System"
+            },
+            {
+                "customerOid": "cottagehealthsystem",
+                "companyName": "Conrad Memorial Health System"
+            },
+            {
+                "customerOid": "conwayhospital",
+                "companyName": "Conway Medical Center-Updated"
+            },
+            {
+                "customerOid": "chghospitals",
+                "companyName": "Cornerstone Healthcare Group"
+            },
+            {
+                "customerOid": "cortlandregional",
+                "companyName": "Cortland Regional Medical Center"
+            },
+            {
+                "customerOid": "coxhealth",
+                "companyName": "CoxHealth"
+            },
+            {
+                "customerOid": "crittenton",
+                "companyName": "Crittenton Hospital Medical Center"
+            },
+            {
+                "customerOid": "crystalrunhealthcare",
+                "companyName": "Crystal Run Healthcare"
+            },
+            {
+                "customerOid": "dalemedical",
+                "companyName": "Dale Medical Center"
+            },
+            {
+                "customerOid": "dana-farber",
+                "companyName": "Dana-Farber Cancer Institute"
+            },
+            {
+                "customerOid": "dchosp",
+                "companyName": "Daviess Community Hospital"
+            },
+            {
+                "customerOid": "davita",
+                "companyName": "DaVita Inc (Updated)"
+            },
+            {
+                "customerOid": "daykimball",
+                "companyName": "Day Kimball Hospital"
+            },
+            {
+                "customerOid": "deaconess",
+                "companyName": "Deaconess Health System"
+            },
+            {
+                "customerOid": "dch",
+                "companyName": "Dearborn County Hospital"
+            },
+            {
+                "customerOid": "deborah",
+                "companyName": "DEBORAH Heart and Lung Center"
+            },
+            {
+                "customerOid": "dekalbmedicalcenter",
+                "companyName": "DeKalb Medical"
+            },
+            {
+                "customerOid": "chwhealth",
+                "companyName": "Dignity Health"
+            },
+            {
+                "customerOid": "dssk",
+                "companyName": "DS~`!@#$%^&*()_+=|\\:;SKRDS~`!@#$%^&*()_+=|\\:;SKRDS~`!@#$%^&*()_+=|\\:;SKR DS~`!@#$%^&*()_+=|\\:;SKRDS~`!@#$%^&*()_+=|\\:;SKR DS~`!@#$%^&*()_+=|\\:;SKRDS~`!@#$%^&*()_+=|\\:;SKR DS~`!@#$%^&*()_+=|\\:;SKRDS~`!@#$%^&*()_+=|\\:;SKR DS~`SKRDS~`!@#$% Health System"
+            },
+            {
+                "customerOid": "dynamichomehealth",
+                "companyName": "Dynamic Home Health"
+            },
+            {
+                "customerOid": "edward",
+                "companyName": "Edward Hospital & Health Service"
+            },
+            {
+                "customerOid": "elcaminohospital",
+                "companyName": "El Camino Hospital"
+            },
+            {
+                "customerOid": "emhhealthcare",
+                "companyName": "EMH Regional Healthcare System"
+            },
+            {
+                "customerOid": "endo",
+                "companyName": "Endo Pharmaceuticals"
+            },
+            {
+                "customerOid": "ephratahospital",
+                "companyName": "Ephrata Community Hospital"
+            },
+            {
+                "customerOid": "ev3",
+                "companyName": "ev3&Inc"
+            },
+            {
+                "customerOid": "excelahealth",
+                "companyName": "Excela Health & Heritage Valley Health"
+            },
+            {
+                "customerOid": "heritagevalley",
+                "companyName": "Excela Health & Heritage Valley Health"
+            },
+            {
+                "customerOid": "fairbanks",
+                "companyName": "Fairbanks Hospital"
+            },
+            {
+                "customerOid": "firelands",
+                "companyName": "Firelands Regional Medical'Center *"
+            },
+            {
+                "customerOid": "flaglerhospital",
+                "companyName": "Flagler Hospital St. Augustine"
+            },
+            {
+                "customerOid": "fletcherallen",
+                "companyName": "Fletcher Allen Health Care"
+            },
+            {
+                "customerOid": "floyd",
+                "companyName": "Floyd Medical Hospital"
+            },
+            {
+                "customerOid": "folsomsurgerycenter",
+                "companyName": "Folsom Surgery Center"
+            },
+            {
+                "customerOid": "forrestgeneral",
+                "companyName": "Forrest General Hospital"
+            },
+            {
+                "customerOid": "forthealthcare",
+                "companyName": "Fort HealthCare"
+            },
+            {
+                "customerOid": "foundationsurgery",
+                "companyName": "Foundation HealthCare Management"
+            },
+            {
+                "customerOid": "foundationsurgical",
+                "companyName": "Foundation Surgical Hospital"
+            },
+            {
+                "customerOid": "fshsanantonio",
+                "companyName": "Foundation Surgical Hospital of San Antonio"
+            },
+            {
+                "customerOid": "fchn",
+                "companyName": "Franklin Memorial Hospital"
+            },
+            {
+                "customerOid": "freemanhealth",
+                "companyName": "Freeman"
+            },
+            {
+                "customerOid": "futuremedamerica",
+                "companyName": "Futuremed America Inc"
+            },
+            {
+                "customerOid": "ghhospital",
+                "companyName": "Galichia Heart Hospital"
+            },
+            {
+                "customerOid": "gehealthcare",
+                "companyName": "GE Healthcare"
+            },
+            {
+                "customerOid": "gkppccustomer",
+                "companyName": "GKP PCCustomer"
+            },
+            {
+                "customerOid": "gradyhealthsystem",
+                "companyName": "Grady Health System"
+            },
+            {
+                "customerOid": "gradyhealth",
+                "companyName": "Gradys Staff Credentials Program"
+            },
+            {
+                "customerOid": "gch",
+                "companyName": "grandcarehealth"
+            },
+            {
+                "customerOid": "ghs",
+                "companyName": "Greenville Hospital System(SC)"
+            },
+            {
+                "customerOid": "griffinhealth",
+                "companyName": "Griffin Health Services Corporation"
+            },
+            {
+                "customerOid": "grmedcenter",
+                "companyName": "Guadalupe Regional Medical Center"
+            },
+            {
+                "customerOid": "gwinnetthealth",
+                "companyName": "Gwinnett Medical Center"
+            },
+            {
+                "customerOid": "halifax",
+                "companyName": "Halifax Health"
+            },
+            {
+                "customerOid": "hallmarkhealth",
+                "companyName": "Hallmark Health"
+            },
+            {
+                "customerOid": "hamiltonhealth",
+                "companyName": "Hamilton Health"
+            },
+            {
+                "customerOid": "hamot",
+                "companyName": "Hamot Medical Center"
+            },
+            {
+                "customerOid": "hanoverhospital",
+                "companyName": "Hanover Hospital"
+            },
+            {
+                "customerOid": "harrisonhospital",
+                "companyName": "Harrison Medical Center(WA)"
+            },
+            {
+                "customerOid": "haymed",
+                "companyName": "Haywood Regional Medical Center"
+            },
+            {
+                "customerOid": "nschd",
+                "companyName": "Healdsburg District Hospital"
+            },
+            {
+                "customerOid": "health-central",
+                "companyName": "Health Central"
+            },
+            {
+                "customerOid": "healthpartners",
+                "companyName": "HealthPartners"
+            },
+            {
+                "customerOid": "heleoon",
+                "companyName": "Heleoon Healthcare"
+            },
+            {
+                "customerOid": "hendricks",
+                "companyName": "Hendricks Regional Health"
+            },
+            {
+                "customerOid": "heritagebank",
+                "companyName": "Heritage Bank"
+            },
+            {
+                "customerOid": "ahmchealth",
+                "companyName": "HMCAD Healthcare"
+            },
+            {
+                "customerOid": "arizonahearthospital",
+                "companyName": "HMCAD Heart Hospital"
+            },
+            {
+                "customerOid": "hobokenumc",
+                "companyName": "Hoboken University Medical Center"
+            },
+            {
+                "customerOid": "hollywoodpresbymedc",
+                "companyName": "Hollywood Presbyterian Medical Center"
+            },
+            {
+                "customerOid": "sanctityhospital",
+                "companyName": "Hospital Of Sanctity"
+            },
+            {
+                "customerOid": "hhc",
+                "companyName": "Houston Healthcare"
+            },
+            {
+                "customerOid": "howard",
+                "companyName": "howard"
+            },
+            {
+                "customerOid": "howardhealth",
+                "companyName": "Howard Health Hospital"
+            },
+            {
+                "customerOid": "huhealthcare",
+                "companyName": "Howard University"
+            },
+            {
+                "customerOid": "hrmusa",
+                "companyName": "HRM USA"
+            },
+            {
+                "customerOid": "hhss",
+                "companyName": "HSS - Hospital for Special Surgery"
+            },
+            {
+                "customerOid": "hudsonhospital",
+                "companyName": "Hudson Hospital"
+            },
+            {
+                "customerOid": "hmhd",
+                "companyName": "Hunt Memorial Hospital District"
+            },
+            {
+                "customerOid": "hurleymc",
+                "companyName": "Hurley% Medical &Center Edited"
+            },
+            {
+                "customerOid": "clarian",
+                "companyName": "Indiana University Health"
+            },
+            {
+                "customerOid": "isltd",
+                "companyName": "Interior Showplace LTD"
+            },
+            {
+                "customerOid": "islandhospital",
+                "companyName": "Island Hospital"
+            },
+            {
+                "customerOid": "ipd",
+                "companyName": "ISLAND PACIFIC DISTRIBUTORS"
+            },
+            {
+                "customerOid": "jacksonhosp",
+                "companyName": "Jackson Hospital"
+            },
+            {
+                "customerOid": "jamesonhealthsystem",
+                "companyName": "Jameson Health System"
+            },
+            {
+                "customerOid": "jdchospital",
+                "companyName": "Jefferson Davis Community Hospital"
+            },
+            {
+                "customerOid": "jeffersonregional",
+                "companyName": "Jefferson Regional Medical Center"
+            },
+            {
+                "customerOid": "johnmuir",
+                "companyName": "John Muir Health"
+            },
+            {
+                "customerOid": "hopkinsmedicine",
+                "companyName": "Johns Hopkins Medicine"
+            },
+            {
+                "customerOid": "jordanhospital",
+                "companyName": "Jordan Hospital"
+            },
+            {
+                "customerOid": "kaiserpermanente",
+                "companyName": "Kaiser Permanente"
+            },
+            {
+                "customerOid": "kamineni",
+                "companyName": "Kamineni Hospitals"
+            },
+            {
+                "customerOid": "kcmc",
+                "companyName": "Kershaw Health"
+            },
+            {
+                "customerOid": "kmcnetwork",
+                "companyName": "Kettering Health Network"
+            },
+            {
+                "customerOid": "kingsdaughters",
+                "companyName": "King's Daughters' Hospital & Health"
+            },
+            {
+                "customerOid": "azkrmc",
+                "companyName": "Kingman Regional Medical Center"
+            },
+            {
+                "customerOid": "kingsbrook",
+                "companyName": "Kingsbrook Jewish Medical Center"
+            },
+            {
+                "customerOid": "kvch",
+                "companyName": "Kittitas Valley Community Hospital"
+            },
+            {
+                "customerOid": "kona",
+                "companyName": "KONA HOSPITAL"
+            },
+            {
+                "customerOid": "lcmc",
+                "companyName": "Labette Health"
+            },
+            {
+                "customerOid": "lakeviewmedical",
+                "companyName": "Lakeview Medical Center"
+            },
+            {
+                "customerOid": "lancastergeneral",
+                "companyName": "Lancaster General Hospital"
+            },
+            {
+                "customerOid": "legacyhealth",
+                "companyName": "Legacy Health System"
+            },
+            {
+                "customerOid": "lenova",
+                "companyName": "lenova health care system worldwide"
+            },
+            {
+                "customerOid": "lmhealth",
+                "companyName": "Licking Memorial Healthsystems"
+            },
+            {
+                "customerOid": "lodihealth",
+                "companyName": "Lodi Memorial Hospital"
+            },
+            {
+                "customerOid": "llumc",
+                "companyName": "Loma Linda University Medical Center"
+            },
+            {
+                "customerOid": "lompocvmc",
+                "companyName": "Lompoc Hospital"
+            },
+            {
+                "customerOid": "lorishealthcaresys",
+                "companyName": "Loris Healthcare System"
+            },
+            {
+                "customerOid": "lowellgeneral",
+                "companyName": "Lowell General Hospital"
+            },
+            {
+                "customerOid": "loyolamedicine",
+                "companyName": "Loyola University Medical Center"
+            },
+            {
+                "customerOid": "mrhc",
+                "companyName": "Magnolia Regional Health Hospital_Reasearch'organization"
+            },
+            {
+                "customerOid": "maimonidesmed",
+                "companyName": "Maimonides Medical Center"
+            },
+            {
+                "customerOid": "mmc",
+                "companyName": "Maine Medical Center"
+            },
+            {
+                "customerOid": "marysvillesurgcenter",
+                "companyName": "Marysville Surgical Center"
+            },
+            {
+                "customerOid": "mclaren",
+                "companyName": "McLaren Health Care"
+            },
+            {
+                "customerOid": "mcleodhealth",
+                "companyName": "Mcleod Health"
+            },
+            {
+                "customerOid": "mmchs",
+                "companyName": "Meadville Medical Center"
+            },
+            {
+                "customerOid": "medcath",
+                "companyName": "MedCath Corporation"
+            },
+            {
+                "customerOid": "medcentral",
+                "companyName": "MedCentral Health System"
+            },
+            {
+                "customerOid": "medicalmaterials",
+                "companyName": "Medical Materials Inc"
+            },
+            {
+                "customerOid": "medicalsupply",
+                "companyName": "Medical Supply Systems Inc"
+            },
+            {
+                "customerOid": "musc",
+                "companyName": "Medical University of South Carolina"
+            },
+            {
+                "customerOid": "medisyshealth",
+                "companyName": "Medisys Health Network, Inc"
+            },
+            {
+                "customerOid": "hdm",
+                "companyName": "Medzo"
+            },
+            {
+                "customerOid": "memorial",
+                "companyName": "Memorial Health"
+            },
+            {
+                "customerOid": "fremontmemorial",
+                "companyName": "Memorial Hospital - Fremont, OH"
+            },
+            {
+                "customerOid": "gulfportmemorial",
+                "companyName": "Memorial Hospital at Gulfport"
+            },
+            {
+                "customerOid": "mercy",
+                "companyName": "Mercy"
+            },
+            {
+                "customerOid": "mercyhealthsystem",
+                "companyName": "Mercy Health System"
+            },
+            {
+                "customerOid": "mercymiami",
+                "companyName": "Mercy Hospital"
+            },
+            {
+                "customerOid": "wchsys",
+                "companyName": "Meritus Medical Center"
+            },
+            {
+                "customerOid": "sahealth",
+                "companyName": "Methodist Healthcare of San Antonio"
+            },
+            {
+                "customerOid": "methodisthospital",
+                "companyName": "Methodist Hospital"
+            },
+            {
+                "customerOid": "mwmc",
+                "companyName": "MetroWest Medical Center"
+            },
+            {
+                "customerOid": "mbhs",
+                "companyName": "Mississippi Baptist Health Systems, Inc"
+            },
+            {
+                "customerOid": "monvalleyhospital",
+                "companyName": "Monongehela Valley Hospital"
+            },
+            {
+                "customerOid": "montefiore",
+                "companyName": "Montefiore Medical Center"
+            },
+            {
+                "customerOid": "morganhospital",
+                "companyName": "Morgan Hospital & Medical Center"
+            },
+            {
+                "customerOid": "munroe",
+                "companyName": "Munroe Regional Medical Center"
+            },
+            {
+                "customerOid": "mytheme",
+                "companyName": "My Theme"
+            },
+            {
+                "customerOid": "neilstrong",
+                "companyName": "Neil Strong Medical Research Center"
+            },
+            {
+                "customerOid": "nyhq",
+                "companyName": "New York Hospital Queens"
+            },
+            {
+                "customerOid": "newberryhospital",
+                "companyName": "Newberry County Memorial Hospital"
+            },
+            {
+                "customerOid": "pacifichealthcorp",
+                "companyName": "Newport Specialty Hospital"
+            },
+            {
+                "customerOid": "newtonmedical",
+                "companyName": "Newton Medical Center"
+            },
+            {
+                "customerOid": "nixhealth",
+                "companyName": "NIX Health Care System"
+            },
+            {
+                "customerOid": "normanregional",
+                "companyName": "Norman Regional Hospital"
+            },
+            {
+                "customerOid": "nahealth",
+                "companyName": "Northern Arizona Healthcare"
+            },
+            {
+                "customerOid": "nch",
+                "companyName": "Northwest Community Hospital"
+            },
+            {
+                "customerOid": "novanthealth",
+                "companyName": "Novant Cardio Hospital"
+            },
+            {
+                "customerOid": "nyackhospital",
+                "companyName": "Nyack Hospital"
+            },
+            {
+                "customerOid": "oaktree",
+                "companyName": "Oak Tree @"
+            },
+            {
+                "customerOid": "oakvalleycares",
+                "companyName": "Oak Valley Hospital"
+            },
+            {
+                "customerOid": "oakbendmedcenter",
+                "companyName": "OakBend Medical Center"
+            },
+            {
+                "customerOid": "oakwood",
+                "companyName": "Oakwood Healthcare System"
+            },
+            {
+                "customerOid": "och",
+                "companyName": "OCH Regional Medical Center"
+            },
+            {
+                "customerOid": "oconeememorial",
+                "companyName": "Oconee Memorial Hospital"
+            },
+            {
+                "customerOid": "oconeeregional",
+                "companyName": "Oconee Regional Medical Center"
+            },
+            {
+                "customerOid": "ohio-ortho-surg",
+                "companyName": "Ohio Orthopedic Surgery Institute"
+            },
+            {
+                "customerOid": "ohiovalleyhospital",
+                "companyName": "Ohio Valley General Hospital"
+            },
+            {
+                "customerOid": "ovmc-eorh",
+                "companyName": "Ohio Valley Medical Center"
+            },
+            {
+                "customerOid": "olympicmedical",
+                "companyName": "Olympic Medical Center"
+            },
+            {
+                "customerOid": "orlandohealth",
+                "companyName": "Orlando Health"
+            },
+            {
+                "customerOid": "osfhealthcare",
+                "companyName": "OSF Healthcare System"
+            },
+            {
+                "customerOid": "oswegohealth",
+                "companyName": "Oswego Hospital"
+            },
+            {
+                "customerOid": "chottawa",
+                "companyName": "Ottawa Regional Hospital"
+            },
+            {
+                "customerOid": "ovhchealthcare",
+                "companyName": "OVHC"
+            },
+            {
+                "customerOid": "omhs",
+                "companyName": "Owensboro Medical Health System"
+            },
+            {
+                "customerOid": "pacificpalms",
+                "companyName": "PACIFIC PALMS HEALTHCARE"
+            },
+            {
+                "customerOid": "pph",
+                "companyName": "Palomar Pomerado Health"
+            },
+            {
+                "customerOid": "parrishmed",
+                "companyName": "Parrish Medical Center(FL)"
+            },
+            {
+                "customerOid": "partners",
+                "companyName": "Partners HealthCare System Inc"
+            },
+            {
+                "customerOid": "phcs",
+                "companyName": "PC  Hospitality & Research Health Care Center"
+            },
+            {
+                "customerOid": "harris",
+                "companyName": "Peachcare Health"
+            },
+            {
+                "customerOid": "peak",
+                "companyName": "Peak Fitness USA"
+            },
+            {
+                "customerOid": "pekinhospital",
+                "companyName": "Pekin Hospital"
+            },
+            {
+                "customerOid": "peninsula",
+                "companyName": "Peninsula Regional Health System"
+            },
+            {
+                "customerOid": "pmhalliance",
+                "companyName": "Pennsylvania Mountains Healthcare Alliance(PA)"
+            },
+            {
+                "customerOid": "persistenthospital",
+                "companyName": "Persistent Hospital"
+            },
+            {
+                "customerOid": "persinewprod",
+                "companyName": "Persistent New 2472"
+            },
+            {
+                "customerOid": "persithemehospital",
+                "companyName": "Persistent Theme Hospital"
+            },
+            {
+                "customerOid": "phoebe",
+                "companyName": "Phoebe Putney Memorial Hospital"
+            },
+            {
+                "customerOid": "pinnaclehealth",
+                "companyName": "Pinnacle Health System"
+            },
+            {
+                "customerOid": "pvmc",
+                "companyName": "Platte Valley Medical"
+            },
+            {
+                "customerOid": "phs",
+                "companyName": "Presbyterian Healthcare Services"
+            },
+            {
+                "customerOid": "pchonline",
+                "companyName": "Princeton Community Hospital"
+            },
+            {
+                "customerOid": "prohealthcare",
+                "companyName": "ProHealth Care"
+            },
+            {
+                "customerOid": "promedica",
+                "companyName": "ProMedica Health System"
+            },
+            {
+                "customerOid": "providencecalifornia",
+                "companyName": "Providence Health & Service Southern California"
+            },
+            {
+                "customerOid": "providencealaska",
+                "companyName": "Providence Health and Services Alaska(AK)"
+            },
+            {
+                "customerOid": "providence",
+                "companyName": "Providence Healthcare Network"
+            },
+            {
+                "customerOid": "providencehospitals",
+                "companyName": "Providence Hospitals"
+            },
+            {
+                "customerOid": "richeson",
+                "companyName": "Richeson Contracting Inc"
+            },
+            {
+                "customerOid": "riversiderehab",
+                "companyName": "Riverside Rehabilitation Institute"
+            },
+            {
+                "customerOid": "rwjuh",
+                "companyName": "Robert Wood Johnson University Hospital Hamilton"
+            },
+            {
+                "customerOid": "ropersaintfrancis",
+                "companyName": "Roper St. Francis Healthcare(SC)"
+            },
+            {
+                "customerOid": "rrhs",
+                "companyName": "rrhospital"
+            },
+            {
+                "customerOid": "stfrancishealthcare",
+                "companyName": "Saint Francis Healthcare Services"
+            },
+            {
+                "customerOid": "stfranciscare",
+                "companyName": "Saint Francis Hospital and Medical Center"
+            },
+            {
+                "customerOid": "stmarysmadison",
+                "companyName": "Saint Marys Hospital (Madison)"
+            },
+            {
+                "customerOid": "cathedralhealth",
+                "companyName": "Saint Michaels Medical Center"
+            },
+            {
+                "customerOid": "svhs",
+                "companyName": "Saint Vincent Health System"
+            },
+            {
+                "customerOid": "stvincenthospital",
+                "companyName": "Saint Vincent Hospital (MA)"
+            },
+            {
+                "customerOid": "salemhospital",
+                "companyName": "Salem Hospital"
+            },
+            {
+                "customerOid": "scvmed",
+                "companyName": "Santa Clara Valley Medical Center"
+            },
+            {
+                "customerOid": "sassi",
+                "companyName": "Sassi Institute"
+            },
+            {
+                "customerOid": "seattlecca",
+                "companyName": "Seattle Cancer Center Alliance"
+            },
+            {
+                "customerOid": "sharonregional",
+                "companyName": "Sharon Regional Health System"
+            },
+            {
+                "customerOid": "shepherd",
+                "companyName": "Shepherd Center"
+            },
+            {
+                "customerOid": "shrinershq",
+                "companyName": "Shriners Hospitals for Children®"
+            },
+            {
+                "customerOid": "svrhc",
+                "companyName": "Sierra Vista Regional Health Center"
+            },
+            {
+                "customerOid": "silverlakemc",
+                "companyName": "Silver Lake Medical Center"
+            },
+            {
+                "customerOid": "abcmedical",
+                "companyName": "SMI medical"
+            },
+            {
+                "customerOid": "scrmc",
+                "companyName": "South Central Regional Medical Center"
+            },
+            {
+                "customerOid": "seormc",
+                "companyName": "Southeastern Ohio Regional Medical Center"
+            },
+            {
+                "customerOid": "srmc",
+                "companyName": "Southeastern Regional Medical Center"
+            },
+            {
+                "customerOid": "stbarnabashospital",
+                "companyName": "St. Barnabas Hospital"
+            },
+            {
+                "customerOid": "stclair",
+                "companyName": "St. Clair Memorial Hospital"
+            },
+            {
+                "customerOid": "stdom",
+                "companyName": "St. Dominic-Jackson Memorial Hospital"
+            },
+            {
+                "customerOid": "sjchs",
+                "companyName": "St. Joseph's Candler Health System"
+            },
+            {
+                "customerOid": "stjosephshealth",
+                "companyName": "St. Josephs Regional Medical Center"
+            },
+            {
+                "customerOid": "stlukeshospital",
+                "companyName": "St. Luke's Hospital (OH)"
+            },
+            {
+                "customerOid": "slhduluth",
+                "companyName": "St. Lukes Hospital"
+            },
+            {
+                "customerOid": "stmh",
+                "companyName": "St. Mary's Hospital"
+            },
+            {
+                "customerOid": "stmarysathens",
+                "companyName": "St. Marys Health Care System"
+            },
+            {
+                "customerOid": "strosehospital",
+                "companyName": "St. Rose Hospital"
+            },
+            {
+                "customerOid": "stanfordhospital",
+                "companyName": "Stanford Hospital and Clinics and Lucile Packard Children's Hospital"
+            },
+            {
+                "customerOid": "stanthony",
+                "companyName": "stanthony - Andrew Badge"
+            },
+            {
+                "customerOid": "scasurgery",
+                "companyName": "Surgical Care Affiliates"
+            },
+            {
+                "customerOid": "swedishcovenant",
+                "companyName": "Swedish Covenant Hospital"
+            },
+            {
+                "customerOid": "tmh",
+                "companyName": "Tallahassee Memorial HealthCare"
+            },
+            {
+                "customerOid": "tanner",
+                "companyName": "Tanner Health System"
+            },
+            {
+                "customerOid": "tataheart",
+                "companyName": "Tata Heart Hospital"
+            },
+            {
+                "customerOid": "tatamemorial",
+                "companyName": "Tata Memorial Hospital"
+            },
+            {
+                "customerOid": "tesla",
+                "companyName": "Tesla Medical Society"
+            },
+            {
+                "customerOid": "custfiveapr",
+                "companyName": "Test Customer 05Apr2016"
+            },
+            {
+                "customerOid": "testcustelevenjantwo",
+                "companyName": "Test Customer 11Jan2016_2"
+            },
+            {
+                "customerOid": "txchildrenshospital",
+                "companyName": "Texas Childrens Hospital"
+            },
+            {
+                "customerOid": "ttuhsc",
+                "companyName": "Texas Tech University Health Sciences Center"
+            },
+            {
+                "customerOid": "metrohealth",
+                "companyName": "The MetroHealth System"
+            },
+            {
+                "customerOid": "themonroeclinic",
+                "companyName": "The Monroe Clinic"
+            },
+            {
+                "customerOid": "osler",
+                "companyName": "The Osler Institute"
+            },
+            {
+                "customerOid": "royal",
+                "companyName": "The Royal Marsden NHS Trust"
+            },
+            {
+                "customerOid": "thesurgerycenter",
+                "companyName": "The Surgery Center of Alta Bates and Summit Medical Center"
+            },
+            {
+                "customerOid": "pennhealth",
+                "companyName": "The University of Pennsylvania Health System"
+            },
+            {
+                "customerOid": "utmcutoledo",
+                "companyName": "The University of Toledo Medical Center"
+            },
+            {
+                "customerOid": "valleyhealth",
+                "companyName": "The Valley Hospital"
+            },
+            {
+                "customerOid": "washingtonhospital",
+                "companyName": "The Washington Hospital"
+            },
+            {
+                "customerOid": "thedacare",
+                "companyName": "Thedacare"
+            },
+            {
+                "customerOid": "thorek",
+                "companyName": "Thorek Memorial Hospital"
+            },
+            {
+                "customerOid": "torrancememorial",
+                "companyName": "Torrance Memorial Medical Center"
+            },
+            {
+                "customerOid": "trinityhealth",
+                "companyName": "Trinity Health"
+            },
+            {
+                "customerOid": "tsys",
+                "companyName": "TSYS"
+            },
+            {
+                "customerOid": "tmcaz",
+                "companyName": "Tucson Medical Center"
+            },
+            {
+                "customerOid": "tufts-nemc",
+                "companyName": "Tufts-NEMC"
+            },
+            {
+                "customerOid": "tdhs",
+                "companyName": "Tulare Regional Medical Center"
+            },
+            {
+                "customerOid": "tulip",
+                "companyName": "Tulip International"
+            },
+            {
+                "customerOid": "tuomey",
+                "companyName": "Tuomey Healthcare System"
+            },
+            {
+                "customerOid": "ucb",
+                "companyName": "UCB Pharmaceuticals"
+            },
+            {
+                "customerOid": "umassmemorial",
+                "companyName": "UMass Memorial Healthcare"
+            },
+            {
+                "customerOid": "uhhg",
+                "companyName": "Union Hospital Health Group"
+            },
+            {
+                "customerOid": "uniontownhospital",
+                "companyName": "Uniontown Hospital"
+            },
+            {
+                "customerOid": "umchealthsystem",
+                "companyName": "University Medical Center (Lubbock)"
+            },
+            {
+                "customerOid": "azumc",
+                "companyName": "University of Arizona Healthcare Network"
+            },
+            {
+                "customerOid": "uchospitals",
+                "companyName": "University of Chicago Medical Center"
+            },
+            {
+                "customerOid": "kumed",
+                "companyName": "University of Kansas Medical Center"
+            },
+            {
+                "customerOid": "medumich",
+                "companyName": "University of Michigan Health System"
+            },
+            {
+                "customerOid": "uwmedicine",
+                "companyName": "UW Medicine"
+            },
+            {
+                "customerOid": "vvmc",
+                "companyName": "Vail Valley Medical Center & Inc."
+            },
+            {
+                "customerOid": "valleybaptist",
+                "companyName": "Valley Baptist Health System"
+            },
+            {
+                "customerOid": "valleygeneral",
+                "companyName": "Valley General"
+            },
+            {
+                "customerOid": "valleycare",
+                "companyName": "ValleyCare Health System"
+            },
+            {
+                "customerOid": "vanderbilt",
+                "companyName": "Vanderbilt University Medical Center"
+            },
+            {
+                "customerOid": "vcmsmi",
+                "companyName": "Vendormate Contract Manager"
+            },
+            {
+                "customerOid": "vendormatecredential",
+                "companyName": "Vendormate Credentials"
+            },
+            {
+                "customerOid": "vendormate",
+                "companyName": "Vendormate, Inc."
+            },
+            {
+                "customerOid": "vheart",
+                "companyName": "VHeart Hospital"
+            },
+            {
+                "customerOid": "via-christi",
+                "companyName": "Via Christi Health"
+            },
+            {
+                "customerOid": "viitfour",
+                "companyName": "VIIT Four Test Customer"
+            },
+            {
+                "customerOid": "viitsix",
+                "companyName": "VIIT Six Test Customer"
+            },
+            {
+                "customerOid": "wcrmc",
+                "companyName": "Washington County Regional Medical Center"
+            },
+            {
+                "customerOid": "waynehealthcare",
+                "companyName": "Wayne Healthcare"
+            },
+            {
+                "customerOid": "wellspan",
+                "companyName": "wellspan"
+            },
+            {
+                "customerOid": "wesleymc",
+                "companyName": "Wesley Medical Center"
+            },
+            {
+                "customerOid": "wcorha",
+                "companyName": "West Central Ohio Regional Healthcare Alliance,Ltd"
+            },
+            {
+                "customerOid": "wghs",
+                "companyName": "West Georgia Health System"
+            },
+            {
+                "customerOid": "westoaks",
+                "companyName": "West Oaks Hospital"
+            },
+            {
+                "customerOid": "danburyhospital",
+                "companyName": "Western Connecticut Health Network"
+            },
+            {
+                "customerOid": "wmhs",
+                "companyName": "Western Maryland Health System"
+            },
+            {
+                "customerOid": "wnchn",
+                "companyName": "Western NC Health Network"
+            },
+            {
+                "customerOid": "backushospital",
+                "companyName": "William B. Backus Hospital"
+            },
+            {
+                "customerOid": "wishard",
+                "companyName": "Wishard Health Services$%^&#"
+            },
+            {
+                "customerOid": "wtechhospital",
+                "companyName": "WTech Hospital"
+            },
+            {
+                "customerOid": "wuesthoff",
+                "companyName": "Wuesthoff Health System"
+            },
+            {
+                "customerOid": "yakimaregional",
+                "companyName": "Yakima Regional Medical and Cardiac Center"
+            },
+            {
+                "customerOid": "yalenewhavenhealth",
+                "companyName": "Yale New Haven Health System"
+            },
+            {
+                "customerOid": "ynhhidconfirm",
+                "companyName": "Yale New Haven Health System ID Confirm"
+            }
+        ],
+        "contentType": "application/json"
+    }
+}

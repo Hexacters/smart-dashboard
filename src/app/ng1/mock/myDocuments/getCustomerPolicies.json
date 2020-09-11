@@ -1,0 +1,44 @@
+{
+	"VisionResponse": {
+		"Status": "Ok",
+		"CustomerPolicyList": [{
+			"oid": "000000362300159850a8",
+			"name": "Acknowledgement 1",
+			"documentTemplateOid": "ACK-Rep",
+			"parentOid": "amerinet",
+			"docDefinitionUpdatedOn": "2007-05-25 17:32:54",
+			"docTypeCode": "ACK",
+			"templateName": "Rep Acknowledgement - Name changed at template level",
+			"templateDescription": "Rep Acknowledgment - description changed at template level",
+			"templateUpdatedOn": "2016-07-14 03:05:50",
+			"updateAction": false,
+			"deleteAction": false
+		}, {
+			"oid": "000000362300159850a9",
+			"name": "Acknowledgement 2",
+			"documentTemplateOid": "ACK-Rep",
+			"parentOid": "amerinet",
+			"docDefinitionUpdatedOn": "2007-05-25 17:32:54",
+			"docTypeCode": "ACK",
+			"templateName": "Rep Acknowledgement - Name changed at template level",
+			"templateDescription": "Rep Acknowledgment - description changed at template level",
+			"templateUpdatedOn": "2016-07-14 03:05:50",
+			"updateAction": false,
+			"deleteAction": false
+		}],
+		"contentType": "application/json",
+		"CustomerConfigMetaDataSummary": {
+			"oid": "c0100008e17000008e3f",
+			"ownerOid": "amerinet",
+			"docType": "POLF",
+			"name": "Policies.zip",
+			"description": "Policy Zip File",
+			"theFileMimeType": "application/zip",
+			"createdOn": "2015-06-17 03:30:12",
+			"createdBy": "system",
+			"updatedOn": "2016-07-14 03:30:05",
+			"updateAction": false,
+			"deleteAction": false
+		}
+	}
+}

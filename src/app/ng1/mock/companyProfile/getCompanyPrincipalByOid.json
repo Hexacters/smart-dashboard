@@ -1,0 +1,28 @@
+{
+    "VisionResponse": {
+        "Status": "Ok",
+        "CompanyPrincipalList": [
+            {
+                "yearsWithCompanyStr": "0",
+                "officerContactTypeCode": "VOLGL",
+                "vendorOid": "000000530800000014bd",
+                "maskedDriversLicense": "",
+                "maskedSsn": "",
+                "queueSearchString": "test,test,null",
+                "oid": "c01000089d10000089d5",
+                "title": "Legal Department Officer",
+                "firstName": "test",
+                "lastName": "test",
+                "email": "sdfsdf@sdfds.comosdfsdf",
+                "createdOn": "2013-11-13 17:55:33",
+                "createdBy": "System",
+                "updatedOn": "2015-12-21 16:00:19",
+                "updatedBy": "ps101553@test.vm",
+                "updateAction": false,
+                "deleteAction": false
+            }
+        ],
+        "totalRecords": 1,
+        "contentType": "application/json"
+    }
+}

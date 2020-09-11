@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<module id="printBadgeModule">
+	<routers>
+		<router id="printBadge" sticky="true" url="/prepareForVisit">
+			<views>
+				<view containerId="vendordash" templateUrl="app/ng1/views/printBadge/printBadgeAccordion.html"></view>
+			</views>
+		</router>
+		<router id="printBadge.prepareForVisit" url="/printBadge/{printBadge}">
+			<views>
+				<view containerId="printBadge" templateUrl="app/ng1/views/printBadge/printBadge.html"></view>
+			</views>
+		</router>
+		<router id="printBadge.prepareForVisit.help" type="dialog">
+			<views>
+				<view templateUrl="app/ng1/views/printBadge/printBadgeHelp.html"></view>
+			</views>
+		</router>
+	</routers>
+	<services id="printBadgeServices">
+		<operations>
+		<operation name="saveClearedForAccess" requestWrapper="request" responseWrapper="response" method="post" url="" mockUrl="app/ng1/mocksuccess.json" mock="false"></operation>
+		<operation name="getPrintBadgeAccountProcess" requestType="json" requestWrapper="request" responseWrapper="response" serviceName="vendorrep" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/printBadge/getPrintBadgeAccountProcess.json" mock="false">
+			<params>
+				<param name="userOid" source="data" key="userOid" module="userDetail"></param>
+				<param name="userId" source="data" key="userId" module="userDetail"></param>
+			</params>
+		</operation>
+		<operation name="getCustomerLocationIds" requestType="json" requestWrapper="request" responseWrapper="response"  serviceName="customers" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/accounts/getCustomerLocationIds.json" mock="false"></operation>
+		<operation name="getDepartmentIds" requestType="json" requestWrapper="request" responseWrapper="response"  serviceName="customers" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/accounts/getDepartmentIds.json" mock="false"></operation>
+		<operation name="printBadgeRemote" requestType="json" requestWrapper="request" responseWrapper="response"  serviceName="kiosk" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/printBadge/printBadgeRemote.json" mock="false">
+			<params>
+				<param name="userOid" source="data" key="userOid" module="userDetail"></param>
+				<param name="userId" source="data" key="userId" module="userDetail"></param>
+			</params>
+		</operation>
+		<operation name="getAppointmentDetailsES" requestType="json" requestWrapper="request" responseWrapper="response" serviceName="buyer" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/accounts/getAppointmentDetailsES.json" mock="false"></operation>
+		<operation name="checkComplianceProcess" requestType="json" requestWrapper="request" responseWrapper="response" serviceName="vendorrep" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/printBadge/checkComplianceProcess.json" mock="false">
+			<params>
+				<param name="userOid" source="data" key="userOid" module="userDetail"></param>
+				<param name="userId" source="data" key="userId" module="userDetail"></param>
+			</params>
+		</operation>
+		<operation name="getVendorRepAccountAutoDocUrl" requestType="json" requestWrapper="request" responseWrapper="response" serviceName="vendorrep" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/accounts/vendorRepAccountAutoDocUrl.json" mock="false" targetOperation="getVendorRepAccount">
+			<params>
+				<param name="userOid" source="data" key="userOid" module="userDetail"></param>
+			</params>
+		</operation>
+		</operations>
+	</services>
+</module>

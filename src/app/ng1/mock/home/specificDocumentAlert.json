@@ -1,0 +1,38 @@
+{
+    "VisionResponse": {
+        "Status": "Ok",
+        "totalRecords": "2",
+        "UserNonComplianceDocumentList": {
+            "UserNonComplianceDocument": [
+                {
+                    "requiredDoc": "true",
+                    "docDefHasTemplate": "false",
+                    "templateAutoAssignable": "false",
+                    "docDefName": "OR Protocol and Sterile Techniques Training",
+                    "templateOid": "0000010514003eab4062",
+                    "sortKey": "4",
+                    "docDefOid": "c010000a60100000a603",
+                    "templateDocCategoryCode": "OPVC",
+                    "uploadedDocSize": "0",
+                    "disabled": "false",
+                    "templateName": "OR Protocol and Sterile Techniques Training"
+                },
+                {
+                    "requiredDoc": "true",
+                    "docDefHasTemplate": "false",
+                    "templateAutoAssignable": "false",
+                    "docDefName": "op_vc_temp18",
+                    "templateOid": "c0100007d37000007d3c",
+                    "sortKey": "4",
+                    "docDefOid": "c010000a60100000a606",
+                    "templateDocCategoryCode": "OPREP",
+                    "uploadedDocSize": "0",
+                    "disabled": "false",
+                    "templateName": "op_vc_temp18"
+                }
+            ]
+        },
+        "ContentType": "text/xml",
+        "ResponseErrors": ""
+    }
+}

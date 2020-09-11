@@ -1,0 +1,8 @@
+var appCon = {};
+appCon.appName = "appName";
+appCon.modules = ['ui.router', 'ct.ui.router.extras', 
+                  'validation', 'validation.rule', 'ui.bootstrap', 'pascalprecht.translate', 
+                  'ngCookies','ui.mask', 'angularFileUpload','ngTable',"ui.calendar",'angucomplete-alt',
+                  'ui.bootstrap.datetimepicker','angularjs-dropdown-multiselect', 'angularAcl', 'angular-google-analytics',
+                  'ngSanitize', 'ui.select', 'validation.match', 'treeControl', 'ngCkeditor', 'as.sortable', 'doubleScrollBars'
+                  ];

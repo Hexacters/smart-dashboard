@@ -1,0 +1,21 @@
+{
+	"VisionResponse": {
+		"Status": "Ok",
+		"BCDetails": [{
+			"inGracePeriod": "Yes",
+			"cbcCustomerOidNames": "freemanhealth#:#Freeman",
+			"cbcCustomerNames": "Freeman",
+			"isNsorExpired": false,
+			"isCbcExpired": false,
+			"typeCode": "CBC",
+			"nsorStatus": "incomplete",
+			"cbcStatus": "incomplete",
+			"tempWhy": "Background screening is required as part of this health system\u0027s credentialing requirements. The health system will not accept an attestation from your employer in lieu of screening. Click \"Continue\" below to initiate the screening.",
+			"name": "Criminal Background Check",
+			"tempHow": "To complete the health system\u0027s requirement for background screening, click on the \"Continue\" button below to enter your name and email address and be redirected to the Backgrounds Online site. The health system will not accept an attestation from your employer in lieu of screening. At the Backgrounds Online site, you will be asked to authorize the background screening, provide the information necessary for screening, and pay the fee. You will be notified when the screening is complete, and your Vendormate Credentialing profile will be updated to show a compliance status of either \"Meets Requirements\" or \"Does Not Meet Requirements.\" Your compliance status will be made available to the health system, and may also be accessed by your employer. A status of \"Does Not Meet Requirements\" will result in denial of entry to health system facilities. You will have an opportunity to dispute any incorrect results within 5 business days of being notified of the results.",
+			"inCbcGracePeriod": "No",
+			"intlRep": false
+		}],
+		"contentType": "application/json"
+	}
+}

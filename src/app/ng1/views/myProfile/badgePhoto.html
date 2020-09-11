@@ -1,0 +1,85 @@
+<div ng-controller="googleAnalyticsController" data-ng-init="callGAPageTrack('callBadgePhoto');"></div>
+<div class="row" ng-controller="badgePhotoController"
+	ng-init="getImageSource();showImageCropper=false;">
+	<div class="col-sm-12 col-md-12 col-lg-12"
+		ng-if="$stateParams.tapsFrom ==='home'"
+		data-ng-class="{'dNone':(enableSaveLoading || cropperLoading)}">
+		<a ui-sref="home">{{'printBadge.backtoHome' | translate}}</a>
+	</div>
+	<div class="col-sm-12 col-md-12 col-lg-12">
+		<div data-ng-if="enableSaveLoading || startUplodImage || cropperLoading">
+			<img align="absmiddle" src="app/ng1/img/partial-loading.gif" />&nbsp;{{'common.loading'
+			| translate}}
+		</div>
+		<div class="pull-right">
+			<a ng-click="showHelpFromMyDocument();"	>{{'common.help' | translate}}</a>
+		</div>
+		<h4>
+			<b>{{'myProfile.badgePhoto.header.badgePhotoTitle' | translate}}</b>
+		</h4>
+		<p>{{'myProfile.badgePhoto.label.badgePhotoContent' | translate}}</p>
+		<div class="col-sm-12 col-md-12 col-lg-12 paddingL0 paddingR0 paddingT3">
+			<div class="table-responsive"
+				data-ng-if="badgePhotoSubmitError.status === 'error'">
+				<div class="alert alert-danger">
+					{{badgePhotoSubmitError.errorData.ResponseError[0].errorCode | translate}}</div>
+			</div>
+			<div class="col-sm-2 col-md-2 col-lg-2 padding0">
+				<div id="preview-pane">
+					<div ng-show="!noImageFound"
+						class="preview-container jcrop-preview">
+						<img data-ng-class="{'dNone':(cropperLoading || enableSaveLoading)}" ng-src="{{cropImageFilePath}}" id="badgePhoto_previewImage"
+							alt="Preview" />
+					</div>
+				</div>
+				<div class="paddingB3 paddingT1" ng-show="noImageFound">
+					<img ng-src="app/ng1/img/noImage.png" class="img-responsive"
+						alt="noImagePreview" />
+				</div>
+				<div class="col-sm-12 col-md-12 col-lg-12 padding0">
+					<button autofocus class="btn btn-primary marginT3"
+						ng-disabled="disableEdit || enableSaveLoading" ng-click="editImageCropper();">{{'common.edit'
+						| translate}}</button>
+				</div>
+			</div>
+			<div class="col-sm-8 col-md-8 col-lg-8 image-cropper paddingT2"
+				ng-show="showImageCropper && initiateCropper">
+				<div class="paddingB3 paddingT1" ng-show="noImageFound">
+					<img ng-src="app/ng1/img/noImage.png" class="img-responsive"
+						alt="noImagePreview" />
+				</div>
+				<image-cropper src="{{uploadedCropImages}}" id="badgePhoto"
+					request-formatter="$parent.imageCropperRequestCallback"
+					form-node="$parent.data.cropdata" show-preview="true"></image-cropper>
+				<div class="col-sm-7 col-md-7 col-lg-7 padding0">
+					<file-upload max-upload-file-count="1" file-size="5"
+						return-type="object" upload-service="myDocumentServices"
+						upload-operation="uploadFile" upload-response-wrapper="response"
+						screen-mode='cropper' id="contracts" file-extensions="[jpg,jpeg]"
+						thumbnail-type="uploadFileId=badgePhoto"
+						file-format-error-msg="{{'myProfile.badgePhoto.errorMessage.invalidBadgephotoMimetype' | translate}}"
+						file-name-length-error-msg="{{'myProfile.badgePhoto.errorMessage.fileInvalidsupportFormatBadgePhoto' | translate}}"
+						on-after-adding-file-callback="$parent.badgePhotoUploadCallBack"
+						parent-data-field="$parent.uploadedCropImages"> </file-upload>
+				</div>
+			</div>
+		</div>
+		<div
+			class="col-sm-10 col-md-10 col-sm-10 col-md-offset-2 col-lg-offset-2 col-lg-offset-2"
+			ng-show="showImageCropper && initiateCropper">
+			<button ng-disabled="enableSaveLoading || startUplodImage"
+				class="btn btn-warning" id="cancelCroper"
+				ng-click="cancelBadgePhoto();">{{'common.cancel' |
+				translate}}</button>
+			<button
+				ng-disabled="noImageFound || enableSaveLoading || disableDelete || startUplodImage"
+				class="btn btn-danger" ng-click="deleteBadgePhotoProcess();">{{'common.delete'
+				| translate}}</button>
+			<button
+				ng-disabled="noImageFound || enableSaveLoading || startUplodImage"
+				class="btn btn-success"
+				ng-click="saveBadgePhotoProcess(data.cropdata);callGAPageTrack('saveBadgePhoto');">{{'common.save'
+				| translate}}</button>
+		</div>
+	</div>
+</div>

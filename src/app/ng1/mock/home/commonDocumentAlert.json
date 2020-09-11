@@ -1,0 +1,98 @@
+{
+    "VisionResponse": {
+        "Status": "Ok",
+        "totalRecords": "4",
+        "UserNonComplianceDocumentList": {
+            "UserNonComplianceDocument": [
+                {
+                    "requiredDoc": "true",
+                    "docFileOid": "c0100007b66000007b82",
+                    "docVerificationCode": "REJCT",
+                    "templateAutoAssignable": "true",
+                    "templateOid": "ACK-VC",
+                    "docName": "Company OPVC Document",
+                    "documentOid": "c0100007b65000007b81",
+                    "docDefOid": "00000237260000005cc0",
+                    "sortKey": "1",
+                    "templateDocCategoryCode": "OPVC",
+                    "uploadedDocSize": "0",
+                    "disabled": "false",
+                    "templateName": "Company OPVC Document"
+                },
+                {
+                    "requiredDoc": "true",
+                    "docFileOid": "c0100007db7000007def",
+                    "docVerificationCode": "UNVER",
+                    "templateAutoAssignable": "true",
+                    "templateOid": "ACER-Rep",
+                    "docName": "Representative Certification By RM",
+                    "documentOid": "c0100007db8000007dfc",
+                    "docDefOid": "00000235390000005c32",
+                    "sortKey": "2",
+                    "templateDocCategoryCode": "OPREP",
+                    "uploadedDocSize": "620888",
+                    "disabled": "false",
+                    "templateName": "Representative Certification By RM"
+                },
+                {
+                    "requiredDoc": "true",
+                    "docFileOid": "c0100001230000001235",
+                    "docVerificationCode": "UNVER",
+                    "docDefHasTemplate": "false",
+                    "templateAutoAssignable": "true",
+                    "docDefName": "Secretary of State Filing",
+                    "templateOid": "0000010437003e35c1e8",
+                    "docName": "Secretary of State Filing",
+                    "documentOid": "c0100001231000001235",
+                    "sortKey": "2",
+                    "docDefOid": "00000236350000005c66",
+                    "disabled": "false",
+                    "templateName": "Secretary_of_State_Filing",
+                    "templateDocCategoryCode": "OPVC"
+                },
+                {
+                    "requiredDoc": "true",
+                    "docFileOid": "c0100001230000001234",
+                    "docVerificationCode": "UNVER",
+                    "docDefHasTemplate": "false",
+                    "templateAutoAssignable": "true",
+                    "docDefName": "OR Protocol Training",
+                    "templateOid": "0000010514003eab4062",
+                    "docName": "OR Protocol Training",
+                    "documentOid": "c0100001231000001234",
+                    "sortKey": "2",
+                    "docDefOid": "000000632400000018c6",
+                    "disabled": "false",
+                    "templateName": "OR_Protocol_Training",
+                    "templateDocCategoryCode": "OPREP"
+                },
+                {
+                    "requiredDoc": "true",
+                    "docDefHasTemplate": "false",
+                    "templateAutoAssignable": "true",
+                    "docDefName": "Insurance",
+                    "templateOid": "0000026985000000696a",
+                    "sortKey": "4",
+                    "docDefOid": "c010000113e0000012cb",
+                    "disabled": "false",
+                    "templateName": "Test Template New",
+                    "templateDocCategoryCode": "OPVC"
+                },
+                {
+                    "requiredDoc": "true",
+                    "docDefHasTemplate": "false",
+                    "templateAutoAssignable": "true",
+                    "docDefName": "Contract",
+                    "templateOid": "c0100003682000003683",
+                    "sortKey": "4",
+                    "docDefOid": "c0100004414000004415",
+                    "disabled": "false",
+                    "templateName": "VIIT_Vendor Level Doc w/o Effective & Expiry Date",
+                    "templateDocCategoryCode": "OPREP"
+                }
+            ]
+        },
+        "ContentType": "text/xml",
+        "ResponseErrors": ""
+    }
+}

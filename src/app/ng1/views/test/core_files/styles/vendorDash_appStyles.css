@@ -1,0 +1,59 @@
+.vmNormalText {  font-family: Arial, Helvetica, sans-serif; font-size: 12px; line-height: 17px; color: #333333; font-weight: normal}
+.vmFieldName { font-family: Arial, Helvetica, sans-serif; font-size: 11px; line-height: 16px; color: #333333 }
+.vmFieldEntry { font-family: Arial, Helvetica, sans-serif; font-size: 12px; line-height: 17px; color: #333333 }
+.vmSectionHead1 { font-family: Arial, Helvetica, sans-serif; font-size: 12px; line-height: 17px; color: #000000; font-weight: bold; background-color: #E2E2E2; }
+.invrepinput{ font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;border-width:1px;border-color:#000000;font-size:10px;background-color:#E7E7E7 }
+.vmSectionIntroText { font-family: Arial, Helvetica, sans-serif; font-size: 12px; line-height: 17px; color: #333333 }
+.vmFieldNameMandatory { font-family: Arial, Helvetica, sans-serif; font-size: 11px; line-height: 16px; color: #CC0000 }
+.vmFieldEntryCaption { font-family: Arial, Helvetica, sans-serif; font-size: 10px; line-height: 14px; color: #666666}
+.vmHorizontalRule {  background-color: #CCCCCC}
+.vmTopIntroText { font-family: Arial, Helvetica, sans-serif; font-size: 12px; line-height: 17px; color: #333333 }
+.vmStepList { font-family: Arial, Helvetica, sans-serif; font-size: 10px; line-height: 17px; color: #000000; text-decoration: none}
+.vmStepCurrent { font-family: Arial, Helvetica, sans-serif; font-size: 10px; line-height: 17px; color: #ff6600; font-weight: bold}
+.vmSectionIntroTextSmall { font-family: Arial, Helvetica, sans-serif; font-size: 9px; line-height: 13px; color: #333333 }
+.vmFieldEntryBG2 { font-family: Arial, Helvetica, sans-serif; font-size: 12px; line-height: 17px; color: #333333 ; background-color: #FFF297 }
+.vmSectionHead2 { font-family: Arial, Helvetica, sans-serif; font-size: 12px; line-height: 17px; color: #000000; font-weight: bold}
+.vmSectionHead2Mandatory { font-family: Arial, Helvetica, sans-serif; font-size: 12px; line-height: 17px; color: #CC3300; font-weight: bold}
+.vmBtnRemove { font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bold; color: #E5E5E5; background-color: #990000; border-color: #000000; border-width: 1px }
+.vmFieldEntryCaption2 { font-family: Arial, Helvetica, sans-serif; font-size: 10px; line-height: 12px; color: #000000}
+.vmBtnAdd { font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bold; color: #FFFFFF; background-color: #666666; border-color: #000000; border-width: 1px }
+//.vmBtnAdd { font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bold; color: #E5E5E5; background-color: #006699; border-color: #000000; border-width: 1px }
+.vmLink {  color: #9F6411}
+.vmRadio { background-color: #FFFFFF }
+.vmRadioInsurance { background-color: #FFF297 }
+.vmCheckbox { background-color: #FFFFFF }
+.vmCheckboxSearchProducts { background-color: #FFF297 }
+.vmHorizontalRuleBG2 { background-color: #996600}
+.vmInlineBG {  background-color: #F1F1F1}
+.vmInlineBGSelected { background-color: #4499CC }
+.vmInlineList { font-family: Arial, Helvetica, sans-serif; font-size: 11px; line-height: 16px; color: #000000; text-decoration: none}
+.vmInlineLink { color: #000000; text-decoration: none}
+.vmSectionHead2Inline { font-family: Arial, Helvetica, sans-serif; font-size: 11px; line-height: 14px; color: #E5E5E5; font-weight: bold ; background-color: #333333; text-indent: 10pt}
+.vmBtnAddInline { font-family: Arial, Helvetica, sans-serif; font-size: 9px; font-weight: bold; color: #FFFFFF; background-color: #666666; border-color: #000000; border-width: 1px ; margin-top: 3px; margin-bottom: 3px}
+//.vmBtnAddInline { font-family: Arial, Helvetica, sans-serif; font-size: 9px; font-weight: bold; color: #E5E5E5; background-color: #006699; border-color: #000000; border-width: 1px ; margin-top: 3px; margin-bottom: 3px}
+.vmBtnSubmit { font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bold; color: #FFFFFF; background-color: #666666; border-color: #000000; border-width: 1px }
+//.vmBtnSubmit { font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bold; color: #FFFFFF; background-color: #0041B8; border-color: #000000; border-width: 1px }
+.vmTabs { font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: normal; color: #000000; background-color: #DDDDDD; border: #000000; padding-right: 10px; padding-left: 10px; text-decoration: none}
+.vmTabSelected { font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bold; color: #E5E5E5; background-color: #FF6600; border: #000000; padding-right: 10px; padding-left: 10px ; text-decoration: none}
+.vmLoginLink {  font-family: Arial, Helvetica, sans-serif; font-size: 12px; color: #FFFFFF; text-decoration: none; font-weight: bold}
+.vmLoginBoxInside { font-family: Arial, Helvetica, sans-serif; font-size: 12px; color: #E5E5E5; background-color: #0041B8 }
+.vmLoginBoxOutside { font-family: Arial, Helvetica, sans-serif; font-size: 12px; color: #E5E5E5; background-color: #000000}
+.vmNormalTextSmall { font-family: Arial, Helvetica, sans-serif; font-size: 11px; line-height: 15px; color: #333333 ; font-weight: normal}
+.vmPageHeader { font-family: Arial, Helvetica, sans-serif; font-size: 14px; color: #9F6411; font-weight: bold; border-color: #ff6600; border-style: solid; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px}
+//.vmPageHeader { border-left:0px solid #F66200; border-right:0px solid #F66200; border-top:0px solid #F66200; border-bottom:2px solid #F66200; font-family: Arial, Helvetica, sans-serif; font-size: 14px; color: #F66200; #531278 ; font-weight: bold }
+.vmTopIntroTextSmall { font-family: Arial, Helvetica, sans-serif; font-size: 11px; line-height: 15px; color: #333333 }
+.vmScoreBoxLow {  border:1px solid #660000; font-family: Arial, Helvetica, sans-serif; font-size: 23px; font-weight: normal; line-height: 23px; color: #E5E5E5; background-image: url('../images/v_bg_scoreLow.gif'); }
+.vmScoreBoxHigh {  border:1px solid #003300; font-family: Arial, Helvetica, sans-serif; font-size: 23px; font-weight: normal; line-height: 23px; color: #E5E5E5; background-image: url('../images/v_bg_scoreHigh.gif'); }
+.vmScoreBoxMedium {  border:1px solid #CC6600; font-family: Arial, Helvetica, sans-serif; font-size: 23px; font-weight: normal; line-height: 23px; color: #E5E5E5; background-image: url('../images/v_bg_scoreMedium.gif'); }
+.vmScoreBoxNone {  border:1px solid #000000; font-family: Arial, Helvetica, sans-serif; font-size: 23px; font-weight: normal; line-height: 23px; color: #E5E5E5; background-image: url('../images/v_bg_scoreNone.gif'); }
+.vmBtnUpdateInfo { font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bold; color: #FFFFFF; background-color: #666666; border-color: #000000; border-width: 1px }
+//.vmBtnUpdateInfo { font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bold; color: #E5E5E5; background-color: #006699; border-color: #000000; border-width: 1px }
+.vmBtnReqRec { font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bold; color: #E5E5E5; background-color: #CC3300; border-color: #000000; border-width: 1px }
+.vmBtnGreyed { font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bold; color: #CCCCCC; background-color: #666666; border: 1px #000000 solid}
+.vmError { font-family: Arial, Helvetica, sans-serif; font-size: 10px; font-weight: normal; color: #E5E5E5; background-color: #CC3300; padding-right: 8px; padding-left: 8px; padding-top: 0px; padding-bottom: 0px; white-space: nowrap; display: inline-block }
+.vmErrorWithWrap { font-family: Arial, Helvetica, sans-serif; font-size: 10px; font-weight: normal; color: #E5E5E5; background-color: #CC3300; padding-right: 8px; padding-left: 8px; padding-top: 0px; padding-bottom: 0px; white-space: wrap;word-wrap: break-word; }
+.vmDisclaimer { font-family: Arial, Helvetica, sans-serif; font-size:11px; font-weight: normal; color: #000000; line-height: 14px}
+.vmTableHead1 { font-family: Arial, Helvetica, sans-serif; font-size: 12px; line-height: 17px;
+	color: #FFFFFF; font-weight: bold; text-indent: 10px; 
+	background-image:url("themes/vendorDash/images/butExpander.png"); }
+.vmMainTab { font-family: Arial, Helvetica, sans-serif; font-size: 14px; font-weight: bold; border-color: #ff6600; border-style: solid; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px}

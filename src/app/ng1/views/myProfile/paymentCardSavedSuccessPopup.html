@@ -1,0 +1,30 @@
+<div class="modal-content">
+    <div class="modal-header commonDialogHeader">
+        <button type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-hidden="true"
+                data-ng-click="backToCardListPage();$close()">&times;</button>
+        <h4 class="modal-title">
+            <b>{{'myProfile.cardManagement.label.paymentCardSavedSuccessTitle' | translate }}</b>
+        </h4>
+    </div>
+    <div class="modal-body">
+        <div class="searchOrg">
+            <div class="col-md-12 searchOrg col-md-12 col-lg-12 text-center">
+                <span>
+                    {{'myProfile.cardManagement.label.paymentCardSavedSuccessMessage' | translate }}
+                </span>
+            </div>
+            <div class="col-md-12 col-md-12 col-lg-12 text-center marginT3">
+                <button type="button"
+                        class="btn btn-blue"
+                        id="isLinkUsed"
+                        autofocus
+                        data-ng-click="backToCardListPage();$close()">
+                    {{'common.ok' | translate }}
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

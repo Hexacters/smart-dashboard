@@ -1,0 +1,336 @@
+{
+    "VisionResponse": {
+        "Status": "Ok",
+        "gpoList": [
+            {
+                "oid": "000000362800159ff1ad",
+                "verticalCode": "HLTH",
+                "name": "Amerinet",
+                "isLookup": true,
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "oid": "000000362800159ff1ae",
+                "verticalCode": "HLTH",
+                "name": "Broadlane",
+                "isLookup": true,
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "oid": "000000362800159ff1af",
+                "verticalCode": "HLTH",
+                "name": "Carolina Purchasing Alliance",
+                "isLookup": true,
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "oid": "000000362800159ff1b0",
+                "verticalCode": "HLTH",
+                "name": "CHAMPS Management Services",
+                "isLookup": true,
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "oid": "000000362800159ff1b1",
+                "verticalCode": "HLTH",
+                "name": "Child Health Corporation of America",
+                "isLookup": true,
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "oid": "000000362800159ff1b2",
+                "verticalCode": "HLTH",
+                "name": "Consorta",
+                "isLookup": true,
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "oid": "000000362800159ff1b3",
+                "verticalCode": "HLTH",
+                "name": "Coordinated Healthcare Services",
+                "isLookup": true,
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "oid": "000000362800159ff1b4",
+                "verticalCode": "HLTH",
+                "name": "Corporate United",
+                "isLookup": true,
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "oid": "000000362800159ff1b5",
+                "verticalCode": "HLTH",
+                "name": "Council Connections",
+                "isLookup": true,
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "oid": "000000362800159ff1b7",
+                "verticalCode": "HLTH",
+                "name": "Department of Veterans Affairs/OA&MM",
+                "isLookup": true,
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "oid": "000000362800159ff1b8",
+                "verticalCode": "HLTH",
+                "name": "Dialysis Purchasing Alliance",
+                "isLookup": true,
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "oid": "000000362800159ff1b6",
+                "verticalCode": "HLTH",
+                "name": "DLA Logistics Agency/Defense Supply Center Philadelphia",
+                "isLookup": true,
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "oid": "000000362800159ff1b9",
+                "verticalCode": "HLTH",
+                "name": "GeriMed",
+                "isLookup": true,
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "oid": "000000362800159ff1ba",
+                "verticalCode": "HLTH",
+                "name": "GNYHA/Innovatix",
+                "isLookup": true,
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "oid": "000000362800159ff1bb",
+                "verticalCode": "HLTH",
+                "name": "Healthcare Council of the National Capital",
+                "isLookup": true,
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "oid": "000000362800159ff1bc",
+                "verticalCode": "HLTH",
+                "name": "Healthcare Purchasing Partners International",
+                "isLookup": true,
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "oid": "000000362800159ff1bd",
+                "verticalCode": "HLTH",
+                "name": "HealthTrust Purchasing Group",
+                "isLookup": true,
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "oid": "000000362800159ff1be",
+                "verticalCode": "HLTH",
+                "name": "Hospital Purchasing Service",
+                "isLookup": true,
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "oid": "000000362800159ff1bf",
+                "verticalCode": "HLTH",
+                "name": "ION/AmerisourceBergen",
+                "isLookup": true,
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "oid": "000000362800159ff1c0",
+                "verticalCode": "HLTH",
+                "name": "Iroquois Healthcare Alliance",
+                "isLookup": true,
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "oid": "000000362800159ff1c1",
+                "verticalCode": "HLTH",
+                "name": "MAGNET",
+                "isLookup": true,
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "oid": "000000362800159ff1c2",
+                "verticalCode": "HLTH",
+                "name": "Managed Healthcare Associates",
+                "isLookup": true,
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "oid": "000000362800159ff1c3",
+                "verticalCode": "HLTH",
+                "name": "MedAssets",
+                "isLookup": true,
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "oid": "000000362800159ff1c4",
+                "verticalCode": "HLTH",
+                "name": "MedBuy",
+                "isLookup": true,
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "oid": "000000362800159ff1c5",
+                "verticalCode": "HLTH",
+                "name": "Metro Chicago Health Care Council",
+                "isLookup": true,
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "oid": "000000362800159ff1c6",
+                "verticalCode": "HLTH",
+                "name": "National Oncology Alliance",
+                "isLookup": true,
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "oid": "000000362800159ff1c7",
+                "verticalCode": "HLTH",
+                "name": "New Jersey Hospital Association",
+                "isLookup": true,
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "oid": "000000362800159ff1c8",
+                "verticalCode": "HLTH",
+                "name": "NHS Purchasing and Supply Agency",
+                "isLookup": true,
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "oid": "000000362800159ff1c9",
+                "verticalCode": "HLTH",
+                "name": "Novation",
+                "isLookup": true,
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "oid": "000000362800159ff1ca",
+                "verticalCode": "HLTH",
+                "name": "Onmark",
+                "isLookup": true,
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "oid": "000000362800159ff1cb",
+                "verticalCode": "HLTH",
+                "name": "PDM Healthcare",
+                "isLookup": true,
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "oid": "000000362800159ff1cc",
+                "verticalCode": "HLTH",
+                "name": "Pharmaceutical Buyers, Inc. (PBI)",
+                "isLookup": true,
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "oid": "000000362800159ff1cd",
+                "verticalCode": "HLTH",
+                "name": "Premier Inc.",
+                "isLookup": true,
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "oid": "000000362800159ff1ce",
+                "verticalCode": "HLTH",
+                "name": "Resource Optimization & Innovation/Sisters of Mercy",
+                "isLookup": true,
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "oid": "000000362800159ff1cf",
+                "verticalCode": "HLTH",
+                "name": "S.A.R.E.L.",
+                "isLookup": true,
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "oid": "000000362800159ff1d0",
+                "verticalCode": "HLTH",
+                "name": "SelectPlus Oncology",
+                "isLookup": true,
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "oid": "000000362800159ff1d1",
+                "verticalCode": "HLTH",
+                "name": "SYNERNET",
+                "isLookup": true,
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "oid": "000000362800159ff1d2",
+                "verticalCode": "HLTH",
+                "name": "University HealthSystem Consortium",
+                "isLookup": true,
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "oid": "000000362800159ff1d3",
+                "verticalCode": "HLTH",
+                "name": "VHA",
+                "isLookup": true,
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "oid": "000000362800159ff1d4",
+                "verticalCode": "HLTH",
+                "name": "ViaCentric",
+                "isLookup": true,
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "oid": "000000362800159ff1d5",
+                "verticalCode": "HLTH",
+                "name": "Yankee Alliance",
+                "isLookup": true,
+                "updateAction": false,
+                "deleteAction": false
+            }
+        ],
+        "contentType": "application/json"
+    }
+}

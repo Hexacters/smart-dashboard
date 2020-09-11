@@ -1,0 +1,160 @@
+<div id="loadingDiv" ng-hide="!enablePCILoading"></div>
+<div class="col-md-12 col-sm-12 col-lg-12" ng-if="$appConfiguration.mock">
+<div class="text-right"><a ui-sref="addNewRep.billingInfo">{{'common.back' | translate}}</a></div>
+<div class="row">
+	<div class="row top-space">
+		<div class="col-md-10 marginL2 alert alert-danger"
+			data-ng-show="addNewRepServiceResponseError">
+			<a class="close" ng-click="$parent.addNewRepServiceResponseError = false">&times;</a>
+			<strong><i class="fa fa-warning"></i></strong> {{
+			addNewRepServiceResponseError}}
+		</div>
+	</div>
+	<form novalidate name="paymentCardDetailsForm" id="expressPaymentCardDetailsForm" autocomplete="off" class="form">
+	<vision-action>
+	<img src="app/ng1/img/creditCardLogo.png" class="creditcard-logo">
+	<div class="col-md-12 margin-bottom padLeft0 marginT1">
+		<div class="form-group">
+			<div class="col-md-4 control-label">
+				{{'addNewRep.label.nameOnCard' | translate}}
+			</div>
+			<div class="col-md-4">
+				<input type="text" class="form-control" name="nameOnCard"
+					ng-model="data.CardProfile.nameOnCard" maxlength="30">
+			</div>
+		</div>
+	</div>
+	
+	<div class="col-md-12 margin-bottom padLeft0">
+		<div class="form-group">
+			<div class="col-md-4 control-label">
+				{{'addNewRep.label.amount' | translate}}
+			</div>
+			<div class="col-md-4">
+				<input type="text" class="form-control" name="cardAmount"
+					ng-model="data.CardProfile.cardAmount" maxlength="16"
+					placeholder="USD $2,304"
+					card-type="{{data.CardProfile.cardTypeCode}}"
+					ng-readonly="true">
+			</div>
+		</div>
+	</div>
+	
+	<div class="col-md-12 margin-bottom padLeft0">
+		
+		<div class="form-group">
+			<div class="col-md-4 control-label">
+				{{'addNewRep.label.cardType' | translate}}
+			</div>
+			<div class="col-md-4">
+				<vision-action>
+				<get-data service="shoppingCartServices" root-node="data.successData.cardList" form-node="data.cardList" operation="getCardList"></get-data>
+				<select class="form-control" name="cardTypeCode"
+					data-ng-model="data.CardProfile.cardTypeCode">
+					<option value="">{{'common.select' | translate}}</option>
+					<option ng-repeat="paymentCard in data.cardList"
+						value="{{paymentCard.cardId}}">{{paymentCard.cardName}}</option>
+				</select>
+				</vision-action>
+			</div>
+		</div>
+	</div>
+	
+	<div class="col-md-12 margin-bottom padLeft0">
+		<div class="form-group">
+			<div class="col-md-4 control-label">
+				{{'addNewRep.label.cardNumber' | translate}}
+			</div>
+			<div class="col-md-4">
+				<input type="text" class="form-control" name="cardNumber"
+					ng-model="data.CardProfile.cardNumber" maxlength="16"
+					placeholder=""
+					card-type="{{data.CardProfile.cardTypeCode}}">
+			</div>
+		</div>
+	</div>
+	
+	<div class="col-md-12 marginB1 padLeft0">
+		<div class="form-group">
+			<div class="col-md-4 control-label">
+				{{'addNewRep.label.verificationNumber' | translate}}
+			</div>
+			<div class="col-md-8">
+				<div class="col-md-6 padLeft0">
+					<input type="text" class="form-control" name="authorizationCode"
+						ng-model="data.CardProfile.authorizationCode" maxlength="4"
+						card-type="{{data.CardProfile.cardTypeCode}}"
+						placeholder="">
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="col-md-12 padLeft0">
+		<div class="form-group">
+			<div class="col-md-4 control-label">
+				{{'addNewRep.label.expirationDate' | translate}}
+			</div>
+			<div class="col-md-4 padding0">
+				<vision-action>
+				<get-data service="shoppingCartServices" root-node="data.successData.monthYear" form-node="data.monthYear" operation="getmonthAndYearList"></get-data>
+				<div class="col-md-3">
+					<select class="form-control" name="expirationMonthCode"
+						data-ng-model="data.CardProfile.expirationMonthCode"
+						exp-year="{{data.CardProfile.expirationYearStr}}"
+						message-id="yearMonthValidationError">
+						<option ng-repeat="monthList in data.monthYear" ng-selected="data.CardProfile.expirationMonthCode == '01'" value="{{monthList.month}}">{{monthList.month}}</option>
+					</select>
+				</div>
+				<div class="col-md-3 padding0">
+					<select class="form-control" name="expirationYearStr"
+						data-ng-model="data.CardProfile.expirationYearStr"
+						message-id="yearMonthValidationError"
+						ng-selected="data.CardProfile.expirationYearStr == '2018'"
+						ng-options="year.year for year in data.monthYear">
+					</select>
+				</div>
+				<span id="yearMonthValidationError"
+					class="col-sm-12 col-md-12 col-lg-12"></span>
+				</vision-action>
+			</div>
+		</div>
+	</div>
+	
+	<div class="col-md-12 padLeft0 marginT1">
+			<div class="form-group">
+				<div class="col-md-4 marginB1"></div>
+				<div class="col-md-8"><button type="submit" data-validation-submit="paymentCardDetailsForm"
+				data-ng-click="updateAddNewRepPaymentAndNavigation(data,billingAddressDetails.isFrom);"
+				class="btn btn-success">
+				<span >{{'shoppingCart.label.complete'
+					| translate}}</span>
+			</button></div>
+			</div>
+		</div>
+	<input type="hidden" name="userOid" id="userOid"
+		data-ng-model="data.CardProfile.userOid"
+		ng-init="data.CardProfile.userOid = userProfile.id" />
+	</vision-action>
+</form>
+
+<div class="row top-space">
+	<div id ="mobilePaymentHeader" class="col-md-12 marginT1" ng-if="isFrom == 'mobile'">
+		<h4 class="fontWeightBold">{{'addNewRep.label.creditCardInformation' | translate}}</h4>
+	</div>
+	<!--<div class="col-md-12"><img src="app/ng1/img/creditCardLogo.png" class="creditcard-logo"></div>-->
+	<div class="col-md-10 marginL2 alert alert-danger" data-ng-if="paymentErrorMsg">
+		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+		<strong><i class="fa fa-warning"></i></strong> <span ng-bind-html="paymentErrorMsg"></span>
+	</div>
+</div>
+</div>
+</div>
+
+<div class="row top-space">
+	<div class="col-md-10 marginL2 alert alert-danger" data-ng-show="addNewRepServiceResponseError">
+		<a ng-click="$parent.addNewRepServiceResponseError = false" class="close">&times;</a>
+		<strong><i class="fa fa-warning"></i></strong> {{addNewRepServiceResponseError}}
+	</div>
+</div>
+<iframe id="secureFrame" class="secureFrame"  ng-if="!$appConfiguration.mock" src="{{addNewRepScPaymentCallUID}}"></iframe>

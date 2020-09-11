@@ -1,0 +1,89 @@
+<div class="modal-content">
+	<div class="modal-header commonDialogHeader">
+		<button id="complianceCautionCloseIcon" type="button" class="close"
+			data-dismiss="modal" aria-hidden="true" data-ng-click="$close()">&times;</button>
+		<h3 class="modal-title">
+			<b>{{'common.delete' | translate}}</b>
+		</h3>
+	</div>
+	<div class="modal-body modelDialogScroll">
+		<div class="col-lg-12 col-sm-12 col-md-12 paddingL0">
+			<div data-ng-if="deleteDocumentError.errorData.Status == 'Error'" class="alert alert-danger">
+				<i class="fa fa-exclamation-triangle"></i> {{deleteDocumentError.errorData.ResponseError[0].errorCode | translate}}
+			</div>
+		</div>
+		<div class="col-lg-12 col-sm-12 col-md-12">
+			<h4><b>{{'myProfile.badgePhoto.header.badgePhotoTitle' | translate}}</b></h4>
+		</div>
+		<div class="col-lg-12 col-sm-12 col-md-12">{{'myDocuments.deleteDocumentPara'
+			| translate}}</div>
+		<div class="col-lg-12 col-sm-12 col-md-12">
+			<vision-data-table service="myDocumentServices"
+				operation="getAttachedDocumentDetails"
+				root-node="data.successData.GetAttachedDocumentDetailsList"
+				total-records-node="data.successData.totalRecords" type="server"
+				id="badgePhotoDelete"
+				initial-request='{"page":1,"count":10,"sorting":{"docDefName":"asc"}}'
+				params='{"documentOid":"{{deleteBadgePhotoOid}}"}'>
+			<div data-ng-class="{'dNone':!loading}">
+				<img align="absmiddle" src="app/ng1/img/partial-loading.gif" />&nbsp;{{'common.loading'
+				| translate}}
+			</div>
+			<div data-ng-class="{'dNone':!deleteDocumentLoading}">
+				<img align="absmiddle" src="app/ng1/img/partial-loading.gif" />&nbsp;{{'common.loading' | translate}}
+			</div>
+			<div ng-show="!loading">
+				<div class="clearfix paddingT1 paddingB1"
+					ng-table-pagination="badgePhotoDelete"
+					template-url="'ng-table/style3.html'"></div>
+				<div class="table-responsive">
+					<table ng-table="badgePhotoDelete" template-pagination="style3"
+						class="table table-striped table-bordered">
+						<tbody ng-if="badgePhotoDelete.data.length>0">
+							<tr ng-repeat="deleteDoc in $data">
+								<td class="text-left col-lg-3" sortable="'docDefName'" data-title="'Name'"><div
+										class="width250px break-word">{{deleteDoc.docDefName}}</div></td>
+								<td class="text-left col-lg-1"
+									data-title="'myDocuments.category' | translate"><span
+									ng-if="deleteDoc.templateDocCategoryCode == 'OPVC'">
+										{{'myDocuments.categoryTypeCompany' | translate}} </span> <span
+									ng-if="deleteDoc.templateDocCategoryCode != 'OPVC'">
+										{{'myDocuments.categoryTypeIndividual' | translate}} </span></td>
+								<td class="text-left col-lg-3"
+									data-title="'myDocuments.customerName' | translate">{{deleteDoc.customerName}}</td>
+								<td class="text-left col-lg-1"
+									data-title="'myDocuments.rep' | translate"><div
+										class="width100px break-word">{{deleteDoc.userFirstName}}
+										{{deleteDoc.userLastName}}</div></td>
+								<td class="text-left col-lg-1"
+									data-title="'myDocuments.updatedBy' | translate">{{deleteDoc.providerFirstName}}
+									{{deleteDoc.providerLastName}}</td>
+							</tr>
+						</tbody>
+						<tbody ng-if="badgePhotoDelete.data.errorData.Status=='Error'">
+							<tr>
+								<td colspan="11">
+									<div class="text-danger">
+										<span class="fa fa-warning" aria-hidden="true"></span>
+										{{badgePhotoDelete.data.errorData.ResponseError[0].errorCode |
+										translate}}
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="text-right marginB2">
+					<button autofocus ng-disabled="deleteDocumentLoading" class="btn btn-warning" id="deleteCancel"
+						name="deleteCancel" data-ng-click="$close()">{{'common.cancel'|
+						translate}}</button>
+					<button class="btn btn-danger" ng-disabled="deleteDocumentLoading" type="button" id="deleteSuccess"
+						data-ng-click="deleteDocuments(deleteBadgePhotoOid);">{{'common.delete'
+						| translate}}</button>
+				</div>
+			</div>
+			</vision-data-table>
+		</div>
+	</div>
+
+</div>

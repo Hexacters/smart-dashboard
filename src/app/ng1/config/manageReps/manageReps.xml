@@ -1,0 +1,281 @@
+<?xml version="1.0"?>
+<module id="manageRepsModule">
+	<routers>
+		<router id="manage" sticky="true" url="/manage">
+			<views>
+				<view containerId="vendordash" templateUrl="app/ng1/views/manageReps/manageReps.html"></view>
+			</views>
+		</router>
+		<router id="manage.accessRepAccounts" url="/accessRepAccounts">
+			<views>
+				<view containerId="viewRepAccountlist" templateUrl="app/ng1/views/manageReps/accessRepAccounts.html"></view>
+			</views>
+		</router>
+		<router id="manage.accessRepAccounts.associatedCompanies" type="dialog" url="/associatedCompanies">
+			<views>
+				<view containerId="modal" templateUrl="app/ng1/views/manageReps/associatedCompanies.html"></view>
+			</views>
+		</router>
+		<router id="manage.inviteReps" url="/inviteReps">
+			<views>
+				<view containerId="inviteRepContainer" templateUrl="app/ng1/views/manageReps/inviteReps.html"></view>
+			</views>
+		</router>
+		<router id="manage.inviteReps.help" type="dialog">
+			<views>
+				<view templateUrl="app/ng1/views/manageReps/help.html"></view>
+			</views>
+		</router>
+		<router id="manage.shareStaffCredentials" url="/shareStaffCredentials">
+			<views>
+				<view containerId="shareStaffCredentials" templateUrl="app/ng1/views/sharecredentials/shareStaffCredentials.html"></view>
+			</views>
+		</router>
+		<router id="manage.shareCredentials" url="/shareCredentials/{isFrom}">
+			<views>
+				<view containerId="shareCredentials" templateUrl="app/ng1/views/sharecredentials/shareMyCredentials.html"></view>
+			</views>
+		</router>
+		<router id="manage.credentialRecipient" url="/credentialRecipient">
+			<views>
+				<view containerId="shareCredentials" templateUrl="app/ng1/views/sharecredentials/shareCredentialRecipient.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails" url="/repAccountDetails">
+			<views>
+				<view containerId="repAccountDetails" templateUrl="app/ng1/views/manageReps/repAccountDetails.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.repAccountsTab" url="/repAccountsTab/{random}">
+			<views>
+				<view containerId="repAccountsTab" templateUrl="app/ng1/views/manageReps/repAccountTab.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.repAccountsTab.normal">
+			<views>
+				<view containerId="viewRegistration" templateUrl="app/ng1/views/registration/normal/normalRegistration.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.repAccountsTab.normal.healthsystemDetails" url="/healthsystemDetails">
+			<views>
+				<view templateUrl="app/ng1/views/registration/normal/healthsystemDetails.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.repAccountsTab.normal.companyDetails" url="/companyDetails">
+			<views>
+				<view templateUrl="app/ng1/views/registration/normal/companyDetails.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.repAccountsTab.normal.companyRelationship" url="/companyRelationship">
+			<views>
+				<view templateUrl="app/ng1/views/registration/normal/companyRelationship.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.repAccountsTab.normal.userRelationship" url="/userRelationship">
+			<views>
+				<view templateUrl="app/ng1/views/registration/normal/userRelationship.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.repAccountsTab.normal.agreements" url="/agreements">
+			<views>
+				<view templateUrl="app/ng1/views/registration/normal/agreements.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.repAccountsTab.normal.agreements.thankYou" abstract="true" type="dialog">
+			<views>
+				<view templateUrl="app/ng1/views/registration/normal/thankYou.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.repAccountsTab.normal.paymentDetails" url="/paymentDetails">
+			<views>
+				<view templateUrl="app/ng1/views/registration/normal/paymentDetails.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.repAccountsTab.normal.paymentDetailsPCI" url="/paymentDetailsPCI">
+			<views>
+				<view templateUrl="app/ng1/views/registration/normal/paymentDetailsPCI.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.repAccountsTab.normal.paymentCardDetails" url="/paymentCardDetails">
+			<views>
+				<view templateUrl="app/ng1/views/registration/normal/paymentCardDetails.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.repAccountsTab.normal.paymentDetails.thankYou" abstract="true" type="dialog">
+			<views>
+				<view templateUrl="app/ng1/views/registration/normal/thankYou.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.repAccountsTab.normal.healthsystemDetails.thankYou" abstract="true" type="dialog">
+			<views>
+				<view templateUrl="app/ng1/views/registration/normal/thankYou.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.clearedForAccess" url="/clearedForAccess/{clearForAccessFromReps}/{isFrom}">
+			<views>
+				<view containerId="repClearedForAccess" templateUrl="app/ng1/views/printBadge/printBadge.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.clearedForAccess.clearedForAccessHelp" type="dialog" url="/clearedForAccessHelp">
+			<views>
+				<view containerId="modal" templateUrl="app/ng1/views/printBadge/printBadgeHelp.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.paymentReceipt" url="/paymentReceipt/{tabsState}">
+			<views>
+				<view containerId="repPaymentReceipt" templateUrl="app/ng1/views/paymentReceipt/paymentReceiptGrid.html"></view>
+			</views>
+		</router>
+
+		<!-- Manage Rep Account Details  -->
+		<router id="manage.repAccountDetails.repAccountsTab.documents" url="/documents">
+			<views>
+				<view containerId="accountDetailDocuments" templateUrl="app/ng1/views/accountDetails/documents.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.repAccountsTab.documents.commonDocuments" url="/commonDocuments/{tabsState}/{random}">
+			<views>
+				<view containerId="accountDetailCommonDocuments" templateUrl="app/ng1/views/accountDetails/commonDocuments.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.repAccountsTab.documents.backgroundCheck" url="/backgroundCheck">
+			<views>
+				<view containerId="accountDetailBackgroundCheck" templateUrl="app/ng1/views/accountDetails/backgroundCheck.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.repAccountsTab.documents.optionalDocuments" url="/optionalDocuments/{tabsState}/{random}">
+			<views>
+				<view containerId="accountDetailOptionalDocuments" templateUrl="app/ng1/views/accountDetails/optionalDocuments.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.repAccountsTab.documents.commonDocuments.cautionPopupUpdate" url="updateDocument" type="dialog">
+			<views>
+				<view containerId="model" templateUrl="app/ng1/views/myDocuments/commonDocumentsUpdate.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.repAccountsTab.documents.commonDocuments.commonDialog" type="dialog">
+			<views>
+				<view containerId="modal" templateUrl="app/ng1/views/myDocuments/commonDocumentsCommonDialog.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.repAccountsTab.documents.commonDocuments.commonDialog.cautions" url="/cautions">
+			<views>
+				<view containerId="CommonDocument@" templateUrl="app/ng1/views/myDocuments/commonDocumentsCaution.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.repAccountsTab.documents.commonDocuments.commonDialog.updateDocument" url="/updateDocument">
+			<views>
+				<view containerId="CommonDocument@" templateUrl="app/ng1/views/myDocuments/commonDocumentsUpdate.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.repAccountsTab.documents.commonDocuments.commonDialog.documentAlert" url="/documentAlert">
+			<views>
+				<view containerId="CommonDocument@" templateUrl="app/ng1/views/myDocuments/commonDocumentsDocumentAlert.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.repAccountsTab.documents.commonDocuments.commonDialog.documentAlertSteps" url="/documentAlertSteps">
+			<views>
+				<view containerId="CommonDocument@" templateUrl="app/ng1/views/myDocuments/commonDocumentsDocumentAlertSteps.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.repAccountsTab.documents.commonDocuments.deleteDocument" url="/delete/{id}" type="dialog">
+			<views>
+				<view containerId="modal" templateUrl="app/ng1/views/myDocuments/commonDocumentsDelete.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.repAccountsTab.userReleationship" url="/userReleationship">
+			<views>
+				<view containerId="accountDetailUserRelationship" templateUrl="app/ng1/views/accountDetails/userRelationship.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.repAccountsTab.businessRelationship" url="/businessRelationship">
+			<views>
+				<view containerId="accountDetailBusinessRelationship" templateUrl="app/ng1/views/accountDetails/businessRelationshipPHI.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.repAccountsTab.conflictsOfInterest" url="/conflictsOfInterest/{randomNumber}">
+			<views>
+				<view containerId="accountDetailConflictsOfInterest" templateUrl="app/ng1/views/accountDetails/agreements.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.repAccountsTab.apInformation" url="/apInformation/{randomNumber}">
+			<views>
+				<view containerId="accountDetailAPInformation" templateUrl="app/ng1/views/accountDetails/APInformation.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.repAccountsTab.apInformationSendMail" url="/apInformationSendEmail">
+			<views>
+				<view containerId="accountDetailAPInformation" templateUrl="app/ng1/views/accountDetails/apInformationSendMail.html"></view>
+			</views>
+		</router>
+	</routers>
+
+	<services id="manageRepsServices">
+		<operations>
+			<operation name="getAllVendorRepProfiles" serviceName="vendorrep" requestWrapper="request" responseWrapper="response" requestType="json" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/manageReps/getAllVendorRepProfiles.json" mock="false">
+				<params>
+					<param name="userOid" source="userProfile" key="id"></param>
+				</params>
+			</operation>
+			<operation name="searchVendorRepProfiles" serviceName="vendorrep" requestWrapper="request" responseWrapper="response" requestType="json" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/manageReps/searchVendorRepProfiles.json" mock="false">
+				<params>
+					<param name="userOid" source="userProfile" key="id"></param>
+				</params>
+			</operation>
+			<operation name="getAssociatedCompanies" serviceName="vendor" requestWrapper="request" responseWrapper="response" requestType="json" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/manageReps/getAssociatedCompanies.json" mock="false">
+				<params>
+					<param name="userOid" source="userProfile" key="id"></param>
+				</params>
+			</operation>
+			<operation name="searchVendorRepProfilesReports" serviceName="vendorrep" operationType="export" requestWrapper="request" responseWrapper="response" requestType="json" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/manageReps/accessRepAccounts.json" mock="false">
+				<params>
+					<param name="userOid" source="userProfile" key="id"></param>
+				</params>
+			</operation>
+			<operation name="getAllVendorRepProfilesReports" serviceName="vendorrep" operationType="export" requestWrapper="request" responseWrapper="response" requestType="json" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/manageReps/accessRepAccounts.json" mock="false">
+				<params>
+					<param name="userOid" source="userProfile" key="id"></param>
+				</params>
+			</operation>
+			<operation name="vendorRefList" requestWrapper="request" responseWrapper="response" requestType="json" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/manageReps/refaccountlist.json" mock="false"></operation>
+			<operation name="RepAssociatedCompaniesList" requestWrapper="request" responseWrapper="response" requestType="json" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/manageReps/repAssociatedCompanies.json" mock="false"></operation>
+			<operation name="InviteRepsAccounts" requestWrapper="request" responseWrapper="response" requestType="json" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/manageReps/inviteRepsAccounts.json" mock="false"></operation>
+			<operation name="searchVendorReps" serviceName="vendorrep" requestWrapper="request" responseWrapper="response" requestType="json" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/manageReps/searchVendorReps.json" mock="false">
+			</operation>
+			<operation name="searchVendorRepsForShareStaffCredential" targetOperation="searchVendorReps" serviceName="vendorrep" requestWrapper="request" responseWrapper="response" requestType="json" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/manageReps/searchVendorReps.json" mock="false">
+				<params>
+					<param name="userOid" source="userProfile" key="id"></param>
+					<param name="vendorOid" source="userProfile" key="detail.vendorOid"></param>
+					<param name="getAllRecordsByUserOid" source="static" value="true"></param>
+					<param name="getAllRecordsByVendorOid" source="static" value="false"></param>
+				</params>
+			</operation>
+			<operation name="getAllCredentialsDocuments" requestWrapper="request" responseWrapper="response" requestType="json" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/manageReps/allCredentialsDocuments.json" mock="false"></operation>
+			<operation name="governmentSactionListGrid" requestWrapper="request" responseWrapper="response" requestType="json" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/manageReps/governmentSactionListGrid.json" mock="false"></operation>
+			<operation name="shareCredentialGrid" requestType="json" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/shareCredentials/shareCredentialGrid.json" mock="false"></operation>
+			<operation name="shareCredentialGeneralInfoGrid" requestType="json" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/shareCredentials/shareCredentialGeneralInfoGrid.json" mock="false"></operation>
+			<operation name="shareCredential" requestWrapper="request" responseWrapper="response" method="post" url="VMClientProxyServlet" mockUrl="app/ng1/mocksuccess.json" mock="false"></operation>
+			<operation name="clearedForAccess" requestWrapper="request" responseWrapper="response" method="post" url="VMClientProxyServlet" mockUrl="app/ng1/mocksuccess.json" mock="false"></operation>
+			<operation name="inviteSelectAccounts" requestWrapper="request" responseWrapper="response" method="post" url="VMClientProxyServlet" mockUrl="app/ng1/mock/manageReps/inviteSelectAccounts.json" mock="false">
+				<params>
+					<param name="inviteAccount" source="state" key="inviteSelectAccount"></param>
+				</params>
+			</operation>
+			<operation name="getAssociatedCompanies" serviceName="vendor" requestWrapper="request" responseWrapper="response" requestType="json" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/manageReps/getAssociatedCompanies.json" mock="false">
+				<params>
+					<param name="userOid" source="userProfile" key="id"></param>
+				</params>
+			</operation>
+			<operation name="getVendorAssociatedAccounts" serviceName="vendor" requestWrapper="request" responseWrapper="response" requestType="json" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/manageReps/getVendorAssociatedAccounts.json" mock="false">
+			</operation>
+			<operation name="inviteRepsProcess" serviceName="vendorrep" requestWrapper="request" responseWrapper="response" requestType="json" method="post" url="VMClientProxyServlet" mockUrl="app/ng1/mock/manageReps/inviteReps.json" mock="false">
+			</operation>
+			<operation name="validateVendorRep" serviceName="vendorrep" requestWrapper="request" responseWrapper="response" requestType="json" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/manageReps/validateVendorRep.json" mock="false">
+			</operation>
+			<operation name="activateRep" requestWrapper="request" responseWrapper="response" serviceName="vendorrep" requestType="json" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/manageReps/activateRep.json" mock="false"></operation>
+			<operation name="inActivateRep" requestWrapper="request" responseWrapper="response" serviceName="vendorrep" requestType="json" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/manageReps/inActivateRep.json" mock="false"></operation>
+			<operation name="deleteUser" requestWrapper="request" responseWrapper="response" serviceName="user" requestType="json" method="post" url="VMClientProxyServlet" mockUrl="app/ng1/mock/manageReps/userDelete.json" mock="false"></operation>
+			<operation name="getGlobalProfileForRegistration" serviceName="registration" requestWrapper="request" responseWrapper="response" requestType="json" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/manageReps/getGlobalProfileForRegistration.json" mock="false"></operation>
+		</operations>
+	</services>
+</module>

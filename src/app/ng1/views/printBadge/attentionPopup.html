@@ -1,0 +1,13 @@
+<div class="modal-content">
+   <div class="modal-header">
+      <button id="complianceCautionCloseIcon" id="viewAccountCloseIcon" type="button" class="close" data-dismiss="modal" aria-hidden="true" data-ng-click="$close()">&times;</button>
+      <h3 class="modal-title"><b>{{'printBadge.label.attention'| translate}} <img src="app/ng1/img/okay.png" alt="okay.png"></b></h3>
+   </div>
+   <div class="modal-body modelDialogScroll">
+		<div class="col-sm-12 col-md-12 col-lg-12">
+			<p>Access Granted!* Test Sign In Compliance Message: <i>{{successMessage}}</i></p>
+			<p>*This is not a guarantee that you will be able to print a badge at <b>{{badgeAccount}};</b> changes in hospital policies or required documents between now and your visit could affect your compliance. <b>Don't forget to sign in and out at the facility.</b></p>
+			<div class="text-center paddingT2"><button class="btn btn-info text-center" type="button" id="ok" data-ng-click="$close()">{{'common.ok' | translate}}</button></div>
+		</div>
+   </div>
+</div>

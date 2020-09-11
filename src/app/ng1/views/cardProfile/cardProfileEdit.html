@@ -1,0 +1,317 @@
+<div ng-init="getBillingCountryLookups();">
+	<div class="row">
+		<div class="col-sm-12 col-md-12 col-lg-12" ng-show="loading">
+			<img align="absmiddle" src="app/ng1/img/partial-loading.gif">&nbsp;{{'common.loading'|
+			translate}}
+		</div>
+		<div class="col-sm-12 col-md-12 col-lg-12">
+			<a ng-click="$state.go('cardProfile.view');"
+				data-ng-if="!showCardProfile && $state.params.cardProfileOid !=''">{{'cardProfile.label.back'
+				| translate}}</a> <a ng-click="goToCardProfileEdit()"
+				data-ng-if="showCardProfile">{{'cardProfile.label.backToBillingAddress'
+				| translate}}</a>
+		</div>
+		<div class="col-sm-12 col-md-12 col-lg-12 padding0"
+			id="cardProfileEditForm">
+			<div class="col-sm-12 col-md-12 col-lg-12 marginT1">
+				<h3 class="modal-title">{{cardHolderName}}</h3>
+			</div>
+			<div class="col-sm-10 col-md-10 col-lg-10 marginB1">
+				<span>{{'cardProfile.messages.paymentNotes' | translate}}</span>
+			</div>
+			<form novalidate name="editCardProfile" autocomplete="off"
+				class="form-horizontal">
+				<div class="col-sm-12 col-md-12 col-lg-12 marginB1">
+					<div class="table-responsive" data-ng-if="serviceResponseError">
+						<div class="alert alert-danger"><span ng-bind-html="serviceResponseError"></span></div>
+					</div>
+					<div class="col-sm-12 col-md-12 col-lg-12 marginB1 padding0"
+						ng-if="showCardProfile">
+						<img src="app/ng1/img/creditCardLogo.png" class="creditcard-logo">
+					</div>
+					<div class="col-sm-6 col-md-6 col-lg-6 marginB1"
+						ng-if="!showCardProfile">
+						<div class="col-md-12 padLeft0">
+							<div class="form-group">
+								<div class="col-md-6 control-label">
+									{{'registration.normal.billingAddress' | translate}}<sup
+										class="validation-required">*</sup>
+								</div>
+								<div class="col-md-6">
+									<input type="text" class="form-control" name="billingAddress1"
+										maxlength="30" id="billingAddress1"
+										ng-model="data.cardProfile.billingAddress1"
+										placeholder="{{'registration.normal.street1Placeholder' | translate}}"
+										validator="required" data-valid-method="submit"
+										data-required-error-message="{{'messages.addressRequired' | translate}}">
+								</div>
+							</div>
+						</div>
+						<div class="col-md-12 padLeft0">
+							<div class="form-group">
+								<div class="col-md-6"></div>
+								<div class="col-md-6">
+									<input type="text" class="form-control" name="billingAddress2"
+										maxlength="30" id="billingAddress2"
+										ng-model="data.cardProfile.billingAddress2"
+										placeholder="{{'registration.normal.street2Placeholder' | translate}}"
+										data-ng-readonly="viewCardProfile">
+								</div>
+							</div>
+						</div>
+						<div class="col-md-12 padLeft0">
+							<div class="form-group">
+								<div class="col-md-6 control-label">
+									{{'registration.normal.billingCity' | translate}}<sup
+										class="validation-required">*</sup>
+								</div>
+								<div class="col-md-6">
+									<input type="text" class="form-control" name="billingCity"
+										maxlength="20" ng-model="data.cardProfile.billingCity"
+										placeholder="{{'registration.normal.billingCityPlaceholder' | translate}}"
+										validator="required" data-valid-method="submit"
+										data-required-error-message="{{'messages.cityIsRequired' | translate}}">
+								</div>
+							</div>
+						</div>
+						<div class="col-md-12 padLeft0">
+							<div class="form-group">
+								<div class="col-md-6 control-label">
+									{{'registration.normal.billingStateProvince' | translate}}<sup
+										class="validation-required">*</sup>
+								</div>
+								<div class="col-md-6">
+									<select name="billingStateCode" class="form-control"
+										data-ng-model="data.cardProfile.billingStateCode"
+										validator="required"
+										data-required-error-message="{{'messages.stateRequired' | translate}}"
+										valid-method="submit">
+										<option value="">{{'common.select' | translate}}</option>
+										<option ng-repeat="option in billingStateLookup"
+												ng-selected="option.code && (option.code === data.cardProfile.billingStateCode)"
+												value="{{option.code}}" ng-disabled="option.disabled">{{option.name}}</option>
+									</select>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-12 padLeft0">
+							<div class="form-group">
+								<div class="col-md-6 control-label">
+									{{'registration.normal.billingCountry' | translate}}<sup
+										class="validation-required">*</sup>
+								</div>
+								<div class="col-md-6">
+									<select name="billingCountryCode" id="billingCountryCode"
+										class="form-control"
+										ng-model="data.cardProfile.billingCountryCode"
+										validator="required"
+										data-required-error-message="{{'messages.countryRequired' | translate}}"
+										valid-method="submit">
+										<option value="">{{'common.select' | translate}}</option>
+										<option ng-repeat="option in billingCountryLookup" ng-selected="option.code === data.cardProfile.billingCountryCode"
+											value="{{option.code}}">{{option.name}}</option>
+									</select>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-12 padLeft0">
+							<div class="form-group">
+								<div class="col-md-6 control-label">
+									{{'registration.normal.billingZipPostalCode' | translate}}<sup
+										class="validation-required">*</sup> <span
+										tooltip-append-to-body="true" tooltip-class="customToolTip"
+										tooltip="{{'messages.zipCodeNote1' | translate}}{{'messages.zipCodeNote2' | translate}}{{'messages.zipCodeNote3' | translate}}"
+										tooltip-placement="top"> <i
+										class="fa fa-question-circle fa-lg"></i>
+									</span>
+								</div>
+								<div class="col-md-6">
+									<input type="text" class="form-control" name="billingZip"
+										ng-model="data.cardProfile.billingZip" maxlength="10"
+										placeholder="{{'registration.normal.billingZipPostalCode' | translate}}"
+										validator="required,validateZipCode"
+										data-valid-method="submit"
+										data-required-error-message="{{'messages.billingZip/PostalCodeIsRequired' | translate}}"
+										data-validate-zip-code-error-message="{{'messages.PostalCodeError' | translate}}"
+										zipcode-format="{{data.cardProfile.billingCountryCode}}">
+								</div>
+							</div>
+						</div>
+						<div class="col-md-12 padLeft0">
+							<div class="form-group">
+								<div class="col-md-6 control-label">
+									{{'registration.normal.cardHolderEmail' | translate}}<sup
+										class="validation-required">*</sup>
+								</div>
+								<div class="col-md-6">
+									<input type="text" class="form-control" name="billingEmail"
+										maxlength="50" ng-model="data.cardProfile.billingEmail"
+										placeholder="{{'registration.normal.cardHolderEmail' | translate}}"
+										validator="required,validateEmail" data-valid-method="submit"
+										data-required-error-message="{{'messages.emailRequired' | translate}}"
+										data-validate-email-error-message="{{'messages.validEmailAddress' | translate}}">
+								</div>
+							</div>
+						</div>
+
+
+
+						<div class="col-md-12 padLeft0">
+							<div class="form-group">
+								<div class="col-md-6 control-label"></div>
+								<div class="col-md-6">
+									<button type="button"
+										data-ng-click="$state.go('cardProfile.view');"
+										class="btn btn-grey" ng-if="$state.params.cardProfileOid !=''">
+										{{'common.cancel' | translate}}</button>
+									<button type="submit" data-validation-submit="editCardProfile"
+										data-ng-click="goToCardProfilePage(data.cardProfile);"
+										class="btn btn-blue">{{'common.next' | translate}}</button>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+		<div class="col-sm-12 col-md-12 col-lg-12 marginB1" ng-if="showCardProfile && enableIframe && !$appConfiguration.mock">
+			<div class="col-sm-1 col-md-1 col-lg-1"></div>
+			<div class="col-sm-9 col-md-9 col-lg-9">
+				<iframe id="cardProfileUrl" class="cardProfileFrame"
+					src="{{cardProfileURL}}" iframe-onload="iframeLoadedCallBack()"
+					></iframe>
+			</div>
+			<div class="col-sm-2 col-md-2 col-lg-2"></div>
+		</div>
+		<div class="col-sm-6 col-md-6 col-lg-6 marginB1" ng-if="(showCardProfile && !enableIframe) || ($appConfiguration.mock && showCardProfile)">			
+			<div class="col-sm-11 col-md-11 col-lg-11">				
+				<form novalidate name="cardProfileForm" autocomplete="off"
+					class="form-horizontal">
+					<div class="col-md-12 padLeft0">
+						<div class="form-group">
+							<div class="col-md-6 control-label">
+								{{'registration.normal.nameOnCard' | translate}}<sup
+									class="validation-required">*</sup>
+							</div>
+							<div class="col-md-6">
+								<input type="text" class="form-control" name="nameOnCard"
+									ng-model="data.cardProfile.nameOnCard" maxlength="30"
+									placeholder="{{'registration.express.nameOnCardPlaceholder' | translate}}"
+									validator="required" data-valid-method="watch"
+									data-required-error-message="{{'messages.nameOnCardIsRequired' | translate}}" data-ng-disabled="loading">
+							</div>
+						</div>
+					</div>
+					<div class="col-md-12 padLeft0">
+						<div class="form-group">
+							<div class="col-md-6 control-label">
+								{{'registration.normal.cardType' | translate}}<sup
+									class="validation-required">*</sup>
+							</div>
+							<div class="col-md-5">
+								<select class="form-control editCardType" name="cardTypeCode"
+									data-ng-model="data.cardProfile.cardTypeCode"
+									validator="required"
+									data-required-error-message="{{'messages.cardTypeIsRequired' | translate}}" data-ng-disabled="loading">
+									<option value="">{{'common.select' | translate}}</option>
+									<option
+										ng-repeat="option in allLookups.lookups.PAYMENT_TYPE | orderBy:'seqNumber'"
+										value="{{option.code}}" ng-if="option.code !== 'DI'"">{{option.name}}</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-12 padLeft0">
+						<div class="form-group">
+							<div class="col-md-6 control-label">
+								{{'cardProfile.label.creditCardNumber' | translate}}<sup
+									class="validation-required">*</sup>
+							</div>
+							<div class="col-md-6">
+								<input type="text" class="form-control" name="cardNumber"
+									ng-model="data.cardProfile.cardNumber" maxlength="16"
+									placeholder="{{'registration.express.cardNumber' | translate}}"
+									card-type="{{data.cardProfile.cardTypeCode}}"
+									validator="required,number,validateCreditCard"
+									data-valid-method="watch"
+									data-required-error-message="{{'messages.cardNumberIsRequired' | translate}}"
+									data-validate-credit-card-error-message="{{'messages.cardNumberIsInvalid' | translate}}" data-ng-disabled="loading">
+							</div>
+						</div>
+					</div>
+					<div class="col-md-12 padLeft0">
+						<div class="form-group">
+							<div class="col-md-6 control-label">
+								{{'cardProfile.label.cvcNumber' | translate}}<sup
+									class="validation-required">*</sup> <span
+									tooltip-append-to-body="true" tooltip-class="customToolTip"
+									tooltip="{{'registration.express.visaMc' | translate}} {{'registration.express.AmEx' | translate}}"
+									tooltip-placement="top"> <i
+									class="fa fa-question-circle fa-lg"></i></span>
+							</div>
+							<div class="col-md-6">
+								<input type="text" class="form-control"
+									name="verificationNumber"
+									ng-model="data.cardProfile.verificationNumber" maxlength="4"
+									card-type="{{data.cardProfile.cardTypeCode}}"
+									validator="required,number,validateAuthorizationCode"
+									data-valid-method="watch"
+									placeholder="{{'cardProfile.label.cvcNumber' | translate}}"
+									data-required-error-message="{{'messages.cvcNumberIsRequired' | translate}}"
+									data-validate-authorization-code-error-message="{{'messages.cvcNumberIsInvalid' | translate}}" data-ng-disabled="loading">
+							</div>
+						</div>
+					</div>
+					<div class="col-md-12 padLeft0">
+						<div class="form-group">
+							<div class="col-md-6 control-label">
+								{{'registration.normal.expirationDate' | translate}}<sup
+									class="validation-required">*</sup>
+							</div>
+							<div class="col-md-2">
+								<select class="form-control" name="expirationMonthCode"
+									data-ng-model="data.cardProfile.expirationMonthCode"
+									validator="required,validateCardExpirationMonth"
+									exp-year="{{data.cardProfile.expirationYearStr}}"
+									data-required-error-message="{{'messages.expirationMonthCodeRequired' | translate}}"
+									data-validate-card-expiration-month-error-message="{{'messages.creditCartIsExpired' | translate}}"
+									message-id="yearMonthValidationError" data-ng-disabled="loading">
+									<option value=""></option>
+									<option ng-repeat="option in allLookups.lookups.MONTH_NUM"
+										value="{{option.code}}">{{option.name}}</option>
+								</select>
+							</div>
+							<div class="col-md-2 padding0">
+								<select class="form-control" name="expirationYearStr"
+									data-ng-model="data.cardProfile.expirationYearStr"
+									validator="required,validateCardExpirationYear"
+									exp-month="{{data.cardProfile.expirationMonthCode}}"
+									data-required-error-message="{{'messages.expirationYearStrRequired' | translate}}"
+									data-validate-card-expiration-year-error-message="{{'messages.creditCartIsExpired' | translate}}"
+									message-id="yearMonthValidationError"
+									ng-options="year for year in expiryYears" data-ng-disabled="loading">
+								</select>
+							</div>
+							<div class="col-sm-6 col-md-6 col-lg-6"></div>
+						<div id="yearMonthValidationError"
+							class="col-sm-6 col-md-6 col-lg-6"></div>
+					</div>
+			</div>
+			<div class="col-md-12 padLeft0">
+				<div class="form-group">
+					<div class="col-md-6 control-label"></div>
+					<div class="col-md-6">
+						<button type="submit" data-validation-submit="cardProfileForm"
+							data-ng-click="updateCardProfileUsingOrbitalApi(data.cardProfile);"
+							class="btn btn-blue" data-ng-disabled="loading">{{'cardProfile.label.complete' |
+							translate}}</button>
+					</div>
+				</div>
+			</div>
+			</form>
+		</div>
+		<div class="col-sm-2 col-md-2 col-lg-2"></div>
+	</div>
+</div>
+</div>

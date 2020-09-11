@@ -1,0 +1,10 @@
+<div class="modal-content">
+   <div class="modal-header commonDialogHeader">
+      <button id="complianceCautionCloseIcon" type="button" class="close" data-dismiss="modal" aria-hidden="true" data-ng-click="colseCommonDocBadgePhoto();">&times;</button>
+      <h3 ng-if="commomDocHeading === 'upload'" class="modal-title"><b>{{'common.upload' | translate}}</b></h3>
+	  <h3 ng-if="commomDocHeading === 'viweUpdate'" class="modal-title"><b>{{'common.viewUpdate' | translate}}</b></h3>
+   </div>
+   <div class="modal-body modelDialogScroll">
+		<div class="paddingB1" data-ng-include="'views/myProfile/badgePhoto.html?rnd='+$appConfiguration.deployDate"></div>
+   </div>
+</div>

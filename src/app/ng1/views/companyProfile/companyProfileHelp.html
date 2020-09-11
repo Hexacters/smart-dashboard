@@ -1,0 +1,23 @@
+<div class="modal-content">
+	<div class="modal-header commonDialogHeader">
+		<button id="HelpCloseIcon" type="button" class="close"
+			aria-hidden="true" data-ng-click="cancelDialog()">&times;</button>
+		<h3 class="modal-title">
+			<b>{{'common.helpTitle' | translate}}</b>
+		</h3>
+	</div>
+	<div class="modal-body modelDialogScroll">
+		<p ng-if="$state.current.url=='/companyInformationHelp'" ng-bind-html="'companyProfile.companyInformation.label.companyInformationHelp'
+			| translate"></p>
+		<p ng-if="$state.current.url=='/contactInformationHelp'" ng-bind-html="'companyProfile.companyContactInformation.label.contactInformationHelp'
+			| translate"></p>
+		<p ng-if="$state.current.url=='/companyPrincipalsHelp'" ng-bind-html="'companyProfile.companyPrincipals.label.companyPrincipalsHelp'
+			| translate"></p>
+		<p ng-if="$state.current.url=='/geoSalesCapabilityHelp'" ng-bind-html="'companyProfile.geographicSalesCapability.label.geoSalesCapabilityHelp'
+			| translate"></p>
+		<p ng-if="$state.current.url=='/complainceOfficerHelp'" ng-bind-html="'companyProfile.complianceOfficer.label.complainceOfficerHelp'
+			| translate"></p>
+		<p ng-if="$state.current.url=='/diversityInformaionHelp'" ng-bind-html="'companyProfile.diversityInformation.label.diversityInformaionHelp'
+			| translate"></p>
+	</div>
+</div>

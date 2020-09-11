@@ -1,0 +1,94 @@
+<div class="upcoming-event content-shadow py-3" [ngClass]="{'hide': hideTab}">
+
+    <div class="row m-0">
+        <div class="col-md-5">
+            <div class="row m-0 event-content">
+                <div class="col-md-12">
+                    <h5 class="m-0 text-primary"><b>UPCOMING</b></h5>
+                    <label class="event-desc text-light">Your appoinment readiness</label>
+                    <span class=" action float-right" data-toggle="dropdown" aria-haspopup="true">
+                        <label>Day</label>
+                        <span class="btn events-action" aria-expanded="false">
+                            <span class="material-icons text-success">
+                                keyboard_arrow_down
+                            </span>
+                        </span>
+                        <span class="dropdown-menu">
+                            <a class="dropdown-item active" href="#">Day</a>
+                            <a class="dropdown-item" href="#">Week</a>
+                            <a class="dropdown-item" href="#">Month</a>
+                        </span>
+                    </span>
+
+                </div>
+            </div>
+            <div class="overflow-auto">
+                <div class="row m-0 statistic-data cursor-pointer" *ngFor="let mock of mockData;let i = index"
+                    (click)="onSelectedUpcomingChart(i)">
+                    <div class="col-md-7 p-0">
+                        <span>
+                            <app-donut-chart [data]="mock.data" [color]="mock.color" [height]="'120px'"
+                                [labels]="['complaince','policies','background check','policy alert']">
+                            </app-donut-chart>
+                        </span>
+                    </div>
+                    <div class="col-md-5 p-0 pt-3">
+                        <p class="name">{{mock.clinicName}}</p>
+                        <label class="time">9:15pm</label>
+                        <div class="more-info">
+                            Badge on Mobile
+                            <span class="type">System Reminder</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-7">
+            <div class="row m-0 view-content">
+                <div>
+                    <h5 class="m-0" *ngIf="index===0">{{mockData[0].clinicName}}</h5>
+                    <h5 class="m-0" *ngIf="index===1">{{mockData[1].clinicName}}</h5>
+                    <h5 class="m-0" *ngIf="index===2">{{mockData[2].clinicName}}</h5>
+                    <label class="text-light demo-desc">click to view needed credentials</label>
+                </div>
+            </div>
+            <div class="overflow-auto">
+                <div class="row m-0">
+                    <div class="col-md-12" *ngIf="index===0">
+                        <app-donut-chart [data]="mockData[0].data" [height]="'160px'" [legendPosition]="'right'"
+                            [color]="mockData[0].color" [isView]="true" [legend]="true"
+                            [labels]="['complaince','policies','background check','policy alert']"></app-donut-chart>
+                    </div>
+                    <div class="col-md-12" *ngIf="index===1">
+                        <app-donut-chart [data]="mockData[1].data" [height]="'160px'" [legendPosition]="'right'"
+                            [color]="mockData[1].color" [isView]="true" [legend]="true"
+                            [labels]="['complaince','policies','background check','policy alert']"></app-donut-chart>
+                    </div>
+                    <div class="col-md-12" *ngIf="index===2">
+                        <app-donut-chart [data]="mockData[2].data" [height]="'160px'" [isView]="true"
+                            [color]="mockData[2].color" [legend]="true" [legendPosition]="'right'"
+                            [labels]="['complaince','policies','background check','policy alert']"></app-donut-chart>
+                    </div>
+                </div>
+                <hr />
+                <div class="row m-0">
+                    <div class="col-md-12">
+                        <p class="m-0"> Action Required </p>
+                        <div class="row m-0 actions-required">
+                            <label class="text-primary pr-5 pt-2"
+                                *ngFor="let action of mockData[index].actions; let i = index">
+                                <span *ngIf="mockData[index].badge"
+                                    class="material-icons align-middle">check_circle</span>
+                                <span *ngIf="!mockData[index].badge"
+                                    class="material-icons text-primary align-middle">info</span>
+
+                                <a [ngClass]="{'active': mockData[index].badge}" class="align-middle">{{action}}</a>
+                            </label>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

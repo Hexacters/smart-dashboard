@@ -1,0 +1,159 @@
+<div class="row" data-ng-controller="myProfileController"
+	ng-init="getProductAndServiceCode()">
+	<div class="col-sm-12 col-md-12 col-lg-12" id="productAndServiceOfferingEdit">
+		<div class="col-sm-12 col-md-12 col-lg-12"
+			data-ng-class="{'dNone':!enableLoading}">
+			<img align="absmiddle" src="app/ng1/img/partial-loading.gif" />&nbsp;{{'common.loading'|
+			translate}}
+		</div>
+		<div class="col-sm-6 col-md-6 col-lg-6">
+			<h3>
+				<b>{{'myProfile.productAndServiceOffering.label.productServiceOffering'
+					| translate}}</b>
+			</h3>
+			<h5>
+				<b>{{'myProfile.productAndServiceOffering.label.details' |
+					translate}}</b>
+			</h5>
+		</div>
+		<div class="col-sm-6 col-md-6 col-lg-6">
+			<div class="pull-right marginT2">
+				<sup class="asterisk">*</sup>&nbsp;{{'common.required' | translate}} 
+				<a data-ui-sref="myProfile.productServiceOfferingEdit.help" ng-show="!isFromManageReps">{{'common.help' | translate}}</a>
+				<a data-ui-sref="manage.repAccountDetails.manageRepProfile.productServiceOfferingEdit.help" ng-show="isFromManageReps">{{'common.help' | translate}}</a>
+			</div>
+		</div>
+		<div class="col-sm-12 col-md-12 col-lg-12">
+			<form novalidate name="productServiceOfferingEdit" autocomplete="off"
+				class="form-horizontal">
+				<div class="table-responsive"
+					data-ng-if="saveProductsAndServicesSubmitError.status === 'error'">
+					<div class="alert alert-danger">
+						{{saveProductsAndServicesSubmitError.errorData.ResponseError[0].errorCode | translate}}</div>
+				</div>
+				<div class="col-sm-12 col-md-12 col-lg-12 padding0">
+					<div class="form-group">
+						<p class="col-md-12 col-lg-12 col-sm-12">
+							{{'myProfile.productAndServiceOffering.label.describeProductsServicesYouOffer'
+							| translate}}
+							<span tooltip-append-to-body="true"
+								tooltip-placement="right"
+								tooltip="{{'myProfile.productAndServiceOffering.label.productServiceOfferingtooltip'
+								| translate}}">
+									<i class="fa fa-question-circle fa-lg"></i>
+							</span>	
+						</p>
+				</div>
+						<div class="col-sm-4 col-md-4 col-lg-4 col-md-offset-2 padding0">
+							<textarea class="form-control resizeN" name="describeProductsServices"
+								maxlength="1024" focus-me="true" cols="30" rows="6"
+								data-ng-model="myProductDesc"
+								data-validator="validateAlphanumSpecial"
+								validate-alphanum-special-error-message="{{'common.errorMessage.allowedSpecialCharacters' | translate}}">
+							</textarea>
+						</div>
+					</div>
+
+				<h5>
+					<b>{{'myProfile.productAndServiceOffering.label.UNSPSCCodes' | translate}}&nbsp;<sup class="asterisk">*</sup></b>
+				</h5>
+
+				<div class="col-sm-12 col-md-12 col-lg-12 padding0">
+
+					<p>{{'myProfile.productAndServiceOffering.label.UNSPSCCodesDetails'
+						| translate}}</p>
+					<div class="form-group">
+						<label class="col-sm-2 col-md-2 col-lg-2 text-right">{{'myProfile.productAndServiceOffering.label.search'
+							| translate}}&nbsp;&nbsp;
+						<span tooltip-append-to-body="true"
+							tooltip-placement="right"
+							tooltip="{{'myProfile.productAndServiceOffering.label.productsAndServices'
+							| translate}}">
+								<i class="fa fa-question-circle fa-lg"></i>
+						</span>
+						</label>
+						<div class="col-sm-4 col-md-4 col-lg-4">
+							<input type="text" class="form-control" name="search"
+								data-ng-model="data.searchString" maxlength="100"
+								data-validator="validateAlphanumSpecial"
+								validate-alphanum-special-error-message="{{'common.errorMessage.allowedSpecialCharacters' | translate}}"/>
+						</div>
+						<div class="col-sm-1 col-md-1 col-lg-1">
+							<button class="btn btn-primary" id="prdouctSubmit" type="submit"
+								data-ng-click="productAndServiceCall(data.searchString,data.exactMatch,data.productAndServiceCodes);">{{'myProfile.productAndServiceOffering.label.go'
+								| translate}}</button>
+						</div>
+					</div>
+					<div class="form-group">
+						<div
+							class="col-sm-4 col-md-4 col-lg-4 col-md-offset-2 col-lg-offset-2 col-sm-offset-2">
+							<input type="checkbox" name="SearchforALL"
+								data-ng-model="data.exactMatch"> Search for <b>ALL</b>
+							terms only.</input>
+						</div>
+					</div>
+					<div
+						class="col-sm-10 col-md-10 col-lg-10 col-md-offset-2 padding0 text-danger"
+						ng-if="requiredErrorMessage">
+						{{'myProfile.productAndServiceOffering.label.pleaseEnterSearchString'
+						| translate}}</div>
+					<div
+						class="col-sm-10 col-md-10 col-lg-10 col-md-offset-2 padding0 text-danger"
+						ng-if="noRecordFound">
+						{{'myProfile.productAndServiceOffering.label.noProductsFound' |
+						translate}}</div>
+					<div
+						class="col-sm-10 col-md-10 col-lg-10 col-md-offset-2 padding0 text-danger"
+						ng-if="alreadySelected">
+						{{'myProfile.productAndServiceOffering.label.productAlreadySelected' |
+						translate}}</div>
+					<div
+						class="col-sm-10 col-md-10 col-lg-10 col-md-offset-2 padding0 text-danger"
+						ng-if="mustSelectError">
+						{{'myProfile.productAndServiceOffering.label.mustSelectCommodity'
+						| translate}}</div>
+					<div class="col-sm-9 col-md-9 col-lg-9 col-sm-offset-2 col-md-offset-2 col-lg-offset-2 padding0"
+						data-ng-if="responseError === true">
+						<div class="alert col-sm-11 col-md-11 col-lg-11 break-word alert-danger">
+							{{responseErrorMessage.errorData.ResponseError[0].errorCode |
+							translate}}</div>
+					</div>
+					<div class="col-sm-10 col-md-9 col-lg-9 col-sm-offset-2 col-md-offset-2 col-lg-offset-2">
+						<div class="form-group">
+							<div class="col-sm-12 col-md-12 col-lg-12 padding0">
+								<input class="displayN" type="text"
+									ng-model="data.productAndServiceCodes" name="departments"
+									id="countryCodes" />
+								<multi-select mode='1-1' local-data="userSelectedProducts"
+									parent-data-field="$parent.data.productAndServiceCodes"
+									return-fields="description,code" return-type="object"
+									max-limit="1500"
+									max-limit-error-message="{{'myProfile.productAndServiceOffering.label.1500ProductsMaximum' | translate}}">
+								<lpanel id="lpanelgeoSalesCountries" class-name="MultiSelecterPanelHeight" label="" size="7"
+									order-by="code" value="code" template-url="dlpanel.html"
+									text="description"></lpanel> <cpanel
+									id="cpanelgeoSalesCountries" class-name="col-sm-1 cPanelMargin"></cpanel> <rpanel
+									id="assignedgeoSalesCountries" class-name="MultiSelecterPanelHeight" label=""
+									filter="status=selected" size="7" order-by="code" value="code"
+									text="description" template-url="drpanel.html"></rpanel> </multi-select>
+								<div class="col-sm-6 col-md-6 col-lg-6 col-sm-offset-6 col-md-offset-6 col-lg-offset-6 padding0">
+									{{'myProfile.productAndServiceOffering.label.1500ProductsMaximum'
+									| translate}}<b>{{data.productAndServiceCodes.length}}</b>
+								</div>
+							</div>
+						</div>
+						<div
+							class="text-left col-sm-8 col-md-8 col-lg-8 col-lg-offset-2 col-md-offset-2 col-sm-offset-2">
+							<div
+								class="col-sm-6 col-md-6 col-lg-6 col-lg-offset-6 col-sm-offset-6 col-md-offset-6 padding0">
+								<button class="btn btn-success" id="prdouctSubmit" type="submit"
+									validation-submit="productServiceOfferingEdit"
+									data-ng-click="saveProductsAndServices(data,myProductDesc);callGAPageTrack('saveProdServOffering');" >{{'common.save' | translate}}</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

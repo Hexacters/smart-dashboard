@@ -1,0 +1,42 @@
+<div class="row" ng-controller="documentAlertController">
+  <div class="col-sm-12 col-md-12 col-lg-12">
+    <accordion close-others = "true">
+      <accordion-group is-open="$state.includes('documentAlert.accounts')">
+        <accordion-heading>
+			<a ui-sref="documentAlert.accounts" class="accordion-toggle show">
+			{{'docAlert.docAlertAccounts' | translate}}<i class="pull-right glyphicon" ng-class="{'glyphicon-minus': $state.includes('documentAlert.accounts'), 'glyphicon-plus': !status.open}"></i>
+			</a>
+        </accordion-heading>
+		<div data-ng-class="{'dNone':!loading}">
+			<img align="absmiddle" src="app/ng1/img/partial-loading.gif">&nbsp;{{'common.loading' | translate}}
+		</div>
+        <div ui-view="docAlertAccountsContainer"></div>
+      </accordion-group>
+	  <accordion-group is-open="$state.includes('documentAlert.Vendor')">
+        <accordion-heading>
+			<a ui-sref="documentAlert.Vendor" class="accordion-toggle show" >
+				{{vendorCompanyNameLabel}}<i class="pull-right glyphicon" ng-class="{'glyphicon-minus': $state.includes('documentAlert.Vendor'), 'glyphicon-plus': !status.open}"></i>
+			</a>		
+        </accordion-heading>
+		<div data-ng-class="{'dNone':!loading}">
+			<img align="absmiddle" src="app/ng1/img/partial-loading.gif">&nbsp;{{'common.loading' | translate}}
+		</div>
+        <div ui-view="docAlertvendorContainer"></div>
+      </accordion-group>
+	  <accordion-group is-open="$state.includes('documentAlert.VendorReps')">
+        <accordion-heading>
+			<a ui-sref="documentAlert.VendorReps" class="accordion-toggle show" ng-if="vendorLegalNameLabel!='Vendor Reps'">
+			{{vendorCompanyName}} > {{vendorLegalNameLabel}}<i class="pull-right glyphicon" ng-class="{'glyphicon-minus': $state.includes('documentAlert.VendorReps'), 'glyphicon-plus': !status.open}"></i>
+			</a>
+			<a ui-sref="documentAlert.VendorReps" class="accordion-toggle show" ng-if="vendorLegalNameLabel=='Vendor Reps'">
+			{{vendorLegalNameLabel}}<i class="pull-right glyphicon" ng-class="{'glyphicon-minus': $state.includes('documentAlert.VendorReps'), 'glyphicon-plus': !status.open}"></i>
+			</a>
+        </accordion-heading >
+		<div data-ng-class="{'dNone':!loading}">
+			<img align="absmiddle" src="app/ng1/img/partial-loading.gif">&nbsp;{{'common.loading' | translate}}
+		</div>
+        <div ui-view="docAlertVendorRepsContainer"></div>
+      </accordion-group> 
+    </accordion>
+  </div>
+</div>

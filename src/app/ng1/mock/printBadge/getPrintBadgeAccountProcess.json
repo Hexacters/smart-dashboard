@@ -1,0 +1,265 @@
+{
+    "VisionResponse": {
+        "Status": "Ok",
+        "CustomerSummaryList": [
+            {
+                "remoteBadgePrint": true,
+                "companyName": "Adventist Health System",
+                "customerOid": "ahss",
+                "vcRelationStatus": "ACT",
+                "vcExpressRegistered": false
+            }
+        ],
+        "contentType": "application/json",
+        "RepAppointmentsIdsList": [
+            {
+                "startTime": "2016-05-04 06:15:00",
+                "invitedReps": [
+                    {
+                        "statusCode": "ACT",
+                        "vcStatusCode": "ACT",
+                        "vendorStatusCode": "ACT",
+                        "legalName": "19_Aug_2011_TestQA",
+                        "vendorOid": "c01000040fa0000040fb",
+                        "userId": "ma#11@ah.com",
+                        "userStatusCode": "ACT",
+                        "vendorRepOid": "c01000067f6000006815",
+                        "actorTypeCode": "VREP",
+                        "fullName": "Mahendran Ponraj"
+                    },
+                    {
+                        "statusCode": "ACT",
+                        "vcStatusCode": "ACT",
+                        "vendorStatusCode": "ACT",
+                        "legalName": "19_Aug_2011_TestQA",
+                        "vendorOid": "c01000040fa0000040fb",
+                        "userId": "aa095444@test.vm",
+                        "userStatusCode": "ACT",
+                        "vendorRepOid": "c01000040ff000004100",
+                        "actorTypeCode": "VREP",
+                        "fullName": "Anupama Kaple"
+                    },
+                    {
+                        "statusCode": "ACT",
+                        "vcStatusCode": "ACT",
+                        "vendorStatusCode": "ACT",
+                        "legalName": "19_Aug_2011",
+                        "vendorOid": "c0100004017000004022",
+                        "userId": "aa141705@test.vm",
+                        "userStatusCode": "ACT",
+                        "vendorRepOid": "c010000401c000004030",
+                        "actorTypeCode": "VREP",
+                        "fullName": "Anupama Kaple"
+                    },
+                    {
+                        "statusCode": "ACT",
+                        "vcStatusCode": "ACT",
+                        "vendorStatusCode": "ACT",
+                        "legalName": "19_Aug_2011",
+                        "vendorOid": "c0100004017000004021",
+                        "userId": "aa141400@test.vm",
+                        "userStatusCode": "ACT",
+                        "vendorRepOid": "c010000401c00000402f",
+                        "actorTypeCode": "VREP",
+                        "fullName": "Anupama Kaple"
+                    },
+                    {
+                        "statusCode": "ACT",
+                        "vcStatusCode": "ACT",
+                        "vendorStatusCode": "ACT",
+                        "legalName": "19_Aug_2011",
+                        "vendorOid": "c0100004017000004020",
+                        "userId": "aa141042@test.vm",
+                        "userStatusCode": "ACT",
+                        "vendorRepOid": "c010000401c00000402e",
+                        "actorTypeCode": "VREP",
+                        "fullName": "Anupama Kaple"
+                    },
+                    {
+                        "statusCode": "ACT",
+                        "vcStatusCode": "ACT",
+                        "vendorStatusCode": "ACT",
+                        "legalName": "hospitality care",
+                        "vendorOid": "000000530800000014bd",
+                        "userId": "ps101553@test.vm",
+                        "userStatusCode": "ACT",
+                        "vendorRepOid": "c0100000f59000000f6d",
+                        "actorTypeCode": "VREP",
+                        "fullName": "SaravanaPandiyanSaravanaPandiyanSaravanaPandiyanSa SekarSekarSekarSekarSekarSekarSekarSekarSekarSekar"
+                    }
+                ],
+                "customerOid": "ahss",
+                "oid": "c01000098400000098550331201606031735",
+                "subject": "Test Appt for reg regress Test AJS Daily",
+                "endTime": "2016-05-04 06:30:00",
+                "invitedBuyers": [
+                    {
+                        "statusCode": "ACT",
+                        "userId": "k!a^n#a$g%u@ahss.com",
+                        "buyerOid": "c010000980d000009810",
+                        "userStatusCode": "ACT",
+                        "actorTypeCode": "BUYR",
+                        "fullName": "Kanakaraj S",
+                        "companyName": "Adventist Health System"
+                    }
+                ]
+            },
+            {
+                "startTime": "2016-05-04 04:00:00",
+                "invitedReps": [
+                    {
+                        "statusCode": "ACT",
+                        "vcStatusCode": "ACT",
+                        "vendorStatusCode": "ACT",
+                        "legalName": "hospitality care",
+                        "vendorOid": "000000530800000014bd",
+                        "userId": "ps101553@test.vm",
+                        "userStatusCode": "ACT",
+                        "vendorRepOid": "c0100000f59000000f6d",
+                        "actorTypeCode": "VREP",
+                        "fullName": "dsad dsad-dsadasdasdas SekarSekarSekarSekarSekarSekarSekarSekarSekarSekar"
+                    }
+                ],
+                "customerOid": "ahss",
+                "oid": "c0100009811000009873042820160356382",
+                "subject": "3008",
+                "endTime": "2016-05-04 04:15:00",
+                "invitedBuyers": [
+                    {
+                        "statusCode": "ACT",
+                        "userId": "ahs@vendormate.vdm",
+                        "buyerOid": "00000178120000004595",
+                        "userStatusCode": "ACT",
+                        "actorTypeCode": "BUYR",
+                        "fullName": "Admin Admin",
+                        "companyName": "Adventist Health System"
+                    }
+                ]
+            },
+            {
+                "startTime": "2016-05-03 06:15:00",
+                "invitedReps": [
+                    {
+                        "statusCode": "ACT",
+                        "vcStatusCode": "ACT",
+                        "vendorStatusCode": "ACT",
+                        "legalName": "19_Aug_2011_TestQA",
+                        "vendorOid": "c01000040fa0000040fb",
+                        "userId": "ma#11@ah.com",
+                        "userStatusCode": "ACT",
+                        "vendorRepOid": "c01000067f6000006815",
+                        "actorTypeCode": "VREP",
+                        "fullName": "Mahendran Ponraj"
+                    },
+                    {
+                        "statusCode": "ACT",
+                        "vcStatusCode": "ACT",
+                        "vendorStatusCode": "ACT",
+                        "legalName": "19_Aug_2011_TestQA",
+                        "vendorOid": "c01000040fa0000040fb",
+                        "userId": "aa095444@test.vm",
+                        "userStatusCode": "ACT",
+                        "vendorRepOid": "c01000040ff000004100",
+                        "actorTypeCode": "VREP",
+                        "fullName": "Anupama Kaple"
+                    },
+                    {
+                        "statusCode": "ACT",
+                        "vcStatusCode": "ACT",
+                        "vendorStatusCode": "ACT",
+                        "legalName": "19_Aug_2011",
+                        "vendorOid": "c0100004017000004022",
+                        "userId": "aa141705@test.vm",
+                        "userStatusCode": "ACT",
+                        "vendorRepOid": "c010000401c000004030",
+                        "actorTypeCode": "VREP",
+                        "fullName": "Anupama Kaple"
+                    },
+                    {
+                        "statusCode": "ACT",
+                        "vcStatusCode": "ACT",
+                        "vendorStatusCode": "ACT",
+                        "legalName": "19_Aug_2011",
+                        "vendorOid": "c0100004017000004021",
+                        "userId": "aa141400@test.vm",
+                        "userStatusCode": "ACT",
+                        "vendorRepOid": "c010000401c00000402f",
+                        "actorTypeCode": "VREP",
+                        "fullName": "Anupama Kaple"
+                    },
+                    {
+                        "statusCode": "ACT",
+                        "vcStatusCode": "ACT",
+                        "vendorStatusCode": "ACT",
+                        "legalName": "19_Aug_2011",
+                        "vendorOid": "c0100004017000004020",
+                        "userId": "aa141042@test.vm",
+                        "userStatusCode": "ACT",
+                        "vendorRepOid": "c010000401c00000402e",
+                        "actorTypeCode": "VREP",
+                        "fullName": "Anupama Kaple"
+                    },
+                    {
+                        "statusCode": "ACT",
+                        "vcStatusCode": "ACT",
+                        "vendorStatusCode": "ACT",
+                        "legalName": "hospitality care",
+                        "vendorOid": "000000530800000014bd",
+                        "userId": "ps101553@test.vm",
+                        "userStatusCode": "ACT",
+                        "vendorRepOid": "c0100000f59000000f6d",
+                        "actorTypeCode": "VREP",
+                        "fullName": "SaravanaPandiyanSaravanaPandiyanSaravanaPandiyanSa SekarSekarSekarSekarSekarSekarSekarSekarSekarSekar"
+                    }
+                ],
+                "customerOid": "ahss",
+                "oid": "c01000098400000098550331201606031734",
+                "subject": "Test Appt for reg regress Test AJS Daily",
+                "endTime": "2016-05-03 06:30:00",
+                "invitedBuyers": [
+                    {
+                        "statusCode": "ACT",
+                        "userId": "k!a^n#a$g%u@ahss.com",
+                        "buyerOid": "c010000980d000009810",
+                        "userStatusCode": "ACT",
+                        "actorTypeCode": "BUYR",
+                        "fullName": "Kanakaraj S",
+                        "companyName": "Adventist Health System"
+                    }
+                ]
+            },
+            {
+                "startTime": "2016-05-04 11:30:00",
+                "invitedReps": [
+                    {
+                        "statusCode": "ACT",
+                        "vcStatusCode": "ACT",
+                        "vendorStatusCode": "ACT",
+                        "legalName": "hospitality care",
+                        "vendorOid": "000000530800000014bd",
+                        "userId": "ps101553@test.vm",
+                        "userStatusCode": "ACT",
+                        "vendorRepOid": "c0100000f59000000f6d",
+                        "actorTypeCode": "VREP",
+                        "fullName": "dsad dsad-dsadasdasdas SekarSekarSekarSekarSekarSekarSekarSekarSekarSekar"
+                    }
+                ],
+                "customerOid": "ahss",
+                "oid": "c0100009b1e000009b2c042820161127502",
+                "subject": "9000",
+                "endTime": "2016-05-04 11:45:00",
+                "invitedBuyers": [
+                    {
+                        "statusCode": "ACT",
+                        "userId": "ahs@vendormate.vdm",
+                        "buyerOid": "00000178120000004595",
+                        "userStatusCode": "ACT",
+                        "actorTypeCode": "BUYR",
+                        "fullName": "Admin Admin",
+                        "companyName": "Adventist Health System"
+                    }
+                ]
+            }
+        ]
+    }
+}

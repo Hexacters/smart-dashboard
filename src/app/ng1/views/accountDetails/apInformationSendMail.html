@@ -1,0 +1,62 @@
+<div class="col-sm-12 col-md-12 col-lg-12 padding0 marginT1">
+	<h5><b>{{::'accounts.accountDetails.label.sendEmailInfomration' | translate}}</b></h5>
+	<fieldset class="scheduler-border scheduler-border-height">
+		<legend class="scheduler-border fieldSetHeading">
+			<div><b class="repDetailsFont">{{::'accounts.accountDetails.label.welcome' | translate}} {{userProfile.firstName}}
+					{{userProfile.lastName}}</b></div>
+		</legend>
+		<vision-action>
+			<submit-data service="accountDetailServices"
+			             operation="sendAPInfoEmailToRep"
+			             form-node="sendEmail" request-formatter="formateSendAPInfoMailParam"
+			             callback="apInformationSendMailCallback"></submit-data>
+			<div data-ng-class="{'dNone':!loading}">
+				<img align="absmiddle"
+				     src="app/ng1/img/partial-loading.gif"> {{::'common.loading' | translate}}
+			</div>
+			<div class="alert alert-danger col-sm-12 col-md-12 col-lg-12"
+			     ng-show="submitError.errorData.Status === 'Error'">
+				<strong><i class="fa fa-warning"></i></strong>
+				{{submitError.errorData.ResponseError[0].longMessage}}</div>
+			<form novalidate
+			      name="APInformationFormSendEmail"
+			      id="APInformationFormSendEmail"
+			      autocomplete="off"
+			      class="form-horizontal">
+				<div class="col-sm-12 col-md-6 col-lg-6 paddingT1 paddingB1">
+					<div class="form-group col-sm-12 col-md-12 col-lg-12 padding0">
+						<label class="col-sm-5 col-md-5 col-lg-5 control-label">{{::'accounts.accountDetails.label.corporateEmail'
+							| translate}}<sup class="validation-required">*</sup></label>
+						<div class="col-sm-7 col-md-7 col-lg-7 break-word padding0">
+							<input type="text"
+							       class="form-control required input-sm"
+							       id="email"
+							       name="email"
+							       ng-model="sendEmail.emailId"
+							       validator="required,validateAlphanumSpecial,validateEmail"
+							       maxlength="100"
+							       placeholder="{{::'accounts.accountDetails.label.corporateEmail' | translate}}"
+							       required-error-message="{{::'accounts.accountDetails.errorMessage.corporateEmailRequired' | translate}}"
+							       data-validate-email-error-message="{{'messages.validEmailAddress' | translate}}"
+							       data-validate-alphanum-special-error-message="{{::'common.errorMessage.allowedSpecialCharacters' | translate}}">
+						</div>
+						<label class="col-sm-5 col-md-5 col-lg-5 control-label padding0"></label>
+						<div class="col-sm-7 col-md-7 col-lg-7 break-word padding0">
+							<button type="submit"
+							        id="sendEmail"
+							        name="sendEmail"
+							        data-validation-submit="APInformationFormSendEmail"
+							        ng-click="submit();"
+							        class="btn btn-success">{{::'accounts.accountDetails.label.send' | translate}}</button>
+							<button type="button"
+							        id="sendEmailCancel"
+							        name="sendEmailCancel"
+							        ng-click="$state.current.name.split('.')[0] === 'accounts' ? $state.go('accounts.accountDetails.apInformation') : $state.go('manage.repAccountDetails.repAccountsTab.apInformation')"
+							        class="btn btn-warning">{{::'common.cancel' | translate}}</button>
+						</div>
+					</div>
+				</div>
+			</form>
+		</vision-action>
+	</fieldset>
+</div>

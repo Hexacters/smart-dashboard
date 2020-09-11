@@ -1,0 +1,151 @@
+<?xml version="1.0"?>
+<module id="ManageRepCompanyProfileModule">
+	<routers>
+		<router id="manage.repAccountDetails.companyProfile" url="/companyProfile">
+			<views>
+				<view containerId="manageRepCompanyProfile" templateUrl="app/ng1/views/companyProfile/manageRepCompanyProfile.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.companyProfile.viewInformation" url="/viewCompanyInformation">
+			<views>
+				<view containerId="viewCompanyInformation" templateUrl="app/ng1/views/companyProfile/companyInformationView.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.companyProfile.editInformation" url="/editCompanyInformation">
+			<views>
+				<view containerId="editCompanyInformation" templateUrl="app/ng1/views/companyProfile/companyInformationEdit.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.companyProfile.editInformation.affliatedGPO" type="dialog" url="/companyAffliatedGPO" modalClass="commonDialogW70">
+			<views>
+				<view containerId="modal" templateUrl="app/ng1/views/companyProfile/companyAffliatedGPO.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.companyProfile.editInformation.help" type="dialog" url="/companyInformationHelp">
+			<views>
+				<view containerId="modal" templateUrl="app/ng1/views/companyProfile/companyProfileHelp.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.companyProfile.viewInformation.help" type="dialog" url="/companyInformationHelp">
+			<views>
+				<view containerId="modal" templateUrl="app/ng1/views/companyProfile/companyProfileHelp.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.companyProfile.viewContactInformation" url="/viewContactInformation">
+			<views>
+				<view containerId="viewContactInformation" templateUrl="app/ng1/views/companyProfile/contactInformationView.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.companyProfile.editContactInformation" url="/editContactInformation">
+			<views>
+				<view containerId="editContactInformation" templateUrl="app/ng1/views/companyProfile/contactInformationEdit.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.companyProfile.viewContactInformation.help" type="dialog" url="/contactInformationHelp">
+			<views>
+				<view containerId="modal" templateUrl="app/ng1/views/companyProfile/companyProfileHelp.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.companyProfile.editContactInformation.help" type="dialog" url="/contactInformationHelp">
+			<views>
+				<view containerId="modal" templateUrl="app/ng1/views/companyProfile/companyProfileHelp.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.companyProfile.companyLogo" url="/companyLogo/{random}">
+			<views>
+				<view containerId="companyLogoContainer" templateUrl="app/ng1/views/companyProfile/companyLogo.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.companyProfile.companyPrincipals" url="/companyPrincipals/{random}">
+			<views>
+				<view containerId="companyPrincipalsContainer" templateUrl="app/ng1/views/companyProfile/companyPrincipals.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.companyProfile.companyPrincipals.add" type="dialog" url="/addCompanyPrincipals" modalClass="commonDialogW80">
+			<views>
+				<view containerId="modal" templateUrl="app/ng1/views/companyProfile/companyPrincipalsAdd.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.companyProfile.companyPrincipals.edit" type="dialog" url="/editCompanyPrincipals" modalClass="commonDialogW80">
+			<views>
+				<view containerId="modal" templateUrl="app/ng1/views/companyProfile/companyPrincipalsEdit.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.companyProfile.companyPrincipals.view" type="dialog" url="/viewCompanyPrincipals" modalClass="commonDialogW80">
+			<views>
+				<view containerId="modal" templateUrl="app/ng1/views/companyProfile/companyPrincipalsView.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.companyProfile.companyPrincipals.help" type="dialog" url="/companyPrincipalsHelp">
+			<views>
+				<view containerId="modal" templateUrl="app/ng1/views/companyProfile/companyProfileHelp.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.companyProfile.companyPrincipals.commonDialogAlert" type="dialog" url="/principalsCommonAlert">
+			<views>
+				<view containerId="modal" templateUrl="app/ng1/views/companyProfile/companyPrincipalsEditAlert.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.companyProfile.viewGeographicSalesCapability" url="/viewSalesCapability">
+			<views>
+				<view containerId="viewGeoSalesCapability" templateUrl="app/ng1/views/companyProfile/geoSalesView.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.companyProfile.editGeographicSalesCapability" url="/editSalesCapability">
+			<views>
+				<view containerId="editGeoSalesCapability" templateUrl="app/ng1/views/companyProfile/geoSalesEdit.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.companyProfile.viewGeographicSalesCapability.help" type="dialog" url="/geoSalesCapabilityHelp">
+			<views>
+				<view containerId="modal" templateUrl="app/ng1/views/companyProfile/companyProfileHelp.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.companyProfile.editGeographicSalesCapability.help" type="dialog" url="/geoSalesCapabilityHelp">
+			<views>
+				<view containerId="modal" templateUrl="app/ng1/views/companyProfile/companyProfileHelp.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.companyProfile.diversityInformaionView" url="/diversityInformaionView">
+			<views>
+				<view containerId="viewDiversityInformation" templateUrl="app/ng1/views/companyProfile/diversityInformaionView.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.companyProfile.diversityInformaionEdit" url="/diversityInformaionEdit">
+			<views>
+				<view containerId="editDiversityInformation" templateUrl="app/ng1/views/companyProfile/diversityInformaionEdit.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.companyProfile.diversityInformaionView.help" type="dialog" url="/diversityInformaionHelp">
+			<views>
+				<view containerId="modal" templateUrl="app/ng1/views/companyProfile/companyProfileHelp.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.companyProfile.diversityInformaionEdit.help" type="dialog" url="/diversityInformaionHelp">
+			<views>
+				<view containerId="modal" templateUrl="app/ng1/views/companyProfile/companyProfileHelp.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.companyProfile.complainceOfficerView" url="/complainceOfficerView">
+			<views>
+				<view containerId="viewComplainceOfficer" templateUrl="app/ng1/views/companyProfile/complainceOfficerView.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.companyProfile.complainceOfficerEdit" url="/complainceOfficerEdit">
+			<views>
+				<view containerId="editComplainceOfficer" templateUrl="app/ng1/views/companyProfile/complainceOfficerEdit.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.companyProfile.complainceOfficerView.help" type="dialog" url="/complainceOfficerHelp">
+			<views>
+				<view containerId="modal" templateUrl="app/ng1/views/companyProfile/companyProfileHelp.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.companyProfile.complainceOfficerEdit.help" type="dialog" url="/complainceOfficerHelp">
+			<views>
+				<view containerId="modal" templateUrl="app/ng1/views/companyProfile/companyProfileHelp.html"></view>
+			</views>
+		</router>
+	</routers>
+	
+</module>

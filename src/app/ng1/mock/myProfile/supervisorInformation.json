@@ -1,0 +1,16 @@
+{
+    "VisionResponse": {
+        "Status": "Ok",
+        "supervisorInformation": {
+            "lastName": "Smith",
+            "title": "Wills",
+            "email": "willsmith@gmail.com",
+            "oid": "c01000084d50000084d6",
+            "workPhone": "444-444-4444",
+            "firstName": "Will",
+			"department" : "Science"
+        },
+        "ContentType": "text/xml",
+        "ResponseErrors": ""
+    }
+}

@@ -1,0 +1,107 @@
+<div class="modal-content" ng-controller="commonController">
+	<div class="modal-header commonDialogHeader">
+		<button id="complianceCautionCloseIcon" type="button" class="close"
+			data-dismiss="modal" aria-hidden="true" data-ng-click="$close();">&times;
+		</button>
+		<h3 class="modal-title">
+			<b>{{'changeUsername.header.changeExistingUsername' | translate}}</b>
+		</h3>
+	</div>
+	<div class="modal-body modelDialogScroll">
+		<vision-action> <submit-data service="users"
+			operation="updateUserId" callback="changeUsernameSuccess"></submit-data>
+		<div class="col-sm-12 col-md-12 col-lg-12 padding0">
+			<div class="alert alert-danger paddingR2 paddingL2 paddingT1 paddingB1"
+				ng-show="changeUsernameError.status == 'error'" id="forgotPasswordError">
+				{{changeUsernameError.errorData.ResponseError[0].errorCode | translate}}</div>
+		</div>
+		<div>
+			<div ng-class="{'dNone':!loading}">
+				<img align="absmiddle" src="app/ng1/img/partial-loading.gif">&nbsp;{{'common.loading'|
+				translate}}
+			</div>
+			<p>
+				{{'changeUsername.label.changeUsernameContent1' | translate}} <br />
+			</p>
+			<div
+				class="alert alert-danger paddingR2 paddingL2 paddingT1 paddingB1"
+				ng-show="submitError.status == 'error'" id="forgotPasswordError">
+				{{submitError.errorData.ResponseError[0].errorCode | translate}}</div>
+			<form novalidate name="changeUsername" autocomplete="off"
+				class="form-horizontal">
+				<div class="form-group">
+					<label class="col-sm-4 col-md-4 col-lg-4 control-label">{{'changeUsername.label.existingUsername'
+						| translate}}</label>
+					<div class="col-sm-8 col-md-8 col-lg-8"
+						ng-init="data.existingUserId = userProfile.userId">
+						<div class="paddingT2 break-word">{{userProfile.userId}}</div>
+						<input id="changeUsername.UserId" type="hidden" name="userId"
+							ng-model="data.existingUserId" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-4 col-md-4 col-lg-4 control-label">{{'changeUsername.label.existingPassword'
+						| translate}}&nbsp;<sup class="asterisk">*</sup>
+					</label>
+					<div class="col-sm-8 col-md-8 col-lg-8">
+						<input type="password"
+							placeholder="{{'changeUsername.label.existingPassword' | translate}}"
+							focus-me="true" id="changeUsername.exitingPassword"
+							class="form-control input-sm" maxlength="100"
+							name="existingPassword" data-ng-model="data.password"
+							validator="required"
+							required-error-message="{{'changeUsername.errorMessage.existingPasswordRequired' | translate}}"
+							valid-method="watch" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-4 col-md-4 col-lg-4 control-label">{{'changeUsername.label.newUsername'
+						| translate}}&nbsp;<sup class="asterisk">*</sup> <span
+						tooltip-placement="bottom" tooltip-append-to-body="true"
+						tooltip="Your email address must be a valid format. For example: abc@example.com.">
+							<i class="fa fa-question-circle fa-lg"></i>
+					</span>
+					</label>
+					<div class="col-sm-8 col-md-8 col-lg-8">
+						<input type="text" id="changeUsername.newUsernamed"
+							placeholder="{{'changeUsername.label.newUsername' | translate}}"
+							class="form-control input-sm" name="newUsernamed" maxlength="100"
+							ng-paste="paste($event)" data-ng-model="data.newUserId"
+							validator="required,validateEmail" match="data.confirmUserId"
+							validate-email-error-message="{{'changeUsername.errorMessage.verifyNewUsernameEmailRequired' | translate}}"
+							required-error-message="{{'changeUsername.errorMessage.newUsernameRequired' | translate}}"
+							data-ng-model-options="{allowInvalid: true}"
+							valid-method="submit" /> <span class="validation-invalid"
+							data-ng-show="changeUsername.newUsernamed.$error.match">{{'changeUsername.errorMessage.newUsernameVerifyUsernameMsg'
+							| translate}}</span>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-4 col-md-4 col-lg-4 control-label">{{'changeUsername.label.verifyNewUsername'
+						| translate}}&nbsp;<sup class="asterisk">*</sup>
+					</label>
+					<div class="col-sm-8 col-md-8 col-lg-8">
+						<input type="text" id="changeUsername.confirmUsername"
+							ng-paste="paste($event)"
+							placeholder="{{'changeUsername.label.verifyNewUsername' | translate}}"
+							class="form-control input-sm" name="confirmUsername"
+							maxlength="100" data-ng-model="data.confirmUserId"
+							validator="required"
+							required-error-message="{{'changeUsername.errorMessage.verifyNewUsernameRequired' | translate}}"
+							valid-method="watch" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-4 col-md-4 col-lg-4 control-label"></label>
+					<div class="col-sm-8 col-md-8 col-lg-8">
+						<button class="btn btn-success input-sm" id="changeUsernameSubmit"
+							name="changeUsernameSubmitForm" type="submit"
+							validation-submit="changeUsername" data-ng-click="submit();">{{'common.save'
+							| translate}}</button>
+					</div>
+				</div>
+			</form>
+		</div>
+		</vision-action>
+	</div>
+</div>

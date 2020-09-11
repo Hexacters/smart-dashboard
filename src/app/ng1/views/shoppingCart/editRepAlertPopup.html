@@ -1,0 +1,20 @@
+<div class="modal-content">
+	<div class="modal-header commonDialogHeader">
+		<button id="viewLocationCloseIcon" id="viewAccountCloseIcon"
+			type="button" class="close" data-dismiss="modal" aria-hidden="true"
+			data-ng-click="$close()">&times;</button>
+		<h3 class="modal-title">
+			<b>{{'shoppingCart.label.attention' | translate}}</b>
+		</h3>
+	</div>
+	<div class="modal-body ng-scope">
+		<div ng-if="validateRepExist === true">{{'shoppingCart.label.repsCountExceedAlertMsg1' | translate}} {{maxRepCount}} {{'shoppingCart.label.repsCountExceedAlertMsg2' | translate}}</div>
+		<div ng-if="validateRepExist === false">{{'shoppingCart.errorMessage.validateRepExistMsg' | translate}}</div>
+		<div class="modal-footer ng-scope marginT4">
+			<button ng-if="validateRepExist === true" class="btn btn-blue" type="button" data-ng-click="navigateToSummaryScreen()" autofocus>{{'common.ok'|
+			translate}}</button>
+			<button ng-if="validateRepExist === false" class="btn btn-blue" type="button" data-ng-click="cancelPopup()" autofocus>{{'common.ok'|
+			translate}}</button>
+		</div>
+	</div>
+</div>

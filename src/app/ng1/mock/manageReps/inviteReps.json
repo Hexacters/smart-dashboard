@@ -1,0 +1,46 @@
+{
+    "VisionResponse": {
+        "bulkUserInvited": false,
+        "Status": "Ok",
+        "contentType": "application/json",
+        "InviteRepsSummaryList": [
+            {
+                "status": "Error",
+                "userId": "hari@mookambikainfo.com",
+                "errorMessage":"DELETED_USER_ERROR_5183",
+                "isBulkUserInvited": false,
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "status": "Success",
+                "userId": "aa@mail.com",
+                "isBulkUserInvited": false,
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "status": "Success",
+                "userId": "dsdsds@mail.com",
+                "isBulkUserInvited": false,
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "status": "Success",
+                "userId": "de6127@test.vm",
+                "isBulkUserInvited": false,
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "status": "Success",
+                "userId": "devrep@test.vm",
+                "isBulkUserInvited": false,
+                "updateAction": false,
+                "deleteAction": false
+            }
+        ],
+        "message": "TPM User Processed Successfully"
+    }
+}

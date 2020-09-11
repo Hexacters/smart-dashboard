@@ -1,0 +1,185 @@
+<div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12"
+         ng-show="loading">
+        <img align="absmiddle"
+             src="app/ng1/img/partial-loading.gif">
+        &nbsp;{{'common.loading'| translate}}
+    </div>
+    <div class="col-sm-12 col-md-12 col-lg-12 marginB1 padding0">
+        <img src="app/ng1/img/creditCardLogo.png"
+             class="creditcard-logo">
+    </div>
+    <div class="col-sm-12 col-md-12 col-lg-12 marginB1"
+         ng-if="enableIframe && !$appConfiguration.mock">
+        <div class="table-responsive"
+             data-ng-if="servciesErrorMessage">
+            <div class="alert alert-danger">
+                <span ng-bind-html="servciesErrorMessage"></span>
+            </div>
+        </div>
+        <div class="col-sm-1 col-md-1 col-lg-1"></div>
+        <div class="col-sm-9 col-md-9 col-lg-9"
+             data-ng-if="!isCardSaveFailure">
+            <iframe id="cardManagementURL"
+                    class="cardProfileFrame"
+                    src="{{cardManagementURL}}"
+                    iframe-onload="iframeLoadedCallBack()"></iframe>
+        </div>
+        <div class="col-sm-2 col-md-2 col-lg-2"></div>
+    </div>
+    <!-- Mock Payment Card Form -->
+    <div class="col-sm-6 col-md-6 col-lg-6 marginB1"
+         ng-if="!enableIframe || $appConfiguration.mock">
+        <div class="col-sm-11 col-md-11 col-lg-11">
+            <form novalidate
+                  name="cardManagementForm"
+                  autocomplete="off"
+                  class="form-horizontal">
+                <div class="table-responsive"
+                     data-ng-if="servciesErrorMessage">
+                    <div class="alert alert-danger"><span ng-bind-html="servciesErrorMessage"></span></div>
+                </div>
+                <div class="col-md-12 padLeft0">
+                    <div class="form-group">
+                        <div class="col-md-6 control-label">
+                            {{'registration.normal.nameOnCard' | translate}}<sup class="validation-required">*</sup>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text"
+                                   class="form-control"
+                                   name="nameOnCard"
+                                   ng-model="data.cardProfile.nameOnCard"
+                                   maxlength="30"
+                                   placeholder="{{'registration.express.nameOnCardPlaceholder' | translate}}"
+                                   validator="required"
+                                   data-valid-method="watch"
+                                   data-required-error-message="{{'messages.nameOnCardIsRequired' | translate}}"
+                                   data-ng-disabled="loading">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 padLeft0">
+                    <div class="form-group">
+                        <div class="col-md-6 control-label">
+                            {{'registration.normal.cardType' | translate}}<sup class="validation-required">*</sup>
+                        </div>
+                        <div class="col-md-5">
+                            <select class="form-control editCardType"
+                                    name="cardTypeCode"
+                                    data-ng-model="data.cardProfile.cardTypeCode"
+                                    validator="required"
+                                    data-required-error-message="{{'messages.cardTypeIsRequired' | translate}}"
+                                    data-ng-disabled="loading">
+                                <option value="">{{'common.select' | translate}}</option>
+                                <option ng-repeat="option in cardsData.PAYMENT_TYPE | orderBy:'seqNumber'"
+                                        value="{{option.code}}"
+                                        ng-if="option.code !== 'DI'"">{{option.name}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="
+                                        col-md-12
+                                        padLeft0">
+                                    <div class="form-group">
+                                        <div class="col-md-6 control-label">
+                                            {{'cardProfile.label.creditCardNumber' | translate}}<sup
+                                                 class="validation-required">*</sup>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="text"
+                                                   class="form-control"
+                                                   name="cardNumber"
+                                                   ng-model="data.cardProfile.cardNumber"
+                                                   maxlength="16"
+                                                   placeholder="{{'registration.express.cardNumber' | translate}}"
+                                                   card-type="{{data.cardProfile.cardTypeCode}}"
+                                                   validator="required,number"
+                                                   data-valid-method="watch"
+                                                   data-required-error-message="{{'messages.cardNumberIsRequired' | translate}}"
+                                                   data-validate-credit-card-error-message="{{'messages.cardNumberIsInvalid' | translate}}"
+                                                   data-ng-disabled="loading">
+                                        </div>
+                                    </div>
+                        </div>
+                        <div class="col-md-12 padLeft0">
+                            <div class="form-group">
+                                <div class="col-md-6 control-label">
+                                    {{'cardProfile.label.cvcNumber' | translate}}<sup
+                                         class="validation-required">*</sup> <span tooltip-append-to-body="true"
+                                          tooltip-class="customToolTip"
+                                          tooltip="{{'registration.express.visaMc' | translate}} {{'registration.express.AmEx' | translate}}"
+                                          tooltip-placement="top"> <i class="fa fa-question-circle fa-lg"></i></span>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="text"
+                                           class="form-control"
+                                           name="verificationNumber"
+                                           ng-model="data.cardProfile.verificationNumber"
+                                           maxlength="4"
+                                           card-type="{{data.cardProfile.cardTypeCode}}"
+                                           validator="required,number,validateAuthorizationCode"
+                                           data-valid-method="watch"
+                                           placeholder="{{'cardProfile.label.cvcNumber' | translate}}"
+                                           data-required-error-message="{{'messages.cvcNumberIsRequired' | translate}}"
+                                           data-validate-authorization-code-error-message="{{'messages.cvcNumberIsInvalid' | translate}}"
+                                           data-ng-disabled="loading">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 padLeft0">
+                            <div class="form-group">
+                                <div class="col-md-6 control-label">
+                                    {{'registration.normal.expirationDate' | translate}}<sup
+                                         class="validation-required">*</sup>
+                                </div>
+                                <div class="col-md-2">
+                                    <select class="form-control"
+                                            name="expirationMonthCode"
+                                            data-ng-model="data.cardProfile.expirationMonthCode"
+                                            validator="required,validateCardExpirationMonth"
+                                            exp-year="{{data.cardProfile.expirationYearStr}}"
+                                            data-required-error-message="{{'messages.expirationMonthCodeRequired' | translate}}"
+                                            data-validate-card-expiration-month-error-message="{{'messages.creditCartIsExpired' | translate}}"
+                                            message-id="yearMonthValidationError"
+                                            data-ng-disabled="loading">
+                                        <option value=""></option>
+                                        <option ng-repeat="option in cardsData.MONTH | orderBy: 'value'""
+                                                    value="
+                                                {{$index+1}}">{{option.value}}</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-2 padding0">
+                                    <select class="form-control"
+                                            name="expirationYearStr"
+                                            data-ng-model="data.cardProfile.expirationYearStr"
+                                            validator="required,validateCardExpirationYear"
+                                            exp-month="{{data.cardProfile.expirationMonthCode}}"
+                                            data-required-error-message="{{'messages.expirationYearStrRequired' | translate}}"
+                                            data-validate-card-expiration-year-error-message="{{'messages.creditCartIsExpired' | translate}}"
+                                            message-id="yearMonthValidationError"
+                                            ng-options="year for year in expiryYears"
+                                            data-ng-disabled="loading">
+                                    </select>
+                                </div>
+                                <div class="col-sm-6 col-md-6 col-lg-6"></div>
+                                <div id="yearMonthValidationError"
+                                     class="col-sm-6 col-md-6 col-lg-6"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 padLeft0">
+                            <div class="form-group">
+                                <div class="col-md-6 control-label"></div>
+                                <div class="col-md-6">
+                                    <button type="submit"
+                                            data-ng-click="submitCardDetails(data.cardProfile);"
+                                            class="btn btn-blue"
+                                            data-ng-disabled="loading">
+                                        {{'cardProfile.label.complete' | translate}}</button>
+                                </div>
+                            </div>
+                        </div>
+            </form>
+        </div>
+    </div>
+</div>

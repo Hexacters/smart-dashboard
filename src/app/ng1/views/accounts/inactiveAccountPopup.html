@@ -1,0 +1,30 @@
+<div class="modal-content" ng-controller="accountController">
+	<div class="modal-header commonDialogHeader">
+		<button id="viewLocationCloseIcon" id="viewAccountCloseIcon"
+			type="button" class="close" data-dismiss="modal" aria-hidden="true"
+			data-ng-click="$close()">&times;</button>
+		<h3 class="modal-title">
+			<b>{{'accounts.manageMyaccount.label.inactivateAccounts' |
+				translate}}</b>
+		</h3>
+	</div>
+	<div class="modal-body ng-scope">
+		<span class="text-danger"
+			ng-if="inactiveAccountPopupError.errorData.ResponseError[0].errorCode=='5138'">{{'accounts.manageMyaccount.errorMessage.activeInactiveErrorMessage1A'
+			| translate}}<b> {{companyName}} </b>{{'accounts.manageMyaccount.errorMessage.activeInactiveErrorMessage1B'
+			| translate}} <a href="mailto:support@vendormate.com" target="_top">support@vendormate.com</a>.
+		</span> <span class="text-danger"
+			ng-if="inactiveAccountPopupError.errorData.ResponseError[0].errorCode=='5139'">{{'accounts.manageMyaccount.errorMessage.activeInactiveErrorMessage2A'
+			| translate}}<b> {{companyName}} </b>{{'accounts.manageMyaccount.errorMessage.activeInactiveErrorMessage2B'
+			| translate}} <a href="mailto:support@vendormate.com" target="_top">support@vendormate.com</a>.
+		</span> <span class="text-danger"
+			ng-if="inactiveAccountPopupError.errorData.ResponseError[0].errorCode!='5138' && inactiveAccountPopupError.errorData.ResponseError[0].errorCode!='5139'">
+			{{inactiveAccountPopupError.errorData.ResponseError[0].errorCode |
+			translate}} </span>
+		<div class="modal-footer ng-scope marginT4">
+			<button class="btn btn-info" type="button"
+				data-ng-click="closeInActiveGridReload()" autofocus>{{'common.ok'|
+				translate}}</button>
+		</div>
+	</div>
+</div>

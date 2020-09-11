@@ -1,0 +1,85 @@
+{
+    "VisionResponse": {
+        "Status": "Ok",
+        "ResourceList": [
+            {
+                "oid": "6cb3c950eda2fd04dec1b86ec99691c6",
+                "resourceName": "artificial intelligence",
+                "resourceDescription": "this is the 6 th sense that has been achieved in several functionalities",
+                "resourceType": "URL",
+                "resourceUrl": "www.artificialintelligence.com",
+                "resourceCategory": "GA",
+                "sequenceNumber": 1,
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "oid": "4331d2764fa3c7e1397c64b73afa9572",
+                "resourceName": "test resource",
+                "resourceDescription": "c ''\r\ndf'',x'cv,','zx'\r\n,'d\r\n'gd\r\n\r\n\r\nf\r\nd\r\nf",
+                "resourceType": "FILE",
+                "mongoKey": "728850cb31c68fce713e1fa0a8a02e54",
+                "resourceCategory": "GA",
+                "sequenceNumber": 1,
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "oid": "68b0973601ab30673b65b5000d55a08e",
+                "resourceName": "LSP AJS CHECK2",
+                "resourceDescription": "LSP AJS CHECK LSP AJS CHECK",
+                "resourceType": "FILE",
+                "mongoKey": "21b924fe2d7fc122ec6cfc0af51e13d2",
+                "resourceCategory": "GA",
+                "sequenceNumber": 49,
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "oid": "cc373c4b8bcc706be0d7099edab78b5b",
+                "resourceName": "LSP AJS CHECK",
+                "resourceDescription": "LSP AJS CHECKLSP AJS CHECK",
+                "resourceType": "URL",
+                "resourceUrl": "www.lspajs.net",
+                "resourceCategory": "GA",
+                "sequenceNumber": 50,
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "oid": "666d389f2007337307620aef60b94a92",
+                "resourceName": "PC Reg",
+                "resourceDescription": "PC Reg",
+                "resourceType": "FILE",
+                "mongoKey": "0db9eb7f424f403ffe5ba25682013ed1",
+                "resourceCategory": "GA",
+                "sequenceNumber": 99,
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "oid": "55794638dab230f885d063badc82eb31",
+                "resourceName": "Test Test Test Test Test Test",
+                "resourceDescription": "Test Test Test Test Test Test Test Test Test",
+                "resourceType": "URL",
+                "resourceUrl": "www.google.com",
+                "resourceCategory": "GA",
+                "sequenceNumber": 99,
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "oid": "c17ad3f249eb4db6ee98ffaab59f934a",
+                "resourceName": "testp",
+                "resourceDescription": "testp<>",
+                "resourceType": "FILE",
+                "mongoKey": "261b9d3d42a6417ee7c6067c23fc0a56",
+                "resourceCategory": "GA",
+                "sequenceNumber": 99,
+                "updateAction": false,
+                "deleteAction": false
+            }
+        ],
+        "contentType": "application/json"
+    }
+}

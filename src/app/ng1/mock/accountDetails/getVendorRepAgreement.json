@@ -1,0 +1,71 @@
+{
+	"VisionResponse": {
+		"Status": "Ok",
+		"conflictSummary": {
+			"cfiCompensation": false,
+			"vrepEulaSignedSig": " Vendormate, Inc, Signed by:erul03@gmail.com(Erul Erul), on:2019-07-15 20:52:41.199.",
+			"cfiRelationship": true,
+			"cfiBoardAffl": true
+		},
+		"conflictsOfInterestDetails": {
+			"comps": [{
+				"oid": "c010000f17500000f18b",
+				"person": "John",
+				"typeCode": "comps",
+				"organization": "GHX Test",
+				"natureOfRelationship": ""
+			}, {
+				"oid": "c010000f17500000f18c",
+				"person": "",
+				"typeCode": "comps",
+				"organization": "",
+				"natureOfRelationship": ""
+			}, {
+				"oid": "c010000f17500000f18d",
+				"person": "",
+				"typeCode": "comps",
+				"organization": "",
+				"natureOfRelationship": ""
+			}],
+			"relat": [{
+				"oid": "c010000f17500000f187",
+				"person": "",
+				"typeCode": "relat",
+				"organization": "",
+				"natureOfRelationship": ""
+			}, {
+				"oid": "c010000f17500000f185",
+				"person": "",
+				"typeCode": "relat",
+				"organization": "",
+				"natureOfRelationship": ""
+			}, {
+				"oid": "c010000f17500000f186",
+				"person": "",
+				"typeCode": "relat",
+				"organization": "",
+				"natureOfRelationship": ""
+			}],
+			"serve": [{
+				"oid": "c010000f17500000f18a",
+				"person": "",
+				"typeCode": "serve",
+				"organization": "",
+				"natureOfRelationship": ""
+			}, {
+				"oid": "c010000f17500000f188",
+				"person": "",
+				"typeCode": "serve",
+				"organization": "",
+				"natureOfRelationship": ""
+			}, {
+				"oid": "c010000f17500000f189",
+				"person": "",
+				"typeCode": "serve",
+				"organization": "",
+				"natureOfRelationship": ""
+			}]
+		},
+		"contentType": "application/json"
+	}
+}

@@ -1,0 +1,22 @@
+{
+    "VisionResponse": {
+        "Status": "Ok",
+        "CompanyPrincipal": {
+            "yearsWithCompanyStr": "0",
+            "officerContactTypeCode": "VOLGL",
+            "vendorOid": "000000530800000014bd",
+            "oid": "c01000089d10000089d5",
+            "title": "Legal Department Officer",
+            "firstName": "test",
+            "lastName": "test",
+            "email": "sdfsdf@sdfds.comosdfsdf",
+            "createdOn": "2013-11-13 17:55:33",
+            "createdBy": "System",
+            "updatedOn": "2016-05-03 11:06:37",
+            "updatedBy": "ps101553@test.vm",
+            "updateAction": false,
+            "deleteAction": false
+        },
+        "contentType": "application/json"
+    }
+}

@@ -1,0 +1,32 @@
+{
+    "VisionResponse": {
+        "Status": "Ok",
+        "NonCompliancePolicyCustomerList": {
+            "NonCompliancePolicyCustomer": [
+                {
+                    "customerName": "Memorial Health",
+                    "customerOid": "1"
+                },
+                {
+                    "customerName": "Sister's of Mercy",
+                    "customerOid": "2"
+                },
+                {
+                    "customerName": "Detroit Medical Center",
+                    "customerOid": "3"
+                },
+                {
+                    "customerName": "Piodement Health System",
+                    "customerOid": "4"
+                },
+                {
+                    "customerName": "Groody Memorial Health",
+                    "customerOid": "5"
+                }
+            ]
+        },
+        "totalRecords": "6",
+        "ContentType": "text/xml",
+        "ResponseErrors": ""
+    }
+}

@@ -1,0 +1,98 @@
+<div ng-if="addNewRepInValid && addNewRepInValid.deletedUser" class="alert alert-danger">
+	<i class="fa fa-exclamation-triangle"></i><span
+		ng-bind-html="'addNewRep.errorMessage.undeleteValidationRep' | translate"></span>
+</div>
+<div ng-if="addNewRepInValid && addNewRepInValid.notRep" class="alert alert-danger">
+	<i class="fa fa-exclamation-triangle"></i> {{'addNewRep.errorMessage.registeredWithNotRep'| translate :
+	addNewRepInValid }}
+</div>
+<div ng-if="addNewRepInValid && addNewRepInValid.anotherVendorCompany" class="alert alert-danger">
+	<i class="fa fa-exclamation-triangle"></i> {{'addNewRep.errorMessage.registeredWithAnotherVendor'| translate
+	}}{{addNewRepInValid.vendorName}}
+</div>
+<div ng-if="addNewRepInValid && addNewRepInValid.isInActiveUser" class="alert alert-danger">
+	<i class="fa fa-exclamation-triangle"></i> {{'addNewRep.errorMessage.isInActiveUser' | translate}}
+</div>
+<div ng-if="addNewRepInValid && addNewRepInValid.notAllowRepRegistration" class="alert alert-danger">
+	<i class="fa fa-exclamation-triangle"></i> {{addNewRepInValid.errorMessage}}
+</div>
+<div ng-if="addNewRepInValid && addNewRepInValid.error && addNewRepInValid.data.errorData.ResponseError[0].errorCode !== 'CM_7035'"
+	class="alert alert-danger">
+	<i class="fa fa-exclamation-triangle"></i>
+	{{addNewRepInValid.data.errorData.ResponseError[0].errorCode | translate}}
+</div>
+<div ng-if="addNewRepInValid && addNewRepInValid.error && addNewRepInValid.data.errorData.ResponseError[0].errorCode === 'CM_7035'"
+	class="alert alert-danger">
+	<i class="fa fa-exclamation-triangle"></i>
+	{{addNewRepInValid.data.errorData.ResponseError[0].longMessage}}
+</div>
+<div class="col-sm-6 col-md-8">
+	<div data-ng-show="!enableValidateButton">
+		<img align="absmiddle" src="app/ng1/img/partial-loading.gif">&nbsp;{{'common.loading' | translate}}
+	</div>
+	<form novalidate name="addNewRepInviteForm" class="form-horizontal pt-4" id="addNewRepInviteForm" autocomplete="off">
+		<div class="row">
+			<div class="form-group col-sm-12 col-md-6 col-lg-6">
+				<label class="col-sm-4 col-md-4 col-lg-12">
+					{{'addNewRep.label.firstName' | translate}} <span class="asterisk">*</span>
+				</label>
+				<div class="col-md-12">
+					<input id="addRepFirstName" class="form-control required input-sm" size="35"
+						placeholder="{{'addNewRep.label.firstName' | translate}}"
+						validator="required,validateAlphaWithOneSpaceAndPunctuation"
+						required-error-message="{{'addNewRep.errorMessage.firstNameRequired' | translate}}"
+						validate-Alpha-With-One-Space-And-Punctuation-error-message="{{'addNewRep.errorMessage.firstNameNotValid' | translate}}"
+						valid-method="watch" ng-model="inviteRep.firstname" type="text" maxlength="50"
+						name="firstname" />
+				</div>
+			</div>
+			<div class="form-group col-sm-12 col-md-6">
+				<label class="col-md-12">
+					{{'addNewRep.label.lastName' | translate}} <span class="asterisk">*</span>
+				</label> 
+				<div class="col-md-12">
+					<input id="addRepLastName" class="form-control required input-sm" size="35"
+						placeholder="{{'addNewRep.label.lastName' | translate}}"
+						validator="required,validateAlphaWithOneSpaceAndPunctuation"
+						required-error-message="{{'addNewRep.errorMessage.lastNameRequired' | translate}}"
+						validate-Alpha-With-One-Space-And-Punctuation-error-message="{{'addNewRep.errorMessage.lastNameNotValid' | translate}}"
+						valid-method="watch" ng-model="inviteRep.lastname" type="text" maxlength="50" name="lastname" />
+				</div>
+			</div>
+			<div class="form-group col-sm-12 col-md-6">
+				<label class="col-md-12">
+					{{'addNewRep.label.email' | translate}} <span class="asterisk">*</span> </label>
+				<div class="col-md-12">
+					<input id="addRepEmail" class="form-control required input-sm" size="35"
+						validator="required ,validateAlphanumSpecial, validateEmail"
+						placeholder="{{'addNewRep.label.email' | translate}}"
+						validate-email-error-message="{{'addNewRep.errorMessage.emailNotValid' | translate}}"
+						validate-alphanum-special-error-message="{{'common.errorMessage.allowedSpecialCharacters' | translate}}"
+						required-error-message="{{'addNewRep.errorMessage.emailRequired' | translate}}"
+						valid-method="watch" ng-model="inviteRep.email" type="text" maxlength="100"
+						name="recipientEmail" />
+				</div>
+			</div>
+			<div class="form-group col-sm-12 col-md-6">
+				<label class="col-md-12">
+					{{'addNewRep.label.phone' | translate}} <span class="asterisk">*</span>
+				</label>
+				<div class="col-md-12">
+					<input id="addRepPhone" class="form-control required input-sm" size="35"
+						validator="required,validateAlphanumSpecial"
+						placeholder="{{'addNewRep.label.phone' | translate}}"
+						validate-alphanum-special-error-message="{{'common.errorMessage.allowedSpecialCharacters' | translate}}"
+						required-error-message="{{'addNewRep.errorMessage.phoneRequired' | translate}}"
+						valid-method="watch" ng-model="inviteRep.workPhone" type="text" maxlength="20"
+						name="recipientPhone" />
+				</div>
+			</div>
+			<div class="form-group col-sm-12 col-md-12 col-lg-12">
+				<div class="col-sm-12 col-md-12 ">
+					<button class="btn btn-primary" validation-submit="addNewRepInviteForm"
+						ng-click="validateAddNewRep(inviteRep);">{{'addNewRep.label.invite' | translate}}</button>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>

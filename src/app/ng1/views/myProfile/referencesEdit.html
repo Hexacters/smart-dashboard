@@ -1,0 +1,245 @@
+<div class="row" ng-controller="myProfileController">
+	<div class="col-sm-12 col-md-12 col-lg-12"
+		data-ng-class="{'dNone':!loading}">
+		<img align="absmiddle" src="app/ng1/img/partial-loading.gif">&nbsp;{{'common.loading'
+		| translate}}
+	</div>
+	<div class="col-sm-12 col-md-12 col-lg-12">
+		<div class="col-sm-8 col-md-6 col-lg-6">
+			<h3>
+				<b>{{'myProfile.references.header.referencesTitle' |translate}}</b>
+			</h3>
+			<p>{{'myProfile.references.label.addUpto3' | translate}}</p>
+		</div>
+		<div class="col-sm-4 col-md-6 col-lg-6">
+			<div class="pull-right marginT2">
+				<a data-ui-sref="myProfile.referencesEdit.referencesEditHelp" ng-show="!isFromManageReps">{{'common.help'
+					| translate}}</a>
+				<a data-ui-sref="manage.repAccountDetails.manageRepProfile.referencesEdit.referencesEditHelp" ng-show="isFromManageReps">{{'common.help'
+					| translate}}</a>
+			</div>
+		</div>
+		<div class="col-sm-12 col-md-12 col-lg-12">
+			<vision-action> <get-data service="myProfileServices"
+				response-formatter="referenceListSortByOid"
+				operation="getReferences" root-node="data.successData.ReferenceList"
+				form-node="data.Reference"></get-data> <submit-data
+				service="myProfileServices" operation="saveReferences" request-formatter="saveReferencesRemoveKey"
+				callback="referencesEditInfo" ></submit-data>
+			<div class="table-responsive"
+				data-ng-if="saveReferencesSubmitError.status === 'error'">
+				<div class="alert alert-danger">
+				{{saveReferencesSubmitError.errorData.ResponseError[0].longMessage}}</div>
+			</div>
+			<form novalidate name="references" autocomplete="off"
+				class="form-horizontal">
+				<h5>
+					<b>{{'myProfile.references.label.reference1' | translate}}</b>
+				</h5>
+				<div ng-if="data.Reference" ng-init="data.userOid=userOid">
+						<input type="hidden" ng-model="data.userOid" name="userOid">
+				</div>
+				<div class="col-sm-12 col-md-12 col-lg-12 padding0">
+					<div class="col-sm-6 col-md-6 col-lg-6">
+						<div class="form-group">
+							<label class="col-sm-6 col-md-6 col-lg-6 text-right">{{'myProfile.references.label.firstName'
+								| translate}}</label>
+							<div class="col-sm-6 col-md-6 col-lg-6"
+								ng-init="reference1.firstName = data.ReferenceList[0].firstName">
+								{{data.ReferenceList[0].firstName}} <input type="text"
+									id="myProfile.reference.firstName" autofocus="true"
+									class="form-control input-sm" name="Reference0.firstName"
+									validator="validateAlphanumSpecial"
+									validate-alphanum-special-error-message="{{'common.errorMessage.allowedSpecialCharacters' | translate}}"
+									data-ng-model="data.Reference[0].firstName" maxLength="50" />
+								<div ng-if="data" ng-init="data.userOid=userOid">
+									<input type="hidden" ng-model="data.userOid" name="userOid">
+							</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-6 col-md-6 col-lg-6 text-right">{{'myProfile.references.label.lastName'
+								| translate}}</label>
+							<div class="col-sm-6 col-md-6 col-lg-6">
+								{{data.ReferenceList[0].lastName}} <input type="text"
+									id="myProfile.reference.lastName" class="form-control input-sm"
+									name="Reference0.lastName" validator="validateAlphanumSpecial"
+									validate-alphanum-special-error-message="{{'common.errorMessage.allowedSpecialCharacters' | translate}}"
+									data-ng-model="data.Reference[0].lastName" maxLength="50" />
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-6 col-md-6 col-lg-6 text-right">{{'myProfile.references.label.companyName'
+								| translate}}</label>
+							<div class="col-sm-6 col-md-6 col-lg-6">
+								<input type="text" id="myProfile.reference.companyName"
+									class="form-control input-sm" name="Reference0.companyName"
+									validator="validateAlphanumSpecial"
+									validate-alphanum-special-error-message="{{'common.errorMessage.allowedSpecialCharacters' | translate}}"
+									ng-init="data.reference1.companyName = data.ReferenceList[0].companyName"
+									data-ng-model="data.Reference[0].companyName" maxLength="100" />
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-6 col-md-6 col-lg-6 text-right">{{'myProfile.references.label.phone'
+								| translate}}</label>
+							<div class="col-sm-6 col-md-6 col-lg-6">
+								<input type="text" id="myProfile.reference.phone"
+									validator="validateAlphanumSpecial"
+									validate-alphanum-special-error-message="{{'common.errorMessage.allowedSpecialCharacters' | translate}}"
+									class="form-control input-sm" name="Reference0.phone"
+									data-ng-model="data.Reference[0].workPhone" maxLength="20" />
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-6 col-md-6 col-lg-6 text-right">{{'myProfile.references.label.email'
+								| translate}}</label>
+							<div class="col-sm-6 col-md-6 col-lg-6">
+								<input type="text" id="myProfile.reference.Email"
+									class="form-control input-sm" name="Reference0.email"
+									data-ng-model="data.Reference[0].email"
+									validator="validateEmail"
+									validate-email-error-message="{{'myProfile.references.errorMessage.properEmailFormate'|translate}}"
+									maxLength="100" />
+							</div>
+						</div>
+					</div>
+				</div>
+				<h5>
+					<b>{{'myProfile.references.label.reference2' | translate}}</b>
+				</h5>
+				<div class="col-sm-12 col-md-12 col-lg-12 padding0">
+					<div class="col-sm-6 col-md-6 col-lg-6">
+						<div class="form-group">
+							<label class="col-sm-6 col-md-6 col-lg-6 text-right">{{'myProfile.references.label.firstName'
+								| translate}}</label>
+							<div class="col-sm-6 col-md-6 col-lg-6">
+								<input type="text" id="myProfile.reference.firstName"
+									class="form-control input-sm" name="Reference1.firstName"
+									validator="validateAlphanumSpecial"
+									validate-alphanum-special-error-message="{{'common.errorMessage.allowedSpecialCharacters' | translate}}"
+									data-ng-model="data.Reference[1].firstName" maxLength="50" />
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-6 col-md-6 col-lg-6 text-right">{{'myProfile.references.label.lastName'
+								| translate}}</label>
+							<div class="col-sm-6 col-md-6 col-lg-6">
+								<input type="text" id="myProfile.reference.lastName"
+									class="form-control input-sm" name="Reference1.lastName"
+									validator="validateAlphanumSpecial"
+									validate-alphanum-special-error-message="{{'common.errorMessage.allowedSpecialCharacters' | translate}}"
+									data-ng-model="data.Reference[1].lastName" maxLength="50" />
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-6 col-md-6 col-lg-6 text-right">{{'myProfile.references.label.companyName'
+								| translate}}</label>
+							<div class="col-sm-6 col-md-6 col-lg-6">
+								<input type="text" id="myProfile.reference.companyName"
+									class="form-control input-sm" name="Reference1.companyName"
+									validator="validateAlphanumSpecial"
+									validate-alphanum-special-error-message="{{'common.errorMessage.allowedSpecialCharacters' | translate}}"
+									data-ng-model="data.Reference[1].companyName" maxLength="100" />
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-6 col-md-6 col-lg-6 text-right">{{'myProfile.references.label.phone'
+								| translate}}</label>
+							<div class="col-sm-6 col-md-6 col-lg-6">
+								<input type="text" id="myProfile.reference.phone"
+									class="form-control input-sm" name="Reference1.phone"
+									validator="validateAlphanumSpecial"
+									validate-alphanum-special-error-message="{{'common.errorMessage.allowedSpecialCharacters' | translate}}"
+									data-ng-model="data.Reference[1].workPhone" maxLength="20" />
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-6 col-md-6 col-lg-6 text-right">{{'myProfile.references.label.email'
+								| translate}}</label>
+							<div class="col-sm-6 col-md-6 col-lg-6">
+								<input type="text" id="myProfile.reference.Email"
+									class="form-control input-sm" name="Reference1.email"
+									data-ng-model="data.Reference[1].email"
+									validator="validateEmail"
+									validate-email-error-message="{{'myProfile.references.errorMessage.properEmailFormate'|translate}}"
+									maxLength="100" />
+							</div>
+						</div>
+					</div>
+				</div>
+				<h5>
+					<b>{{'myProfile.references.label.reference3' | translate}}</b>
+				</h5>
+				<div class="col-sm-12 col-md-12 col-lg-12 padding0">
+					<div class="col-sm-6 col-md-6 col-lg-6">
+						<div class="form-group">
+							<label class="col-sm-6 col-md-6 col-lg-6 text-right">{{'myProfile.references.label.firstName'
+								| translate}}</label>
+							<div class="col-sm-6 col-md-6 col-lg-6">
+								<input type="text" id="myProfile.reference.firstName"
+									validator="validateAlphanumSpecial"
+									validate-alphanum-special-error-message="{{'common.errorMessage.allowedSpecialCharacters' | translate}}"
+									class="form-control input-sm" name="Reference2.firstName"
+									data-ng-model="data.Reference[2].firstName" maxLength="50" />
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-6 col-md-6 col-lg-6 text-right">{{'myProfile.references.label.lastName'
+								| translate}}</label>
+							<div class="col-sm-6 col-md-6 col-lg-6">
+								<input type="text" id="myProfile.reference.lastName"
+									validator="validateAlphanumSpecial"
+									validate-alphanum-special-error-message="{{'common.errorMessage.allowedSpecialCharacters' | translate}}"
+									class="form-control input-sm" name="Reference2.lastName"
+									data-ng-model="data.Reference[2].lastName" maxLength="50" />
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-6 col-md-6 col-lg-6 text-right">{{'myProfile.references.label.companyName'
+								| translate}}</label>
+							<div class="col-sm-6 col-md-6 col-lg-6">
+								<input type="text" id="myProfile.reference.companyName"
+									validator="validateAlphanumSpecial"
+									validate-alphanum-special-error-message="{{'common.errorMessage.allowedSpecialCharacters' | translate}}"
+									class="form-control input-sm" name="Reference2.companyName"
+									data-ng-model="data.Reference[2].companyName" maxLength="100" />
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-6 col-md-6 col-lg-6 text-right">{{'myProfile.references.label.phone'
+								| translate}}</label>
+							<div class="col-sm-6 col-md-6 col-lg-6">
+								<input type="text" id="myProfile.reference.phone"
+									validator="validateAlphanumSpecial"
+									validate-alphanum-special-error-message="{{'common.errorMessage.allowedSpecialCharacters' | translate}}"
+									class="form-control input-sm" name="Reference2.phone"
+									data-ng-model="data.Reference[2].workPhone" maxLength="20" />
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-6 col-md-6 col-lg-6 text-right">{{'myProfile.references.label.email'
+								| translate}}</label>
+							<div class="col-sm-6 col-md-6 col-lg-6">
+								<input type="text" id="myProfile.reference.Email"
+									class="form-control input-sm" name="Reference2.email"
+									data-ng-model="data.Reference[2].email"
+									validator="validateEmail"
+									validate-email-error-message="{{'myProfile.references.errorMessage.properEmailFormate'|translate}}"
+									maxLength="100" />
+							</div>
+						</div>
+						<div class="form-group">
+							<div
+								class="col-sm-6 col-md-6 col-lg-6 col-lg-offset-6 col-sm-offset-6 col-md-offset-6 text-left">
+								<button class="btn btn-success" id="references"
+									validation-submit="references" ng-click="submit();callGAPageTrack('saveReferences');" >{{'common.save' | translate}}</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</form>
+			</vision-action>
+		</div>
+	</div>
+</div>

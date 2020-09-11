@@ -1,0 +1,26 @@
+{
+    "statusCode": "201",
+    "statusPhrase": "Created",
+    "statusFlag": "Ok",
+    "contentType": "application/json",
+    "responseHeaderMap": {
+      "X-Frame-Options": "DENY",
+      "Keep-Alive": "timeout=60",
+      "Uid": "CAC7DAD2C1A3D3BD27660903B4099A1B",
+      "Cache-Control": "no-cache, no-store, max-age=0, must-revalidate",
+      "X-Content-Type-Options": "nosniff",
+      "Connection": "keep-alive",
+      "Pragma": "no-cache",
+      "Expires": "0",
+      "X-XSS-Protection": "1; mode=block",
+      "Content-Length": "0",
+      "Date": "Fri, 17 Jul 2020 11:16:10 GMT"
+    },
+    "response": null,
+    "responseByte": null,
+    "responseMap": {
+      
+    },
+    "returnContentType": null,
+    "paramObjectsMap": null
+  }

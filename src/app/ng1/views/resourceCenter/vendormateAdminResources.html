@@ -1,0 +1,34 @@
+<div ng-controller="googleAnalyticsController" data-ng-init="callGAPageTrack('vendormateAdminResources');"></div>
+<div ng-controller="resourceCenterController">
+    <vision-action>
+        <get-data service="resourceCenterServices" operation="getVendormateAdminRepResource" params='{"resourceCategory":"GA"}'></get-data>
+		<div class="col-sm-12 col-md-12 col-lg-12">
+		<div data-ng-class="{'dNone':!loading}">
+			<img align="absmiddle" src="app/ng1/img/partial-loading.gif" />{{'common.loading' | translate}}
+		</div>
+		<div class="text-danger col-sm-12 col-md-12 col-lg-12 paddingL0" ng-show="getError.errorData.Status == 'Error' && getError.errorData.ResponseError[0].errorCode !='5061'">
+            <strong><i class="fa fa-warning"></i></strong>&nbsp; {{getError.errorData.ResponseError[0].errorCode | translate}}</div>
+		<div class="text-danger col-sm-12 col-md-12 col-lg-12 paddingL0" ng-show="getError.errorData.Status == 'Error' && getError.errorData.ResponseError[0].errorCode =='5061'">
+            <strong><i class="fa fa-warning"></i></strong>&nbsp; {{'resourceCenter.vendormateadminResources.errorMessage.noVendormateAdminResources' | translate}}</div>
+			
+		<div ng-repeat="item in data.successData.ResourceList" ng-switch on="$index % 3">
+			<div class="col-sm-5 col-md-4 col-lg-4 marginBP5" ng-switch-when="0">
+				<a ng-if="data.successData.ResourceList[$index].resourceType != 'URL'" data-ng-click="viewResourceCenterDocument(data.successData.ResourceList[$index].mongoKey);" tooltip="{{data.successData.ResourceList[$index].resourceDescription}}" tooltip-placement="right" tooltip-append-to-body="true"><span ng-if="data.successData.ResourceList[$index].resourceName.length>=30">{{data.successData.ResourceList[$index].resourceName | limitTo:30}}...</span><span ng-if="data.successData.ResourceList[$index].resourceName.length<30">{{data.successData.ResourceList[$index].resourceName}}</span></a>
+				<a ng-if="data.successData.ResourceList[$index].resourceType == 'URL'" data-ng-click="loadURLVendorResource(data.successData.ResourceList[$index].resourceUrl);" tooltip="{{data.successData.ResourceList[$index].resourceDescription}}" tooltip-placement="right" tooltip-append-to-body="true"><span ng-if="data.successData.ResourceList[$index].resourceName.length>=30">{{data.successData.ResourceList[$index].resourceName | limitTo:30}}...</span><span ng-if="data.successData.ResourceList[$index].resourceName.length<30">{{data.successData.ResourceList[$index].resourceName}}</span></a><br>
+			</div>
+			<span ng-show="data.successData.ResourceList[$index+1]">
+				<div class="col-sm-5 col-md-4 col-lg-4 marginBP5" ng-switch-when="0">
+					<a ng-if="data.successData.ResourceList[$index+1].resourceType != 'URL'" data-ng-click="viewResourceCenterDocument(data.successData.ResourceList[$index+1].mongoKey);" tooltip="{{data.successData.ResourceList[$index+1].resourceDescription}}" tooltip-placement="top" tooltip-append-to-body="true"><span ng-if="data.successData.ResourceList[$index+1].resourceName.length>=30">{{data.successData.ResourceList[$index+1].resourceName | limitTo:30}}..</span><span ng-if="data.successData.ResourceList[$index+1].resourceName.length<30">{{data.successData.ResourceList[$index+1].resourceName}}</span></a>
+					<a ng-if="data.successData.ResourceList[$index+1].resourceType == 'URL'" data-ng-click="loadURLVendorResource(data.successData.ResourceList[$index+1].resourceUrl);" tooltip="{{data.successData.ResourceList[$index+1].resourceDescription}}" tooltip-placement="top" tooltip-append-to-body="true"><span ng-if="data.successData.ResourceList[$index+1].resourceName.length>=30">{{data.successData.ResourceList[$index+1].resourceName | limitTo:30}}..</span><span ng-if="data.successData.ResourceList[$index+1].resourceName.length<30">{{data.successData.ResourceList[$index+1].resourceName}}</span></a><br>
+				</div>
+			</span>
+			<span ng-show="data.successData.ResourceList[$index+2]">
+				<div class="col-sm-5 col-md-4 col-lg-4 marginBP5" ng-switch-when="0">
+					<a ng-if="data.successData.ResourceList[$index+2].resourceType != 'URL'" data-ng-click="viewResourceCenterDocument(data.successData.ResourceList[$index+2].mongoKey);" tooltip="{{data.successData.ResourceList[$index+2].resourceDescription}}" tooltip-placement="left" tooltip-append-to-body="true"><span ng-if="data.successData.ResourceList[$index+2].resourceName.length>=30">{{data.successData.ResourceList[$index+2].resourceName | limitTo:30}}...</span><span ng-if="data.successData.ResourceList[$index+2].resourceName.length<30">{{data.successData.ResourceList[$index+2].resourceName}}</span></a>
+					<a ng-if="data.successData.ResourceList[$index+2].resourceType == 'URL'" data-ng-click="loadURLVendorResource(data.successData.ResourceList[$index+2].resourceUrl);" tooltip="{{data.successData.ResourceList[$index+2].resourceDescription}}" tooltip-placement="left" tooltip-append-to-body="true"><span ng-if="data.successData.ResourceList[$index+2].resourceName.length>=30">{{data.successData.ResourceList[$index+2].resourceName | limitTo:30}}...</span><span ng-if="data.successData.ResourceList[$index+2].resourceName.length<30">{{data.successData.ResourceList[$index+2].resourceName}}</span></a><br>
+				</div>
+			</span>
+		</div>
+		</div>
+	</vision-action>
+</div>

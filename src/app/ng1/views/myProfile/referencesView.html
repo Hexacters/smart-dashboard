@@ -1,0 +1,82 @@
+<div ng-controller="googleAnalyticsController" data-ng-init="callGAPageTrack('callReferences');"></div>
+<div class="row">
+	<div class="col-sm-12 col-md-12 col-lg-12"
+		data-ng-class="{'dNone':!loading}">
+		<img align="absmiddle" src="app/ng1/img/partial-loading.gif">&nbsp;{{'common.loading'
+		| translate}}
+	</div>
+	<div class="col-sm-12 col-md-12 col-lg-12">
+		<div class="col-sm-8 col-md-6 col-lg-6">
+			<h3>
+				<b>{{'myProfile.references.header.referencesTitle' | translate}}</b>
+			</h3>
+		</div>
+		<div class="col-sm-4 col-md-6 col-lg-6">
+			<div class="pull-right marginT2">
+				<a data-ui-sref="myProfile.referencesView.referencesViewHelp" ng-show="!isFromManageReps">{{'common.help' | translate}}</a>
+				<a data-ui-sref="manage.repAccountDetails.manageRepProfile.referencesView.referencesViewHelp" ng-show="isFromManageReps">{{'common.help' 
+					| translate}}</a>
+			</div>
+		</div>
+		<div class="col-sm-12 col-md-12 col-lg-12">
+			<vision-action> <get-data service="myProfileServices"
+				operation="getReferences"></get-data>
+			<div class="table-responsive"
+				data-ng-if="data.submitError.Status=='Error' || dataError.submitError.Status=='Error'">
+				<div class="alert text-danger">
+					<span class="fa fa-warning" aria-hidden="true"></span>
+					{{data.submitError.ResponseError[0].errorCode | translate}}
+					{{dataError.submitError.ResponseError[0].errorCode | translate}}
+				</div>
+			</div>
+			<form novalidate name="references" autocomplete="off"
+				class="form-horizontal">
+				<div ng-repeat="reference in data.successData.ReferenceList | orderBy :'oid'">
+					<div
+						ng-if="reference.firstName || reference.lastName || reference.companyName || reference.workPhone || reference.email">
+						<h5>
+							<b>Reference {{$index+1}}</b>
+						</h5>
+						<div class="col-sm-12 col-md-12 col-lg-12 padding0">
+							<div class="col-sm-6 col-md-6 col-lg-6">
+								<div class="form-group"
+									ng-init="data.successData.ReferenceList.testname='Active'">
+									<label class="col-sm-6 col-md-6 col-lg-6 text-right">{{'myProfile.references.label.firstName'
+										| translate}}</label>
+									<p class="break-word col-sm-6 col-md-6 col-lg-6">{{reference.firstName}}</p>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-6 col-md-6 col-lg-6 text-right">{{'myProfile.references.label.lastName'
+										| translate}}</label>
+									<p class="break-word col-sm-6 col-md-6 col-lg-6">{{reference.lastName}}</p>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-6 col-md-6 col-lg-6 text-right">{{'myProfile.references.label.companyName'
+										| translate}}</label>
+									<p class="break-word col-sm-6 col-md-6 col-lg-6">{{reference.companyName}}</p>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-6 col-md-6 col-lg-6 text-right">{{'myProfile.references.label.phone'
+										| translate}}</label>
+									<p class="break-word col-sm-6 col-md-6 col-lg-6">{{reference.workPhone}}</p>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-6 col-md-6 col-lg-6 text-right">{{'myProfile.references.label.email'
+										| translate}}</label>
+									<p class="break-word col-sm-6 col-md-6 col-lg-6">{{reference.email}}</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div ng-if="!data.successData.ReferenceList.testname">
+					<h6>
+						<b>{{'myProfile.references.errorMessage.noReferenceProvided' |
+							translate}}</b>
+					</h6>
+				</div>
+			</form>
+			</vision-action>
+		</div>
+	</div>
+</div>

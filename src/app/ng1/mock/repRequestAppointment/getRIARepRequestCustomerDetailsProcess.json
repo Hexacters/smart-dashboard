@@ -1,0 +1,195 @@
+{
+    "VisionResponse": {
+        "Status": "Ok",
+        "RepRiaBuyersSummaryList": [
+            {
+                "buyerOid": "c0100006881000006882",
+                "buyerFirstName": "Baptist'User",
+                "buyerLastName": "Buy'er",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "buyerOid": "c0100006480000006486",
+                "buyerFirstName": "baptist",
+                "buyerLastName": "buyer",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "buyerOid": "c01000051e10000051ef",
+                "buyerFirstName": "IT",
+                "buyerLastName": "Admin",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "buyerOid": "c0100007953000007974",
+                "buyerFirstName": "baptist",
+                "buyerLastName": "buyer",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "buyerOid": "c010000685d00000686d",
+                "buyerFirstName": "baptist customer",
+                "buyerLastName": "buyer",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "buyerOid": "c0100004d1d000004d1e",
+                "buyerFirstName": "baptist admin",
+                "buyerLastName": "buyer",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "buyerOid": "c010000515f00000517d",
+                "buyerFirstName": "baptist",
+                "buyerLastName": "buyer",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "buyerOid": "c010000515f000005184",
+                "buyerFirstName": "Baptist",
+                "buyerLastName": "Buyer",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "buyerOid": "c010000515f000005161",
+                "buyerFirstName": "service",
+                "buyerLastName": "buyer",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "buyerOid": "00000198240000004d83",
+                "buyerFirstName": "DoNotSelect",
+                "buyerLastName": "Admin",
+                "updateAction": false,
+                "deleteAction": false
+            }
+        ],
+        "contentType": "application/json",
+        "DepartmentSummaryList": [
+            {
+                "id": "Accounting",
+                "oid": "c01000051f400000525c"
+            },
+            {
+                "id": "Administration",
+                "oid": "c01000051f4000005262"
+            },
+            {
+                "id": "Biomedical Engineering",
+                "oid": "c01000051f400000524f"
+            },
+            {
+                "id": "Cardiology",
+                "oid": "c01000051f4000005255"
+            },
+            {
+                "id": "Cath Lab",
+                "oid": "c01000051f400000524e"
+            },
+            {
+                "id": "Dept",
+                "oid": "00000198300000004d7d"
+            },
+            {
+                "id": "Emergency Department",
+                "oid": "c01000051f4000005258"
+            },
+            {
+                "id": "Endoscopy",
+                "oid": "c01000051f400000525d"
+            },
+            {
+                "id": "EP Lab",
+                "oid": "c01000051f4000005260"
+            },
+            {
+                "id": "Facilities",
+                "oid": "c01000051f4000005256"
+            },
+            {
+                "id": "Information Technology",
+                "oid": "c01000051f400000525b"
+            },
+            {
+                "id": "Lab",
+                "oid": "c01000051f4000005252"
+            },
+            {
+                "id": "Marketing",
+                "oid": "c01000051f400000525a"
+            },
+            {
+                "id": "Material Management",
+                "oid": "c01000051f4000005251"
+            },
+            {
+                "id": "NICU",
+                "oid": "c01000051f4000005257"
+            },
+            {
+                "id": "Nuclear Medicine",
+                "oid": "c01000051f4000005261"
+            },
+            {
+                "id": "Nursing",
+                "oid": "c01000051f400000525e"
+            },
+            {
+                "id": "Oncology",
+                "oid": "c01000051f400000525f"
+            },
+            {
+                "id": "Operating Room/Surgery",
+                "oid": "c01000051f400000524d"
+            },
+            {
+                "id": "Pharmacy",
+                "oid": "c01000051f4000005250"
+            },
+            {
+                "id": "Radiology",
+                "oid": "c01000051f4000005254"
+            },
+            {
+                "id": "Security",
+                "oid": "c01000051f4000005259"
+            },
+            {
+                "id": "SPD",
+                "oid": "c01000051f4000005253"
+            }
+        ],
+        "LocationSummaryList": [
+            {
+                "seq": 99999,
+                "id": "Location",
+                "customerOid": "baptisthealth",
+                "oid": "00000198290000004d83",
+                "name": "Location"
+            },
+            {
+                "seq": 999999,
+                "id": "Location1",
+                "customerOid": "baptisthealth",
+                "oid": "c01000054b50000054b6",
+                "name": "Location1"
+            },
+            {
+                "seq": 999999,
+                "id": "Location2",
+                "customerOid": "baptisthealth",
+                "oid": "c0100005dd5000005dd8",
+                "name": "Location2"
+            }
+        ]
+    }
+}

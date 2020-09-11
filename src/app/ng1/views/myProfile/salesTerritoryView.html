@@ -1,0 +1,56 @@
+<div ng-controller="googleAnalyticsController" data-ng-init="callGAPageTrack('callSalesTerritory');"></div>
+<div ng-controller="myProfileController" class="row">
+	<div class="col-sm-12 col-md-12 col-lg-12"
+		data-ng-class="{'dNone':!loading}">
+		<img align="absmiddle" src="app/ng1/img/partial-loading.gif" />&nbsp;{{'common.loading'
+		| translate}}
+	</div>
+	<div class="col-sm-12 col-md-12 col-lg-12">
+		<div class="col-sm-12 col-md-12 col-lg-12 row">
+			<div class="col-sm-8 col-md-6 col-lg-6">
+				<h3>
+					<b><sup class="asterisk">*</sup>{{'myProfile.salesTerritory.header.salesTerritoryTitle'
+						| translate}}</b>
+				</h3>
+			</div>
+			<div class="col-sm-4 col-md-6 col-lg-6">
+				<div class="pull-right marginT2">
+					<sup class="asterisk">*</sup>&nbsp;{{'common.required' | translate}}
+					<a data-ui-sref="myProfile.salesTerritoryView.help" ng-show="!isFromManageReps">{{'common.help'
+					| translate}}</a>
+					<a data-ui-sref="manage.repAccountDetails.manageRepProfile.salesTerritoryView.help" 
+					ng-show="isFromManageReps">{{'common.help' | translate}}</a>
+				</div>
+			</div>
+		</div>
+		<vision-action> <get-data service="myProfileServices" request-formatter="getGeoSalesTerritoriesaParam"
+			operation="getSalesTerritories"></get-data>
+		<div class="col-sm-6 col-md-6 col-lg-6 marginB2">
+			<h5>
+				<b>{{'myProfile.salesTerritory.label.statesTerritoriesProvinces'
+					| translate}}</b>
+			</h5>
+			<div class="col-sm-9 col-md-9 col-lg-9 paddingL0 salesTerritory"
+				ng-model="q.orderNo">
+				<span ng-if="data.successData.stateSalesTerritories.length > 0"
+					ng-repeat="states in data.successData.stateSalesTerritories">
+					<div>{{states.stateName}}</div>
+				</span> <span ng-if="!data.successData.stateSalesTerritories">
+					{{'myProfile.salesTerritory.label.noStateFound' | translate}} </span>
+			</div>
+		</div>
+		<div class="col-sm-6 col-md-6 col-lg-6 marginB2">
+			<h5>
+				<b>{{'myProfile.salesTerritory.label.countries' | translate}}</b>
+			</h5>
+			<div class="col-sm-9 col-md-9 col-lg-9 paddingL0 salesTerritory">
+				<span ng-if="data.successData.countrySalesTerritories.length > 0"
+					ng-repeat="country in data.successData.countrySalesTerritories">
+					<div>{{country.countryName}}</div>
+				</span> <span ng-if="!data.successData.countrySalesTerritories">
+					{{'myProfile.salesTerritory.label.noCountryFound' | translate}} </span>
+			</div>
+		</div>
+		</vision-action>
+	</div>
+</div>

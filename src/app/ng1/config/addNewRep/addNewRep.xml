@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<module id="addNewRepsModule">
+	<routers>
+		<router id="addNewRep" sticky="true" url="/invite">
+			<views>
+				<view containerId="vendordash" templateUrl="app/ng1/views/addNewRep/addNewRepAccordion.html"></view>
+			</views>
+		</router>
+		<router id="addNewRep.inviteRep" url="/addNewReps">
+			<views>
+				<view containerId="addNewRepView" templateUrl="app/ng1/views/addNewRep/inviteRep.html"></view>
+			</views>
+		</router>
+		<router id="addNewRep.cartSummary" url="/payment">
+			<views>
+				<view containerId="addNewRepView" templateUrl="app/ng1/views/addNewRep/addNewRepCartSummary.html"></view>
+			</views>
+		</router>
+		<router id="addNewRep.billingInfo" sticky="true" url="/billingInfo">
+			<views>
+				<view containerId="addNewRepView" templateUrl="app/ng1/views/addNewRep/addNewRepBillingInfo.html"></view>
+			</views>
+		</router>
+		<router id="addNewRep.checkout" sticky="true" url="/checkout">
+			<views>
+				<view containerId="addNewRepView" templateUrl="app/ng1/views/addNewRep/addNewRepCartCheckout.html"></view>
+			</views>
+		</router>
+	</routers>
+	<services id="addNewRepServices">
+		<operations>
+			<operation name="getAllVendorRepProfiles" serviceName="vendorrep"
+				requestWrapper="request" responseWrapper="response" requestType="json"
+				method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/addNewRep/getAllVendorRepProfiles.json"
+				mock="false">
+				<params>
+					<param name="userOid" source="userProfile" key="id"></param>
+				</params>
+			</operation>
+			<operation name="getGlobalProfileForRegistration" serviceName="registration"
+				requestWrapper="request" responseWrapper="response" requestType="json"
+				method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/addNewRep/getGlobalProfileForRegistration.json" mock="false">
+			</operation>
+			<operation name="validateVendorRep" serviceName="vendorrep"
+				requestWrapper="request" responseWrapper="response" requestType="json"
+				method="get" url="VMClientProxyServlet"
+				mockUrl="app/ng1/mock/addNewRep/validateVendorRep.json" mock="false">
+			</operation>
+			<operation name="validateOrderDetails" requestType="json" requestWrapper="request"
+				responseWrapper="response"  serviceName="shoppingCart" method="get" url="VMClientProxyServlet"
+				mockUrl="app/ng1/mock/addNewRep/saveShoppingOrder.json" mock="false">
+			</operation>
+			<operation name="savePaymentProfileDetails" requestType="json" requestWrapper="request"
+				responseWrapper="response"  serviceName="shoppingCart" method="post" url="VMClientProxyServlet"
+				mockUrl="app/ng1/mock/addNewRep/savePaymentProfileDetails .json" mock="false">
+			</operation>
+			<operation name="getPaymentTechUID" secure="true" method="post" requestType="json"
+				serviceName="payment" url="services/getPaymentTechUID" requestWrapper="request"
+				responseWrapper="response" mockUrl="app/ng1/mock/addNewRep/getPaymentTechUID.json" mock="false">
+			</operation>
+			<operation name="updatePaymentDetails" requestType="json"
+				requestWrapper="request" responseWrapper="response" method="POST"
+				url="services/updatePaymentDetails" serviceName="payment" mockUrl="app/ng1/mock/addNewRep/updatePaymentDetails.json"
+				mock="false">
+			</operation>
+			<operation name="inviteRepsProcess" serviceName="vendorrep"
+				requestWrapper="request" responseWrapper="response" requestType="json"
+				method="post" url="VMClientProxyServlet"
+				mockUrl="app/ng1/mock/addNewRep/inviteReps.json" mock="false">
+			</operation>
+		</operations>
+	</services>
+</module>

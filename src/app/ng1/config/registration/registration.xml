@@ -1,0 +1,243 @@
+<?xml version="1.0"?>
+<module id="registrationModule">
+	<routers>
+		<router id="dashboard" url="/normal">
+			<views>
+				<view templateUrl="app/ng1/views/registration/normal/normalRegistration.html"></view>
+			</views>
+		</router>
+		<router id="dashboard.seachAccounts" url="/seachAccounts">
+			<views>
+				<view templateUrl="app/ng1/views/registration/normal/seachAccounts.html"></view>
+			</views>
+		</router>
+		<router id="dashboard.healthsystemDetails" url="/healthsystemDetails">
+			<views>
+				<view templateUrl="app/ng1/views/registration/normal/healthsystemDetails.html"></view>
+			</views>
+		</router>
+		<router id="dashboard.healthsystemDetails.onboardCompany" type="dialog" url="/onboardCompany">
+			<views>
+				<view templateUrl="app/ng1/views/registration/normal/onboardCompany.html"></view>
+			</views>
+		</router>
+		<router id="dashboard.companyDetails" url="/companyDetails">
+			<views>
+				<view templateUrl="app/ng1/views/registration/normal/companyDetails.html"></view>
+			</views>
+		</router>
+		<router id="dashboard.companyRelationship" url="/companyRelationship">
+			<views>
+				<view templateUrl="app/ng1/views/registration/normal/companyRelationship.html"></view>
+			</views>
+		</router>
+		<router id="dashboard.userRelationship" url="/userRelationship">
+			<views>
+				<view templateUrl="app/ng1/views/registration/normal/userRelationship.html"></view>
+			</views>
+		</router>
+		<router id="dashboard.agreements" url="/agreements">
+			<views>
+				<view templateUrl="app/ng1/views/registration/normal/agreements.html"></view>
+			</views>
+		</router>
+		<router id="dashboard.agreements.thankYou" abstract="true" type="dialog">
+			<views>
+				<view templateUrl="app/ng1/views/registration/normal/thankYou.html"></view>
+			</views>
+		</router>
+		<router id="dashboard.paymentDetails" url="/paymentDetails">
+			<views>
+				<view templateUrl="app/ng1/views/registration/normal/paymentDetails.html"></view>
+			</views>
+		</router>
+		<router id="dashboard.paymentDetails.thankYou" abstract="true" type="dialog">
+			<views>
+				<view templateUrl="app/ng1/views/registration/normal/thankYou.html"></view>
+			</views>
+		</router>
+		<router id="dashboard.healthsystemDetails.thankYou" abstract="true" type="dialog">
+			<views>
+				<view templateUrl="app/ng1/views/registration/normal/thankYou.html"></view>
+			</views>
+		</router>
+	</routers>
+	<services id="dashboardServices">
+		<operations>
+			<operation name="getHealthDetails" requestType="json" requestWrapper="request" responseWrapper="response" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mockhealthDetails.json" mock="false"></operation>
+			<operation name="getCustomerAddressAndLocations" requestType="json" requestWrapper="request" responseWrapper="response" method="get" serviceName="customers" url="VMClientProxyServlet" mockUrl="app/ng1/mockhealthSystemDetails.json" mock="false">
+				<params>
+					<param name="customerOid" source="data" module="customerDetail" key="customerOid"></param>
+				</params>
+			</operation>
+			<operation name="searchProducts" requestType="json" requestWrapper="request" responseWrapper="response" method="get" serviceName="common" url="VMClientProxyServlet" mockUrl="app/ng1/mockhealthSystemDetails.json" mock="false">
+			</operation>
+			<operation name="getAllCustomerLocationDepartments" requestType="json" requestWrapper="request" responseWrapper="response" serviceName="customers" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mockgetDepartment.json" mock="false">
+				<params>
+					<param name="customerOid" source="data" module="customerDetail" key="customerOid"></param>
+				</params>
+			</operation>
+			<operation name="getVendorRiskParameters" requestType="json" requestWrapper="request" responseWrapper="response" method="get" serviceName="registration" url="VMClientProxyServlet" mockUrl="app/ng1/mockhealthSystemDetails.json" mock="false">
+				<params>
+					<param name="vcOid" source="data" module="repDetails" key="vcOid"></param>
+				</params>
+			</operation>
+			<operation name="getVendor" requestType="json" requestWrapper="request" responseWrapper="response" method="get" serviceName="vendor" url="VMClientProxyServlet" mockUrl="app/ng1/mockhealthSystemDetails.json" mock="false">
+				<params>
+					<param name="vendorOid" source="userProfile" key="detail.vendorOid"></param>
+				</params>
+			</operation>
+			<operation name="saveVendorRepAgreement" requestType="json" requestWrapper="request" responseWrapper="response" method="post" serviceName="registration" url="VMClientProxyServlet" mockUrl="app/ng1/mockhealthSystemDetails.json" mock="false">
+			</operation>
+			<operation name="saveVendorRiskProfile" requestType="json" serviceName="registration" requestWrapper="request" responseWrapper="response" method="post" url="VMClientProxyServlet" mockUrl="app/ng1/mockhealthSystemDetails.json" mock="false">
+				<params>
+					<param name="vcOid" source="data" module="repDetails" key="vcOid"></param>
+					<param name="repOid" source="data" module="repDetails" key="repOid"></param>
+					<param name="hasCurrentContractRel" source="static" value="false"></param>
+					<param name="vrpAnswer1" property="question1"></param>
+					<param name="vrpAnswer2" property="question2"></param>
+					<param name="vrpAnswer3" property="question3"></param>
+					<param name="vrpAnswer4" property="question4"></param>
+					<param name="vrpAnswer5" property="question5"></param>
+					<param name="expressRegistered" source="data" module="repDetails" key="expressRegistered"></param>
+				</params>
+			</operation>
+			<operation name="getRepRiskProfileAndLocDeptProcess" requestType="json" requestWrapper="request" responseWrapper="response" serviceName="registration" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mockgetDepartment.json" mock="false">
+				<params>
+					<param name="customerOid" source="data" module="customerDetail" key="customerOid"></param>
+					<param name="repOid" source="data" module="repDetails" key="repOid"></param>
+				</params>
+			</operation>
+			<operation name="syncTPMEntityRelationForRep" requestType="json" serviceName="user" requestWrapper="request" responseWrapper="response" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mockhealthSystemDetails.json" mock="false">
+				<params>
+					<param name="vendorOid" source="userProfile" key="detail.vendorOid"></param>
+					<param name="email" source="userProfile" key="userId"></param>
+					<param name="customerOid" source="data" module="customerDetail" key="customerOid"></param>
+				</params>
+			</operation>
+			<operation name="saveProductsAndServices" requestType="json" serviceName="user" requestWrapper="request" responseWrapper="response" method="post" url="VMClientProxyServlet" mockUrl="app/ng1/mocksaveProductsAndServices.json" mock="false">
+				<params>
+					<param name="userOid" source="userProfile" key="id"></param>
+				</params>
+			</operation>
+			<operation name="saveVendorDetailNormalReg" requestType="json" targetOperation="saveVendorDetail" requestWrapper="request" responseWrapper="response" method="POST" serviceName="vendor" url="VMClientProxyServlet" mockUrl="app/ng1/mockhealthSystemDetails.json" mock="false">
+				<params>
+					<param name="VendorDetail.oid" source="userProfile" key="detail.vendorDetailOid"></param>
+					<param name="VendorDetail.vendorOid" source="userProfile" key="detail.vendorOid"></param>
+				</params>
+			</operation>
+			<operation name="getRecentProductCodes" requestType="json" requestWrapper="request" responseWrapper="response" method="get" serviceName="user" url="VMClientProxyServlet" mockUrl="app/ng1/mockgetRecentProductCodes.json" mock="false">
+				<params>
+					<param name="vendorOid" source="userProfile" key="detail.vendorOid"></param>
+				</params>
+			</operation>
+			<operation name="saveRepRiskProfile" requestType="json" requestWrapper="request" responseWrapper="response" method="post" serviceName="registration" url="VMClientProxyServlet" mockUrl="app/ng1/mocksaveRepRiskProfile.json" mock="false">
+				<params>
+					<param name="RepRiskParameter.oid" property="RepRiskParameter.repRiskParametersOid"></param>
+					<param name="RepRiskParameter.onSite" property="RepRiskParameter.vrepOnSite"></param>
+					<param name="RepRiskParameter.repQuestionString1" property="RepRiskParameter.rrpRiskQuestion1"></param>
+					<param name="RepRiskParameter.repQuestionString2" property="RepRiskParameter.rrpRiskQuestion2"></param>
+					<param name="RepRiskParameter.repQuestionString3" property="RepRiskParameter.rrpRiskQuestion3"></param>
+					<param name="RepRiskParameter.repQuestionString4" property="RepRiskParameter.rrpRiskQuestion4"></param>
+					<param name="RepRiskParameter.repQuestionString5" property="RepRiskParameter.rrpRiskQuestion5"></param>
+					<param name="RepRiskParameter.q1" property="RepRiskParameter.q_1"></param>
+					<param name="RepRiskParameter.q2" property="RepRiskParameter.q_2"></param>
+					<param name="RepRiskParameter.q3" property="RepRiskParameter.q_3"></param>
+					<param name="RepRiskParameter.q4" property="RepRiskParameter.q_4"></param>
+					<param name="RepRiskParameter.q5" property="RepRiskParameter.q_5"></param>
+					<param name="RepRiskParameter.onSite" property="RepRiskParameter.repOnSite"></param>
+				</params>
+			</operation>
+			<operation name="updateVrpRrp" requestType="json" requestWrapper="request" responseWrapper="response" method="post" serviceName="registration" url="VMClientProxyServlet" mockUrl="app/ng1/mockupdateVrpRrp.json" mock="false">
+				<params>
+					<param name="customerOid" source="data" module="customerDetail" key="customerOid"></param>
+					<param name="vcOid" source="data" module="repDetails" key="vcOid"></param>
+					<param name="vendorRepOid" source="data" module="repDetails" key="repOid"></param>
+				</params>
+			</operation>
+			<operation name="updateRepRiskProfile" requestType="json" requestWrapper="request" responseWrapper="response" method="post" serviceName="vendorrep" url="VMClientProxyServlet" mockUrl="app/ng1/mockupdateVrpRrp.json" mock="false">
+				<params>
+					<param name="vendorRepOid" source="data" module="repDetails" key="repOid"></param>
+				</params>
+			</operation>
+			<operation name="refreshPaymentProfileAndVC" requestType="json" serviceName="registration" requestWrapper="request" responseWrapper="response" method="post" url="VMClientProxyServlet" mockUrl="app/ng1/mockexpress/refreshPaymentProfileAndVC.json" mock="false">
+				<params>
+					<param name="vcOid" source="data" module="repDetails" key="vcOid"></param>
+					<param name="repOid" source="data" module="repDetails" key="repOid"></param>
+				</params>
+			</operation>
+			<operation name="saveVendorRiskProfileForNormal" targetOperation="saveVendorRiskProfile" requestType="json" serviceName="registration" requestWrapper="request" responseWrapper="response" method="post" url="VMClientProxyServlet" mockUrl="app/ng1/mockhealthSystemDetails.json" mock="false">
+				<params>
+					<param name="vcOid" source="data" module="repDetails" key="vcOid"></param>
+					<param name="repOid" source="data" module="repDetails" key="repOid"></param>
+					<param name="expressRegistered" source="data" module="repDetails" key="expressRegistered"></param>
+				</params>
+			</operation>
+			<operation name="getCustomerConflictQuestions" requestType="json" requestWrapper="request" responseWrapper="response" method="get" serviceName="registration" url="VMClientProxyServlet" mockUrl="app/ng1/mockupdateVrpRrp.json" mock="false">
+				<params>
+					<param name="customerOid" source="data" module="customerDetail" key="customerOid"></param>
+				</params>
+			</operation>
+			<operation name="saveVendorAndUser" requestType="json" serviceName="vendor" requestWrapper="request" responseWrapper="response" method="post" url="VMClientProxyServlet" mockUrl="app/ng1/mockhealthSystemDetails.json" mock="false">
+				<params>
+					<param name="vendorOid" source="userProfile" key="detail.vendorOid"></param>
+					<param name="userOid" source="userProfile" key="id"></param>
+					<param name="userId" source="userProfile" key="userId"></param>
+					<param name="customerOid" source="data" module="customerDetail" key="customerOid"></param>
+					<param name="expressRegistered" source="static" value="false"></param>
+				</params>
+			</operation>
+			<operation name="getAllLookupsByCategoriesNonSecure" method="get" serviceName="lookup" requestWrapper="request" responseWrapper="response" mockUrl="app/ng1/mock/users/getLookups.json" mock="false" url="VMClientProxyServlet" requestType="json"></operation>
+			<operation name="getAllLookupsByCategories" method="get" serviceName="lookup" requestWrapper="request" responseWrapper="response" mockUrl="app/ng1/mock/users/getLookups.json" mock="false" url="VMClientProxyServlet" requestType="json"></operation>
+			<operation name="takePaymentAndUpdateVCRelation" requestType="json" requestWrapper="request" responseWrapper="response" method="post" serviceName="registration" url="VMClientProxyServlet" mockUrl="app/ng1/mocktakePaymentAndUpdateVCRelation.json" mock="false">
+			</operation>
+			<operation name="saveVendorRiskProfileApplyCoupon" requestType="json" serviceName="registration" targetOperation="saveVendorRiskProfile" requestWrapper="request" responseWrapper="response" method="post" url="VMClientProxyServlet" mockUrl="app/ng1/mockhealthSystemDetails.json" mock="false">
+				<params>
+					<param name="vcOid" source="data" module="repDetails" key="vcOid"></param>
+					<param name="repOid" source="data" module="repDetails" key="repOid"></param>
+					<param name="hasCurrentContractRel" source="static" value="FALSE"></param>
+					<param name="numberOfReps" source="data" module="paymentCouponDetails" key="numberOfReps"></param>
+					<param name="vrpAnswer1" source="data" module="paymentCouponDetails" key="question1"></param>
+					<param name="vrpAnswer2" source="data" module="paymentCouponDetails" key="question2"></param>
+					<param name="vrpAnswer3" source="data" module="paymentCouponDetails" key="question3"></param>
+					<param name="vrpAnswer4" source="data" module="paymentCouponDetails" key="question4"></param>
+					<param name="vrpAnswer5" source="data" module="paymentCouponDetails" key="question5"></param>
+					<param name="couponCode" source="data" module="paymentCouponDetails" key="couponCode"></param>
+					<param name="expressRegistered" source="data" module="repDetails" key="expressRegistered"></param>
+				</params>
+			</operation>
+			<operation name="saveVendor" serviceName="saleentity" requestType="json" mock="false" method="post" url="VMClientProxyServlet" requestWrapper="request" responseWrapper="response">
+			</operation>
+			<operation name="saveUserRegistrationStatus" requestType="json" requestWrapper="request" responseWrapper="response" method="POST" url="VMClientProxyServlet" serviceName="registration" mockUrl="app/ng1/mocksuccess.json" mock="false">
+				<params>
+					<param name="UserRegistrationStatus.userId" source="userProfile" key="userId"></param>
+					<param name="UserRegistrationStatus.fein" source="userProfile" key="detail.fein"></param>
+					<param name="UserRegistrationStatus.userOid" source="userProfile" key="id"></param>
+					<param name="UserRegistrationStatus.vendorOid" source="userProfile" key="detail.vendorOid"></param>
+					<param name="UserRegistrationStatus.repOid" source="data" module="auditDetail" key="actorOid"></param>
+					<param name="UserRegistrationStatus.vcOid" source="data" module="auditDetail" key="vcRelationOid"></param>
+					<param name="UserRegistrationStatus.pageFailureReason" source="data" module="auditDetail" key="pageFailureReason"></param>
+					<param name="UserRegistrationStatus.pageStatus" source="data" module="auditDetail" key="pageStatus"></param>
+					<param name="UserRegistrationStatus.pageCode" source="data" module="auditDetail" key="auditCode"></param>
+					<param name="UserRegistrationStatus.registrationSource" source="static" value="RegUI"></param>
+					<param name="UserRegistrationStatus.registrationType" source="data" module="auditDetail" key="registrationType"></param>
+					<param name="UserRegistrationStatus.customerOid" source="data" module="customerDetail" key="customerOid"></param>
+					<param name="UserRegistrationStatus.phaseCompleted" source="data" module="auditDetail" key="phaseCompleted"></param>
+				</params>
+			</operation>
+
+			<operation name="getPaymentTechUID" secure="true" method="post" requestType="json" serviceName="payment" url="services/getPaymentTechUID" requestWrapper="request" responseWrapper="response" mockUrl="app/ng1/mock/shoppingCart/getPaymentTechUID.json" mock="false">
+			</operation>
+			<operation name="updatePaymentDetails" requestType="json" requestWrapper="request" responseWrapper="response" method="POST" url="services/updatePaymentDetails" serviceName="payment" mockUrl="savePaymentDetails.json" mock="false">
+			</operation>
+			<operation name="updatePaymentAndVCRelation" requestType="json" requestWrapper="request" responseWrapper="response" method="POST" url="VMClientProxyServlet" serviceName="registration" mockUrl="savePaymentDetails.json" mock="false">
+				<params>
+					<param name="paymentFrom" source="data"></param>
+					<param name="paymentDetailId" source="data"></param>
+				</params>
+			</operation>
+			<operation name="getUserByUserName" serviceName="user" requestType="json" mock="false" method="get" url="VMClientProxyServlet" requestWrapper="request" responseWrapper="response" mockUrl="app/ng1/mock/users/getUserByUserName.json">
+			</operation>
+		</operations>
+	</services>
+</module>

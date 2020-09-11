@@ -1,0 +1,170 @@
+<div ng-controller="googleAnalyticsController"
+     data-ng-init="callGAPageTrack('inviteRepsFromManageReps');"></div>
+<div ng-controller="inviteRepController">
+	<div class="col-sm-12 col-md-12 col-lg-12 alert alert-danger"
+	     data-ng-if="inviteRepSupplierBlockedMsg!=''">
+		<strong><i class="fa fa-warning"></i></strong> {{inviteRepSupplierBlockedMsg}}
+	</div>
+	<div class="row"
+	     ng-show="!showPaymentElement.showIncrementalPayment">
+		<div data-ng-class="{'dNone':!loading}">
+			<img align="absmiddle"
+			     src="app/ng1/img/partial-loading.gif">&nbsp;{{'common.loading' | translate}}
+		</div>
+		<div class="col-sm-12 col-md-12 col-lg-12 paddingL0"
+		     id="overLayDivId">
+			<div class="col-sm-12 col-md-12 col-lg-12 paddingL0">
+				<div class="col-sm-6 col-md-6 col-lg-6">
+					<h3><b>{{'manageReps.inviteReps' | translate}}</b></h3>
+				</div>
+				<div class="col-sm-6 col-md-6 col-lg-6">
+					<div class="pull-right"><span class="asterisk">*</span>&nbsp;{{'common.required' | translate}}&nbsp;<a id="inviteRepsHelp"
+						   data-ui-sref="manage.inviteReps.help">{{'common.help' | translate}}</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-12 col-md-12 col-lg-12 paddingL0">
+				<div class="col-sm-3 col-md-2 col-lg-2">
+					<div class="form-group">
+						<label class="control-label">{{'manageReps.companyTaxId' | translate}}:</label>
+						<div class="controls">
+							<select id="feinId"
+							        name="feinId"
+							        class="form-control"
+							        ng-change="changeFein(feinId);"
+							        ng-model="feinId"
+							        ng-disabled="allFeinList.length == 1">
+								<option ng-repeat="allFeinIds in allFeinList | orderBy:'fein'"
+								        value="{{allFeinIds.vendorOid}}"
+								        ng-selected="allFeinIds.vendorOid == userProfile.detail.vendorOid">{{allFeinIds.fein}}</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-3 col-md-3 col-lg-3">
+					<div class="form-group">
+						<label class="control-label">{{'manageReps.inviteAction' | translate}}:</label>
+						<div class="controls">
+							<select id="vrepAccountType"
+							        name="vrepAccountType"
+							        ng-change="changeVrepAccountType(vrepAccountType);"
+							        class="form-control"
+							        ng-model="vrepAccountType">
+								<option value="vrepOneToMany">Invite One Rep to Many Accounts</option>
+								<option value="accountOneToMany">Invite Many Reps to One Account</option>
+							</select>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div ng-show="vrepAccountType =='vrepOneToMany' || vrepAccountType.inviteAct ==''">
+				<div ng-include="'views/manageReps/oneToManyInvite.html'"></div>
+			</div>
+			<div ng-show="vrepAccountType =='accountOneToMany'">
+				<div data-ng-include="'views/manageReps/manyToOneInvite.html'"></div>
+			</div>
+		</div>
+		<div class="col-sm-12 col-md-12 col-lg-12"
+		     ng-hide="showAddRepForm">
+			<button class="btn btn-primary"
+			        ng-disabled="!radioButtonValid || !checkBoxValid || loadingOneToManyReps || loadingOneToManyAccounts || loadingManyToOneReps || loadingManyToOneAccounts"
+			        ng-click="inviteSelectedReps()">{{'manageReps.addtoInviteeList' | translate}}</button>
+		</div>
+		<div class="col-sm-12 col-md-12 col-lg-12"
+		     ng-show="showSelectedGrid">
+			<h3><b>{{'manageReps.inviteeList' | translate}}</b></h3>
+			<div data-ng-class="{'dNone':!sendInviteLoading}">
+				<img align="absmiddle"
+				     src="app/ng1/img/partial-loading.gif">&nbsp;{{'common.loading' | translate}}
+			</div>
+			<div class="col-sm-12 col-md-12 col-lg-12 padding0">
+				<vision-data-table local-data="userSelectedList"
+				                   type="client"
+				                   total-records-node="userSelectedList.totalRecords"
+				                   id="inviteListGrid"
+				                   initial-request='{"page":1,"count":5,"sorting":{"firstName":"asc"}}'>
+					<div class="table-responsive"
+					     style="margin-bottom: 0px;">
+						<div class="clearfix"
+						     ng-table-pagination="inviteListGrid"
+						     template-url="'ng-table/style3.html'"></div>
+						<table ng-table="inviteListGrid"
+						       show-filter="false"
+						       template-pagination="style1"
+						       class="table table-striped table-bordered marginT1"
+						       style="margin-bottom: 0px;">
+							<tbody>
+								<tr ng-repeat="list in $data">
+									<td class="text-center">
+										<input id="inviteeList"
+										       type="checkbox"
+										       ng-disabled="loadingOneToManyReps || loadingOneToManyAccounts || loadingManyToOneReps || loadingManyToOneAccounts || inviteRepOverlay || (!enableValidateButton && showAddRepForm)"
+										       ng-model="list.checked"
+										       ng-click="inviteeListRepsDetails(list.checked,list.userId)">
+									</td>
+									<td data-title="'manageReps.repName' | translate"
+									    sortable="'firstName'"
+									    class="text-left wrapword">{{list.firstName}}&nbsp;{{list.lastName}}</td>
+									<td data-title="'manageReps.emailAddress' | translate"
+									    sortable="'userId'"
+									    class="text-left wrapword">{{list.userId}}</td>
+									<td data-title="'manageReps.accountName' | translate"
+									    sortable="'companyNameString'"
+									    class="text-left">
+										<span ng-if="list.companyName.length>1">{{list.companyName[0]}}...,<a ng-click="companyNameMorePopup(list.companyName)">{{'common.more'
+												| translate}}</a></span>
+										<span ng-if="list.companyName.length<=1">{{list.companyName[0]}}</span>
+									</td>
+									<td data-title="'common.action' | translate"
+									    class="text-left">Invite</td>
+									<td data-title="'common.status' | translate"
+									    class="text-left">
+										<span class="col-lg-12 col-md-12 col-sm-12"
+										      ng-if="list.invitationStatus === 'success'"><img tooltip="{{'manageReps.label.successTooltip' | translate}}"
+											     src="app/ng1/img/okay.png"></span>
+										<span class="col-lg-12 col-md-12 col-sm-12"
+										      ng-if="list.invitationStatus === 'error'"><img ng-click="openUnsucceeInvitation(list);"
+											     tooltip="{{'manageReps.label.unSuccessTooltip' | translate}}"
+											     src="app/ng1/img/no.png"></span>
+										<span class="col-lg-12 col-md-12 col-sm-12"
+										      ng-if="list.invitationStatus === 'alert'"><img ng-click="openUnsucceeInvitation(list);"
+											     tooltip="{{'manageReps.label.alertTooltip' | translate}}"
+											     src="app/ng1/img/warning.png"></span>
+										<span class="col-lg-12 col-md-12 col-sm-12"
+										      ng-if="list.invitationStatus === 'tpmAlert'"><img tooltip-append-to-body="true"
+											     ng-click="openUnsucceeInvitation(list);"
+											     uib-tooltip-html="'<span>{{'manageReps.label.tpmAlertTooltip' | translate}}</span>'"
+											     src="app/ng1/img/no.png"></span>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<div class="clearfix marginT1"
+						     ng-table-pagination="inviteListGrid"
+						     template-url="'ng-table/style3.html'"></div>
+					</div>
+				</vision-data-table>
+			</div>
+			<div class="col-sm-12 col-md-12 col-lg-12 marginT1 padding0">
+				<button class="btn btn-success"
+				        ng-disabled="disableSendInvitation || loadingOneToManyReps || loadingOneToManyAccounts || loadingManyToOneReps || loadingManyToOneAccounts || (!enableValidateButton && showAddRepForm)"
+				        ng-hide="showClearBtn"
+				        ng-click="validateSupplierBlocked();showStatus=true">{{'manageReps.sendInvitations' | translate}}</button>
+				<button class="btn btn-warning"
+				        ng-disabled="sendInviteLoading"
+				        ng-show="showClearBtn"
+				        ng-click="clearInviteReps();">{{'common.clear' | translate}}</button>
+			</div>
+		</div>
+	</div>
+	<div data-ng-if="showPaymentElement.showIncrementalPayment"
+	     ng-controller="shoppingCartController"
+	     id="shoppingCartContainer">
+		<div data-ng-if="showPaymentElement.payment.summary"
+		     data-ng-include="'views/shoppingCart/shoppingCartSummary.html?rnd='+showPaymentElement.payment.random"></div>
+		<div data-ng-if="showPaymentElement.payment.billing"
+		     data-ng-include="'views/shoppingCart/shoppingCartBillingInfo.html?rnd='+showPaymentElement.payment.random"></div>
+		<div data-ng-if="showPaymentElement.payment.checkout"
+		     data-ng-include="'views/shoppingCart/shoppingCartCheckout.html?rnd='+showPaymentElement.payment.random"></div>
+	</div>
+</div>

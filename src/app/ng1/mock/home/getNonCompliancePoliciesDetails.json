@@ -1,0 +1,44 @@
+{
+    "VisionResponse": {
+        "Status": "Ok",
+        "NonCompliancePoliciesDetailsList": [
+            {
+                "customerName": "Adventist Health System",
+                "templateOid": "c0100007f50000007f57",
+                "customerOid": "ahss",
+                "docDefName": "blood test1",
+                "docDefOid": "c0100007f51000011925",
+                "userOid": "000000530100000014b7",
+                "docDefHasTemplate": false
+            },
+            {
+                "customerName": "Adventist Health System",
+                "templateOid": "c0100007f50000007f5e",
+                "customerOid": "ahss",
+                "docDefName": "T-UU-AUTHERIZATION",
+                "docDefOid": "c0100007f8a00000a753",
+                "userOid": "000000530100000014b7",
+                "docDefHasTemplate": false
+            },
+            {
+                "customerName": "Adventist Health System",
+                "templateOid": "c01000087ca0000087ce",
+                "customerOid": "ahss",
+                "docDefName": "SampleDocumentTemplate",
+                "docDefOid": "c01000087cb0000099cf",
+                "userOid": "000000530100000014b7",
+                "docDefHasTemplate": false
+            },
+            {
+                "customerName": "Adventist Health System",
+                "templateOid": "c0100007f50000007f59",
+                "customerOid": "ahss",
+                "docDefName": "T - RB - Federal Listing",
+                "docDefOid": "c0100007f8a00000a755",
+                "userOid": "000000530100000014b7",
+                "docDefHasTemplate": false
+            }
+        ],
+        "contentType": "application/json"
+    }
+}

@@ -1,0 +1,134 @@
+<div class="row" ng-controller="commonController">
+	<vision-action> 
+	<get-data service="complianceServices" operation="getBackgroundCheckDetails" 
+		root-node="data.successData.BCDetails" form-node="BCDetails"
+		params='{"userOid":"{{nsorObject.userOid}}","bcStatus":"{{nsorObject.bcStatus}}","typeCode":"{{nsorObject.typeCode}}"}' callback="setBCObject">
+	</get-data>
+	<div class="col-sm-12 col-md-12 col-lg-12"
+		data-ng-if="getError.status == 'error'">
+		<div class="alert alert-danger text-danger">
+			<span class="fa fa-warning" aria-hidden="true"></span>
+			{{getError.errorData.ResponseError[0].errorCode | translate}}
+		</div>
+	</div>
+	<div class="col-sm-12 col-md-12 col-lg-12">
+		<div data-ng-class="{'dNone':!loading}">
+			<img align="absmiddle" src="app/ng1/img/partial-loading.gif">&nbsp;{{'common.loading'
+			| translate}}
+		</div>
+	</div>
+	<div ng-show="!loading" ng-if="BCDetails.length > 0"
+		class="col-sm-12 col-md-12 col-lg-12" ng-controller="homeController">
+		<div ng-if="BCDetails[0].typeCode === 'CBC'">
+			<h4>
+				<b> 
+				<span class="text-danger" ng-if="(BCDetails[0].cbcStatus | lowercase) === 'incomplete'">{{'nsor.label.alert' | translate}}</span>
+				<span class="text-success" ng-if="(BCDetails[0].cbcStatus | lowercase) === 'pass' && !BCDetails[0].isCbcExpired">{{'nsor.label.pass' | translate}}</span>
+				<span class="text-danger" ng-if="(BCDetails[0].cbcStatus | lowercase) === 'pass' && BCDetails[0].isCbcExpired">{{'nsor.label.alert' | translate}}</span>
+				<span class="text-danger" ng-if="(BCDetails[0].cbcStatus | lowercase) === 'fail'">{{'nsor.label.fail' | translate}}</span>
+				&nbsp;: <span> {{BCDetails[0].name}} </span>
+				</b>
+			</h4>
+		</div>
+		<div ng-if="BCDetails[0].typeCode === 'NSOR'">
+			<h4>
+				<b> 
+				<span class="text-danger" ng-if="(BCDetails[0].nsorStatus | lowercase) === 'incomplete'">{{'nsor.label.alert' | translate}}</span>
+				<span class="text-success" ng-if="(BCDetails[0].nsorStatus | lowercase) === 'pass' && !BCDetails[0].isNsorExpired">{{'nsor.label.pass' | translate}}</span>
+				<span class="text-danger" ng-if="(BCDetails[0].nsorStatus | lowercase) === 'pass' && BCDetails[0].isNsorExpired">{{'nsor.label.alert' | translate}}</span>
+				<span class="text-danger" ng-if="(BCDetails[0].nsorStatus | lowercase) === 'fail'">{{'nsor.label.fail' | translate}}</span>
+				&nbsp;: <span> {{BCDetails[0].name}} </span>
+				</b>
+			</h4>
+		</div>
+		<p>
+			<a id="viewAccounts" ng-if="BCDetails[0].typeCode === 'NSOR'"
+				ng-click="viewNsorAccountsDocument(BCDetails[0].customerNames);">{{'myDocuments.viewAccounts'
+				| translate}}</a>
+			<a id="viewAccounts" ng-if="BCDetails[0].typeCode === 'CBC'"
+				ng-click="viewNsorAccountsDocument(BCDetails[0].cbcCustomerNames);">{{'myDocuments.viewAccounts'
+				| translate}}</a>
+		</p>
+		<form novalidate name="nsorDocumentUpload" autocomplete="off"
+			class="form-horizontal">
+			<div class="col-sm-12 col-md-12 col-lg-12 padLeft0 marginT1"
+				ng-controller="commonController">
+				<div class="form-group" ng-init="numLimit =50">
+					<div class="col-sm-4 col-md-4 col-lg-4 text-right">
+						<label>{{'myDocuments.label.why' | translate}}</label>
+					</div>
+					<div class="col-sm-8 col-md-8 col-lg-8">
+						<span ng-if="BCDetails[0].tempWhy"> <span class="whiteSpacePre break-word"
+							ng-bind-html="nsorWhyRedirect | limitHtml:numLimit | trustAsHtml"></span>
+							<span
+							data-ng-if="nsorWhyRedirect.length>'50'"><a
+								ng-hide="showLess" class="readMoreLess cursorPointer"
+								ng-click="readMore(nsorWhyRedirect.length)">more...</a><a ng-show="showLess"
+								class="readMoreLess cursorPointer break-word" ng-click="readLess('50')">less</a></span>
+						</span>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-12 col-md-12 col-lg-12 padLeft0 marginT1"
+				ng-controller="commonController">
+				<div class="form-group" ng-init="numLimit =50">
+					<div class="col-sm-4 col-md-4 col-lg-4 text-right">
+						<label>{{'myDocuments.label.how' | translate}}</label>
+					</div>
+					<div class="col-sm-8 col-md-8 col-lg-8">
+						<span ng-if="BCDetails[0].tempHow"> <span class="whiteSpacePre break-word"
+							ng-bind-html="nsorHowRedirect | limitHtml:numLimit | trustAsHtml"></span>
+							<span
+							data-ng-if="nsorHowRedirect.length>'50'"><a
+								ng-hide="showLess" class="readMoreLess cursorPointer"
+								ng-click="readMore(nsorHowRedirect.length)">more...</a><a ng-show="showLess"
+								class="readMoreLess cursorPointer break-word" ng-click="readLess('50')">less</a></span>
+						</span>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-12 col-md-12 col-lg-12 padLeft0 marginT1">
+				<div class="form-group">
+					<div class="col-sm-4 col-md-4 col-lg-4 text-right">
+						<label>{{'myDocuments.label.category' | translate}}</label>
+					</div>
+					<div class="col-sm-8 col-md-8 col-lg-8">
+						<div>{{BCDetails[0].typeCode}}</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-12 col-md-12 col-lg-12 padLeft0 marginT1">
+				<div class="form-group">
+					<div class="col-sm-4 col-md-4 col-lg-4"></div>
+					<div class="col-sm-8 col-md-8 col-lg-8">
+						<div ng-if="BCDetails[0].typeCode === 'CBC'">
+							<button type="button" ng-if="(BCDetails[0].isCbcExpired && (BCDetails[0].cbcStatus | lowercase) === 'pass' ) || ((BCDetails[0].cbcStatus | lowercase) === 'incomplete')" validation-submit="nsorDocumentUpload"
+							ng-click="showCbcInternationalUserCheckPopup(nsorObject);" autofocus
+							class="btn btn-primary">{{'common.continue' | translate}}</button>
+						<button type="button" ng-if="(!BCDetails[0].isCbcExpired && (BCDetails[0].cbcStatus | lowercase) === 'pass' ) || ((BCDetails[0].cbcStatus | lowercase) === 'fail')"
+							validation-submit="nsorDocumentUpload" autofocus
+							ng-click="goToBackgroundCheck(nsorObject);" class="btn btn-success">{{
+							'nsor.label.goToBackgroundOnline' | translate}}</button>
+						<button type="button"
+							ng-click="$state.go('home.documentAlert.backgroundCheck',({id: 'backgroundCheckDoc','random':getRandomSpan()}));"
+							class="btn btn-warning">{{'common.cancel' | translate}}</button>						
+						</div>
+						<div ng-if="BCDetails[0].typeCode !== 'CBC'">
+							<button type="button" ng-if="(BCDetails[0].isNsorExpired && (BCDetails[0].nsorStatus | lowercase) === 'pass' ) || ((BCDetails[0].nsorStatus | lowercase) === 'incomplete')" validation-submit="nsorDocumentUpload"
+								ng-click="showCbcInternationalUserCheckPopup(nsorObject);" autofocus
+								class="btn btn-primary">{{'common.continue' | translate}}</button>
+							<button type="button" ng-if="(!BCDetails[0].isNsorExpired && (BCDetails[0].nsorStatus | lowercase) === 'pass' ) || ((BCDetails[0].nsorStatus | lowercase) === 'fail')"
+								validation-submit="nsorDocumentUpload" autofocus
+								ng-click="goToBackgroundCheck(nsorObject);" class="btn btn-success">{{
+								'nsor.label.goToBackgroundOnline' | translate}}</button>
+							<button type="button"
+								ng-click="$state.go('home.documentAlert.backgroundCheck',({id: 'backgroundCheckDoc','random':getRandomSpan()}));"
+								class="btn btn-warning">{{'common.cancel' | translate}}</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+	</vision-action>
+</div>

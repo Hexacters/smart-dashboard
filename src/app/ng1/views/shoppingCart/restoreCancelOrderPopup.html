@@ -1,0 +1,32 @@
+<div class="modal-content" id="restoreCancelOrderp">
+	<div class="modal-header commonDialogHeader">
+		<button type="button" class="close" data-dismiss="modal"
+			aria-hidden="true" data-ng-click="$close();">&times;</button>
+		<h4 class="modal-title">
+			<b>{{'common.alert' | translate}}</b>
+		</h4>
+	</div>
+	<div class="modal-body">
+		<div class="col-sm-12 col-md-12 col-lg-12"
+			data-ng-class="{'dNone':!cancelOrderLoading}">
+			<img align="absmiddle" src="app/ng1/img/partial-loading.gif" />&nbsp;{{'common.loading'|
+			translate}}
+		</div>
+		<div data-ng-if="cancelOrderResponseError.status === 'error'">
+			<div class="alert alert-danger">
+				{{cancelOrderResponseError.errorData.ResponseError[0].longMessage}}</div>
+		</div>
+		<div class="searchOrg">
+			<div class="col-md-12 searchOrg col-md-12 col-lg-12 text-left"
+				data-ng-bind-html="'shoppingCart.label.restoreCancelOrder' | translate"></div>
+			<div class="col-md-12 col-md-12 col-lg-12 text-center marginT3">
+				<button type="button" class="btn btn-warning" id="isLinkUsed"
+					data-ng-click="$close();">{{'common.back' |
+					translate}}</button>
+				<button type="button" class="btn btn-success" id="isLinkUsed"
+					data-ng-click="continueRestorePopup('restoreCancelOrderp');">{{'common.continue'
+					| translate}}</button>
+			</div>
+		</div>
+	</div>
+</div>

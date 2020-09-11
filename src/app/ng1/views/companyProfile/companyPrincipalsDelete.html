@@ -1,0 +1,28 @@
+<div class="modal-content">
+	<div class="modal-header">
+		<button ng-show="!hideDeletePrincipalContent" id="closeIcon" type="button" class="close" aria-hidden="true" ng-click="cancel();">&times;</button>
+		<button ng-show="hideDeletePrincipalContent" id="closeIcon" type="button" class="close" aria-hidden="true" ng-click="deleteAlertCancel();">&times;</button>
+		<h3 class="modal-title"><b>{{"companyProfile.companyPrincipals.header.deleteCompanyPrincipal" | translate}}</b></h3>
+	</div>
+	<div class="modal-body">
+		<div data-ng-class="{'dNone':!deletePrincipalLoading}">
+			<img align="absmiddle" src="app/ng1/img/partial-loading.gif" />&nbsp;{{'common.loading' | translate}}
+		</div>
+		<p ng-bind-html="commonConfirmationDialogErrorContent"></p>
+		<div class="bd" ng-show="!hideDeletePrincipalContent">
+			<div style="float:none;">{{"common.deleteConfirmation" | translate}}</div>
+		</div>
+		<div class="bd" ng-show="hideDeletePrincipalContent">
+			<div style="float:none;" class="text-danger"><i class="fa fa-exclamation-triangle"></i> The selected principal has been deleted.</div>
+		</div>
+	</div>
+	<div class="modal-footer" ng-show="!hideDeletePrincipalContent">
+		<div>
+			<button class="btn btn-info" ng-click="ok()">{{"common.yes" | translate}}</button>
+			<button class="btn btn-warning" ng-click="cancel()" autofocus>{{"common.no" | translate}}</button>
+		</div>
+	</div>
+	<div ng-show="hideDeletePrincipalContent" class="text-center">
+		<button class="btn btn-info marginB2" ng-click="deleteAlertCancel()" autofocus>{{"common.ok" | translate}}</button>
+	</div>
+</div>

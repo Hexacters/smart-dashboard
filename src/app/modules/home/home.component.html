@@ -1,0 +1,38 @@
+<div class="home container-fluid my-4">
+    <div class="home-information smart-dashboard">
+        <app-information #information></app-information>
+    </div>
+    <div class="home-trands">
+        <app-trands></app-trands>
+    </div>
+    <div class="row m-0 mt-4">
+        <div class="col-lg-4 col-md-12 smart-dashboard">
+            <app-settings [setting]="calendar"></app-settings>
+            <app-calendar #calendar></app-calendar>
+        </div>
+        <div class="col-lg-8 col-md-12 smart-dashboard mt-lg-0 mt-md-3">
+            <app-settings [setting]="upcoming"></app-settings>
+            <app-upcoming #upcoming></app-upcoming>
+        </div>
+    </div>
+    <!-- <div class="row m-0 mt-4">
+        <div class="col-md-12 smart-dashboard">
+            <app-settings [setting]="accountSearch" [fullscreen]="true"></app-settings>
+            <app-account-search #accountSearch></app-account-search>
+        </div>
+    </div> -->
+    <div class="row m-0 mt-4">
+        <div class="col-lg-4 col-md-6 my-6">
+            <app-settings [setting]="accounts"></app-settings>
+            <app-accounts #accounts></app-accounts>
+        </div>
+        <div class="col-lg-8 col-md-6 my-6">
+            <app-settings [setting]="activity"></app-settings>
+            <app-activity #activity></app-activity>
+        </div>
+        <!-- <div class="col-lg-4 col-md-12 my-2 smart-dashboard">
+            <app-settings [setting]="recentActivity"></app-settings>
+            <app-recent-activity #recentActivity></app-recent-activity>
+        </div> -->
+    </div>
+</div>

@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+<module id="cardModule">
+	<routers>
+		<router id="cardProfile" url="/cardProfile">
+			<views>
+				<view containerId="vendordash" templateUrl="app/ng1/views/cardProfile/cardProfile.html"></view>
+			</views>
+		</router>
+		<router id="cardProfile.view" url="/cardProfile/view">
+			<views>
+				<view containerId="cardProfile" templateUrl="app/ng1/views/cardProfile/cardProfileView.html"></view>
+			</views>
+		</router>
+		<router id="cardProfile.edit" url="/cardProfile/edit/{cardProfileOid}">
+			<views>
+				<view containerId="cardProfile" templateUrl="app/ng1/views/cardProfile/cardProfileEdit.html"></view>
+			</views>
+		</router>
+		<router id="cardProfile.edit.success" url="/success" type="dialog">
+			<views>
+				<view containerId="modal" templateUrl="app/ng1/views/cardProfile/updateCardProfileSuccess.html"></view>
+			</views>
+		</router>
+		<router id="noCardProfile" url="/noCardProfile" type="dialog">
+			<views>
+				<view containerId="modal" templateUrl="app/ng1/views/cardProfile/noCardProfilePopup.html"></view>
+			</views>
+		</router>
+	</routers>
+	<services id="cardServices">
+		<operations>
+			<operation name="getCardProfile" requestType="json"
+				requestWrapper="request" responseWrapper="response" serviceName="registration"
+				method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/cardProfile/getCardProfileDetails.json"
+				mock="false">
+				<params>
+					<param name="userOid" source="userProfile" key="id"></param>
+				</params>
+			</operation>
+			<operation name="getAllLookupsByCategories" method="get"
+				serviceName="lookup" requestWrapper="request" responseWrapper="response"
+				mockUrl="app/ng1/mockgetAllLookupsByCategories.json" mock="false"
+				url="VMClientProxyServlet" requestType="json">
+			</operation>
+   			<!-- <operation name="savePaymentDetails" requestType="json"
+				requestWrapper="request" responseWrapper="response" method="POST"
+				url="services/savePaymentDetails" serviceName="payment" mockUrl="savePaymentDetails.json"
+				mock="false">
+				<params>
+					<param name="paymentDetailsVO.repOid" source="data" module="cardProfile" key="repOid"></param>
+ 					<param name="paymentDetailsVO.vcOid" source="data" module="cardProfile" key="vcOid"></param>
+					<param name="paymentDetailsVO.isProcessed" source="static" value="false"></param>
+					<param name="paymentDetailsVO.source" source="static" value="VDB"></param>
+					<param name="paymentDetailsVO.uID" source="data" module="cardProfile" key="uID"></param>
+					<param name="paymentDetailsVO.message" source="data" module="cardProfile" key="message"></param>
+				</params>
+			</operation> -->
+			<operation name="updateLocalCardProfile" requestType="json"
+				requestWrapper="request" responseWrapper="response" serviceName="payment"
+				method="POST" url="services/updateLocalCardProfile" mockUrl="savePaymentDetails.json"
+				mock="false">
+			</operation>
+			<operation name="updateCardProfile" requestType="json"
+				requestWrapper="request" responseWrapper="response" serviceName="registration"
+				method="POST" url="services/updateCardProfile" mockUrl="updatePaymentDetails.json"
+				mock="false">
+				<!-- <params>
+					<param name="cardProfileVO.repOid" source="data" module="cardProfile" key="repOid"></param>
+ 					<param name="cardProfileVO.vcOid" source="data" module="cardProfile" key="vcOid"></param>
+					<param name="cardProfileVO.isProcessed" source="static" value="false"></param>
+					<param name="cardProfileVO.source" source="static" value="VDB"></param>
+					<param name="cardProfileVO.uID" source="data" module="cardProfile" key="uID"></param>
+				</params> -->
+			</operation>
+			<operation name="updateCardProfileUsingOrbitalApi" requestType="json"
+				requestWrapper="request" responseWrapper="response" serviceName="registration"
+				method="POST" url="services/updateCardProfileUsingOrbitalApi" mockUrl="app/ng1/mock/cardProfile/getCardProfileDetails.json"
+				mock="false">
+				<params>
+					<param name="cardProfileVO.oid" source="data" module="cardProfile" key="cardProfileOid"></param>
+ 					<param name="cardProfileVO.billingAddress1" source="data" module="cardProfile" key="billingAddress1"></param>
+					<param name="cardProfileVO.billingAddress2" source="data" module="cardProfile" key="billingAddress2"></param>
+					<param name="cardProfileVO.billingZip" source="data" module="cardProfile" key="billingZip"></param>
+					<param name="cardProfileVO.billingCountryCode" source="data" module="cardProfile" key="billingCountryCode"></param>
+					<param name="cardProfileVO.billingStateCode" source="data" module="cardProfile" key="billingStateCode"></param>
+					<param name="cardProfileVO.billingEmail" source="data" module="cardProfile" key="billingEmail"></param>
+					<param name="cardProfileVO.billingCity" source="data" module="cardProfile" key="billingCity"></param>
+					<param name="cardProfileVO.expirationMonthCode" source="data" module="cardProfile" key="expirationMonthCode"></param>
+					<param name="cardProfileVO.expirationYearStr" source="data" module="cardProfile" key="expirationYearStr"></param>
+					<param name="cardProfileVO.nameOnCard" source="data" module="cardProfile" key="nameOnCard"></param>
+					<param name="cardProfileVO.cardTypeCode" source="data" module="cardProfile" key="cardTypeCode"></param>
+					<param name="cardProfileVO.cardNumber" source="data" module="cardProfile" key="cardNumber"></param>
+					<param name="cardProfileVO.verificationNumber" source="data" module="cardProfile" key="verificationNumber"></param>
+				</params>
+			</operation>
+		</operations>
+	</services>
+</module>

@@ -1,0 +1,239 @@
+{
+    "VisionResponse": {
+        "Status": "Ok",
+        "lookups": {
+            "departments": [
+                {
+                    "id": "1",
+                    "name": "Administration",
+                    "status": "USED",
+                    "deleteAction": false
+                },
+                {
+                    "id": "2",
+                    "name": "Account",
+                    "status": "required",
+                    "deleteAction": false
+                },
+                {
+                    "id": "3",
+                    "name": "Software",
+                   "status": "required",
+                    "deleteAction": false
+                },
+                {
+                    "id": "4",
+                    "name": "HR",
+                   "status": "required",
+                    "deleteAction": false
+                },
+                {
+                    "id": "5",
+                    "name": "General",
+                   "status": "required",
+                    "deleteAction": false
+                },
+                {
+                    "id": "6",
+                    "name": "Management",
+                   "status": "required",
+                    "deleteAction": false
+                }
+            ],
+            "states": [
+                {
+                    "id": "1",
+                    "stateCode": "AT_01",
+                    "stateName": "AT",
+                    "updateAction": false,
+                    "deleteAction": false
+                },
+                {
+                    "id": "2",
+                    "stateCode": "AZ_01",
+                    "stateName": "AZ",
+                    "updateAction": false,
+                    "deleteAction": false
+                },
+                {
+                    "id": "3",
+                    "stateCode": "CT_01",
+                    "stateName": "CT",
+                    "updateAction": false,
+                    "deleteAction": false
+                },
+                {
+                    "id": "4",
+                    "stateCode": "AL_01",
+                    "stateName": "AL",
+                    "updateAction": false,
+                    "deleteAction": false
+                },
+                {
+                    "id": "5",
+                    "stateCode": "TN_01",
+                    "stateName": "TamilNadu",
+                    "updateAction": false,
+                    "deleteAction": false
+                },
+                {
+                    "id": "6",
+                    "stateCode": "AP_01",
+                    "stateName": "Andhera",
+                    "updateAction": false,
+                    "deleteAction": false
+                },
+                {
+                    "id": "7",
+                    "stateCode": "KL_01",
+                    "stateName": "Kerala",
+                    "updateAction": false,
+                    "deleteAction": false
+                },
+                {
+                    "id": "8",
+                    "stateCode": "KN_01",
+                    "stateName": "Karnadaka",
+                    "updateAction": false,
+                    "deleteAction": false
+                }
+            ],
+            "UNSPSCCode": [
+                {
+                    "id": "US_01",
+                    "status": "required",
+					"UNSPSCCode": "10101502 - Dogs",
+                    "updateAction": false,
+                    "deleteAction": false
+                },
+				{
+                    "id": "US_02",
+                    "status": "required",
+					"UNSPSCCode": "10121800 - Dog and cat food",
+                    "updateAction": false,
+                    "deleteAction": false
+                },
+				{
+                    "id": "US_03",
+                    "status": "required",
+					"UNSPSCCode": "10121801 - Dry food for dogs",
+                    "updateAction": false,
+                    "deleteAction": false
+                },
+				{
+                    "id": "US_04",
+                    "status": "required",
+					"UNSPSCCode": "10121802 - Moist food for dogs",
+                    "updateAction": false,
+                    "deleteAction": false
+                },
+				{
+                    "id": "US_05",
+                    "status": "required",
+					"UNSPSCCode": "10121806 - Treats or snacks for cats or dogs",
+                    "updateAction": false,
+                    "deleteAction": false
+                },
+				{
+                    "id": "US_06",
+                    "status": "required",
+					"UNSPSCCode": "10131604 - Dog runs",
+                    "updateAction": false,
+                    "deleteAction": false
+                },
+				{
+                    "id": "US_07",
+                    "status": "required",
+					"UNSPSCCode": "12131602 - Fog signals",
+                    "updateAction": false,
+                    "deleteAction": false
+                },
+				{
+                    "id": "US_08",
+                    "status": "required",
+					"UNSPSCCode": "14111531 - Log books or pads",
+                    "updateAction": false,
+                    "deleteAction": false
+                },
+				{
+                    "id": "US_09",
+                    "status": "required",
+					"UNSPSCCode": "21101805 - Fog or mist generators",
+                    "updateAction": false,
+                    "deleteAction": false
+                },
+				{
+                    "id": "US_10",
+                    "status": "required",
+					"UNSPSCCode": "23231000 - Log debarkers and accessories",
+                    "updateAction": false,
+                    "deleteAction": false
+                },
+				{
+                    "id": "US_11",
+                    "status": "required",
+					"UNSPSCCode": "27112123 - Bench dog",
+                    "updateAction": false,
+                    "deleteAction": false
+                },
+				{
+                    "id": "US_12",
+                    "status": "required",
+					"UNSPSCCode": "31171801 - Cog wheels",
+                    "updateAction": false,
+                    "deleteAction": false
+                },
+				{
+                    "id": "US_13",
+                    "status": "required",
+					"UNSPSCCode": "42294937 - Fog reduction devices for endoscopes or mirrors",
+                    "updateAction": false,
+                    "deleteAction": false
+                },
+				{
+                    "id": "US_14",
+                    "status": "required",
+					"UNSPSCCode": "43212102 - Dot matrix printers",
+                    "updateAction": false,
+                    "deleteAction": false
+                },
+				{
+                    "id": "US_15",
+                    "status": "required",
+					"UNSPSCCode": "48101515 - Commercial use hot dog grills",
+                    "updateAction": false,
+                    "deleteAction": false
+                },
+				{
+                    "id": "US_16",
+                    "status": "required",
+					"UNSPSCCode": "71151103 - Oilfield log data management services",
+                    "updateAction": false,
+                    "deleteAction": false
+                },
+				{
+                    "id": "US_17",
+                    "status": "required",
+					"UNSPSCCode": "71151326 - General cased hole and production log processing",
+                    "updateAction": false,
+                    "deleteAction": false
+                },
+				{
+                    "id": "US_18",
+                    "status": "required",
+					"UNSPSCCode": "85101704 - Health economics",
+                    "updateAction": false,
+                    "deleteAction": false
+                },
+				{
+                    "id": "US_19",
+                    "status": "required",
+					"UNSPSCCode": "92121503 - Guard dog rental",
+                    "updateAction": false,
+                    "deleteAction": false
+                }
+            ]
+        },
+        "contentType": "xml"
+    }
+}

@@ -1,0 +1,127 @@
+<div class="col-sm-12 col-md-12 col-lg-12 padding0"
+     ng-init="accountFrom = isFromManageReps ? 'manageRepAccountDetail' : 'accountDetail';getGeneralInformation();">
+	<div class="col-sm-7 col-md-7 col-lg-7 paddingL0">
+		<fieldset class="scheduler-border scheduler-border-height">
+			<legend class="scheduler-border fieldSetHeading accountDetailsFont">
+				<b>{{::'accounts.accountDetails.header.generalInfo' |
+					translate}}</b>
+			</legend>
+			<div class="alert alert-danger col-sm-12 col-md-12 col-lg-12"
+			     ng-show="getError.errorData.Status === 'Error'">
+				<strong><i class="fa fa-warning"></i></strong>
+				{{getError.errorData.ResponseError[0].longMessage}}
+			</div>
+			<div data-ng-class="{'dNone':!generalInfoLoading}">
+				<img align="absmiddle"
+				     src="app/ng1/img/partial-loading.gif">
+				{{::'common.loading' | translate}}
+			</div>
+			<div class="col-sm-12 col-md-12 col-lg-12 paddingT1 paddingB1 accountDetailsFont">
+				<div class="col-sm-12 col-md-12 col-lg-12 padding0">
+					<label class="col-sm-3 col-md-3 col-lg-3 control-label padding0">{{::'accounts.accountDetails.label.website'
+						| translate}}</label>
+					<div class="col-sm-9 col-md-9 col-lg-9 padding0">
+						<a ng-click="loadURLVendorResource(accountInfoDetails.generalInfo.webSiteUrl)">{{accountInfoDetails.generalInfo.webSiteUrl}}</a>
+					</div>
+				</div>
+				<div class="col-sm-12 col-md-12 col-lg-12 padding0">
+					<label class="col-sm-3 col-md-3 col-lg-3 control-label padding0">{{::'accounts.accountDetails.label.phoneNumber'
+						| translate}}</label>
+					<div class="col-sm-9 col-md-9 col-lg-9 padding0">
+						{{accountInfoDetails.generalInfo.phone}}</div>
+				</div>
+				<div class="col-sm-12 col-md-12 col-lg-12 padding0">
+					<label class="col-sm-3 col-md-3 col-lg-3 control-label padding0">{{::'accounts.accountDetails.label.customerAddress'
+						| translate}}</label>
+					<div class="col-sm-9 col-md-9 col-lg-9 padding0">
+						{{accountInfoDetails.generalInfo.addressLine1}}<br />
+						<span ng-if="accountInfoDetails.generalInfo.addressLine2 && accountInfoDetails.generalInfo.addressLine2 !== ''">{{accountInfoDetails.generalInfo.addressLine2}}<br /></span>
+						<span ng-if="accountInfoDetails.generalInfo.addressLine3 && accountInfoDetails.generalInfo.addressLine3 !== ''">{{accountInfoDetails.generalInfo.addressLine3}}<br /></span>
+						<span ng-if="accountInfoDetails.generalInfo.city && accountInfoDetails.generalInfo.city !== ''">{{accountInfoDetails.generalInfo.city}}
+							<span ng-if="accountInfoDetails.generalInfo.stateCode || accountInfoDetails.generalInfo.zip">,</span>
+						</span>
+						{{accountInfoDetails.generalInfo.stateCode}}
+						{{accountInfoDetails.generalInfo.zip}}
+					</div>
+				</div>
+				<div class="col-sm-12 col-md-12 col-lg-12 padding0">
+					<label class="col-sm-3 col-md-3 col-lg-3 control-label padding0">{{'accounts.accountDetails.label.renewalDate'
+						| translate}}</label>
+					<div class="col-sm-9 col-md-9 col-lg-9 padding0">
+						{{accountInfoDetails.generalInfo.renewalDate | dateFormate | date:'MMM dd, y'}}</div>
+				</div>
+			</div>
+		</fieldset>
+	</div>
+	<div class="col-sm-5 col-md-5 col-lg-5 paddingL0 paddingR0 accountDetailsFont">
+		<fieldset class="scheduler-border scheduler-border-height">
+			<legend class="scheduler-border fieldSetHeading">
+				<span ng-if="$state.current.name.split('.')[0] === 'accounts'"><b>{{::'accounts.accountDetails.header.myAccess' |
+						translate}}</b></span>
+				<span ng-if="$state.current.name.split('.')[0] !== 'accounts'"><b>{{::'accounts.accountDetails.header.repAccess' |
+						translate}}</b></span>
+			</legend>
+			<div class="col-sm-7 col-md-7 col-lg-7 paddingT1 paddingB1">
+				<div class="col-sm-6 col-md-12 col-lg-12 paddingT3 paddingL0">
+					<label class="col-sm-8 col-md-8 col-lg-8 control-label padding0">
+					{{::'accounts.accountDetails.label.complianceStatus'| translate}}
+					<span><i uib-tooltip-html="::'accounts.accountDetails.label.complianceStatusTooltip' | translate"
+					tooltip-append-to-body="true" class="fa fa-question-circle fa-sm"></i><span></label>
+					<div class="col-sm-4 col-md-4 col-lg-4 padding0">
+						<a ng-click="$state.current.name.split('.')[0] === 'accounts' ? $state.go('accounts.accountDetails.documents.commonDocuments') : $state.go('manage.repAccountDetails.repAccountsTab.documents.commonDocuments')">
+							<span ng-if="accountInfoDetails.complianceStatus === 'PASS'"
+							      class="text-success cursorPointer">
+							      {{::'accounts.manageMyaccount.label.pass' | translate}}</span>
+							<span ng-if="accountInfoDetails.complianceStatus === 'FAIL'"
+							      class="textFail cursorPointer">
+							      {{::'accounts.manageMyaccount.label.fail' | translate}}</span>
+							<span ng-if="accountInfoDetails.complianceStatus === 'ALERT'"
+							      class="alertTextColor cursorPointer">
+							      {{::'accounts.manageMyaccount.label.alert' | translate}}</span>
+							<span ng-if="accountInfoDetails.complianceStatus === 'NA'"
+							      class="text-muted cursorPointer">
+								{{::'accounts.manageMyaccount.label.n/a' | translate}}</span>
+						</a>
+
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-5 col-md-5 col-lg-5 paddingT1 paddingB1">
+				<div class="col-sm-12 col-md-12 col-lg-12"
+				     ng-if="accountInfoDetails.generalInfo.expressRegistered === false && accountInfoDetails.generalInfo.vcStatus !== 'RFPMT'">
+					<h4>
+						<a ng-if="!isFromManageReps"
+						   data-ng-click="setSelectedCustomerDetail(accountInfoDetails);fromManageReps(false);$state.go('printBadge.prepareForVisit',{'printBadge':accountFrom});"><b>{{'userHeader.label.viewAccessStatus'
+								| translate}}</a>
+						<a ng-if="isFromManageReps"
+						   data-ng-click="setSelectedCustomerDetail(accountInfoDetails);fromManageReps(true);$state.go('manage.repAccountDetails.clearedForAccess',{'clearForAccessFromReps':'isfromRepDetail', 'isFrom' : 'accountDetail'});"><b>{{'userHeader.label.viewAccessStatus'
+								| translate}}</b></a>
+					</h4>
+				</div>
+			</div>
+			<div class="row"></div>
+			<div class="row"></div>
+			<div class="col-sm-7 col-md-7 col-lg-7 paddingT1 paddingB1">
+				<div class="col-sm-12 col-md-12 col-lg-12 padding0">
+					<h4>
+						<a ng-if="!isFromManageReps"
+						   data-ng-click="$state.go('paymentReceipt.grid',{'tabsState': 'accountDetail'});$rootScope.parentNavigation('paymentReceipt');"><b>{{'userHeader.label.paymentReceipts'
+								| translate}}</b></a>
+						<a ng-if="isFromManageReps"
+						   data-ng-click="$state.go('manage.repAccountDetails.paymentReceipt',{'tabsState': 'mangeAccountDetail'});$rootScope.parentNavigation('paymentReceipt');"><b>{{'userHeader.label.paymentReceipts'
+								| translate}}</b></a>
+					</h4>
+				</div>
+			</div>
+			<div class="col-sm-5 col-md-5 col-lg-5 paddingT1 paddingB1">
+				<div class="col-sm-12 col-md-12 col-lg-12 padding0"
+				     ng-if="!isFromManageReps && accountInfoDetails.generalInfo.expressRegistered === false && accountInfoDetails.generalInfo.vcStatus !== 'RFPMT' && accountInfoDetails.generalInfo.custEnableApptRequest && accountInfoDetails.generalInfo.vcEnableApptRequest && accountInfoDetails.generalInfo.repEnableApptRequest">
+					<h4>
+						<a data-ng-click="setSelectedCustomerDetail(accountInfoDetails);fromManageReps(false);$state.go('requestAppointAccordion.request',{'requestFrom':accountFrom,'appointmentRandom': getRandomSpan()});"><b>{{'userHeader.label.requestAppointment'
+								| translate}}</b></a>
+					</h4>
+				</div>
+			</div>
+		</fieldset>
+	</div>
+</div>

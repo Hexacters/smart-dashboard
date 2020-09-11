@@ -1,0 +1,16 @@
+<div class="modal-content">
+    <div class="modal-header commonDialogHeader">
+        <button id="complianceCautionCloseIcon" type="button" class="close" data-dismiss="modal" aria-hidden="true" data-ng-click="$close()">&times;
+        </button>
+        <h3 class="modal-title"><b>{{'home.cautions' | translate}}</b></h3>
+    </div>
+    <div class="modal-body modelDialogScroll">
+        <p>{{'home.documentCautions' | translate}}</p>
+        <p ng-bind-html="'home.documentCautions1' | translate"></p>
+        <div class="text-center">
+            <button ng-if="$state.params.id == 'specificDoc'" id="complianceContinueIcon" class="btn btn-info" ng-click="cancelDialog();$state.go('home.documentAlert.common.specific.caution');">{{'common.continue' | translate}}</button>
+            <button ng-if="$state.params.id == 'commonDoc'" id="complianceContinueIcon" class="btn btn-info" ng-click="cancelDialog();$state.go('home.documentAlert.common.commonDocument.information');">{{'common.continue' | translate}}</button>
+            <button id="complianceCautionCancelIcon" class="btn btn-warning" data-ng-click="$close()">{{'common.cancel' | translate}}</button>
+        </div>
+    </div>
+</div>

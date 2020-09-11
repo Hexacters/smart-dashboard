@@ -1,0 +1,23 @@
+<div class="modal-content">
+	<div class="modal-header commonDialogHeader">
+		<button id="accountHelpCloseIcon" type="button" class="close"
+			aria-hidden="true" data-ng-click="cancelHelp();">&times;</button>
+		<h3 class="modal-title">
+			<b>{{'common.helpTitle' | translate}}</b>
+		</h3>
+	</div>
+	<div class="modal-body modelDialogScroll">
+		<p>{{'accounts.help.helpMessage1' | translate}}</p>
+		<p ng-bind-html="'accounts.help.helpMessage2' | translate"></p>
+		<p ng-bind-html="'accounts.help.helpMessage3' | translate"></p>
+		<p ng-bind-html="'accounts.help.helpMessage4' | translate"></p>
+		<p ng-bind-html="'accounts.help.helpMessage5' | translate"></p>
+		<p ng-bind-html="'accounts.help.helpMessage6' | translate"></p>
+		<p ng-bind-html="'accounts.help.helpMessage7' | translate"></p>
+		<p ng-bind-html="'accounts.help.helpMessage8' | translate"></p>
+		<p ng-controller="accountController">
+		<span ng-click="goToClearForAccess();" ng-bind-html="'accounts.help.helpMessage9' | translate"></span>
+		<span ng-bind-html="'accounts.help.helpMessage10' | translate"></span>
+		</p>
+	</div>
+</div>

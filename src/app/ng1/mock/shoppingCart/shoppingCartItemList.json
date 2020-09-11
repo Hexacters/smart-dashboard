@@ -1,0 +1,90 @@
+{
+  "VisionResponse": {
+    "Status": "Ok",
+    "ItemCatalogSummary": [
+      {
+        "category": "OpenAccessPlan",
+        "categoryName": "Open Access Plan",
+        "categoryDesc": "Open Access Plan for 1 Representatives",
+        "userCount": 1,
+        "amount": 600,
+        "updateAction": false,
+        "deleteAction": false
+      },
+      {
+        "category": "OpenAccessPlan",
+        "categoryName": "Open Access Plan",
+        "categoryDesc": "Open Access Plan for 2 Representatives",
+        "userCount": 2,
+        "amount": 1200,
+        "updateAction": false,
+        "deleteAction": false
+      },
+      {
+        "category": "OpenAccessPlan",
+        "categoryName": "Open Access Plan",
+        "categoryDesc": "Open Access Plan for 3 Representatives",
+        "userCount": 3,
+        "amount": 1800,
+        "updateAction": false,
+        "deleteAction": false
+      },
+      {
+        "category": "OpenAccessPlan",
+        "categoryName": "Open Access Plan",
+        "categoryDesc": "Open Access Plan for 4 Representatives",
+        "userCount": 4,
+        "amount": 2304,
+        "updateAction": false,
+        "deleteAction": false
+      },
+      {
+        "category": "OpenAccessPlan",
+        "categoryName": "Open Access Plan",
+        "categoryDesc": "Open Access Plan for 5 Representatives",
+        "userCount": 5,
+        "amount": 2880,
+        "updateAction": false,
+        "deleteAction": false
+      },
+      {
+        "category": "OpenAccessPlan",
+        "categoryName": "Open Access Plan",
+        "categoryDesc": "Open Access Plan for 6 Representatives",
+        "userCount": 6,
+        "amount": 3366,
+        "updateAction": false,
+        "deleteAction": false
+      },
+      {
+        "category": "OpenAccessPlan",
+        "categoryName": "Open Access Plan",
+        "categoryDesc": "Open Access Plan for 7 Representatives",
+        "userCount": 7,
+        "amount": 3829,
+        "updateAction": false,
+        "deleteAction": false
+      },
+      {
+        "category": "OpenAccessPlan",
+        "categoryName": "Open Access Plan",
+        "categoryDesc": "Open Access Plan for 8 Representatives",
+        "userCount": 8,
+        "amount": 4256,
+        "updateAction": false,
+        "deleteAction": false
+      },
+      {
+        "category": "OpenAccessPlan",
+        "categoryName": "Open Access Plan",
+        "categoryDesc": "Open Access Plan for 9 Representatives",
+        "userCount": 9,
+        "amount": 4788,
+        "updateAction": false,
+        "deleteAction": false
+      }
+    ],
+    "TotalRecords": 9,
+    "contentType": "application/json"
+  }
+}

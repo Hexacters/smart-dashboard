@@ -1,0 +1,347 @@
+<div class="row"
+	 ng-controller="manageMyAccountController"
+	 ng-init="$stateParams.homeAction == 'incompleteRegistrations' || $stateParams.homeAction == 'failedHealthAlert' || $stateParams.homeAction == 'inActiveAccounts' ? account.accountType = $stateParams.homeAction: account.accountType = 'all'">
+	<div class="col-sm-12 col-md-12 col-lg-12">
+		<div class="table-responsive"
+			 ng-init="changeInitialRequest(account.accountType,account.accountName);">
+			<vision-data-table service="accountServices"
+							   operation="manageAccounts"
+							   id="manageMyAccounts"
+							   id="tableId"
+							   root-node="data.successData.VendorRepAccountList"
+							   initial-request='{{initialRepParams}}'
+							   params='{{vendorRepParams}}'
+							   total-records-node="data.successData.totalRecords"
+							   type="server"
+							   callback="searchAccountsSuccess">
+				<div class="row">
+					<div class="col-sm-12 col-md-12 col-lg-12"
+						 ng-if="$stateParams.tapsFrom ==='home'">
+						<a ui-sref="home">{{'printBadge.backtoHome' | translate}}</a>
+					</div>
+					<div class="col-sm-12 col-md-12 col-lg-12 padding0">
+						<form name="searchForm"
+							  autocomplete="off"
+							  novalidate>
+							<div class="col-lg-8">
+								<label class="col-sm-2 col-md-2 col-lg-2 paddingL0 marginT1 text-left">{{'accounts.manageMyaccount.label.accountStatus'
+							| translate}}:</label>
+								<div class="col-sm-4 col-md-4 col-lg-4">
+									<!-- callFormEvent('accountServices','getVendorRepAccounts', {'accountType':accountType,'sort':'customerCompanyName','pagination':true,'startIndex':0,'dir':'asc','results':5},{'type' : 'updateModel','dataModel' : 'manageMyAccounts','rootNode' : 'data.successData.VendorRepAccountList'}); -->
+									<select title="{{'accounts.manageMyaccount.label.accountStatus'| translate}}"
+											id="accountStatus"
+											class="form-control input-sm"
+											name="accountStatus"
+											ng-change="changeInitialRequest(account.accountType,account.accountName);"
+											ng-model="account.accountType">
+										<option id="all"
+												value="all"
+												ng-selected="$stateParams.homeAction == 'noIncompleteRegistrations'">All
+											Active Accounts</option>
+										<option id="incompleteRegistrations"
+												value="incompleteRegistrations"
+												ng-selected="$stateParams.homeAction == 'incompleteRegistrations'">
+											Incomplete Registrations</option>
+										<option id="failedHealthAlert"
+												value="failedHealthAlert"
+												ng-selected="$stateParams.homeAction == 'failedHealthAlert'">Failed
+											Health Systems</option>
+										<option id="inActiveAccounts"
+												value="inActiveAccounts"
+												ng-selected="$stateParams.homeAction == 'inActiveAccounts'">Inactive
+											Accounts</option>
+									</select>
+									<!--<select id="accountStatus" ng-if="$state.params.homeAction !=''" class="form-control input-sm" name="accountStatus" ng-init="accountType = $state.params.homeAction" ng-model="accountType">
+                           <option id="all" value="all">{{'accounts.manageMyaccount.label.allActiveAccounts' | translate}}</option>
+                           <option id="incompleteRegistrations" value="incompleteRegistrations">{{'accounts.incompleteRegistrations' | translate}}</option>
+                           <option id="failedHealthAlert" value="failedHealthAlert">{{'accounts.failedHealthSystems' | translate}}</option>
+                           <option id="inActiveAccounts" value="inActiveAccounts">{{'accounts.inactiveAccounts' | translate}}</option>
+                        </select> -->
+								</div>
+								<label class="col-sm-1 col-md-1 col-lg-1 marginT1 text-center"><b>{{'common.and'|
+								translate}}</b></label>
+								<div class="col-sm-3 col-md-3 col-lg-3">
+									<input id="accountName"
+										   class="form-control input-sm"
+										   name="customerName"
+										   placeholder="{{'accounts.manageMyaccount.label.enterAccountName'|translate}}"
+										   ng-keydown="$event.keyCode == 13 && changeInitialRequest(account.accountType,account.accountName);"
+										   ng-model="account.accountName"
+										   maxlength="250"
+										   ng-change="changeVendorRepParams(account.accountType,account.accountName);" />
+								</div>
+								<div class="col-sm-2 col-md-2 col-lg-2">
+									<button id="searchAccount"
+											type="submit"
+											class="btn btn-primary"
+											ng-click="refreshTable();">{{'common.search'|
+								translate}}</button>
+								</div>
+							</div>
+							<div class="col-sm-8 col-md-8 col-lg-8 marginT2">
+								<input class="form-control input-sm hide"
+									   maxlength="250"
+									   name="accountName"
+									   validator="validateAlphanumSpecial"
+									   validate-alphanum-special-error-message="{{'common.errorMessage.allowedSpecialCharacters' | translate}}"
+									   placeholder="{{'accounts.manageMyaccount.label.enterAccountName'|translate}}"
+									   ng-keydown="$event.keyCode == 13 && changeInitialRequest(account.accountType,account.accountName);"
+									   ng-model="account.accountName"
+									   ng-change="changeVendorRepParams(account.accountType,account.accountName);" />
+							</div>
+						</form>
+						<div class="col-sm-12 col-md-12 col-lg-4">
+							<div class="pull-right">
+								<a id="manageAccountsHelp"
+								   ng-click="openHelpDialog();">{{'common.help'|
+								translate}}</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div data-ng-class="{'dNone':loading}"
+					 ng-if="!searchForm.accountName.$invalid || !account.accountName.length">
+					<div ng-if="manageMyAccounts.data.length > 0 && data.successData.actualRecords >= data.successData.paginationMessage.paginationMaxCount" >
+						<p class="text-left col-sm-12 col-md-12 col-lg-12 paddingL0 pagination-max-message">
+							<b> {{'paginationMaximumMessage' | translate:data.successData.paginationMessage }}</b>
+						</p>
+					</div>
+					<div class="col-sm-12 col-md-12 col-lg-12 paddingL0 paddingR0 marginTP5 marginBP5">
+						<div class="clearfix col-sm-7 col-md-8 col-lg-8 pull-left paddingL0">
+							<div ng-table-pagination="manageMyAccounts"
+								 template-url="'pagination1.html'"></div>
+							<div data-ng-hide="account.accountType == 'inActiveAccounts' || manageMyAccounts.data.errorData.Status ==='Error'"
+								 vision-data-table-export="manageMyAccounts"
+								 service="accountServices"
+								 operation="getVendorRepAccountsReports"
+								 params='{"pagination":"false","accountType":"{{account.accountType}}","customerName":"{{account.accountName}}","iframeEnabled":"{{isIframeEnabled}}","sort":"customerSortSeq,customerCompanyName","dir":"asc"}'
+								 export-type="csv,xls,pdf"></div>
+							<div data-ng-show="account.accountType == 'inActiveAccounts' && manageMyAccounts.data.errorData.Status !='Error'"
+								 vision-data-table-export="manageMyAccounts"
+								 service="accountServices"
+								 operation="getAllInactiveAccountsReports"
+								 params='{"pagination":"false","sort":"customerCompanyName","dir":"asc"}'
+								 export-type="csv,xls,pdf"></div>
+						</div>
+						<div class="clearfix col-sm-5 col-md-4 col-lg-4 pull-left paddingR0">
+							<div ng-table-pagination="manageMyAccounts"
+								 template-url="'paginationCount1.html'"></div>
+							<div class="pull-right"><button id="accountRefresh"
+										ng-click="refreshTable();callGAPageTrack('refreshManageMyAccounts');refreshBtn()"
+										tooltip-placement="left"
+										tooltip-append-to-body="true"
+										tooltip="{{'common.lastRefresh'|translate}} {{todayDate | date:'MMM dd, hh:mm:ss a'}}"
+										class="btn"
+										type="button">
+									<i class="fa fa-refresh"></i>
+								</button>&nbsp;&nbsp;</div>
+						</div>
+					</div>
+					<div class="table-responsive tableResponsive">
+						<table data-ng-table="manageMyAccounts"
+							   show-filter="false"
+							   template-pagination="style3"
+							   class="table marginB0 table-striped table-bordered">
+							<tbody ng-if="manageMyAccounts.data.length>0">
+								<tr ng-repeat="manageAccounts in manageMyAccounts.data">
+									<td data-title="'accounts.manageMyaccount.label.action' | translate"
+										class="text-left col-sm-1"><select id="{{accounts.vendorRepOid}}"
+												class="input-filter form-control width100px"
+												name="location"
+												ng-change="changeAccountAction(account.accountType,actions,manageAccounts.vendorRepOid,manageAccounts.customerCompanyName,manageAccounts.customerOid,manageMyAccounts.data.length);actions='';"
+												ng-model="actions">
+											<option value="">Select</option>
+											<option ng-if="manageAccounts.expressRegistered == false && manageAccounts.vcStatusCode !='RFPMT' && account.accountType != 'inActiveAccounts'"
+													value="checkCompliance">View Access Status</option>
+											<option ng-if="manageAccounts.expressRegistered == false && manageAccounts.customerRemoteBadgePrint == true && manageAccounts.vcStatusCode != 'RFPMT' && account.accountType != 'inActiveAccounts'"
+													value="prepareforvisit">Print Badge</option>
+											<option ng-if="manageAccounts.customerVerticalCode !='1CRED' && account.accountType != 'inActiveAccounts'"
+													value="inactivateaccount">Inactivate Account</option>
+											<option ng-if="manageAccounts.expressRegistered == false && manageAccounts.custEnableApptRequest == true && manageAccounts.vcEnableApptRequest == true && manageAccounts.repEnableApptRequest == true && manageAccounts.vcStatusCode != 'RFPMT' && account.accountType != 'inActiveAccounts'"
+													value="requestAppointment">Request Appointment</option>
+											<option data-ng-if="account.accountType == 'inActiveAccounts'"
+													value="activateAccount">Activate Account</option>
+										</select></td>
+									<td data-title="'accounts.manageMyaccount.label.account' | translate"
+										sortable="'customerCompanyName'"
+										class="text-left">
+										<div class="width250px break-word"><a
+											   ng-if="manageAccounts.expressRegistered == false && account.accountType != 'inActiveAccounts'"
+											   data-ng-click="showAccountIframeDetails(manageAccounts,'normal','manageAccounts');">
+												<div ng-if="manageAccounts.customerVerticalCode == '1CRED'">
+													<b>{{manageAccounts.customerCompanyName}}</b></div>
+												<div ng-if="manageAccounts.customerVerticalCode != '1CRED'">
+													{{manageAccounts.customerCompanyName}}</div>
+											</a> <a
+											   ng-if="((manageAccounts.expressRegistered == true && manageAccounts.enableExpressRegistration == true && manageAccounts.enabledNormalRegistration == true) || (manageAccounts.expressRegistered == true && manageAccounts.enabledNormalRegistration == true)) && account.accountType != 'inActiveAccounts'"
+											   data-ng-click="manageAccountsUpgradeCautionDialog(manageAccounts, 'manageAccounts','manageAccounts');">
+												<div ng-if="manageAccounts.customerVerticalCode == '1CRED'">
+													<b>{{manageAccounts.customerCompanyName}}</b></div>
+												<div ng-if="manageAccounts.customerVerticalCode != '1CRED'">
+													{{manageAccounts.customerCompanyName}}</div>
+											</a> <a
+											   ng-if="((manageAccounts.expressRegistered == true && manageAccounts.enableExpressRegistration == true && manageAccounts.enabledNormalRegistration == false) || (manageAccounts.expressRegistered == true && manageAccounts.enabledNormalRegistration == false)) && account.accountType != 'inActiveAccounts'"
+											   data-ng-click="showAccountIframeDetails(manageAccounts,'express');">
+												<div ng-if="manageAccounts.customerVerticalCode == '1CRED'">
+													<b>{{manageAccounts.customerCompanyName}}</b></div>
+												<div ng-if="manageAccounts.customerVerticalCode != '1CRED'">
+													{{manageAccounts.customerCompanyName}}</div>
+											</a>
+											<div data-ng-show="account.accountType == 'inActiveAccounts'">
+												{{manageAccounts.customerCompanyName}}</div>
+										</div>
+									</td>
+									<td ng-show="hideRenewal"
+										header="'requirementStatus.html'"
+										sortable="'blockedStatus,vendorRepReqStatus'"
+										class="text-left">
+										<span ng-if="(manageAccounts.overAllStatusForReport  | lowercase) == 'pass'"
+											  tooltip-append-to-body="true"
+											  uib-tooltip-html="'{{manageAccounts.toolTip}}'">
+											<a ng-if="(manageAccounts.expressRegistered == true && manageAccounts.enableExpressRegistration == true && manageAccounts.enabledNormalRegistration == true) || (manageAccounts.expressRegistered == true && manageAccounts.enabledNormalRegistration == true)"
+											   data-ng-click="manageAccountsUpgradeCautionDialog(manageAccounts,'manageAccounts','documentURL');"><span
+													  class="text-success">{{'accounts.manageMyaccount.label.pass'
+											| translate}}</span></a>
+											<a ng-if="(manageAccounts.expressRegistered == true && manageAccounts.enableExpressRegistration == true && manageAccounts.enabledNormalRegistration == false) || (manageAccounts.expressRegistered == true && manageAccounts.enabledNormalRegistration == false)"
+											   data-ng-click="showAccountIframeDetails(manageAccounts,'express','manageAccounts','documentURL');"><span
+													  class="text-success">{{'accounts.manageMyaccount.label.pass'
+											| translate}}</span></a> <a ng-if="manageAccounts.expressRegistered == false"
+											   data-ng-click="showAccountIframeDetails(manageAccounts,'normal','manageAccounts','documentURL');"><span
+													  class="text-success">{{'accounts.manageMyaccount.label.pass'
+											| translate}}</span></a>
+										</span>
+										<span ng-if="(manageAccounts.overAllStatusForReport  | lowercase) == 'fail'"
+											  tooltip-append-to-body="true"
+											  uib-tooltip-html="'{{manageAccounts.toolTip}}'">
+											<a ng-if="(manageAccounts.expressRegistered == true && manageAccounts.enableExpressRegistration == true && manageAccounts.enabledNormalRegistration == true) || (manageAccounts.expressRegistered == true && manageAccounts.enabledNormalRegistration == true)"
+											   data-ng-click="manageAccountsUpgradeCautionDialog(manageAccounts,'manageAccounts','documentURL');"><span
+													  class="textFail">{{'accounts.manageMyaccount.label.fail'
+											| translate}}</span></a>
+											<a ng-if="(manageAccounts.expressRegistered == true && manageAccounts.enableExpressRegistration == true && manageAccounts.enabledNormalRegistration == false) || (manageAccounts.expressRegistered == true && manageAccounts.enabledNormalRegistration == false)"
+											   data-ng-click="showAccountIframeDetails(manageAccounts,'express','manageAccounts','documentURL');"><span
+													  class="textFail">{{'accounts.manageMyaccount.label.fail'
+											| translate}}</span></a> <a ng-if="manageAccounts.expressRegistered == false"
+											   data-ng-click="showAccountIframeDetails(manageAccounts,'normal','manageAccounts','documentURL');"><span
+													  class="textFail">{{'accounts.manageMyaccount.label.fail'
+											| translate}}</span></a>
+										</span> <span
+											  ng-if="(manageAccounts.overAllStatusForReport  | lowercase) == 'na'"
+											  tooltip-append-to-body="true"
+											  uib-tooltip-html="'{{manageAccounts.toolTip}}'">
+											<a ng-if="(manageAccounts.expressRegistered == true && manageAccounts.enableExpressRegistration == true && manageAccounts.enabledNormalRegistration == true) || (manageAccounts.expressRegistered == true && manageAccounts.enabledNormalRegistration == true)"
+											   data-ng-click="manageAccountsUpgradeCautionDialog(manageAccounts,'manageAccounts','documentURL');"><span
+													  class="text-muted">{{'accounts.manageMyaccount.label.n/a'
+											| translate}}</span></a>
+											<a ng-if="(manageAccounts.expressRegistered == true && manageAccounts.enableExpressRegistration == true && manageAccounts.enabledNormalRegistration == false) || (manageAccounts.expressRegistered == true && manageAccounts.enabledNormalRegistration == false)"
+											   data-ng-click="showAccountIframeDetails(manageAccounts,'express','manageAccounts','documentURL');"><span
+													  class="text-muted">{{'accounts.manageMyaccount.label.n/a'
+											| translate}}</span></a> <a ng-if="manageAccounts.expressRegistered == false"
+											   data-ng-click="showAccountIframeDetails(manageAccounts,'normal','manageAccounts','documentURL');"><span
+													  class="text-muted">{{'accounts.manageMyaccount.label.n/a'
+											| translate}}</span></a>
+										</span>
+										<span ng-if="(manageAccounts.overAllStatusForReport  | lowercase)== 'alert'"
+											  tooltip-append-to-body="true"
+											  uib-tooltip-html="'{{manageAccounts.toolTip}}'">
+											<a ng-if="(manageAccounts.expressRegistered == true && manageAccounts.enableExpressRegistration == true && manageAccounts.enabledNormalRegistration == true) || (manageAccounts.expressRegistered == true && manageAccounts.enabledNormalRegistration == true)"
+											   data-ng-click="manageAccountsUpgradeCautionDialog(manageAccounts,'manageAccounts','documentURL');"><span
+													  class="alertTextColor">{{'accounts.manageMyaccount.label.alert'
+											| translate}}</span></a>
+											<a ng-if="(manageAccounts.expressRegistered == true && manageAccounts.enableExpressRegistration == true && manageAccounts.enabledNormalRegistration == false) || (manageAccounts.expressRegistered == true && manageAccounts.enabledNormalRegistration == false)"
+											   data-ng-click="showAccountIframeDetails(manageAccounts,'express','manageAccounts','documentURL');"><span
+													  class="alertTextColor">{{'accounts.manageMyaccount.label.alert'
+											| translate}}</span></a> <a ng-if="manageAccounts.expressRegistered == false"
+											   data-ng-click="showAccountIframeDetails(manageAccounts,'normal','manageAccounts','documentURL');"><span
+													  class="alertTextColor">{{'accounts.manageMyaccount.label.alert'
+											| translate}}</span></a>
+										</span>
+										<span ng-if="(manageAccounts.overAllStatusForReport | lowercase) == 'blocked'"
+											  tooltip-placement="top"
+											  tooltip-append-to-body="true"
+											  tooltip="{{manageAccounts.toolTip}}"
+											  class="textFail">{{'accounts.manageMyaccount.label.blocked'|translate}}</span>
+									</td>
+									<td ng-show="showReqStatus"
+										header="'requirementStatus.html'"
+										class="text-left"><span
+											  data-ng-show="account.accountType == 'inActiveAccounts'">{{'accounts.manageMyaccount.label.n/a'|
+									translate}}</span></td>
+									<td header="'registrationStatus.html'"
+										class="text-left"><span
+											  data-ng-if="manageAccounts.registrationCompleted === true"><a
+											   class="colorGreen"
+											   ng-click="showPendingRegistrationFlow(manageAccounts, 'complete');">Complete</a></span>
+										<span data-ng-if="manageAccounts.registrationCompleted === false"><a
+											   class="colorRed"
+											   ng-click="showPendingRegistrationFlow(manageAccounts, 'inComplete');">Incomplete</a></span>
+									</td>
+									<td header="'renewalDate.html'"
+										ng-show="data.successData.enterprisePlan==false && hideRenewal"
+										class="text-left"
+										sortable="'renewalDate'">
+										<span ng-if="manageAccounts.renewalIncomplete === true">
+											{{'accounts.manageMyaccount.label.unpaidRegistration'
+											| translate}}
+										</span>
+										<span ng-if="manageAccounts.renewalIncomplete === false">
+											{{manageAccounts.renewalDate |
+								dateFormate | date:'MMM dd, y'}}
+										</span>
+									</td>
+									<td data-title="'accounts.manageMyaccount.label.locations'| translate"
+										class="text-left width150px"><a
+										   data-ui-sref="accounts.manageAccounts.viewLocations({'customerOid':manageAccounts.customerOid,'customerName':manageAccounts.customerCompanyName})">{{'accounts.manageMyaccount.label.viewLocations'|
+									translate}}</a></td>
+								</tr>
+							</tbody>
+							<tbody ng-if="manageMyAccounts.data.errorData.Status=='Error'">
+								<tr>
+									<td colspan="11">
+										<div class="text-danger">
+											<span class="fa fa-warning"
+												  aria-hidden="true"></span>
+											{{manageMyAccounts.data.errorData.ResponseError[0].errorCode |
+									translate}}
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="col-sm-12 col-md-12 col-lg-12 paddingL0 paddingR0 marginTP5 marginBP5">
+						<div class="clearfix col-sm-7 col-md-8 col-lg-8 pull-left paddingL0">
+							<div ng-table-pagination="manageMyAccounts"
+								 template-url="'pagination1.html'"></div>
+							<div data-ng-hide="account.accountType == 'inActiveAccounts' || manageMyAccounts.data.errorData.Status ==='Error'"
+								 vision-data-table-export="manageMyAccounts"
+								 service="accountServices"
+								 operation="getVendorRepAccountsReports"
+								 params='{"pagination":"false","accountType":"{{account.accountType}}","customerName":"{{account.accountName}}","iframeEnabled":"{{isIframeEnabled}}","sort":"customerSortSeq,customerCompanyName","dir":"asc"}'
+								 export-type="csv,xls,pdf"></div>
+							<div data-ng-show="account.accountType == 'inActiveAccounts' && manageMyAccounts.data.errorData.Status !='Error'"
+								 vision-data-table-export="manageMyAccounts"
+								 service="accountServices"
+								 operation="getAllInactiveAccountsReports"
+								 params='{"pagination":"false","sort":"customerCompanyName","dir":"asc"}'
+								 export-type="csv,xls,pdf"></div>
+						</div>
+						<div class="clearfix col-sm-5 col-md-4 col-lg-4 pull-left paddingR0">
+							<div ng-table-pagination="manageMyAccounts"
+								 template-url="'paginationCount1.html'"></div>
+							<div class="pull-right"><button id="accountRefresh"
+										ng-click="refreshTable();callGAPageTrack('refreshManageMyAccounts');"
+										tooltip-placement="left"
+										tooltip-append-to-body="true"
+										tooltip="{{'common.lastRefresh'|translate}} {{todayDate | date:'MMM dd, hh:mm:ss a'}}"
+										class="btn"
+										type="button">
+									<i class="fa fa-refresh"></i>
+								</button>&nbsp;&nbsp;</div>
+
+						</div>
+					</div>
+				</div>
+			</vision-data-table>
+		</div>
+	</div>
+</div>

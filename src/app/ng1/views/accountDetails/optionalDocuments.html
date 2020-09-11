@@ -1,0 +1,388 @@
+<div class="row">
+	<div class="col-sm-12 col-md-12 col-lg-12 myDocumentMaxHeight">
+		<vision-data-table service="myDocumentServices"
+		                   operation="getAccountSpecificOptionalDocuments"
+		                   root-node="data.successData.UserComplianceDocumentList"
+		                   total-records-node="data.successData.totalRecords"
+		                   type="server"
+		                   id="documentlist"
+		                   initial-request='{"count":5,"page":1,"sorting":{"sortKey":"asc"}}'
+		                   search-type="searchRequestWithPagination">
+			<div data-ng-class="{'dNone':!loading}">
+				<img align="absmiddle"
+				     src="app/ng1/img/partial-loading.gif">{{::'common.loading' | translate}}</div>
+			<div ng-show="!loading">
+				<div class="row">
+					<div class="clearfix ng-table-counts-hide marginBP5 marginTP5 col-lg-12"
+					     ng-table-pagination="documentlist"
+					     template-url="'ng-table/style3.html'"></div>
+				</div>
+				<div class="table-responsive"
+				     ng-controller="myDocumentController">
+					<table ng-table="documentlist"
+					       template-pagination="style3"
+					       class="table table-striped table-bordered"
+					       show-filter="true">
+						<tbody ng-if="documentlist.data.length>0">
+							<tr ng-repeat="optionalDocuments in $data">
+							<td data-title="'myDocuments.label.status' | translate"
+								class="text-center col-sm-1 vAlignMiddle"
+								filter="{ 'requirementStatus': 'select' }"
+								filter-data="[{id:'',title:'ALL'},{id:'FAIL',title:'FAIL'},{id:'ALERT',title:'ALERT'},{id:'PASS',title:'PASS'}]">
+								<span
+									ng-if="optionalDocuments.docVerificationCode && optionalDocuments.docVerificationCode !== ''">
+										<span ng-if="optionalDocuments.sortKey === 1"> <span
+											ng-if="!optionalDocuments.docNote"> <img
+												src="app/ng1/img/no.png" width="20" /> <br /> <a
+												class="cursorPointer"
+												ng-click="docRejectedReasonDialog('Reason', optionalDocuments.docRejectionString, '')">{{::'myDocuments.label.rejected'
+													| translate}}</a>
+										</span> <span
+											ng-if="optionalDocuments.docNote && optionalDocuments.docNote !== '' && optionalDocuments.docNote !== null">
+												<img src="app/ng1/img/no.png" width="20" /><br /> <a
+												class="cursorPointer"
+												ng-click="docRejectedReasonDialog('Reason', optionalDocuments.docRejectionString, optionalDocuments.docNote)">{{::'myDocuments.label.rejected'
+													| translate}}</a>
+										</span>
+									</span> <span ng-if="optionalDocuments.sortKey === 4"> <img
+											src="app/ng1/img/no.png" width="20" /> <br />{{::'myDocuments.label.Missing'
+											| translate}}
+									</span> <span ng-if="optionalDocuments.sortKey === 2"> <img
+											src="app/ng1/img/no.png" width="20" /><br />{{::'myDocuments.label.expired'
+											| translate}}
+									</span>
+									<span ng-if="optionalDocuments.sortKey === 5"> <img
+										src="app/ng1/img/warning.png" width="20" /> <br />{{::'myDocuments.label.expiring'
+										| translate}}
+									</span> <span
+										ng-if="optionalDocuments.docVerificationCode === 'VERA' && optionalDocuments.sortKey === 6">
+											<span ng-if="optionalDocuments.alertLevel === 'ALERT'">
+												<img src="app/ng1/img/warning.png" width="22" />
+										</span> <span ng-if="optionalDocuments.alertLevel !== 'ALERT'">
+												<img src="app/ng1/img/okay.png" width="22" />
+										</span> <br />{{::'myDocuments.label.verifiedAlternate' | translate}}
+									</span> <span
+										ng-if="optionalDocuments.docVerificationCode !== 'VERA' && optionalDocuments.sortKey !== 1 && optionalDocuments.sortKey !== 2 && optionalDocuments.sortKey !== 4 && optionalDocuments.sortKey !== 5 && optionalDocuments.sortKey !== 6"><img
+											src="app/ng1/img/okay.png" width="22" /> <span
+											ng-if="optionalDocuments.docVerificationCode === 'UNVER'">
+												<br />{{::'myDocuments.label.unverified' | translate}}
+										</span> <span
+											ng-if="optionalDocuments.docVerificationCode !== 'UNVER'">
+												<br />{{::'myDocuments.label.verified' | translate}}
+										</span> </span>
+								</span>
+								<span ng-if="!optionalDocuments.docVerificationCode"> <span
+										ng-if="optionalDocuments.alertLevel === 'ALERT'"> <img
+											src="app/ng1/img/warning.png" width="22" tooltip-append-to-body="true"
+											tooltip-placement="top"
+											tooltip="{{'myDocuments.toolTip.documentGracePeriod' | translate}}" /><br />{{::'myDocuments.label.Missing'
+											| translate}}
+									</span> <span ng-if="optionalDocuments.alertLevel === 'FAIL'"> <img
+											src="app/ng1/img/no.png" width="20" /><br />{{::'myDocuments.label.Missing'
+											| translate}}
+									</span>
+								</span>
+							</td>
+							<td header="'myDocumentWhat.html'"
+								    class="text-left col-sm-2">
+									<span ng-if="optionalDocuments.templateAutoAssignable === true">
+										<span ng-if="optionalDocuments.docDefName">{{optionalDocuments.docDefName}}</span>
+										<span ng-if="!optionalDocuments.docDefName">{{optionalDocuments.templateName}}</span>
+									</span>
+									<span ng-if="optionalDocuments.templateAutoAssignable !== true">
+										{{optionalDocuments.docDefName}}
+										<span ng-if="optionalDocuments.docDefHasTemplate && optionalDocuments.docDefHasTemplate === 't'">
+											<a class="fontSize11px getTemplate"
+											   ng-click="viewTemplateDocument(optionalDocuments.documentDefinitionOid)">{{::'myDocuments.getTemplate' |
+												translate}}</a>
+										</span>
+									</span>
+									<br />
+									<div class="marginT1">
+										<span class=" noLinkSpan"
+										      ng-if="(optionalDocuments.documentOid && optionalDocuments.documentOid !== '') && !optionalDocuments.providerTemplate">
+											<i tooltip-append-to-body="true"
+											   tooltip-placement="top"
+											   tooltip="Upload"
+											   class="fa fa-lg fa-upload document-icon"
+											   aria-hidden="true"></i>
+											<span ng-if="optionalDocuments.documentTemplateOid && optionalDocuments.documentTemplateOid === 'BADGE_PHOTO-Rep'">
+												<a ng-controller="badgePhotoController"
+												   ng-click="openBadgePhotoOptionalDocument('viweUpdate');"><i tooltip-append-to-body="true"
+													   tooltip-placement="top"
+													   tooltip="View/Update"
+													   class="fa fa-lg fa-picture-o document-icon"
+													   aria-hidden="true"></i></a>
+											</span>
+											<span ng-if="optionalDocuments.documentTemplateOid !== 'BADGE_PHOTO-Rep'">
+												<span ng-if="optionalDocuments.docFileSize && optionalDocuments.docFileSize >= 200">
+													<a ng-click="viewComplianceDocument(optionalDocuments.documentOid)"><i tooltip-append-to-body="true"
+														   tooltip-placement="top"
+														   tooltip="View"
+														   class="fa fa-lg fa-eye document-icon"
+														   aria-hidden="true"></i></a>
+												</span>
+												<span ng-if="!optionalDocuments.docFileSize  || optionalDocuments.docFileSize < 200">
+													<i tooltip-append-to-body="true"
+													   tooltip-placement="top"
+													   tooltip="View"
+													   class="fa fa-lg fa-eye document-icon"
+													   aria-hidden="true"></i>
+												</span>
+												<span ng-if="optionalDocuments.templateDocCategoryCode && optionalDocuments.templateDocCategoryCode === 'OPVC'">
+													<a ng-click="showCautionPopup(optionalDocuments.documentOid,optionalDocuments.documentDefinitionOid,optionalDocuments.templateAutoAssignable, optionalDocuments.templateDocCategoryCode,'update','optionalDocument')"><i
+														   tooltip-append-to-body="true"
+														   tooltip-placement="top"
+														   tooltip="Update"
+														   class="fa fa-lg fa-pencil-square-o document-icon"
+														   aria-hidden="true"></i></a>
+												</span>
+												<span ng-if="optionalDocuments.templateDocCategoryCode && optionalDocuments.templateDocCategoryCode === 'OPREP'">
+													<a ng-click="loadUploadDocumentForm(optionalDocuments.documentOid,optionalDocuments.documentDefinitionOid,optionalDocuments.templateAutoAssignable,optionalDocuments.templateDocCategoryCode,'update','optionalDocument')">
+														<i tooltip-append-to-body="true"
+														   tooltip-placement="top"
+														   tooltip="Update"
+														   class="fa fa-lg fa-pencil-square-o document-icon"
+														   aria-hidden="true"></i></a>
+												</span>
+											</span> <span ng-if="optionalDocuments.docFileSize && optionalDocuments.docFileSize >= 200">
+												<a ng-click="downloadComplianceDocument(optionalDocuments.documentOid);"><i tooltip-append-to-body="true"
+													   tooltip-placement="top"
+													   tooltip="Download"
+													   class="fa fa-lg fa-download document-icon"
+													   aria-hidden="true"></i></a>
+											</span>
+											<span ng-if="!optionalDocuments.docFileSize || optionalDocuments.docFileSize < 200">
+												<i tooltip-append-to-body="true"
+												   tooltip-placement="top"
+												   tooltip="Download"
+												   class="fa fa-lg fa-download document-icon"
+												   aria-hidden="true"></i>
+											</span>
+											<a ng-click="showDeleteDocuments((optionalDocuments.docDefName && optionalDocuments.docDefName !== '') ? optionalDocuments.docDefName : optionalDocuments.templateName,optionalDocuments.documentOid,'optionalDoc',optionalDocuments.templateDocCategoryCode)"><i
+												   tooltip-append-to-body="true"
+												   tooltip-placement="top"
+												   tooltip="Delete"
+												   class="fa fa-lg fa-trash-o"
+												   aria-hidden="true"></i></a>
+										</span>
+										<span ng-if="!optionalDocuments.documentOid  && !optionalDocuments.providerTemplate">
+											<span ng-if="optionalDocuments.documentTemplateOid && optionalDocuments.documentTemplateOid =='BADGE_PHOTO-Rep'">
+												<a ng-controller="badgePhotoController"
+												   ng-click="openBadgePhotoOptionalDocument('upload');"><i tooltip-append-to-body="true"
+													   tooltip-placement="top"
+													   tooltip="Upload"
+													   class="fa fa-lg fa-upload document-icon"
+													   aria-hidden="true"></i></a>
+												<span class="noLinkSpan"><i tooltip-append-to-body="true"
+													   tooltip-placement="top"
+													   tooltip="View/Update"
+													   class="fa fa-lg fa-picture-o document-icon"
+													   aria-hidden="true"></i></span>
+											</span>
+											<span ng-if="optionalDocuments.documentTemplateOid !== 'BADGE_PHOTO-Rep'">
+												<span ng-if="optionalDocuments.templateDocCategoryCode && optionalDocuments.templateDocCategoryCode === 'OPVC'">
+													<a ng-click="showCautionPopup(optionalDocuments.documentOid,optionalDocuments.documentDefinitionOid,optionalDocuments.templateAutoAssignable, optionalDocuments.templateDocCategoryCode,'upload','optionalDocument')">
+														<i tooltip-append-to-body="true"
+														   tooltip-placement="top"
+														   tooltip="Upload"
+														   class="fa fa-lg fa-upload document-icon"
+														   aria-hidden="true"></i></a>
+												</span>
+												<span ng-if="optionalDocuments.templateDocCategoryCode && optionalDocuments.templateDocCategoryCode === 'OPREP'">
+													<a ng-click="loadUploadDocumentForm(optionalDocuments.documentOid,optionalDocuments.documentDefinitionOid,optionalDocuments.templateAutoAssignable,optionalDocuments.templateDocCategoryCode,'upload','optionalDocument')">
+														<i tooltip-append-to-body="true"
+														   tooltip-placement="top"
+														   tooltip="Upload"
+														   class="fa fa-lg fa-upload document-icon"
+														   aria-hidden="true"></i></a>
+												</span>
+												<span class="noLinkSpan">
+													<i tooltip-append-to-body="true"
+													   tooltip-placement="top"
+													   tooltip="View"
+													   class="fa fa-lg fa-eye document-icon"
+													   aria-hidden="true"></i>
+													<i tooltip-append-to-body="true"
+													   tooltip-placement="top"
+													   tooltip="Update"
+													   class="fa fa-lg fa-pencil-square-o  document-icon"
+													   aria-hidden="true"></i>
+												</span>
+											</span> <span class="noLinkSpan">
+												<i tooltip-append-to-body="true"
+												   tooltip-placement="top"
+												   tooltip="Download"
+												   class="fa fa-lg fa-download  document-icon"
+												   aria-hidden="true"></i>
+												<i tooltip-append-to-body="true"
+												   tooltip-placement="top"
+												   tooltip="Delete"
+												   class="fa fa-lg fa-trash-o"
+												   aria-hidden="true"></i>
+											</span>
+										</span>
+										<span ng-if="optionalDocuments.documentOid && optionalDocuments.providerTemplate">
+											<span class="noLinkSpan">
+												<i tooltip-append-to-body="true"
+												   tooltip-placement="top"
+												   tooltip="Upload"
+												   class="fa fa-lg fa-upload document-icon"
+												   aria-hidden="true"></i>
+												<a ng-click="viewComplianceDocument(optionalDocuments.documentOid)"><i tooltip-append-to-body="true"
+													   tooltip-placement="top"
+													   tooltip="View"
+													   class="fa fa-lg fa-eye document-icon"
+													   aria-hidden="true"></i></a>
+												<i tooltip-append-to-body="true"
+												   tooltip-placement="top"
+												   tooltip="Update"
+												   class="fa fa-lg fa-pencil-square-o document-icon"
+												   aria-hidden="true"></i>
+												<a ng-click="downloadComplianceDocument(optionalDocuments.documentOid);"><i tooltip-append-to-body="true"
+													   tooltip-placement="top"
+													   tooltip="Download"
+													   class="fa fa-lg fa-download document-icon"
+													   aria-hidden="true"></i></a>
+												<i tooltip-append-to-body="true"
+												   tooltip-placement="top"
+												   tooltip="Delete"
+												   class="fa fa-lg fa-trash-o"
+												   aria-hidden="true"></i>
+											</span>
+										</span>
+										<span ng-if="!optionalDocuments.documentOid && optionalDocuments.providerTemplate">
+											<span class="noLinkSpan">
+												<i tooltip-append-to-body="true"
+												   tooltip-placement="top"
+												   tooltip="Upload"
+												   class="fa fa-lg fa-upload document-icon"
+												   aria-hidden="true"></i>
+												<i tooltip-append-to-body="true"
+												   tooltip-placement="top"
+												   tooltip="View"
+												   class="fa fa-lg fa-eye document-icon"
+												   aria-hidden="true"></i>
+												<i tooltip-append-to-body="true"
+												   tooltip-placement="top"
+												   tooltip="Update"
+												   class="fa fa-lg fa-pencil-square-o document-icon"
+												   aria-hidden="true"></i>
+												<i tooltip-append-to-body="true"
+												   tooltip-placement="top"
+												   tooltip="Download"
+												   class="fa fa-lg fa-download document-icon"
+												   aria-hidden="true"></i>
+												<i tooltip-append-to-body="true"
+												   tooltip-placement="top"
+												   tooltip="Delete"
+												   class="fa fa-lg fa-trash-o"
+												   aria-hidden="true"></i>
+											</span>
+										</span>
+									</div>
+								</td>
+								<td header="'myDocumentWhy.html'"
+								    class="text-left col-sm-2"> <span ng-controller="commonController">
+										<span ng-if="optionalDocuments.templateAutoAssignable === true">
+											<span ng-if="optionalDocuments.docDefWhy && optionalDocuments.docDefWhy !== ''">
+												<span class="whiteSpacePre"
+												      ng-bind-html="optionalDocuments.docDefWhy | limitHtml:45 | trustAsHtml">
+												</span>
+												<span data-ng-if="optionalDocuments.docDefWhy.length > 45">
+													<a class="cursorPointer"
+													   ng-click="moreDialog(optionalDocuments.docDefWhy,'Why?')"> {{::'common.more' | translate}}...</a>
+												</span>
+											</span>
+											<span ng-if="!optionalDocuments.docDefWhy || optionalDocuments.docDefWhy === ''">
+												<span class="whiteSpacePre"
+												      ng-bind-html="optionalDocuments.templateWhy | limitHtml:45 | trustAsHtml">
+												</span>
+												<span data-ng-if="optionalDocuments.templateWhy.length > 45">
+													<a class="cursorPointer"
+													   ng-click="moreDialog(optionalDocuments.templateWhy,'Why?')"> {{::'common.more' | translate}}...</a>
+												</span>
+											</span>
+										</span>
+										<span ng-if="optionalDocuments.templateAutoAssignable === false">
+											<span class="whiteSpacePre"
+											      ng-bind-html="optionalDocuments.docDefWhy | limitHtml:45 | trustAsHtml">
+											</span>
+											<span data-ng-if="optionalDocuments.docDefWhy.length > 45">
+												<a class="cursorPointer"
+												   ng-click="moreDialog(optionalDocuments.docDefWhy,'Why?')"> {{::'common.more' | translate}}...</a>
+											</span>
+										</span>
+									</span>
+								</td>
+								<td header="'myDocumentHow.html'"
+								    class="text-left col-sm-2"> <span ng-controller="commonController">
+										<span ng-if="optionalDocuments.templateAutoAssignable === true">
+											<span ng-if="optionalDocuments.docDefName && optionalDocuments.docDefName !== '' || optionalDocuments.docDefWhy && optionalDocuments.docDefWhy !== ''">
+												<span class="whiteSpacePre"
+												      ng-bind-html="optionalDocuments.docDefHow | limitHtml:45 | trustAsHtml"></span>
+												<span data-ng-if="optionalDocuments.docDefHow.length > 45">
+													<a class="cursorPointer"
+													   ng-click="moreDialog(optionalDocuments.docDefHow,'How?')"> {{::'common.more' | translate}}...</a>
+												</span>
+											</span>
+											<span ng-if="!optionalDocuments.docDefName || optionalDocuments.docDefName === '' || !optionalDocuments.docDefWhy || optionalDocuments.docDefWhy === ''">
+												<span class="whiteSpacePre"
+												      ng-bind-html="optionalDocuments.templateHow | limitHtml:45 | trustAsHtml">
+												</span>
+												<span data-ng-if="optionalDocuments.templateHow.length > 45">
+													<a class="cursorPointer"
+													   ng-click="moreDialog(optionalDocuments.templateHow,'How?')"> {{::'common.more' | translate}}...</a>
+												</span>
+											</span>
+										</span>
+										<span ng-if="optionalDocuments.templateAutoAssignable === false">
+											<span class="whiteSpacePre"
+											      ng-bind-html="optionalDocuments.docDefHow | limitHtml:45 | trustAsHtml">
+											</span>
+											<span data-ng-if="optionalDocuments.docDefHow.length > 45">
+												<a class="cursorPointer"
+												   ng-click="moreDialog(optionalDocuments.docDefHow,'How?')"> {{::'common.more' | translate}}...</a>
+											</span>
+										</span>
+									</span>
+								</td>
+								<td data-title="'myDocuments.label.category' | translate"
+								    class="width100px">{{optionalDocuments.templateDocCategory}}</td>
+								<td data-title="'myDocuments.label.uploadedBy' | translate"
+								    class="width100px">{{optionalDocuments.docFileUploadedBy}}</td>
+								<td data-title="'myDocuments.label.uploadDate' | translate"
+								    class="width100px">{{optionalDocuments.docFileUploadedOn | dateFormate | date:'MMM dd, y'}}</td>
+								<td data-title="'myDocuments.label.expirationDate' | translate"
+								    class="width100px">{{optionalDocuments.docExpirationDate | dateFormate | date:'MMM dd, y'}}</td>
+							</tr>
+						</tbody>
+						<tbody ng-if="documentlist && documentlist.data.length === 0">
+							<tr>
+								<td colspan="8">
+									<div class="text-danger">
+										<span class="fa fa-warning"
+										      aria-hidden="true"></span> {{::'common.errorMessage.noDocumentsFound' | translate}}
+									</div>
+								</td>
+							</tr>
+						</tbody>
+						<tbody ng-if="documentlist.data.errorData.Status === 'Error'">
+							<tr>
+								<td colspan="8">
+									<div class="text-danger"> <span class="fa fa-warning"
+										      aria-hidden="true"></span>
+										<span ng-if="documentlist.data.errorData.ResponseError[0].errorCode !== '5062'">{{documentlist.data.errorData.ResponseError[0].errorCode
+											| translate}}</span>
+										<span ng-if="documentlist.data.errorData.ResponseError[0].errorCode === '5062'">{{::'common.errorMessage.noDocumentsFound'
+											| translate}}</span>
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</vision-data-table>
+	</div>
+</div>

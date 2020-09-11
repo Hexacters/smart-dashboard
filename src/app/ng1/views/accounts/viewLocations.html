@@ -1,0 +1,51 @@
+<div class="modal-content">
+	<div class="modal-header commonDialogHeader">
+		<button id="viewLocationCloseIcon" id="viewAccountCloseIcon"
+			type="button" class="close" data-dismiss="modal" aria-hidden="true"
+			data-ng-click="cancelDialog();">&times;</button>
+		<h3 class="modal-title">
+			<b>{{$stateParams.customerName}}</b>
+		</h3>
+	</div>
+	<div class="modal-body modelDialogScroll">
+		<vision-data-table service="accountServices"
+			operation="getAllCustomerLocations"
+			root-node="data.successData.LocationList"
+			total-records-node="data.successData.TotalRecords" type="client"
+			id="viewLocations"
+			initial-request='{"count":10,"page":1,"sorting":{"locationLongDescription":"asc"}}'>
+			<div data-ng-class="{'dNone':!loading}">
+				<img align="absmiddle" src="app/ng1/img/partial-loading.gif">&nbsp;loading...
+			</div>
+		<div class="table-responsive" ng-show="!loading">
+			<div class="clearfix marginB1 marginT1"
+				ng-table-pagination="viewLocations"
+				template-url="'ng-table/style3.html'"></div>
+			<table ng-table="viewLocations" template-pagination="style3"
+				class="table marginB0 table-striped table-bordered">
+				<tbody ng-if="viewLocations.data.length>0">
+					<tr ng-repeat="location in $data">
+						<td data-title="'Locations'" sortable="'locationLongDescription'"
+							class="text-left col-md-2">
+							{{location.locationLongDescription}}</td>
+					</tr>
+				</tbody>
+				<tbody ng-if="viewLocations.data.errorData.Status=='Error'">
+					<tr>
+						<td colspan="11">
+							<div class="text-danger">
+								<span class="fa fa-warning" aria-hidden="true"></span>
+								{{viewLocations.data.errorData.ResponseError[0].errorCode |
+								translate}}
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<div class="clearfix marginB1 marginT1"
+				ng-table-pagination="viewLocations"
+				template-url="'ng-table/style3.html'"></div>
+		</div>
+		</vision-data-table>
+	</div>
+</div>

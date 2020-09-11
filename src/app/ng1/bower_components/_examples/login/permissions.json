@@ -1,0 +1,30 @@
+{
+	"VisionResponse" : {
+		"Status" : "Ok",
+		"contentType" : "application/json",
+		"permissions" : [{
+				"resourceId" : "browseKpis",
+				"permissionMask" : "100"
+			}, {
+				"resourceId" : "browseKpis.add",
+				"permissionMask" : "100"
+			}, {
+				"resourceId" : "User",
+				"permissionMask" : "000"
+			}, {
+				"resourceId" : "addNewKpi",
+				"permissionMask" : "000"
+			}, {
+				"resourceId" : "Manufacturer",
+				"permissionMask" : "000"
+			}, {
+				"resourceId" : "ManageSchedule",
+				"permissionMask" : "000"
+			}, {
+				"resourceId" : "manageUsers1",
+				"permissionMask" : "000"
+			}
+
+		]
+	}
+}

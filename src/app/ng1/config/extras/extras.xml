@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<module id="extrasModule">
+	<routers>
+		<router id="extras" sticky="true" url="/extras">
+			<views>
+				<view containerId="vendordash" templateUrl="app/ng1/views/extras/extras.html"></view>
+			</views>
+		</router>
+	</routers>
+</module>

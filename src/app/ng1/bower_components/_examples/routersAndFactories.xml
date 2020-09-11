@@ -1,0 +1,83 @@
+<!-- 
+	Usage of Sticky State
+	----------------------
+	Dont forgot to set sticky="true" for parent state not for an dialog state
+	And need to set containerId for both normal view and dialog view.
+	
+	For Ex: refer index.html.sample
+	
+	<div class="col-lg-12" ui-view="app"></div>
+	<div class="col-lg-12" ui-view="modal"></div> 
+	
+	<router id="organizations" url="/organizations" sticky="true">
+	    <views>
+	        <view containerId="app" templateUrl="views/organization/list_organizations.html"></view>
+	    </views>
+	</router>
+	<router id="stickyDialog" url="/stickyDialog" type="dialog">
+	    <views>
+	        <view containerId="modal" templateUrl="views/organization/stickyModal.html"></view>
+	    </views>
+	</router>
+	<router id="stickyDialog.stickyMoreDialog" url="/stickyMoreDialog" type="dialog">
+	    <views>
+	        <view containerId="modalMore" templateUrl="views/organization/stickyMoreModal.html"></view>
+	    </views>
+	</router>
+-->
+
+<?xml version="1.0"?>
+<module id="organizationModule">
+    <routers>
+		<router id="organizations" url="/organizations" auth="true" sticky="true">
+            <views>
+                <view templateUrl="views/organization/list_organizations.html"></view>
+            </views>
+        </router>
+        <router id="gotoDashboard" url="/gotoDashboard?token" auth="false">
+            <views>
+                <view containerId="app" templateUrl="views/common/gotoDashboard.html"></view>
+            </views>
+        </router>
+		<router id="addOrganization" url="/addOrganization" resourceId="addOrganization">
+            <views>
+                <view templateUrl="views/organization/add_organization.html"></view>
+            </views>
+        </router>
+        <router id="permissionDenied" url="/permissionDenied">
+            <views>
+                <view templateUrl="views/common/permissionDenied.html"></view>
+            </views>
+        </router>
+         <router id="organizations.organization" abstract="true" type="dialog">
+            <views>
+                <view templateUrl="views/organization/view_edit_organization.html"></view>
+            </views>
+        </router>
+        <router id="organizations.organization.view" url="/view-organization/{organization_id}">
+            <views>
+                <view containerId="viewOrganization@" templateUrl="views/organization/view_organization.html"></view>
+            </views>
+        </router>
+ 	</routers>
+    
+    <services id="organizationServices">
+        <operations>
+        	<operation name="getAllOrganizations" requestWrapper="request" responseWrapper="response" targetOperation="getOrganization" basePath="CPMserviceUrl" requestType="json" serviceName="organization" method="get" url="VMClientProxyServlet" mockUrl="mock/getOrganizationsList.json" mock="false"></operation>
+            <operation name="getOrganization" requestType="json" requestWrapper="requestTPM" responseWrapper="responseTPM" serviceName="organization" method="get" url="VMClientProxyServlet" mockUrl="mock/getOrganization.json" mock="false">
+                <params>
+                    <param name="id" source="state" key="organization_id"></param>
+                    <param name="id" source="data" key="keyName" module="moduleName"></param>
+                    <param name="userOid" source="userProfile" key="details.id"></param> // if needed to get value in deep level object using dot notation.
+                    <param name="id" source="static" value="12345"></param>
+                </params>
+            </operation>
+            
+            <operation name="searchEmployeeExport" operationType="export" requestType="json" requestWrapper="request" responseWrapper="response" serviceName="search" method="post" url="VMClientProxyServlet" mockUrl="mock/getPrioritySearchList.json" mock="false"></operation>
+            
+            <operation name="uploadFile" operationType="file" responseWrapper="response" serviceName="fileupload" method="post" url="sevices/uploadfile" mockUrl="mock/uploadSuccess.json" mock="true"></operation>
+            <operation name="downloadFile" operationType="file" requestWrapper="response" serviceName="fileupload" method="get" url="sevices/downloadfile" mockUrl="mock/downloadFile.txt" mock="true"></operation>
+         	<operation name="tokenLogin" method="get" url="/gotoDashboard" responseWrapper="response" mockUrl="mock/login.json" mock="true"></operation>   
+         </operations>
+ 	</services>
+</module>

@@ -1,0 +1,25 @@
+{
+  "VisionResponse": {
+    "Status": "Ok",
+    "complianceStatus": "FAIL",
+    "generalInfo": {
+      "zip": "",
+      "enablePhiSecurityQues": true,
+      "city": "Rockwall",
+      "vcEnableApptRequest": true,
+      "renewalDate": "2018-12-22 00:00:00",
+      "customerOid": "wesleymc",
+      "expressRegistered": false,
+      "customerName": "Wesley Medical Center",
+      "webSiteUrl": "http://www.wesleymc.com",
+      "repEnableApptRequest": true,
+      "custEnableApptRequest": true,
+      "phone": "888-476-0377",
+      "addressLine1": "1101 Ridge Rd Ste 224",
+      "addressLine2": "",
+      "stateCode": "TX",
+      "addressLine3": ""
+    },
+    "contentType": "application/json"
+  }
+}

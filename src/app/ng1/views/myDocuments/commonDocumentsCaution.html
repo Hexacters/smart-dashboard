@@ -1,0 +1,14 @@
+<div class="modal-content">
+	<div class="modal-header commonDialogHeader">
+		<button id="complianceCautionCloseIcon" type="button" class="close" data-dismiss="modal" aria-hidden="true" data-ng-click="$close()">&times;</button>
+			<h3 class="modal-title"><b>{{'myDocuments.caution'| translate}}</b></h3>
+	</div>
+	<div class="modal-body modelDialogScroll">
+	<p>{{'myDocuments.cautionContent.upload'| translate}}</p>
+	<p ng-bind-html="'myDocuments.cautionContent.ensure'| translate"></p>
+		<div class="text-center">
+			<button class="btn btn-info" id="cautionContinue" data-ui-sref="documents.commonDocuments.commonDialog.updateDocument">{{'common.continue'| translate}}</button>
+			<button id="complianceCautionCancelIcon" id="cautionCancel" class="btn btn-warning" data-ng-click="$close()">{{'common.cancel'| translate}}</button>
+		</div>
+	</div>
+</div>

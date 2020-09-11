@@ -1,0 +1,85 @@
+<div ng-controller="googleAnalyticsController" data-ng-init="callGAPageTrack('callSuperInfo');"></div>
+<div class="row">
+	<div class="col-sm-12 col-md-12 col-lg-12"
+		data-ng-class="{'dNone':!loading}">
+		<img align="absmiddle" src="app/ng1/img/partial-loading.gif">&nbsp;{{'common.loading'
+		| translate}}
+	</div>
+	<div class="col-sm-12 col-md-12 col-lg-12">
+		<div class="col-sm-8 col-md-6 col-lg-6">
+			<h3>
+				<b>{{'myProfile.supervisorInformation.header.supervisorInformationTitle'
+					| translate}}</b>
+			</h3>
+		</div>
+		<div class="col-sm-4 col-md-6 col-lg-6">
+			<div class="pull-right marginT2">
+				<sup class="asterisk">*</sup>&nbsp;{{'common.required' | translate}} 
+				<a data-ui-sref="myProfile.supervisorInformationView.supervisorInformationViewHelp" ng-show="!isFromManageReps">{{'common.help'
+					| translate}}</a>
+				<a data-ui-sref="manage.repAccountDetails.manageRepProfile.supervisorInformationView.supervisorInformationViewHelp" 
+					ng-show="isFromManageReps">{{'common.help'| translate}}</a>
+			</div>
+		</div>
+		<div class="col-sm-12 col-md-12 col-lg-12">
+			<vision-action> <get-data service="myProfileServices"
+			operation="getSupervisor"></get-data>
+			<div ng-if="getError.errorData || !data.successData.Reference.firstName">
+					<h6 ng-if="getError.errorData">
+						<b>{{getError.errorData.ResponseError[0].errorCode | translate}}</b>
+					</h6>
+					<h6 ng-if="!getError.errorData">
+						<b>No Supervisor Information provided.</b>
+					</h6>				
+				</div>
+			<form novalidate name="contactPersonalInformation" autocomplete="off"	
+				class="form-horizontal">
+				<div class="col-sm-6 col-md-6 col-lg-6" ng-if="data.successData.Reference.firstName">
+					<div class="form-group">
+						<label class="col-sm-6 col-md-6 col-lg-6  text-right">
+							{{'myProfile.supervisorInformation.label.firstName' | translate}}&nbsp;<sup class="asterisk">*</sup>
+						</label>
+						<p class="break-word col-sm-6 col-md-6 col-lg-6">{{data.successData.Reference.firstName}}</p>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-6 col-md-6 col-lg-6  text-right">
+							{{'myProfile.supervisorInformation.label.lastName' | translate}}&nbsp;<sup
+							class="asterisk">*</sup>
+						</label>
+						<p class="break-word col-sm-6 col-md-6 col-lg-6">{{data.successData.Reference.lastName}}</p>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-6 col-md-6 col-lg-6  text-right">
+							{{'myProfile.supervisorInformation.label.professionalTitle' |
+							translate}}&nbsp;<sup class="asterisk">*</sup>
+						</label>
+						<p class="break-word col-sm-6 col-md-6 col-lg-6">{{data.successData.Reference.title}}</p>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-6 col-md-6 col-lg-6  text-right">
+							{{'myProfile.supervisorInformation.label.phone' | translate}}&nbsp;<sup
+							class="asterisk">*</sup>
+						</label>
+						<p class="break-word col-sm-6 col-md-6 col-lg-6">{{data.successData.Reference.workPhone}}</p>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-6 col-md-6 col-lg-6  text-right">
+							{{'myProfile.supervisorInformation.label.email' | translate}}&nbsp;<sup
+							class="asterisk">*</sup> <span tooltip-append-to-body="true" tooltip-placement="bottom"
+							tooltip="{{'myProfile.supervisorInformation.label.emailTooltip' | translate}}">
+								<i class="fa fa-question-circle fa-lg"></i>
+						</span>
+						</label>
+						<p class="break-word col-sm-6 col-md-6 col-lg-6">{{data.successData.Reference.email}}</p>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-6 col-md-6 col-lg-6  text-right">{{'myProfile.supervisorInformation.label.department'
+							| translate}}</label>
+						<p class="break-word col-sm-6 col-md-6 col-lg-6">{{data.successData.Reference.department}}</p>
+					</div>
+				</div>
+			</form>
+			</vision-action>
+		</div>
+	</div>
+</div>

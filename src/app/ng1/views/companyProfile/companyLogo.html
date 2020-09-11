@@ -1,0 +1,80 @@
+<div ng-controller="googleAnalyticsController" data-ng-init="callGAPageTrack('callCompanyLogo');"></div>
+<div class="row" ng-controller="companyLogoController"
+	ng-init="showImageCropper=false;initialLoadImage=false;enableSaveLoading=false;getImageSource()">
+	<div class="col-sm-12 col-md-12 col-lg-12" ng-show="!initialLoadImage">
+		<img align="absmiddle" src="app/ng1/img/partial-loading.gif">&nbsp;{{'common.loading'
+		| translate}}
+	</div>
+	<div class="col-sm-12 col-md-12 col-lg-12" ng-show="initialLoadImage">
+		<div data-ng-if="enableSaveLoading || startUplod">
+			<img align="absmiddle" src="app/ng1/img/partial-loading.gif">&nbsp;{{'common.loading'
+			| translate}}
+		</div>
+		<h3>
+			<b>{{'companyProfile.companyLogo.header.companyLogo' |
+				translate}}</b>
+		</h3>
+		<p>{{'companyProfile.companyLogo.label.companyLogoContent' |
+			translate}}</p>
+		<div data-ng-if="saveCompanyLogoError.errorData.Status == 'Error'"
+			class="alert alert-danger">
+			<i class="fa fa-exclamation-triangle"></i>
+			{{saveCompanyLogoError.errorData.ResponseError[0].errorCode |
+			translate}}
+		</div>
+		<div class="col-sm-12 col-md-12 col-lg-12 padding0">
+			<div class="col-sm-2 col-md-2 col-lg-2 padding0 marginB2 ">
+				<div id="loco-pane">
+					<div class="img-responsive">
+						<img ng-show="!noCompanyLog" ng-src="{{getCompanyLogoFilePath}}"
+							width="144px"> <img ng-show="noCompanyLog"
+							ng-src="app/ng1/img/noImage.png" width="144px">
+					</div>
+				</div>
+				<div class="col-sm-12 col-md-12 col-lg-12 padding0"
+					data-ng-if="canAccess('vm','YourCompanyLogoEdit') || !restrictCompanyDocuments">
+					<button autofocus class="btn btn-primary marginT3"
+						ng-disabled="disableEdit" ng-click="editCompanyLogo();">{{'common.edit'
+						| translate}}</button>
+				</div>
+			</div>
+			<div ng-show="showEditLogo"
+				class="col-sm-8 col-md-8 col-lg-8 padding0">
+				<div id="loco-pane">
+					<div class="">
+						<img class="img-responsive" ng-show="!noCompanyLog"
+							ng-src="{{getCompanyLogoFilePath}}"> <img
+							ng-show="noCompanyLog" ng-src="app/ng1/img/noImage.png" width="166px">
+					</div>
+				</div>
+				<div class="col-sm-7 col-md-7 col-lg-7 padding0">
+					<file-upload max-upload-file-count="1" file-size="5"
+						return-type="object" upload-service="companyProfileServices"
+						upload-operation="uploadFile" root-node="successData"
+						upload-response-wrapper="response"
+						download-request-wrapper="request" id="contracts"
+						file-extensions="[jpg,jpeg,gif]"
+						thumbnail-type="uploadFileId=companyLogo"
+						response-callback="$parent.uploadedFileResponce"
+						screen-mode='cropper'
+						file-format-error-msg="{{'companyProfile.companyLogo.errorMessage.invalidFileFormat' | translate}}"
+						file-name-length-error-msg="{{'companyProfile.companyLogo.errorMessage.fileInvalidsupportFormatCompanyLogo' | translate}}"
+						on-after-adding-file-callback="$parent.logoUploadCallBack"
+						parent-data-field="$parent.uploadedLogoImages"></file-upload>
+				</div>
+			</div>
+			<div
+				class="col-sm-10 col-md-10 col-lg-10 col-md-offset-2 col-lg-offset-2 col-lg-offset-2 padding0"
+				ng-show="showEditLogo">
+				<button
+					ng-disabled="noCompanyLog || newImageUploaded || enableSaveLoading || disableDelete || startUplod"
+					class="btn btn-danger" ng-click="deleteCompanyLogoModal();">{{'common.delete'
+					| translate}}</button>
+				<button
+					ng-disabled="enableSaveLoading || noCompanyLog || startUplod"
+					class="btn btn-success" ng-click="saveCompanyLogoRequest();callGAPageTrack('saveCompanyLogo');">{{'common.save'
+					| translate}}</button>
+			</div>
+		</div>
+	</div>
+</div>

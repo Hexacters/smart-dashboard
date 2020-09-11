@@ -1,0 +1,18 @@
+<div class="settings-container" [ngClass]="{'float-on-screen': isFullScreen}">
+    <div class="settings" [ngClass]="{'show-settings': isClose}">
+
+        <!-- Close Icon in Full Screen -->
+        <span class="material-icons" *ngIf="isFullScreen" (click)="fullScreen()">close</span>
+
+        <!-- Min and Max Widgets -->
+        <span class="material-icons" *ngIf="!isClose && !isFullScreen" (click)="toggle()">remove</span>
+        <span class="material-icons" *ngIf="isClose && !isFullScreen" (click)="toggle()">add</span>
+
+        <!-- Full Screen -->
+        <span class="material-icons" [ngClass]="{'text-light': !fullscreen}" (click)="fullScreen()">{{!isFullScreen ? 'fullscreen' : 'fullscreen_exit'}}</span>
+
+        <!-- Title -->
+        <span class="text-primary app-info align-middle" [ngClass]="{'app-info-show': isClose || isFullScreen}">{{setting.title}}</span>
+
+    </div>
+</div>

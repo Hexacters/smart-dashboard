@@ -1,0 +1,111 @@
+{
+    "VisionResponse": {
+        "Status": "Ok",
+        "UserDocumentList": {
+            "UserDocument": [
+                {
+                    "requiredDoc": "false",
+                    "templateAutoAssignable": "true",
+                    "templateWhy": "Test Suggestion",
+                    "templateOid": "00000182610000004756",
+                    "templateHow": "",
+                    "docDefOid": "c010000a64700000a66f",
+                    "sortKey": "4",
+                    "userOid": "000000530100000014b7",
+                    "templateDocCategoryCode": "OPVC",
+                    "uploadedDocSize": "0",
+                    "disabled": "false",
+                    "templateName": "My Test Temp"
+                },
+                {
+                    "requiredDoc": "false",
+                    "docVerificationCode": "UNVER",
+                    "templateAutoAssignable": "true",
+                    "templateWhy": "Hepatitis B Vaccine: Three dose series given in the following sequence, dose #1 now, #2 in 1 month, #3 approximately 5 months after #2. Obtain anti-HBs serologic testing 1-2 months after the third dose. The vaccine does not expire after all three doses are administered.",
+                    "templateOid": "0000010514003eab4054",
+                    "docName": "Hepatitis B",
+                    "templateHow": "The hard copy of the document should be scanned into electronic format and then uploaded here.",
+                    "documentOid": "c010000a6cf00000a6e4",
+                    "docDefOid": "00000197920000004d54",
+                    "sortKey": "5",
+                    "userOid": "000000530100000014b7",
+                    "templateDocCategoryCode": "OPVC",
+                    "uploadedDocSize": "879394",
+                    "disabled": "false",
+                    "templateName": "Hepatitis B"
+                },
+                {
+                    "requiredDoc": "false",
+                    "docVerificationCode": "UNVER",
+                    "templateAutoAssignable": "true",
+                    "templateWhy": "IRS Form W-9: Request for Taxpayer Identification Number and Certification",
+                    "templateOid": "0000010437003e35c1e7",
+                    "docName": "W-9",
+                    "templateHow": "The hard copy of the document should be completed, signed, scanned into electronic format, and then uploaded here.",
+                    "documentOid": "c0100009b7e000009b96",
+                    "docDefOid": "c0100001242000001251",
+                    "sortKey": "999",
+                    "userOid": "000000530100000014b7",
+                    "templateDocCategoryCode": "OPVC",
+                    "uploadedDocSize": "595284",
+                    "disabled": "false",
+                    "templateName": "W-9"
+                },
+                {
+                    "requiredDoc": "false",
+                    "docVerificationCode": "UNVER",
+                    "templateAutoAssignable": "true",
+                    "templateWhy": "Influenza Vaccine: One dose given and expires annually.",
+                    "templateOid": "0000010514003eab4055",
+                    "docName": "Influenza",
+                    "templateHow": "The hard copy of the document should be scanned into electronic format and then uploaded here.",
+                    "documentOid": "c0100009b8d000009b98",
+                    "docDefOid": "c0100001242000001250",
+                    "sortKey": "999",
+                    "userOid": "000000530100000014b7",
+                    "templateDocCategoryCode": "OPREP",
+                    "uploadedDocSize": "595284",
+                    "disabled": "false",
+                    "templateName": "Influenza"
+                },
+                {
+                    "requiredDoc": "false",
+                    "docVerificationCode": "UNVER",
+                    "templateAutoAssignable": "true",
+                    "templateWhy": "ABC Medical Corporation Requires that all employees complete OR Protocol and Sterile Techniques Training every other year.",
+                    "templateOid": "0000010514003eab4062",
+                    "docName": "OR Protocol and Sterile Techniques Training",
+                    "templateHow": "To take this training, visit ABC Medical's internal training portal and take the \"OR Protocol and Sterile Techniques Training.\" Download the PDF after completion and upload to your Document Repository.",
+                    "documentOid": "c0100009c28000009c49",
+                    "docDefOid": "00000079480000001f26",
+                    "sortKey": "999",
+                    "userOid": "000000530100000014b7",
+                    "templateDocCategoryCode": "OPREP",
+                    "uploadedDocSize": "112204",
+                    "disabled": "false",
+                    "templateName": "OR Protocol and Sterile Techniques Training"
+                },
+                {
+                    "requiredDoc": "false",
+                    "docVerificationCode": "UNVER",
+                    "templateAutoAssignable": "true",
+                    "templateWhy": "optional to required",
+                    "templateOid": "c0100007c7e000007c96",
+                    "docName": "optional to required",
+                    "templateHow": "optional to required",
+                    "documentOid": "c01000081be0000081c3",
+                    "docDefOid": "c0100007da800000f470",
+                    "sortKey": "999",
+                    "userOid": "000000530100000014b7",
+                    "templateDocCategoryCode": "OPVC",
+                    "uploadedDocSize": "1204795",
+                    "disabled": "false",
+                    "templateName": "optional to required"
+                }
+            ]
+        },
+        "totalRecords": "6",
+        "ContentType": "text/xml",
+        "ResponseErrors": ""
+    }
+}

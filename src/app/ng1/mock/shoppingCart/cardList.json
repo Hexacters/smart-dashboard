@@ -1,0 +1,21 @@
+{
+  "VisionResponse": {
+    "Status": "Ok",
+    "cardList": [
+      {
+        "cardId": "visa",
+        "cardName": "Visa"
+      },
+      {
+        "cardId": "masterCard",
+        "cardName": "Master Card",
+        "emailAddress": ""
+      },
+      {
+        "cardId": "americanExpress",
+        "cardName": "American Express",
+        "emailAddress": ""
+      }
+    ]
+  }
+}

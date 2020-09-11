@@ -1,0 +1,86 @@
+<div class="modal-content">
+   <div class="modal-header commonDialogHeader">
+      <button id="complianceCautionCloseIcon" type="button" class="close" data-dismiss="modal" aria-hidden="true" data-ng-click="$close()">&times;</button>
+      <h3 class="modal-title"><b>{{'myDocuments.deleteDocument' | translate}}</b></h3>
+   </div>
+   <div class="modal-body modelDialogScroll">
+	   <div class="col-sm-12 col-md-12 col-lg-12 paddingL0">
+			<div data-ng-if="deleteDocumentError.errorData.Status == 'Error'" class="alert alert-danger">
+				<i class="fa fa-exclamation-triangle"></i> {{deleteDocumentError.errorData.ResponseError[0].errorCode | translate}}
+			</div>
+		</div>
+	  <div class="col-sm-12 col-md-12 col-lg-12 paddingL0">
+		<h5><strong>{{deleteTempalteName}}</strong></h5>
+	  </div>
+	  <div class="col-sm-12 col-md-12 col-lg-12 paddingL0" data-ng-if="companyDocumentEditPermission.successData.Status == 'Ok'">
+		 <div data-ng-if="companyDocumentEditPermission.successData.documentEditPermission != true" class="alert alert-danger">
+			<i class="fa fa-exclamation-triangle"></i> {{companyDocumentEditPermission.successData.legalName}} {{'myDocuments.errorMessage.documentEditPermission' | translate}}
+		 </div>
+	  </div>
+	  <div class="col-sm-12 col-md-12 col-lg-12 paddingL0">
+		<p>{{'myDocuments.deleteDocumentPara' | translate}}</p>
+	  </div>
+	  <div class="col-sm-12 col-md-12 col-lg-12 paddingL0" ng-controller="myDocumentController">
+	 	<vision-data-table service="myDocumentServices"
+			operation="getAttachedDocumentDetails"
+			root-node="data.successData.GetAttachedDocumentDetailsList"
+			total-records-node="data.successData.totalRecords" type="server"
+			id="commonDeleteDocuments" initial-request='{"page":1,"count":10,"sorting":{"docDefName":"asc"}}'
+			params='{"documentOid":"{{deletedocumentOid}}"}'>
+            <div data-ng-class="{'dNone':!loading}">
+               <img align="absmiddle" src="app/ng1/img/partial-loading.gif" />&nbsp;{{'common.loading' | translate}}
+            </div>
+			<div data-ng-class="{'dNone':!deleteDocumentLoading}">
+               <img align="absmiddle" src="app/ng1/img/partial-loading.gif" />&nbsp;{{'common.loading' | translate}}
+            </div>
+			<div ng-show="!loading">
+            <div class="clearfix paddingT1 paddingB1" ng-table-pagination="commonDeleteDocuments" template-url="'ng-table/style3.html'"></div>
+            <div class="table-responsive">
+               <table ng-table="commonDeleteDocuments" template-pagination="style3" class="table table-striped table-bordered">
+                  <tbody ng-if="commonDeleteDocuments.data.length>0">
+                     <tr ng-repeat="deleteDoc in $data">
+                        <td class="text-left col-lg-3" data-title="'Name'"><div class="width150px break-word">{{deleteDoc.docDefName}}</div></td>
+                        <td class="text-left col-lg-1" data-title="'myDocuments.category' | translate">
+							<span ng-if="deleteDoc.templateDocCategoryCode == 'OPVC'">
+								{{'myDocuments.categoryTypeCompany' | translate}}
+							</span>
+							<span ng-if="deleteDoc.templateDocCategoryCode != 'OPVC'">
+								{{'myDocuments.categoryTypeIndividual' | translate}}
+							</span>
+						</td>
+                        <td class="text-left col-lg-3" data-title="'myDocuments.customerName' | translate"><div class="width150px break-word">{{deleteDoc.customerName}}</div></td>
+                        <td class="text-left col-lg-1" data-title="'myDocuments.rep' | translate"><div class="width100px break-word">{{deleteDoc.userFirstName}} {{deleteDoc.userLastName}}</div>
+                        </td>
+                        <td class="text-left col-lg-1" data-title="'myDocuments.updatedBy' | translate"><div class="width150px break-word">{{deleteDoc.providerFirstName}} {{deleteDoc.providerLastName}}</div>
+                        </td>
+                     </tr>
+                  </tbody>
+                  <tbody ng-if="commonDeleteDocuments.data.errorData.Status=='Error'">
+                     <tr>
+                        <td colspan="11">
+                           <div class="text-danger">
+                              <span class="fa fa-warning" aria-hidden="true"></span> {{commonDeleteDocuments.data.errorData.ResponseError[0].errorCode | translate}}
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+			</div>
+			<div class="text-right marginB2">
+				<span ng-if="companyDocumentEditPermission.successData.documentEditPermission != false">
+					<span ng-if="commonDeleteDocuments.data.errorData.Status != 'Error'">
+						<button ng-if="isFrom == 'commonDoc'" class="btn btn-danger" type="button" id="deleteSuccess" data-ng-click="deleteDocuments(deletedocumentOid,'documents.commonDocuments');">{{'myDocuments.delete' | translate}}</button>
+						<button ng-if="isFrom == 'accountSpecificDoc'" class="btn btn-danger" type="button" id="deleteSuccess" data-ng-click="deleteDocuments(deletedocumentOid,'documents.accountSpecificDocuments');">{{'myDocuments.delete' | translate}}</button>
+						<button ng-if="isFrom == 'optionalDoc'" class="btn btn-danger" type="button" id="deleteSuccess" data-ng-click="deleteDocuments(deletedocumentOid,'documents.optionalDocuments');">{{'myDocuments.delete' | translate}}</button>
+					</span>
+					<span ng-if="commonDeleteDocuments.data.errorData.ResponseError[0].errorCode == '5030'">
+						<button class="btn btn-danger" type="button" id="deleteSuccess">{{'myDocuments.delete' | translate}}</button>
+					</span>
+				</span>
+				<button autofocus class="btn btn-warning" id="deleteCancel" name="deleteCancel" data-ng-click="$close()">{{'common.cancel'| translate}}</button>
+			</div>
+			</div>
+         </vision-data-table>
+      </div>
+   </div>
+</div>

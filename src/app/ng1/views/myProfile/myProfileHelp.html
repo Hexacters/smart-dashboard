@@ -1,0 +1,30 @@
+<div class="modal-view">
+	<div class="modal-header">
+		<button id="commonDocumentAlertCloseIcon" type="button" class="close"
+			data-dismiss="modal" aria-hidden="true"
+			data-ng-click="cancelDialog()">&times;</button>
+		<h4 class="modal-title">
+			<b>{{'common.helpTitle' | translate}}</b>
+		</h4>
+	</div>
+	<div class="modal-body">
+		<span ng-if="$state.current.url=='/contactPersonalViewHelp'">{{'myProfile.contactAndPersonalInformation.label.contactPersonalViewHelp'
+			| translate}}</span> <span
+			ng-if="$state.current.url=='/contactPersonalEditHelp'">{{'myProfile.contactAndPersonalInformation.label.contactPersonalEditHelp'
+			| translate}}</span> <span
+			ng-if="$state.current.url=='/accountInformationViewHelp'">{{'myProfile.addressAndInformation.label.accountInformationViewHelp'
+			| translate}}</span> <span
+			ng-if="$state.current.url=='/accountInformationEditHelp'">{{'myProfile.addressAndInformation.label.accountInformationEditHelp'
+			| translate}}</span> <span
+			ng-if="$state.current.url=='/salesTerritoryViewHelp'">{{'myProfile.salesTerritory.label.salesTerritoryViewHelp'
+			| translate}}</span> <span
+			ng-if="$state.current.url=='/salesTerritoryEditHelp'">{{'myProfile.salesTerritory.label.salesTerritoryEditHelp'
+			| translate}}</span> <span
+			ng-if="$state.current.url=='/supervisorInformationViewHelp'">{{'myProfile.supervisorInformation.label.supervisorInformationViewHelp'
+			| translate}}</span> <span
+			ng-if="$state.current.url=='/supervisorInformationEditHelp'">{{'myProfile.supervisorInformation.label.supervisorInformationEditHelp'
+			| translate}}</span> <span ng-if="$state.current.url=='/referencesViewHelp'">{{'myProfile.references.label.referencesViewHelp'
+			| translate}}</span> <span ng-if="$state.current.url=='/referencesEditHelp'">{{'myProfile.references.label.referencesEditHelp'
+			| translate}}</span>
+	</div>
+</div>

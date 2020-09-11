@@ -1,0 +1,43 @@
+{
+    "VisionResponse": {
+        "Status": "Ok",
+        "CardProfile": {
+            "oid": "c010000d44000000d448",
+            "customerOid": "abcmedical",
+            "customerName": "ABC Medical Corporation",
+            "repOid": "",
+            "paymentProfileOid": "",
+            "customerRefNum": "7146942663952514408313",
+            "cardTypeCode": "Visa",
+            "cardNumber": "XXXX XXXX XXXX 4321",
+            "nameOnCard": "Matthew Joseph",
+            "expirationMonthCode": "02",
+            "expirationYearStr": 2015,
+            "billingAddress1": " 1040",
+            "billingAddress2": "London Drive",
+            "billingAddress3": "Halls Mill Road",
+            "billingCity": "Birmingham",
+            "billingStateCode": "AL",
+            "billingZip": "35211",
+            "billingCountryCode": "US",
+            "billingPhone": " (205) 322-1861",
+            "userOid": "c42300000542d0100005",
+            "paymentAmount": 195.00,
+            "billingEmail": "bentley@mail.com",
+            "txRefNum": "5AF3F1F1A3AB7C825E6ABA8E5A2FF123CCCF5417",
+            "txRefIdx": "2",
+            "createdOn": "2018-05-10 03:17:05.611",
+            "createdBy": "jothi@gmail.int",
+            "updatedOn": "2018-05-10 03:17:05.611",
+            "updatedBy": "jothi@gmail.int",
+            "expiryStatus": "expired",
+            "expirationMonth": "06",
+            "expirationYear": 2020,
+            "vcRelationOid": "000001216000487adf83",
+            "userId": "dm101145@test.vm",
+            "updateAction": false,
+            "deleteAction": false
+        },
+        "contentType": "application/json"
+    }
+}

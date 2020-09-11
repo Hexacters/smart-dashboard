@@ -1,0 +1,164 @@
+{
+    "VisionResponse": {
+        "Status": "Ok",
+        "DepartmentSummaryList": [
+            {
+                "id": "Accounting",
+                "oid": "c0100004bf0000004bfe"
+            },
+            {
+                "id": "Biomedical Engineering",
+                "oid": "c0100004bf0000004bf3"
+            },
+            {
+                "id": "Cardiology",
+                "oid": "c0100004bf0000004bf7"
+            },
+            {
+                "id": "Cath Lab",
+                "oid": "c0100004bf0000004bf2"
+            },
+            {
+                "id": "Emergency Department",
+                "oid": "c0100004bf0000004bfa"
+            },
+            {
+                "id": "Endoscopy",
+                "oid": "c0100004bf0000004bff"
+            },
+            {
+                "id": "EP Lab",
+                "oid": "c0100004bf0000004c00"
+            },
+            {
+                "id": "Facilities",
+                "oid": "c0100004bf0000004bf8"
+            },
+            {
+                "id": "HR",
+                "oid": "000000070900000002c7"
+            },
+            {
+                "id": "Information Technology",
+                "oid": "c0100004bf0000004bfd"
+            },
+            {
+                "id": "Lab",
+                "oid": "c0100004bf0000004bf5"
+            },
+            {
+                "id": "Marketing",
+                "oid": "c0100004bf0000004bfc"
+            },
+            {
+                "id": "Material Management",
+                "oid": "c0100004bf0000004bf4"
+            },
+            {
+                "id": "Mkt",
+                "oid": "000000070900000002c9"
+            },
+            {
+                "id": "NICU",
+                "oid": "c0100004bf0000004bf9"
+            },
+            {
+                "id": "Nuclear Medicine",
+                "oid": "c0100004bf0000004c01"
+            },
+            {
+                "id": "Operating Room/Surgery",
+                "oid": "c0100004bf0000004bf1"
+            },
+            {
+                "id": "Purchase",
+                "oid": "000000070900000002c8"
+            },
+            {
+                "id": "Sales",
+                "oid": "000000070900000002c6"
+            },
+            {
+                "id": "Security",
+                "oid": "c0100004bf0000004bfb"
+            },
+            {
+                "id": "SPD",
+                "oid": "c0100004bf0000004bf6"
+            },
+            {
+                "id": "Cardiac Cath Lab",
+                "oid": "Department113"
+            },
+            {
+                "id": "Radiation Therapy",
+                "oid": "Department125"
+            },
+            {
+                "id": "Laboratory",
+                "oid": "Department116"
+            },
+            {
+                "id": "Environmental Services",
+                "oid": "Department115"
+            },
+            {
+                "id": "Support Services Administration",
+                "oid": "Department128"
+            },
+            {
+                "id": "Administration",
+                "oid": "Department112"
+            },
+            {
+                "id": "Surgical Services",
+                "oid": "Department129"
+            },
+            {
+                "id": "Medical Records",
+                "oid": "Department118"
+            },
+            {
+                "id": "Nursing Administration",
+                "oid": "Department120"
+            },
+            {
+                "id": "Engineering",
+                "oid": "Department114"
+            },
+            {
+                "id": "Pharmacy",
+                "oid": "Department124"
+            },
+            {
+                "id": "Nutrition & Food Service",
+                "oid": "Department121"
+            },
+            {
+                "id": "Radiology",
+                "oid": "Department126"
+            },
+            {
+                "id": "Pain Management",
+                "oid": "Department123"
+            },
+            {
+                "id": "Respiratory Therapy",
+                "oid": "Department127"
+            },
+            {
+                "id": "Oncology",
+                "oid": "Department122"
+            },
+            {
+                "id": "Materials Management",
+                "oid": "Department117"
+            },
+            {
+                "id": "Nursing",
+                "oid": "Department119"
+            }
+        ],
+        "contentType": "application/json"
+    }
+}

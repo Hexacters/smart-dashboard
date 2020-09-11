@@ -1,0 +1,513 @@
+<div class="modal-content" ng-init="submitFormLoading =false" ng-controller="myDocumentController">
+    <div class="modal-header commonDialogHeader">
+        <button id="multiUploadFormCloseIcon" type="button" class="close" data-dismiss="modal" aria-hidden="true" data-ng-click="hideMultiUploadForm();hideAndReloadMultiUploadPopup();">&times;</button>
+        <h3 ng-if="modelDialogHeading == 'update'" class="modal-title"><b>{{'myDocuments.updateDocument' | translate}}</b></h3>
+        <h3 ng-if="modelDialogHeading == 'upload'" class="modal-title"><b>{{'myDocuments.uploadDocument' | translate}}</b></h3>
+		<h3 ng-if="!modelDialogHeading && multiUploadModelHeading!='' && multiUploadModelHeading == 'update'" class="modal-title"><b>{{'myDocuments.updateDocument' | translate}}</b></h3>
+        <h3 ng-if="!modelDialogHeading && multiUploadModelHeading!='' && multiUploadModelHeading != 'update'" class="modal-title"><b>{{'myDocuments.uploadDocument' | translate}}</b></h3>
+    </div>
+    <div class="modal-body modelDialogScroll">
+        <div class="row">
+            <vision-action>
+                <get-data service="myDocumentServices" operation="getDocumentDetails" 
+                response-formatter="multipleUploadDocUpdateGetDocValue"
+                root-node="data.successData" form-node="data"></get-data>
+                <submit-data service="myDocumentServices" operation="saveMultipleDocumentMetaProcess" request-formatter="saveMultiUploadDocumentFormatter" callback="documentGridReload" remove-keys="ackRequired,certAuthorityRequired,defHasTemplate,autoAssignable,defVersion,deleteAction,docDateRequired,docUploadRequired,effectiveDateRequired,expirationDateRequired,maximumValueRequired,minimumValueRequired,noticeForTermDateRequired,notorizedDateRequired,notorizedNameRequired,notorizedSealNumRequired,outClauseDateRequired,sigDateRequired,sigNameRequired,sigTitleRequired,updateAction,ackVisible,certAuthorityVisible,docDateVisible,docUploadVisible,effectiveDateVisible,maximumValueVisible,expirationDateVisible,minimumValueVisible,noticeForTermDateVisible,notorizedDateVisible,notorizedNameVisible,notorizedSealNumVisible,outClauseDateVisible,sigDateVisible,sigNameVisible,sigTitleVisible,docAckSig,templateHow,templateStatus,templateWhy,defHow,defName,docNote,defWhy,defAckText,docTypeCode,docComments,docDirectory,docFileMimeType,docFileUploadedOn,docRejectionCode,docTemplateCategoryCode,docTemplateCategoryName,docVerificationCode,docVerificationStatusString,docCategoryCode,customerName,customerOid,customerVerticalCode,noticeForTermDays,oneCredentialCustomer,docFileUploadedOnString,docStatusString,docRejectionString">
+                </submit-data>
+                <div class="text-danger col-sm-12 col-md-12 col-lg-12" ng-show="getError.errorData.Status == 'Error'">
+                    <strong><i class="fa fa-warning"></i></strong>&nbsp; {{getError.errorData.ResponseError[0].errorCode | translate}}</div>
+                <div class="col-sm-12 col-md-12 col-lg-12">
+                    <div data-ng-class="{'dNone':!loading}">
+                        <img align="absmiddle" src="app/ng1/img/partial-loading.gif">&nbsp;{{'common.loading' | translate}}
+                    </div>
+                    <div data-ng-if="documentUpdateError.errorData.Status == 'Error'" class="alert alert-danger">
+                        <i class="fa fa-exclamation-triangle"></i> {{documentUpdateError.errorData.ResponseError[0].errorCode | translate}}
+                    </div>
+                </div>
+                <div ng-show="!loading || submitFormLoading">
+                    <form novalidate name="commonDocumentUploadForm" autocomplete="off" class="form-horizontal">
+                        <div class="col-sm-12 col-md-12 col-lg-12">
+                            <div data-ng-if="submitError.errorData.Status == 'Error'" class="alert alert-danger">
+                                <i class="fa fa-exclamation-triangle"></i> {{submitError.errorData.ResponseError[0].errorCode | translate}}
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-lg-12" ng-if="multiUploadDocPopup">
+                            <div class="form-group">
+                                <div class="col-sm-10 col-md-10 col-lg-10">
+                                    <h5><b>Document(s) {{multiUploadDocKeyCount}} of {{multiUploadDocDefKey.length}}</b></h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-lg-12">
+                            <div class="form-group">
+                                <div class="col-sm-10 col-md-10 col-lg-10">
+                                    <span ng-if="data.DocumentDetailSummary.autoAssignable == true">
+										<span ng-if="data.DocumentDetailSummary.oneCredentialCustomer == true">
+											<h5><b>{{data.DocumentDetailSummary.defName}}</b></h5>
+										</span>
+                                    <span ng-if="data.DocumentDetailSummary.oneCredentialCustomer == false">
+											<h5><b>{{data.DocumentDetailSummary.templateName}}</b></h5>
+										</span>
+                                    </span>
+                                    <span ng-if="data.DocumentDetailSummary.autoAssignable == false">
+										<h5><b>{{data.DocumentDetailSummary.defName}}</b></h5>
+									</span>
+                                </div>
+                                <div class="col-sm-2 col-md-2 col-lg-2 pull-right" ng-if="data.DocumentDetailSummary.docDateRequired || data.DocumentDetailSummary.effectiveDateRequired || data.DocumentDetailSummary.expirationDateRequired || data.DocumentDetailSummary.minimumValueRequired || data.DocumentDetailSummary.maximumValueRequired|| data.DocumentDetailSummary.certAuthorityRequired || data.DocumentDetailSummary.sigNameRequired || data.DocumentDetailSummary.sigDateRequired || data.DocumentDetailSummary.sigTitleRequired || data.DocumentDetailSummary.notorizedNameRequired || data.DocumentDetailSummary.notorizedDateRequired || data.DocumentDetailSummary.notorizedSealNumRequired || data.DocumentDetailSummary.noticeForTermDateRequired || data.DocumentDetailSummary.outClauseDateRequired || data.DocumentDetailSummary.ackRequired">
+                                    <p>&nbsp;<sup class="asterisk">*</sup> Required</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-lg-12 padLeft0 marginT1" ng-controller="commonController">
+                            <div class="form-group" ng-init="numLimit =50">
+                                <div class="col-sm-4 col-md-4 col-lg-4 text-right">
+                                    <label>{{'myDocuments.label.why' | translate}}</label>
+                                </div>
+                                <div class="col-sm-8 col-md-8 col-lg-8">
+                                    <span ng-if="data.DocumentDetailSummary.autoAssignable == true">
+										<span ng-if="data.DocumentDetailSummary.oneCredentialCustomer == true">
+											<span class="whiteSpacePre" ng-bind-html="data.DocumentDetailSummary.defWhy | limitHtml:numLimit | trustAsHtml"></span> <span data-ng-if="data.DocumentDetailSummary.defWhy.length>'50'"><a ng-hide="showLess" class="readMoreLess cursorPointer" ng-click="readMore('1024')">more...</a><a ng-show="showLess" class="readMoreLess cursorPointer" ng-click="readLess('50')">less</a></span>
+										</span>
+										<span ng-if="data.DocumentDetailSummary.oneCredentialCustomer != true">
+											<span class="whiteSpacePre" ng-bind-html="data.DocumentDetailSummary.templateWhy | limitHtml:numLimit | trustAsHtml"></span> <span data-ng-if="data.DocumentDetailSummary.templateHow.length>'50'"><a ng-hide="showLess" class="readMoreLess cursorPointer" ng-click="readMore('1024')">more...</a><a ng-show="showLess" class="readMoreLess cursorPointer" ng-click="readLess('50')">less</a></span>
+										</span>
+									</span>
+									<span ng-if="data.DocumentDetailSummary.autoAssignable == false">
+										<span class="whiteSpacePre" ng-bind-html="data.DocumentDetailSummary.defWhy | limitHtml:numLimit | trustAsHtml"></span> <span data-ng-if="data.DocumentDetailSummary.defWhy.length>'50'"><a ng-hide="showLess" class="readMoreLess cursorPointer" ng-click="readMore('1024')">more...</a><a ng-show="showLess" class="readMoreLess cursorPointer" ng-click="readLess('50')">less</a></span>
+									</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-lg-12 padLeft0 marginT1" ng-controller="commonController">
+                            <div class="form-group" ng-init="numLimit =50">
+                                <div class="col-sm-4 col-md-4 col-lg-4 text-right">
+                                    <label>{{'myDocuments.label.how' | translate}}</label>
+                                </div>
+                                <div class="col-sm-8 col-md-8 col-lg-8">
+                                    <span ng-if="data.DocumentDetailSummary.autoAssignable == true">
+										<span ng-if="data.DocumentDetailSummary.oneCredentialCustomer == true">
+											<span class="whiteSpacePre" ng-bind-html="data.DocumentDetailSummary.defHow | limitHtml:numLimit | trustAsHtml"></span> <span data-ng-if="data.DocumentDetailSummary.defHow.length>'50'"><a ng-hide="showLess" class="readMoreLess cursorPointer" ng-click="readMore('1024')">more...</a><a ng-show="showLess" class="readMoreLess cursorPointer" ng-click="readLess('50')">less</a></span>
+										</span>
+										<span ng-if="data.DocumentDetailSummary.oneCredentialCustomer == false">
+											<span class="whiteSpacePre" ng-bind-html="data.DocumentDetailSummary.templateHow | limitHtml:numLimit | trustAsHtml"></span> <span data-ng-if="data.DocumentDetailSummary.templateHow.length>'50'"><a ng-hide="showLess" class="readMoreLess cursorPointer" ng-click="readMore('1024')">more...</a><a ng-show="showLess" class="readMoreLess cursorPointer" ng-click="readLess('50')">less</a></span>
+										</span>
+									</span>
+									<span ng-if="data.DocumentDetailSummary.autoAssignable != true">
+										<span class="whiteSpacePre" ng-bind-html="data.DocumentDetailSummary.defHow | limitHtml:numLimit | trustAsHtml"></span> <span data-ng-if="data.DocumentDetailSummary.defHow.length>'50'"><a ng-hide="showLess" class="readMoreLess cursorPointer" ng-click="readMore('1024')">more...</a><a ng-show="showLess" class="readMoreLess cursorPointer" ng-click="readLess('50')">less</a></span>
+									</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-lg-12 padLeft0 marginT1">
+                            <div class="form-group">
+                                <div class="col-sm-4 col-md-4 col-lg-4 text-right">
+                                    <label>{{'myDocuments.label.type' | translate}}</label>
+                                </div>
+                                <div class="col-sm-8 col-md-8 col-lg-8">
+                                    <span ng-if="data.DocumentDetailSummary.docCategoryCode && data.DocumentDetailSummary.docCategoryCode == 'OPVC'">Company</span>
+                                    <span ng-if="data.DocumentDetailSummary.docCategoryCode && data.DocumentDetailSummary.docCategoryCode != 'OPVC'">Individual</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-lg-12 padLeft0 marginT1">
+                            <div class="form-group">
+                                <div class="col-sm-4 col-md-4 col-lg-4 text-right">
+                                    <label>{{'myDocuments.label.category' | translate}}</label>
+                                </div>
+                                <div class="col-sm-8 col-md-8 col-lg-8">
+                                    <div>{{data.DocumentDetailSummary.docTemplateCategoryName}}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-lg-12 padLeft0 marginT1" ng-if="data.DocumentDetailSummary.autoAssignable == false && data.DocumentDetailSummary.defHasTemplate == true">
+                            <div class="form-group">
+                                <div class="col-sm-4 col-md-4 col-lg-4 text-right">
+                                    <label>{{'myDocuments.label.template' | translate}}</label>
+                                </div>
+                                <div class="col-sm-8 col-md-8 col-lg-8">
+                                    <div><a ng-click="viewTemplateDocument(data.DocumentDetailSummary.defOid)">{{data.DocumentDetailSummary.templateName}}</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div ng-if="data.DocumentDetailSummary.docDateVisible" class="col-md-12 padLeft0 marginT1">
+                            <div class="form-group" ng-if="!data.DocumentDetailSummary.docDateRequired && data.DocumentDetailSummary.docDateVisible">
+                                <div class="col-sm-4 col-md-4 col-lg-4 text-right">
+                                    <label>{{'myDocuments.label.documentDate' | translate}}</label>
+                                </div>
+                                <div class="col-sm-4 col-md-4 col-lg-4">
+                                    <input type="text" class="form-control input-sm" placeholder="MM/DD/YYYY" name="documentDate" id="documentDate" data-ng-model="data.DocumentDetailSummary.docDateString" datepicker-popup="{time: false, format: 'MM/dd/yyyy', appendToElement : true}" readonly />
+                                </div>
+                            </div>
+                            <div class="form-group" ng-if="data.DocumentDetailSummary.docDateRequired && data.DocumentDetailSummary.docDateVisible">
+                                <div class="col-sm-4 col-md-4 col-lg-4 text-right">
+                                    <label>{{'myDocuments.label.documentDate' | translate}}&nbsp;<sup class="asterisk">*</sup>
+                                    </label>
+                                </div>
+                                <div class="col-sm-4 col-md-4 col-lg-4">
+                                    <input type="text" class="form-control input-sm" placeholder="MM/DD/YYYY" name="docDate" id="docDate" data-ng-model="data.DocumentDetailSummary.docDateString" datepicker-popup="{time: false, format: 'MM/dd/yyyy', appendToElement : true}" readonly />
+                                    <input type="text" class="ng-hide" name="documentDate" ng-model="data.DocumentDetailSummary.docDateString" validator="required" required-error-message="{{'myDocuments.errorMessage.docDateRequired' | translate}}" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div ng-if="data.DocumentDetailSummary.effectiveDateVisible" class="col-md-12 padLeft0 marginT1">
+                            <div class="form-group" ng-if="!data.DocumentDetailSummary.effectiveDateRequired && data.DocumentDetailSummary.effectiveDateVisible">
+                                <div class="col-sm-4 col-md-4 col-lg-4 text-right">
+                                    <label>{{'myDocuments.label.effectiveDate' | translate}}</label>
+                                </div>
+                                <div class="col-sm-4 col-md-4 col-lg-4">
+                                    <input type="text" class="form-control input-sm" placeholder="MM/DD/YYYY" name="effectiveDate" datepicker-popup="{time: false, format: 'MM/dd/yyyy','readonly': 'false', appendToElement : true}" ng-model="data.DocumentDetailSummary.docEffectiveDateString" />
+                                </div>
+                            </div>
+                            <div class="form-group" ng-if="data.DocumentDetailSummary.effectiveDateRequired && data.DocumentDetailSummary.effectiveDateVisible">
+                                <div class="col-sm-4 col-md-4 col-lg-4 text-right">
+                                    <label>{{'myDocuments.label.effectiveDate' | translate}}&nbsp;<sup class="asterisk">*</sup>
+                                    </label>
+                                </div>
+                                <div class="col-sm-4 col-md-4 col-lg-4">
+                                    <input type="text" class="form-control input-sm" placeholder="MM/DD/YYYY" name="effectiveDate" datepicker-popup="{time: false, format: 'MM/dd/yyyy','readonly': 'false', appendToElement : true}" ng-model="data.DocumentDetailSummary.docEffectiveDateString" />
+                                    <input type="text" name="effectiveDate" ng-model="data.DocumentDetailSummary.docEffectiveDateString" validator="required" valid-method="watch" required-error-message="{{'myDocuments.errorMessage.effectiveDateRequired' | translate}}" class="ng-hide" />
+                                </div>
+                            </div>
+                        </div>
+                        <div ng-if="data.DocumentDetailSummary.expirationDateVisible" class="col-md-12 padLeft0 marginT1">
+                            <div class="form-group" ng-if="!data.DocumentDetailSummary.expirationDateRequired && data.DocumentDetailSummary.expirationDateVisible">
+                                <div class="col-sm-4 col-md-4 col-lg-4 text-right">
+                                    <label>{{'myDocuments.label.expirationDate' | translate}}</label>
+                                </div>
+                                <div class="col-sm-4 col-md-4 col-lg-4">
+									<input type="text" class="form-control input-sm" placeholder="MM/DD/YYYY" 
+									min-date="todayDate" name="expirationDate" id="expirationDate" 
+									data-ng-model="data.DocumentDetailSummary.docExpirationDateString" 
+									min-date="todayDate" name="expirationDate" id="expirationDate" 
+									validator="validateFuture"
+									effective-date="{{data.DocumentDetailSummary.docEffectiveDateString}}"
+									validate-future-error-message="{{'myDocuments.label.expirationDateValid' | translate}}"
+									validate-expiration-date-error-message="{{'myDocuments.label.expirationDateValid' | translate}}"									
+									datepicker-popup="{time: false, format: 'MM/dd/yyyy', 'readonly': 'false', appendToElement : true}"
+									/>
+                                </div>
+                            </div>
+                            <div class="form-group" ng-if="data.DocumentDetailSummary.expirationDateRequired && data.DocumentDetailSummary.expirationDateVisible">
+                                <div class="col-sm-4 col-md-4 col-lg-4 text-right">
+                                    <label>{{'myDocuments.label.expirationDate' | translate}}&nbsp;<sup class="asterisk">*</sup>
+                                    </label>
+                                </div>
+                                <div class="col-sm-4 col-md-4 col-lg-4">
+                                    <input type="text" name="expirationDate" class="form-control input-sm" placeholder="MM/DD/YYYY" 
+									name="docExpirationDate" id="docExpirationDate" datepicker-popup="{time: false, format: 'MM/dd/yyyy','readonly': 'false', appendToElement : true}"
+									data-ng-model="data.DocumentDetailSummary.docExpirationDateString"									 
+									validator="required,validateFuture" min-date="todayDate"
+									validate-future-error-message="{{'myDocuments.label.expirationDateValid' | translate}}"
+									effective-date="{{data.DocumentDetailSummary.docEffectiveDateString}}" valid-method="watch" 
+									validate-expiration-date-error-message="{{'myDocuments.label.expirationDateValid' | translate}}" 
+									required-error-message="{{'myDocuments.errorMessage.expirationDateRequired' | translate}}"
+									/>
+                                </div>
+                            </div>
+                        </div>
+                        <div ng-if="data.DocumentDetailSummary.minimumValueVisible" class="col-md-12 padLeft0 marginT1">
+                            <div class="form-group" ng-if="!data.DocumentDetailSummary.minimumValueRequired && data.DocumentDetailSummary.minimumValueVisible">
+                                <div class="col-sm-4 col-md-4 col-lg-4 text-right">
+                                    <label>{{'myDocuments.label.minimumValue' | translate}}</label>
+                                </div>
+                                <div class="col-sm-4 col-md-4 col-lg-4">
+                                    <input type="text" class="col-md-12 input-sm form-control" name="MinimumValue"
+                                    custom-validate-from="documents,docMinimumValue"
+                                    ng-focus="data.DocumentDetailSummary.docMinimumValue = convertDollerToNumber(data.DocumentDetailSummary.docMinimumValue)"
+									ng-blur="data.DocumentDetailSummary.docMinimumValue = convertNumberToDoller(data.DocumentDetailSummary.docMinimumValue)"
+									ng-model="data.DocumentDetailSummary.docMinimumValue" maxlength="15" id="MinimumValue" valid-method="submit" 
+									validator="validateAlphanumSpecial,validateDouble" 
+									validate-double-error-message="{{'myDocuments.errorMessage.invalidNumberFormat' | translate}}"
+									validate-alphanum-special-error-message="{{'myDocuments.errorMessage.specialCharactersLikeAreNotAllowed' | translate}}" />
+                                </div>
+                            </div>
+                            <div class="form-group" ng-if="data.DocumentDetailSummary.minimumValueRequired && data.DocumentDetailSummary.minimumValueVisible">
+                                <div class="col-sm-4 col-md-4 col-lg-4 text-right">
+                                    <label>{{'myDocuments.label.minimumValue' | translate}}&nbsp;<sup class="asterisk">*</sup>
+                                    </label>
+                                </div>
+                                <div class="col-sm-4 col-md-4 col-lg-4">
+                                    <input type="text" class="col-md-12 form-control input-sm" name="MinimumValue"
+                                    custom-validate-from="documents,docMinimumValue"
+                                    ng-focus="data.DocumentDetailSummary.docMinimumValue = convertDollerToNumber(data.DocumentDetailSummary.docMinimumValue)"
+									ng-blur="data.DocumentDetailSummary.docMinimumValue = convertNumberToDoller(data.DocumentDetailSummary.docMinimumValue)"
+									ng-model="data.DocumentDetailSummary.docMinimumValue" id="MinimumValue" valid-method="submit" 
+									validator="required,validateAlphanumSpecial,validateDouble" 
+									required-error-message="{{'myDocuments.errorMessage.minimumValueRequired' | translate}}" maxlength="15" 
+									validate-double-error-message="{{'myDocuments.errorMessage.invalidNumberFormat' | translate}}"
+									validate-alphanum-special-error-message="{{'myDocuments.errorMessage.specialCharactersLikeAreNotAllowed' | translate}}" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div ng-if="data.DocumentDetailSummary.maximumValueVisible" class="col-md-12 padLeft0 marginT1">
+                            <div class="form-group" ng-if="!data.DocumentDetailSummary.maximumValueRequired && data.DocumentDetailSummary.maximumValueVisible">
+                                <div class="col-sm-4 col-md-4 col-lg-4 text-right">
+                                    <label>{{'myDocuments.label.maximumValue' | translate}}</label>
+                                </div>
+                                <div class="col-sm-4 col-md-4 col-lg-4">
+                                    <input class="col-md-12 form-control input-sm" name="MaximumValue" type="text" maxlength="15" 
+                                    ng-focus="data.DocumentDetailSummary.docMaximumValue = convertDollerToNumber(data.DocumentDetailSummary.docMaximumValue)"
+                                    custom-validate-from="documents,docMaximumValue"
+									ng-blur="data.DocumentDetailSummary.docMaximumValue = convertNumberToDoller(data.DocumentDetailSummary.docMaximumValue)"
+									ng-model="data.DocumentDetailSummary.docMaximumValue" id="MaximumValue" valid-method="submit" 
+									validator="validateAlphanumSpecial,validateDouble" 
+									validate-double-error-message="{{'myDocuments.errorMessage.invalidNumberFormat' | translate}}"
+									validate-alphanum-special-error-message="{{'myDocuments.errorMessage.specialCharactersLikeAreNotAllowed' | translate}}" />
+                                </div>
+                            </div>
+                            <div class="form-group" ng-if="data.DocumentDetailSummary.maximumValueRequired && data.DocumentDetailSummary.maximumValueVisible">
+                                <div class="col-sm-4 col-md-4 col-lg-4 text-right">
+                                    <label>{{'myDocuments.label.maximumValue' | translate}}&nbsp;<sup class="asterisk">*</sup>
+                                    </label>
+                                </div>
+                                <div class="col-sm-4 col-md-4 col-lg-4">
+                                    <input type="text" class="col-md-12 form-control input-sm" name="MaximumValue" custom-validate-from="documents,docMaximumValue"
+                                    ng-focus="data.DocumentDetailSummary.docMaximumValue = convertDollerToNumber(data.DocumentDetailSummary.docMaximumValue)"
+									ng-blur="data.DocumentDetailSummary.docMaximumValue = convertNumberToDoller(data.DocumentDetailSummary.docMaximumValue)"
+									ng-model="data.DocumentDetailSummary.docMaximumValue" id="MaximumValue" valid-method="submit" 
+									validator="required,validateAlphanumSpecial,validateDouble" maxlength="15" 
+									required-error-message="{{'myDocuments.errorMessage.maximumValueRequired' | translate}}" 
+									validate-double-error-message="{{'myDocuments.errorMessage.invalidNumberFormat' | translate}}"
+									validate-alphanum-special-error-message="{{'myDocuments.errorMessage.specialCharactersLikeAreNotAllowed' | translate}}" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div ng-if="data.DocumentDetailSummary.certAuthorityVisible" class="col-md-12 padLeft0 marginT1">
+                            <div class="form-group" ng-if="!data.DocumentDetailSummary.certAuthorityRequired && data.DocumentDetailSummary.certAuthorityVisible">
+                                <div class="col-sm-4 col-md-4 col-lg-4 text-right">
+                                    <label>{{'myDocuments.label.certificationAuthority' | translate}}</label>
+                                </div>
+                                <div class="col-sm-4 col-md-4 col-lg-4">
+                                    <input type="text" class="form-control input-sm" name="CertificationAuthority" maxlength="1024" ng-model="data.DocumentDetailSummary.docCertificationAuthority" id="CertificationAuthority" valid-method="submit" validator="validateAlphanumSpecial" validate-alphanum-special-error-message="{{'myDocuments.errorMessage.specialCharactersLikeAreNotAllowed' | translate}}" />
+                                </div>
+                            </div>
+                            <div class="form-group" ng-if="data.DocumentDetailSummary.certAuthorityRequired && data.DocumentDetailSummary.certAuthorityVisible">
+                                <div class="col-sm-4 col-md-4 col-lg-4 text-right">
+                                    <label>{{'myDocuments.label.certificationAuthority' | translate}}&nbsp;<sup class="asterisk">*</sup>
+                                    </label>
+                                </div>
+                                <div class="col-sm-4 col-md-4 col-lg-4">
+                                    <input type="text" class="form-control input-sm" name="CertificationAuthority" maxlength="1024" ng-model="data.DocumentDetailSummary.docCertificationAuthority" id="CertificationAuthority" validator="required,validateAlphanumSpecial" required-error-message="{{'myDocuments.errorMessage.certificationAuthorityRequired' | translate}}" validate-alphanum-special-error-message="{{'myDocuments.errorMessage.specialCharactersLikeAreNotAllowed' | translate}}" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div ng-if="data.DocumentDetailSummary.sigNameVisible" class="col-md-12 padLeft0 marginT1">
+                            <div class="form-group" ng-if="!data.DocumentDetailSummary.sigNameRequired && data.DocumentDetailSummary.sigNameVisible">
+                                <div class="col-sm-4 col-md-4 col-lg-4 text-right">
+                                    <label>{{'myDocuments.label.signatureName' | translate}}</label>
+                                </div>
+                                <div class="col-sm-4 col-md-4 col-lg-4">
+                                    <input type="text" class="form-control input-sm" name="SignatureName" maxlength="200" ng-model="data.DocumentDetailSummary.docSigName" id="SignatureName" valid-method="submit" validator="validateAlphanumSpecial" validate-alphanum-special-error-message="{{'myDocuments.errorMessage.specialCharactersLikeAreNotAllowed' | translate}}" />
+                                </div>
+                            </div>
+                            <div class="form-group" ng-if="data.DocumentDetailSummary.sigNameRequired && data.DocumentDetailSummary.sigNameVisible">
+                                <div class="col-sm-4 col-md-4 col-lg-4 text-right">
+                                    <label>{{'myDocuments.label.signatureName' | translate}}&nbsp;<sup class="asterisk">*</sup>
+                                    </label>
+                                </div>
+                                <div class="col-sm-4 col-md-4 col-lg-4">
+                                    <input type="text" class="form-control input-sm" name="SignatureName" maxlength="200" ng-model="data.DocumentDetailSummary.docSigName" id="SignatureName" validator="required,validateAlphanumSpecial" required-error-message="{{'myDocuments.errorMessage.signatureNameRequired' | translate}}" validate-alphanum-special-error-message="{{'myDocuments.errorMessage.specialCharactersLikeAreNotAllowed' | translate}}" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div ng-if="data.DocumentDetailSummary.sigDateVisible" class="col-md-12 padLeft0 marginT1">
+                            <div class="form-group" ng-if="!data.DocumentDetailSummary.sigDateRequired && data.DocumentDetailSummary.sigDateVisible">
+                                <div class="col-sm-4 col-md-4 col-lg-4 text-right">
+                                    <label>{{'myDocuments.label.signatureDate' | translate}}</label>
+                                </div>
+                                <div class="col-sm-4 col-md-4 col-lg-4">
+                                    <input type="text" class="form-control input-sm" placeholder="MM/DD/YYYY" name="sigDate" id="sigDate" data-ng-model="data.DocumentDetailSummary.docSigDateString" datepicker-popup="{time: false, format: 'MM/dd/yyyy', appendToElement : true}" readonly="true" />
+                                </div>
+                            </div>
+                            <div class="form-group" ng-if="data.DocumentDetailSummary.sigDateRequired && data.DocumentDetailSummary.sigDateVisible">
+                                <div class="col-sm-4 col-md-4 col-lg-4 text-right">
+                                    <label>{{'myDocuments.label.signatureDate' | translate}}&nbsp;<sup class="asterisk">*</sup>
+                                    </label>
+                                </div>
+                                <div class="col-sm-4 col-md-4 col-lg-4">
+                                    <input type="text" class="form-control input-sm" placeholder="MM/DD/YYYY" name="docSigDate" id="docSigDate" data-ng-model="data.DocumentDetailSummary.docSigDateString" datepicker-popup="{time: false, format: 'MM/dd/yyyy', appendToElement : true}" readonly="true" />
+                                    <input type="text" name="docSigDate" ng-model="data.DocumentDetailSummary.docSigDateString" validator="required" required-error-message="{{'myDocuments.errorMessage.signatureDateRequired' | translate}}" class="ng-hide" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div ng-if="data.DocumentDetailSummary.sigTitleVisible" class="col-md-12 padLeft0 marginT1">
+                            <div class="form-group" ng-if="!data.DocumentDetailSummary.sigTitleRequired && data.DocumentDetailSummary.sigTitleVisible">
+                                <div class="col-sm-4 col-md-4 col-lg-4 text-right">
+                                    <label>{{'myDocuments.label.signatureTitle' | translate}}</label>
+                                </div>
+                                <div class="col-sm-4 col-md-4 col-lg-4">
+                                    <input type="text" class="form-control input-sm" name="SignatureTitle" maxlength="100" ng-model="data.DocumentDetailSummary.docSigTitle" id="SignatureTitle" valid-method="submit" validator="validateAlphanumSpecial" validate-alphanum-special-error-message="{{'myDocuments.errorMessage.specialCharactersLikeAreNotAllowed' | translate}}" />
+                                </div>
+                            </div>
+                            <div class="form-group" ng-if="data.DocumentDetailSummary.sigTitleRequired && data.DocumentDetailSummary.sigTitleVisible">
+                                <div class="col-sm-4 col-md-4 col-lg-4 text-right">
+                                    <label>{{'myDocuments.label.signatureTitle' | translate}}&nbsp;<sup class="asterisk">*</sup>
+                                    </label>
+                                </div>
+                                <div class="col-sm-4 col-md-4 col-lg-4">
+                                    <input type="text" class="form-control input-sm" name="SignatureTitle" maxlength="100" ng-model="data.DocumentDetailSummary.docSigTitle" id="SignatureTitle" validator="required,validateAlphanumSpecial" required-error-message="{{'myDocuments.errorMessage.signatureTitleRequired' | translate}}" validate-alphanum-special-error-message="{{'myDocuments.errorMessage.specialCharactersLikeAreNotAllowed' | translate}}" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div ng-if="data.DocumentDetailSummary.notorizedNameVisible" class="col-md-12 padLeft0 marginT1">
+                            <div class="form-group" ng-if="!data.DocumentDetailSummary.notorizedNameRequired && data.DocumentDetailSummary.notorizedNameVisible">
+                                <div class="col-sm-4 col-md-4 col-lg-4 text-right">
+                                    <label>{{'myDocuments.label.notarizedName' | translate}}</label>
+                                </div>
+                                <div class="col-sm-4 col-md-4 col-lg-4">
+                                    <input type="text" class="form-control input-sm" name="NotarizedName" maxlength="200" ng-model="data.DocumentDetailSummary.docNotorizedName" id="NotarizedName" valid-method="submit" validator="validateAlphanumSpecial" validate-alphanum-special-error-message="{{'myDocuments.errorMessage.specialCharactersLikeAreNotAllowed' | translate}}" />
+                                </div>
+                            </div>
+                            <div class="form-group" ng-if="data.DocumentDetailSummary.notorizedNameRequired && data.DocumentDetailSummary.notorizedNameVisible">
+                                <div class="col-sm-4 col-md-4 col-lg-4 text-right">
+                                    <label>{{'myDocuments.label.notarizedName' | translate}}&nbsp;<sup class="asterisk">*</sup>
+                                    </label>
+                                </div>
+                                <div class="col-sm-4 col-md-4 col-lg-4">
+                                    <input type="text" class="form-control input-sm" name="NotarizedName" maxlength="200" ng-model="data.DocumentDetailSummary.docNotorizedName" id="NotarizedName" validator="required,validateAlphanumSpecial" required-error-message="{{'myDocuments.errorMessage.notarizedNameRequired' | translate}}" validate-alphanum-special-error-message="{{'myDocuments.errorMessage.specialCharactersLikeAreNotAllowed' | translate}}" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div ng-if="data.DocumentDetailSummary.notorizedDateVisible" class="col-md-12 padLeft0 marginT1">
+                            <div class="form-group" ng-if="!data.DocumentDetailSummary.notorizedDateRequired && data.DocumentDetailSummary.notorizedDateVisible">
+                                <div class="col-sm-4 col-md-4 col-lg-4 text-right">
+                                    <label>{{'myDocuments.label.notarizedDate' | translate}}</label>
+                                </div>
+                                <div class="col-sm-4 col-md-4 col-lg-4">
+                                    <input type="text" class="form-control input-sm" placeholder="MM/DD/YYYY" name="notorizedDate" id="notorizedDate" data-ng-model="data.DocumentDetailSummary.docNotorizedDateString" datepicker-popup="{time: false, format: 'MM/dd/yyyy', appendToElement : true}" readonly="true" />
+                                </div>
+                            </div>
+                            <div class="form-group" ng-if="data.DocumentDetailSummary.notorizedDateRequired && data.DocumentDetailSummary.notorizedDateVisible">
+                                <div class="col-sm-4 col-md-4 col-lg-4 text-right">
+                                    <label>{{'myDocuments.label.notarizedDate' | translate}}&nbsp;<sup class="asterisk">*</sup>
+                                    </label>
+                                </div>
+                                <div class="col-sm-4 col-md-4 col-lg-4">
+                                    <input type="text" class="form-control input-sm" placeholder="MM/DD/YYYY" name="docNotorizedDate" id="docNotorizedDate" data-ng-model="data.DocumentDetailSummary.docNotorizedDateString" datepicker-popup="{time: false, format: 'MM/dd/yyyy', appendToElement : true}" readonly />
+                                    <input type="text" name="docNotorizedDate" ng-model="data.DocumentDetailSummary.docNotorizedDateString" validator="required" required-error-message="{{'myDocuments.errorMessage.notarizedDateRequired' | translate}}" class="ng-hide" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div ng-if="data.DocumentDetailSummary.notorizedSealNumVisible" class="col-md-12 padLeft0 marginT1">
+                            <div class="form-group" ng-if="!data.DocumentDetailSummary.notorizedSealNumRequired && data.DocumentDetailSummary.notorizedSealNumVisible">
+                                <div class="col-sm-4 col-md-4 col-lg-4 text-right">
+                                    <label>{{'myDocuments.label.notarySealor' | translate}}</label>
+                                </div>
+                                <div class="col-sm-4 col-md-4 col-lg-4">
+                                    <input type="text" class="form-control input-sm" name="NotarySealor" maxlength="100" ng-model="data.DocumentDetailSummary.docNotorizedSealOrNumber" id="NotarySealor" valid-method="submit" validator="validateAlphanumSpecial" validate-alphanum-special-error-message="{{'myDocuments.errorMessage.specialCharactersLikeAreNotAllowed' | translate}}" />
+                                </div>
+                            </div>
+                            <div class="form-group" ng-if="data.DocumentDetailSummary.notorizedSealNumRequired && data.DocumentDetailSummary.notorizedSealNumVisible">
+                                <div class="col-sm-4 col-md-4 col-lg-4 text-right">
+                                    <label>{{'myDocuments.label.notarySealor' | translate}}&nbsp;<sup class="asterisk">*</sup>
+                                    </label>
+                                </div>
+                                <div class="col-sm-4 col-md-4 col-lg-4">
+                                    <input type="text" class="form-control input-sm" name="NotarySealor" maxlength="100" ng-model="data.DocumentDetailSummary.docNotorizedSealOrNumber" id="NotarySealor" validator="required,validateAlphanumSpecial" required-error-message="{{'myDocuments.errorMessage.notarySealRequired' | translate}}" validate-alphanum-special-error-message="{{'myDocuments.errorMessage.specialCharactersLikeAreNotAllowed' | translate}}" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div ng-if="data.DocumentDetailSummary.noticeForTermDateVisible" class="col-md-12 padLeft0 marginT1">
+                            <div class="form-group" ng-if="!data.DocumentDetailSummary.noticeForTermDateRequired && data.DocumentDetailSummary.noticeForTermDateVisible">
+                                <div class="col-sm-4 col-md-4 col-lg-4 text-right">
+                                    <label>{{'myDocuments.label.noticeforTermDays' | translate}}</label>
+                                </div>
+                                <div class="col-sm-4 col-md-4 col-lg-4">
+                                    <input type="text" class="form-control input-sm" name="NoticeforTermDays" maxlength="15" ng-model="data.DocumentDetailSummary.noticeForTermDays" id="NoticeforTermDays" valid-method="submit" validator="validateNumber" validate-number-error-message="{{'myDocuments.errorMessage.invalidNumberFormat' | translate}}" />
+                                </div>
+                            </div>
+                            <div class="form-group" ng-if="data.DocumentDetailSummary.noticeForTermDateRequired && data.DocumentDetailSummary.noticeForTermDateVisible">
+                                <div class="col-sm-4 col-md-4 col-lg-4 text-right">
+                                    <label>{{'myDocuments.label.noticeforTermDays' | translate}}&nbsp;<sup class="asterisk">*</sup>
+                                    </label>
+                                </div>
+                                <div class="col-sm-4 col-md-4 col-lg-4">
+                                    <input type="text" class="form-control input-sm" name="NoticeforTermDays" maxlength="15" ng-model="data.DocumentDetailSummary.noticeForTermDays" id="NoticeforTermDays" validator="required,validateNumber" required-error-message="{{'myDocuments.errorMessage.noticeForTermDaysRequired' | translate}}" validate-number-error-message="{{'myDocuments.errorMessage.invalidNumberFormat' | translate}}" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div ng-if="data.DocumentDetailSummary.outClauseDateVisible" class="col-md-12 padLeft0 marginT1">
+                            <div class="form-group" ng-if="!data.DocumentDetailSummary.outClauseDateRequired && data.DocumentDetailSummary.outClauseDateVisible">
+                                <div class="col-sm-4 col-md-4 col-lg-4 text-right">
+                                    <label>{{'myDocuments.label.outClauseDate' | translate}}</label>
+                                </div>
+                                <div class="col-sm-4 col-md-4 col-lg-4">
+                                    <input type="text" class="form-control input-sm" placeholder="MM/DD/YYYY" name="outClauseDate" id="outClauseDate" data-ng-model="data.DocumentDetailSummary.docOutClauseDateString" datepicker-popup="{time: false, format: 'MM/dd/yyyy', appendToElement : true}" readonly="true" />
+                                </div>
+                            </div>
+                            <div class="form-group" ng-if="data.DocumentDetailSummary.outClauseDateRequired && data.DocumentDetailSummary.outClauseDateVisible">
+                                <div class="col-sm-4 col-md-4 col-lg-4 text-right">
+                                    <label>{{'myDocuments.label.outClauseDate' | translate}}&nbsp;<sup class="asterisk">*</sup>
+                                    </label>
+                                </div>
+                                <div class="col-sm-4 col-md-4 col-lg-4">
+                                    <input type="text" class="form-control input-sm" placeholder="MM/DD/YYYY" name="docOutClauseDate" id="docOutClauseDate" data-ng-model="data.DocumentDetailSummary.docOutClauseDateString" datepicker-popup="{time: false, format: 'MM/dd/yyyy', appendToElement : true}" readonly />
+                                    <input type="text" name="docOutClauseDate" ng-model="data.DocumentDetailSummary.docOutClauseDateString" validator="required" required-error-message="{{'myDocuments.errorMessage.outClauseDateRequired' | translate}}" class="ng-hide" />
+                                </div>
+                            </div>
+                        </div>
+                        <div ng-if="data.DocumentDetailSummary.ackVisible" class="col-md-12 padLeft0 marginT1">
+                            <div class="form-group" ng-if="!data.DocumentDetailSummary.ackRequired && data.DocumentDetailSummary.ackVisible">
+                                <div class="col-sm-4 col-md-4 col-lg-4 text-right">
+                                    <label>{{'myDocuments.label.acknowledgement' | translate}}</label>
+                                </div>
+                                <div class="col-sm-4 col-md-4 col-lg-4" ng-if="data.DocumentDetailSummary.docAckSig">
+                                    <input type="checkbox" class="input-sm" ng-init="data.DocumentDetailSummary.acknowledgement =true" ng-true-value="true" ng-false-value="false" data-ng-model="data.DocumentDetailSummary.acknowledgement" name="acknowledgement" id="acknowledgement" />
+                                </div>
+                                <div class="col-sm-4 col-md-4 col-lg-4" ng-if="!data.DocumentDetailSummary.docAckSig">
+                                    <input type="checkbox" class="input-sm" ng-true-value="true" ng-false-value="false" data-ng-model="data.DocumentDetailSummary.acknowledgement" name="acknowledgement" id="acknowledgement" />
+                                </div>
+                            </div>
+                            <div class="form-group" ng-if="data.DocumentDetailSummary.ackRequired && data.DocumentDetailSummary.ackVisible">
+                                <div class="col-sm-4 col-md-4 col-lg-4 text-right">
+                                    <label>{{'myDocuments.label.acknowledgement' | translate}}&nbsp;<sup class="asterisk">*</sup>
+                                    </label>
+                                </div>
+                                <div class="col-sm-4 col-md-4 col-lg-4" ng-if="data.DocumentDetailSummary.docAckSig">
+                                    <input type="checkbox" class="input-sm" ng-init="data.DocumentDetailSummary.acknowledgement =true" ng-true-value="true" ng-false-value="'{{null}}'" data-ng-model="data.DocumentDetailSummary.acknowledgement" name="acknowledgement" id="acknowledgement" ng-change="showacknowledgementError(data.DocumentDetailSummary.acknowledgement)" />
+                                    <input type="text" ng-model="data.DocumentDetailSummary.acknowledgement" validator="required" required-error-message="{{'myDocuments.errorMessage.acknowledgementRequired' | translate}}" name="acknowledgement" class="ng-hide" />
+                                </div>
+                                <div class="col-sm-4 col-md-4 col-lg-4" ng-if="!data.DocumentDetailSummary.docAckSig">
+                                    <input type="checkbox" class="input-sm" ng-true-value="true" ng-false-value="'{{null}}'" data-ng-model="data.DocumentDetailSummary.acknowledgement" name="acknowledgement" id="acknowledgement" ng-change="showacknowledgementError(data.DocumentDetailSummary.acknowledgement)" />
+                                    <input type="text" ng-model="data.DocumentDetailSummary.acknowledgement" validator="required" required-error-message="{{'myDocuments.errorMessage.acknowledgementRequired' | translate}}" name="acknowledgement" class="ng-hide" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-lg-12 padLeft0 marginT1" ng-if="!multiUploadDocPopup">
+                            <div class="form-group">
+                                <div class="col-sm-4 col-md-4 col-lg-4"></div>
+                                <div class="col-sm-8 col-md-8 col-lg-8">
+                                    <button type="button" validation-submit="commonDocumentUploadForm" ng-click="submit();submitFormLoading=true" class="btn btn-success">{{'common.save' | translate}}</button>
+                                    <button type="button" ng-click="$close();" class="btn btn-warning">{{'common.cancel' | translate}}</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-lg-12 padLeft0 marginT1" ng-if="multiUploadDocPopup">
+                            <div class="form-group">
+                                <div class="col-sm-4 col-md-4 col-lg-4"></div>
+                                <div class="col-sm-8 col-md-8 col-lg-8">
+                                	<button type="button" data-ng-if="saveAndContinue === false" validation-submit="commonDocumentUploadForm" ng-click="cancelDialog();submit();submitFormLoading=true;setStateParmasId($state.params.id);" class="btn btn-success">{{'common.save' | translate}}</button>
+                                	<button type="button" data-ng-if="saveAndContinue === true" validation-submit="commonDocumentUploadForm" ng-click="cancelDialog();submit();submitFormLoading=true;setStateParmasId($state.params.id);" class="btn btn-success">{{'common.saveContinue' | translate}}</button>
+                                    <button type="button" ng-click="skipDocumentUpdate($state.params.id);setStateParmasId($state.params.id);" class="btn btn-info">{{'common.skip' | translate}}</button>
+                                    <button type="button" ng-click="returnToList($state.params.id);setStateParmasId($state.params.id);$close();" class="btn btn-warning">{{'common.returnToList' | translate}}</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </vision-action>
+        </div>
+    </div>
+</div>

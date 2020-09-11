@@ -1,0 +1,35 @@
+{  
+   "VisionResponse":{  
+      "Status":"Ok",
+      "ResponseError":[  
+
+      ],
+      "resourceCenter":[  
+		{  
+			"id":"1",
+			"name":"Document Fax Tutorial Video",
+			"description":"Document Fax Tutorial Video"
+		},
+		{  
+			"id":"2",
+			"name":"Document Upload Tutorial Video",
+			"description":"Document Upload Tutorial Video"
+		},
+		{ 
+			"id":"3",
+			"name":"Hospital Sign-In & Sign-Out Tutorial Video",
+			"description":"Hospital Sign-In & Sign-Out Tutorial Video"
+		},
+		{  
+			"id":"4",
+			"name":"Registration Tutorial Video",
+			"description":"Registration Tutorial Video"
+		},
+		{  
+			"id":"5",
+			"name":"Vendormate Support Center",
+			"description":"Vendormate Support Center"
+		}
+    ]
+ }
+}

@@ -1,0 +1,39 @@
+<div class="modal-content">
+    <div class="modal-header commonDialogHeader">
+        <button id="complianceCautionCloseIcon" type="button" class="close" data-dismiss="modal" aria-hidden="true" data-ng-click="cancelDialog();">&times;
+        </button>
+        <h3 class="modal-title"><b>{{'common.helpTitle' | translate}}</b></h3>
+    </div>
+    <div class="modal-body modelDialogScroll">
+        <p>
+            <b>{{'printBadge.clearedForAccess' | translate}}:</b>
+        </p>
+        <ul>
+            <li ng-bind-html = "'printBadge.clearedForAccessContent' | translate"></li>
+        </ul>
+        <p>
+            <b>{{'printBadge.printBadge' | translate}}:</b>
+        </p>
+        <ul>
+            <li ng-bind-html = "'printBadge.printBadgeContent' | translate"></li>
+            <p><br/><b>{{'printBadge.note' | translate}}:</b></p>
+            <ul ng-bind-html = "'printBadge.noteContent' | translate"></ul>
+        </ul>
+        <p ng-bind-html = "'printBadge.reprint' | translate">
+        </p>
+        <ul>
+            <li ng-bind-html = "'printBadge.ReprintContent' | translate"></li>
+        </ul>
+        <p><b>{{'printBadge.clear' | translate}}:</b>
+        </p>
+        <ul>
+            <li ng-bind-html = "'printBadge.clearContent' | translate"></li>
+        </ul>
+        <p ng-bind-html = "'printBadge.signInSignOut' | translate">
+        </p>
+        <ul>
+            <li>{{'printBadge.signInSignOutContent1' | translate}}</li>
+            <li>{{'printBadge.SignInSignOutContent2' | translate}}</li>
+        </ul>
+    </div>
+</div>

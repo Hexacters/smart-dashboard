@@ -1,0 +1,40 @@
+.recent-activity {
+    .content {
+        overflow: auto;
+        height: 350px;
+    }
+
+    .desc {
+        font-size: 13px;
+    }
+
+    .head {
+        margin: 0;
+    }
+
+    .table {
+        .name {
+            font-size: 10px;
+            padding-left: 0px;
+            padding-right: 0px;
+            text-align: left;
+            vertical-align: middle;
+        }
+
+        .days {
+            font-size: 10px;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        .action {
+            padding: 2px;
+            line-height: 20px;
+            background-color: #0077ff5b;
+            color: #0077ff;
+            font-size: 10px;
+            border-radius: 10px;
+        }
+    }
+
+}

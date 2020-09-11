@@ -1,0 +1,35 @@
+<div ng-init="searchStates = 'state';searchKeyWords='';searchByState='';">
+<h4>
+	<b>{{'manageReps.selectAccount' | translate}}</b>
+</h4>
+<p>
+	{{'manageReps.searchByState' | translate}} <input type="radio"
+		class="marginT0" ng-model="searchStates"  ng-checked="true" name="states" value="state"
+		ng-click="searchKeyWords=''" />
+	&#160;&#160;OR&#160;&#160;{{'manageReps.searchByKeyword' | translate}}
+	<input class="marginT0" type="radio" name="searchkey" value="key"
+		ng-model="searchStates" />
+</p>
+<div class="col-sm-6 col-md-6 col-lg-6 padding0 marginB1">
+	<div ng-show="searchStates == 'key'">
+		<input class="form-control input-sm" ng-model="searchKeyWords" focus-me="true"
+			ng-change="searchOneToManyAccounts(searchStates,searchKeyWords,searchByState);"
+			type="text" name="searchKey" maxlength="100"/>
+	</div>
+	<div ng-show="searchStates == 'state'">
+		<select class="form-control" id="sel1" ng-model="searchByState"
+			ng-change="searchOneToManyAccounts(searchStates,searchKeyWords,searchByState);"
+			name="searchKeyWords">
+			<option value=""></option>
+			<option ng-repeat="option in stateLookup"
+				value="{{option.stateCode}}">{{option.stateName}}</option>
+			<optgroup label="- - - - - - - - - - - - - - - - - - - - - "></optgroup>
+			<option ng-repeat="option in stateUsOtherLookup"
+				value="{{option.stateCode}}">{{option.stateName}}</option>
+			<optgroup label="- - - - - - - - - - - - - - - - - - - - - "></optgroup>
+			<option ng-repeat="option in stateCanLookup"
+				value="{{option.stateCode}}">{{option.stateName}}</option>
+		</select>
+	</div>
+</div>
+</div>

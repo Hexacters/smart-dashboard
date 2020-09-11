@@ -1,0 +1,356 @@
+{
+    "VisionResponse": {
+        "Status": "Ok",
+        "contentType": "application/json",
+        "RepRiskSummary": {
+            "repOid": "c0100009cc1000009cca",
+            "customerOid": "chwchospital",
+            "vcOid": "c0100009cc8000009cd1",
+            "rrpRiskQuestion1": "Rep risk question 1",
+            "rrpRiskQuestion2": "Rep risk question 2",
+            "rrpRiskQuestion3": "Rep risk question 3",
+            "rrpRiskQuestion4": "Rep risk question 4",
+            "rrpRiskQuestion5": "Rep risk question 5",
+            "rrpqsAnswered": false,
+            "customerDynamicQues": [
+                {
+                    "questionOid": "c0100004d45000004d46",
+                    "question": "Do you interact with procedural patient care areas including but not limited to the Operating Room, Catherization Lab, Endoscopy, and Radiology WHEN patients are present?",
+                    "updateAction": false,
+                    "deleteAction": false
+                },
+                {
+                    "questionOid": "c0100004d45000004d47",
+                    "question": "Do you have direct patient contact?",
+                    "updateAction": false,
+                    "deleteAction": false
+                }
+            ],
+            "updateAction": false,
+            "deleteAction": false
+        },
+        "DepartmentSummaryList": [
+            {
+                "id": "Accounting",
+                "oid": "c0100004d44000004d54",
+                "name": "Accounting"
+            },
+            {
+                "id": "Administration",
+                "oid": "c0100004d44000004d5a",
+                "name": "Administration"
+            },
+            {
+                "id": "Biomedical Engineering",
+                "oid": "c0100004d44000004d47",
+                "name": "Biomedical Engineering"
+            },
+            {
+                "id": "Cardiology",
+                "oid": "c0100004d44000004d4d",
+                "name": "Cardiology"
+            },
+            {
+                "id": "Cath Lab",
+                "oid": "c0100004d44000004d46",
+                "name": "Cath Lab"
+            },
+            {
+                "id": "Dept",
+                "oid": "c0100000c2e000000c2f",
+                "name": "Dept descp"
+            },
+            {
+                "id": "Emergency Department",
+                "oid": "c0100004d44000004d50",
+                "name": "Emergency Department"
+            },
+            {
+                "id": "Endoscopy",
+                "oid": "c0100004d44000004d55",
+                "name": "Endoscopy"
+            },
+            {
+                "id": "EP Lab",
+                "oid": "c0100004d44000004d58",
+                "name": "EP Lab"
+            },
+            {
+                "id": "Facilities",
+                "oid": "c0100004d44000004d4e",
+                "name": "Facilities"
+            },
+            {
+                "id": "Information Technology",
+                "oid": "c0100004d44000004d53",
+                "name": "Information Technology"
+            },
+            {
+                "id": "Lab",
+                "oid": "c0100004d44000004d4a",
+                "name": "Lab"
+            },
+            {
+                "id": "Marketing",
+                "oid": "c0100004d44000004d52",
+                "name": "Marketing"
+            },
+            {
+                "id": "Material Management",
+                "oid": "c0100004d44000004d49",
+                "name": "Material Management"
+            },
+            {
+                "id": "NICU",
+                "oid": "c0100004d44000004d4f",
+                "name": "NICU"
+            },
+            {
+                "id": "Nuclear Medicine",
+                "oid": "c0100004d44000004d59",
+                "name": "Nuclear Medicine"
+            },
+            {
+                "id": "Nursing",
+                "oid": "c0100004d44000004d56",
+                "name": "Nursing"
+            },
+            {
+                "id": "Oncology",
+                "oid": "c0100004d44000004d57",
+                "name": "Oncology"
+            },
+            {
+                "id": "Operating Room/Surgery",
+                "oid": "c0100004d44000004d45",
+                "name": "Operating Room/Surgery"
+            },
+            {
+                "id": "Pharmacy",
+                "oid": "c0100004d44000004d48",
+                "name": "Pharmacy"
+            },
+            {
+                "id": "Radiology",
+                "oid": "c0100004d44000004d4c",
+                "name": "Radiology"
+            },
+            {
+                "id": "Security",
+                "oid": "c0100004d44000004d51",
+                "name": "Security"
+            },
+            {
+                "id": "SPD",
+                "oid": "c0100004d44000004d4b",
+                "name": "SPD"
+            }
+        ],
+        "APIInformation": [
+            {
+                "id": "ECSB",
+                "oid": "ECSB",
+                "name": "Small Business (Less than 500)"
+            },
+            {
+                "id": "ECLB",
+                "oid": "ECLB",
+                "name": "Large Business"
+            },
+            {
+                "id": "ECFB",
+                "oid": "ECFB",
+                "name": "Foreign Business"
+            },
+            {
+                "id": "ECNP",
+                "oid": "ECNP",
+                "name": "Nonprofit"
+            },
+            {
+                "id": "ECFBE",
+                "oid": "ECFBE",
+                "name": "Female Business Enterprise (FBE)"
+            },
+            {
+                "id": "ECMBE",
+                "oid": "ECMBE",
+                "name": "Minority Business Enterprise (MBE)"
+            },
+            {
+                "id": "ECSD",
+                "oid": "ECSD",
+                "name": "Small Disadvantaged"
+            },
+            {
+                "id": "ECVOB",
+                "oid": "ECVOB",
+                "name": "Veteran Owned Business"
+            },
+            {
+                "id": "ECDVO",
+                "oid": "ECDVO",
+                "name": "Disabled Veteran Owned Business"
+            },
+            {
+                "id": "ECHZV",
+                "oid": "ECHZV",
+                "name": "Hub Zone Vendor"
+            }
+        ],
+        "fobCode": [
+            {
+                "id": "FCNSI",
+                "oid": "FCNSI",
+                "name": "No Shipment Involved (N/A)"
+            },
+            {
+                "id": "FCSFC",
+                "oid": "FCSFC",
+                "name": "Shipping - Freight Collect"
+            },
+            {
+                "id": "FCSFP",
+                "oid": "FCSFP",
+                "name": "Shipping - Freight Prepaid"
+            },
+            {
+                "id": "FCSFA",
+                "oid": "FCSFA",
+                "name": "Shipping - Freight Prepaid & Added"
+            },
+            {
+                "id": "FCDFC",
+                "oid": "FCDFC",
+                "name": "Destination - Freight Collect"
+            },
+            {
+                "id": "FCDFP",
+                "oid": "FCDFP",
+                "name": "Destination - Freight Prepaid"
+            },
+            {
+                "id": "FCDFA",
+                "oid": "FCDFA",
+                "name": "Destination - Freight Prepaid & Added"
+            }
+        ],
+        "payamentTermsCode": [
+            {
+                "id": "PTC0",
+                "name": "N/A"
+            }, {
+                "id": "PTC1",
+                "name": "NET"
+            }, {
+                "id": "PTC2",
+                "name": "NET 10"
+            }, {
+                "id": "PTC3",
+                "name": "NET 15"
+            }, {
+                "id": "PTC4",
+                "name": "NET 20"
+            }, {
+                "id": "PTC5",
+                "name": "NET 30"
+            }, {
+                "id": "PTC6",
+                "name": "NET 45"
+            }, {
+                "id": "PTC7",
+                "name": "NET 60"
+            }, {
+                "id": "PTC8",
+                "name": "NET 90"
+            }, {
+                "id": "PTC9",
+                "name": "1/2% 10 days"
+            }, {
+                "id": "PTC10",
+                "name": "1/2% 15 days"
+            }, {
+                "id": "PTC11",
+                "name": "1/2% 20 days"
+            }, {
+                "id": "PTC12",
+                "name": "1/2% 30 days"
+            }, {
+                "id": "PTC13",
+                "name": "1% 10 days"
+            }, {
+                "id": "PTC14",
+                "name": "1% 15 days"
+            }, {
+                "id": "PTC15",
+                "name": "1% 20 days"
+            }, {
+                "id": "PTC16",
+                "name": "1% 30 days"
+            }, {
+                "id": "PTC17",
+                "name": "1% 45 days"
+            }, {
+                "id": "PTC18",
+                "name": "2% 10 days"
+            }, {
+                "id": "PTC19",
+                "name": "2% 15 days"
+            }, {
+                "id": "PTC20",
+                "name": "2% 20 days"
+            }, {
+                "id": "PTC21",
+                "name": "2% 30 days"
+            }, {
+                "id": "PTC22",
+                "name": "2% 45 days"
+            }, {
+                "id": "PTC23",
+                "name": "1% 10 prox"
+            }, {
+                "id": "PTC24",
+                "name": "1% 15 prox"
+            }, {
+                "id": "PTC25",
+                "name": "2% 10 prox"
+            }, {
+                "id": "PTC26",
+                "name": "2% 15 prox"
+            }, {
+                "id": "PTC27",
+                "name": "Fully Prepaid"
+            }, {
+                "id": "PTC28",
+                "name": "Partially Prepaid"
+            }, {
+                "id": "PTC29",
+                "name": "Special Payment"
+            }
+        ],
+        "CustomerLocations": [
+            {
+                "parentId": "Group",
+                "parentLocation": "c0100000c2d000000c2e",
+                "parentLocationName": "Group Desc",
+                "childLocationList": [
+                    {
+                        "locationOid": "c0100000c2d000000c2f",
+                        "locationId": "Location",
+                        "locationName": "Location descp"
+                    },
+                    {
+                        "locationOid": "c010000730f000007310",
+                        "locationId": "Recuring Location",
+                        "locationName": "rec"
+                    },
+                    {
+                        "locationOid": "c010000730f000007311",
+                        "locationId": "Recuring Location 1",
+                        "locationName": "rec"
+                    }
+                ]
+            }
+        ]
+    }
+}

@@ -1,0 +1,2143 @@
+<div class="row" ng-controller="companyProfileController">
+	<div class="col-sm-12 col-md-12 col-lg-12" ng-if="enableDiversitySaveLoading || loading">
+		<img align="absmiddle" src="app/ng1/img/partial-loading.gif">&nbsp;{{'common.loading'
+		| translate}}
+	</div>
+	<div class="col-sm-12 col-md-12 col-lg-12 padding0" id="diversityInfomationEdit">
+		<vision-action>
+		<get-data service="companyProfileServices"
+			root-node="data.successData" form-node="data.diversityDetails"
+			operation="getDiversityInformations" response-formatter="getDiversityInfo"
+			></get-data>
+		<input class="hidden" data-ng-model="minorityOwnedBusiness"
+			data-ng-init="minorityOwnedBusiness = true" /> <input class="hidden"
+			data-ng-model="womenOwnedBusiness"
+			data-ng-init="womenOwnedBusiness = true" /> <input class="hidden"
+			data-ng-model="smallDisOwnedBusiness"
+			data-ng-init="smallDisOwnedBusiness = true" /> <input class="hidden"
+			data-ng-model="smallENTOwnedBusiness"
+			data-ng-init="smallENTOwnedBusiness = true" /> <input class="hidden"
+			data-ng-model="veretenOwnedBusiness"
+			data-ng-init="veretenOwnedBusiness = true" /> <input class="hidden"
+			data-ng-model="serviceDisabledOwnedBusiness"
+			data-ng-init="serviceDisabledOwnedBusiness = true" /> <input
+			class="hidden" data-ng-model="disabilityOwnedBusiness"
+			data-ng-init="disabilityOwnedBusiness = true" /> <input
+			class="hidden" data-ng-model="lgbtOwnedBusiness"
+			data-ng-init="lgbtOwnedBusiness = true" /> <input class="hidden"
+			data-ng-model="hubzoneOwnedBusiness"
+			data-ng-init="hubzoneOwnedBusiness = true" /> <input class="hidden"
+			data-ng-model="eightAOwnedBusiness"
+			data-ng-init="eightAOwnedBusiness = true" />
+		<div class="col-sm-10 col-md-10 col-lg-10 marginB1 marginT1">
+			<h3 class="modal-title">{{'companyProfile.diversityInformation.header.diversityInformation'
+				| translate}}</h3>
+		</div>
+		<div class="col-sm-2 col-md-2 col-lg-2 text-right marginTP5">
+			<sup class="asterisk">*</sup>&nbsp;{{'common.required'
+				| translate}}&nbsp; <a
+				data-ui-sref="companyProfile.diversityInformaionEdit.help"
+				ng-show="!isFromManageReps">{{'common.help' |
+					translate}}</a> <a
+				data-ui-sref="manage.repAccountDetails.companyProfile.diversityInformaionEdit.help"
+				ng-show="isFromManageReps">{{'common.help'
+					| translate}}</a>
+		</div>
+		<div class="col-sm-12 col-md-12 col-lg-12">
+			<div class="table-responsive"
+				data-ng-if="serviceResponseError.status === 'error'">
+				<div class="alert alert-danger">
+					{{serviceResponseError.errorData.ResponseError[0].errorCode | translate}}</div>
+			</div>
+		</div>
+		<form novalidate name="companyDiversityDetailsForm" autocomplete="off"
+			class="form" vm-form-extras>
+			<span
+				ng-repeat="certificationList in data.diversityDetails.CertificationList">
+				<span ng-if="certificationList.certificationTypeCode == 'MINOW'"
+				ng-init='data.certification1 = certificationList'></span> <span
+				ng-if="certificationList.certificationTypeCode == 'WOMOW'"
+				ng-init='data.certification2 = certificationList'></span> <span
+				ng-if="certificationList.certificationTypeCode == 'SMDOW'"
+				ng-init='data.certification3 = certificationList'></span> <span
+				ng-if="certificationList.certificationTypeCode == 'SBENT'"
+				ng-init='data.certification4 = certificationList'></span> <span
+				ng-if="certificationList.certificationTypeCode == 'DIVOW'"
+				ng-init='data.certification5 = certificationList'></span> <span
+				ng-if="certificationList.certificationTypeCode == 'SDVOW'"
+				ng-init='data.certification6 = certificationList'></span> <span
+				ng-if="certificationList.certificationTypeCode == 'DISOW'"
+				ng-init='data.certification7 = certificationList'></span> <span
+				ng-if="certificationList.certificationTypeCode == 'LGBOW'"
+				ng-init='data.certification8 = certificationList'></span> <span
+				ng-if="certificationList.certificationTypeCode == 'USHUB'"
+				ng-init='data.certification9 = certificationList'></span> <span
+				ng-if="certificationList.certificationTypeCode == 'USEIG'"
+				ng-init='data.certification10 = certificationList'></span>
+			</span> <span data-ng-model="data.minorityOwnedBusiness" class="hidden"></span>
+			<span data-ng-model="data.womenOwnedBusiness" class="hidden"></span>
+			<span data-ng-model="data.smallDisOwnedBusiness" class="hidden"></span>
+			<span data-ng-model="data.smallENTOwnedBusiness" class="hidden"></span>
+			<span data-ng-model="data.veretenOwnedBusiness" class="hidden"></span>
+			<span data-ng-model="data.serviceDisabledOwnedBusiness"
+				class="hidden"></span> <span
+				data-ng-model="data.disabilityOwnedBusiness" class="hidden"></span>
+			<span data-ng-model="data.lgbtOwnedBusiness" class="hidden"></span> <span
+				data-ng-model="data.hubzoneOwnedBusiness" class="hidden"></span> <span
+				data-ng-model="data.eightAOwnedBusiness" class="hidden"></span>
+			<div class="col-sm-10 col-md-10 col-lg-10  marginB1">
+				{{'companyProfile.diversityInformation.label.ifYourCompanyIsCertifiedDiverseVendor'
+				| translate}}&nbsp;&nbsp; <span tooltip-append-to-body="true"
+					tooltip="{{'companyProfile.diversityInformation.toolTip.forVerificationPurpose' | translate}}"
+					tooltip-placement="top"> <i
+					class="fa fa-question-circle fa-lg"></i>
+				</span>
+			</div>
+			<div class="col-sm-12 col-md-12 col-lg-12 marginT2 padding0">
+				<div class="form-group">
+					<div class="col-sm-3 col-md-3 col-lg-3">
+						<label>{{'companyProfile.diversityInformation.header.minorityOwned'
+							| translate}}&nbsp; <span tooltip-append-to-body="true"
+							tooltip="{{'companyProfile.diversityInformation.toolTip.minorityBusinessEnterprise' | translate}}"
+							tooltip-placement="top"> <i
+								class="fa fa-question-circle fa-lg"></i>
+						</span>
+						</label>
+					</div>
+					<div class="col-sm-2 col-md-2 col-lg-2">
+						<input type="radio" name="minorityOwnedStr" id="minorityOwnedStr"
+							 data-ng-model="data.diversityDetails.VendorDetail.minorityOwnedStr"
+							ng-click="showDiversityDetails(data.diversityDetails.VendorDetail.minorityOwnedStr,'diversity1');setMetadataDirty('diversity1')"
+							value="true" autofocus/> {{'common.yes' | translate}} <input
+							type="radio" name="minorityOwnedStr" id="minorityOwnedStr"
+							 data-ng-model="data.diversityDetails.VendorDetail.minorityOwnedStr"
+							ng-click="showDiversityDetails(data.diversityDetails.VendorDetail.minorityOwnedStr,'diversity1');setMetadataDirty('diversity1')"
+							value="false"/> {{'common.no' | translate}}
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-12 col-md-12 col-lg-12 marginT2 padding0"
+				data-ng-if="diversity1 || data.diversityDetails.VendorDetail.minorityOwnedStr == 'true'">
+				<div class="form-group">
+					<div class="col-sm-9 col-md-9 col-lg-9 padding0">
+						<div class="col-sm-1 col-md-1 col-lg-1 control-label"></div>
+						<label class="col-sm-3 col-md-3 col-lg-3 control-label">
+							{{'companyProfile.diversityInformation.label.minorityType' |
+							translate}} <sup class="asterisk">*</sup>
+						</label>
+						<div class="col-sm-4 col-md-4 col-lg-4">
+							<select ng-keyup="setMetadataDirty('diversity1')"
+									name="minorityCode" id="minorityCode"
+									class="form-control input-sm required"
+									ng-keydown="setMetadataDirty('diversity1')" ng-change="setMetadataDirty('diversity1');data.diversityDetails.VendorDetail.minorityCode = data.diversityDetails.VendorDetail.minorityType.value;"
+									ng-model="data.diversityDetails.VendorDetail.minorityType" 
+									validator="required" valid-method="submit"
+									ng-options="option.label for option in minorityTypeLookup"
+									required-error-message="{{'companyProfile.diversityInformation.errorMessage.minorityType' | translate}}">
+									<option value=''>- Select -</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-9 col-md-9 col-lg-9 padding0">
+						<div class="col-sm-1 col-md-1 col-lg-1 control-label"></div>
+						<label class="col-sm-3 col-md-3 col-lg-3 control-label">
+							{{'companyProfile.diversityInformation.label.certificationAgency'
+							| translate}} <sup class="asterisk">*</sup>
+						</label>
+						
+						<div class="col-sm-4 col-md-4 col-lg-4">
+							<select ng-keyup="setMetadataDirty('diversity1')"
+									 data-ng-model="data.certification1.certificationAgency"
+									name="certification1.certificationAgencyOid"
+									id="certification1.certificationAgencyOid" class="form-control input-sm required"
+									ng-keydown="setMetadataDirty('diversity1')" ng-change="data.certification1.certificationAgencyOid = data.certification1.certificationAgency.value;setMetadataDirty('diversity1');data.certification1.certAgencyOtherName = ''"
+									validator="required" valid-method="submit"
+									ng-options="option.label for option in certificationAgencyLookup"
+									required-error-message="{{'companyProfile.diversityInformation.errorMessage.certificationAgency' | translate}}">
+									<option value=''>- Select -</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="form-group"
+					data-ng-if="data.certification1.certificationAgency.value == 'other'">
+					<div class="col-sm-9 col-md-9 col-lg-9 padding0">
+						<div class="col-sm-1 col-md-1 col-lg-1 control-label"></div>
+						<label class="col-sm-3 col-md-3 col-lg-3 control-label">
+							{{'companyProfile.diversityInformation.label.certificationOther'
+							| translate}}<sup class="asterisk">*</sup>
+						</label>
+						<div class="col-sm-4 col-md-4 col-lg-4">
+							<input type="text" class="form-control input-sm required"
+								name="certification1.certAgencyOtherName"
+								id="certification1.certAgencyOtherName"
+								ng-model="data.certification1.certAgencyOtherName"
+								placeholder="Certification Agency Other" maxlength="100"
+								ng-keyup="setMetadataDirty('diversity1')" ng-keydown="setMetadataDirty('diversity1')"
+								ng-change="setMetadataDirty('diversity1')" valid-method="submit"
+								data-validator="required,validateAlphanumSpecial"
+								validate-alphanum-special-error-message="{{'common.errorMessage.allowedSpecialCharacters' | translate}}"
+								data-required-error-message="{{'companyProfile.diversityInformation.errorMessage.certificationAgencyOther' | translate}}" />
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-9 col-md-9 col-lg-9 padding0">
+						<div class="col-sm-1 col-md-1 col-lg-1 control-label"></div>
+						<label class="col-sm-3 col-md-3 col-lg-3 control-label">{{'companyProfile.diversityInformation.label.certificationNumber'
+							| translate}}</label>
+						<div class="col-sm-4 col-md-4 col-lg-4">
+							<input type="text" class="form-control input-sm"
+								name="certification1.certNumber" id="certification1.certNumber"
+								ng-model="data.certification1.certNumber"
+								data-validator="validateAlphanumSpecial"
+								validate-alphanum-special-error-message="{{'common.errorMessage.allowedSpecialCharacters' | translate}}"
+								placeholder="Certification Number" maxlength="100"
+								data-valid-method="submit" ng-keyup="setMetadataDirty('diversity1')"
+								ng-keydown="setMetadataDirty('diversity1')" ng-change="setMetadataDirty('diversity1')" />
+							<input type="hidden" name="certificationTypeCode"
+								id="certificationTypeCode" value='MINOW'
+								 data-ng-model="data.certification1.certificationTypeCode"
+								ng-init="data.certification1.certificationTypeCode= 'MINOW'" />
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-9 col-md-9 col-lg-9 padding0">
+						<div class="col-sm-1 col-md-1 col-lg-1 control-label"></div>
+						<label class="col-sm-3 col-md-3 col-lg-3 control-label">{{'companyProfile.diversityInformation.label.effectiveDate'
+							|translate}}</label>
+						<div class="col-sm-4 col-md-4 col-lg-4">
+							<input type="text" class="form-control input-sm" placeholder="MM/DD/YYYY"
+								name="certification1_certEffectiveDateString"
+								id="certification1_certEffectiveDateString"
+								 data-ng-model="data.certification1.certEffectiveDateString"
+								min-date="minDate"
+								datepicker-popup="{time: false, format: 'MM/dd/yyyy','readonly': 'false'}"
+								ng-keyup="setMetadataDirty('diversity1')" ng-keydown="setMetadataDirty('diversity1')"
+								ng-change="setMetadataDirty('diversity1')"
+								/>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-9 col-md-9 col-lg-9 padding0">
+						<div class="col-sm-1 col-md-1 col-lg-1 control-label"></div>
+						<label class="col-sm-3 col-md-3 col-lg-3 control-label">
+							{{'companyProfile.diversityInformation.label.expirationDate' |
+							translate}}<sup class="asterisk">*</sup>
+						</label>
+						<div class="col-sm-4 col-md-4 col-lg-4">
+							<input type="text" class="form-control input-sm required"
+								placeholder="MM/DD/YYYY" name="certification1_certExpDateString"
+								id="certification1_certExpDateString"
+								 data-ng-model="data.certification1.certExpDateString"
+								min-date="nextday"
+								datepicker-popup="{time: false, format: 'MM/dd/yyyy','readonly': 'false'}"
+								ng-keyup="setMetadataDirty('diversity1')" ng-keydown="setMetadataDirty('diversity1')"
+								ng-change="setMetadataDirty('diversity1')"
+								/> <input type="text"
+								 data-ng-model="data.certification1.certExpDateString"
+								name="certification1_certExpDateString" class="hidden"
+								effective-date="{{data.certification1.certEffectiveDateString}}"
+								validate-expiration-date-error-message="{{'companyProfile.diversityInformation.errorMessage.expirationDateValid' | translate}}"
+								validate-future-error-message="{{'companyProfile.diversityInformation.errorMessage.expirationDateGreaterThenToday' | translate}}"
+								validator="required, validateFuture, validateExpirationDate"
+								required-error-message="{{'companyProfile.diversityInformation.errorMessage.expirationDate' | translate}}"
+								valid-method="submit" />
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-9 col-md-9 col-lg-9 padding0">
+						<div class="col-sm-1 col-md-1 col-lg-1 control-label"></div>
+						<label class="col-sm-3 col-md-3 col-lg-3 control-label">
+							{{'companyProfile.diversityInformation.label.certificate' |
+							translate}}<sup class="asterisk">*</sup>
+						</label>
+						<div class="col-sm-5 col-md-5  col-lg-5 searchOrg"
+							data-ng-show="data.certification1.mongoKey && data.certification1.certFileOid && minorityOwnedBusiness">
+							Uploaded on {{data.certification1.certFileUploadedOnStr}} <a
+								href="javascript:;"
+								data-ng-click="viewDiversityDocument('MINOW');">View</a>&nbsp;&nbsp;<a
+								href="javascript:;"
+								data-ng-click="minorityOwnedBusiness = false;deleteUploadedDocument('diversity1');">Delete</a><br>
+						</div>
+					</div>
+					<div class="col-sm-9 col-md-9 col-lg-9 padding0 padding0">
+						<div
+							class="col-sm-4 col-md-4 col-lg-4 col-sm-offset-4 col-md-offset-4 col-lg-offset-4"
+							data-ng-if="!data.certification1.mongoKey || !data.certification1.certFileOid || !minorityOwnedBusiness">
+							<file-upload max-upload-file-count="1" file-size="5"
+								return-type="object"
+								return-fields="successData.mongoKey, successData.uploadedTime"
+								upload-service="companyProfileServices"
+								upload-operation="uploadFile" upload-response-wrapper="response"
+								download-service="companyProfileServices"
+								download-operation="downloadFile"
+								file-extensions="[jpg,jpeg,gif,doc,xlsx,pdf,xls,docx,txt]"
+								parent-data-field="$parent.data.minorityOwnedBusiness"
+								thumbnail-type="uploadFileId=minorityOwnedBusiness&amp;typeCode=MINOW"
+								download-request-params="certificationTypeCode=minorityOwnedBusiness,mongoKey:successData.mongoKey"
+								id="minorityOwnedUploaderUI" response-callback="$parent.uploadDocumentSuccess"
+								file-format-error-msg="{{'companyProfile.diversityInformation.errorMessage.invalidFileFormat' | translate}}"
+								file-name-length-error-msg="{{'companyProfile.diversityInformation.errorMessage.fileInvalidsupportFormatName' | translate}}">
+							</file-upload>
+							<select
+								ng-model="data.minorityOwnedBusiness"
+								name="minorityOwnedBusinessUploadLogoBlobId" class="hidden"
+								upload-required="{{minorityOwnedBusiness}}"
+								upload-required-mongo="{{data.certification1.mongoKey}}"
+								upload-required-file="{{data.certification1.certFileOid}}"
+								validator="validateUploadRequired, validateNotEmptyObject"
+								validate-upload-required-error-message="{{'companyProfile.diversityInformation.errorMessage.uploadCertificate' | translate}}"
+								validate-not-empty-object-error-message="{{ 'companyProfile.diversityInformation.errorMessage.uploadCertificate' | translate}}"
+								valid-method="submit" /></select>
+						</div>
+						<div
+							class="col-sm-8 col-md-8 col-lg-8 col-sm-offset-4 col-md-offset-4 col-lg-offset-4"
+							ng-if="data.certification1.mongoKey != '' && data.certification1.certFileOid != '' && (data.certification1.certVerifyStatusCode == 'CRREJ'  || data.certification1.isCertExpired == true || data.certification1.isCertExpiring == true )">
+							<span ng-if="data.certification1.isCertExpired == true">{{'companyProfile.diversityInformation.label.certificateExpired'
+								| translate}}</span><br> <span
+								ng-if="data.certification1.isCertExpiring == true && data.certification1.isCertExpired != true">{{'companyProfile.diversityInformation.label.certificateExpiredSoon'
+								| translate}}</span><br> <span
+								ng-if="data.certification1.certVerifyStatusCode == 'CRREJ'">{{'companyProfile.diversityInformation.label.certificateRejected'
+								| translate}}</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-12 col-md-12 col-lg-12 marginT2 padding0">
+				<div class="form-group">
+					<div class="col-sm-3 col-md-3 col-lg-3 ">
+						<label>{{'companyProfile.diversityInformation.header.womanOwned'
+							| translate}}&nbsp; <span tooltip-append-to-body="true"
+							tooltip="{{'companyProfile.diversityInformation.toolTip.womenBusinessEnterprise' | translate}}"
+							tooltip-placement="top"> <i
+								class="fa fa-question-circle fa-lg"></i>
+						</span></label>
+					</div>
+					<div class="col-sm-2 col-md-2 col-lg-2">
+						<input type="radio" name="womenOwnedStr" id="womenOwnedStr"
+							 data-ng-model="data.diversityDetails.VendorDetail.womenOwnedStr"
+							ng-click="showDiversityDetails(data.diversityDetails.VendorDetail.womenOwnedStr,'diversity2');setMetadataDirty('diversity2')"
+							value="true"/> {{'common.yes' | translate}} <input
+							type="radio" name="womenOwnedStr" id="womenOwnedStr"
+							 data-ng-model="data.diversityDetails.VendorDetail.womenOwnedStr"
+							ng-click="showDiversityDetails(data.diversityDetails.VendorDetail.womenOwnedStr,'diversity2');setMetadataDirty('diversity2')"
+							value="false"/> {{'common.no' | translate}}
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-12 col-md-12 col-lg-12 marginT2 padding0"
+				data-ng-if="diversity2 || data.diversityDetails.VendorDetail.womenOwnedStr == 'true'">
+				<div class="form-group">
+					<div class="col-sm-9 col-md-9 col-lg-9 padding0">
+						<div class="col-sm-1 col-md-1 col-lg-1 control-label"></div>
+						<label class="col-sm-3 col-md-3 col-lg-3 control-label">
+							{{'companyProfile.diversityInformation.label.certificationAgency'
+							| translate}} <sup class="asterisk">*</sup>
+						</label>
+						<div class="col-sm-4 col-md-4 col-lg-4">
+							<select ng-keyup="setMetadataDirty('diversity2')"
+									data-ng-model="data.certification2.certificationAgency"
+									name="certification2.certificationAgencyOid"
+									id="certification2.certificationAgencyOid" class="form-control input-sm required"
+									ng-keydown="setMetadataDirty('diversity2')" ng-change="data.certification2.certificationAgencyOid = data.certification2.certificationAgency.value;setMetadataDirty('diversity2');data.certification2.certAgencyOtherName = ''"
+									validator="required" valid-method="submit"
+									ng-options="option.label for option in certificationAgencyLookup"
+									required-error-message="{{'companyProfile.diversityInformation.errorMessage.certificationAgency' | translate}}">
+									<option value=''>- Select -</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="form-group"
+					data-ng-if="data.certification2.certificationAgency.value == 'other'">
+					<div class="col-sm-9 col-md-9 col-lg-9 padding0">
+						<div class="col-sm-1 col-md-1 col-lg-1 control-label"></div>
+						<label class="col-sm-3 col-md-3 col-lg-3 control-label">
+							{{'companyProfile.diversityInformation.label.certificationOther'
+							| translate}}<sup class="asterisk">*</sup>
+						</label>
+						<div class="col-sm-4 col-md-4 col-lg-4">
+							<input type="text" class="form-control input-sm required"
+								name="certification2.certAgencyOtherName"
+								id="certification2.certAgencyOtherName"
+								ng-model="data.certification2.certAgencyOtherName"
+								placeholder="Certification Agency Other" maxlength="100"
+								ng-keyup="setMetadataDirty('diversity2')" ng-keydown="setMetadataDirty('diversity2')"
+								ng-change="setMetadataDirty('diversity2')" valid-method="submit"
+								data-validator="required,validateAlphanumSpecial"
+								validate-alphanum-special-error-message="{{'common.errorMessage.allowedSpecialCharacters' | translate}}"
+								data-required-error-message="{{'companyProfile.diversityInformation.errorMessage.certificationAgencyOther' | translate}}" />
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-9 col-md-9 col-lg-9 padding0">
+						<div class="col-sm-1 col-md-1 col-lg-1 control-label"></div>
+						<label class="col-sm-3 col-md-3 col-lg-3 control-label">{{'companyProfile.diversityInformation.label.certificationNumber'
+							| translate}}</label>
+						<div class="col-sm-4 col-md-4 col-lg-4">
+							<input type="text" class="form-control input-sm"
+								name="certification2.certNumber" id="certification2.certNumber"
+								ng-model="data.certification2.certNumber"
+								data-validator="validateAlphanumSpecial"
+								validate-alphanum-special-error-message="{{'common.errorMessage.allowedSpecialCharacters' | translate}}"
+								placeholder="Certification Number" maxlength="100"
+								data-valid-method="submit" ng-keyup="setMetadataDirty('diversity2')"
+								ng-keydown="setMetadataDirty('diversity2')" ng-change="setMetadataDirty('diversity2')" />
+							<input type="hidden" name="certificationTypeCode"
+								id="certificationTypeCode" value='WOMOW'
+								data-ng-model="data.certification2.certificationTypeCode"
+								ng-init="data.certification2.certificationTypeCode= 'WOMOW'" />
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-9 col-md-9 col-lg-9 padding0">
+						<div class="col-sm-1 col-md-1 col-lg-1 control-label"></div>
+						<label class="col-sm-3 col-md-3 col-lg-3 control-label">{{'companyProfile.diversityInformation.label.effectiveDate'
+							| translate}}</label>
+						<div class="col-sm-4 col-md-4 col-lg-4">
+							<input type="text" class="form-control input-sm" placeholder="MM/DD/YYYY"
+								name="certification2_certEffectiveDateString"
+								id="certification2_certEffectiveDateString"
+								data-ng-model="data.certification2.certEffectiveDateString"
+								min-date="minDate"
+								datepicker-popup="{time: false, format: 'MM/dd/yyyy','readonly': 'false'}"
+								ng-keyup="setMetadataDirty('diversity2')" ng-keydown="setMetadataDirty('diversity2')"
+								ng-change="setMetadataDirty('diversity2')"
+								/>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-9 col-md-9 col-lg-9 padding0">
+						<div class="col-sm-1 col-md-1 col-lg-1 control-label"></div>
+						<label class="col-sm-3 col-md-3 col-lg-3 control-label">
+							{{'companyProfile.diversityInformation.label.expirationDate' |
+							translate}}<sup class="asterisk">*</sup>
+						</label>
+						<div class="col-sm-4 col-md-4 col-lg-4">
+							<input type="text" class="form-control input-sm required"
+								placeholder="MM/DD/YYYY" name="certification2_certExpDateString"
+								id="certification2_certExpDateString"
+								data-ng-model="data.certification2.certExpDateString"
+								min-date="nextday"
+								datepicker-popup="{time: false, format: 'MM/dd/yyyy','readonly': 'false'}"
+								ng-keyup="setMetadataDirty('diversity2')" ng-keydown="setMetadataDirty('diversity2')"
+								ng-change="setMetadataDirty('diversity2')"
+								/> <input type="text"
+								data-ng-model="data.certification2.certExpDateString"
+								name="certification2_certExpDateString" class="hidden"
+								effective-date="{{data.certification2.certEffectiveDateString}}"
+								validate-expiration-date-error-message="{{'companyProfile.divrsityInformation.errorMessage.expirationDateValid' | translate}}"
+								validate-future-error-message="{{'companyProfile.diversityInformation.errorMessage.expirationDateGreaterThenToday' | translate}}"
+								validator="required, validateFuture, validateExpirationDate"
+								required-error-message="{{'companyProfile.diversityInformation.errorMessage.expirationDate' | translate}}"
+								valid-method="submit" />
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-9 col-md-9 col-lg-9 padding0">
+						<div class="col-sm-1 col-md-1 col-lg-1 control-label"></div>
+						<label class="col-sm-3 col-md-3 col-lg-3 control-label">
+							{{'companyProfile.diversityInformation.label.certificate' |
+							translate}}<sup class="asterisk">*</sup>
+						</label>
+						<div class="col-sm-5 col-md-5  col-lg-5 searchOrg"
+							data-ng-show="data.certification2.mongoKey && data.certification2.certFileOid && womenOwnedBusiness">
+							Uploaded on {{data.certification2.certFileUploadedOnStr}} <a
+								href="javascript:;"
+								data-ng-click="viewDiversityDocument('WOMOW');">View</a>&nbsp;&nbsp;<a
+								href="javascript:;" data-ng-click="womenOwnedBusiness = false;deleteUploadedDocument('diversity2');">Delete</a><br>
+						</div>
+					</div>
+					<div class="col-sm-9 col-md-9 col-lg-9 padding0">
+						<div
+							class="col-sm-4 col-md-4 col-lg-4 col-sm-offset-4 col-md-offset-4 col-lg-offset-4"
+							data-ng-if="!data.certification2.mongoKey || !data.certification2.certFileOid || !womenOwnedBusiness">
+							<file-upload max-upload-file-count="1" file-size="5"
+								return-type="object"
+								return-fields="successData.mongoKey, successData.uploadedTime"
+								upload-service="companyProfileServices"
+								upload-operation="uploadFile" upload-response-wrapper="response"
+								download-service="companyProfileServices"
+								download-operation="downloadFile"
+								file-extensions="[jpg,jpeg,gif,doc,xlsx,pdf,xls,docx,txt]"
+								parent-data-field="$parent.data.womenOwnedBusiness"
+								thumbnail-type="uploadFileId=womenOwnedBusiness&amp;typeCode=WOMOW"
+								download-request-params="certificationTypeCode=womenOwnedBusiness,mongoKey:successData.mongoKey"
+								id="womenOwnedUploaderUI" response-callback="$parent.uploadDocumentSuccess"
+								file-format-error-msg="{{'companyProfile.diversityInformation.errorMessage.invalidFileFormat' | translate}}"
+								file-name-length-error-msg="{{'companyProfile.diversityInformation.errorMessage.fileInvalidsupportFormatName' | translate}}">
+							</file-upload>
+							<select
+								ng-model="data.womenOwnedBusiness"
+								name="womenOwnedBusinessUploadLogoBlobId" class="hidden"
+								upload-required="{{womenOwnedBusiness}}"
+								upload-required-mongo="{{data.certification2.mongoKey}}"
+								upload-required-file="{{data.certification2.certFileOid}}"
+								validator="validateUploadRequired, validateNotEmptyObject"
+								validate-upload-required-error-message="{{'companyProfile.diversityInformation.errorMessage.uploadCertificate' | translate}}"
+								validate-not-empty-object-error-message="{{ 'companyProfile.diversityInformation.errorMessage.uploadCertificate' | translate}}"
+								valid-method="submit" /></select>
+						</div>
+						<div
+							class="col-sm-offset-4 col-md-offset-4 col-lg-offset-4 col-sm-8 col-md-8 col-lg-8"
+							ng-if="data.certification2.mongoKey != '' && data.certification2.certFileOid != '' && (data.certification2.certVerifyStatusCode == 'CRREJ'  || data.certification2.isCertExpired == true || data.certification2.isCertExpiring == true )">
+							<span ng-if="data.certification2.isCertExpired == true">{{'companyProfile.diversityInformation.label.certificateExpired'
+								| translate}}</span><br> <span
+								ng-if="data.certification2.isCertExpiring == true && data.certification2.isCertExpired != true">{{'companyProfile.diversityInformation.label.certificateExpiredSoon'
+								| translate}}</span><br> <span
+								ng-if="data.certification2.certVerifyStatusCode == 'CRREJ'">{{'companyProfile.diversityInformation.label.certificateRejected'
+								| translate}}</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-12 col-md-12 col-lg-12 marginT2 padding0">
+				<div class="form-group">
+					<div class="col-sm-3 col-md-3 col-lg-3">
+						<label>{{'companyProfile.diversityInformation.header.smallDisadvantaged'
+							| translate}}&nbsp; <span tooltip-append-to-body="true"
+							tooltip="{{'companyProfile.diversityInformation.toolTip.smallDisadvantagedBusiness' | translate}}"
+							tooltip-placement="top"> <i
+								class="fa fa-question-circle fa-lg"></i>
+						</span>
+						</label>
+					</div>
+					<div class="col-sm-2 col-md-2 col-lg-2">
+						<input type="radio" name="smallDisadvantagedStr"
+							id="smallDisadvantagedStr"
+							data-ng-model="data.diversityDetails.VendorDetail.smallDisadvantagedStr"
+							ng-click="showDiversityDetails(data.diversityDetails.VendorDetail.smallDisadvantagedStr,'diversity3');setMetadataDirty('diversity3')"
+							value="true"/> {{'common.yes' | translate}} <input
+							type="radio" name="smallDisadvantagedStr"
+							id="smallDisadvantagedStr"
+							data-ng-model="data.diversityDetails.VendorDetail.smallDisadvantagedStr"
+							ng-click="showDiversityDetails(data.diversityDetails.VendorDetail.smallDisadvantagedStr,'diversity3');setMetadataDirty('diversity3')"
+							value="false"/> {{'common.no' | translate}}
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-12 col-md-12 col-lg-12 marginT2 padding0"
+				data-ng-if="diversity3 || data.diversityDetails.VendorDetail.smallDisadvantagedStr == 'true'">
+				<div class="form-group">
+					<div class="col-sm-9 col-md-9 col-lg-9 padding0">
+						<div class="col-sm-1 col-md-1 col-lg-1 control-label"></div>
+						<label class="col-sm-3 col-md-3 col-lg-3 control-label">
+							{{'companyProfile.diversityInformation.label.certificationAgency'
+							| translate}} <sup class="asterisk">*</sup>
+						</label>
+						<div class="col-sm-4 col-md-4 col-lg-4">
+							<select ng-keyup="setMetadataDirty('diversity3')"
+									data-ng-model="data.certification3.certificationAgency"
+									name="certification3.certificationAgencyOid"
+									id="certification3.certificationAgencyOid" class="form-control input-sm required"
+									ng-keydown="setMetadataDirty('diversity3')" ng-change="data.certification3.certificationAgencyOid = data.certification3.certificationAgency.value;setMetadataDirty('diversity3');data.certification3.certAgencyOtherName = ''"
+									validator="required" valid-method="submit"
+									ng-options="option.label for option in certificationAgencyLookup"
+									required-error-message="{{'companyProfile.diversityInformation.errorMessage.certificationAgency' | translate}}">
+									<option value=''>- Select -</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="form-group"
+					data-ng-if="data.certification3.certificationAgency.value == 'other'">
+					<div class="col-sm-9 col-md-9 col-lg-9 padding0">
+						<div class="col-sm-1 col-md-1 col-lg-1 control-label"></div>
+						<label class="col-sm-3 col-md-3 col-lg-3 control-label">
+							{{'companyProfile.diversityInformation.label.certificationOther'
+							| translate}}<sup class="asterisk">*</sup>
+						</label>
+						<div class="col-sm-4 col-md-4 col-lg-4">
+							<input type="text" class="form-control input-sm required"
+								name="certification3.certAgencyOtherName"
+								id="certification3.certAgencyOtherName"
+								ng-model="data.certification3.certAgencyOtherName"
+								placeholder="Certification Agency Other" maxlength="100"
+								ng-keyup="setMetadataDirty('diversity3')" ng-keydown="setMetadataDirty('diversity3')"
+								ng-change="setMetadataDirty('diversity3')" valid-method="submit"
+								data-validator="required,validateAlphanumSpecial"
+								validate-alphanum-special-error-message="{{'common.errorMessage.allowedSpecialCharacters' | translate}}"
+								data-required-error-message="{{'companyProfile.diversityInformation.errorMessage.certificationAgencyOther' | translate}}" />
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-9 col-md-9 col-lg-9 padding0">
+						<div class="col-sm-1 col-md-1 col-lg-1 control-label"></div>
+						<label class="col-sm-3 col-md-3 col-lg-3 control-label">{{'companyProfile.diversityInformation.label.certificationNumber'
+							| translate}}</label>
+						<div class="col-sm-4 col-md-4 col-lg-4">
+							<input type="text" class="form-control input-sm"
+								name="certification3.certNumber" id="certification3.certNumber"
+								ng-model="data.certification3.certNumber"
+								data-validator="validateAlphanumSpecial"
+								validate-alphanum-special-error-message="{{'common.errorMessage.allowedSpecialCharacters' | translate}}"
+								placeholder="Certification Number" maxlength="100"
+								data-valid-method="submit" ng-keyup="setMetadataDirty('diversity3')"
+								ng-keydown="setMetadataDirty('diversity3')" ng-change="setMetadataDirty('diversity3')">
+							<input type="hidden" name="certificationTypeCode"
+								id="certificationTypeCode" value='SMDOW'
+								data-ng-model="data.certification3.certificationTypeCode"
+								ng-init="data.certification3.certificationTypeCode= 'SMDOW'" />
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-9 col-md-9 col-lg-9 padding0">
+						<div class="col-sm-1 col-md-1 col-lg-1 control-label"></div>
+						<label class="col-sm-3 col-md-3 col-lg-3 control-label">{{'companyProfile.diversityInformation.label.effectiveDate'
+							| translate}}</label>
+						<div class="col-sm-4 col-md-4 col-lg-4">
+							<input type="text" class="form-control input-sm" placeholder="MM/DD/YYYY"
+								name="certification3_certEffectiveDateString"
+								id="certification3_certEffectiveDateString"
+								data-ng-model="data.certification3.certEffectiveDateString"
+								min-date="minDate"
+								datepicker-popup="{time: false, format: 'MM/dd/yyyy','readonly': 'false'}"
+								ng-keyup="setMetadataDirty('diversity3')" ng-keydown="setMetadataDirty('diversity3')"
+								ng-change="setMetadataDirty('diversity3')"
+								/>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-9 col-md-9 col-lg-9 padding0">
+						<div class="col-sm-1 col-md-1 col-lg-1 control-label"></div>
+						<label class="col-sm-3 col-md-3 col-lg-3 control-label">
+							{{'companyProfile.diversityInformation.label.expirationDate' |
+							translate}}<sup class="asterisk">*</sup>
+						</label>
+						<div class="col-sm-4 col-md-4 col-lg-4">
+							<input type="text" class="form-control input-sm required"
+								placeholder="MM/DD/YYYY" name="certification3_certExpDateString"
+								id="certification3_certExpDateString"
+								data-ng-model="data.certification3.certExpDateString"
+								min-date="nextday"
+								datepicker-popup="{time: false, format: 'MM/dd/yyyy','readonly': 'false'}"
+								ng-keyup="setMetadataDirty('diversity3')" ng-keydown="setMetadataDirty('diversity3')"
+								ng-change="setMetadataDirty('diversity3')"
+								/> <input type="text"
+								data-ng-model="data.certification3.certExpDateString"
+								name="certification3_certExpDateString" class="hidden"
+								effective-date="{{data.certification3.certEffectiveDateString}}"
+								validate-expiration-date-error-message="{{'companyProfile.diversityInformation.errorMessage.expirationDateValid' | translate}}"
+								validate-future-error-message="{{'companyProfile.diversityInformation.errorMessage.expirationDateGreaterThenToday' | translate}}"
+								validator="required, validateFuture, validateExpirationDate"
+								required-error-message="{{'companyProfile.diversityInformation.errorMessage.expirationDate' | translate}}"
+								valid-method="submit" />
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-9 col-md-9 col-lg-9 padding0">
+						<div class="col-sm-1 col-md-1 col-lg-1 control-label"></div>
+						<label class="col-sm-3 col-md-3 col-lg-3 control-label">
+							{{'companyProfile.diversityInformation.label.certificate' |
+							translate}}<sup class="asterisk">*</sup>
+						</label>
+						<div class="col-md-5 col-sm-5 col-lg-5"
+							data-ng-show="data.certification3.mongoKey && data.certification3.certFileOid && smallDisOwnedBusiness">
+							Uploaded on {{data.certification3.certFileUploadedOnStr}} <a
+								href="javascript:;"
+								data-ng-click="viewDiversityDocument('SMDOW');">View</a>&nbsp;&nbsp;<a
+								href="javascript:;"
+								data-ng-click="smallDisOwnedBusiness = false;deleteUploadedDocument('diversity3');">Delete</a><br>
+						</div>
+					</div>
+					<div class="col-sm-9 col-md-9 col-lg-9 padding0">
+						<div
+							class="col-sm-offset-4 col-md-offset-4 col-lg-offset-4 col-sm-4 col-md-4 col-lg-4"
+							data-ng-if="!data.certification3.mongoKey || !data.certification3.certFileOid || !smallDisOwnedBusiness">
+							<file-upload max-upload-file-count="1" file-size="5"
+								return-type="object"
+								return-fields="successData.mongoKey, successData.uploadedTime"
+								upload-service="companyProfileServices"
+								upload-operation="uploadFile" upload-response-wrapper="response"
+								download-service="companyProfileServices"
+								download-operation="downloadFile"
+								file-extensions="[jpg,jpeg,gif,doc,xlsx,pdf,xls,docx,txt]"
+								parent-data-field="$parent.data.smallDisOwnedBusiness"
+								thumbnail-type="uploadFileId=smallDisOwnedBusiness&amp;typeCode=SMDOW"
+								download-request-params="certificationTypeCode=smallDisOwnedBusiness,mongoKey:successData.mongoKey"
+								id="smallDisOwnedUploaderUI" response-callback="$parent.uploadDocumentSuccess"
+								file-format-error-msg="{{'companyProfile.diversityInformation.errorMessage.invalidFileFormat' | translate}}"
+								file-name-length-error-msg="{{'companyProfile.diversityInformation.errorMessage.fileInvalidsupportFormatName' | translate}}">
+							</file-upload>
+							<select ng-model="data.smallDisOwnedBusiness"
+								name="smallDisOwnedBusinessUploadLogoBlobId" class="hidden"
+								upload-required="{{smallDisOwnedBusiness}}"
+								upload-required-mongo="{{data.certification3.mongoKey}}"
+								upload-required-file="{{data.certification3.certFileOid}}"
+								validator="validateUploadRequired, validateNotEmptyObject"
+								validate-upload-required-error-message="{{'companyProfile.diversityInformation.errorMessage.uploadCertificate' | translate}}"
+								validate-not-empty-object-error-message="{{ 'companyProfile.diversityInformation.errorMessage.uploadCertificate' | translate}}"
+								valid-method="submit" /></select>
+						</div>
+						<div
+							class="col-sm-offset-4 col-md-offset-4 col-lg-offset-4 col-sm-8 col-md-8 col-lg-8"
+							ng-if="data.certification3.mongoKey != '' && data.certification3.certFileOid != '' && (data.certification3.certVerifyStatusCode == 'CRREJ'  || data.certification3.isCertExpired == true || data.certification3.isCertExpiring == true )">
+							<span ng-if="data.certification3.isCertExpired == true">{{'companyProfile.diversityInformation.label.certificateExpired'
+								| translate}}</span><br> <span
+								ng-if="data.certification3.isCertExpiring == true && data.certification3.isCertExpired != true">{{'companyProfile.diversityInformation.label.certificateExpiredSoon'
+								| translate}}</span><br> <span
+								ng-if="data.certification3.certVerifyStatusCode == 'CRREJ'">{{'companyProfile.diversityInformation.label.certificateRejected'
+								| translate}}</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-12 col-md-12 col-lg-12 marginT2 padding0">
+				<div class="form-group">
+					<div class="col-sm-3 col-md-3 col-lg-3">
+						<label>{{'companyProfile.diversityInformation.header.smallBusiness'
+							| translate}}&nbsp; <span tooltip-append-to-body="true"
+							tooltip="{{'companyProfile.diversityInformation.toolTip.smallBusinessEnterprise' | translate}}"
+							tooltip-placement="top"> <i
+								class="fa fa-question-circle fa-lg"></i>
+						</span>
+						</label>
+					</div>
+					<div class="col-sm-2 col-md-2 col-lg-2">
+						<input type="radio" name="smallBusinessEnterpriseStr"
+							id="smallBusinessEnterpriseStr"
+							data-ng-model="data.diversityDetails.VendorDetail.smallBusinessEnterpriseStr"
+							ng-click="showDiversityDetails(data.diversityDetails.VendorDetail.smallBusinessEnterpriseStr,'diversity4');setMetadataDirty('diversity4')"
+							value="true"/> {{'common.yes' | translate}} <input
+							type="radio" name="smallBusinessEnterpriseStr"
+							id="smallBusinessEnterpriseStr"
+							data-ng-model="data.diversityDetails.VendorDetail.smallBusinessEnterpriseStr"
+							ng-click="showDiversityDetails(data.diversityDetails.VendorDetail.smallBusinessEnterpriseStr,'diversity4');setMetadataDirty('diversity4')"
+							value="false"/> {{'common.no' | translate}}
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-12 col-md-12 col-lg-12 marginT2 padding0"
+				data-ng-if="diversity4 || data.diversityDetails.VendorDetail.smallBusinessEnterpriseStr == 'true'">
+				<div class="form-group">
+					<div class="col-sm-9 col-md-9 col-lg-9 padding0">
+						<div class="col-sm-1 col-md-1 col-lg-1 control-label"></div>
+						<label class="col-sm-3 col-md-3 col-lg-3 control-label">
+							{{'companyProfile.diversityInformation.label.certificationAgency'
+							| translate}} <sup class="asterisk">*</sup>
+						</label>
+						<div class="col-sm-4 col-md-4 col-lg-4">
+							<select ng-keyup="setMetadataDirty('diversity4')"
+									data-ng-model="data.certification4.certificationAgency"
+									name="certification4.certificationAgencyOid"
+									id="certification4.certificationAgencyOid" class="form-control input-sm required"
+									ng-keydown="setMetadataDirty('diversity4')" ng-change="data.certification4.certificationAgencyOid = data.certification4.certificationAgency.value;setMetadataDirty('diversity4');data.certification4.certAgencyOtherName = ''"
+									validator="required" valid-method="submit"
+									ng-options="option.label for option in certificationAgencyLookup"
+									required-error-message="{{'companyProfile.diversityInformation.errorMessage.certificationAgency' | translate}}">
+									<option value=''>- Select -</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="form-group"
+					data-ng-if="data.certification4.certificationAgency.value == 'other'">
+					<div class="col-sm-9 col-md-9 col-lg-9 padding0">
+						<div class="col-sm-1 col-md-1 col-lg-1 control-label"></div>
+						<label class="col-sm-3 col-md-3 col-lg-3 control-label">
+							{{'companyProfile.diversityInformation.label.certificationOther'
+							| translate}}<sup class="asterisk">*</sup>
+						</label>
+						<div class="col-sm-4 col-md-4 col-lg-4">
+							<input type="text" class="form-control input-sm required"
+								name="certification4.certAgencyOtherName"
+								id="certification4.certAgencyOtherName"
+								ng-model="data.certification4.certAgencyOtherName"
+								placeholder="Certification Agency Other" maxlength="100"
+								ng-keyup="setMetadataDirty('diversity4')" ng-keydown="setMetadataDirty('diversity4')"
+								ng-change="setMetadataDirty('diversity4')" valid-method="submit"
+								data-validator="required,validateAlphanumSpecial"
+								validate-alphanum-special-error-message="{{'common.errorMessage.allowedSpecialCharacters' | translate}}"
+								data-required-error-message="{{'companyProfile.diversityInformation.errorMessage.certificationAgencyOther' | translate}}" />
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-9 col-md-9 col-lg-9 padding0">
+						<div class="col-sm-1 col-md-1 col-lg-1 control-label"></div>
+						<label class="col-sm-3 col-md-3 col-lg-3 control-label">{{'companyProfile.diversityInformation.label.certificationNumber'
+							| translate}}</label>
+						<div class="col-sm-4 col-md-4 col-lg-4">
+							<input type="text" class="form-control input-sm"
+								name="certification4.certNumber" id="certification4.certNumber"
+								ng-model="data.certification4.certNumber"
+								data-validator="validateAlphanumSpecial"
+								validate-alphanum-special-error-message="{{'common.errorMessage.allowedSpecialCharacters' | translate}}"
+								placeholder="Certification Number" maxlength="100"
+								valid-method="submit" ng-keyup="setMetadataDirty('diversity4')"
+								ng-keydown="setMetadataDirty('diversity4')" ng-change="setMetadataDirty('diversity4')" />
+							<input type="hidden" name="certificationTypeCode"
+								id="certificationTypeCode" value='SBENT'
+								data-ng-model="data.certification4.certificationTypeCode"
+								ng-init="data.certification4.certificationTypeCode= 'SBENT'" />
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-9 col-md-9 col-lg-9 padding0">
+						<div class="col-sm-1 col-md-1 col-lg-1 control-label"></div>
+						<label class="col-sm-3 col-md-3 col-lg-3 control-label">{{'companyProfile.diversityInformation.label.effectiveDate'
+							| translate}}</label>
+						<div class="col-sm-4 col-md-4 col-lg-4">
+							<input type="text" class="form-control input-sm" placeholder="MM/DD/YYYY"
+								name="certification4_certEffectiveDateString"
+								id="certification4_certEffectiveDateString"
+								data-ng-model="data.certification4.certEffectiveDateString"
+								min-date="minDate"
+								datepicker-popup="{time: false, format: 'MM/dd/yyyy','readonly': 'false'}"
+								ng-keyup="setMetadataDirty('diversity4')" ng-keydown="setMetadataDirty('diversity4')"
+								ng-change="setMetadataDirty('diversity4')"
+								/>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-9 col-md-9 col-lg-9 padding0">
+						<div class="col-sm-1 col-md-1 col-lg-1 control-label"></div>
+						<label class="col-sm-3 col-md-3 col-lg-3 control-label">
+							{{'companyProfile.diversityInformation.label.expirationDate' |
+							translate}}<sup class="asterisk">*</sup>
+						</label>
+						<div class="col-sm-4 col-md-4 col-lg-4">
+							<input type="text" class="form-control input-sm required"
+								placeholder="MM/DD/YYYY" name="certification4_certExpDateString"
+								id="certification4_certExpDateString"
+								data-ng-model="data.certification4.certExpDateString"
+								min-date="nextday"
+								datepicker-popup="{time: false, format: 'MM/dd/yyyy','readonly': 'false'}"
+								ng-keyup="setMetadataDirty('diversity4')" ng-keydown="setMetadataDirty('diversity4')"
+								ng-change="setMetadataDirty('diversity4')"
+								/> <input type="text"
+								data-ng-model="data.certification4.certExpDateString"
+								name="certification4_certExpDateString" class="hidden"
+								effective-date="{{data.certification4.certEffectiveDateString}}"
+								validate-expiration-date-error-message="{{'companyProfile.diversityInformation.errorMessage.expirationDateValid' | translate}}"
+								validate-future-error-message="{{'companyProfile.diversityInformation.errorMessage.expirationDateGreaterThenToday' | translate}}"
+								validator="required, validateFuture, validateExpirationDate"
+								required-error-message="{{'companyProfile.diversityInformation.errorMessage.expirationDate' | translate}}"
+								valid-method="submit" />
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-9 col-md-9 col-lg-9 padding0">
+						<div class="col-sm-1 col-md-1 col-lg-1 control-label"></div>
+						<label class="col-sm-3 col-md-3 col-lg-3 control-label">
+							{{'companyProfile.diversityInformation.label.certificate' |
+							translate}}<sup class="asterisk">*</sup>
+						</label>
+						<div class="col-sm-5 col-md-5  col-lg-5 searchOrg"
+							data-ng-show="data.certification4.mongoKey && data.certification4.certFileOid && smallENTOwnedBusiness">
+							Uploaded on {{data.certification4.certFileUploadedOnStr}} <a
+								href="javascript:;"
+								data-ng-click="viewDiversityDocument('SBENT');">View</a>&nbsp;&nbsp;<a
+								href="javascript:;"
+								data-ng-click="smallENTOwnedBusiness = false;deleteUploadedDocument('diversity4');">Delete</a><br>
+						</div>
+					</div>
+					<div class="col-sm-9 col-md-9 col-lg-9 padding0">
+						<div
+							class="col-sm-offset-4 col-md-offset-4 col-lg-offset-4 col-sm-4 col-md-4 col-lg-4"
+							data-ng-if="!data.certification4.mongoKey || !data.certification4.certFileOid || !smallENTOwnedBusiness">
+							<file-upload max-upload-file-count="1" file-size="5"
+								return-type="object"
+								return-fields="successData.mongoKey, successData.uploadedTime"
+								upload-service="companyProfileServices"
+								upload-operation="uploadFile" upload-response-wrapper="response"
+								download-service="companyProfileServices"
+								download-operation="downloadFile"
+								file-extensions="[jpg,jpeg,gif,doc,xlsx,pdf,xls,docx,txt]"
+								parent-data-field="$parent.data.smallENTOwnedBusiness"
+								thumbnail-type="uploadFileId=smallENTOwnedBusiness&amp;typeCode=SBENT"
+								download-request-params="certificationTypeCode=smallENTOwnedBusiness,mongoKey:successData.mongoKey"
+								id="smallENTOwnedUploaderUI" response-callback="$parent.uploadDocumentSuccess"
+								file-format-error-msg="{{'companyProfile.diversityInformation.errorMessage.invalidFileFormat' | translate}}"
+								file-name-length-error-msg="{{'companyProfile.diversityInformation.errorMessage.fileInvalidsupportFormatName' | translate}}">
+							</file-upload>
+							<select
+								ng-model="data.smallENTOwnedBusiness"
+								name="smallENTOwnedBusinessUploadLogoBlobId" class="hidden"
+								upload-required="{{smallENTOwnedBusiness}}"
+								upload-required-mongo="{{data.certification4.mongoKey}}"
+								upload-required-file="{{data.certification4.certFileOid}}"
+								validator="validateUploadRequired, validateNotEmptyObject"
+								validate-upload-required-error-message="{{'companyProfile.diversityInformation.errorMessage.uploadCertificate' | translate}}"
+								validate-not-empty-object-error-message="{{ 'companyProfile.diversityInformation.errorMessage.uploadCertificate' | translate}}"
+								valid-method="submit" /></select>
+						</div>
+						<div
+							class="col-sm-offset-4 col-md-offset-4 col-lg-offset-4 col-sm-8 col-md-8 col-lg-8"
+							ng-if="data.certification4.mongoKey != '' && data.certification4.certFileOid != '' && (data.certification4.certVerifyStatusCode == 'CRREJ'  || data.certification4.isCertExpired == true || data.certification4.isCertExpiring == true )">
+							<span ng-if="data.certification4.isCertExpired == true">{{'companyProfile.diversityInformation.label.certificateExpired'
+								| translate}}</span><br> <span
+								ng-if="data.certification4.isCertExpiring == true && data.certification4.isCertExpired != true">{{'companyProfile.diversityInformation.label.certificateExpiredSoon'
+								| translate}}</span><br> <span
+								ng-if="data.certification4.certVerifyStatusCode == 'CRREJ'">{{'companyProfile.diversityInformation.label.certificateRejected'
+								| translate}}</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-12 col-md-12 col-lg-12 marginT2 padding0">
+				<div class="form-group">
+					<div class="col-sm-3 col-md-3 col-lg-3">
+						<label>{{'companyProfile.diversityInformation.header.veteranOwned'
+							| translate}}&nbsp; <span tooltip-append-to-body="true"
+							tooltip="{{'companyProfile.diversityInformation.toolTip.veteranBusinessEnterprise' | translate}}"
+							tooltip-placement="top"> <i
+								class="fa fa-question-circle fa-lg"></i>
+						</span>
+						</label>
+					</div>
+					<div class="col-sm-2 col-md-2 col-lg-2">
+						<input type="radio" name="disabledVeteranStr"
+							id="disabledVeteranStr"
+							data-ng-model="data.diversityDetails.VendorDetail.disabledVeteranStr"
+							ng-click="showDiversityDetails(data.diversityDetails.VendorDetail.disabledVeteranStr,'diversity5');setMetadataDirty('diversity5')"
+							value="true"/> {{'common.yes' | translate}} <input
+							type="radio" name="disabledVeteranStr" id="disabledVeteranStr"
+							data-ng-model="data.diversityDetails.VendorDetail.disabledVeteranStr"
+							ng-click="showDiversityDetails(data.diversityDetails.VendorDetail.disabledVeteranStr,'diversity5');setMetadataDirty('diversity5')"
+							value="false"/> {{'common.no' | translate}}
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-12 col-md-12 col-lg-12 marginT2 padding0"
+				data-ng-if="diversity5 || data.diversityDetails.VendorDetail.disabledVeteranStr == 'true'">
+				<div class="form-group">
+					<div class="col-sm-9 col-md-9 col-lg-9 padding0">
+						<div class="col-sm-1 col-md-1 col-lg-1 control-label"></div>
+						<label class="col-sm-3 col-md-3 col-lg-3 control-label">
+							{{'companyProfile.diversityInformation.label.certificationAgency'
+							| translate}} <sup class="asterisk">*</sup>
+						</label>
+						<div class="col-sm-4 col-md-4 col-lg-4">
+							<select ng-keyup="setMetadataDirty('diversity5')"
+									data-ng-model="data.certification5.certificationAgency"
+									name="certification5.certificationAgencyOid"
+									id="certification5.certificationAgencyOid" class="form-control input-sm required"
+									ng-keydown="setMetadataDirty('diversity5')" ng-change="data.certification5.certificationAgencyOid = data.certification5.certificationAgency.value;setMetadataDirty('diversity5');data.certification5.certAgencyOtherName = ''"
+									validator="required" valid-method="submit"
+									ng-options="option.label for option in certificationAgencyLookup"
+									required-error-message="{{'companyProfile.diversityInformation.errorMessage.certificationAgency' | translate}}">
+									<option value=''>- Select -</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="form-group"
+					data-ng-if="data.certification5.certificationAgency.value == 'other'">
+					<div class="col-sm-9 col-md-9 col-lg-9 padding0">
+						<div class="col-sm-1 col-md-1 col-lg-1 control-label"></div>
+						<label class="col-sm-3 col-md-3 col-lg-3 control-label">
+							{{'companyProfile.diversityInformation.label.certificationOther'
+							| translate}}<sup class="asterisk">*</sup>
+						</label>
+						<div class="col-sm-4 col-md-4 col-lg-4">
+							<input type="text" class="form-control input-sm required"
+								name="certification5.certAgencyOtherName"
+								id="certification5.certAgencyOtherName"
+								ng-model="data.certification5.certAgencyOtherName"
+								placeholder="Certification Agency Other" maxlength="100"
+								ng-keyup="setMetadataDirty('diversity5')" ng-keydown="setMetadataDirty('diversity5')"
+								ng-change="setMetadataDirty('diversity5')" valid-method="submit"
+								data-validator="required,validateAlphanumSpecial"
+								validate-alphanum-special-error-message="{{'common.errorMessage.allowedSpecialCharacters' | translate}}"
+								data-required-error-message="{{'companyProfile.diversityInformation.errorMessage.certificationAgencyOther' | translate}}" />
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-9 col-md-9 col-lg-9 padding0">
+						<div class="col-sm-1 col-md-1 col-lg-1 control-label"></div>
+						<label class="col-sm-3 col-md-3 col-lg-3 control-label">{{'companyProfile.diversityInformation.label.certificationNumber'
+							| translate}}</label>
+						<div class="col-sm-4 col-md-4 col-lg-4">
+							<input type="text" class="form-control input-sm"
+								name="certification5.certNumber" id="certification5.certNumber"
+								ng-model="data.certification5.certNumber"
+								data-validator="validateAlphanumSpecial"
+								validate-alphanum-special-error-message="{{'common.errorMessage.allowedSpecialCharacters' | translate}}"
+								placeholder="Certification Number" maxlength="100"
+								valid-method="submit" ng-keyup="setMetadataDirty('diversity5')"
+								ng-keydown="setMetadataDirty('diversity5')" ng-change="setMetadataDirty('diversity5')" />
+							<input type="hidden" name="certificationTypeCode"
+								id="certificationTypeCode" value='DIVOW'
+								data-ng-model="data.certification5.certificationTypeCode"
+								ng-init="data.certification5.certificationTypeCode= 'DIVOW'" />
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-9 col-md-9 col-lg-9 padding0">
+						<div class="col-sm-1 col-md-1 col-lg-1 control-label"></div>
+						<label class="col-sm-3 col-md-3 col-lg-3 control-label">{{'companyProfile.diversityInformation.label.effectiveDate'
+							| translate}}</label>
+						<div class="col-sm-4 col-md-4 col-lg-4">
+							<input type="text" class="form-control input-sm" placeholder="MM/DD/YYYY"
+								name="certification5_certEffectiveDateString"
+								id="certification5_certEffectiveDateString"
+								data-ng-model="data.certification5.certEffectiveDateString"
+								min-date="minDate"
+								datepicker-popup="{time: false, format: 'MM/dd/yyyy','readonly': 'false'}"
+								ng-keyup="setMetadataDirty('diversity5')" ng-keydown="setMetadataDirty('diversity5')"
+								ng-change="setMetadataDirty('diversity5')"
+								/>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-9 col-md-9 col-lg-9 padding0">
+						<div class="col-sm-1 col-md-1 col-lg-1 control-label"></div>
+						<label class="col-sm-3 col-md-3 col-lg-3 control-label">
+							{{'companyProfile.diversityInformation.label.expirationDate' |
+							translate}}<sup class="asterisk">*</sup>
+						</label>
+						<div class="col-sm-4 col-md-4 col-lg-4">
+							<input type="text" class="form-control input-sm required"
+								placeholder="MM/DD/YYYY" name="certification5_certExpDateString"
+								id="certification5_certExpDateString"
+								data-ng-model="data.certification5.certExpDateString"
+								min-date="nextday"
+								datepicker-popup="{time: false, format: 'MM/dd/yyyy','readonly': 'false'}"
+								ng-keyup="setMetadataDirty('diversity5')" ng-keydown="setMetadataDirty('diversity5')"
+								ng-change="setMetadataDirty('diversity5')"
+								/> <input type="text"
+								data-ng-model="data.certification5.certExpDateString"
+								name="certification5_certExpDateString" class="hidden"
+								effective-date="{{data.certification5.certEffectiveDateString}}"
+								validate-expiration-date-error-message="{{'companyProfile.diversityInformation.errorMessage.expirationDateValid' | translate}}"
+								validate-future-error-message="{{'companyProfile.diversityInformation.errorMessage.expirationDateGreaterThenToday' | translate}}"
+								validator="required, validateFuture, validateExpirationDate"
+								required-error-message="{{'companyProfile.diversityInformation.errorMessage.expirationDate' | translate}}"
+								valid-method="submit" />
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-9 col-md-9 col-lg-9 padding0">
+						<div class="col-sm-1 col-md-1 col-lg-1 control-label"></div>
+						<label class="col-sm-3 col-md-3 col-lg-3 control-label">
+							{{'companyProfile.diversityInformation.label.certificate' |
+							translate}}<sup class="asterisk">*</sup>
+						</label>
+						<div class="col-sm-5 col-md-5  col-lg-5 searchOrg"
+							data-ng-show="data.certification5.mongoKey && data.certification5.certFileOid && veretenOwnedBusiness">
+							Uploaded on {{data.certification5.certFileUploadedOnStr}} <a
+								href="javascript:;"
+								data-ng-click="viewDiversityDocument('DIVOW');">View</a>&nbsp;&nbsp;<a
+								href="javascript:;" data-ng-click="veretenOwnedBusiness = false;deleteUploadedDocument('diversity5');">Delete</a><br>
+						</div>
+					</div>
+					<div class="col-sm-9 col-md-9 col-lg-9 padding0">
+						<div
+							class="col-sm-offset-4 col-md-offset-4 col-lg-offset-4 col-sm-4 col-md-4 col-lg-4"
+							data-ng-if="!data.certification5.mongoKey || !data.certification5.certFileOid || !veretenOwnedBusiness">
+							<file-upload max-upload-file-count="1" file-size="5"
+								return-type="object"
+								return-fields="successData.mongoKey, successData.uploadedTime"
+								upload-service="companyProfileServices"
+								upload-operation="uploadFile" upload-response-wrapper="response"
+								download-service="companyProfileServices"
+								download-operation="downloadFile"
+								file-extensions="[jpg,jpeg,gif,doc,xlsx,pdf,xls,docx,txt]"
+								parent-data-field="$parent.data.veretenOwnedBusiness"
+								thumbnail-type="uploadFileId=veretenOwnedBusiness&amp;typeCode=DIVOW"
+								download-request-params="certificationTypeCode=veretenOwnedBusiness,mongoKey:successData.mongoKey"
+								id="veretenOwnedUploaderUI" response-callback="$parent.uploadDocumentSuccess"
+								file-format-error-msg="{{'companyProfile.diversityInformation.errorMessage.invalidFileFormat' | translate}}"
+								file-name-length-error-msg="{{'companyProfile.diversityInformation.errorMessage.fileInvalidsupportFormatName' | translate}}">
+							</file-upload>
+							<select 
+								ng-model="data.veretenOwnedBusiness"
+								name="veretenOwnedBusinessUploadLogoBlobId" class="hidden"
+								upload-required="{{veretenOwnedBusiness}}"
+								upload-required-mongo="{{data.certification5.mongoKey}}"
+								upload-required-file="{{data.certification5.certFileOid}}"
+								validator="validateUploadRequired, validateNotEmptyObject"
+								validate-upload-required-error-message="{{'companyProfile.diversityInformation.errorMessage.uploadCertificate' | translate}}"
+								validate-not-empty-object-error-message="{{ 'companyProfile.diversityInformation.errorMessage.uploadCertificate' | translate}}"
+								valid-method="submit" /></select>
+						</div>
+						<div
+							class="col-sm-offset-4 col-md-offset-4 col-lg-offset-4 col-sm-8 col-md-8 col-lg-8"
+							ng-if="data.certification5.mongoKey != '' && data.certification5.certFileOid != '' && (data.certification5.certVerifyStatusCode == 'CRREJ'  || data.certification5.isCertExpired == true || data.certification5.isCertExpiring == true )">
+							<span ng-if="data.certification5.isCertExpired == true">{{'companyProfile.diversityInformation.label.certificateExpired'
+								| translate}}</span><br> <span
+								ng-if="data.certification5.isCertExpiring == true && data.certification5.isCertExpired != true">{{'companyProfile.diversityInformation.label.certificateExpiredSoon'
+								| translate}}</span><br> <span
+								ng-if="data.certification5.certVerifyStatusCode == 'CRREJ'">{{'companyProfile.diversityInformation.label.certificateRejected'
+								| translate}}</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-12 col-md-12 col-lg-12 marginT2 padding0">
+				<div class="form-group">
+					<div class="col-sm-3 col-md-3 col-lg-3">
+						<label>{{'companyProfile.diversityInformation.header.serviceDisabledVeteranOwned'
+							| translate}}&nbsp; <span tooltip-append-to-body="true"
+							tooltip="{{'companyProfile.diversityInformation.toolTip.disabledVeteranBusinessEnterprise' | translate}}"
+							tooltip-placement="top"> <i
+								class="fa fa-question-circle fa-lg"></i>
+						</span>
+						</label>
+					</div>
+					<div class="col-sm-2 col-md-2 col-lg-2">
+						<input type="radio" name="serviceDisabledVeteranOwnedStr"
+							id="serviceDisabledVeteranOwnedStr"
+							data-ng-model="data.diversityDetails.VendorDetail.serviceDisabledVeteranOwnedStr"
+							ng-click="showDiversityDetails(data.diversityDetails.VendorDetail.serviceDisabledVeteranOwnedStr,'diversity6');setMetadataDirty('diversity6')"
+							value="true"/> {{'common.yes' | translate}} <input
+							type="radio" name="serviceDisabledVeteranOwnedStr"
+							id="serviceDisabledVeteranOwnedStr"
+							data-ng-model="data.diversityDetails.VendorDetail.serviceDisabledVeteranOwnedStr"
+							ng-click="showDiversityDetails(data.diversityDetails.VendorDetail.serviceDisabledVeteranOwnedStr,'diversity6');setMetadataDirty('diversity6')"
+							value="false"/> {{'common.no' | translate}}
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-12 col-md-12 col-lg-12 marginT2 padding0"
+				data-ng-if="diversity6 || data.diversityDetails.VendorDetail.serviceDisabledVeteranOwnedStr == 'true'">
+				<div class="form-group">
+					<div class="col-sm-9 col-md-9 col-lg-9 padding0">
+						<div class="col-sm-1 col-md-1 col-lg-1 control-label"></div>
+						<label class="col-sm-3 col-md-3 col-lg-3 control-label">
+							{{'companyProfile.diversityInformation.label.certificationAgency'
+							| translate}} <sup class="asterisk">*</sup>
+						</label>
+						<div class="col-sm-4 col-md-4 col-lg-4">
+							<select ng-keyup="setMetadataDirty('diversity6')"
+									data-ng-model="data.certification6.certificationAgency"
+									name="certification6.certificationAgencyOid"
+									id="certification6.certificationAgencyOid" class="form-control input-sm required"
+									ng-keydown="setMetadataDirty('diversity6')" ng-change="data.certification6.certificationAgencyOid = data.certification6.certificationAgency.value;setMetadataDirty('diversity6');data.certification6.certAgencyOtherName = ''"
+									validator="required" valid-method="submit"
+									ng-options="option.label for option in certificationAgencyLookup"
+									required-error-message="{{'companyProfile.diversityInformation.errorMessage.certificationAgency' | translate}}">
+									<option value=''>- Select -</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="form-group"
+					data-ng-if="data.certification6.certificationAgency.value == 'other'">
+					<div class="col-sm-9 col-md-9 col-lg-9 padding0">
+						<div class="col-sm-1 col-md-1 col-lg-1 control-label"></div>
+						<label class="col-sm-3 col-md-3 col-lg-3 control-label">
+							{{'companyProfile.diversityInformation.label.certificationOther'
+							| translate}}<sup class="asterisk">*</sup>
+						</label>
+						<div class="col-sm-4 col-md-4 col-lg-4">
+							<input type="text" class="form-control input-sm required"
+								name="certification6.certAgencyOtherName"
+								id="certification6.certAgencyOtherName"
+								ng-model="data.certification6.certAgencyOtherName"
+								placeholder="Certification Agency Other" maxlength="100"
+								ng-keyup="setMetadataDirty('diversity6')" ng-keydown="setMetadataDirty('diversity6')"
+								ng-change="setMetadataDirty('diversity6')" valid-method="submit"
+								data-validator="required,validateAlphanumSpecial"
+								validate-alphanum-special-error-message="{{'common.errorMessage.allowedSpecialCharacters' | translate}}"
+								data-required-error-message="{{'companyProfile.diversityInformation.errorMessage.certificationAgencyOther' | translate}}" />
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-9 col-md-9 col-lg-9 padding0">
+						<div class="col-sm-1 col-md-1 col-lg-1 control-label"></div>
+						<label class="col-sm-3 col-md-3 col-lg-3 control-label">{{'companyProfile.diversityInformation.label.certificationNumber'
+							| translate}}</label>
+						<div class="col-sm-4 col-md-4 col-lg-4">
+							<input type="text" class="form-control input-sm"
+								name="certification6.certNumber" id="certification6.certNumber"
+								ng-model="data.certification6.certNumber"
+								data-validator="validateAlphanumSpecial"
+								validate-alphanum-special-error-message="{{'common.errorMessage.allowedSpecialCharacters' | translate}}"
+								placeholder="Certification Number" maxlength="100"
+								valid-method="submit" ng-keyup="setMetadataDirty('diversity6')"
+								ng-keydown="setMetadataDirty('diversity6')" ng-change="setMetadataDirty('diversity6')" />
+							<input type="hidden" name="certificationTypeCode"
+								id="certificationTypeCode" value='SDVOW'
+								data-ng-model="data.certification6.certificationTypeCode"
+								ng-init="data.certification6.certificationTypeCode= 'SDVOW'" />
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-9 col-md-9 col-lg-9 padding0">
+						<div class="col-sm-1 col-md-1 col-lg-1 control-label"></div>
+						<label class="col-sm-3 col-md-3 col-lg-3 control-label">{{'companyProfile.diversityInformation.label.effectiveDate'
+							| translate}}</label>
+						<div class="col-sm-4 col-md-4 col-lg-4">
+							<input type="text" class="form-control input-sm" placeholder="MM/DD/YYYY"
+								name="certification6_certEffectiveDateString"
+								id="certification6_certEffectiveDateString"
+								data-ng-model="data.certification6.certEffectiveDateString"
+								min-date="minDate"
+								datepicker-popup="{time: false, format: 'MM/dd/yyyy','readonly': 'false'}"
+								ng-keyup="setMetadataDirty('diversity6')" ng-keydown="setMetadataDirty('diversity6')"
+								ng-change="setMetadataDirty('diversity6')"
+								/>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-9 col-md-9 col-lg-9 padding0">
+						<div class="col-sm-1 col-md-1 col-lg-1 control-label"></div>
+						<label class="col-sm-3 col-md-3 col-lg-3 control-label">
+							{{'companyProfile.diversityInformation.label.expirationDate' |
+							translate}}<sup class="asterisk">*</sup>
+						</label>
+						<div class="col-sm-4 col-md-4 col-lg-4">
+							<input type="text" class="form-control input-sm required"
+								placeholder="MM/DD/YYYY" name="certification6_certExpDateString"
+								id="certification6_certExpDateString"
+								data-ng-model="data.certification6.certExpDateString"
+								min-date="nextday"
+								datepicker-popup="{time: false, format: 'MM/dd/yyyy','readonly': 'false'}"
+								ng-keyup="setMetadataDirty('diversity6')" ng-keydown="setMetadataDirty('diversity6')"
+								ng-change="setMetadataDirty('diversity6')"
+								/> <input type="text"
+								data-ng-model="data.certification6.certExpDateString"
+								name="certification6_certExpDateString" class="hidden"
+								effective-date="{{data.certification6.certEffectiveDateString}}"
+								validate-expiration-date-error-message="{{'companyProfile.diversityInformation.errorMessage.expirationDateValid' | translate}}"
+								validate-future-error-message="{{'companyProfile.diversityInformation.errorMessage.expirationDateGreaterThenToday' | translate}}"
+								validator="required, validateFuture, validateExpirationDate"
+								required-error-message="{{'companyProfile.diversityInformation.errorMessage.expirationDate' | translate}}"
+								valid-method="submit" />
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-9 col-md-9 col-lg-9 padding0">
+						<div class="col-sm-1 col-md-1 col-lg-1 control-label"></div>
+						<label class="col-sm-3 col-md-3 col-lg-3 control-label">
+							{{'companyProfile.diversityInformation.label.certificate' |
+							translate}}<sup class="asterisk">*</sup>
+						</label>
+						<div class="col-sm-5 col-md-5  col-lg-5 searchOrg"
+							data-ng-show="data.certification6.mongoKey && data.certification6.certFileOid && serviceDisabledOwnedBusiness">
+							Uploaded on {{data.certification6.certFileUploadedOnStr}} <a
+								href="javascript:;"
+								data-ng-click="viewDiversityDocument('SDVOW');">View</a>&nbsp;&nbsp;<a
+								href="javascript:;"
+								data-ng-click="serviceDisabledOwnedBusiness = false;deleteUploadedDocument('diversity6');">Delete</a><br>
+						</div>
+					</div>
+					<div class="col-sm-9 col-md-9 col-lg-9 padding0">
+						<div
+							class="col-sm-offset-4 col-md-offset-4 col-lg-offset-4 col-sm-4 col-md-4 col-lg-4"
+							data-ng-if="!data.certification6.mongoKey || !data.certification6.certFileOid || !serviceDisabledOwnedBusiness">
+							<file-upload max-upload-file-count="1" file-size="5"
+								return-type="object"
+								return-fields="successData.mongoKey, successData.uploadedTime"
+								upload-service="companyProfileServices"
+								upload-operation="uploadFile" upload-response-wrapper="response"
+								download-service="companyProfileServices"
+								download-operation="downloadFile"
+								file-extensions="[jpg,jpeg,gif,doc,xlsx,pdf,xls,docx,txt]"
+								parent-data-field="$parent.data.serviceDisabledOwnedBusiness"
+								thumbnail-type="uploadFileId=serviceDisabledOwnedBusiness&amp;typeCode=SDVOW"
+								download-request-params="certificationTypeCode=serviceDisabledOwnedBusiness,mongoKey:successData.mongoKey"
+								id="serviceDisabledOwnedUploaderUI" response-callback="$parent.uploadDocumentSuccess"
+								file-format-error-msg="{{'companyProfile.diversityInformation.errorMessage.invalidFileFormat' | translate}}"
+								file-name-length-error-msg="{{'companyProfile.diversityInformation.errorMessage.fileInvalidsupportFormatName' | translate}}">
+							</file-upload>
+							<select
+								ng-model="data.serviceDisabledOwnedBusiness"
+								name="serviceDisabledOwnedBusinessUploadLogoBlobId"
+								class="hidden"
+								upload-required="{{serviceDisabledOwnedBusiness}}"
+								upload-required-mongo="{{data.certification6.mongoKey}}"
+								upload-required-file="{{data.certification6.certFileOid}}"
+								validator="validateUploadRequired, validateNotEmptyObject"
+								validate-upload-required-error-message="{{'companyProfile.diversityInformation.errorMessage.uploadCertificate' | translate}}"
+								validate-not-empty-object-error-message="{{ 'companyProfile.diversityInformation.errorMessage.uploadCertificate' | translate}}"
+								valid-method="submit" /></select>
+						</div>
+						<div
+							class="col-sm-8 col-md-8 col-lg-8 col-sm-offset-4 col-md-offset-4 col-lg-offset-4"
+							ng-if="data.certification6.mongoKey != '' && data.certification6.certFileOid != '' && (data.certification6.certVerifyStatusCode == 'CRREJ'  || data.certification6.isCertExpired == true || data.certification6.isCertExpiring == true )">
+							<span ng-if="data.certification6.isCertExpired == true">{{'companyProfile.diversityInformation.label.certificateExpired'
+								| translate}}</span><br> <span
+								ng-if="data.certification6.isCertExpiring == true && data.certification6.isCertExpired != true">{{'companyProfile.diversityInformation.label.certificateExpiredSoon'
+								| translate}}</span><br> <span
+								ng-if="data.certification6.certVerifyStatusCode == 'CRREJ'">{{'companyProfile.diversityInformation.label.certificateRejected'
+								| translate}}</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-12 col-md-12 col-lg-12 marginT2 padding0">
+				<div class="form-group">
+					<div class="col-sm-3 col-md-3 col-lg-3">
+						<label>{{'companyProfile.diversityInformation.header.disabledOwned'
+							| translate}}&nbsp; <span tooltip-append-to-body="true"
+							tooltip="{{'companyProfile.diversityInformation.toolTip.disabilityOwnedBusinessEnterprise' | translate}}"
+							tooltip-placement="top"> <i
+								class="fa fa-question-circle fa-lg"></i>
+						</span>
+						</label>
+					</div>
+					<div class="col-sm-2 col-md-2 col-lg-2">
+						<input type="radio" name="disabledOwnedStr" id="disabledOwnedStr"
+							data-ng-model="data.diversityDetails.VendorDetail.disabledOwnedStr"
+							ng-click="showDiversityDetails(data.diversityDetails.VendorDetail.disabledOwnedStr,'diversity7');setMetadataDirty('diversity7')"
+							value="true"/> {{'common.yes' | translate}} <input
+							type="radio" name="disabledOwnedStr" id="disabledOwnedStr"
+							data-ng-model="data.diversityDetails.VendorDetail.disabledOwnedStr"
+							ng-click="showDiversityDetails(data.diversityDetails.VendorDetail.disabledOwnedStr,'diversity7');setMetadataDirty('diversity7')"
+							value="false"/> {{'common.no' | translate}}
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-12 col-md-12 col-lg-12 marginT2 padding0"
+				data-ng-if="diversity7 || data.diversityDetails.VendorDetail.disabledOwnedStr == 'true'">
+				<div class="form-group">
+					<div class="col-sm-9 col-md-9 col-lg-9 padding0">
+						<div class="col-sm-1 col-md-1 col-lg-1 control-label"></div>
+						<label class="col-sm-3 col-md-3 col-lg-3 control-label">
+							{{'companyProfile.diversityInformation.label.certificationAgency'
+							| translate}} <sup class="asterisk">*</sup>
+						</label>
+						<div class="col-sm-4 col-md-4 col-lg-4">
+								<select ng-keyup="setMetadataDirty('diversity7')"
+									data-ng-model="data.certification7.certificationAgency"
+									name="certification7.certificationAgencyOid"
+									id="certification7.certificationAgencyOid" class="form-control input-sm required"
+									ng-keydown="setMetadataDirty('diversity7')" ng-change="data.certification7.certificationAgencyOid = data.certification7.certificationAgency.value;setMetadataDirty('diversity7');data.certification7.certAgencyOtherName = ''"
+									validator="required" valid-method="submit"
+									ng-options="option.label for option in certificationAgencyLookup"
+									required-error-message="{{'companyProfile.diversityInformation.errorMessage.certificationAgency' | translate}}">
+									<option value=''>- Select -</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="form-group"
+					data-ng-if="data.certification7.certificationAgency.value == 'other'">
+					<div class="col-sm-9 col-md-9 col-lg-9 padding0">
+						<div class="col-sm-1 col-md-1 col-lg-1 control-label"></div>
+						<label class="col-sm-3 col-md-3 col-lg-3 control-label">
+							{{'companyProfile.diversityInformation.label.certificationOther'
+							| translate}}<sup class="asterisk">*</sup>
+						</label>
+						<div class="col-sm-4 col-md-4 col-lg-4">
+							<input type="text" class="form-control input-sm required"
+								name="certification7.certAgencyOtherName"
+								id="certification7.certAgencyOtherName"
+								ng-model="data.certification7.certAgencyOtherName"
+								placeholder="Certification Agency Other" maxlength="100"
+								ng-keyup="setMetadataDirty('diversity7')" ng-keydown="setMetadataDirty('diversity7')"
+								ng-change="setMetadataDirty('diversity7')" valid-method="submit"
+								data-validator="required,validateAlphanumSpecial"
+								validate-alphanum-special-error-message="{{'common.errorMessage.allowedSpecialCharacters' | translate}}"
+								data-required-error-message="{{'companyProfile.diversityInformation.errorMessage.certificationAgencyOther' | translate}}" />
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-9 col-md-9 col-lg-9 padding0">
+						<div class="col-sm-1 col-md-1 col-lg-1 control-label"></div>
+						<label class="col-sm-3 col-md-3 col-lg-3 control-label">{{'companyProfile.diversityInformation.label.certificationNumber'
+							| translate}}</label>
+						<div class="col-sm-4 col-md-4 col-lg-4">
+							<input type="text" class="form-control input-sm"
+								name="certification7.certNumber" id="certification7.certNumber"
+								ng-model="data.certification7.certNumber"
+								data-validator="validateAlphanumSpecial"
+								validate-alphanum-special-error-message="{{'common.errorMessage.allowedSpecialCharacters' | translate}}"
+								placeholder="Certification Number" maxlength="100"
+								valid-method="submit" ng-keyup="setMetadataDirty('diversity7')"
+								ng-keydown="setMetadataDirty('diversity7')" ng-change="setMetadataDirty('diversity7')" />
+							<input type="hidden" name="certificationTypeCode"
+								id="certificationTypeCode" value='DISOW'
+								data-ng-model="data.certification7.certificationTypeCode"
+								ng-init="data.certification7.certificationTypeCode= 'DISOW'" />
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-9 col-md-9 col-lg-9 padding0">
+						<div class="col-sm-1 col-md-1 col-lg-1 control-label"></div>
+						<label class="col-sm-3 col-md-3 col-lg-3 control-label">{{'companyProfile.diversityInformation.label.effectiveDate'
+							| translate}}</label>
+						<div class="col-sm-4 col-md-4 col-lg-4">
+							<input type="text" class="form-control input-sm" placeholder="MM/DD/YYYY"
+								name="certification7_certEffectiveDateString"
+								id="certification7_certEffectiveDateString"
+								data-ng-model="data.certification7.certEffectiveDateString"
+								min-date="minDate"
+								datepicker-popup="{time: false, format: 'MM/dd/yyyy','readonly': 'false'}"
+								ng-keyup="setMetadataDirty('diversity7')" ng-keydown="setMetadataDirty('diversity7')"
+								ng-change="setMetadataDirty('diversity7')"
+								/>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-9 col-md-9 col-lg-9 padding0">
+						<div class="col-sm-1 col-md-1 col-lg-1 control-label"></div>
+						<label class="col-sm-3 col-md-3 col-lg-3 control-label">
+							{{'companyProfile.diversityInformation.label.expirationDate' |
+							translate}}<sup class="asterisk">*</sup>
+						</label>
+						<div class="col-sm-4 col-md-4 col-lg-4">
+							<input type="text" class="form-control input-sm required"
+								placeholder="MM/DD/YYYY" name="certification7_certExpDateString"
+								id="certification7_certExpDateString"
+								data-ng-model="data.certification7.certExpDateString"
+								min-date="nextday"
+								datepicker-popup="{time: false, format: 'MM/dd/yyyy','readonly': 'false'}"
+								ng-keyup="setMetadataDirty('diversity7')" ng-keydown="setMetadataDirty('diversity7')"
+								ng-change="setMetadataDirty('diversity7')"
+								/> <input type="text"
+								data-ng-model="data.certification7.certExpDateString"
+								name="certification7_certExpDateString" class="hidden"
+								effective-date="{{data.certification7.certEffectiveDateString}}"
+								validate-expiration-date-error-message="{{'companyProfile.diversityInformation.errorMessage.expirationDateValid' | translate}}"
+								validate-future-error-message="{{'companyProfile.diversityInformation.errorMessage.expirationDateGreaterThenToday' | translate}}"
+								validator="required, validateFuture, validateExpirationDate"
+								required-error-message="{{'companyProfile.diversityInformation.errorMessage.expirationDate' | translate}}"
+								valid-method="submit" />
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-9 col-md-9 col-lg-9 padding0">
+						<div class="col-sm-1 col-md-1 col-lg-1 control-label"></div>
+						<label class="col-sm-3 col-md-3 col-lg-3 control-label">
+							{{'companyProfile.diversityInformation.label.certificate' |
+							translate}}<sup class="asterisk">*</sup>
+						</label>
+						<div class="col-sm-5 col-md-5  col-lg-5 searchOrg"
+							data-ng-show="data.certification7.mongoKey && data.certification7.certFileOid && disabilityOwnedBusiness">
+							Uploaded on {{data.certification7.certFileUploadedOnStr}} <a
+								href="javascript:;" ng-click="viewDiversityDocument('DISOW');">View</a>&nbsp;&nbsp;<a
+								href="javascript:;"
+								data-ng-click="disabilityOwnedBusiness = false;deleteUploadedDocument('diversity7');">Delete</a><br>
+						</div>
+					</div>
+					<div class="col-sm-9 col-md-9 col-lg-9 padding0">
+						<div
+							class="col-sm-4 col-md-4 col-lg-4 col-sm-offset-4 col-md-offset-4 col-lg-offset-4"
+							data-ng-if="!data.certification7.mongoKey || !data.certification7.certFileOid || !disabilityOwnedBusiness">
+							<file-upload max-upload-file-count="1" file-size="5"
+								return-type="object"
+								return-fields="successData.mongoKey, successData.uploadedTime"
+								upload-service="companyProfileServices"
+								upload-operation="uploadFile" upload-response-wrapper="response"
+								download-service="companyProfileServices"
+								download-operation="downloadFile"
+								file-extensions="[jpg,jpeg,gif,doc,xlsx,pdf,xls,docx,txt]"
+								parent-data-field="$parent.data.disabilityOwnedBusiness"
+								thumbnail-type="uploadFileId=disabilityOwnedBusiness&amp;typeCode=DISOW"
+								download-request-params="certificationTypeCode=disabilityOwnedBusiness,mongoKey:successData.mongoKey"
+								id="disabilityOwnedUploaderUI" response-callback="$parent.uploadDocumentSuccess"
+								file-format-error-msg="{{'companyProfile.diversityInformation.errorMessage.invalidFileFormat' | translate}}"
+								file-name-length-error-msg="{{'companyProfile.diversityInformation.errorMessage.fileInvalidsupportFormatName' | translate}}">
+							</file-upload>
+							<select 
+								ng-model="data.disabilityOwnedBusiness"
+								name="disabilityOwnedBusinessUploadLogoBlobId" class="hidden"
+								upload-required="{{disabilityOwnedBusiness}}"
+								upload-required-mongo="{{data.certification7.mongoKey}}"
+								upload-required-file="{{data.certification7.certFileOid}}"
+								validator="validateUploadRequired, validateNotEmptyObject"
+								validate-upload-required-error-message="{{'companyProfile.diversityInformation.errorMessage.uploadCertificate' | translate}}"
+								validate-not-empty-object-error-message="{{ 'companyProfile.diversityInformation.errorMessage.uploadCertificate' | translate}}"
+								valid-method="submit" /></select>
+						</div>
+						<div
+							class="col-sm-8 col-md-8 col-lg-8 col-sm-offset-4 col-md-offset-4 col-lg-offset-4"
+							ng-if="data.certification7.mongoKey != '' && data.certification7.certFileOid != '' && (data.certification7.certVerifyStatusCode == 'CRREJ'  || data.certification7.isCertExpired == true || data.certification7.isCertExpiring == true )">
+							<span ng-if="data.certification7.isCertExpired == true">{{'companyProfile.diversityInformation.label.certificateExpired'
+								| translate}}</span><br> <span
+								ng-if="data.certification7.isCertExpiring == true && data.certification7.isCertExpired != true">
+								{{'companyProfile.diversityInformation.label.certificateExpiredSoon'
+								| translate}}</span><br> <span
+								ng-if="data.certification7.certVerifyStatusCode == 'CRREJ'">{{'companyProfile.diversityInformation.label.certificateRejected'
+								| translate}}</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-12 col-md-12 col-lg-12 marginT2 padding0">
+				<div class="form-group">
+					<div class="col-sm-3 col-md-3 col-lg-3">
+						<label>{{'companyProfile.diversityInformation.header.lGBTOwned'
+							| translate}}&nbsp; <span tooltip-append-to-body="true"
+							tooltip="{{'companyProfile.diversityInformation.toolTip.lesbianGayBusinessEnterprise' | translate}}"
+							tooltip-placement="top"> <i
+								class="fa fa-question-circle fa-lg"></i>
+						</span>
+						</label>
+					</div>
+					<div class="col-sm-2 col-md-2 col-lg-2">
+						<input type="radio" name="lgbtOwnedStr" id="lgbtOwnedStr"
+							data-ng-model="data.diversityDetails.VendorDetail.lgbtOwnedStr"
+							ng-click="showDiversityDetails(data.diversityDetails.VendorDetail.lgbtOwnedStr,'diversity8');setMetadataDirty('diversity8')"
+							value="true"/> {{'common.yes' | translate}} <input
+							type="radio" name="lgbtOwnedStr" id="lgbtOwnedStr"
+							data-ng-model="data.diversityDetails.VendorDetail.lgbtOwnedStr"
+							ng-click="showDiversityDetails(data.diversityDetails.VendorDetail.lgbtOwnedStr,'diversity8');setMetadataDirty('diversity8')"
+							value="false"/> {{'common.no' | translate}}
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-12 col-md-12 col-lg-12 marginT2 padding0"
+				data-ng-if="diversity8 || data.diversityDetails.VendorDetail.lgbtOwnedStr == 'true'">
+				<div class="form-group">
+					<div class="col-sm-9 col-md-9 col-lg-9 padding0">
+						<div class="col-sm-1 col-md-1 col-lg-1 control-label"></div>
+						<label class="col-sm-3 col-md-3 col-lg-3 control-label">
+							{{'companyProfile.diversityInformation.label.certificationAgency'
+							| translate}} <sup class="asterisk">*</sup>
+						</label>
+						<div class="col-sm-4 col-md-4 col-lg-4">
+							<select ng-keyup="setMetadataDirty('diversity8')"
+									data-ng-model="data.certification8.certificationAgency"
+									name="certification8.certificationAgencyOid"
+									id="certification8.certificationAgencyOid" class="form-control input-sm required"
+									ng-keydown="setMetadataDirty('diversity8')" ng-change="data.certification8.certificationAgencyOid = data.certification8.certificationAgency.value;setMetadataDirty('diversity8');data.certification8.certAgencyOtherName = ''"
+									validator="required" valid-method="submit"
+									ng-options="option.label for option in certificationAgencyLookup"
+									required-error-message="{{'companyProfile.diversityInformation.errorMessage.certificationAgency' | translate}}">
+									<option value=''>- Select -</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="form-group"
+					data-ng-if="data.certification8.certificationAgency.value == 'other'">
+					<div class="col-sm-9 col-md-9 col-lg-9 padding0">
+						<div class="col-sm-1 col-md-1 col-lg-1 control-label"></div>
+						<label class="col-sm-3 col-md-3 col-lg-3 control-label">
+							{{'companyProfile.diversityInformation.label.certificationOther'
+							| translate}}<sup class="asterisk">*</sup>
+						</label>
+						<div class="col-sm-4 col-md-4 col-lg-4">
+							<input type="text" class="form-control input-sm required"
+								name="certification8.certAgencyOtherName"
+								id="certification8.certAgencyOtherName"
+								ng-model="data.certification8.certAgencyOtherName"
+								placeholder="Certification Agency Other" maxlength="100"
+								ng-keyup="setMetadataDirty('diversity8')" ng-keydown="setMetadataDirty('diversity8')"
+								ng-change="setMetadataDirty('diversity8')" valid-method="submit"
+								data-validator="required,validateAlphanumSpecial"
+								validate-alphanum-special-error-message="{{'common.errorMessage.allowedSpecialCharacters' | translate}}"
+								data-required-error-message="{{'companyProfile.diversityInformation.errorMessage.certificationAgencyOther' | translate}}" />
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-9 col-md-9 col-lg-9 padding0">
+						<div class="col-sm-1 col-md-1 col-lg-1 control-label"></div>
+						<label class="col-sm-3 col-md-3 col-lg-3 control-label">{{'companyProfile.diversityInformation.label.certificationNumber'
+							| translate}}</label>
+						<div class="col-sm-4 col-md-4 col-lg-4">
+							<input type="text" class="form-control input-sm"
+								name="certification8.certNumber" id="certification8.certNumber"
+								ng-model="data.certification8.certNumber"
+								data-validator="validateAlphanumSpecial"
+								validate-alphanum-special-error-message="{{'common.errorMessage.allowedSpecialCharacters' | translate}}"
+								placeholder="Certification Number" maxlength="100"
+								valid-method="submit" ng-keyup="setMetadataDirty('diversity8')"
+								ng-keydown="setMetadataDirty('diversity8')" ng-change="setMetadataDirty('diversity8')" />
+							<input type="hidden" name="certificationTypeCode"
+								id="certificationTypeCode" value='LGBOW'
+								data-ng-model="data.certification8.certificationTypeCode"
+								ng-init="data.certification8.certificationTypeCode= 'LGBOW'" />
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-9 col-md-9 col-lg-9 padding0">
+						<div class="col-sm-1 col-md-1 col-lg-1 control-label"></div>
+						<label class="col-sm-3 col-md-3 col-lg-3 control-label">{{'companyProfile.diversityInformation.label.effectiveDate'
+							| translate}}</label>
+						<div class="col-sm-4 col-md-4 col-lg-4">
+							<input type="text" class="form-control input-sm" placeholder="MM/DD/YYYY"
+								name="certification8_certEffectiveDateString"
+								id="certification8_certEffectiveDateString"
+								data-ng-model="data.certification8.certEffectiveDateString"
+								min-date="minDate"
+								datepicker-popup="{time: false, format: 'MM/dd/yyyy','readonly': 'false'}"
+								ng-keyup="setMetadataDirty('diversity8')" ng-keydown="setMetadataDirty('diversity8')"
+								ng-change="setMetadataDirty('diversity8')"
+								/>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-9 col-md-9 col-lg-9 padding0">
+						<div class="col-sm-1 col-md-1 col-lg-1 control-label"></div>
+						<label class="col-sm-3 col-md-3 col-lg-3 control-label">
+							{{'companyProfile.diversityInformation.label.expirationDate' |
+							translate}}<sup class="asterisk">*</sup>
+						</label>
+						<div class="col-sm-4 col-md-4 col-lg-4">
+							<input type="text" class="form-control input-sm required"
+								placeholder="MM/DD/YYYY" name="certification8_certExpDateString"
+								id="certification8_certExpDateString"
+								data-ng-model="data.certification8.certExpDateString"
+								min-date="nextday"
+								datepicker-popup="{time: false, format: 'MM/dd/yyyy','readonly': 'false'}"
+								datepicker-options="{showWeeks:false}"
+								close-on-date-selection="true" datepicker-append-to-body="false"
+								ng-keyup="setMetadataDirty('diversity8')" ng-keydown="setMetadataDirty('diversity8')"
+								ng-change="setMetadataDirty('diversity8')"
+								/> <input type="text"
+								data-ng-model="data.certification8.certExpDateString"
+								name="certification8_certExpDateString" class="hidden"
+								effective-date="{{data.certification8.certEffectiveDateString}}"
+								validate-expiration-date-error-message="{{'companyProfile.diversityInformation.errorMessage.expirationDateValid' | translate}}"
+								validate-future-error-message="{{'companyProfile.diversityInformation.errorMessage.expirationDateGreaterThenToday' | translate}}"
+								validator="required, validateFuture, validateExpirationDate"
+								required-error-message="{{'companyProfile.diversityInformation.errorMessage.expirationDate' | translate}}"
+								valid-method="submit" />
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-9 col-md-9 col-lg-9 padding0">
+						<div class="col-sm-1 col-md-1 col-lg-1 control-label"></div>
+						<label class="col-sm-3 col-md-3 col-lg-3 control-label">
+							{{'companyProfile.diversityInformation.label.certificate' |
+							translate}}<sup class="asterisk">*</sup>
+						</label>
+						<div class="col-sm-5 col-md-5 col-lg-5 searchOrg"
+							data-ng-show="data.certification8.mongoKey && data.certification8.certFileOid && lgbtOwnedBusiness">
+							Uploaded on {{data.certification8.certFileUploadedOnStr}} <a
+								href="javascript:;"
+								data-ng-click="viewDiversityDocument('LGBOW');">View</a>&nbsp;&nbsp;<a
+								href="javascript:;" data-ng-click="lgbtOwnedBusiness = false;deleteUploadedDocument('diversity8');">Delete</a><br>
+						</div>
+					</div>
+					<div class="col-sm-9 col-md-9 col-lg-9 padding0">
+						<div
+							class="col-sm-4 col-md-4 col-lg-4 col-sm-offset-4 col-md-offset-4 col-lg-offset-4"
+							data-ng-if="!data.certification8.mongoKey || !data.certification8.certFileOid || !lgbtOwnedBusiness">
+							<file-upload max-upload-file-count="1" file-size="5"
+								return-type="object"
+								return-fields="successData.mongoKey, successData.uploadedTime"
+								upload-service="companyProfileServices"
+								upload-operation="uploadFile" upload-response-wrapper="response"
+								download-service="companyProfileServices"
+								download-operation="downloadFile"
+								file-extensions="[jpg,jpeg,gif,doc,xlsx,pdf,xls,docx,txt]"
+								parent-data-field="$parent.data.lgbtOwnedBusiness"
+								thumbnail-type="uploadFileId=lgbtOwnedBusiness&amp;typeCode=LGBOW"
+								download-request-params="certificationTypeCode=lgbtOwnedBusiness,mongoKey:successData.mongoKey"
+								id="lgbtOwnedUploaderUI" response-callback="$parent.uploadDocumentSuccess"
+								file-format-error-msg="{{'companyProfile.diversityInformation.errorMessage.invalidFileFormat' | translate}}"
+								file-name-length-error-msg="{{'companyProfile.diversityInformation.errorMessage.fileInvalidsupportFormatName' | translate}}">
+							</file-upload>
+							<select 
+								ng-model="data.lgbtOwnedBusiness"
+								name="lgbtOwnedBusinessUploadLogoBlobId" class="hidden"
+								upload-required="{{lgbtOwnedBusiness}}"
+								upload-required-mongo="{{data.certification8.mongoKey}}"
+								upload-required-file="{{data.certification8.certFileOid}}"
+								validator="validateUploadRequired, validateNotEmptyObject"
+								validate-upload-required-error-message="{{'companyProfile.diversityInformation.errorMessage.uploadCertificate' | translate}}"
+								validate-not-empty-object-error-message="{{ 'companyProfile.diversityInformation.errorMessage.uploadCertificate' | translate}}"
+								valid-method="submit" /></select>
+						</div>
+						<div
+							class="col-sm-8 col-md-8 col-lg-8 col-sm-offset-4 col-md-offset-4 col-lg-offset-4"
+							ng-if="data.certification8.mongoKey != '' && data.certification8.certFileOid != '' && (data.certification8.certVerifyStatusCode == 'CRREJ'  || data.certification8.isCertExpired == true || data.certification8.isCertExpiring == true )">
+							<span ng-if="data.certification8.isCertExpired == true">{{'companyProfile.diversityInformation.label.certificateExpired'
+								| translate}}</span><br> <span
+								ng-if="data.certification8.isCertExpiring == true && data.certification8.isCertExpired != true">{{'companyProfile.diversityInformation.label.certificateExpiredSoon'
+								| translate}}</span><br> <span
+								ng-if="data.certification8.certVerifyStatusCode == 'CRREJ'">{{'companyProfile.diversityInformation.label.certificateRejected'
+								| translate}}</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-12 col-md-12 col-lg-12 marginT2 padding0">
+				<div class="form-group">
+					<div class="col-sm-3 col-md-3 col-lg-3">
+						<label>{{'companyProfile.diversityInformation.header.uSSmallBusinessHUBZone'
+							| translate}}&nbsp; <span tooltip-append-to-body="true"
+							tooltip="{{'companyProfile.diversityInformation.toolTip.unitedStatesSmallBusiness' | translate}}"
+							tooltip-placement="top"> <i
+								class="fa fa-question-circle fa-lg"></i>
+						</span>
+						</label>
+					</div>
+					<div class="col-sm-2 col-md-2 col-lg-2">
+						<input type="radio" name="hubZoneStr" id="hubZoneStr"
+							data-ng-model="data.diversityDetails.VendorDetail.hubZoneStr"
+							ng-click="showDiversityDetails(data.diversityDetails.VendorDetail.hubZoneStr,'diversity9');setMetadataDirty('diversity9')"
+							value="true"/> {{'common.yes' | translate}} <input
+							type="radio" name="hubZoneStr" id="hubZoneStr"
+							data-ng-model="data.diversityDetails.VendorDetail.hubZoneStr"
+							ng-click="showDiversityDetails(data.diversityDetails.VendorDetail.hubZoneStr,'diversity9');setMetadataDirty('diversity9')"
+							value="false"/> {{'common.no' | translate}}
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-12 col-md-12 col-lg-12 marginT2 padding0"
+				data-ng-if="diversity9 || data.diversityDetails.VendorDetail.hubZoneStr == 'true'">
+				<div class="form-group">
+					<div class="col-sm-9 col-md-9 col-lg-9 padding0">
+						<div class="col-sm-1 col-md-1 col-lg-1 control-label"></div>
+						<label class="col-sm-3 col-md-3 col-lg-3 control-label">
+							{{'companyProfile.diversityInformation.label.certificationAgency'
+							| translate}} <sup class="asterisk">*</sup>
+						</label>
+						<div class="col-sm-4 col-md-4 col-lg-4">
+							<select ng-keyup="setMetadataDirty('diversity9')"
+									data-ng-model="data.certification9.certificationAgency"
+									name="certification9.certificationAgencyOid"
+									id="certification9.certificationAgencyOid" class="form-control input-sm required"
+									ng-keydown="setMetadataDirty('diversity9')" ng-change="data.certification9.certificationAgencyOid = data.certification9.certificationAgency.value;setMetadataDirty('diversity9');data.certification9.certAgencyOtherName = ''"
+									validator="required" valid-method="submit"
+									ng-options="option.label for option in certificationAgencyLookup"
+									required-error-message="{{'companyProfile.diversityInformation.errorMessage.certificationAgency' | translate}}">
+									<option value=''>- Select -</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="form-group"
+					data-ng-if="data.certification9.certificationAgency.value == 'other'">
+					<div class="col-sm-9 col-md-9 col-lg-9 padding0">
+						<div class="col-sm-1 col-md-1 col-lg-1 control-label"></div>
+						<label class="col-sm-3 col-md-3 col-lg-3 control-label">
+							{{'companyProfile.diversityInformation.label.certificationOther'
+							| translate}}<sup class="asterisk">*</sup>
+						</label>
+						<div class="col-sm-4 col-md-4 col-lg-4">
+							<input type="text" class="form-control input-sm required"
+								name="certification9.certAgencyOtherName"
+								id="certification9.certAgencyOtherName"
+								ng-model="data.certification9.certAgencyOtherName"
+								placeholder="Certification Agency Other" maxlength="100"
+								ng-keyup="setMetadataDirty('diversity9')" ng-keydown="setMetadataDirty('diversity9')"
+								ng-change="setMetadataDirty('diversity9')" valid-method="submit"
+								data-validator="required,validateAlphanumSpecial"
+								validate-alphanum-special-error-message="{{'common.errorMessage.allowedSpecialCharacters' | translate}}"
+								data-required-error-message="{{'companyProfile.diversityInformation.errorMessage.certificationAgencyOther' | translate}}" />
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-9 col-md-9 col-lg-9 padding0">
+						<div class="col-sm-1 col-md-1 col-lg-1 control-label"></div>
+						<label class="col-sm-3 col-md-3 col-lg-3 control-label">{{'companyProfile.diversityInformation.label.certificationNumber'
+							| translate}}</label>
+						<div class="col-sm-4 col-md-4 col-lg-4">
+							<input type="text" class="form-control input-sm"
+								name="certification9.certNumber" id="certification9.certNumber"
+								ng-model="data.certification9.certNumber"
+								data-validator="validateAlphanumSpecial"
+								validate-alphanum-special-error-message="{{'common.errorMessage.allowedSpecialCharacters' | translate}}"
+								placeholder="Certification Number" maxlength="100"
+								valid-method="submit" ng-keyup="setMetadataDirty('diversity9')"
+								ng-keydown="setMetadataDirty('diversity9')" ng-change="setMetadataDirty('diversity9')" />
+							<input type="hidden" name="certificationTypeCode"
+								id="certificationTypeCode" value='USHUB'
+								data-ng-model="data.certification9.certificationTypeCode"
+								ng-init="data.certification9.certificationTypeCode= 'USHUB'" />
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-9 col-md-9 col-lg-9 padding0">
+						<div class="col-sm-1 col-md-1 col-lg-1 control-label"></div>
+						<label class="col-sm-3 col-md-3 col-lg-3 control-label">{{'companyProfile.diversityInformation.label.effectiveDate'
+							| translate}}</label>
+						<div class="col-sm-4 col-md-4 col-lg-4">
+							<input type="text" class="form-control input-sm" placeholder="MM/DD/YYYY"
+								name="certification9_certEffectiveDateString"
+								id="certification9_certEffectiveDateString"
+								data-ng-model="data.certification9.certEffectiveDateString"
+								min-date="minDate"
+								datepicker-popup="{time: false, format: 'MM/dd/yyyy','readonly': 'false'}"
+								ng-keyup="setMetadataDirty('diversity9')" ng-keydown="setMetadataDirty('diversity9')"
+								ng-change="setMetadataDirty('diversity9')"
+								/>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-9 col-md-9 col-lg-9 padding0">
+						<div class="col-sm-1 col-md-1 col-lg-1 control-label"></div>
+						<label class="col-sm-3 col-md-3 col-lg-3 control-label">
+							{{'companyProfile.diversityInformation.label.expirationDate' |
+							translate}}<sup class="asterisk">*</sup>
+						</label>
+						<div class="col-sm-4 col-md-4 col-lg-4">
+							<input type="text" class="form-control input-sm required"
+								placeholder="MM/DD/YYYY" name="certification9_certExpDateString"
+								id="certification9_certExpDateString"
+								data-ng-model="data.certification9.certExpDateString"
+								min-date="nextday"
+								datepicker-popup="{time: false, format: 'MM/dd/yyyy','readonly': 'false'}"
+								ng-keyup="setMetadataDirty('diversity9')" ng-keydown="setMetadataDirty('diversity9')"
+								ng-change="setMetadataDirty('diversity9')"
+								/> <input type="text"
+								data-ng-model="data.certification9.certExpDateString"
+								name="certification9_certExpDateString" class="hidden"
+								effective-date="{{data.certification9.certEffectiveDateString}}"
+								validate-expiration-date-error-message="{{'companyProfile.diversityInformation.errorMessage.expirationDateValid' | translate}}"
+								validate-future-error-message="{{'companyProfile.diversityInformation.errorMessage.expirationDateGreaterThenToday' | translate}}"
+								validator="required, validateFuture, validateExpirationDate"
+								required-error-message="{{'companyProfile.diversityInformation.errorMessage.expirationDate' | translate}}"
+								valid-method="submit" />
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-9 col-md-9 col-lg-9 padding0">
+						<div class="col-sm-1 col-md-1 col-lg-1 control-label"></div>
+						<label class="col-sm-3 col-md-3 col-lg-3 control-label">
+							{{'companyProfile.diversityInformation.label.certificate' |
+							translate}}<sup class="asterisk">*</sup>
+						</label>
+						<div class="col-sm-5 col-md-5  col-lg-5 searchOrg"
+							data-ng-show="data.certification9.mongoKey && data.certification9.certFileOid && hubzoneOwnedBusiness">
+							Uploaded on {{data.certification9.certFileUploadedOnStr}} <a
+								href="javascript:;"
+								data-ng-click="viewDiversityDocument('USHUB');">View</a>&nbsp;&nbsp;<a
+								href="javascript:;" data-ng-click="hubzoneOwnedBusiness = false;deleteUploadedDocument('diversity9');">Delete</a><br>
+						</div>
+					</div>
+					<div class="col-sm-9 col-md-9 col-lg-9 padding0">
+						<div
+							class="col-sm-offset-4 col-md-offset-4 col-lg-offset-4 col-sm-4 col-md-4 col-lg-4"
+							data-ng-if="!data.certification9.mongoKey || !data.certification9.certFileOid || !hubzoneOwnedBusiness">
+							<file-upload max-upload-file-count="1" file-size="5"
+								return-type="object"
+								return-fields="successData.mongoKey, successData.uploadedTime"
+								upload-service="companyProfileServices"
+								upload-operation="uploadFile" upload-response-wrapper="response"
+								download-service="companyProfileServices"
+								download-operation="downloadFile"
+								file-extensions="[jpg,jpeg,gif,doc,xlsx,pdf,xls,docx,txt]"
+								parent-data-field="$parent.data.hubzoneOwnedBusiness"
+								thumbnail-type="uploadFileId=hubzoneOwnedBusiness&amp;typeCode=USHUB"
+								download-request-params="certificationTypeCode=hubzoneOwnedBusiness,mongoKey:successData.mongoKey"
+								id="hubzoneOwnedUploaderUI" response-callback="$parent.uploadDocumentSuccess"
+								file-format-error-msg="{{'companyProfile.diversityInformation.errorMessage.invalidFileFormat' | translate}}"
+								file-name-length-error-msg="{{'companyProfile.diversityInformation.errorMessage.fileInvalidsupportFormatName' | translate}}">
+							</file-upload>
+							<select 
+								ng-model="data.hubzoneOwnedBusiness"
+								name="hubzoneOwnedBusinessUploadLogoBlobId" class="hidden"
+								upload-required="{{hubzoneOwnedBusiness}}"
+								upload-required-mongo="{{data.certification9.mongoKey}}"
+								upload-required-file="{{data.certification9.certFileOid}}"
+								validator="validateUploadRequired, validateNotEmptyObject"
+								validate-upload-required-error-message="{{'companyProfile.diversityInformation.errorMessage.uploadCertificate' | translate}}"
+								validate-not-empty-object-error-message="{{ 'companyProfile.diversityInformation.errorMessage.uploadCertificate' | translate}}"
+								valid-method="submit" /></select>
+						</div>
+						<div
+							class="col-sm-8 col-md-8 col-lg-8 col-sm-offset-4 col-md-offset-4 col-lg-offset-4"
+							ng-if="data.certification9.mongoKey != '' && data.certification9.certFileOid != '' && (data.certification9.certVerifyStatusCode == 'CRREJ'  || data.certification9.isCertExpired == true || data.certification9.isCertExpiring == true )">
+							<span ng-if="data.certification9.isCertExpired == true">{{'companyProfile.diversityInformation.label.certificateExpired'
+								| translate}}</span><br> <span
+								ng-if="data.certification9.isCertExpiring == true && data.certification9.isCertExpired != true">{{'companyProfile.diversityInformation.label.certificateExpiredSoon'
+								| translate}}</span><br> <span
+								ng-if="data.certification9.certVerifyStatusCode == 'CRREJ'">{{'companyProfile.diversityInformation.label.certificateRejected'
+								| translate}}</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-12 col-md-12 col-lg-12 marginT2 padding0">
+				<div class="form-group">
+					<div class="col-sm-3 col-md-3 col-lg-3">
+						<label>{{'companyProfile.diversityInformation.header.uSSmallBusiness'
+							| translate}}&nbsp; <span tooltip-append-to-body="true"
+							tooltip="{{'companyProfile.diversityInformation.toolTip.unitedStatesSmallBusinessAdministration' | translate}}"
+							tooltip-placement="top"> <i
+								class="fa fa-question-circle fa-lg"></i>
+						</span>
+						</label>
+					</div>
+					<div class="col-sm-2 col-md-2 col-lg-2">
+						<input type="radio" name="eightAStr" id="eightAStr"
+							data-ng-model="data.diversityDetails.VendorDetail.eightAStr"
+							ng-click="showDiversityDetails(data.diversityDetails.VendorDetail.eightAStr,'diversity10');setMetadataDirty('diversity10')"
+							value="true"/> {{'common.yes' | translate}} <input
+							type="radio" name="eightAStr" id="eightAStr"
+							data-ng-model="data.diversityDetails.VendorDetail.eightAStr"
+							ng-click="showDiversityDetails(data.diversityDetails.VendorDetail.eightAStr,'diversity10');setMetadataDirty('diversity10')"
+							value="false"/> {{'common.no' | translate}}
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-12 col-md-12 col-lg-12 marginT2 padding0"
+				data-ng-if="diversity10 || data.diversityDetails.VendorDetail.eightAStr == 'true'">
+				<div class="form-group">
+					<div class="col-sm-9 col-md-9 col-lg-9 padding0">
+						<div class="col-sm-1 col-md-1 col-lg-1 control-label"></div>
+						<label class="col-sm-3 col-md-3 col-lg-3 control-label">
+							{{'companyProfile.diversityInformation.label.certificationAgency'
+							| translate}} <sup class="asterisk">*</sup>
+						</label>
+						<div class="col-sm-4 col-md-4 col-lg-4">
+							<select ng-keyup="setMetadataDirty('diversity10')"
+									data-ng-model="data.certification10.certificationAgency"
+									name="certification10.certificationAgencyOid"
+									id="certification10.certificationAgencyOid" class="form-control input-sm required"
+									ng-keydown="setMetadataDirty('diversity10')" ng-change="data.certification10.certificationAgencyOid = data.certification10.certificationAgency.value;setMetadataDirty('diversity10');data.certification10.certAgencyOtherName = ''"
+									validator="required" valid-method="submit"
+									ng-options="option.label for option in certificationAgencyLookup"
+									required-error-message="{{'companyProfile.diversityInformation.errorMessage.certificationAgency' | translate}}">
+									<option value=''>- Select -</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="form-group"
+					data-ng-if="data.certification10.certificationAgency.value == 'other'">
+					<div class="col-sm-9 col-md-9 col-lg-9 padding0">
+						<div class="col-sm-1 col-md-1 col-lg-1 control-label"></div>
+						<label class="col-sm-3 col-md-3 col-lg-3 control-label">
+							{{'companyProfile.diversityInformation.label.certificationOther'
+							| translate}}<sup class="asterisk">*</sup>
+						</label>
+						<div class="col-sm-4 col-md-4 col-lg-4">
+							<input type="text" class="form-control input-sm required"
+								name="certification10.certAgencyOtherName"
+								id="certification10.certAgencyOtherName"
+								ng-model="data.certification10.certAgencyOtherName"
+								placeholder="Certification Agency Other" maxlength="100"
+								ng-keyup="setMetadataDirty('diversity10')" ng-keydown="setMetadataDirty('diversity10')"
+								ng-change="setMetadataDirty('diversity10')" valid-method="submit"
+								data-validator="required,validateAlphanumSpecial"
+								validate-alphanum-special-error-message="{{'common.errorMessage.allowedSpecialCharacters' | translate}}"
+								data-required-error-message="{{'companyProfile.diversityInformation.errorMessage.certificationAgencyOther' | translate}}" />
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-9 col-md-9 col-lg-9 padding0">
+						<div class="col-sm-1 col-md-1 col-lg-1 control-label"></div>
+						<label class="col-sm-3 col-md-3 col-lg-3 control-label">{{'companyProfile.diversityInformation.label.certificationNumber'
+							| translate}}</label>
+						<div class="col-sm-4 col-md-4 col-lg-4">
+							<input type="text" class="form-control input-sm"
+								name="certification10.certNumber"
+								id="certification10.certNumber"
+								ng-model="data.certification10.certNumber"
+								data-validator="validateAlphanumSpecial"
+								validate-alphanum-special-error-message="{{'common.errorMessage.allowedSpecialCharacters' | translate}}"
+								placeholder="Certification Number" maxlength="100"
+								valid-method="submit" ng-keyup="setMetadataDirty('diversity10')"
+								ng-keydown="setMetadataDirty('diversity10')" ng-change="setMetadataDirty('diversity10')" />
+							<input type="hidden" name="certificationTypeCode"
+								id="certificationTypeCode" value='USEIG'
+								data-ng-model="data.certification10.certificationTypeCode"
+								ng-init="data.certification10.certificationTypeCode= 'USEIG'" />
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-9 col-md-9 col-lg-9 padding0">
+						<div class="col-sm-1 col-md-1 col-lg-1 control-label"></div>
+						<label class="col-sm-3 col-md-3 col-lg-3 control-label">{{'companyProfile.diversityInformation.label.effectiveDate'
+							| translate}}</label>
+						<div class="col-sm-4 col-md-4 col-lg-4">
+							<input type="text" class="form-control input-sm" placeholder="MM/DD/YYYY"
+								name="certification10_certEffectiveDateString"
+								id="certification10_certEffectiveDateString"
+								data-ng-model="data.certification10.certEffectiveDateString"
+								min-date="minDate"
+								datepicker-popup="{time: false, format: 'MM/dd/yyyy','readonly': 'false'}"
+								ng-keyup="setMetadataDirty('diversity10')" ng-keydown="setMetadataDirty('diversity10')"
+								ng-change="setMetadataDirty('diversity10')"
+								/>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-9 col-md-9 col-lg-9 padding0">
+						<div class="col-sm-1 col-md-1 col-lg-1 control-label"></div>
+						<label class="col-sm-3 col-md-3 col-lg-3 control-label">
+							{{'companyProfile.diversityInformation.label.expirationDate' |
+							translate}}<sup class="asterisk">*</sup>
+						</label>
+						<div class="col-sm-4 col-md-4 col-lg-4">
+							<input type="text" class="form-control input-sm required"
+								placeholder="MM/DD/YYYY"
+								name="certification10_certExpDateString"
+								id="certification10_certExpDateString"
+								data-ng-model="data.certification10.certExpDateString"
+								min-date="nextday"
+								datepicker-popup="{time: false, format: 'MM/dd/yyyy','readonly': 'false'}"
+								ng-keyup="setMetadataDirty('diversity10')" ng-keydown="setMetadataDirty('diversity10')"
+								ng-change="setMetadataDirty('diversity10')"
+								/> <input type="text"
+								data-ng-model="data.certification10.certExpDateString"
+								name="certification10_certExpDateString" class="hidden"
+								effective-date="{{data.certification10.certEffectiveDateString}}"
+								required-error-message="{{'companyProfile.diversityInformation.errorMessage.expirationDate' | translate}}"
+								validate-expiration-date-error-message="{{'companyProfile.diversityInformation.errorMessage.expirationDateValid' | translate}}"
+								validate-future-error-message="{{'companyProfile.diversityInformation.errorMessage.expirationDateGreaterThenToday' | translate}}"
+								validator="required, validateFuture, validateExpirationDate"
+								valid-method="submit" />
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-9 col-md-9 col-lg-9 padding0">
+						<div class="col-sm-1 col-md-1 col-lg-1 control-label"></div>
+						<label class="col-sm-3 col-md-3 col-lg-3 control-label">
+							{{'companyProfile.diversityInformation.label.certificate' |
+							translate}}<sup class="asterisk">*</sup>
+						</label>
+						<div class="col-sm-5 col-md-5  col-lg-5 searchOrg"
+							data-ng-show="data.certification10.mongoKey && data.certification10.certFileOid && eightAOwnedBusiness">
+							Uploaded on {{data.certification10.certFileUploadedOnStr}} <a
+								href="javascript:;" name="eightAOwnedUploaderView"
+								data-ng-click="viewDiversityDocument('USEIG');">View</a>&nbsp;&nbsp;<a
+								href="javascript:;" name="eightAOwnedUploaderDelete"data-ng-click="eightAOwnedBusiness = false;deleteUploadedDocument('diversity10');">Delete</a><br>
+						</div>
+					</div>
+					<div class="col-sm-9 col-md-9 col-lg-9 padding0">
+						<div
+							class="col-sm-4 col-md-4 col-lg-4 col-sm-offset-4 col-md-offset-4 col-lg-offset-4"
+							data-ng-if="!data.certification10.mongoKey || !data.certification10.certFileOid || !eightAOwnedBusiness">
+							<file-upload max-upload-file-count="1" file-size="5"
+								return-type="object"
+								return-fields="successData.mongoKey, successData.uploadedTime"
+								upload-service="companyProfileServices"
+								upload-operation="uploadFile" upload-response-wrapper="response"
+								download-service="companyProfileServices"
+								download-operation="downloadFile"
+								file-extensions="[jpg,jpeg,gif,doc,xlsx,pdf,xls,docx,txt]"
+								parent-data-field="$parent.data.eightAOwnedBusiness"
+								thumbnail-type="uploadFileId=eightAOwnedBusiness&amp;typeCode=USEIG"
+								download-request-params="certificationTypeCode=eightAOwnedBusiness,mongoKey:successData.mongoKey"
+								id="eightAOwnedUploaderUI" response-callback="$parent.uploadDocumentSuccess"
+								file-format-error-msg="{{'companyProfile.diversityInformation.errorMessage.invalidFileFormat' | translate}}"
+								file-name-length-error-msg="{{'companyProfile.diversityInformation.errorMessage.fileInvalidsupportFormatName' | translate}}">
+							</file-upload>
+							<select 
+								ng-model="data.eightAOwnedBusiness"
+								name="eightAOwnedBusinessUploadLogoBlobId" class="hidden"
+								upload-required="{{eightAOwnedBusiness}}"
+								upload-required-mongo="{{data.certification10.mongoKey}}"
+								upload-required-file="{{data.certification10.certFileOid}}"
+								validator="validateUploadRequired, validateNotEmptyObject"
+								validate-upload-required-error-message="{{'companyProfile.diversityInformation.errorMessage.uploadCertificate' | translate}}"
+								validate-not-empty-object-error-message="{{ 'companyProfile.diversityInformation.errorMessage.uploadCertificate' | translate}}"
+								valid-method="submit" /></select>
+						</div>
+						{{companyDiversityDetailsForm.eightAOwnedUploaderDelete}}
+						{{companyDiversityDetailsForm.eightAOwnedUploaderUI}}
+						<div
+							class="col-sm-8 col-md-8 col-lg-8 col-sm-offset-4 col-md-offset-4 col-lg-offset-4"
+							ng-if="data.certification10.mongoKey != '' && data.certification10.certFileOid != '' && (data.certification10.certVerifyStatusCode == 'CRREJ'  || data.certification10.isCertExpired == true || data.certification10.isCertExpiring == true )">
+							<span ng-if="data.certification10.isCertExpired == true">{{'companyProfile.diversityInformation.label.certificateExpired'
+								| translate}}</span><br> <span
+								ng-if="data.certification10.isCertExpiring == true && data.certification10.isCertExpired != true">{{'companyProfile.diversityInformation.label.certificateExpiredSoon'
+								| translate}}</span><br> <span
+								ng-if="data.certification10.certVerifyStatusCode == 'CRREJ'">{{'companyProfile.diversityInformation.label.certificateRejected'
+								| translate}}</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-12 col-md-12 col-lg-12 marginT2 padding0">
+				<div class="col-sm-4 col-md-4 col-lg-4">{{'companyProfile.diversityInformation.header.additionDetailsInEdit'
+					| translate}}</div>
+			</div>
+			<div
+				class="col-sm-12 col-md-12 col-lg-12 marginT2 padding0 	padding0">
+				<div class="form-group">
+					<div class="col-sm-3 col-md-3 col-lg-3">
+						<label>{{'companyProfile.diversityInformation.header.genderOfCompanyMajorityOwner'
+							| translate}}<sup class="asterisk">*</sup>&nbsp; <span
+							tooltip-append-to-body="true"
+							tooltip="{{'companyProfile.diversityInformation.toolTip.majorityDefined' | translate}}"
+					tooltip-placement="top">
+								<i class="fa fa-question-circle fa-lg"></i>
+						</span>
+						</label>
+					</div>
+					<div class="col-sm-3 col-md-3 col-lg-3">
+						<input name="certificationGender" id="certificationGender"
+							data-ng-model="data.diversityDetails.VendorDetail.certificationGender"
+							type="radio" value="f"/>
+						{{'companyProfile.diversityInformation.label.female' | translate}}
+						<input type="radio" name="certificationGender"
+							id="certificationGender"
+							data-ng-model="data.diversityDetails.VendorDetail.certificationGender"
+							value="m"/>
+						{{'companyProfile.diversityInformation.label.male' | translate}} <input
+							type="radio" name="certificationGender" id="certificationGender"
+							data-ng-model="data.diversityDetails.VendorDetail.certificationGender"
+							value="n"/>
+						{{'companyProfile.diversityInformation.label.na' | translate}}
+						<input type="text"
+							data-ng-model="data.diversityDetails.VendorDetail.certificationGender"
+							class="hidden" name="certificationGender"
+							id="certificationGender" valid-method="submit"
+							data-validator="required"
+							data-required-error-message="{{'companyProfile.diversityInformation.errorMessage.genderRepresentsIsRequired' | translate}}" />
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-12 col-md-12 col-lg-12 padding0">
+				<div class="form-group">
+					<div class="col-sm-3 col-md-3 col-lg-3 marginT2">
+						<label>{{'companyProfile.diversityInformation.header.ethnicityOfCompanyMajorityOwner'
+							| translate}}<sup class="asterisk">*</sup>&nbsp; <span
+							tooltip-append-to-body="true"
+							tooltip="{{'companyProfile.diversityInformation.toolTip.majorityDefined' | translate}}"
+					tooltip-placement="top">
+								<i class="fa fa-question-circle fa-lg"></i>
+						</span>
+						</label>
+					</div>
+					<br />
+					<div class="col-sm-3 col-md-3 col-lg-3">
+						<input class="form-control input-sm required" name="certificationEthnicity"
+							maxlength="50"
+							data-ng-model="data.diversityDetails.VendorDetail.certificationEthnicity"
+							id="certificationEthnicity"
+							data-validator="required,validateAlphaWithOneSpaceAndPunctuation"
+							data-validate-alpha-with-one-space-and-punctuation-error-message="{{'companyProfile.diversityInformation.errorMessage.ethnicityRepresentsIsRequiredAlpha' | translate}}"
+							data-required-error-message="{{'companyProfile.diversityInformation.errorMessage.ethnicityRepresentsIsRequired' | translate}}">
+						<input type="hidden" name="vendorDetailsOid" id="vendorDetailsOid"
+							data-ng-model="data.diversityDetails.VendorDetail.oid" />
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-12 col-md-12 col-lg-12 padding0 marginT1">
+				<div
+					class="col-sm-2 col-md-2 col-lg-2 col-sm-offset-3 col-md-offset-3 col-lg-offset-3">
+					<button type="submit"
+						validation-submit="companyDiversityDetailsForm"
+						data-ng-click="submitDiversityForm(data,companyDiversityDetailsForm.$pristine);callGAPageTrack('saveDiversityInfo');"
+						class="btn btn-success">{{'common.save' | translate}}</button>
+				</div>
+			</div>
+		</form>
+		</vision-action>
+	</div>
+</div>

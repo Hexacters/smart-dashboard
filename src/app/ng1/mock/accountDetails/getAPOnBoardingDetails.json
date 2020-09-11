@@ -1,0 +1,23 @@
+{
+	"VisionResponse": {
+		"Status": "Ok",
+		"apOnboardingDetails": {
+			"oid": "c010000f1e100000f1e2",
+			"sicCode": "433434",
+			"fobCode": "FCDFC",
+			"paymentTermsCode": "PTC23",
+			"eftAcceptance": true,
+			"bankName": "343434",
+			"customerServiceEmail": "4334@rep.com",
+			"customerServicePhone": "433434",
+			"vcrelationOid": "c010000c94100000c979",
+			"createdOn": "2019-07-17 16:59:57",
+			"createdBy": "erul02@gmail.com",
+			"updatedOn": "2019-07-17 16:59:57",
+			"updatedBy": "erul02@gmail.com",
+			"updateAction": false,
+			"deleteAction": false
+		},
+		"contentType": "application/json"
+	}
+}

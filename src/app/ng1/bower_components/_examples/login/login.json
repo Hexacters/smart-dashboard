@@ -1,0 +1,14 @@
+{
+	"VisionResponse" : {
+		"Status" : "Ok",
+		"userProfile":{
+			"id": "123456",
+			"token": "123456",
+			"firstName":"John",
+			"lastName":"Smith",
+			"email": "test@email.com",
+			"vision_user_type": "buyer",
+			"loggedIn":true
+		}	
+	}
+}

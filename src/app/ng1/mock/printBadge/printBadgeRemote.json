@@ -1,0 +1,11 @@
+{
+    "VisionResponse": {
+        "Status": "Ok",
+        "reportFileName": "PrintBadge.pdf",
+        "Message": "info Message SHOWN AS prevent Message",
+        "contentType": "application/pdf",
+        "STATUS": "Ok",
+        "mimeType": "application/pdf",
+        "ResponseError": []
+    }
+}

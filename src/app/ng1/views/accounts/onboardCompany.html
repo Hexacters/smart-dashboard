@@ -1,0 +1,22 @@
+<div class="modal-view">
+	<div class="modal-body">
+		<button type="button" class="close" data-dismiss="modal"
+			aria-hidden="true" data-ng-click="$close()">&times;</button>
+		<div class="searchOrg">
+			<div class="col-sm-7 col-md-7 col-lg-7">
+				<strong>{{'accounts.searchAccounts.header.onboardingPopupHeader' | translate}}</strong>
+			</div>
+		</div>
+		<div class="col-sm-12 col-md-12 col-lg-12 searchOrg ng-binding">
+			<div class="marginT3">
+				{{'accounts.searchAccounts.label.onBoardingPopupLabel1' | translate}}
+				<br/>
+				{{'accounts.searchAccounts.label.onBoardingPopupLabel2' | translate}}
+			</div>
+		</div>
+		<div class="col-sm-12 col-md-12 col-lg-12 searchOrg ng-binding text-right">
+			<button type="button" class="btn btn-info" data-ng-click="gotoRegistrionFromSearchAccounts('normal');$close()" autofocus>{{'common.yes' | translate}}</button>
+			<button type="button" class="btn btn-warning" data-ng-click="gotoRegistrionFromSearchAccounts('express');$close()">{{'common.no' | translate}}</button>
+		</div>
+	</div>
+</div>

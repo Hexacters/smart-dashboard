@@ -1,0 +1,48 @@
+<div ng-controller="homeController" ng-init="ActiveFilters.length = '0';data.clientSelcted.roles = [];multipleDocumentUpload=[];">
+    <p><img src="app/ng1/img/okay.png" width="19px" alt="okey" /> Document Successfully Uploaded</p>
+    <p><b>If need, select additional requirements that you want to satisfy with the document you just uploaded or press continue button.</b></p>
+	<vision-data-table service="complianceServices" operation="multipleUploadDocGrid" root-node="data.successData.UserMissingDocumentList.UserMissingDocument" search-type="searchRequest" type="client" initial-request='{"page":1,"count":5}' id="multipleUploadDoc">
+		<div data-ng-class="{'dNone':!loading}">
+            <img align="absmiddle" src="app/ng1/img/partial-loading.gif">&nbsp;{{'common.loading' | translate}}
+        </div>
+        <div class="clearfix" ng-table-pagination="multipleUploadDoc" template-url="'ng-table/style3.html'"></div>
+        <div class="table-responsive">
+            <table ng-table="multipleUploadDoc" template-pagination="style3" class="table table-striped table-bordered marginB0 marginT1">
+                <tbody ng-if="multipleUploadDoc.data.length>0">
+                    <tr data-ng-repeat="multipleUploadDoc in $data">
+                        <td data-title="''" class="text-center col-sm-1">
+							<input id="{{multipleUploadDoc.docDefOid}}" type="checkbox" vision-check-all="multipleDocumentUpload" form-field="data.clientSelcted.roles" return-type="string" return-fields="templateName" checklist-value="multipleUploadDoc">
+                            <!-- <input type="checkbox" id="{{multipleUploadDoc.docDefOid}}" name="multipleUploadDocument" value="{{multipleUploadDoc.docDefOid}}" ng-change="checkboxCheckUncheck(multipleUploadDoc.checked,multipleUploadDoc)" ng-model="multipleUploadDoc.checked" /> -->
+                        </td>
+                        <td data-title="'Name'" sortable="'templateName'" class="text-left col-sm-3">{{multipleUploadDoc.templateName}}</td>
+                        <td data-title="'Description'" class="text-left col-sm-6" ng-controller="commonController">
+                            <span ng-if="multipleUploadDoc.templateDescription.length > 45">{{multipleUploadDoc.templateDescription | limitTo: '45'}} <a class="cursorPointer" ng-click="moreDialog(multipleUploadDoc.templateDescription,'Description')">more...</a></span>
+                            <span ng-if="multipleUploadDoc.templateDescription.length < 45">{{multipleUploadDoc.templateDescription}}</span>
+                        </td>
+                        <td data-title="'Action'" class="text-left col-sm-1"><span ng-if="multipleUploadDoc.sortKey == 4">New</span><span ng-if="multipleUploadDoc.sortKey != 4">Replace</span>
+                        </td>
+                        <td data-title="'Action'" class="text-left col-sm-1"><span ng-if="multipleUploadDoc.templateDocCategoryCode == 'OPREP'">Individual</span><span ng-if="multipleUploadDoc.templateDocCategoryCode != 'OPREP'"></span>
+                        </td>
+                    </tr>
+                </tbody>
+                <tbody ng-if="multipleUploadDocument.data.errorData.Status=='Error'">
+					<tr ng-init="multiUploadDocumentCount();">
+						<td colspan="11">
+							<div class="text-danger">
+								<span class="fa fa-warning" aria-hidden="true"></span>
+								{{appointmentGridList.data.errorData.ResponseError[0].errorCode | translate}}
+							</div>
+						</td>
+					</tr>
+				</tbody>
+            </table>
+            <br/>
+        </div>
+    </vision-data-table>
+	<div ng-if="multipleDocumentUpload.length != '0'">
+        <button class="btn btn-primary" id="docAlertSubmit" ng-click="multipleUplaodDoc(multipleDocumentUpload);" type="submit">{{'common.continue' | translate}}</button>
+    </div>
+    <div ng-if="multipleDocumentUpload.length == '0'">
+        <button class="btn btn-primary" id="docAlertSubmit" ng-click="submit();" ui-sref="home.documentAlert.common.commonDocument" type="submit">{{'common.continue' | translate}}</button>
+    </div>
+</div>

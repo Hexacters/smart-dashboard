@@ -1,0 +1,240 @@
+<div class="col-md-12 col-sm-12 col-lg-12">
+<div class="text-right"><a ng-click="backToAddNewRepSummayPage();">{{'common.back' | translate}}</a></div>
+<div class="row">
+	<div class="col-sm-12 col-md-12 col-lg-12" ng-show="loading">
+			<img align="absmiddle" src="app/ng1/img/partial-loading.gif">&nbsp;{{'common.loading'|
+			translate}}
+		</div>
+	<div class="row top-space">
+		<div class="col-md-10 marginL2 alert alert-danger"
+			data-ng-if="billingInfoResponseError">
+			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+			<strong><i class="fa fa-warning"></i></strong> {{
+			billingInfoResponseError}}
+		</div>
+	</div>
+	<form novalidate name="addNewRepPaymentDetailsForm" id="addNewRepPaymentDetailsForm" autocomplete="off"
+		class="form" vm-form-extras>
+		<div class="col-md-12 margin-bottom padLeft0">
+			<div class="form-group">
+				<div class="col-md-4 control-label">
+					{{'addNewRep.label.street1' | translate}}<sup class="validation-required">*</sup>
+				</div>
+				<div class="col-md-4">
+					<input type="text" class="form-control" name="billingAddress1"
+						maxlength="30" id="billingAddress1"
+						ng-model="data.shoppingCart.billingAddress1"
+						placeholder="{{'addNewRep.label.street1Placeholder' | translate}}"
+						validator="required" data-valid-method="watch"
+						data-required-error-message="{{'messages.addressRequired' | translate}}">
+				</div>
+			</div>
+		</div>
+		<div class="col-md-12 margin-bottom padLeft0">
+			<div class="form-group">
+				<div class="col-md-4 control-label">{{'addNewRep.label.street2' |
+					translate}}</div>
+				<div class="col-md-4">
+					<input type="text" class="form-control" name="billingAddress2"
+						maxlength="30" id="billingAddress2"
+						ng-model="data.shoppingCart.billingAddress2"
+						placeholder="{{'addNewRep.label.street2Placeholder' | translate}}"
+						data-valid-method="watch">
+				</div>
+			</div>
+		</div>
+		<div class="col-md-12 margin-bottom padLeft0">
+			<div class="form-group">
+				<div class="col-md-4 control-label">
+					{{'addNewRep.label.billingCity' | translate}}<sup
+						class="validation-required">*</sup>
+				</div>
+				<div class="col-md-4">
+					<input type="text" class="form-control" name="billingCity"
+						maxlength="20" ng-model="data.shoppingCart.billingCity"
+						placeholder="{{'addNewRep.label.billingCityPlaceholder' | translate}}"
+						validator="required" data-valid-method="watch"
+						data-required-error-message="{{'messages.cityIsRequired' | translate}}">
+				</div>
+			</div>
+		</div>
+		<div class="col-md-12 margin-bottom padLeft0">
+			<div class="form-group">
+				<div class="col-md-4 control-label">
+					{{'addNewRep.label.billingStateProvince' | translate}}<sup
+						class="validation-required">*</sup>
+				</div>
+				<div class="col-md-4">
+					{{state}} <select name="billingStateCode" class="form-control"
+						data-ng-model="data.shoppingCart.billingStateCode"
+						validator="required"
+						data-required-error-message="{{'messages.stateRequired' | translate}}"
+						valid-method="watch">
+						<option value="">{{'common.select' | translate}}</option>
+						<option ng-repeat="option in billingStateLookup"
+							value="{{option.code}}" ng-disabled="option.disabled">{{option.name}}</option>
+					</select>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-12 margin-bottom padLeft0">
+			<div class="form-group">
+				<div class="col-md-4 control-label">
+					{{'addNewRep.label.billingCountry' | translate}}<sup
+						class="validation-required">*</sup>
+				</div>
+				<div class="col-md-4">
+					<select name="billingCountryCode" id="billingCountryCode"
+						class="form-control"
+						ng-model="data.shoppingCart.billingCountryCode"
+						validator="required"
+						data-required-error-message="{{'messages.countryRequired' | translate}}"
+						valid-method="watch">
+						<option value="">{{'common.select' | translate}}</option>
+						<option ng-repeat="option in billingCountryLookup"
+							value="{{option.code}}">{{option.name}}</option>
+					</select>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-12 marginB1 padLeft0">
+			<div class="form-group">
+				<div class="col-md-4 control-label">
+					{{'addNewRep.label.billingZipPostalCode' | translate}}<sup
+						class="validation-required">*</sup>	
+					<span tooltip-append-to-body="true" tooltip-class="customToolTip"
+						tooltip="{{'messages.zipCodeNote1' | translate}}{{'messages.zipCodeNote2' | translate}}{{'messages.zipCodeNote3' | translate}}"
+						tooltip-placement="top"> <i
+						class="fa fa-question-circle fa-lg"></i>
+					</span>
+				</div>
+				<div class="col-md-8">
+					<div class="col-md-6 padLeft0">
+						<input type="text" class="form-control" name="billingZip"
+							ng-model="data.shoppingCart.billingZip" maxlength="10"
+							placeholder="{{'addNewRep.label.billingZipPostalCode' | translate}}"
+							validator="required,validateZipCode" data-valid-method="watch"
+							data-required-error-message="{{'messages.billingZip/PostalCodeIsRequired' | translate}}"
+							data-validate-zip-code-error-message="{{'messages.PostalCodeError' | translate}}"
+							zipcode-format="{{data.shoppingCart.billingCountryCode}}">
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-12 marginB3 padLeft0">
+			<div class="form-group">
+				<div class="col-md-4 control-label">
+					{{'addNewRep.label.cardHolderEmail' | translate}}<sup
+						class="validation-required">*</sup>
+				</div>
+				<div class="col-md-4">
+					<input type="text" class="form-control" name="billingEmail"
+						maxlength="100" id="billingEmail"
+						ng-model="data.shoppingCart.billingEmail"
+						placeholder="{{'addNewRep.label.cardHolderEmail' | translate}}"
+						validator="required,validateEmail" data-valid-method="watch"
+						data-required-error-message="{{'messages.emailRequired' | translate}}"
+						data-validate-email-error-message="{{'messages.validEmailAddress' | translate}}">
+				</div>
+			</div>
+		</div>
+		<div class="col-md-12 fontWeightBold searchOrg marginB1">
+			{{'addNewRep.label.acknowledgements' | translate}}</div>
+		<div class="form-group">
+			<div class="col-sm-12 col-md-12 col-lg-12 marginB2">
+				<span class="show paymentCheckBox"> <input type="checkbox"
+					name="acceptFee" id="acceptFee"
+					data-ng-model="data.shoppingCart.acceptFee"
+					valid-method="watch"
+					data-ng-true-value="1" data-ng-false-value="'{{null}}'" />
+				</span> <span class="col-lg-12 break-word marginL2">
+					{{'shoppingCart.label.paymentHasBeenSubmitted1' |
+					translate}}{{addNewRepOrderAmount |
+					currency:"$"}} {{'shoppingCart.label.paymentHasBeenSubmitted2' |
+					translate:translationCustomerNameAndPrice}}{{'shoppingCart.label.paymentHasBeenSubmitted3'
+					| translate:translationCustomerNameAndPrice}}
+				</span> <input type="text" data-ng-model="data.shoppingCart.acceptFee"
+					class="hidden" name="acceptFee" id="acceptFee" valid-method="watch"
+					data-validator="required"
+					data-required-error-message="{{'messages.disclaimerRegistrationCharge1' | translate}}" />
+			</div>
+			<div class="col-sm-12 col-md-12 col-lg-12 marginB2">
+				<span class="show paymentCheckBox"> <input type="checkbox"
+					name="acceptChangable" id="acceptChangable"
+					data-ng-model="data.shoppingCart.acceptChangable"
+					valid-method="watch"
+					data-ng-true-value="1" data-ng-false-value="'{{null}}'" />
+				</span> <span class="col-lg-12 break-word marginL2">
+					{{'shoppingCart.label.relationshipOrRequiresDifferentAccess' |
+					translate:translationCustomerNameAndPrice | trustAsHtml}}
+				</span> <input type="text" data-ng-model="data.shoppingCart.acceptChangable"
+					class="hidden" name="acceptChangable" id="acceptChangable"
+					valid-method="watch" data-validator="required"
+					data-required-error-message="{{'messages.disclaimerRegistrationCharge2' | translate}}" />
+			</div>
+			<div class="col-sm-12 col-md-12 col-lg-12 marginB2">
+				<span class="show paymentCheckBox"> <input type="checkbox"
+					name="acceptAutoRenew" id="acceptAutoRenew"
+					data-ng-model="data.shoppingCart.acceptAutoRenew"
+					valid-method="watch"
+					data-ng-true-value="1" data-ng-false-value="'{{null}}'" />
+				</span> <span class="col-lg-12 break-word marginL2">
+					{{'shoppingCart.label.subscriptionMayBeAutomaticallyRenewed' |
+					translate}}</span> <input type="text"
+					data-ng-model="data.shoppingCart.acceptAutoRenew" class="hidden"
+					name="acceptAutoRenew" id="acceptAutoRenew" valid-method="watch"
+					data-validator="required"
+					data-required-error-message="{{'messages.disclaimerRegistrationCharge3' | translate}}" />
+			</div>
+			<div class="col-sm-12 col-md-12 col-lg-12 marginB2">
+				<span class="show paymentCheckBox"> <input type="checkbox"
+					name="trueAndAccurate" id="trueAndAccurate"
+					data-ng-model="data.shoppingCart.trueAndAccurate"
+					valid-method="watch"
+					data-ng-true-value="1" data-ng-false-value="'{{null}}'" />
+				</span> <span class="col-lg-12 break-word marginL2">
+					{{'shoppingCart.label.affirmThatAllInformationEntered' |
+					translate}}</span> <input type="text"
+					data-ng-model="data.shoppingCart.trueAndAccurate" class="hidden"
+					name="trueAndAccurate" id="trueAndAccurate"
+					data-valid-method="watch" data-validator="required"
+					data-required-error-message="{{'messages.disclaimerRegistrationCharge4' | translate}}" />
+			</div>
+		</div>
+		<div class="col-md-12 padLeft0" ng-controller="myDocumentController">
+			<div class="form-group">
+				<div class="col-md-4 marginB1">
+					<span class="fontWeightBold searchOrg">{{'addNewRep.label.totalAmountDue'
+						| translate}}</span>
+				</div>
+				<div class="col-md-4">
+					<input type="text" class="form-control"
+						ng-init="addNewRepOrderAmount = convertNumberToDoller(addNewRepOrderAmount)"
+						name="dispOrderAmount" id="dispOrderAmount" data-ng-model="addNewRepOrderAmount"
+						ng-readonly="true">
+				</div>
+			</div>
+		</div>
+		<div class="col-md-12 padLeft0 marginT1">
+			<div class="form-group">
+				<div class="col-md-4 marginB1"></div>
+				<div class="col-md-8"><button type="submit" data-validation-submit="addNewRepPaymentDetailsForm"
+					data-ng-click="submitAddNewRepBillingAddress(data);"
+					class="btn btn-blue">
+					<span ng-if="!paymentFieldReadonly">{{'common.checkoutContinue'
+						| translate}}</span><span ng-if="paymentFieldReadonly">{{'common.next'
+						| translate}}</span>
+				</button></div>
+			</div>
+		</div>		
+		<div class="col-md-12 padLeft0 marginT1">
+			<div class="form-group">
+				<div class="col-md-4 marginB1"></div>
+				<div class="col-md-4"><span ng-bind-html="'addNewRep.label.receiptNote' | translate"></span></div>
+			</div>
+		</div>
+		<input type="hidden" name="userOid" id="userOid"
+			data-ng-model="data.shoppingCart.userOid"
+			ng-init="data.shoppingCart.userOid = userProfile.id" />
+	</form>
+</div>

@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<module id="usersModule">
+    <routers>
+    	<router id="login" url="/login" auth="false">
+            <views>
+                <view templateUrl="views/common/login.html"></view>
+            </views>
+        </router>
+        <router id="resetPassword" url="/resetPassword" auth="false">
+            <views>
+                <view templateUrl="views/common/resetPassword.html"></view>
+            </views>
+        </router>
+    </routers>
+    <services id="users">
+        <operations>
+        	<operation name="login" method="post" url="j_security_check" responseWrapper="response" mockUrl="mock/login.json" mock="true"></operation>
+        	<operation name="getLoginStatus" serviceName="users" method="get" requestType="json" requestWrapper="request" responseWrapper="response" url="/services/getLoginStatus" mockUrl="mock/login.json" mock="true"></operation>
+        	<operation name="getPermissions" serviceName="acl" method="get" requestType="json" requestWrapper="request" responseWrapper="response" url="VMClientProxyServlet" mockUrl="mock/permissions.json" mock="true"></operation>
+        </operations>
+    </services>
+</module>

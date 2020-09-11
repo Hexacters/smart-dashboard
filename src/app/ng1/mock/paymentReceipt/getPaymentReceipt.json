@@ -1,0 +1,41 @@
+{
+    "VisionResponse": {
+        "Status": "Ok",
+		"pageIndex": 0,
+        "paymentReceiptlDetails": [
+            {
+                "customerName": "Wesley Medical Center",
+                "createdOn": "2017-05-01 21:24:48",
+                "cardType": "Mastercard",
+                "paymentAmount": "500",
+                "cardNumber": "xxxx-xxxx-xxxx-5114",
+                "oid": "c010000e63600000e637"
+            },
+            {
+                "customerName": "Wesley Medical Center",
+                "createdOn": "2018-12-08 21:24:48",
+                "cardType": "Visa",
+                "paymentAmount": "250",
+                "cardNumber": "xxxx-xxxx-xxxx-1423",
+                "oid": "c010000d70c00000d70d"
+            },
+            {
+                "customerName": "Wesley Medical Center",
+                "createdOn": "2019-02-18 21:24:48",
+                "cardType": "American Express",
+                "paymentAmount": "500",
+                "cardNumber": "xxxx-xxxx-xxxx-45783",
+                "oid": "c010000c94500000c961"
+            },
+            {
+                "customerName": "Wesley Medical Center",
+                "createdOn": "2019-08-21 21:24:48",
+                "cardType": "Mastercard",
+                "paymentAmount": "400",
+                "cardNumber": "xxxx-xxxx-xxxx-5114",
+                "oid": "c010000c94500000c962"
+            }
+        ],
+        "contentType": "application/json"
+    }
+}

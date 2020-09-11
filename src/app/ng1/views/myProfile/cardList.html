@@ -1,0 +1,296 @@
+<div class="container row">
+    <div data-ng-if="servciesErrorMessage"
+         class="alert alert-danger">
+        <a class="close"
+           ng-click="closeCardErrorMessage()">×</a>
+        <strong>
+            <i class="fa fa-warning"></i>
+        </strong>
+        {{servciesErrorMessage}}
+    </div>
+    <div class="col-sm-12 col-md-12 col-lg-12 padding0"
+         ng-if="cardList.length > 0">
+        <div class="row marginL1">
+            <div class="col-sm-4 col-md-4 col-lg-4">
+                <h3 class="marginT0 cardListHeader">
+                    {{'myProfile.cardManagement.label.savedCardNumber' | translate}}
+                </h3>
+            </div>
+            <div class="col-sm-4 col-md-4 col-lg-4">
+                <h3 class="marginT0 cardListHeader">
+                    {{'myProfile.cardManagement.label.cardExpires' | translate}}
+                </h3>
+            </div>
+            <div class="col-sm-4 col-md-4 col-lg-4">
+                <h3 class="marginT0 cardListHeader">
+                    {{'myProfile.cardManagement.label.cardType' | translate}}
+                </h3>
+            </div>
+        </div>
+        <div ng-repeat="card in cardList track by $index"
+             id="card_{{$index}}"
+             class="marginB1">
+            <div class="panel panel-default">
+                <div class="panel-heading cardPanelHeading">
+                    <div class="panel-title cardPanelTitle">
+                        <div class="row cardPanelInfo"
+                             ng-click="showHidePanel(card);">
+                            <div class="col-sm-4 col-md-4 col-lg-4">
+                                <img class="cardPanelInfoImg"
+                                     data-ng-src="{{card.cardTypeCode === 'MC' ? 'img/mater_card.png' : card.cardTypeCode === 'AX' ? 'img/american_express.png' : 'img/visa.png'}}"
+                                     width="45">
+                                <span class="marginL1">{{card.cardNumber}}</span>
+                            </div>
+                            <div class="col-sm-4 col-md-4 col-lg-4">
+                                <div class="col-lg-12">
+                                    <p class="marginB0">
+                                        <span>
+                                            {{card.expirationMonthCode}} / {{card.expirationYear}}
+                                        </span>
+                                        <span data-ng-if="checkCardExpired(card)"
+                                              class="dangerColor">
+                                            {{'myProfile.cardManagement.label.cardExpired' | translate}}
+                                        </span>
+                                        <span data-ng-if="checkCardExpireSoon(card)"
+                                              class="dangerColor">
+                                            {{'myProfile.cardManagement.label.expiringSoon' | translate}}
+                                        </span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="pull-right col-sm-4 col-md-4 col-lg-4">
+                                <span>{{(card.cardCategory === 'CORPORATE' ? 'Corporate Card' : (hasSupplierSuperAdmin ? ((card.cardCategory === 'INDIVIDUAL' && card.primaryCard) ? 'Personal Primary Card' : 'Personal Secondary Card') : ((card.cardCategory === 'INDIVIDUAL' && card.primaryCard) ? 'Primary Card' : 'Secondary Card'))) }}</span>
+                                <span class="pull-right marginT1"
+                                      ng-class="{'glyphicon glyphicon-plus': card.isOpen === false, 'glyphicon glyphicon-minus': card.isOpen === true}"
+                                      ng-click="showHidePanel(card); $event.stopPropagation();"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="card_{{$index}}"
+                     ng-show="card.isOpen">
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="row">
+                                <div class="col-sm-4 col-md-4 col-lg-4">
+                                    <div class="modal-title marginL4">
+                                        <label>{{'myProfile.cardManagement.label.nameOnCard' | translate}}</label>
+                                        <p>{{card.nameOnCard}}</p>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4 col-md-4 col-lg-4">
+                                    <div class="modal-title marginL4">
+                                        <label>{{'myProfile.cardManagement.label.billingAddress' | translate}}</label>
+                                        <p>{{card.billingAddress1}}</p>
+                                        <p>{{card.billingAddress2}}</p>
+                                        <p>{{card.billingCity}}</p>
+                                        <p>{{card.billingStateCode}}</p>
+                                        <p>{{card.billingCountryCode}} - {{card.billingZip}}</p>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4 col-md-4 col-lg-4"
+                                     data-ng-if="card.cardCategory === 'INDIVIDUAL' && !card.primaryCard">
+                                    <label>
+                                        {{'myProfile.cardManagement.label.setCardAs' | translate}}:
+                                    </label>
+                                    <br />
+                                    <div>
+                                        <input type="radio"
+                                               id="secondary"
+                                               data-ng-disabled="popupLoading"
+                                               data-ng-model="setCardAsPrimary.type"
+                                               data-ng-click="openChangeCardTypeConfirmationPopup(card);"
+                                               value="primary"
+                                               class="cursorPointer" />
+                                        <label for="secondary"
+                                               class="cursorPointer">
+                                            {{hasSupplierSuperAdmin ? 'Personal Primary Card' : 'Primary Card'}}
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Edit card Profile billing address -->
+                            <div ng-if="card.isShowEditCardBillingAddressForm">
+                                <div class="col-sm-10 col-md-10 col-lg-10 marginB1">
+                                    <span>{{'myProfile.cardManagement.label.enterBillingAddress' | translate}}</span>
+                                </div>
+                                <form novalidate
+                                      name="editCardProfileForm"
+                                      autocomplete="off"
+                                      class="form-horizontal">
+                                    <div class="col-sm-12 col-md-12 col-lg-12 marginB1">
+                                        <div class="col-sm-8 col-md-8 col-lg-6 marginB1 credit-card-box">
+                                            <div class="col-md-12 padLeft0">
+                                                <div class="form-group">
+                                                    <div class="col-md-5 control-label">
+                                                        {{'registration.normal.billingAddress' | translate}}<sup
+                                                             class="validation-required">*</sup>
+                                                    </div>
+                                                    <div class="col-md-7">
+                                                        <input type="text"
+                                                               class="form-control"
+                                                               name="billingAddress1"
+                                                               maxlength="30"
+                                                               id="billingAddress1"
+                                                               ng-model="editBillingAddressDetails.billingAddress1"
+                                                               placeholder="{{'registration.normal.street1Placeholder' | translate}}"
+                                                               validator="required"
+                                                               data-valid-method="submit"
+                                                               data-required-error-message="{{'messages.addressRequired' | translate}}">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12 padLeft0">
+                                                <div class="form-group">
+                                                    <div class="col-md-5"></div>
+                                                    <div class="col-md-7">
+                                                        <input type="text"
+                                                               class="form-control"
+                                                               name="billingAddress2"
+                                                               maxlength="30"
+                                                               id="billingAddress2"
+                                                               ng-model="editBillingAddressDetails.billingAddress2"
+                                                               placeholder="{{'registration.normal.street2Placeholder' | translate}}">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12 padLeft0">
+                                                <div class="form-group">
+                                                    <div class="col-md-5 control-label">
+                                                        {{'registration.normal.billingCity' | translate}}<sup
+                                                             class="validation-required">*</sup>
+                                                    </div>
+                                                    <div class="col-md-7">
+                                                        <input type="text"
+                                                               class="form-control"
+                                                               name="billingCity"
+                                                               maxlength="20"
+                                                               ng-model="editBillingAddressDetails.billingCity"
+                                                               placeholder="{{'registration.normal.billingCityPlaceholder' | translate}}"
+                                                               validator="required"
+                                                               data-valid-method="submit"
+                                                               data-required-error-message="{{'messages.cityIsRequired' | translate}}">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12 padLeft0">
+                                                <div class="form-group">
+                                                    <div class="col-md-5 control-label">
+                                                        {{'registration.normal.billingStateProvince' | translate}}<sup
+                                                             class="validation-required">*</sup>
+                                                    </div>
+                                                    <div class="col-md-7">
+                                                        <select name="billingStateCode"
+                                                                class="form-control"
+                                                                data-ng-model="editBillingAddressDetails.billingStateCode"
+                                                                validator="required"
+                                                                data-required-error-message="{{'messages.stateRequired' | translate}}"
+                                                                valid-method="submit">
+                                                            <option value="">{{'common.select' | translate}}
+                                                            </option>
+                                                            <option ng-repeat="option in billingStateLookup"
+                                                                    ng-selected="option.code && (option.code === editBillingAddressDetails.billingStateCode)"
+                                                                    value="{{option.code}}">{{option.name}}
+                                                            </option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12 padLeft0">
+                                                <div class="form-group">
+                                                    <div class="col-md-5 control-label">
+                                                        {{'registration.normal.billingCountry' | translate}}<sup
+                                                             class="validation-required">*</sup>
+                                                    </div>
+                                                    <div class="col-md-7">
+                                                        <select name="billingCountryCode"
+                                                                id="billingCountryCode"
+                                                                class="form-control"
+                                                                ng-model="editBillingAddressDetails.billingCountryCode"
+                                                                validator="required"
+                                                                data-required-error-message="{{'messages.countryRequired' | translate}}"
+                                                                valid-method="submit">
+                                                            <option value="">{{'common.select' | translate}}
+                                                            </option>
+                                                            <option ng-repeat="option in billingCountryLookup"
+                                                                    ng-selected="option.code === editBillingAddressDetails.billingCountryCode"
+                                                                    value="{{option.code}}">{{option.name}}</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12 padLeft0">
+                                                <div class="form-group">
+                                                    <div class="col-md-5 control-label">
+                                                        {{'registration.normal.billingZipPostalCode' | translate}}<sup
+                                                             class="validation-required">*</sup>
+                                                        <span tooltip-append-to-body="true"
+                                                              tooltip-class="customToolTip"
+                                                              tooltip="{{'messages.zipCodeNote1' | translate}}{{'messages.zipCodeNote2' | translate}}{{'messages.zipCodeNote3' | translate}}"
+                                                              tooltip-placement="top">
+                                                            <i class="fa fa-question-circle fa-lg"></i>
+                                                        </span>
+                                                    </div>
+                                                    <div class="col-md-7">
+                                                        <input type="text"
+                                                               class="form-control"
+                                                               name="billingZip"
+                                                               ng-model="editBillingAddressDetails.billingZip"
+                                                               maxlength="10"
+                                                               placeholder="{{'registration.normal.billingZipPostalCode' | translate}}"
+                                                               data-required-error-message="Zip/Postal Code is required"
+                                                               validator="required,validateZipCode"
+                                                               data-valid-method="submit"
+                                                               data-validate-zip-code-error-message="{{'messages.PostalCodeError' | translate}}"
+                                                               zipcode-format="{{editBillingAddressDetails.billingCountryCode}}">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12 padLeft0">
+                                                <div class="form-group">
+                                                    <div class="col-md-5 control-label"></div>
+                                                    <div class="col-md-7">
+                                                        <button type="button"
+                                                                ng-click="card.isShowEditCardBillingAddressForm = false"
+                                                                class="btn btn-warning">{{'common.cancel' | translate}}</button>
+                                                        <button class="btn btn-success"
+                                                                type="submit"
+                                                                autofocus
+                                                                data-validation-submit="editCardProfileForm"
+                                                                data-ng-click="updatePaymentCardBillingAddress(card, $index);">
+                                                            {{'common.save' | translate}}
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <span class="pull-right">
+                            <button class="btn btn-info"
+                                    type="button"
+                                    data-ng-disabled="popupLoading"
+                                    data-ng-click="showPaymentCardBillingAddress(card)">
+                                {{'myProfile.cardManagement.label.editBillingAddress' | translate}}
+                            </button>
+                            <button class="btn btn-info"
+                                    type="button"
+                                    data-ng-disabled="popupLoading"
+                                    data-ng-click="openPaymentCardEditConfirmationPopup(card, $index)">
+                                {{'myProfile.cardManagement.label.editCardDetails' | translate}}
+                            </button>
+                            <button class="btn btn-warning"
+                                    type="button"
+                                    data-ng-disabled="popupLoading"
+                                    data-ng-click="openPaymentCardRemoveConfirmationPopup(card.oid)">
+                                {{'myProfile.cardManagement.label.remove' | translate}}
+                            </button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,19 @@
+<div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+        <accordion ng-init="status.isFirstOpen='true'">
+            <accordion-group is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
+                <accordion-heading>
+					<span data-ng-if="$state.current.name == 'shoppingCart.repList'">
+					{{'shoppingCart.header.title'| translate:repName }} {{$stateParams.repName}}</span>
+					<span data-ng-if="$state.current.name == 'shoppingCart.shoppingCartSummary' || $state.current.name == 'shoppingCart.cartSummary'">{{'shoppingCart.header.orderSummary'| translate }}</span>
+					<span data-ng-if="$state.current.name == 'shoppingCart.billingInfo'">{{'shoppingCart.label.billingInfo'| translate }}</span>
+					<span data-ng-if="$state.current.name == 'shoppingCart.checkout'">{{'shoppingCart.label.checkout'| translate }}</span>
+                </accordion-heading>
+               <div class="minHeight200" ui-view="shoppingCart" autoscroll="true" id="shoppingCartContainer" ng-controller="shoppingCartController"></div>
+            </accordion-group>
+        </accordion>
+        <div class="col-md-12 col-sm-12 col-lg-12 paddingL0 paddingR0" ng-if="$state.current.name == 'shoppingCart.repList'">
+			{{'shoppingCart.label.footerNote'| translate }}
+		</div>
+    </div>
+</div>

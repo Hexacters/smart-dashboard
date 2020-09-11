@@ -1,0 +1,368 @@
+<p class="col-sm-6 col-md-6 col-lg-6 padding0"
+   ng-show="$state.params.printBadge === 'prepareVisit'">
+	<a data-ui-sref="home">{{::'printBadge.backtoHome'| translate }}</a>
+</p>
+<p class="col-sm-6 col-md-6 col-lg-6 padding0"
+   ng-show="$state.params.printBadge === 'accounts'">
+	<a data-ui-sref="accounts.manageAccounts">{{::'accounts.backtoAccounts'|
+		translate }}</a>
+</p>
+<p class="col-sm-6 col-md-6 col-lg-6 padding0"
+   ng-if="$state.params.printBadge === 'accountDetail'">
+	<a data-ui-sref="accounts.accountDetails.documents.commonDocuments">{{::'common.backToAccountDetails'|
+		translate }}</a>
+</p>
+<div class="row"
+     ng-controller="printBadgeController">
+	<div ng-init="hideHelpLinkFromAccounts($state.params.printBadge);">
+		<div ng-if="isFromManageReps && ($state.params.printBadge !== 'action' || $state.params.printBadge !== 'accountDetail')"
+		     class="col-sm-12 col-md-12 col-lg-12 text-right">
+			<div ng-if="$state.params.clearForAccessFromReps === 'isfromRepDetail' && $state.params.isFrom === 'accountDetail'">
+				<div class="col-sm-6 col-md-6 col-lg-6 text-left padding0 text-left">
+					<a data-ui-sref="manage.repAccountDetails.repAccountsTab.documents.commonDocuments">{{::'common.backToAccountDetails'|
+						translate }}</a>
+				</div>
+				<div class="col-sm-6 col-md-6 col-lg-6 text-left padding0 text-right">
+					<span class="asterisk">*</span> {{::'common.required'| translate }} <a data-ui-sref="manage.repAccountDetails.clearedForAccess.clearedForAccessHelp"
+					   id="clearedForAccess">{{::'common.help'| translate }}</a>
+				</div>
+			</div>
+			<div ng-if="$state.params.clearForAccessFromReps === 'isfromRepDetail' && $state.params.isFrom === ''">
+				<div class="col-sm-12 col-md-12 col-lg-12 text-right">
+					<span class="asterisk">*</span> {{::'common.required'| translate }} <a data-ui-sref="manage.repAccountDetails.clearedForAccess.clearedForAccessHelp"
+					   id="clearedForAccess">{{::'common.help'| translate }}</a>
+				</div>
+			</div>
+		</div>
+		<div ng-if="$state.params.printBadge ==='action' || $state.params.printBadge === 'accounts' || $state.params.printBadge === 'prepareVisit' || $state.params.printBadge === 'accountDetail'"
+		     class="col-sm-12 col-md-12 col-lg-12 text-right">
+			<span class="asterisk">*</span> {{::'common.required'| translate }} <a data-ui-sref="printBadge.prepareForVisit.help"
+			   id="clearedForAccess">{{::'common.help'|
+				translate }}</a>
+		</div>
+	</div>
+	<div class="col-sm-12 col-md-12 col-lg-12"
+	     data-ng-if="enableAppointmentLoad === true || enablePrintbadgeLoad === true">
+		<img align="absmiddle"
+		     src="app/ng1/img/partial-loading.gif"> {{::'common.loading' | translate}}
+	</div>
+	<div class="col-sm-12 col-md-12 col-lg-12 padding0">
+		<div class="col-sm-12 col-md-12 col-lg-12 form-group"
+		     data-ng-if="serviceResponseError && serviceResponseError !== 'CM_7035'">
+			<div class="alert-danger alert"
+			     ng-bind-html="serviceResponseError | translate"></div>
+		</div>
+		<div class="col-sm-12 col-md-12 col-lg-12 form-group"
+		     data-ng-if="serviceResponseError && serviceResponseError === 'CM_7035'">
+			<div class="alert alert-danger"><strong><i class="fa fa-warning"></i></strong> {{blockingErrorMessage}}</div>
+		</div>
+	</div>
+	<div class="col-sm-10 col-md-8 col-lg-6"
+	     ng-init="printBadge.customerOid = '';">
+		<fieldset ng-disabled="loading || enableLocationLoad || enableDepartmentLoad || enableAppointmentLoad || enablePrintbadgeLoad">
+			<form novalidate
+			      name="frmDataExtract"
+			      class="form-horizontal"
+			      autocomplete="off">
+				<h5 class="marginT5 marginB4">
+					<b>{{::'printBadge.selectAnAppointmentorAccount'| translate }}</b>
+				</h5>
+				<fieldset id="printBadgeForm">
+					<div class="form-group">
+						<label class="col-sm-4 col-md-4 col-lg-4 text-right">
+							{{::'printBadge.account'| translate }} <span class="asterisk">*</span>
+							<span tooltip-append-to-body="true"
+							      tooltip-placement="bottom"
+							      tooltip="{{::'printBadge.accountTooltip' | translate}}"><i class="fa fa-question-circle fa-lg"></i></span>
+						</label>
+						<div class="col-sm-8 col-md-8 col-lg-8">
+							<select id="account"
+							        class="form-control input-sm required"
+							        autofocus="true"
+							        name="account"
+							        ng-model="CustomerSummaryList.selectedOption"
+							        validator="required"
+							        valid-method="submit"
+							        ng-change="changeCustomerOid(CustomerSummaryList.selectedOption);"
+							        required-error-message="{{::'printBadge.errorMessage.accountRequired'| translate }}"
+							        ng-options="option.companyName for option in CustomerSummaryList.availableOptions | orderBy : 'customerOid' | filter:{vcExpressRegistered:'false'}">
+								<option value="">-- Select Account --</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-4 col-md-4 col-lg-4 text-right">{{::'printBadge.appointments'|
+							translate }} <span tooltip-append-to-body="true"
+							      tooltip-placement="bottom"
+							      tooltip="{{::'printBadge.appointmentsTooltip' | translate}}"><i class="fa fa-question-circle fa-lg"></i></span>
+						</label>
+						<div class="col-sm-8 col-md-8 col-lg-8">
+							<select class="form-control input-sm"
+							        name="appointments"
+							        id="appointments"
+							        ng-change="loadAppointmentDetail(appointments)"
+							        ng-model="appointments">
+								<option value="">-- Select Appointment--</option>
+								<option ng-repeat="appointment in appointmentSummaryList | orderBy : 'startTime'"
+								        ng-selected="appointments === appointment.oid"
+								        value="{{appointment.oid}}"
+								        ng-init="appointment.subject.length > 17 ? maxLimtDot = '...' : ''">{{appointment.startTime |
+									dateFormate | date:'MM/dd/yyyy hh:mma'}} {{appointment.subject | limitTo:17}}{{maxLimtDot}}</p>
+								</option>
+							</select>
+						</div>
+					</div>
+					<h5 class="marginT2 marginB4">
+						<b>{{::'printBadge.visitDetails'| translate }}</b>
+					</h5>
+					<div class="form-group">
+						<label class="col-sm-4 col-md-4 col-lg-4 text-right">{{::'printBadge.location'|
+							translate }} <span class="asterisk">*</span> <span tooltip-append-to-body="true"
+							      tooltip-placement="bottom"
+							      tooltip="{{::'printBadge.locationTooltip' | translate}}"><i class="fa fa-question-circle fa-lg"></i></span>
+						</label>
+						<div class="col-sm-8 col-md-8 col-lg-8">
+							<div class=""
+							     data-ng-class="{'dNone':!enableLocationLoad}">
+								<img align="absmiddle"
+								     src="app/ng1/img/partial-loading.gif"> {{::'common.loading'
+								| translate}}
+							</div>
+							<!--CREDMGR-26373-->
+							<!--<select ng-click="getCustomerLocationIds(printBadge.customerOid,printBadge.locationOid,printBadge.locationOtherText);"-->
+							<select ng-click="getCustomerLocationIds(printBadge.customerOid,printBadge.locationOid);"
+							        id="location"
+							        class="form-control input-sm required"
+							        name="location"
+							        ng-model="printBadge.locationOid"
+							        validator="required"
+							        valid-method="submit"
+							        required-error-message="{{::'printBadge.errorMessage.locationRequired'| translate }}"
+							        maxlength="100">
+								<!--CREDMGR-26373-->
+								<!--ng-change="printBadge.locationOid !='other' ? printBadge.locationOtherText = '':return;">-->
+								<option value="">-- Select Location--</option>
+								<option ng-show="needtoLoadLocation != true || loadFromAppointment === true"
+								        ng-selected="printBadge.locationOid === locationList.oid"
+								        ng-repeat="locationList in LocationSummaryList"
+								        value="{{locationList.oid}}">{{locationList.id}}</option>
+							</select>
+						</div>
+					</div>
+					<!--CREDMGR-26373
+			<div ng-if="printBadge.locationOid === 'other'" class="form-group">
+				<label class="col-sm-4 col-md-4 col-lg-4 text-right">Other
+					Location <span class="asterisk">*</span>
+				</label>
+				<div class="col-sm-8 col-md-8 col-lg-8">
+					<input id="visitingContact" type="text" name="otherLocation"
+						class="form-control input-sm required"
+						ng-model="printBadge.locationOtherText"
+						validator="required, validateAlphanumSpecial"
+						required-error-message="Other Location is required"
+						validate-alphanum-special-error-message="{{::'printBadge.errorMessage.visitingContactSpecialCharRequired'| translate }}"
+						valid-method="submit" maxlength="100" />
+				</div>
+			</div>
+		    -->
+					<div class="form-group">
+						<label class="col-sm-4 col-md-4 col-lg-4 text-right">{{::'printBadge.department'|
+							translate }} <span class="asterisk">*</span> <span tooltip-append-to-body="true"
+							      tooltip-placement="bottom"
+							      tooltip="{{::'printBadge.departmentTooltip' | translate}}"><i class="fa fa-question-circle fa-lg"></i></span>
+						</label>
+						<div class="col-sm-8 col-md-8 col-lg-8">
+							<div data-ng-class="{'dNone':!enableDepartmentLoad}">
+								<img align="absmiddle"
+								     src="app/ng1/img/partial-loading.gif"> {{::'common.loading'
+								| translate}}
+							</div>
+							<select id="department"
+							        ng-click="getDepartmentIds(printBadge.customerOid,printBadge.departmentOid);"
+							        class="form-control input-sm required"
+							        name="department"
+							        ng-model="printBadge.departmentOid"
+							        validator="required"
+							        valid-method="submit"
+							        required-error-message="{{::'printBadge.errorMessage.departmentRequired'| translate }}"
+							        maxlength="100">
+								<option value="">-- Select Department--</option>
+								<option ng-show="needtoLoadDepartment != true || loadFromAppointment === true"
+								        ng-selected="printBadge.departmentOid === departmentList.oid"
+								        ng-repeat="departmentList in DepartmentSummaryList"
+								        value="{{departmentList.oid}}">{{departmentList.id}}</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-4 col-md-4 col-lg-4 text-right">{{::'printBadge.dateOfVisit'|
+							translate }} <span class="asterisk">*</span> <span tooltip-append-to-body="true"
+							      tooltip-placement="bottom"
+							      tooltip="{{::'printBadge.dateodvisitTooltip' | translate}}"><i class="fa fa-question-circle fa-lg"></i></span>
+						</label>
+						<div class="col-sm-8 col-md-8 col-lg-8">
+							<input class="form-control required"
+							       type="text"
+							       readonly
+							       id="dateOfVisit"
+							       name="dateOfVisit"
+							       valid-method="submit"
+							       data-ng-model="printBadge.dateOfVisit"
+							       min-date="todayDate"
+							       max-date="nextday"
+							       validator="required"
+							       required-error-message="{{::'printBadge.errorMessage.dateOfVisitRequired'| translate }}"
+							       datepicker-popup="{time: false, format: 'MM/dd/yyyy'}"
+							       ng-change="changeDateOfVisit(printBadge.dateOfVisit, '', '');" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-4 col-md-4 col-lg-4 text-right">{{::'printBadge.timeOfVisit'|
+							translate }} <span class="asterisk">*</span> <span tooltip-append-to-body="true"
+							      tooltip-placement="bottom"
+							      tooltip="{{::'printBadge.timeofvisitTooltip' | translate}}"><i class="fa fa-question-circle fa-lg"></i></span>
+						</label>
+						<div class="col-sm-8 col-md-8 col-lg-8">
+							<select id="timeOfVisit"
+							        class="form-control input-sm required"
+							        name="timeOfVisit"
+							        ng-model="printBadge.timeOfVisit"
+							        validator="required"
+							        valid-method="submit"
+							        ng-style="{'width': '100%'}"
+							        required-error-message="{{::'printBadge.errorMessage.timeOfVisitRequired'| translate }}"
+							        ng-options="hour.timeValue as hour.hoursValue for hour in startTimeObjList">
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-4 col-md-4 col-lg-4 text-right">{{::'printBadge.visitingContact'|
+							translate }} <span class="asterisk">*</span>
+						</label>
+						<div class="col-sm-8 col-md-8 col-lg-8">
+							<input id="visitingContact"
+							       type="text"
+							       name="visitingContact"
+							       class="form-control input-sm required"
+							       ng-model="printBadge.buyerFirstName"
+							       validator="required, validateAlphanumSpecial"
+							       required-error-message="{{::'printBadge.errorMessage.visitingContactRequired'| translate }}"
+							       validate-alphanum-special-error-message="{{::'printBadge.errorMessage.visitingContactSpecialCharRequired'| translate }}"
+							       valid-method="submit"
+							       maxlength="101" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-4 col-md-4 col-lg-4 text-right">{{::'printBadge.contactTitle'|
+							translate }} <span class="asterisk">*</span>
+						</label>
+						<div class="col-sm-8 col-md-8 col-lg-8">
+							<input id="contactTitle"
+							       type="text"
+							       name="contactTitle"
+							       class="form-control input-sm required"
+							       ng-model="printBadge.buyerTitle"
+							       validator="required, validateAlphanumSpecial"
+							       required-error-message="{{::'printBadge.errorMessage.contactTitleRequired'| translate }}"
+							       validate-alphanum-special-error-message="{{::'printBadge.errorMessage.contactTitleSpecialCharRequired'| translate }}"
+							       valid-method="submit"
+							       maxlength="50" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-4 col-md-4 col-lg-4 text-right">{{::'printBadge.visitDetails'|
+							translate }} <span class="asterisk">*</span>
+						</label>
+						<div class="col-sm-8 col-md-8 col-lg-8">
+							<textarea id="visitDetails"
+							          type="text"
+							          name="visitDetails"
+							          class="form-control vresize input-sm required"
+							          ng-model="printBadge.subject"
+							          validator="required, validateAlphanumSpecial"
+							          rows="4"
+							          required-error-message="{{::'printBadge.errorMessage.visitDetailsRequired'| translate }}"
+							          validate-alphanum-special-error-message="{{::'printBadge.errorMessage.visitDetailsSpecialCharRequired'| translate }}"
+							          valid-method="submit"
+							          maxlength="2000"></textarea>
+						</div>
+					</div>
+				</fieldset>
+				<div class="form-group"
+				     ng-show="$stateParams.clearForAccessFromReps !== 'isfromRepDetail' && $stateParams.clearForAccessFromReps !== 'isfromRepDetailTap'">
+					<div ng-if="!reprintBadge"
+					     class="col-sm-8 col-md-8 col-lg-8 col-sm-offset-4 col-md-offset-4 col-lg-offset-4 marginTP5">
+						<button name="printBadge"
+						        class="btn btn-success input-box"
+						        validation-submit="frmDataExtract"
+						        id="printBadge"
+						        ng-hide="$stateParams.clearForAccessFromReps === 'isfromRepDetail' || $stateParams.clearForAccessFromReps === 'isfromRepDetailTap'"
+						        ng-if="!CustomerSummaryList.selectedOption || printBadge.remoteBadgePrint === true || (CustomerSummaryList.selectedOption && printBadge.remoteBadgePrint === true)"
+						        data-ng-click="printBadgeRemote(printBadge,appointments,CustomerSummaryList.selectedOption);callGAPageTrack('printBadgeReport');">{{::'printBadge.printBadge'|
+							translate }}</button>
+						<div ng-if="printBadge.remoteBadgePrint === false && CustomerSummaryList.selectedOption"
+						     class="col-lg-3 padding0"
+						     tooltip-append-to-body="true"
+						     uib-tooltip-html="'{{::'printBadge.printBadgeDisable' | translate}}'"
+						     tooltip-placement="top">
+							<button name="printBadge"
+							        class="btn btn-success disabled input-box"
+							        type="button"
+							        id="printBadgeTooltip">{{::'printBadge.printBadge'| translate }}</button>
+						</div> 
+						<button id="cleardAccessresetIcon"
+						        id="clearedForAccess"
+						        validation-submit="frmDataExtract"
+						        data-ng-click="clearedForAccess(printBadge,appointments,CustomerSummaryList.selectedOption);callGAPageTrack('checkCompliance');"
+						        class="btn btn-primary input-box">{{::'printBadge.clearedForAccess'|
+							translate }}</button>
+					</div>
+					<div ng-if="reprintBadge"
+					     class="col-sm-8 col-md-8 col-lg-8 col-sm-offset-4 col-md-offset-4 col-lg-offset-4 marginTP5">
+						<button name="reprint"
+						        class="btn btn-success input-box"
+						        id="reprint"
+						        data-ng-click="loadRePrintBadge();">{{::'printBadge.label.reprint'|
+							translate }}</button> 
+						<button id="cleardAccessresetIcon"
+						        id="clearedForAccess"
+						        class="btn btn-warning input-box"
+						        data-ng-click="clearContent('action');"
+						        type="reset">{{::'common.clear'|
+							translate }}</button>
+					</div>
+				</div>
+				<div class="form-group"
+				     ng-show="$stateParams.clearForAccessFromReps === 'isfromRepDetail' || $stateParams.clearForAccessFromReps === 'isfromRepDetailTap' ">
+					<div class="col-sm-8 col-md-8 col-lg-8 col-sm-offset-4 col-md-offset-4 col-lg-offset-4 marginTP5">
+						<button id="cleardAccessresetIcon"
+						        id="clearedForAccess"
+						        validation-submit="frmDataExtract"
+						        data-ng-click="clearedForAccess(printBadge,appointments,CustomerSummaryList.selectedOption);"
+						        class="btn btn-primary input-box">{{::'printBadge.clearedForAccess'|
+							translate }}</button> 
+						<button id="cleardAccessresetIcon"
+						        id="clearedForAccess"
+						        data-ng-click="clearContent('manageReps');"
+						        type="reset"
+						        class="btn btn-warning input-box">{{::'common.clear'|
+							translate }}</button>
+					</div>
+				</div>
+			</form>
+		</fieldset>
+	</div>
+</div>
+<!-- <iframe id="printBagde" src="" style="display:none"></iframe> -->
+<iframe src=""
+        id="printBadgeIFrame"
+        name="printBadgeIFrame"
+        class="hidden"></iframe>
+<input type="text"
+       id="printBadge.iframeSource"
+       class="hidden"
+       value="" />
+<input type="text"
+       id="printBadge.badgeNumber"
+       class="hidden"
+       value="" />

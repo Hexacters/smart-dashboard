@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<module id="signOutModule">
+	<routers>
+		<router id="signOut" sticky="true" url="/signOut">
+			<views>
+				<view containerId="vendordash" templateUrl="app/ng1/views/signOut/signOut.html"></view>
+			</views>
+		</router>
+		<router id="signOut.signupList" sticky="true" url="/signupList">
+			<views>
+				<view containerId="signOutContainer" templateUrl="app/ng1/views/signOut/signoutList.html"></view>
+			</views>
+		</router>
+	</routers>
+	<services id="signOutServices">
+		<operations>
+			<operation name="getSignInEventsNotSignedOut" secure="true" serviceName="vendor" requestWrapper="request" responseWrapper="response" requestType="json" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/signOut/getSignInEventsNotSignedOut.json" mock="false">
+				<params>
+					<param name="userId" source="userProfile" key="userId"></param>
+					<param name="maxEvents" source="static" value="5"></param>
+				</params>
+			</operation>
+			<operation name="kioskSignOut" secure="true" serviceName="kiosk" requestWrapper="request" responseWrapper="response" requestType="json" method="post" url="VMClientProxyServlet" mockUrl="app/ng1/mock/signOut/kioskSignOut.json" mock="false">
+				<params>
+					<param name="emailId" source="userProfile" key="userId"></param>
+					<param name="requesterEmailId" source="userProfile" key="userId"></param>								
+				</params>
+			</operation>		
+		</operations> 
+	</services>	
+</module>

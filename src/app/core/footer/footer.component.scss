@@ -1,0 +1,20 @@
+footer {
+    width: 100%;
+    position: relative;
+    bottom: 0;
+    text-align: center;
+    color: #ffffff;
+    background-color: #636363;
+    padding: 13px 0;
+    font-size: 13px;
+
+    .chat-footer {
+        position: absolute;
+        float: right;
+        right: 0;
+        margin: 0 20px;
+        img {
+            width: 30px;
+        }
+    }
+}

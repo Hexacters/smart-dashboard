@@ -1,0 +1,166 @@
+<?xml version="1.0"?>
+<module id="users">
+<routers>
+	<router id="login" url="/login">
+		<views>
+			<view containerId="vendordash" templateUrl="app/ng1/views/users/login.html"></view>
+		</views>
+	</router>	
+	<router id="login.loginAttemptFailure" url="/loginAttemptFailure" type="dialog" auth="false">
+		<views>
+			<view containerId="modal" templateUrl="app/ng1/views/users/loginAttemptFailure.html"></view>
+		</views>
+	</router>
+	<router id="login.userAttemptLock" url="/userAttemptLock" type="dialog" auth="false">
+		<views>
+			<view containerId="modal" templateUrl="app/ng1/views/users/userAttemptLock.html"></view>
+		</views>
+	</router>
+	<router id="login.forgotForm" url="/forgotPassword" type="dialog" auth="false">
+		<views>
+			<view containerId="modal" templateUrl="app/ng1/views/users/forgotForm.html"></view>
+		</views>
+	</router>
+	<router id="login.forgotPasswordSuccess" url="/forgotPasswordSuccess" type="dialog" auth="false">
+		<views>
+			<view containerId="modal" templateUrl="app/ng1/views/users/emailSuccess.html"></view>
+		</views>
+	</router>
+	<router id="logout" url="/logout" auth="true">
+		<views>
+			<view templateUrl="app/ng1/views/users/logout.html"></view>
+		</views>
+	</router>
+	<router id="changePassword" url="/changePassword" type="dialog" modalClass="commonDialogW50">
+		<views>
+			<view containerId="modal" templateUrl="app/ng1/views/users/changePassword.html"></view>
+		</views>
+	</router>
+	<router id="changePasswordSuccess" url="/changePasswordSuccess" type="dialog" auth="false">
+		<views>
+			<view containerId="modal" templateUrl="app/ng1/views/users/changePasswordSuccess.html"></view>
+		</views>
+	</router>
+	<router id="changeUsername" url="/changeUsername" type="dialog" modalClass="commonDialogW50">
+		<views>
+			<view containerId="modal" templateUrl="app/ng1/views/users/changeUsername.html"></view>
+		</views>
+	</router>
+	<router id="changeUsernameSuccess" url="/changeUsernameSuccess" type="dialog" auth="false">
+		<views>
+			<view containerId="modal" templateUrl="app/ng1/views/users/changeUsernameSuccess.html"></view>
+		</views>
+	</router>
+	<router id="resetPassword" url="/resetPassword" auth="false">
+		<views>
+			<view containerId="vendordash" templateUrl="app/ng1/views/users/resetPassword.html"></view>
+		</views>
+	</router>
+	<router id="goToDashboard" url="/goToDashboard?userCredential&amp;destination&amp;token" auth="false">
+		<views>
+			<view containerId="vendordash" templateUrl="app/ng1/views/users/gotoDashboard.html"></view>
+		</views>
+	</router>
+	<router id="dashBoard" url="/dashBoard?destination&amp;dest" auth="false">
+		<views>
+			<view containerId="vendordash" templateUrl="app/ng1/views/users/dashBoard.html"></view>
+		</views>
+	</router>
+</routers>
+	
+<services id="users">
+	<operations>
+		<operation name="login" method="post" url="j_security_check" mockUrl="app/ng1/mock/users/login.json" requestWrapper="request" responseWrapper="response" mock="false"></operation>
+		<operation name="goToDashboard" method="post" url="goToDashboard" requestWrapper="request" responseWrapper="response" mock="false"></operation>
+		<operation name="getLoginStatus" secure="true" method="get" serviceName="users" url="services/getLoginStatus" requestWrapper="request" responseWrapper="response" mockUrl="app/ng1/mock/users/getLoginStatus.json" mock="false"></operation>
+		<operation name="setSessionAlive" serviceName="users" requestType="json" requestWrapper="request" responseWrapper="response" method="get" url="services/setSessionAlive" mockUrl="app/ng1/mock/common/success.json" mock="false"></operation>
+		<operation name="getPermissions" secure="true" method="get" requestType="json" serviceName="users" url="services/getPermissions" requestWrapper="request" responseWrapper="response" mockUrl="app/ng1/mock/users/getPermissions.json" mock="false">
+			<params>
+     				<param name="type" source="static" value="UI" />
+   			</params>
+		</operation>
+		<operation name="getSystemMessage" method="get" requestType="json" requestWrapper="request" serviceName="user" responseWrapper="response"  url="VMClientProxyServlet" mockUrl="app/ng1/mock/success.json" mock="false">
+			<params>
+			<param name="userTypeCode" source="userProfile" key="detail.actorType"></param>
+  			</params>
+		</operation>
+		<operation name="saveHideSystemMessage" method="post" requestType="json" requestWrapper="request" serviceName="user" responseWrapper="response"  url="VMClientProxyServlet" mockUrl="app/ng1/mock/success.json" mock="false">
+			<params>
+			<param name="userOid" source="userProfile" key="id"></param>
+			<param name="userTypeCode" source="userProfile" key="detail.actorType"></param>
+  			</params>
+		</operation>
+		<operation name="logout" method="post" requestWrapper="request" responseWrapper="response" url="j_spring_security_logout" mock="false"></operation>
+		<operation name="forgotPassword" secure="false" serviceName="user" requestWrapper="request" responseWrapper="response" requestType="json" method="post" url="VMClientProxyServlet" mockUrl="app/ng1/mock/users/forgotPassword.json" mock="false">
+			<params>
+				<param name="userId" source="data" key="userId"></param>
+   			</params>
+		</operation>
+		<operation name="resetPassword" secure="false" serviceName="user" requestWrapper="request" responseWrapper="response" requestType="json" method="post" url="VMClientProxyServlet" mockUrl="app/ng1/mock/users/resetPassword.json" mock="false">
+			<params>
+				<param name="userId" source="data" key="userId"></param>
+				<param name="oldPassword" source="data" key="userId"></param>
+				<param name="newPassword" source="data" key="userId"></param>
+				<param name="confirmPassword" source="data" key="userId"></param>
+   			</params>
+		</operation>
+		<operation name="updatePassword" secure="true" serviceName="user" requestWrapper="request" responseWrapper="response" requestType="json" method="post" url="VMClientProxyServlet" mockUrl="app/ng1/mock/users/updatePassword.json" mock="false">
+			<params>
+				<param name="userId" source="data" key="userId"></param>
+				<param name="oldPassword" source="data" key="userId"></param>
+				<param name="newPassword" source="data" key="userId"></param>
+				<param name="confirmPassword" source="data" key="userId"></param>
+   			</params>
+		</operation>
+		<operation name="updateUserId" secure="true" serviceName="user" requestWrapper="request" responseWrapper="response" requestType="json" method="post" url="VMClientProxyServlet" mockUrl="app/ng1/mock/users/updateUserId.json" mock="false">
+			<params>
+				<param name="existingUserId" source="data" key="userId"></param>
+				<param name="password" source="data" key="userId"></param>
+				<param name="newUserId" source="data" key="userId"></param>
+				<param name="confirmUserId" source="data" key="userId"></param>
+   			</params>
+		</operation>
+		<operation name="getBuyerProducts" method="get" requestWrapper="request" responseWrapper="response" mockUrl="app/ng1/mock/users/getBuyerProducts.json" mock="false" url="mock/users/getBuyerProducts.json"></operation>
+		<operation name="getLookups" method="get" serviceName="users" requestWrapper="request" responseWrapper="response" mockUrl="app/ng1/mock/users/getLookups.json" mock="false" url="services/getLookups"></operation>
+		<operation name="getAllLookupsByCategories" method="get" serviceName="lookup" requestWrapper="request" responseWrapper="response" mockUrl="app/ng1/mock/users/getAllLookupsByCategories.json" mock="false" url="VMClientProxyServlet" requestType="json"></operation>
+		<operation name="getServerDateAndTime" method="get" serviceName="users" requestWrapper="request" responseWrapper="response" mockUrl="app/ng1/mock/users/getServerDateAndTime.json" mock="false" url="services/getServerDateAndTime"></operation>
+		<operation name="logSignInEventForUser" secure="true" serviceName="common" requestWrapper="request" responseWrapper="response" requestType="json" method="post" url="VMClientProxyServlet" mockUrl="app/ng1/mock/users/logSignInEventForUser.json" mock="false">
+			<params>
+				<param name="actorOid" source="userProfile" key="detail.actorOid"></param>
+				<param name="appName" source="static" value="VD" />
+				<param name="actorTypeCode" source="userProfile" key="detail.actorType"></param>
+				<param name="customerName" source="static" value="N/A" />
+				<param name="customerOid" source="static" value="N/A" />
+				<param name="firstName" source="userProfile" key="firstName"></param>
+				<param name="lastName" source="userProfile" key="lastName"></param>
+				<param name="userId" source="userProfile" key="userId"></param>
+				<param name="userOid" source="userProfile" key="id"></param>
+   			</params>
+   		</operation>
+		<operation name="getSubscribedProduct" serviceName="product" requestType="json" mock="false" method="get" url="services/getSubscribedProduct" mockUrl="app/ng1/mock/users/getSubscribedProduct.json" requestWrapper="request" responseWrapper="response" />
+		<operation name="logOff" secure="true" method="get" serviceName="users" url="services/logOff" requestWrapper="request" responseWrapper="response" mockUrl="app/ng1/mock/users/logOff.json" mock="false" ></operation>
+		<operation name="checkOpenAccessEligibility" serviceName="shoppingCart" method="get" url="VMClientProxyServlet" mock="false" mockUrl="app/ng1/mock/shoppingCart/getCartItemEligibility.json" requestType="json" requestWrapper="request" responseWrapper="response" >
+			<params>
+				<param name="fein" source="userProfile" key="detail.fein"></param>
+				<param name="vendorOid" source="userProfile" key="detail.vendorOid"></param>
+				<param name="userOid" source="userProfile" key="id"></param>
+   			</params>
+		</operation>
+		<operation name="getAllPendingOrders" serviceName="shoppingCart" method="get" url="VMClientProxyServlet" mock="false" mockUrl="app/ng1/mock/shoppingCart/getAllPendingOrders.json" requestType="json" requestWrapper="request" responseWrapper="response" >
+			<params>
+				<param name="fein" source="userProfile" key="detail.fein"></param>
+				<param name="userOid" source="userProfile" key="id"></param>
+   			</params>
+		</operation>
+		<operation name="getAllItemCatalog" serviceName="shoppingCart" method="get" url="VMClientProxyServlet" mock="false" mockUrl="app/ng1/mock/shoppingCart/shoppingCartItemList.json" requestType="json" requestWrapper="request" responseWrapper="response" >
+		</operation>
+		<operation name="getUnPaidUsers" serviceName="user" method="get" url="VMClientProxyServlet" mock="false" mockUrl="app/ng1/mock/shoppingCart/getUnpaidUsersList.json" requestType="json" requestWrapper="request" responseWrapper="response" >
+			<params>
+				<param name="fein" source="userProfile" key="detail.fein"></param>
+   			</params>
+		</operation>
+		<operation name="getAppConfigPropByName" serviceName="registration" requestType="json" mock="false" method="get" url="VMClientProxyServlet" requestWrapper="request" responseWrapper="response" mockUrl="app/ng1/mock/users/getAppConfigPropByName.json">
+		</operation>
+	</operations>
+</services>
+</module>

@@ -1,0 +1,1127 @@
+<div class="row" ng-controller="reportsController" ng-init="advancedReportsURL()">
+	<div class="col-sm-12 col-md-12 col-lg-12">
+		<span class="pull-right" class="toolTip" tooltip-placement="left"
+			tooltip="Select to reload the contents of this section if you have been logged out"><a
+			data-ng-click="reloadReportIframe();">{{'common.reload' | translate}}</a></span>
+	</div>
+	<div class="col-sm-12 col-md-12 col-lg-12 iframeReportContainer" ng-if="!$appConfiguration.mock">
+		<div id="divLoading" ng-show="iframeLoading">
+			<img align="absmiddle" src="app/ng1/img/partial-loading.gif">&nbsp;{{'common.loading'
+			| translate}}
+		</div>
+		<div id="divIFrameHide" ng-show="!iframeLoading">
+			<iframe id="advancedReportUrl"
+				ng-src="{{advancedReportIframeUrl | trustAsResourceUrl}}"
+				iframe-onload="iframeLoadedCallBack()" frameborder="0"> </iframe>
+		</div>
+	</div>
+	<div ng-if="$appConfiguration.mock">
+	   <div id="loadAdvancedReportsMockContent">
+	      <link rel="stylesheet" type="text/css" href="views/test/rd_files/styles.css" />
+	      <link rel="stylesheet" type="text/css" href="views/test/rd_files/treeview.css" />
+	      <script type="text/javascript" src="views/test/core_files/js/wz_tooltip.js"></script>
+	      <!--end custom header content for this example-->
+	      <!--BEGIN SOURCE CODE FOR EXAMPLE =============================== -->
+	      <div class="clearFix" id="primaryContainerRD">
+	         <div id="treeContainer" class="treeContainer" style="display: block;">
+	            <div id="treeDiv1"></div>
+	         </div>
+	         <div id="rightContainer" class="rightContainer" style="width: 535px;">
+	            <div id="nvdr11" style="display:none">
+	               <div id="treeErrorContainer" style="display:none"></div>
+	               <div id="filterContainer">
+	                  <form id="report_filters_form" name="report_filters_form" onsubmit="return false;" method="post">
+	                     <div id="common.msgDiv" style="display:none">
+	                        <span class="formLabel"></span>
+	                        <span class="formInput" style="float:left"></span>
+	                     </div>
+	                     <div class="allTheWay">
+	                        <div class="fLeft">
+	                           Representative Participation
+	                        </div>
+	                        <div class="fRight">
+	                           <span class="asteriskTop">*</span><span style="float:left">Required</span>		
+	                           <div class="help" onmouseover="javascript:void(0);" onmouseout="UnTip();"></div>
+	                        </div>
+	                     </div>
+	                     <div style="float:left;padding:5px 0px 7px 10px;" class="wrapDetail">This report details all representatives representing your company and the health systems where they are registered.</div>
+	                     <input id="uri" name="uri" value="2" type="hidden">
+	                     <input id="label" name="label" value="Representative Participation" type="hidden">
+	                     <input id="isJSResource" name="isJSResource" value="false" type="hidden">
+	                     <!-- Create InVisible filters  -->
+	                     <input id="user_oid" name="user_oid" value="000000530100000014b7" type="hidden">
+	                     <input id="reportMaxCountMessage" name="reportMaxCountMessage" value="" type="hidden">
+	                     <!-- Display visible filters  -->		
+	                     <div class="formElemC">
+	                        <span class="formLabel">
+	                        <label for="">Export Type</label>			
+	                        </span>
+	                        <span class="formInput">
+	                           <select id="exportType" name="exportType" class="editSelect" style="width:238px;" onchange="javascript:void(0);">
+	                              <option value="XLSX">XLSX</option>
+	                              <option value="XLS">XLS</option>
+	                              <option value="PDF">PDF</option>
+	                              <option value="RTF">RTF</option>
+	                              <option value="CSV">CSV</option>
+	                           </select>
+	                        </span>
+	                     </div>
+	                     <div class="formElemC">	
+	                        <span class="formLabel"></span>
+	                        <span class="formInput">
+	                        <span class="leftRounder"></span><input id="getReport" name="getReport" value="Download Report" type="submit">
+	                        <span class="rightRounder"></span>		
+	                        </span>
+	                     </div>
+	                  </form>
+	                  <input id="getReportCaption" name="getReportCaption" value="Download Report" type="hidden">
+	                  <input id="viewReportCaption" name="viewReportCaption" value="View Report" type="hidden">
+	                  <input id="toolTipText" name="toolTipText" value="Company reps and where they are registered" type="hidden">
+	               </div>
+	               <div id="reportContainerDiv" style="float:left"></div>
+	            </div>
+	            <div id="nvdr12" style="display:none">
+	               <div id="treeErrorContainer" style="display:none"></div>
+	               <div id="filterContainer">
+	                  <form id="report_filters_form" name="report_filters_form" onsubmit="return false;" method="post">
+	                     <div id="common.msgDiv" style="display:none">
+	                        <span class="formLabel"></span>
+	                        <span class="formInput" style="float:left"></span>
+	                     </div>
+	                     <div class="allTheWay">
+	                        <div class="fLeft">
+	                           Representatives by Facility
+	                        </div>
+	                        <div class="fRight">
+	                           <span class="asteriskTop">*</span><span style="float:left">Required</span>		
+	                           <div class="help" onmouseover="javascript:void(0);" onmouseout="UnTip();"></div>
+	                        </div>
+	                     </div>
+	                     <div style="float:left;padding:5px 0px 7px 10px;" class="wrapDetail">This report details all representatives with your company by facility where they are registered.</div>
+	                     <input id="uri" name="uri" value="3" type="hidden">
+	                     <input id="label" name="label" value="Representatives by Facility" type="hidden">
+	                     <input id="isJSResource" name="isJSResource" value="false" type="hidden">
+	                     <!-- Create InVisible filters  -->
+	                     <input id="user_oid" name="user_oid" value="000000530100000014b7" type="hidden">
+	                     <input id="reportMaxCountMessage" name="reportMaxCountMessage" value="" type="hidden">
+	                     <!-- Display visible filters  -->		
+	                     <div class="formElemC">
+	                        <span class="formLabel">
+	                        <span class="asterisk">*</span>
+	                        <label for="">State</label>
+	                        </span>
+	                        <span class="formInput">
+	                           <img src="views/test/rd_files/images/icons/loginWarning.jpg" id="state_code.errorImgDiv" class="loginWarningIcon" alt="" style="display:none">
+	                           <select name="state_code" style="width:238px;height:54px;" id="state_code" multiple="multiple" size="0" onchange="javascript:void(0);" class="multi_select mandatory">
+	                              <option value="-ALL-">
+	                                 -ALL-
+	                              </option>
+	                              <option value="AZ">
+	                                 AZ
+	                              </option>
+	                              <option value="GA">
+	                                 GA
+	                              </option>
+	                              <option value="MA">
+	                                 MA
+	                              </option>
+	                              <option value="MD">
+	                                 MD
+	                              </option>
+	                              <option value="MN">
+	                                 MN
+	                              </option>
+	                              <option value="MO">
+	                                 MO
+	                              </option>
+	                              <option value="NC">
+	                                 NC
+	                              </option>
+	                           </select>
+	                        </span>
+	                     </div>
+	                     <div class="formElemC" id="state_code.errorDiv" style="display:none">
+	                        <span class="formLabel"></span><span class="formInput"></span>
+	                     </div>
+	                     <div class="formElemC">
+	                        <span class="formLabel">
+	                        <span class="asterisk">*</span>
+	                        <label for="">Facility</label>
+	                        </span>
+	                        <span class="formInput">
+	                        <img src="views/test/rd_files/images/icons/loginWarning.jpg" id="facility.errorImgDiv" class="loginWarningIcon" alt="" style="display:none">
+	                        <select name="facility" style="width:238px;height:54px;" id="facility" multiple="multiple" size="0" onchange="javascript:void(0);" class="multi_select mandatory">
+	                        </select>																												
+	                        </span>
+	                     </div>
+	                     <div class="formElemC" id="facility.errorDiv" style="display:none">
+	                        <span class="formLabel"></span><span class="formInput"></span>
+	                     </div>
+	                     <div class="formElemC">
+	                        <span class="formLabel">
+	                        <label for="">Export Type</label>			
+	                        </span>
+	                        <span class="formInput">
+	                           <select id="exportType" name="exportType" class="editSelect" style="width:238px;" onchange="javascript:void(0);">
+	                              <option value="XLSX">XLSX</option>
+	                              <option value="XLS">XLS</option>
+	                              <option value="PDF">PDF</option>
+	                              <option value="RTF">RTF</option>
+	                              <option value="CSV">CSV</option>
+	                           </select>
+	                        </span>
+	                     </div>
+	                     <div class="formElemC">	
+	                        <span class="formLabel"></span>
+	                        <span class="formInput">
+	                        <span class="leftRounder"></span><input id="getReport" name="getReport" value="Download Report" type="submit">
+	                        <span class="rightRounder"></span>		
+	                        </span>
+	                     </div>
+	                  </form>
+	                  <input id="getReportCaption" name="getReportCaption" value="Download Report" type="hidden">
+	                  <input id="viewReportCaption" name="viewReportCaption" value="View Report" type="hidden">
+	                  <input id="toolTipText" name="toolTipText" value="This report details all representatives with your company by facility where they are registered" type="hidden">
+	               </div>
+	               <div id="reportContainerDiv" style="float:left"></div>
+	            </div>
+	            <div id="nvdr13" style="display:none">
+	               <div id="treeErrorContainer" style="display:none"></div>
+	               <div id="filterContainer">
+	                  <form id="report_filters_form" name="report_filters_form" onsubmit="return false;" method="post">
+	                     <div id="common.msgDiv" style="display:none">
+	                        <span class="formLabel"></span>
+	                        <span class="formInput" style="float:left"></span>
+	                     </div>
+	                     <div class="allTheWay">
+	                        <div class="fLeft">
+	                           List of Registered Representatives
+	                        </div>
+	                        <div class="fRight">
+	                           <span class="asteriskTop">*</span><span style="float:left">Required</span>		
+	                           <div class="help" onmouseover="javascript:void(0);" onmouseout="UnTip();"></div>
+	                        </div>
+	                     </div>
+	                     <div style="float:left;padding:5px 0px 7px 10px;" class="wrapDetail">This report details the representatives registered under your corporate plan Tax ID(s).</div>
+	                     <input id="uri" name="uri" value="4" type="hidden">
+	                     <input id="label" name="label" value="List of Registered Representatives" type="hidden">
+	                     <input id="isJSResource" name="isJSResource" value="false" type="hidden">
+	                     <!-- Create InVisible filters  -->
+	                     <input id="user_oid" name="user_oid" value="000000530100000014b7" type="hidden">
+	                     <input id="reportMaxCountMessage" name="reportMaxCountMessage" value="" type="hidden">
+	                     <!-- Display visible filters  -->		
+	                     <div class="formElemC">
+	                        <span class="formLabel">
+	                        <label for="">Export Type</label>			
+	                        </span>
+	                        <span class="formInput">
+	                           <select id="exportType" name="exportType" class="editSelect" style="width:238px;" onchange="javascript:void(0);">
+	                              <option value="XLSX">XLSX</option>
+	                              <option value="XLS">XLS</option>
+	                              <option value="PDF">PDF</option>
+	                              <option value="RTF">RTF</option>
+	                              <option value="CSV">CSV</option>
+	                           </select>
+	                        </span>
+	                     </div>
+	                     <div class="formElemC">	
+	                        <span class="formLabel"></span>
+	                        <span class="formInput">
+	                        <span class="leftRounder"></span><input id="getReport" name="getReport" value="Download Report" type="submit">
+	                        <span class="rightRounder"></span>		
+	                        </span>
+	                     </div>
+	                  </form>
+	                  <input id="getReportCaption" name="getReportCaption" value="Download Report" type="hidden">
+	                  <input id="viewReportCaption" name="viewReportCaption" value="View Report" type="hidden">
+	                  <input id="toolTipText" name="toolTipText" value="This report details the representatives registered under your corporate plan Tax ID(s)." type="hidden">
+	               </div>
+	               <div id="reportContainerDiv" style="float:left"></div>
+	            </div>
+	            <div id="nvdr14" style="display:none">
+	               <div id="treeErrorContainer" style="display:none"></div>
+	               <div id="filterContainer">
+	                  <form id="report_filters_form" name="report_filters_form" onsubmit="return false;" method="post">
+	                     <div id="common.msgDiv" style="display:none">
+	                        <span class="formLabel"></span>
+	                        <span class="formInput" style="float:left"></span>
+	                     </div>
+	                     <div class="allTheWay">
+	                        <div class="fLeft">
+	                           Hospital Sign-In Log
+	                        </div>
+	                        <div class="fRight">
+	                           <span class="asteriskTop">*</span><span style="float:left">Required</span>		
+	                           <div class="help" onmouseover="javascript:void(0);" onmouseout="UnTip();"></div>
+	                        </div>
+	                     </div>
+	                     <div style="float:left;padding:5px 0px 7px 10px;" class="wrapDetail">This report details all sign-in events your representatives have completed at Vendormate health systems.  The information includes when the hospital visit occurred, which department the representative visited, as well as the purpose of his or her visit.</div>
+	                     <input id="uri" name="uri" value="5" type="hidden">
+	                     <input id="label" name="label" value="Hospital Sign-In Log" type="hidden">
+	                     <input id="isJSResource" name="isJSResource" value="false" type="hidden">
+	                     <!-- Create InVisible filters  -->
+	                     <input id="user_oid" name="user_oid" value="000000530100000014b7" type="hidden">
+	                     <input id="reportMaxCountMessage" name="reportMaxCountMessage" value="" type="hidden">
+	                     <!-- Display visible filters  -->		
+	                     <div class="formElemC">
+	                        <span class="formLabel">
+	                        <span class="asterisk">*</span>
+	                        <label for="">Signed In Date between</label>
+	                        </span>
+	                        <span class="formInput">
+	                        <img src="views/test/rd_files/images/icons/loginWarning.jpg" id="signed_in_on_local.errorImgDiv" class="loginWarningIcon" alt="" style="display:none">										
+	                        <span class="datetimepicker_wrap"><input name="signed_in_on_local" value="" id="signed_in_on_local" readonly="false" class="date-pick mandatory hasDatepicker" style="width:205px;" onchange="" type="text"><img title="Calendar" alt="Calendar" src="views/test/rd_files/images/calendar/calendarBtn.jpg" class="datetimepicker_trigger"></span>		
+	                        </span>
+	                     </div>
+	                     <div class="formElemC" id="signed_in_on_local.errorDiv" style="display:none">
+	                        <span class="formLabel"></span><span class="formInput"></span>
+	                     </div>
+	                     <div class="formElemC">
+	                        <span class="formLabel">
+	                        <span class="asterisk">*</span>
+	                        <label for="">and</label>
+	                        </span>
+	                        <span class="formInput">
+	                        <img src="views/test/rd_files/images/icons/loginWarning.jpg" id="signed_in_on_local_1.errorImgDiv" class="loginWarningIcon" alt="" style="display:none">										
+	                        <span class="datetimepicker_wrap"><input name="signed_in_on_local_1" value="" id="signed_in_on_local_1" readonly="false" class="date-pick mandatory hasDatepicker" style="width:205px;" onchange="" type="text"><img title="Calendar" alt="Calendar" src="views/test/rd_files/images/calendar/calendarBtn.jpg" class="datetimepicker_trigger"></span>		
+	                        </span>
+	                     </div>
+	                     <div class="formElemC" id="signed_in_on_local_1.errorDiv" style="display:none">
+	                        <span class="formLabel"></span><span class="formInput"></span>
+	                     </div>
+	                     <div class="formElemC">
+	                        <span class="formLabel">
+	                        <label for="">Export Type</label>			
+	                        </span>
+	                        <span class="formInput">
+	                           <select id="exportType" name="exportType" class="editSelect" style="width:238px;" onchange="javascript:void(0);">
+	                              <option value="XLSX">XLSX</option>
+	                              <option value="XLS">XLS</option>
+	                              <option value="PDF">PDF</option>
+	                              <option value="RTF">RTF</option>
+	                              <option value="CSV">CSV</option>
+	                           </select>
+	                        </span>
+	                     </div>
+	                     <div class="formElemC">	
+	                        <span class="formLabel"></span>
+	                        <span class="formInput">
+	                        <span class="leftRounder"></span><input id="getReport" name="getReport" value="Download Report" type="submit">
+	                        <span class="rightRounder"></span>		
+	                        </span>
+	                     </div>
+	                  </form>
+	                  <input id="getReportCaption" name="getReportCaption" value="Download Report" type="hidden">
+	                  <input id="viewReportCaption" name="viewReportCaption" value="View Report" type="hidden">
+	                  <input id="toolTipText" name="toolTipText" value="All sign-in event details" type="hidden">
+	               </div>
+	               <div id="reportContainerDiv" style="float:left"></div>
+	            </div>
+	            <div id="nvdr15" style="display:none">
+	               <div id="treeErrorContainer" style="display:none"></div>
+	               <div id="filterContainer">
+	                  <form id="report_filters_form" name="report_filters_form" onsubmit="return false;" method="post">
+	                     <div id="common.msgDiv" style="display:none">
+	                        <span class="formLabel"></span>
+	                        <span class="formInput" style="float:left"></span>
+	                     </div>
+	                     <div class="allTheWay">
+	                        <div class="fLeft">
+	                           Registration Credit Usage
+	                        </div>
+	                        <div class="fRight">
+	                           <span class="asteriskTop">*</span><span style="float:left">Required</span>		
+	                           <div class="help" onmouseover="javascript:void(0);" onmouseout="UnTip();"></div>
+	                        </div>
+	                     </div>
+	                     <div style="float:left;padding:5px 0px 7px 10px;" class="wrapDetail">This report details the usage of pre-purchased registration credits; information includes the health system, the date, and whether the credit usage was for a new or renewal credentialing fee.</div>
+	                     <input id="uri" name="uri" value="6" type="hidden">
+	                     <input id="label" name="label" value="Registration Credit Usage" type="hidden">
+	                     <input id="isJSResource" name="isJSResource" value="false" type="hidden">
+	                     <!-- Create InVisible filters  -->
+	                     <input id="user_oid" name="user_oid" value="000000530100000014b7" type="hidden">
+	                     <input id="reportMaxCountMessage" name="reportMaxCountMessage" value="" type="hidden">
+	                     <!-- Display visible filters  -->		
+	                     <div class="formElemC">
+	                        <span class="formLabel">
+	                        <label for="">Export Type</label>			
+	                        </span>
+	                        <span class="formInput">
+	                           <select id="exportType" name="exportType" class="editSelect" style="width:238px;" onchange="javascript:void(0);">
+	                              <option value="XLSX">XLSX</option>
+	                              <option value="XLS">XLS</option>
+	                              <option value="PDF">PDF</option>
+	                              <option value="RTF">RTF</option>
+	                              <option value="CSV">CSV</option>
+	                           </select>
+	                        </span>
+	                     </div>
+	                     <div class="formElemC">	
+	                        <span class="formLabel"></span>
+	                        <span class="formInput">
+	                        <span class="leftRounder"></span><input id="getReport" name="getReport" value="Download Report" type="submit">
+	                        <span class="rightRounder"></span>		
+	                        </span>
+	                     </div>
+	                  </form>
+	                  <input id="getReportCaption" name="getReportCaption" value="Download Report" type="hidden">
+	                  <input id="viewReportCaption" name="viewReportCaption" value="View Report" type="hidden">
+	                  <input id="toolTipText" name="toolTipText" value="Pre-purchased registration usage details" type="hidden">
+	               </div>
+	               <div id="reportContainerDiv" style="float:left"></div>
+	            </div>
+	            <div id="nvdr21" style="display:none">
+	               <div id="treeErrorContainer" style="display:none"></div>
+	               <div id="filterContainer">
+	                  <form id="report_filters_form" name="report_filters_form" onsubmit="return false;" method="post">
+	                     <div id="common.msgDiv" style="display:none">
+	                        <span class="formLabel"></span>
+	                        <span class="formInput" style="float:left"></span>
+	                     </div>
+	                     <div class="allTheWay">
+	                        <div class="fLeft">
+	                           Documents Status
+	                        </div>
+	                        <div class="fRight">
+	                           <span class="asteriskTop">*</span><span style="float:left">Required</span>		
+	                           <div class="help" onmouseover="javascript:void(0);" onmouseout="UnTip();"></div>
+	                        </div>
+	                     </div>
+	                     <div style="float:left;padding:5px 0px 7px 10px;" class="wrapDetail">This report details all document requirements based on its status of Completed, Expired, Missing, Rejected.</div>
+	                     <input id="uri" name="uri" value="9" type="hidden">
+	                     <input id="label" name="label" value="Documents Status" type="hidden">
+	                     <input id="isJSResource" name="isJSResource" value="false" type="hidden">
+	                     <!-- Create InVisible filters  -->
+	                     <input id="user_oid" name="user_oid" value="000000530100000014b7" type="hidden">
+	                     <input id="reportMaxCountMessage" name="reportMaxCountMessage" value="" type="hidden">
+	                     <!-- Display visible filters  -->		
+	                     <div class="formElemC">
+	                        <span class="formLabel">
+	                        <span class="asterisk">*</span>
+	                        <label for="">Select Category</label>
+	                        </span>
+	                        <span class="formInput">
+	                           <img src="views/test/rd_files/images/icons/loginWarning.jpg" id="comp_ind.errorImgDiv" class="loginWarningIcon" alt="" style="display:none">								
+	                           <select name="comp_ind" style="width:238px;height:54px;" id="comp_ind" multiple="multiple" size="0" onchange="" class="multi_select mandatory">
+	                              <option value="OPVC">
+	                                 Company
+	                              </option>
+	                              <option value="OPREP">
+	                                 Individual
+	                              </option>
+	                           </select>
+	                        </span>
+	                     </div>
+	                     <div class="formElemC" id="comp_ind.errorDiv" style="display:none">
+	                        <span class="formLabel"></span><span class="formInput"></span>
+	                     </div>
+	                     <div class="formElemC">
+	                        <span class="formLabel">
+	                        <span class="asterisk">*</span>
+	                        <label for="">Document Status</label>
+	                        </span>
+	                        <span class="formInput">
+	                           <img src="views/test/rd_files/images/icons/loginWarning.jpg" id="document_status.errorImgDiv" class="loginWarningIcon" alt="" style="display:none">								
+	                           <select name="document_status" style="width:238px;height:54px;" id="document_status" multiple="multiple" size="0" onchange="" class="multi_select mandatory">
+	                              <option value="-ALL-">
+	                                 -ALL-
+	                              </option>
+	                              <option value="Completed">
+	                                 Completed
+	                              </option>
+	                              <option value="Expired">
+	                                 Expired
+	                              </option>
+	                              <option value="Missing">
+	                                 Missing
+	                              </option>
+	                              <option value="Rejected">
+	                                 Rejected
+	                              </option>
+	                              <option value="Expiring">
+	                                 Expiring
+	                              </option>
+	                           </select>
+	                        </span>
+	                     </div>
+	                     <div class="formElemC" id="document_status.errorDiv" style="display:none">
+	                        <span class="formLabel"></span><span class="formInput"></span>
+	                     </div>
+	                     <div class="formElemC">
+	                        <span class="formLabel">
+	                        <label for="">Export Type</label>			
+	                        </span>
+	                        <span class="formInput">
+	                           <select id="exportType" name="exportType" class="editSelect" style="width:238px;" onchange="javascript:void(0);">
+	                              <option value="XLSX">XLSX</option>
+	                              <option value="XLS">XLS</option>
+	                              <option value="PDF">PDF</option>
+	                              <option value="RTF">RTF</option>
+	                              <option value="CSV">CSV</option>
+	                           </select>
+	                        </span>
+	                     </div>
+	                     <div class="formElemC">	
+	                        <span class="formLabel"></span>
+	                        <span class="formInput">
+	                        <span class="leftRounder"></span><input id="getReport" name="getReport" value="Download Report" type="submit">
+	                        <span class="rightRounder"></span>		
+	                        </span>
+	                     </div>
+	                  </form>
+	                  <input id="getReportCaption" name="getReportCaption" value="Download Report" type="hidden">
+	                  <input id="viewReportCaption" name="viewReportCaption" value="View Report" type="hidden">
+	                  <input id="toolTipText" name="toolTipText" value="This report details all document requirements based on its status of Completed, Expired, Missing, Rejected" type="hidden">
+	               </div>
+	               <div id="reportContainerDiv" style="float:left"></div>
+	            </div>
+	            <div id="nvdr22" style="display:none">
+	               <div id="treeErrorContainer" style="display:none"></div>
+	               <div id="filterContainer">
+	                  <form id="report_filters_form" name="report_filters_form" onsubmit="return false;" method="post">
+	                     <div id="common.msgDiv" style="display:none">
+	                        <span class="formLabel"></span>
+	                        <span class="formInput" style="float:left"></span>
+	                     </div>
+	                     <div class="allTheWay">
+	                        <div class="fLeft">
+	                           Uploaded Documents by Representative
+	                        </div>
+	                        <div class="fRight">
+	                           <span class="asteriskTop">*</span><span style="float:left">Required</span>		
+	                           <div class="help" onmouseover="javascript:void(0);" onmouseout="UnTip();"></div>
+	                        </div>
+	                     </div>
+	                     <div style="float:left;padding:5px 0px 7px 10px;" class="wrapDetail">This report details all documentation that has been uploaded into the Vendormate system by your representatives.</div>
+	                     <input id="uri" name="uri" value="10" type="hidden">
+	                     <input id="label" name="label" value="Uploaded Documents by Representative" type="hidden">
+	                     <input id="isJSResource" name="isJSResource" value="false" type="hidden">
+	                     <!-- Create InVisible filters  -->
+	                     <input id="user_oid" name="user_oid" value="000000530100000014b7" type="hidden">
+	                     <input id="reportMaxCountMessage" name="reportMaxCountMessage" value="" type="hidden">
+	                     <!-- Display visible filters  -->		
+	                     <div class="formElemC">
+	                        <span class="formLabel">
+	                        <label for="">Export Type</label>			
+	                        </span>
+	                        <span class="formInput">
+	                           <select id="exportType" name="exportType" class="editSelect" style="width:238px;" onchange="javascript:void(0);">
+	                              <option value="XLSX">XLSX</option>
+	                              <option value="XLS">XLS</option>
+	                              <option value="PDF">PDF</option>
+	                              <option value="RTF">RTF</option>
+	                              <option value="CSV">CSV</option>
+	                           </select>
+	                        </span>
+	                     </div>
+	                     <div class="formElemC">	
+	                        <span class="formLabel"></span>
+	                        <span class="formInput">
+	                        <span class="leftRounder"></span><input id="getReport" name="getReport" value="Download Report" type="submit">
+	                        <span class="rightRounder"></span>		
+	                        </span>
+	                     </div>
+	                  </form>
+	                  <input id="getReportCaption" name="getReportCaption" value="Download Report" type="hidden">
+	                  <input id="viewReportCaption" name="viewReportCaption" value="View Report" type="hidden">
+	                  <input id="toolTipText" name="toolTipText" value="Uploaded Documents by Representative Report" type="hidden">
+	               </div>
+	               <div id="reportContainerDiv" style="float:left"></div>
+	            </div>
+	            <div id="nvdr23" style="display:none">
+	               <div id="treeErrorContainer" style="display:none"></div>
+	               <div id="filterContainer">
+	                  <form id="report_filters_form" name="report_filters_form" onsubmit="return false;" method="post">
+	                     <div id="common.msgDiv" style="display:none">
+	                        <span class="formLabel"></span>
+	                        <span class="formInput" style="float:left"></span>
+	                     </div>
+	                     <div class="allTheWay">
+	                        <div class="fLeft">
+	                           Missing Documents by Health System
+	                        </div>
+	                        <div class="fRight">
+	                           <span class="asteriskTop">*</span><span style="float:left">Required</span>		
+	                           <div class="help" onmouseover="javascript:void(0);" onmouseout="UnTip();"></div>
+	                        </div>
+	                     </div>
+	                     <div style="float:left;padding:5px 0px 7px 10px;" class="wrapDetail">This report details all outstanding document requirements needed for compliance for your health system customers.</div>
+	                     <input id="uri" name="uri" value="11" type="hidden">
+	                     <input id="label" name="label" value="Missing Documents by Health System" type="hidden">
+	                     <input id="isJSResource" name="isJSResource" value="false" type="hidden">
+	                     <!-- Create InVisible filters  -->
+	                     <input id="user_oid" name="user_oid" value="000000530100000014b7" type="hidden">
+	                     <input id="reportMaxCountMessage" name="reportMaxCountMessage" value="" type="hidden">
+	                     <!-- Display visible filters  -->		
+	                     <div class="formElemC">
+	                        <span class="formLabel">
+	                        <span class="asterisk">*</span>
+	                        <label for="">Select Category</label>
+	                        </span>
+	                        <span class="formInput">
+	                           <img src="views/test/rd_files/images/icons/loginWarning.jpg" id="comp_ind.errorImgDiv" class="loginWarningIcon" alt="" style="display:none">								
+	                           <select name="comp_ind" style="width:238px;height:54px;" id="comp_ind" multiple="multiple" size="0" onchange="" class="multi_select mandatory">
+	                              <option value="OPVC">
+	                                 Company
+	                              </option>
+	                              <option value="OPREP">
+	                                 Individual
+	                              </option>
+	                           </select>
+	                        </span>
+	                     </div>
+	                     <div class="formElemC" id="comp_ind.errorDiv" style="display:none">
+	                        <span class="formLabel"></span><span class="formInput"></span>
+	                     </div>
+	                     <div class="formElemC">
+	                        <span class="formLabel">
+	                        <label for="">Export Type</label>			
+	                        </span>
+	                        <span class="formInput">
+	                           <select id="exportType" name="exportType" class="editSelect" style="width:238px;" onchange="javascript:void(0);">
+	                              <option value="XLSX">XLSX</option>
+	                              <option value="XLS">XLS</option>
+	                              <option value="PDF">PDF</option>
+	                              <option value="RTF">RTF</option>
+	                              <option value="CSV">CSV</option>
+	                           </select>
+	                        </span>
+	                     </div>
+	                     <div class="formElemC">	
+	                        <span class="formLabel"></span>
+	                        <span class="formInput">
+	                        <span class="leftRounder"></span><input id="getReport" name="getReport" value="Download Report" type="submit">
+	                        <span class="rightRounder"></span>		
+	                        </span>
+	                     </div>
+	                  </form>
+	                  <input id="getReportCaption" name="getReportCaption" value="Download Report" type="hidden">
+	                  <input id="viewReportCaption" name="viewReportCaption" value="View Report" type="hidden">
+	                  <input id="toolTipText" name="toolTipText" value="Outstanding document details by health system" type="hidden">
+	               </div>
+	               <div id="reportContainerDiv" style="float:left"></div>
+	            </div>
+	            <div id="nvdr24" style="display:none">
+	               <div id="treeErrorContainer" style="display:none"></div>
+	               <div id="filterContainer">
+	                  <form id="report_filters_form" name="report_filters_form" onsubmit="return false;" method="post">
+	                     <div id="common.msgDiv" style="display:none">
+	                        <span class="formLabel"></span>
+	                        <span class="formInput" style="float:left"></span>
+	                     </div>
+	                     <div class="allTheWay">
+	                        <div class="fLeft">
+	                           Missing Policies by Health System
+	                        </div>
+	                        <div class="fRight">
+	                           <span class="asteriskTop">*</span><span style="float:left">Required</span>		
+	                           <div class="help" onmouseover="javascript:void(0);" onmouseout="UnTip();"></div>
+	                        </div>
+	                     </div>
+	                     <div style="float:left;padding:5px 0px 7px 10px;" class="wrapDetail">This report details all outstanding policy acknowledgements needed for compliance for your health system customers.</div>
+	                     <input id="uri" name="uri" value="12" type="hidden">
+	                     <input id="label" name="label" value="Missing Policies by Health System" type="hidden">
+	                     <input id="isJSResource" name="isJSResource" value="false" type="hidden">
+	                     <!-- Create InVisible filters  -->
+	                     <input id="user_oid" name="user_oid" value="000000530100000014b7" type="hidden">
+	                     <input id="reportMaxCountMessage" name="reportMaxCountMessage" value="" type="hidden">
+	                     <!-- Display visible filters  -->		
+	                     <div class="formElemC">
+	                        <span class="formLabel">
+	                        <label for="">Export Type</label>			
+	                        </span>
+	                        <span class="formInput">
+	                           <select id="exportType" name="exportType" class="editSelect" style="width:238px;" onchange="javascript:void(0);">
+	                              <option value="XLSX">XLSX</option>
+	                              <option value="XLS">XLS</option>
+	                              <option value="PDF">PDF</option>
+	                              <option value="RTF">RTF</option>
+	                              <option value="CSV">CSV</option>
+	                           </select>
+	                        </span>
+	                     </div>
+	                     <div class="formElemC">	
+	                        <span class="formLabel"></span>
+	                        <span class="formInput">
+	                        <span class="leftRounder"></span><input id="getReport" name="getReport" value="Download Report" type="submit">
+	                        <span class="rightRounder"></span>		
+	                        </span>
+	                     </div>
+	                  </form>
+	                  <input id="getReportCaption" name="getReportCaption" value="Download Report" type="hidden">
+	                  <input id="viewReportCaption" name="viewReportCaption" value="View Report" type="hidden">
+	                  <input id="toolTipText" name="toolTipText" value="Outstanding policy acknowledgements by health system" type="hidden">
+	               </div>
+	               <div id="reportContainerDiv" style="float:left"></div>
+	            </div>
+	            <div id="nvdr25" style="display:none">
+	               <div id="treeErrorContainer" style="display:none"></div>
+	               <div id="filterContainer">
+	                  <form id="report_filters_form" name="report_filters_form" onsubmit="return false;" method="post">
+	                     <div id="common.msgDiv" style="display:none">
+	                        <span class="formLabel"></span>
+	                        <span class="formInput" style="float:left"></span>
+	                     </div>
+	                     <div class="allTheWay">
+	                        <div class="fLeft">
+	                           Policies Accepted by Representatives
+	                        </div>
+	                        <div class="fRight">
+	                           <span class="asteriskTop">*</span><span style="float:left">Required</span>		
+	                           <div class="help" onmouseover="javascript:void(0);" onmouseout="UnTip();"></div>
+	                        </div>
+	                     </div>
+	                     <div style="float:left;padding:5px 0px 7px 10px;" class="wrapDetail">This report details all acknowledged policies by health systems and reps</div>
+	                     <input id="uri" name="uri" value="13" type="hidden">
+	                     <input id="label" name="label" value="Policies Accepted by Representatives" type="hidden">
+	                     <input id="isJSResource" name="isJSResource" value="false" type="hidden">
+	                     <!-- Create InVisible filters  -->
+	                     <input id="user_oid" name="user_oid" value="000000530100000014b7" type="hidden">
+	                     <input id="reportMaxCountMessage" name="reportMaxCountMessage" value="" type="hidden">
+	                     <!-- Display visible filters  -->		
+	                     <div class="formElemC">
+	                        <span class="formLabel">
+	                        <span class="asterisk">*</span>
+	                        <label for="">Health System</label>
+	                        </span>
+	                        <span class="formInput">
+	                           <img src="views/test/rd_files/images/icons/loginWarning.jpg" id="customer_key.errorImgDiv" class="loginWarningIcon" alt="" style="display:none">
+	                           <select name="customer_key" style="width:238px;height:54px;" id="customer_key" multiple="multiple" size="0" onchange="javascript:void(0);" class="multi_select mandatory">
+	                              <option value="2935">
+	                                 ABC Medical Corporation
+	                              </option>
+	                              <option value="586">
+	                                 Adventist Health System
+	                              </option>
+	                              <option value="194">
+	                                 Baptist Health South Florida
+	                              </option>
+	                              <option value="74">
+	                                 Bluefield Regional Medical Center
+	                              </option>
+	                              <option value="2911">
+	                                 BS Docrepo Customer
+	                              </option>
+	                              <option value="363">
+	                                 Cape Cod Healthcare
+	                              </option>
+	                              <option value="509">
+	                                 Cardinal Health
+	                              </option>
+	                              <option value="465">
+	                                 CaroMont Health(Gaston Memorial)(NC)
+	                              </option>
+	                              <option value="9">
+	                                 Central Washington Hospital
+	                              </option>
+	                              <option value="604">
+	                                 Chesapeake Regional Medical Center(VA)
+	                              </option>
+	                              <option value="289">
+	                                 Children's Medical Center
+	                              </option>
+	                              <option value="508">
+	                                 Cleveland Clinic Health System
+	                              </option>
+	                              <option value="444">
+	                                 CoxHealth
+	                              </option>
+	                              <option value="1">
+	                                 Freeman
+	                              </option>
+	                              <option value="1275">
+	                                 Gwinnett Surgery Center
+	                              </option>
+	                              <option value="2928">
+	                                 Howard Health Hospital
+	                              </option>
+	                              <option value="62">
+	                                 Jefferson Regional Medical Center
+	                              </option>
+	                              <option value="460">
+	                                 Johns Hopkins Medicine
+	                              </option>
+	                              <option value="225">
+	                                 St. Simons Medical Center
+	                              </option>
+	                              <option value="378">
+	                                 Summit Health
+	                              </option>
+	                              <option value="426">
+	                                 Texas Spine and Joint Hosiptal
+	                              </option>
+	                              <option value="319">
+	                                 Vendormate, Inc.
+	                              </option>
+	                           </select>
+	                        </span>
+	                     </div>
+	                     <div class="formElemC" id="customer_key.errorDiv" style="display:none">
+	                        <span class="formLabel"></span><span class="formInput"></span>
+	                     </div>
+	                     <div class="formElemC">
+	                        <span class="formLabel">
+	                        <label for="">Export Type</label>			
+	                        </span>
+	                        <span class="formInput">
+	                           <select id="exportType" name="exportType" class="editSelect" style="width:238px;" onchange="javascript:void(0);">
+	                              <option value="XLSX">XLSX</option>
+	                              <option value="XLS">XLS</option>
+	                              <option value="PDF">PDF</option>
+	                              <option value="RTF">RTF</option>
+	                              <option value="CSV">CSV</option>
+	                           </select>
+	                        </span>
+	                     </div>
+	                     <div class="formElemC">	
+	                        <span class="formLabel"></span>
+	                        <span class="formInput">
+	                        <span class="leftRounder"></span><input id="getReport" name="getReport" value="Download Report" type="submit">
+	                        <span class="rightRounder"></span>		
+	                        </span>
+	                     </div>
+	                  </form>
+	                  <input id="getReportCaption" name="getReportCaption" value="Download Report" type="hidden">
+	                  <input id="viewReportCaption" name="viewReportCaption" value="View Report" type="hidden">
+	                  <input id="toolTipText" name="toolTipText" value="This report details all acknowledged policies by health systems and reps" type="hidden">
+	               </div>
+	               <div id="reportContainerDiv" style="float:left"></div>
+	            </div>
+	            <div id="nvdr26" style="display:none">
+	               <form id="report_filters_form" name="report_filters_form" onsubmit="return false;" method="post">
+	                  <div id="common.msgDiv" style="display:none">
+	                     <span class="formLabel"></span>
+	                     <span class="formInput" style="float:left"></span>
+	                  </div>
+	                  <div class="allTheWay">
+	                     <div class="fLeft">
+	                        Compliance Status Report
+	                     </div>
+	                     <div class="fRight">
+	                        <span class="asteriskTop">*</span><span style="float:left">Required</span>		
+	                        <div class="help" onmouseover="javascript:void(0);" onmouseout="UnTip();"></div>
+	                     </div>
+	                  </div>
+	                  <div style="float:left;padding:5px 0px 7px 10px;" class="wrapDetail">This report summarizes the compliance status for each rep at each Vendormate health system. with which that rep has registered.</div>
+	                  <input id="uri" name="uri" value="13" type="hidden">
+	                  <input id="label" name="label" value="Compliance Status Report" type="hidden">
+	                  <input id="isJSResource" name="isJSResource" value="false" type="hidden">
+	                  <!-- Create InVisible filters  -->
+	                  <input id="reportMaxCountMessage" name="reportMaxCountMessage" value="" type="hidden">
+	                  <input id="user_oid" name="user_oid" value="000000530100000014b7" type="hidden">
+	                  <!-- Display visible filters  -->		
+	                  <div class="formElemC">
+	                     <span class="formLabel">
+	                     <label for="">Export Type</label>			
+	                     </span>
+	                     <span class="formInput">
+	                        <select id="exportType" name="exportType" class="editSelect" style="width:238px;" onchange="javascript:void(0);">
+	                           <option value="XLSX">XLSX</option>
+	                           <option value="XLS">XLS</option>
+	                           <option value="PDF">PDF</option>
+	                           <option value="RTF">RTF</option>
+	                           <option value="CSV">CSV</option>
+	                        </select>
+	                     </span>
+	                  </div>
+	                  <div class="formElemC">	
+	                     <span class="formLabel"></span>
+	                     <span class="formInput">
+	                     <span class="leftRounder"></span><input id="getReport" name="getReport" value="Download Report" type="submit">
+	                     <span class="rightRounder"></span>		
+	                     </span>
+	                  </div>
+	               </form>
+	               <input id="getReportCaption" name="getReportCaption" value="Download Report" type="hidden">
+	               <input id="viewReportCaption" name="viewReportCaption" value="View Report" type="hidden">
+	               <input id="toolTipText" name="toolTipText" value="This report summarizes the compliance status for each rep at each Vendormate health system. with which that rep has registered." type="hidden">
+	            </div>
+	            <div id="nvdr31" style="display:none">
+	               <div id="treeErrorContainer" style="display:none"></div>
+	               <div id="filterContainer">
+	                  <form id="report_filters_form" name="report_filters_form" onsubmit="return false;" method="post">
+	                     <div id="common.msgDiv" style="display:none">
+	                        <span class="formLabel"></span>
+	                        <span class="formInput" style="float:left"></span>
+	                     </div>
+	                     <div class="allTheWay">
+	                        <div class="fLeft">
+	                           Document Repository Status
+	                        </div>
+	                        <div class="fRight">
+	                           <span class="asteriskTop">*</span><span style="float:left">Required</span>		
+	                           <div class="help" onmouseover="javascript:void(0);" onmouseout="UnTip();"></div>
+	                        </div>
+	                     </div>
+	                     <div style="float:left;padding:5px 0px 7px 10px;" class="wrapDetail">This report is a list of representatives with Document Repository profiles.</div>
+	                     <input id="uri" name="uri" value="15" type="hidden">
+	                     <input id="label" name="label" value="Document Repository Status" type="hidden">
+	                     <input id="isJSResource" name="isJSResource" value="false" type="hidden">
+	                     <!-- Create InVisible filters  -->
+	                     <input id="user_oid" name="user_oid" value="000000530100000014b7" type="hidden">
+	                     <input id="reportMaxCountMessage" name="reportMaxCountMessage" value="" type="hidden">
+	                     <!-- Display visible filters  -->		
+	                     <div class="formElemC">
+	                        <span class="formLabel">
+	                        <label for="">Export Type</label>			
+	                        </span>
+	                        <span class="formInput">
+	                           <select id="exportType" name="exportType" class="editSelect" style="width:238px;" onchange="javascript:void(0);">
+	                              <option value="XLSX">XLSX</option>
+	                              <option value="XLS">XLS</option>
+	                              <option value="PDF">PDF</option>
+	                              <option value="RTF">RTF</option>
+	                              <option value="CSV">CSV</option>
+	                           </select>
+	                        </span>
+	                     </div>
+	                     <div class="formElemC">	
+	                        <span class="formLabel"></span>
+	                        <span class="formInput">
+	                        <span class="leftRounder"></span><input id="getReport" name="getReport" value="Download Report" type="submit">
+	                        <span class="rightRounder"></span>		
+	                        </span>
+	                     </div>
+	                  </form>
+	                  <input id="getReportCaption" name="getReportCaption" value="Download Report" type="hidden">
+	                  <input id="viewReportCaption" name="viewReportCaption" value="View Report" type="hidden">
+	                  <input id="toolTipText" name="toolTipText" value="This report is a list of representatives with Document Repository profiles." type="hidden">
+	               </div>
+	               <div id="reportContainerDiv" style="float:left"></div>
+	            </div>
+	            <div id="nvdr32" style="display:none">
+	               <div id="treeErrorContainer" style="display:none"></div>
+	               <div id="filterContainer">
+	                  <form id="report_filters_form" name="report_filters_form" onsubmit="return false;" method="post">
+	                     <div id="common.msgDiv" style="display:none">
+	                        <span class="formLabel"></span>
+	                        <span class="formInput" style="float:left"></span>
+	                     </div>
+	                     <div class="allTheWay">
+	                        <div class="fLeft">
+	                           Document Repository Doc Status
+	                        </div>
+	                        <div class="fRight">
+	                           <span class="asteriskTop">*</span><span style="float:left">Required</span>		
+	                           <div class="help" onmouseover="javascript:void(0);" onmouseout="UnTip();"></div>
+	                        </div>
+	                     </div>
+	                     <div style="float:left;padding:5px 0px 7px 10px;" class="wrapDetail">This report details the status of document requirements in the Document Repository, and does not include documentation status for hospital requirements.</div>
+	                     <input id="uri" name="uri" value="16" type="hidden">
+	                     <input id="label" name="label" value="Document Repository Doc Status" type="hidden">
+	                     <input id="isJSResource" name="isJSResource" value="false" type="hidden">
+	                     <!-- Create InVisible filters  -->
+	                     <input id="user_oid" name="user_oid" value="000000530100000014b7" type="hidden">
+	                     <input id="reportMaxCountMessage" name="reportMaxCountMessage" value="" type="hidden">
+	                     <!-- Display visible filters  -->		
+	                     <div class="formElemC">
+	                        <span class="formLabel">
+	                        <span class="asterisk">*</span>
+	                        <label for="">Select Category</label>
+	                        </span>
+	                        <span class="formInput">
+	                           <img src="views/test/rd_files/images/icons/loginWarning.jpg" id="comp_ind.errorImgDiv" class="loginWarningIcon" alt="" style="display:none">								
+	                           <select name="comp_ind" style="width:238px;height:54px;" id="comp_ind" multiple="multiple" size="0" onchange="" class="multi_select mandatory">
+	                              <option value="OPVC">
+	                                 Company
+	                              </option>
+	                              <option value="OPREP">
+	                                 Individual
+	                              </option>
+	                           </select>
+	                        </span>
+	                     </div>
+	                     <div class="formElemC" id="comp_ind.errorDiv" style="display:none">
+	                        <span class="formLabel"></span><span class="formInput"></span>
+	                     </div>
+	                     <div class="formElemC">
+	                        <span class="formLabel">
+	                        <span class="asterisk">*</span>
+	                        <label for="">Document Status</label>
+	                        </span>
+	                        <span class="formInput">
+	                           <img src="views/test/rd_files/images/icons/loginWarning.jpg" id="document_status.errorImgDiv" class="loginWarningIcon" alt="" style="display:none">								
+	                           <select name="document_status" style="width:238px;height:54px;" id="document_status" multiple="multiple" size="0" onchange="" class="multi_select mandatory">
+	                              <option value="-ALL-">
+	                                 -ALL-
+	                              </option>
+	                              <option value="Completed">
+	                                 Completed
+	                              </option>
+	                              <option value="Expired">
+	                                 Expired
+	                              </option>
+	                              <option value="Missing">
+	                                 Missing
+	                              </option>
+	                              <option value="Rejected">
+	                                 Rejected
+	                              </option>
+	                              <option value="Expiring">
+	                                 Expiring
+	                              </option>
+	                           </select>
+	                        </span>
+	                     </div>
+	                     <div class="formElemC" id="document_status.errorDiv" style="display:none">
+	                        <span class="formLabel"></span><span class="formInput"></span>
+	                     </div>
+	                     <div class="formElemC">
+	                        <span class="formLabel">
+	                        <span class="asterisk">*</span>
+	                        <label for="">Document  Requirements</label>
+	                        </span>
+	                        <span class="formInput">
+	                           <img src="views/test/rd_files/images/icons/loginWarning.jpg" id="document_requirements.errorImgDiv" class="loginWarningIcon" alt="" style="display:none">
+	                           <select name="document_requirements" style="width:238px;height:54px;" id="document_requirements" multiple="multiple" size="0" onchange="javascript:void(0);" class="multi_select mandatory">
+	                              <option value="-ALL-">
+	                                 -ALL-
+	                              </option>
+	                              <option value="Badge Photo">
+	                                 Badge Photo
+	                              </option>
+	                              <option value="Influenza">
+	                                 Influenza
+	                              </option>
+	                              <option value="REP-Code of Conduct-Remove">
+	                                 REP-Code of Conduct-Remove
+	                              </option>
+	                              <option value="Secretary of State Filing">
+	                                 Secretary of State Filing
+	                              </option>
+	                           </select>
+	                        </span>
+	                     </div>
+	                     <div class="formElemC" id="document_requirements.errorDiv" style="display:none">
+	                        <span class="formLabel"></span><span class="formInput"></span>
+	                     </div>
+	                     <div class="formElemC">
+	                        <span class="formLabel">
+	                        <label for="">Export Type</label>			
+	                        </span>
+	                        <span class="formInput">
+	                           <select id="exportType" name="exportType" class="editSelect" style="width:238px;" onchange="javascript:void(0);">
+	                              <option value="XLSX">XLSX</option>
+	                              <option value="XLS">XLS</option>
+	                              <option value="PDF">PDF</option>
+	                              <option value="RTF">RTF</option>
+	                              <option value="CSV">CSV</option>
+	                           </select>
+	                        </span>
+	                     </div>
+	                     <div class="formElemC">	
+	                        <span class="formLabel"></span>
+	                        <span class="formInput">
+	                        <span class="leftRounder"></span><input id="getReport" name="getReport" value="Download Report" type="submit">
+	                        <span class="rightRounder"></span>		
+	                        </span>
+	                     </div>
+	                  </form>
+	                  <input id="getReportCaption" name="getReportCaption" value="Download Report" type="hidden">
+	                  <input id="viewReportCaption" name="viewReportCaption" value="View Report" type="hidden">
+	                  <input id="toolTipText" name="toolTipText" value="This report details the status of document requirements in the Document Repository, and does not include documentation status for hospital requirements." type="hidden">
+	               </div>
+	               <div id="reportContainerDiv" style="float:left"></div>
+	            </div>
+	         </div>
+	      </div>
+	      <script>
+	         (function() {
+	         	var tree; //will hold our TreeView instance
+	         	
+	         	function init() {
+	         		//create a new tree:
+	         		tree = new YAHOO.widget.TreeView("treeDiv1");
+	         
+	         		//turn dynamic loading on for entire tree:
+	         		//tree.setDynamicLoad(loadNodeData, currentIconMode);
+	         
+	         		//get root node for tree:
+	         		var root = tree.getRoot();
+	         
+	         		//add child nodes for tree; our top level nodes are bands
+	         		//var bands = ["User Status Reports","Company Status Reports","Alert Reports","Registration Reports","Conflict of Interest"];
+	         		
+	         		var bands = ["Participation","Compliance","Document Repository"];
+	         
+	         		for (var i=0, j=bands.length; i<j; i++) {
+	         			var rootNode = new YAHOO.widget.MenuNode(bands[i], root, false);
+	         			var bands1 = [
+	         				[
+	         					'<a title="Representative Participation:Company reps and where they are registered" target="_self" href="javascript:;" onclick="javascript:showFilters(\'nvdr11\')" class="ygtvlabel" id="ygtvlabelel16">Representative Participation</a>',
+	         					'<a title="Representatives by Facility:This report details all representatives with your company by facility where they are registered" href="javascript:;" onclick="javascript:showFilters(\'nvdr12\')" class="ygtvlabel" id="ygtvlabelel19">Representatives by Facility</a>',
+	         					'<a title="List of Registered Representatives:This report details the representatives registered under your corporate plan Tax ID(s)." target="_self" href="javascript:;" onclick="javascript:showFilters(\'nvdr13\')" class="ygtvlabel" id="ygtvlabelel16">List of Registered Representatives</a>',
+	         					'<a title="Hospital Sign-In Log:All sign-in event details" target="_self" href="javascript:;" onclick="javascript:showFilters(\'nvdr14\')" class="ygtvlabel" id="ygtvlabelel19">Hospital Sign-In Log</a>',
+	         					'<a title="Registration Credit Usage:Pre-purchased registration usage details" target="_self" href="javascript:;" onclick="javascript:showFilters(\'nvdr15\')" class="ygtvlabel" id="ygtvlabelel16">Registration Credit Usage</a>'
+	         				],
+	         				[
+	         					'<a title="Documents Status:This report details all document requirements based on its status of Completed, Expired, Missing, Rejected" target="_self" href="javascript:;" onclick="javascript:showFilters(\'nvdr21\')" class="ygtvlabel" id="ygtvlabelel6">Documents Status</a>',
+	         					'<a title="Uploaded Documents by Representative:Uploaded Documents by Representative Report" target="_self" href="javascript:;" onclick="javascript:showFilters(\'nvdr22\')" class="ygtvlabel" id="ygtvlabelel7">Uploaded Documents by Representative</a>',
+	         					'<a title="Missing Documents by Health System:Outstanding document details by health system" target="_self" href="javascript:;" onclick="javascript:showFilters(\'nvdr23\')" class="ygtvlabel" id="ygtvlabelel13">Missing Documents by Health System</a>',
+	         					'<a title="Missing Policies by Health System:Outstanding policy acknowledgements by health system" target="_self" href="javascript:;" onclick="javascript:showFilters(\'nvdr24\')" class="ygtvlabel" id="ygtvlabelel13">Missing Policies by Health System</a>',
+	         					'<a title="Policies Accepted by Representatives:This report details all acknowledged policies by health systems and reps" target="_self" href="javascript:;" onclick="javascript:showFilters(\'nvdr25\')" class="ygtvlabel" id="ygtvlabelel13">Policies Accepted by Representatives</a>',
+	         					'<a title="Compliance Status Report:This report summarizes the compliance status for each rep at each Vendormate health system. with which that rep has registered." target="_self" href="javascript:;" onclick="javascript:showFilters(\'nvdr26\')" class="ygtvlabel" id="ygtvlabelel20">Compliance Status</a>'
+	         				],
+	         				[
+	         					'<a title="Document Repository Status:This report is a list of representatives with Document Repository profiles." target="_self" href="javascript:;" onclick="javascript:showFilters(\'nvdr31\')" class="ygtvlabel" id="ygtvlabelel13">Document Repository Status</a>',
+	         					'<a title="Document Repository Doc Status:This report details the status of document requirements in the Document Repository, and does not include documentation status for hospital requirements." target="_self" href="javascript:;" onclick="javascript:showFilters(\'nvdr32\')" class="ygtvlabel" id="ygtvlabelel20">Document Repository Doc Status</a>'
+	         				]
+	         			];
+	         			for (var k=0, l=bands1[i].length; k<l; k++) {
+	         				var tempNode = new YAHOO.widget.MenuNode(bands1[i][k], rootNode, false);
+	         			}
+	         		}
+	         
+	         		tree.draw();
+	         	}
+	         	YAHOO.util.Event.onDOMReady(init);
+	         })();
+	         function showFilters(getReportId) {
+	         	var i = ["11","12","13","14","15","21","22","23","24","25","26","31","32"];
+	         	for (var j=0; j< i.length; j++){
+	         		YAHOO.util.Dom.get('nvdr'+i[j]).style.display="none";
+	         	}
+	         	if(getReportId == 'nvdr11') {
+	         		YAHOO.util.Dom.get('nvdr11').style.display="block";
+	         	}
+	         	if(getReportId == 'nvdr12') {
+	         		YAHOO.util.Dom.get('nvdr12').style.display="block";
+	         	}
+	         	if(getReportId == 'nvdr13') {
+	         		YAHOO.util.Dom.get('nvdr13').style.display="block";
+	         	}
+	         	if(getReportId == 'nvdr14') {
+	         		YAHOO.util.Dom.get('nvdr14').style.display="block";
+	         	}
+	         	if(getReportId == 'nvdr15') {
+	         		YAHOO.util.Dom.get('nvdr15').style.display="block";
+	         	}
+	         	if(getReportId == 'nvdr21') {
+	         		YAHOO.util.Dom.get('nvdr21').style.display="block";
+	         	}
+	         	if(getReportId == 'nvdr22') {
+	         		YAHOO.util.Dom.get('nvdr22').style.display="block";
+	         	}
+	         	if(getReportId == 'nvdr23') {
+	         		YAHOO.util.Dom.get('nvdr23').style.display="block";
+	         	}
+	         	if(getReportId == 'nvdr24') {
+	         		YAHOO.util.Dom.get('nvdr24').style.display="block";
+	         	}
+	         	if(getReportId == 'nvdr25') {
+	         		YAHOO.util.Dom.get('nvdr25').style.display="block";
+	         	}
+	         	if(getReportId == 'nvdr26') {
+	         		YAHOO.util.Dom.get('nvdr26').style.display="block";
+	         	}
+	         	if(getReportId == 'nvdr31') {
+	         		YAHOO.util.Dom.get('nvdr31').style.display="block";
+	         	}
+	         	if(getReportId == 'nvdr32') {
+	         		YAHOO.util.Dom.get('nvdr32').style.display="block";
+	         	}
+	         }	           
+	      </script>
+	   </div>
+	</div>
+</div>

@@ -1,0 +1,67 @@
+<div ng-controller="googleAnalyticsController"
+     data-ng-init="callGAPageTrack('callAccountDetailsHyperlinkAdmin');"></div>
+<div class="row"
+     ng-if="repAccountDetails === true"
+     ng-hide="fromAccordion === 'fromAssociatedCompanies'">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+        <p>{{::'accounts.accountDetails.label.pleaseSelectAnAccountFrom' | translate}} <a data-ng-click="$state.go('manage.accessRepAccounts',{},{'reload':true})">{{::'manageReps.accessRepAccounts' | translate}}</a> {{::'accounts.accountDetails.label.section' | translate}}</p>
+    </div>
+</div>
+<div class="row"
+     ng-if="repAccountDetails === false || fromAccordion === 'fromAssociatedCompanies'">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+        <a data-ng-click="backToListFromIframe();">{{::'manageReps.backtolist' | translate}}</a>
+    </div>
+    <div class="col-sm-12 col-md-12 col-lg-12">
+        <ul tabset
+            class="paddingB1">
+            <li data-ng-if="!expressRegistered"
+                tab
+                heading="{{'userHeader.label.accountDetails' | translate}}"
+                data-ng-click="showRepAccountDetails();"
+                active="$state.includes('manage.repAccountDetails.repAccountsTab') || $state.includes('manage.repAccountDetails.repAccountsTab.documents')|| $state.includes('manage.repAccountDetails.repAccountsTab.documents.commonDocuments')"
+                ng-hide="fromAccordion === 'fromAssociatedCompanies'">
+                <div ui-view="repAccountsTab"></div>
+            </li>
+            <li tab
+                heading="{{'userHeader.label.repDocuments' | translate}}"
+                ui-sref="manage.repAccountDetails.documents.commonDocuments"
+                active="$state.includes('manage.repAccountDetails.documents')"
+                class="paddingB1"
+                ng-hide="fromAccordion === 'fromAssociatedCompanies'"
+                data-ng-if="canAccess('vm','RepDocuments')">
+                <div ui-view="manageRepMyDocuments"></div>
+            </li>
+            <li tab
+                heading="{{'userHeader.label.userProfile' | translate}}"
+                ui-sref="manage.repAccountDetails.manageRepProfile.contactPersonalInfoView"
+                active="$state.includes('manage.repAccountDetails.manageRepProfile')"
+                class="paddingB1"
+                ng-hide="fromAccordion === 'fromAssociatedCompanies'">
+                <div ui-view="manageRepUserProfile"></div>
+            </li>
+            <li tab
+                heading="{{'userHeader.label.companyProfile' | translate}}"
+                ui-sref="manage.repAccountDetails.companyProfile.viewInformation"
+                active="$state.includes('manage.repAccountDetails.companyProfile')"
+                class="paddingB1">
+                <div ui-view="manageRepCompanyProfile"></div>
+            </li>
+            <li tab
+                heading="{{'userHeader.label.viewAccessStatus' | translate}}"
+                ng-click="$state.go('manage.repAccountDetails.clearedForAccess',{'clearForAccessFromReps':'isfromRepDetail'})"
+                active="$state.includes('manage.repAccountDetails.clearedForAccess') || $state.includes('manage.repAccountDetails.clearedForAccess.clearedForAccessHelp')"
+                ng-hide="fromAccordion === 'fromAssociatedCompanies'">
+                <div ui-view="repClearedForAccess"></div>
+            </li>
+            <li tab
+                ng-if="isIframeEnabled === 'false'"
+                heading="{{'userHeader.label.paymentReceipts' | translate}}"
+                ng-click="$state.go('manage.repAccountDetails.paymentReceipt')"
+                active="$state.includes('manage.repAccountDetails.paymentReceipt')"
+                ng-hide="fromAccordion === 'fromAssociatedCompanies'">
+                <div ui-view="repPaymentReceipt"></div>
+            </li>
+        </ul>
+    </div>
+</div>

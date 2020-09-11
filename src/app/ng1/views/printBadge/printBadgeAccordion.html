@@ -1,0 +1,11 @@
+<div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+        <accordion ng-init="status.isFirstOpen='true'">
+            <accordion-group is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
+                <accordion-heading> <a class="show" ng-click="$state.go('printBadge.prepareForVisit',{'printBadge':'action'});">{{'printBadge.prepareForVisitTitle'| translate }} <i class="pull-right glyphicon" ng-class="{'glyphicon-minus': status.isFirstOpen, 'glyphicon-plus': !status.isFirstOpen}"></i></a>
+                </accordion-heading>
+               <div class="minHeight200" ui-view="printBadge" autoscroll="true"></div>
+            </accordion-group>
+        </accordion>
+    </div>
+</div>

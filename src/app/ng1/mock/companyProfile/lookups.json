@@ -1,0 +1,293 @@
+{
+    "VisionResponse": {
+        "Status": "Ok",
+        "lookups": {
+            "states": [
+                {
+                    "id": "1",
+                    "stateCode": "AT_01",
+                    "stateName": "AT",
+                    "status": "USED",
+                    "deleteAction": false
+                },
+                {
+                    "id": "2",
+                    "stateCode": "AZ_01",
+                    "stateName": "AZ",
+                    "status": "USED",
+                    "deleteAction": false
+                },
+                {
+                    "id": "3",
+                    "stateCode": "CT_01",
+                    "stateName": "CT",
+                    "status": "required",
+                    "deleteAction": false
+                },
+                {
+                    "id": "4",
+                    "stateCode": "AL_01",
+                    "stateName": "AL",
+                    "status": "required",
+                    "deleteAction": false
+                },
+                {
+                    "id": "5",
+                    "stateCode": "TN_01",
+                    "stateName": "TamilNadu",
+                    "status": "required",
+                    "deleteAction": false
+                },
+                {
+                    "id": "6",
+                    "stateCode": "AP_01",
+                    "stateName": "Andhera",
+                    "status": "required",
+                    "deleteAction": false
+                },
+                {
+                    "id": "7",
+                    "stateCode": "KL_01",
+                    "stateName": "Kerala",
+                    "status": "required",
+                    "deleteAction": false
+                },
+                {
+                    "id": "8",
+                    "stateCode": "KN_01",
+                    "stateName": "Karnadaka",
+                    "status": "required",
+                    "deleteAction": false
+                }
+            ],
+            "countries": [
+                {
+                    "id": "IND_01",
+                    "countryName": "INDIA",
+                    "status": "required",
+                    "deleteAction": false
+                },
+                {
+                    "id": "US_01",
+                    "countryName": "US",
+                    "status": "required",
+                    "deleteAction": false
+                },
+				{
+                    "id": "CN_01",
+                    "countryName": "Canada",
+                    "status": "USED",
+                    "deleteAction": false
+                }
+            ],
+			"affliatedGPO": [
+				{
+					"id" : "000000362800159ff1ae",
+					"gpoName":"Broadlane",
+					"status" : "required"
+				},
+				{
+					"id" : "000000362800159ff1ad",
+					"gpoName":"Amerinet",
+					"status" : "USED"
+				},
+				{
+				"id" : "000000362800159ff1af",
+				"gpoName":"Carolina Purchasing Alliance",
+				"status" : "USED"
+				},
+				{
+				"id" : "000000362800159ff1b0",
+				"gpoName":"CHAMPS Management Services",
+				"status" : "USED"
+				},
+				{
+				"id" : "000000362800159ff1b1",
+				"gpoName":"Child Health Corporation of America",
+				"status" : "USED"
+				},
+				{
+				"id" : "000000362800159ff1b2",
+				"gpoName":"Consorta",
+				"status" : "USED"
+				},
+				{
+				"id" : "000000362800159ff1b3",
+				"gpoName":"Coordinated Healthcare Services",
+				"status" : "USED"
+				},
+				{
+				"id" : "000000362800159ff1b4",
+				"gpoName":"Corporate United",
+				"status" : "USED"
+				},
+				{
+				"id" : "000000362800159ff1b5",
+				"gpoName":"Council Connections",
+				"status" : "USED"
+				},
+				{
+				"id" : "000000362800159ff1b7",
+				"gpoName":"Department of Veterans Affairs/OA&amp;MM",
+				"status" : "USED"
+				},
+				{
+				"id" : "000000362800159ff1b8",
+				"gpoName":"Dialysis Purchasing Alliance",
+				"status" : "USED"
+				},
+				{
+				"id" : "000000362800159ff1b6",
+				"gpoName":"DLA Logistics Agency/Defense Supply Center Philadelphia",
+				"status" : "USED"
+				},
+				{
+				"id" : "000000362800159ff1b9",
+				"gpoName":"GeriMed",
+				"status" : "USED"
+				},
+				{
+				"id" : "000000362800159ff1ba",
+				"gpoName":"GNYHA/Innovatix",
+				"status" : "USED"
+				},
+				{
+				"id" : "000000362800159ff1bb",
+				"gpoName":"Healthcare Council of the National Capital",
+				"status" : "USED"
+				},
+				{
+				"id" : "000000362800159ff1bc",
+				"gpoName":"Healthcare Purchasing Partners International",
+				"status" : "USED"
+				},
+				{
+				"id" : "000000362800159ff1bd",
+				"gpoName":"HealthTrust Purchasing Group",
+				"status" : "USED"
+				},
+				{
+				"id" : "000000362800159ff1be",
+				"gpoName":"Hospital Purchasing Service",
+				"status" : "USED"
+				},
+				{
+				"id" : "000000362800159ff1bf",
+				"gpoName":"ION/AmerisourceBergen",
+				"status" : "USED"
+				},
+				{
+				"id" : "000000362800159ff1c0",
+				"gpoName":"Iroquois Healthcare Alliance",
+				"status" : "USED"
+				},
+				{
+				"id" : "000000362800159ff1c1",
+				"gpoName":"MAGNET",
+				"status" : "USED"
+				},
+				{
+				"id" : "000000362800159ff1c2",
+				"gpoName":"Managed Healthcare Associates",
+				"status" : "USED"
+				},
+				{
+				"id" : "000000362800159ff1c3",
+				"gpoName":"MedAssets",
+				"status" : "USED"
+				},
+				{
+				"id" : "000000362800159ff1c4",
+				"gpoName":"MedBuy",
+				"status" : "USED"
+				},
+				{
+				"id" : "000000362800159ff1c5",
+				"gpoName":"Metro Chicago Health Care Council",
+				"status" : "USED"
+				},
+				{
+				"id" : "000000362800159ff1c6",
+				"gpoName":"National Oncology Alliance",
+				"status" : "USED"
+				},
+				{
+				"id" : "000000362800159ff1c7",
+				"gpoName":"New Jersey Hospital Association",
+				"status" : "USED"
+				},
+				{
+				"id" : "000000362800159ff1c8",
+				"gpoName":"NHS Purchasing and Supply Agency",
+				"status" : "USED"
+				},
+				{
+				"id" : "000000362800159ff1c9",
+				"gpoName":"Novation",
+				"status" : "USED"
+				},
+				{
+				"id" : "000000362800159ff1ca",
+				"gpoName":"Onmark",
+				"status" : "USED"
+				},
+				{
+				"id" : "000000362800159ff1cb",
+				"gpoName":"PDM Healthcare",
+				"status" : "USED"
+				},
+				{
+				"id" : "000000362800159ff1cc",
+				"gpoName":"Pharmaceutical Buyers, Inc. (PBI)",
+				"status" : "USED"
+				},
+				{
+				"id" : "000000362800159ff1cd",
+				"gpoName":"Premier Inc.",
+				"status" : "USED"
+				},
+				{
+				"id" : "000000362800159ff1ce",
+				"gpoName":"Resource Optimization &amp; Innovation/Sisters of Mercy",
+				"status" : "USED"
+				},
+				{
+				"id" : "000000362800159ff1cf",
+				"gpoName":"S.A.R.E.L.",
+				"status" : "USED"
+				},
+				{
+				"id" : "000000362800159ff1d0",
+				"gpoName":"SelectPlus Oncology",
+				"status" : "USED"
+				},
+				{
+				"id" : "000000362800159ff1d1",
+				"gpoName":"SYNERNET",
+				"status" : "USED"
+				},
+				{
+				"id" : "000000362800159ff1d2",
+				"gpoName":"University HealthSystem Consortium",
+				"status" : "USED"
+				},
+				{
+				"id" : "000000362800159ff1d3",
+				"gpoName":"VHA",
+				"status" : "USED"
+				},
+				{
+				"id" : "000000362800159ff1d4",
+				"gpoName":"ViaCentric",
+				"status" : "USED"
+				},
+				{
+				"id" : "000000362800159ff1d5",
+				"gpoName":"Yankee Alliance",
+				"status" : "USED"
+				}
+			]
+        },
+        "contentType": "xml"
+    }
+}

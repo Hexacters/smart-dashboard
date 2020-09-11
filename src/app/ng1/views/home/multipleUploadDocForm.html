@@ -1,0 +1,76 @@
+<div ng-controller="homeController">
+    <vision-action>
+        <get-data service="complianceServices" operation="multipleUploadDocForm" response-node="data.successData.UserDocumentList.UserDocument" current-scope-node="CommonDocument"></get-data>
+        <submit-data service="complianceServices" operation="multipleUplaodDocFormSubmit" redirectState="home.documentAlert.common.commonDocument.information.multipleUploadDocGrid.multipleUplaodDocForm" redirectParams="{'status':'success'}"></submit-data>
+        <div class="table-responsive" data-ng-if="data.submitError.Status=='Error' || dataError.submitError.Status=='Error'">
+            <div class="alert text-danger">
+                <span class="fa fa-warning" aria-hidden="true"></span> {{data.submitError.ResponseError[0].errorCode | translate}} {{dataError.submitError.ResponseError[0].errorCode | translate}}
+            </div>
+        </div>
+        <h4 class="text-center marginB0 marginT0"><b>Document(s) {{selectedArr +1}} of {{selectedCheckbox.length}}</b></h4>
+        <div class="col-sm-12 col-md-12 col-lg-12">
+            <div class="col-sm-6 col-md-6 col-lg-6 text-left padding0">
+                <h4><b>Secretary of State Filing</b></h4>
+            </div>
+        </div>
+        <form novalidate name="multipleUploadDocument" autocomplete="off" class="form-horizontal">
+            <div class="form-group col-sm-12 col-md-12 col-lg-12">
+                <label class="col-sm-4 col-md-4 col-sm-4 col-md-4 col-lg-4 text-right">{{'home.why'|translate}}</label>
+                <div class="col-sm-8 col-md-8 col-lg-8"><span>{{data.successData.UserDocumentList.UserDocument.docWhy}}</span>
+                </div>
+            </div>
+            <div class="form-group col-sm-12 col-md-12 col-lg-12">
+                <label class="col-sm-4 col-md-4 col-lg-4 text-right">{{'home.how'|translate}}</label>
+                <div class="col-sm-8 col-md-8 col-lg-8"><span>{{data.successData.UserDocumentList.UserDocument.docHow}}</span>
+                </div>
+            </div>
+            <div class="form-group col-sm-12 col-md-12 col-lg-12">
+                <label class="col-sm-4 col-md-4 col-lg-4 text-right">{{'home.type'|translate}}</label>
+                <div class="col-sm-8 col-md-8 col-lg-8"><span>{{data.successData.UserDocumentList.UserDocument.docType}}</span>
+                </div>
+            </div>
+            <div class="form-group col-sm-12 col-md-12 col-lg-12">
+                <label class="col-sm-4 col-md-4 col-lg-4 text-right">{{'home.category'|translate}}</label>
+                <div class="col-sm-8 col-md-8 col-lg-8"><span>{{data.successData.UserDocumentList.UserDocument.docCategory}}</span>
+                </div>
+            </div>
+            <div class="form-group col-sm-12 col-md-12 col-lg-12" ng-controller="commonController">
+                <label class="col-sm-4 col-md-4 col-lg-4 text-right">{{'home.template' | translate}}</label>
+                <div class="col-sm-8 col-md-8 col-lg-8"><a class="cursorPointer" ng-click="openNewWindow('img/ghx_logo.jpg')">Proof of competency template</a>
+                </div>
+            </div>
+            <div class="form-group col-sm-12 col-md-12 col-lg-12">
+                <label class="col-sm-4 col-md-4 col-lg-4 text-right">{{'home.effectiveDate'|translate}}</label>
+                <div class="col-sm-5 col-md-5 col-lg-5">
+                    <input type="text" class="form-control input-sm" readonly="true" datetime-picker="MM-dd-yyyy" enable-time='false' 
+					close-on-date-selection="true" append-to-body="true" ng-click="openCalendar($event, 'startdate')" 
+					ng-model="data.successData.UserDocumentList.UserDocument.docEffectiveDate" is-open="open.startdate" 
+					datepicker-options=" {showWeeks:true}" min-date={{todayDate}} />
+                </div>
+            </div>
+            <div class="form-group col-sm-12 col-md-12 col-lg-12">
+                <label class="col-sm-4 col-md-4 col-lg-4 text-right">{{'home.expirationDate'|translate}}</label>
+                <div class="col-sm-5 col-md-5 col-lg-5">
+                    <input type="text" class="form-control input-sm" readonly="true" datetime-picker="MM-dd-yyyy" enable-time='false' 
+					close-on-date-selection="true" append-to-body="true" ng-click="openCalendar($event, 'expirationDate')" 
+					ng-model="data.successData.UserDocumentList.UserDocument.docExpirationDate" is-open="open.expirationDate" 
+					validator="validateFuture"
+					effective-date="{{data.successData.UserDocumentList.UserDocument.docEffectiveDate}}"
+					validate-future-error-message="{{'myDocuments.label.expirationDateValid' | translate}}"
+					validate-expiration-date-error-message="{{'myDocuments.label.expirationDateValid' | translate}}" 
+					datepicker-options=" {showWeeks:true}" min-date={{todayDate}} />
+                </div>
+            </div>
+            <div class="form-group col-sm-12 col-md-12 col-lg-12 marginT1">
+                <label class="col-sm-4 col-md-4 col-lg-4 text-right"></label>
+                <div class="col-sm-8 col-md-8 col-lg-8">
+                    <button ng-hide="selectedCheckbox.length == selectedArr +1" id="uploadDocumentDetails" class="btn btn-success" type="submit" data-ng-click="submit();multipleUplaodDocSteps(selectedArr)" validation-submit="multipleUploadDocument">{{'common.saveContinue'|translate}}</button>
+                    <button ng-show="selectedCheckbox.length == selectedArr +1" id="uploadDocumentDetailsSave" class="btn btn-success" type="submit" data-ng-click="submit();" ui-sref="home.documentAlert.common.commonDocument">{{'common.save'|translate}}</button>
+                    <button ng-hide="selectedCheckbox.length == selectedArr +1" id="uploadDocumentDetailsSkip" class="btn btn-primary" type="submit" data-ng-click="submit();" data-ng-click="multipleUplaodDocSteps(selectedArr)">{{'common.skip'|translate}}</button>
+                    <button ng-show="selectedCheckbox.length == selectedArr +1" id="uploadDocumentDetailsSkip1" class="btn btn-primary" type="submit" data-ng-click="submit();" ui-sref="home.documentAlert.common.commonDocument">{{'common.skip'|translate}}</button>
+                    <button class="btn btn-warning" type="button" ui-sref="home.documentAlert.common.commonDocument">{{'common.returntoList'|translate}}</button>
+                </div>
+            </div>
+        </form>
+    </vision-action>
+</div>

@@ -1,0 +1,8 @@
+{
+  "VisionResponse": {
+    "Status": "Ok",
+    "isPaymentSuccess": false,
+    "contentType": "application/json",
+    "responseCode": "; nested exception is: \n\tjava.net.SocketException: Connection reset"
+  }
+}

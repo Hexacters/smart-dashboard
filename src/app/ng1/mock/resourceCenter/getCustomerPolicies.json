@@ -1,0 +1,34 @@
+{
+    "VisionResponse": {
+        "Status": "Ok",
+        "CustomerPolicyList": [
+            {
+                "oid": "c01000079e70000079e9",
+                "name": "ACK Template Description-DOC DEFn CANNON- DDD",
+                "documentTemplateOid": "c01000079e60000079e7",
+                "parentOid": "cannonhospital",
+                "docDefinitionUpdatedOn": "2013-04-12 05:30:06",
+                "docTypeCode": "ACK",
+                "templateName": "ACK Template Description DDD",
+                "templateDescription": "ACK Template Description DDD",
+                "templateUpdatedOn": "2013-04-13 00:36:16",
+                "updateAction": false,
+                "deleteAction": false
+            }
+        ],
+        "contentType": "application/json",
+        "CustomerConfigMetaDataSummary": {
+            "oid": "c0100008e17000008e34",
+            "ownerOid": "cannonhospital",
+            "docType": "POLF",
+            "name": "Policies.zip",
+            "description": "Policy Zip File",
+            "theFileMimeType": "application/zip",
+            "createdOn": "2015-06-17 03:30:10",
+            "createdBy": "system",
+            "updatedOn": "2015-06-17 03:30:10",
+            "updateAction": false,
+            "deleteAction": false
+        }
+    }
+}

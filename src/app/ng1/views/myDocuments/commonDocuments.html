@@ -1,0 +1,279 @@
+<div class="row">
+		<div class="col-sm-12 col-md-12 col-lg-12 myDocumentMaxHeight">
+			<vision-data-table service="myDocumentServices"
+							   operation="getUserDocuments"
+							   root-node="data.successData.UserDocumentList"
+							   total-records-node="data.successData.totalRecords"
+							   type="server"
+							   id="commonDocuments"
+							   initial-request='{"count":10,"page":1,"filter":{"autoAssignable":true,"requiredDoc":true},"sorting":{"sortKey":"asc"}}'>
+				<!--<div data-ng-class="{'dNone':!loading}">
+					<img align="absmiddle"
+						 src="img/partial-loading.gif"> {{::'common.loading' | translate}}
+				</div>-->
+				<div ng-show="!loading">
+					<div class="table-responsive"
+						 ng-controller="myDocumentController"
+						 ng-init="documentStatus()">
+							<!--<div class="row ml-0 mr-0">
+								<div class="marginBP5 marginTP5 col-lg-12 pr-0 pl-0">
+									<div class="form-group" ng-init="numLimit =50"> 
+										<div class="col-sm-4 col-md-2 col-lg-2 pull-right pr-0 pl-0"> 
+											 <select id="docStatus" ng-model="params.filter()[name]"
+												class="form-control" name="false" ng-change="doDropDownChange($event)">
+												<option value="" >- Select -</option>
+												<option value="0" label="ALL">ALL</option>
+												<option value="1" label="Rejected">Rejected</option>
+												<option value="2" label="Expired">Expired</option>
+												<option value="3" label="Missing">Missing</option>
+												<option value="4" label="Expiring">Expiring</option>
+												<option value="5" label="Completed">Completed</option>
+											</select>
+										</div>
+									</div>
+								</div>
+							</div>-->  
+						<div class="row ml-0 mr-0">
+							<div class="clearfix ng-table-counts-hide marginBP5 marginTP5 mt-3 col-lg-10 col-md-10 col-sm-8 pl-0"
+								 ng-table-pagination="commonDocuments"
+								 template-url="'ng-table/style3.html'"></div>
+							<div class="col-sm-4 col-md-2 col-lg-2 marginBP5 marginTP5 mt-3 pr-0"> 
+								<div class="col-sm-8 col-md-9 col-lg-9"> 
+								 <select id="docStatus" ng-model="params.filter()[name]"
+									class="form-control filters" name="false" ng-change="doDropDownChange($event)"> 
+									<option value="" label="ALL">ALL</option>
+									<option value="1" label="Rejected">Rejected</option>
+									<option value="2" label="Expired">Expired</option>
+									<option value="3" label="Missing">Missing</option>
+									<option value="4" label="Expiring">Expiring</option>
+									<option value="5" label="Completed">Completed</option>
+								</select> 
+								</div>
+								<div class="col-sm-4 col-md-3 col-lg-3">
+									<span class="material-icons">
+									refresh
+								</span>
+								</div>
+							</div> 
+						</div>	
+						<table ng-table="commonDocuments"
+							   template-pagination="style3"
+							   class="table"
+							   show-filter="false">
+							<tbody ng-if="commonDocuments.data.length>0">
+								<tr ng-repeat="commonDocs in $data">
+									<td data-title="'myDocuments.label.status' | translate"
+										class="text-left col-sm-1 vAlignMiddle col-width-15"
+										filter="{ 'docStatus': 'select' }"
+										sortable="'status'"
+										filter-data="[{id:'',title:'ALL'},{id:'Rejected',title:'Rejected'},{id:'Expired',title:'Expired'},{id:'Missing',title:'Missing'},{id:'Expiring',title:'Expiring'},{id:'Completed',title:'Completed'}]">
+										<span ng-if="commonDocs.sortKey === 1">
+											<span ng-if="!commonDocs.docNote">
+												<!--<img src="img/no.png"
+													 width="20" class="mr-2" />-->
+													 <span class="material-icons mr-2 text-danger">
+														block
+													</span>
+													 <a class="cursorPointer position-topminus-6"
+												   ng-click="docRejectedReasonDialog('Reason', commonDocs.docRejectionString, '')">{{::'myDocuments.label.rejected'
+													| translate}}</a>
+											</span>
+											<span ng-if="commonDocs.docNote !== '' && commonDocs.docNote !== null">
+												<!--<img src="img/no.png"
+													 width="20" class="mr-2" />-->
+													 <span class="material-icons mr-2 text-danger">
+														block
+													</span>
+												  <a class="cursorPointer position-topminus-6"
+												   ng-click="docRejectedReasonDialog('Reason', commonDocs.docRejectionString, commonDocs.docNote)">{{::'myDocuments.label.rejected'
+													| translate}}</a>
+											</span>
+										</span>
+										<span ng-if="commonDocs.sortKey === 4">
+											<span ng-if="commonDocs.templateAutoAssignable === false">
+												<!--<img src="img/no.png"
+													 width="20" class="mr-2" />-->
+													 <span class="material-icons mr-2 text-danger">
+														cancel_schedule_send
+													</span> <span class="position-topminus-6">{{::'myDocuments.label.Missing' | translate}}</span>
+											</span>
+											<span ng-if="commonDocs.templateAutoAssignable === true">
+												<!--<img src="img/no.png"
+													 width="20" class="mr-2" />-->
+													 <span class="material-icons mr-2 text-danger">
+														cancel_schedule_send
+													</span> <span class="position-topminus-6">{{::'myDocuments.label.Missing' | translate}}</span>
+											</span>
+										</span>
+										<span ng-if="commonDocs.sortKey === 2">
+											<!--<img src="img/no.png"
+													 width="20" class="mr-2" />-->
+													 <span class="material-icons mr-2 text-danger">
+														cancel
+													</span> <span class="position-topminus-6">{{::'myDocuments.label.expired' | translate}}</span>
+										</span>
+										<span ng-if="commonDocs.sortKey === 5">
+											<!--<img src="img/okay.png"
+												 width="20" class="mr-2" />-->
+												<span class="material-icons mr-2 text-green">
+													check_circle_outline
+												</span>  <span class="position-topminus-6">{{::'myDocuments.label.expiring' | translate}}</span>
+										</span>
+										<span ng-if="commonDocs.docVerificationCode !== 'VERA' && commonDocs.sortKey !== 1 && commonDocs.sortKey !== 2 && commonDocs.sortKey !== 4 && commonDocs.sortKey !== 5">
+											<!--<img src="img/okay.png"
+												 width="20" class="mr-2" />-->
+												<span class="material-icons mr-2 text-green">
+													check_circle_outline
+												</span> <span
+												ng-if="commonDocs.docVerificationCode === 'UNVER'"> <span class="position-topminus-6">{{::'myDocuments.label.unverified'
+													| translate}}</span>
+											</span> <span ng-if="commonDocs.docVerificationCode !== 'UNVER'">
+													<br />{{::'myDocuments.label.verified' | translate}}
+											</span>
+										</span>
+										<span ng-if="commonDocs.docVerificationCode === 'VERA' && commonDocs.sortKey !== 1 && commonDocs.sortKey !== 2 && commonDocs.sortKey !== 4 && commonDocs.sortKey !== 5">
+											<!--<img src="img/okay.png"
+												 width="20" class="mr-2" />-->
+												<span class="material-icons mr-2 text-green">
+													check_circle_outline
+												</span> <span class="position-topminus-6">{{::'myDocuments.label.verifiedAlternate'
+													| translate}}</span>
+										</span>
+									</td>
+									<td header="'myDocumentWhat.html'"
+										sortable="'docDefName'"
+										class="text-left col-sm-3 col-width-25">  
+										<div class="dropdown show">
+										 <span ng-if="commonDocs.templateAutoAssignable === true">
+											<span ng-if="commonDocs.docDefName" class="position-top-5">{{commonDocs.docDefName}}</span>
+											<span ng-if="!commonDocs.docDefName" class="position-top-5">{{commonDocs.templateName}}</span>
+										</span>
+										<span ng-if="commonDocs.templateAutoAssignable !== true">
+											{{commonDocs.docDefName}}
+											<span ng-if="commonDocs.docDefHasTemplate && commonDocs.docDefHasTemplate === true">
+												<a class="fontSize11px getTemplate"
+												   ng-click="viewTemplateDocument(commonDocs.docDefOid)">{{::'myDocuments.getTemplate' | translate}}</a>
+											</span>
+										</span> 	
+										  <a class="dropdown-toggle pull-right" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+											<span class="material-icons mt-1 mb-0" tooltip-append-to-body="true"
+													   tooltip-placement="top"
+													   tooltip="More Action">
+											more_vert
+											</span>
+										  </a>
+	
+										  <div class="dropdown-menu dropdown-list" aria-labelledby="dropdownMenuLink">
+											<div class="marginT1">
+												<ul class="">
+													<li ng-click="openBadgeCommomDocument('viweUpdate');"><span class="material-icons">
+														publish
+														</span> <span class="position-topminus-4">Upload</span>
+													</li>
+													<li ng-click="viewComplianceDocument(commonDocs.documentOid)"><span class="material-icons text-primary">
+														visibility
+														</span> <span class="position-topminus-4">View</span>
+													</li>
+													<li  ng-click="loadUploadDocumentForm(commonDocs.documentOid,commonDocs.docDefOid,commonDocs.templateAutoAssignable,commonDocs.templateDocCategoryCode,'update', 'commonDocument')"><span class="material-icons text-success">
+														edit
+														</span> <span class="position-topminus-4">Update</span>
+													</li>
+													<li ng-click="downloadComplianceDocument(commonDocs.documentOid);"><span class="material-icons text-info">
+														get_app
+														</span> <span class="position-topminus-4">Download</span>
+													</li>
+													<li ng-click="showDeleteDocuments((commonDocs.docDefName && commonDocs.docDefName !== '') ? commonDocs.docDefName : commonDocs.templateName,commonDocs.documentOid,'commonDoc',commonDocs.templateDocCategoryCode)"><span class="material-icons text-danger">
+														delete
+														</span> <span class="position-topminus-4">Delete</span>
+													</li>
+												</ul> 
+											</div>
+										  </div>
+										</div> 
+									</td>
+									<td header="'myDocumentWhy.html'"
+										sortable="'docDefName'"
+										class="text-left col-sm-3 col-width-25">
+										<span ng-controller="commonController">
+											<span ng-if="commonDocs.templateAutoAssignable === true">
+												<span ng-if="commonDocs.docDefWhy && commonDocs.docDefWhy !== ''">
+													<span class="whiteSpacePre"
+														  ng-bind-html="commonDocs.docDefWhy | limitHtml:45 | trustAsHtml"></span>
+													<span data-ng-if="commonDocs.docDefWhy.length>45">
+														<a class="cursorPointer"
+														   ng-click="moreDialog(commonDocs.docDefWhy,'Why?')">  {{::'common.more' | translate}}...</a>
+													</span>
+												</span>
+												<span ng-if="!commonDocs.docDefWhy || commonDocs.docDefWhy === ''">
+													<span class="whiteSpacePre"
+														  ng-bind-html="commonDocs.templateWhy | limitHtml:45 | trustAsHtml"></span>
+													<span data-ng-if="commonDocs.templateWhy.length>45">
+														<a class="cursorPointer"
+														   ng-click="moreDialog(commonDocs.templateWhy,'Why?')">  {{::'common.more' | translate}}...</a>
+													</span>
+												</span>
+											</span>
+											<span ng-if="commonDocs.templateAutoAssignable === false">
+												<span class="whiteSpacePre"
+													  ng-bind-html="commonDocs.docDefWhy | limitHtml:45 | trustAsHtml"></span>
+												<span data-ng-if="commonDocs.docDefWhy.length>45">
+													<a class="cursorPointer"
+													   ng-click="moreDialog(commonDocs.docDefWhy,'Why?')">  {{::'common.more' | translate}}...</a>
+												</span>
+											</span>
+										</span>
+									</td>
+									<td header="'myDocumentHow.html'"
+										class="text-left col-sm-3 col-width-25">
+										<span ng-controller="commonController">
+											<span ng-if="commonDocs.templateAutoAssignable === true">
+												<span ng-if="commonDocs.docDefName && commonDocs.docDefName !== '' || commonDocs.docDefWhy && commonDocs.docDefWhy !== ''">
+													<span class="whiteSpacePre"
+														  ng-bind-html="commonDocs.docDefHow | limitHtml:45 | trustAsHtml"></span>
+													<span data-ng-if="commonDocs.docDefHow.length>45">
+														<a class="cursorPointer"
+														   ng-click="moreDialog(commonDocs.docDefHow,'How?')">  {{::'common.more' | translate}}...</a>
+													</span>
+												</span>
+												<span ng-if="!commonDocs.docDefName || commonDocs.docDefName === '' || !commonDocs.docDefWhy || commonDocs.docDefWhy === ''">
+													<span class="whiteSpacePre"
+														  ng-bind-html="commonDocs.templateHow | limitHtml:45 | trustAsHtml"></span>
+													<span data-ng-if="commonDocs.templateHow.length>45">
+														<a class="cursorPointer"
+														   ng-click="moreDialog(commonDocs.templateHow,'How?')">  {{::'common.more' | translate}}...</a>
+													</span>
+												</span>
+											</span>
+											<span ng-if="commonDocs.templateAutoAssignable === false">
+												<span class="whiteSpacePre"
+													  ng-bind-html="commonDocs.docDefHow | limitHtml:45 | trustAsHtml"></span>
+												<span data-ng-if="commonDocs.docDefHow.length>45">
+													<a class="cursorPointer"
+													   ng-click="moreDialog(commonDocs.docDefHow,'How?')">  {{::'common.more' | translate}}...</a>
+												</span>
+											</span>
+										</span>
+									</td>
+									<td header="'myDocumentWhere.html'"
+										class="text-left col-sm-2 col-width-10">
+										<a id="viewAccounts" class="text-underline"
+										   ng-click="viewAccountsDocument(commonDocs.templateOid,'true');">{{::'myDocuments.viewAccounts' | translate}}</a>
+									</td>
+								</tr>
+							</tbody>
+							<tbody ng-if="commonDocuments.data.errorData.Status === 'Error'">
+								<tr>
+									<td colspan="5">
+										<div class="text-danger">
+											<span class="fa fa-warning"
+												  aria-hidden="true"></span> {{commonDocuments.data.errorData.ResponseError[0].errorCode | translate}}
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table> 
+					</div>
+				</div>
+			</vision-data-table>
+		</div>
+	</div>

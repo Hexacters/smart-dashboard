@@ -1,0 +1,55 @@
+<div ng-controller="googleAnalyticsController" data-ng-init="callGAPageTrack('callProdServOffering');"></div>
+<div class="row">
+	<div class="col-sm-12 col-md-12 col-lg-12"
+		data-ng-class="{'dNone':!loading}">
+		<img align="absmiddle" src="app/ng1/img/partial-loading.gif" />&nbsp;{{'common.loading'
+		| translate}}
+	</div>
+	<div class="col-sm-12 col-md-12 col-lg-12">
+		<vision-action> <get-data service="myProfileServices"
+			operation="getProductAndServiceCodes"></get-data>
+			<div class="col-sm-10 col-md-10 col-lg-10"
+				data-ng-if="data.successData.ProductCodeList.length === 0">
+				<h3>
+					<b>{{'myProfile.productAndServiceOffering.label.productServiceOffering'
+					| translate}}</b>
+				</h3>
+				<h6><b>{{'myProfile.productAndServiceOffering.label.noProductsFound' |
+				translate}}</b></h6>
+			</div>	
+		<div data-ng-if="data.successData.ProductCodeList.length != 0">
+			<div class="col-sm-6 col-md-6 col-lg-6">
+				<h3>
+					<b>{{'myProfile.productAndServiceOffering.label.productServiceOffering'
+						| translate}}</b>
+				</h3>
+				<h5>
+					<b>{{'myProfile.productAndServiceOffering.label.details' |
+						translate}}</b>
+				</h5>
+			</div>
+			<div class="col-sm-6 col-md-6 col-lg-6">
+				<div class="pull-right marginT2">
+					<sup class="asterisk">*</sup>&nbsp;{{'common.required' | translate}}
+				</div>
+			</div>
+			<div class="col-sm-12 col-md-12 col-lg-12">
+				<p class="col-sm-6 col-md-6 col-lg-6 padding0 whiteSpacePre">{{data.successData.myProductDesc}}</p>
+	
+			</div>
+			<div class="col-sm-12 col-md-12 col-lg-12">
+				<h5>
+					<b>{{'myProfile.productAndServiceOffering.label.UNSPSCCodes' | translate}}&nbsp;<sup class="asterisk">*</sup></b>
+				</h5>
+				<div class="selectMultipleBoxNL2NB"
+					data-ng-if="data.successData.ProductCodeList.length > 0">
+					<span
+						ng-repeat="productAndService in data.successData.ProductCodeList">
+						<div>{{productAndService.code}}-{{productAndService.description}}</div>
+						<span>
+				</div>
+			</div>
+		</div>
+		</vision-action>
+	</div>
+</div>

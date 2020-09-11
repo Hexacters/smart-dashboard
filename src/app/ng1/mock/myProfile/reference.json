@@ -1,0 +1,44 @@
+{
+    "VisionResponse": {
+        "Status": "Ok",
+        "ReferenceList": {
+            "Reference": [
+                {
+                    "lastName": "Smith",
+                    "parentOid": "000000530100000014b7",
+                    "companyName": "",
+                    "updatedBy": "ps101553@test.vm",
+                    "email": "johnsmith@gmail.com",
+                    "oid": "c01000084d50000084d8",
+                    "workPhone": "234 234 234",
+                    "updatedOn": "2015-09-03 20:55:14.453",
+                    "firstName": "John"
+                },
+                {
+					"lastName": "Son",
+                    "parentOid": "000000530100000014b7",
+                    "companyName": "",
+                    "updatedBy": "ps101553@test.vm",
+                    "email": "peterson@gmail.com",
+                    "oid": "c01000084d50000084d9",
+                    "workPhone": "235 235 235",
+                    "updatedOn": "2015-09-03 20:55:14.453",
+                    "firstName": "Peter"
+				},
+                {
+                    "lastName": "Smith",
+                    "parentOid": "000000530100000014b7",
+                    "companyName": "",
+                    "updatedBy": "ps101553@test.vm",
+                    "email": "willsmith@gmail.com",
+                    "oid": "c01000084d50000084d7",
+                    "workPhone": "236 236 236",
+                    "updatedOn": "2015-09-03 20:55:14.453",
+                    "firstName": "Will"
+                }
+            ]
+        },
+        "ContentType": "text/xml",
+        "ResponseErrors": ""
+    }
+}

@@ -1,0 +1,33 @@
+<div class="col-md-12 col-sm-12 col-lg-12">
+	<vision-action>
+		<get-data service="shoppingCartServices" operation="getAllActiveUser"  root-node="data.successData"  form-node="data" params='{"vendorOid":"{{userProfile.detail.vendorOid}}"}' response-formatter="clearErrorMessage"></get-data>
+		<div class="col-sm-12 col-md-12 col-lg-12">
+			<div data-ng-class="{'dNone':!loading}">
+				<img align="absmiddle" src="app/ng1/img/partial-loading.gif">&nbsp;{{'common.loading' | translate}}
+			</div>
+		</div>
+		<div class="alert alert-danger text-danger" data-ng-if="getError.status == 'error'">
+			<span class="fa fa-warning" aria-hidden="true"></span>
+			{{getError.errorData.ResponseError[0].errorCode | translate}}
+		</div>
+		<div class="alert alert-danger text-danger" data-ng-if="deleteRepErrorMsg">
+			<span class="fa fa-warning" aria-hidden="true"></span>
+			{{deleteRepErrorMsg}}
+		</div>
+		<div class="col-sm-12 col-md-12 col-lg-12">
+			<div class="col-md-6 col-sm-6 col-lg-6" ng-repeat="customerList in repListTmp">
+				<div class="col-md-8 col-sm-8 col-lg-8 form-group text-right">
+					{{customerList.firstName}} {{customerList.lastName}} ({{customerList.userId}})
+					<button data-ng-show="!customerList.isDeleted" data-ng-click="updateDeletedUserList(data, true, $index);" id="{{$index+1}}" name="{{$index+1}}" ng-style="{'visibility': customerList.userId !== userProfile.userId?'visible':'hidden'}" ng-model="customerList.isDeleted" class="btn btn-danger marginT1" >{{'common.delete' | translate}}</button>
+					<button data-ng-show="customerList.isDeleted" data-ng-click="updateDeletedUserList(data, false, $index);" id="{{$index+1}}" name="{{$index+1}}" ng-model="customerList.isDeleted" class="btn btn-blue marginT1" >Restore</button><br/>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-12 col-md-12 col-lg-12">
+			<div class="col-md-6 col-sm-6 col-lg-6"></div>
+			<div class="col-md-6 col-sm-6 col-lg-6">
+				<button id="deleteCustomer" data-ng-click="deleteCustomer(data);" ng-disabled="getError.status == 'error' || loading" class="btn btn-blue marginT1">{{'common.ok' | translate}}</button>
+			</div>
+		</div>
+	</vision-action>
+</div>

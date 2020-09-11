@@ -1,0 +1,19 @@
+<div class="modal-content">
+	<div class="modal-header commonDialogHeader">
+		<button id="viewLocationCloseIcon" id="viewAccountCloseIcon"
+			type="button" class="close" data-dismiss="modal" aria-hidden="true"
+			data-ng-click="$close()">&times;</button>
+		<h3 class="modal-title">
+			<b>{{'shoppingCart.label.attention' | translate}}</b>
+		</h3>
+	</div>
+	<div class="modal-body ng-scope">
+		<div>{{'shoppingCart.label.repDeleteMessage' | translate}}</div>
+		<div class="modal-footer ng-scope marginT4">
+			<button class="btn btn-grey" type="button" data-ng-click="$close()">{{'common.cancel'|
+				translate}}</button>
+			<button class="btn btn-blue" type="button" data-ng-click="deleteCustomerList()" autofocus>{{'shoppingCart.label.proceed'|
+				translate}}</button>
+		</div>
+	</div>
+</div>

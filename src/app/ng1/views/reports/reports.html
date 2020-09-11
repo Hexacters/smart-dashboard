@@ -1,0 +1,24 @@
+<div class="row">
+   <div class="col-sm-12 col-md-12 col-lg-12">
+        <accordion close-others="true">
+			<accordion-group is-open="$state.includes('reports.advancedReports')" data-ng-if="canAccess('vm','Advanced Reports')">
+				<accordion-heading>
+					<a class="show" ui-sref="reports.advancedReports">
+						<span>{{'reports.header.advancedReports' | translate}}</span>
+						<i class="pull-right glyphicon" ng-class="{'glyphicon glyphicon-minus': $state.includes('reports.advancedReports'), 'glyphicon glyphicon-plus': !$state.includes('reports.advancedReports')}"></i>
+					</a>
+				</accordion-heading>
+				<div class="minHeight200" ui-view="advancedReportView" autoscroll="true"></div>
+			</accordion-group>
+			<accordion-group is-open="$state.includes('reports.standardReports') || $state.includes('reports.shareMyCredentialsHistoryReport') || $state.includes('reports.shareMyCredentialsHistoryReportDetails') || $state.includes('reports.shareStaffCredentialsHistoryReport') || $state.includes('reports.shareStaffCredentialsHistoryReportDetails')" data-ng-if="canAccess('vm','Credential Sections')">
+				<accordion-heading>
+					<a class="show" ui-sref="reports.standardReports">
+						<span>{{'reports.header.standardReports' | translate}}</span>
+						<i class="pull-right glyphicon" ng-class="{'glyphicon glyphicon-minus': $state.includes('reports.standardReports') || $state.includes('reports.shareMyCredentialsHistoryReport') || $state.includes('reports.shareMyCredentialsHistoryReportDetails') || $state.includes('reports.shareStaffCredentialsHistoryReport') || $state.includes('reports.shareStaffCredentialsHistoryReportDetails'), 'glyphicon glyphicon-plus': !$state.includes('reports.standardReports') || !$state.includes('reports.shareMyCredentialsHistoryReport') || !$state.includes('reports.shareMyCredentialsHistoryReportDetails') || !$state.includes('reports.shareStaffCredentialsHistoryReport') || !$state.includes('reports.shareStaffCredentialsHistoryReportDetails')}"></i>
+					</a>
+				</accordion-heading>
+				<div class="minHeight200" ui-view="standardReportsView" autoscroll="true"></div>
+			</accordion-group>
+		</accordion>
+   </div>
+</div>

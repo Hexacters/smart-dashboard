@@ -1,0 +1,75 @@
+<div class="modal-content">
+	<div class="modal-header">
+		<button id="viewAccountCloseIcon"
+		        type="button"
+		        class="close"
+		        data-dismiss="modal"
+		        aria-hidden="true"
+		        data-ng-click="$close()"><i class="fa fa-times"></i></button>
+		<h3 class="modal-title"><b>{{::'printBadge.label.attention'| translate}} <img src="app/ng1/img/no.png"
+				     alt="no.png"></b></h3>
+	</div>
+	<div class="modal-body modelDialogScroll">
+		<div class="col-sm-12 col-md-12 col-lg-12"
+		     ng-if="showErrorMessageFrom === 'yourRelationship'">
+			<p>{{::'printBadge.yourRelationshipTitle1'| translate}} {{badgeAccount}}</b>
+				{{::'printBadge.yourRelationshipTitle2'| translate}} <a ng-click="handleFailureNavigation();">{{::'common.clickHere'|
+					translate}}</a>
+				{{::'printBadge.yourRelationshipTitle3'| translate}}</p>
+			<div class="text-center"><button class="btn btn-info text-center"
+				        type="button"
+				        id="ok"
+				        id="yourRelationshipOk"
+				        name="yourRelationshipOk"
+				        data-ng-click="$close()">{{::'common.ok' | translate}}</button></div>
+		</div>
+		<div class="col-sm-12 col-md-12 col-lg-12"
+		     ng-if="showErrorMessageFrom === 'expressRegistration'">
+			<p>{{::'printBadge.expressRegistrationTitle1'| translate}} {{badgeAccount}}
+				{{::'printBadge.expressRegistrationTitle2'| translate}}<a ng-click="handleFailureNavigation();">{{::'common.clickHere'|
+					translate}}</a>
+				{{::'printBadge.expressRegistrationTitle3'| translate}}</p>
+			<div class="text-center"><button class="btn btn-info text-center"
+				        type="button"
+				        id="ok"
+				        id="expressRegistrationOk"
+				        name="expressRegistrationOk"
+				        data-ng-click="$close()">{{::'common.ok' | translate}}</button></div>
+		</div>
+		<div class="col-sm-12 col-md-12 col-lg-12"
+		     ng-if="showErrorMessageFrom === 'Unpaid'">
+			<p>{{::'printBadge.UnpaidTitle'| translate}}</p>
+			<div class="text-center"><button class="btn btn-info text-center"
+				        type="button"
+				        id="ok"
+				        id="unpaidTitleOk"
+				        name="unpaidTitleOk"
+				        data-ng-click="$close()">{{::'common.ok' | translate}}</button></div>
+		</div>
+		<div class="col-sm-12 col-md-12 col-lg-12"
+		     ng-if="showErrorMessageFrom === 'droolsErrorMsgCompliance'">
+			<p>{{::'printBadge.droolsErrorMsgCompliance1'| translate}}<i>{{droolsErr}}</i></p>
+			<p>{{::'printBadge.droolsErrorMsgCompliance2'| translate}} <a ng-click="handleFailureNavigation();">{{::'printBadge.DocsAndPolicies'|
+					translate}}</a>
+				{{::'printBadge.droolsErrorMsgCompliance3'| translate}}</p>
+			<div class="text-center"><button class="btn btn-info text-center"
+				        type="button"
+				        id="ok"
+				        id="droolsErrorMsgComplianceOk"
+				        name="droolsErrorMsgComplianceOk"
+				        data-ng-click="$close()"
+				        autofocus>{{::'common.ok' | translate}}</button></div>
+		</div>
+		<div class="col-sm-12 col-md-12 col-lg-12"
+		     ng-if="showErrorMessageFrom === 'droolsErrorMsg'">
+			{{droolsErr}}
+			<div class="text-center paddingT2"><button class="btn btn-info text-center"
+				        type="button"
+				        id="ok"
+				        id="droolsErrOk"
+				        name="droolsErrOk"
+				        data-ng-click="$close()"
+				        autofocus>{{::'common.ok' | translate}}</button></div>
+		</div>
+	</div>
+</div>

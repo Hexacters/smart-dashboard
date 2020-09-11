@@ -1,0 +1,146 @@
+<div ng-controller="googleAnalyticsController" data-ng-init="callGAPageTrack('callContactPersonalInfo');"></div>
+<div class="row">
+	<div class="col-sm-12 col-md-12 col-lg-12"
+		data-ng-class="{'dNone':!loading}">
+		<img align="absmiddle" src="app/ng1/img/partial-loading.gif">&nbsp;{{'common.loading'
+		| translate}}
+	</div>
+	<div class="col-sm-12 col-md-12 col-lg-12">
+		<div class="col-sm-8 col-md-6 col-lg-6">
+			<h3>{{'myProfile.contactAndPersonalInformation.label.contactPersonalInformation'
+				| translate}}</h3>
+		</div>
+		<div class="col-sm-4 col-md-6 col-lg-6">
+			<div class="pull-right marginT2">
+				<sup class="asterisk">*</sup>&nbsp;{{'common.required' | translate}}&nbsp;&nbsp;
+				<a data-ui-sref="myProfile.contactPersonalInfoView.help" ng-show="!isFromManageReps">{{'common.help' | translate}}</a>
+				<a data-ui-sref="manage.repAccountDetails.manageRepProfile.contactPersonalInfoView.help" ng-show="isFromManageReps">{{'common.help' | translate}}</a>
+			</div>
+		</div>
+		<div class="col-sm-12 col-md-12 col-lg-12">
+			<p>{{'myProfile.contactAndPersonalInformation.label.contactPersonalInfoUsedGov'
+				| translate}}</p>
+		</div>
+		<div class="col-sm-12 col-md-12 col-lg-12" ng-controller="myProfileController">
+			<vision-action> <get-data service="myProfileServices" response-formatter="formateDobString"
+				operation="getUser"></get-data>
+			<div class="table-responsive"
+				data-ng-if="data.submitError.Status=='Error' || dataError.submitError.Status=='Error'">
+				<div class="alert text-danger">
+					<span class="fa fa-warning" aria-hidden="true"></span>
+					{{data.submitError.ResponseError[0].errorCode | translate}}
+				</div>
+			</div>
+			<form novalidate name="contactPersonalInformation" autocomplete="off"
+				class="form-horizontal">
+				<div class="col-sm-6 col-md-6 col-lg-6">
+					<div class="form-group">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right">{{'myProfile.contactAndPersonalInformation.label.socialTitle'
+							| translate}}</label>
+						<p class="break-word col-sm-6 col-md-6 col-lg-6">
+							<span
+								ng-repeat="item in saluationLookup | filter:{value:data.successData.User.salutation}:true">
+								{{item.label}} </span>
+						</p>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right">
+							{{'myProfile.contactAndPersonalInformation.label.firstName' |
+							translate}}&nbsp;<sup class="asterisk">*</sup>
+						</label>
+						<p class="break-word col-sm-6 col-md-6 col-lg-6">{{data.successData.User.firstName}}</p>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right">
+							{{'myProfile.contactAndPersonalInformation.label.middleName' |
+							translate}}&nbsp;<sup class="asterisk">*</sup>
+						</label>
+						<p class="col-sm-6 col-md-6 col-lg-6"
+							ng-if="data.successData.User.middleInitialExemptStr === 'true'">
+							{{'myProfile.contactAndPersonalInformation.errorMessage.noMiddleName'
+							| translate}}</p>
+						<p class="break-word col-lg-6"
+							ng-if="data.successData.User.middleInitialExemptStr === 'false'">
+							{{data.successData.User.middleInitial}}</p>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right">{{'myProfile.contactAndPersonalInformation.label.lastName'
+							| translate}}&nbsp;<sup class="asterisk">*</sup>
+						</label>
+						<p class="break-word col-sm-6 col-md-6 col-lg-6">{{data.successData.User.lastName}}</p>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right">
+							{{'myProfile.contactAndPersonalInformation.label.suffix' |
+							translate}}&nbsp;<sup class="asterisk">*</sup> <span
+							tooltip-placement="bottom" tooltip-append-to-body="true"
+							tooltip="{{'myProfile.contactAndPersonalInformation.label.suffixTooltip' | translate}}">
+								<i class="fa fa-question-circle fa-lg"></i>
+						</span>
+						</label>
+						<p class="col-sm-6 col-md-6 col-lg-6"
+							ng-if="data.successData.User.suffixExemptStr === 'true'">
+							{{'myProfile.contactAndPersonalInformation.errorMessage.noSuffix'
+							| translate}}</p>
+						<p class="break-word col-lg-6"
+							ng-if="data.successData.User.suffixExemptStr === 'false'">
+							{{data.successData.User.suffix}}</p>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right">{{'myProfile.contactAndPersonalInformation.label.nickname'
+							| translate}}</label>
+						<p class="break-word col-sm-6 col-md-6 col-lg-6">{{data.successData.User.nickName}}</p>
+					</div>
+
+				</div>
+				<div class="col-sm-6 col-md-6 col-lg-6">
+
+					<div class="form-group">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right">
+							{{'myProfile.contactAndPersonalInformation.label.phone' |
+							translate}}&nbsp;<sup class="asterisk">*</sup>
+						</label>
+						<p class="break-word col-sm-6 col-md-6 col-lg-6">{{data.successData.User.workPhone}}</p>
+					</div>
+					<!-- <div class="form-group">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right">{{'myProfile.contactAndPersonalInformation.label.cellPhone'
+							| translate}}</label>
+						<p class="break-word col-sm-6 col-md-6 col-lg-6">{{data.successData.User.cellPhone}}</p>
+					</div> -->
+					<div class="form-group">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right">
+							{{'myProfile.contactAndPersonalInformation.label.dateofBirth' |
+							translate}}&nbsp;<sup class="asterisk">*</sup>
+						</label>
+						<p class="break-word col-sm-6 col-md-6 col-lg-6">{{data.successData.User.dob
+							| dateFormate | date:'MM/dd/yyyy'}}</p>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right">{{'myProfile.contactAndPersonalInformation.label.homeResidenceCounty'
+							| translate}}</label>
+						<p class="break-word col-sm-6 col-md-6 col-lg-6">{{data.successData.User.residenceCounty}}</p>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right">{{'myProfile.contactAndPersonalInformation.label.homeResidenceState'
+							| translate}}</label>
+						<p class="break-word col-sm-6 col-md-6 col-lg-6">
+							<span
+								ng-repeat="item in stateLookup | filter:{stateCode:data.successData.User.residenceState}:true">
+								{{item.stateName}} </span> <span
+								ng-repeat="item in stateCanLookup | filter:{stateCode:data.successData.User.residenceState}:true">
+								{{item.stateName}} </span> <span
+								ng-repeat="item in stateUsOtherLookup | filter:{stateCode:data.successData.User.residenceState}:true">
+								{{item.stateName}} </span>
+						</p>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right">{{'myProfile.contactAndPersonalInformation.label.homeResidenceZipCode'
+							| translate}}</label>
+						<p class="break-word col-sm-6 col-md-6 col-lg-6">{{data.successData.User.residenceZip}}</p>
+					</div>
+				</div>
+			</form>
+			</vision-action>
+		</div>
+	</div>
+</div>

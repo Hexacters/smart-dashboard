@@ -1,0 +1,22 @@
+<div class="row">
+	<div class="col-sm-12 col-md-12 col-lg-12">
+		<accordion close-others="true" ng-init="status.isFirstOpen= 'true'">
+		<accordion-group
+			is-open="$state.includes('requestAppointAccordion.request')">
+		<accordion-heading>
+		<a class="show" data-ui-sref="requestAppointAccordion.request">
+			{{'appointments.header.requestAppointment'| translate }} <i
+			class="pull-right glyphicon"
+			ng-class="{'glyphicon-minus': $state.includes('requestAppointAccordion.request'), 'glyphicon-plus': !status.Open}"></i>
+		</a> </accordion-heading>
+		<div ui-view="requestAppointment" autoscroll="true"></div>
+		</accordion-group>
+		<accordion-group is-open="$state.includes('requestAppointAccordion.viewRequest')">
+				<accordion-heading><a class="show" data-ui-sref="requestAppointAccordion.viewRequest">{{'appointments.header.viewRequestsAppointment'| translate }}
+				<i class="pull-right glyphicon" ng-class="{'glyphicon-minus': $state.includes('requestAppointAccordion.viewRequest'), 'glyphicon-plus': !status.Open}"></i></a>
+				</accordion-heading>
+				<div ui-view="viewAppointment" autoscroll="true"></div>
+			</accordion-group>
+		</accordion>
+	</div>
+</div>

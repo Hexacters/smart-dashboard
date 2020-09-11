@@ -1,0 +1,152 @@
+<div ng-controller="googleAnalyticsController" data-ng-init="callGAPageTrack('callBusAddressInfo');"></div>
+<div class="row">
+	<div class="col-sm-12 col-md-12 col-lg-12"
+		data-ng-class="{'dNone':!loading}">
+		<img align="absmiddle" src="app/ng1/img/partial-loading.gif" />&nbsp;{{'common.loading'|
+		translate}}
+	</div>
+	<div class="col-sm-12 col-md-12 col-lg-12">
+		<div class="col-sm-8 col-md-6 col-lg-6">
+			<h3>{{'myProfile.addressAndInformation.header.addressInformationTitle'
+				| translate}}</h3>
+		</div>
+		<div class="col-sm-4 col-md-6 col-lg-6">
+			<div class="pull-right marginT2">
+				<sup class="asterisk">*</sup>&nbsp;{{'common.required' | translate}}
+				<a data-ui-sref="myProfile.accountInformationView.help" ng-show="!isFromManageReps">{{'common.help' | translate}}</a>
+				<a data-ui-sref="manage.repAccountDetails.manageRepProfile.accountInformationView.help" ng-show="isFromManageReps">{{'common.help'| translate}}</a>
+			</div>
+		</div>
+		<div class="col-sm-12 col-md-12 col-lg-12">
+			<vision-action> <get-data service="myProfileServices"
+				operation="getBusinessAddressInformation"></get-data>
+			<div class="table-responsive"
+				data-ng-if="data.errorData.Status=='Error' || dataError.errorData.Status=='Error'">
+				<div class="alert text-danger">
+					<span class="fa fa-warning" aria-hidden="true"></span>
+					{{data.submitError.ResponseError[0].errorCode | translate}}
+				</div>
+			</div>
+			<form novalidate name="addressInformationView" autocomplete="off"
+				class="form-horizontal">
+				<div class="col-sm-6 col-md-6 col-lg-6">
+					<div class="form-group">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right">{{'myProfile.addressAndInformation.label.yourWorkEmail'
+							| translate}} <span tooltip-append-to-body="true" tooltip-placement="bottom"
+							tooltip="{{'myProfile.addressAndInformation.label.yourWorkEmailTooltip' | translate}}">
+								<i class="fa fa-question-circle fa-lg"></i>
+						</span>
+						</label>
+						<p class="break-word col-sm-6 col-md-6 col-lg-6">{{data.successData.User.userId}}</p>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right">{{'myProfile.addressAndInformation.label.streetAddress'
+							| translate}}</label>
+						<div class="col-sm-6 col-md-6 col-lg-6">
+							<p>{{data.successData.Address.addressLine1}}</p>
+							<br>
+							<p>{{data.successData.Address.addressLine2}}</p>
+							<br>
+							<p>{{data.successData.Address.addressLine3}}</p>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right">{{'myProfile.addressAndInformation.label.city'
+							| translate}}</label>
+						<p class="break-word col-sm-6 col-md-6 col-lg-6">{{data.successData.Address.city}}</p>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right">{{'myProfile.addressAndInformation.label.stateProvinceDivision'
+							| translate}}</label> <span ng-if="stateLookup"
+							ng-repeat="item in stateLookup | filter:{stateCode:data.successData.Address.stateCode}:true">
+							<p class="break-word col-sm-6 col-md-6 col-lg-6">{{item.stateName}}</p>
+						</span> <span ng-if="stateCanLookup"
+							ng-repeat="item in stateCanLookup | filter:{stateCode:data.successData.Address.stateCode}:true">
+							<p class="break-word col-sm-6 col-md-6 col-lg-6">{{item.stateName}}</p>
+						</span> <span ng-if="stateUsOtherLookup"
+							ng-repeat="item in stateUsOtherLookup | filter:{stateCode:data.successData.Address.stateCode}:true">
+							<p class="break-word col-sm-6 col-md-6 col-lg-6">{{item.stateName}}</p>
+						</span>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right">{{'myProfile.addressAndInformation.label.zipPostalCode'
+							| translate}}</label>
+						<p class="break-word col-sm-6 col-md-6 col-lg-6">{{data.successData.Address.zip}}</p>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right">{{'myProfile.addressAndInformation.label.country'
+							| translate}}</label> <span
+							ng-repeat="item in countryLookup | filter:{countryCode:data.successData.Address.countryCode}:true">
+							<p class="break-word col-sm-6 col-md-6 col-lg-6">{{item.countryName}}</p>
+						</span>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right">{{'myProfile.addressAndInformation.label.businessFax'
+							| translate}}</label>
+						<p class="break-word col-sm-6 col-md-6 col-lg-6">{{data.successData.User.fax}}</p>
+					</div>
+				</div>
+				<div class="col-sm-6 col-md-6 col-lg-6">
+					<div class="form-group">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right">
+							{{'myProfile.addressAndInformation.label.professionalTitle' |
+							translate}}&nbsp;<sup class="asterisk">*</sup>
+						</label> <span ng-if="data.successData.User.titleExemptStr === 'true'">
+							<p class="break-word col-sm-6 col-md-6 col-lg-6">{{'myProfile.addressAndInformation.label.noProfessionalTitle'
+								| translate}}</p>
+						</span> <span ng-if="data.successData.User.titleExemptStr === 'false'">
+							<p class="break-word col-sm-6 col-md-6 col-lg-6">{{data.successData.User.title}}</p>
+						</span>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right">
+							{{'myProfile.addressAndInformation.label.professionalDesignation'
+							| translate}}&nbsp;<sup class="asterisk">*</sup> <span tooltip-append-to-body="true"
+							tooltip-placement="bottom"
+							tooltip="{{'myProfile.addressAndInformation.label.professionalDesignationTooltip' | translate}}">
+								<i class="fa fa-question-circle fa-lg"></i>
+						</span>
+						</label> <span
+							ng-if="data.successData.User.professionalDesignationExemptStr === 'true'">
+							<p class="break-word col-sm-6 col-md-6 col-lg-6">{{'myProfile.addressAndInformation.label.noProfessionalDesignation'
+								| translate}}</p>
+						</span> <span
+							ng-if="data.successData.User.professionalDesignationExemptStr === 'false'">
+							<p class="break-word col-sm-6 col-md-6 col-lg-6">{{data.successData.User.professionalDesignation}}</p>
+						</span>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right">
+							{{'myProfile.addressAndInformation.label.professionalLicense' |
+							translate}}&nbsp;<sup class="asterisk">*</sup>
+						</label> <span ng-if="data.successData.User.professionalLicense == ''">
+							<p class="break-word col-sm-6 col-md-6 col-lg-6">{{'myProfile.addressAndInformation.label.noProfessionalLicense'
+								| translate}}</p>
+						</span> <span ng-if="data.successData.User.professionalLicense != ''">
+							<p class="break-word col-sm-6 col-md-6 col-lg-6">{{data.successData.User.professionalLicense}}</p>
+						</span>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right">{{'myProfile.addressAndInformation.label.division'
+							| translate}} <span tooltip-append-to-body="true" tooltip-placement="bottom"
+							tooltip="{{'myProfile.addressAndInformation.label.divisionTooltip' | translate}}">
+								<i class="fa fa-question-circle fa-lg"></i>
+						</span>
+						</label>
+						<p class="break-word col-sm-6 col-md-6 col-lg-6">{{data.successData.User.divisionString}}</p>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right">{{'myProfile.addressAndInformation.label.employeeID'
+							| translate}} <span tooltip-append-to-body="true" tooltip-placement="bottom"
+							tooltip="{{'myProfile.addressAndInformation.label.employeeIDTooltip' | translate}}">
+								<i class="fa fa-question-circle fa-lg"></i>
+						</span>
+						</label>
+						<p class="break-word col-sm-6 col-md-6 col-lg-6">{{data.successData.User.employeeId}}</p>
+					</div>
+				</div>
+			</form>
+			</vision-action>
+		</div>
+	</div>
+</div>

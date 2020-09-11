@@ -1,0 +1,9 @@
+<div data-ng-controller="userController">
+<div loading-container="loading"></div>
+<span data-ng-if="!$state.params.token">
+ <auto-login service="users" operation="goToDashboard" params='{"userCredential":"{{$state.params.userCredential}}"}' callback="afterLoginCallbackFn" />
+</span>
+<span data-ng-if="!$state.params.userCredential">
+ <auto-login service="users" operation="goToDashboard" params='{"token":"{{$state.params.token}}"}' callback="afterLoginCallbackFn" />
+</span>
+</div>

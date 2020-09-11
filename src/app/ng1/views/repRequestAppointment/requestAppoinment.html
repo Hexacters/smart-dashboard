@@ -1,0 +1,384 @@
+<div class="col-sm-12 col-md-12 col-lg-12"
+     data-ng-class="{'dNone':!loading}">
+	<img align="absmiddle"
+	     src="app/ng1/img/partial-loading.gif"> {{::'common.loading'
+	| translate}}
+</div>
+<div class="row"
+     data-ng-class="{'dNone':loading}"
+     ng-controller="requestappoinmentController"
+     ng-init="getRiaAccounts();initialResponseLoading = true;">
+	<div class="col-sm-12 col-md-12 col-lg-12">
+		<p>
+			<a ng-if="$stateParams.requestFrom === 'accounts'"
+			   data-ui-sref="accounts.manageAccounts">{{'appointments.requestAppointments.backtoAccounts'|
+				translate }}</a>
+		</p>
+		<p>
+			<a ng-if="$stateParams.requestFrom === 'accountDetail'"
+			   data-ng-click="$state.go('accounts.accountDetails.documents.commonDocuments')">{{::'common.backToAccountDetails'|
+				translate }}</a>
+		</p>
+		<p>
+			<a ng-if="$stateParams.requestFrom === 'manageRepAccountDetail'"
+			   data-ng-click="$state.go('manage.repAccountDetails.repAccountsTab.documents.commonDocuments')">{{::'common.backToAccountDetails'|
+				translate }}</a>
+		</p>
+		<div ng-show="enableLoading || enableSaveReqLoading || initialResponseLoading"
+		     class="col-sm-12 col-md-12 col-lg-12 padding0">
+			<img align="absmiddle"
+			     src="app/ng1/img/partial-loading.gif"> {{::'common.loading'
+			| translate}}
+		</div>
+		<div data-ng-if="isApptReqEnabled === false"
+		     class="alert alert-danger">
+			<i class="fa fa-exclamation-triangle"></i>
+			{{::'appointments.requestAppointments.errorMessage.isApptReqEnabled' | translate}}
+		</div>
+		<div class="row"
+		     data-ng-show="!initialResponseLoading && isApptReqEnabled">
+			<form novalidate
+			      name="addAppointmentForm"
+			      class="form-horizontal"
+			      autocomplete="off">
+				<div class="col-sm-12 col-md-12 col-lg-12">
+					<span>
+						<span>
+							<input ng-disabled="saveAppointmentRequest"
+							       data-ng-model="appointment.recurring"
+							       class="marginT0"
+							       type="radio"
+							       name="inlineRadioOptions"
+							       id="inlineRadio2"
+							       value="oneTime"
+							       data-ng-click="appointment.recurring = 'oneTime'">
+						</span><span>{{::'appointments.addAppointments.header.oneTimeAppointment' | translate}}</span>&nbsp;&nbsp;&nbsp;&nbsp;
+						<span>
+							<input ng-disabled="saveAppointmentRequest"
+							       data-ng-model="appointment.recurring"
+							       class="marginT0"
+							       type="radio"
+							       name="inlineRadioOptions"
+							       id="inlineRadio2"
+							       value="recurring"
+							       ng-click="openRecurringPopup('new');appointment.recurring = 'recurring'">
+						</span><span>{{::'appointments.addAppointments.header.recurringAppointment' | translate}}</span>
+					</span>
+					<div class="pull-right">
+						<sup class="asterisk">*</sup><label> {{::'common.required' |
+							translate}}</label>
+					</div>
+				</div>
+				<div class="col-sm-6 col-md-6 col-lg-6 marginT2">
+					<div ng-if="getriaResponseError !== false"
+					     class="col-sm-12 col-md-12 col-lg-12 padding0">
+						<div class="alert alert-danger">{{getriaResponseError.errorCode
+							| translate}}</div>
+					</div>
+					<div data-ng-if="appointmentFailure.errorData.Status === 'Error' && getriaResponseError === false"
+					     class="alert alert-danger">
+						<i class="fa fa-exclamation-triangle"></i>
+						{{appointmentFailure.errorData.ResponseError[0].errorCode |
+						translate}}
+					</div>
+					<div class="form-group">
+						<label class="col-sm-4 col-md-4 col-lg-4">{{'appointments.label.account'
+							| translate}} <sup class="asterisk">*</sup> <span tooltip-placement="right"
+							      tooltip-append-to-body="true"
+							      tooltip="{{'appointments.label.accounTooltip' | translate}}">
+								<i class="fa fa-question-circle fa-lg"></i>
+							</span>
+						</label>
+						<div class="col-sm-8 col-md-8 col-lg-8"
+						     ng-init="($stateParams.requestFrom === 'accounts' || $stateParams.requestFrom === 'accountDetail') ? getriaCustomerDetails(accountSelected):return;">
+							<select class="form-control required input-sm"
+							        name="account"
+							        id="account"
+							        validator="required"
+							        ng-disabled="saveRequest"
+							        ng-change="getriaCustomerDetails(RepRiaAccountsSummaryList.selectedOption);"
+							        required-error-message="Account is required"
+							        ng-options="option.customerCompanyName for option in RepRiaAccountsSummaryList.availableOptions | orderBy : 'customerOid'"
+							        ng-model="RepRiaAccountsSummaryList.selectedOption">
+								<option value=''>--Select Account--</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-4 col-md-4 col-lg-4">{{'appointments.header.requestedStaff'
+							| translate}} <sup class="asterisk">*</sup> <span tooltip-placement="right"
+							      tooltip-append-to-body="true"
+							      tooltip="{{'appointments.label.requestedBuyerTooltip' | translate}}">
+								<i class="fa fa-question-circle fa-lg"></i>
+							</span>
+						</label>
+						<div class="col-sm-8 col-md-8 col-lg-8">
+							<select ng-disabled="enableLoading || getriaResponseError !== false || saveRequest"
+							        class="form-control required input-sm"
+							        name="requestStaff"
+							        id="requestStaff"
+							        validator="required"
+							        required-error-message="Requested Staff is required"
+							        ng-change="appointment.requestedStaff = (appointmentRequestedStaff.buyerFirstName+' '+appointmentRequestedStaff.buyerLastName);
+								appointment.buyerOid = appointmentRequestedStaff.buyerOid"
+							        ng-options="k as (k.buyerFirstName+' '+k.buyerLastName) for k in RepRiaBuyersSummaryList | orderBy:'buyerOid'"
+							        ng-model="appointmentRequestedStaff">
+								<option value=''>--Select Requested Staff--</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-4 col-md-4 col-lg-4">{{::'appointments.addAppointments.label.location'
+							| translate}} <sup class="asterisk">*</sup> <span tooltip-placement="right"
+							      tooltip-append-to-body="true"
+							      tooltip="{{'appointments.label.locationTooltip' | translate}}">
+								<i class="fa fa-question-circle fa-lg"></i>
+							</span>
+						</label>
+						<div class="col-sm-8 col-md-8 col-lg-8">
+							<select ng-disabled="enableLoading || getriaResponseError !== false || saveRequest"
+							        class="form-control required input-sm"
+							        name="location"
+							        id="locationName"
+							        validator="required"
+							        required-error-message="{{::'appointments.addAppointments.errorMessage.locationRequired' | translate}}"
+							        ng-model="appointmentLocation">
+								<!--CREDMGR-26373-->
+								<!--ng-change="apptLocationDeptEmptyOther(appointmentLocation)">-->
+								<option value="">--Select Location--</option>
+								<option ng-repeat="location in LocationSummaryList | orderBy:'name'"
+								        value='{"id":"{{location.id}}","oid":"{{location.oid}}"}'>{{location.id}}</option>
+								<!--CREDMGR-26373-->
+								<!--<option value="other">Other Location</option>-->
+							</select>
+						</div>
+					</div>
+					<!--CREDMGR-26373
+					<div class="form-group" ng-if="appointmentLocation=='other'" ng-init="appointment.locationOther = ''">
+						<label class="col-sm-4 col-md-4 col-lg-4 text-left">{{::'appointments.addAppointments.label.otherLocation'
+							| translate}} <sup class="asterisk">*</sup>
+						</label>
+						<div class="col-sm-8 col-md-8 col-lg-8">
+							<input type="text" class="form-control required input-sm"
+								id="locationOther" name="locationOther" maxlength="50"
+								ng-model="appointment.locationOther"
+								ng-disabled="enableLoading || getriaResponseError !== false || saveRequest"
+								placeholder="{{::'appointments.addAppointments.label.otherLocation' | translate}}"
+								validator="required,validateAlphanumSpecial"
+								required-error-message="{{::'appointments.addAppointments.errorMessage.otherLocationRequired' | translate}}"
+								data-validate-alphanum-special-error-message="{{::'appointments.addAppointments.errorMessage.specialCharactorsRequired' | translate}}"
+								valid-method="watch">
+						</div>
+					</div>
+				-->
+					<div class="form-group">
+						<label class="col-sm-4 col-md-4 col-lg-4">{{::'appointments.addAppointments.label.department'
+							| translate}} <sup class="asterisk">*</sup> <span tooltip-placement="right"
+							      tooltip-append-to-body="true"
+							      tooltip="{{'appointments.label.departmentTooltip' | translate}}">
+								<i class="fa fa-question-circle fa-lg"></i>
+							</span>
+						</label>
+						<div class="col-sm-8 col-md-8 col-lg-8">
+							<select ng-disabled="enableLoading || getriaResponseError !== false || saveRequest"
+							        class="form-control required input-sm"
+							        name="department"
+							        id="departmentName"
+							        validator="required"
+							        required-error-message="{{::'appointments.addAppointments.errorMessage.departmentRequired' | translate}}"
+							        ng-model="appointmentDepartment"
+							        ng-change="apptDeptEmptyOther(appointmentDepartment)">
+								<option value="">--Select Department--</option>
+								<option ng-repeat="department in DepartmentSummaryList | orderBy:'id'"
+								        value='{"id":"{{department.id}}","oid":"{{department.oid}}"}'>{{department.id}}</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-4 col-md-4 col-lg-4">{{::'appointments.addAppointments.label.timeZone'
+							| translate}}</label>
+						<div class="col-sm-8 col-md-8 col-lg-8">
+							<select ng-disabled="enableLoading || getriaResponseError !== false || saveRequest"
+							        class="form-control input-sm"
+							        id="timeZone"
+							        name="timeZone"
+							        ng-model="appointment.timeZone"
+							        ng-change='setAppointmentStartTimeByTimeZone(appointment.timeZone);'>
+								<option ng-repeat="timeZone in timeZoneLookup | orderBy:'value'"
+								        ng-if="timeZone.value=='TZ001' || timeZone.value=='TZ002' || timeZone.value=='TZ003' || timeZone.value=='TZ004' || timeZone.value=='TZ009' || timeZone.value=='TZ013'"
+								        value="{{timeZone.value}}">{{timeZone.label}}</option>
+							</select>
+						</div>
+					</div>
+					<div ng-if="appointment.recurring =='oneTime'">
+						<div class="form-group">
+							<label class="col-sm-4 col-md-4 col-lg-4 ">{{::'appointments.addAppointments.label.start'
+								| translate}}</label>
+							<div class="col-sm-5 col-md-5 col-lg-5">
+								<input class="form-control input-sm"
+								       type="text"
+								       readonly
+								       id="startdate"
+								       name="startdate"
+								       data-ng-init="appointment.startDate = appointmentStartDate"
+								       data-ng-model="appointment.startDate"
+								       min-date="minDate"
+								       max-date="maxDate"
+								       datepicker-popup="{time: false, format: 'MM/dd/yyyy'}"
+								       ng-change="loadAppointmentStartDateTime(appointment.startDate, appointment.endDate);" />
+							</div>
+							<div class="col-sm-3 col-md-3 col-lg-3">
+								<select ng-disabled="saveAppointmentRequest"
+								        ng-style="{'width': '100%'}"
+								        name="addAppointmentForm.startTime"
+								        ng-model="appointment.startTime"
+								        id="addAppointmentForm.startTime"
+								        class="form-control input-sm"
+								        ng-change="loadAppointmentEndDateTime(appointment.startDate,appointment.startTime, appointment.endDate)"
+								        ng-options="hour.timeValue as hour.hoursValue for hour in startTimeObjList">
+								</select>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-4 col-md-4 col-lg-4 ">{{::'appointments.addAppointments.label.end'
+								| translate}}</label>
+							<div class="col-sm-5 col-md-5 col-lg-5">
+								<input class="form-control input-sm"
+								       type="text"
+								       readonly
+								       name="endDate"
+								       id="endDate"
+								       data-ng-init="appointment.endDate = appointmentEndDate"
+								       ng-model="appointment.endDate"
+								       min-date="appointment.startDate"
+								       max-date="maxDate"
+								       datepicker-popup="{time: false, format: 'MM/dd/yyyy'}"
+								       ng-change="loadAppointmentEndDateTime(appointment.startDate,appointment.startTime, appointment.endDate)" />
+							</div>
+							<div class="col-sm-3 col-md-3 col-lg-3">
+								<select ng-disabled="saveAppointmentRequest"
+								        ng-style="{'width': '100%'}"
+								        name="addAppointmentForm.endTime"
+								        ng-model="appointment.endTime"
+								        id="addAppointmentForm.endTime"
+								        class="form-control input-sm"
+								        ng-options="hour.timeValue as hour.hoursValue for hour in endTimeObjList">
+								</select>
+							</div>
+						</div>
+					</div>
+					<div ng-if="appointment.recurring =='recurring'">
+						<div class="form-group">
+							<label class="col-sm-4 col-md-4 col-lg-4">{{::'appointments.addAppointments.label.startEndTime'
+								| translate}}</label>
+							<div class="col-sm-3 col-md-3 col-lg-3">
+								<select ng-style="{'width': '100%'}"
+								        name="addAppointmentForm.recurringStartTime"
+								        ng-model="appointment.recurringStartTime"
+								        id="addAppointmentForm.recurringStartTime"
+								        class="form-control input-sm"
+								        ng-change="setRecurringAppointmentEndTime(appointment.recurringStartTime);setRecurringEndDate(appointment.recurringEndTime);"
+								        ng-options="hour.timeValue as hour.hoursValue for hour in recurringStartTimeObjList">
+								</select>
+							</div>
+							<div class="col-sm-3 col-md-3 col-lg-3">
+								<select ng-style="{'width': '100%'}"
+								        name="addAppointmentForm.recurringEndTime"
+								        ng-model="appointment.recurringEndTime"
+								        id="addAppointmentForm.endTime"
+								        class="form-control input-sm"
+								        ng-change="setRecurringEndDate(appointment.recurringEndTime);"
+								        ng-options="hour.timeValue as hour.hoursValue for hour in recurringEndTimeObjList">
+								</select>
+							</div>
+						</div>
+						<div class="form-group"
+						     ng-show="recurringAppt.summaryStr && recurringAppt.summaryStr !== ''">
+							<label class="col-sm-4 col-md-4 col-lg-4">{{::'appointments.addAppointments.label.summary'
+								| translate}}</label> <label class="paddingT1 col-sm-8 col-md-8 col-lg-8"
+							       ng-model="appointment.summary">{{recurringAppt.summaryStr}}{{setRecurringEndDateSummaryStr}}
+								<a ng-click="openRecurringPopup('edit');"
+								   href="javascript:;"
+								   id="recurringEdit">Edit</a>
+							</label>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6 col-md-6 col-lg-6 marginT2">
+					<div class="form-group">
+						<label class="col-sm-4 col-md-4 col-lg-4 text-right">{{::'appointments.addAppointments.label.subject'
+							| translate}} <sup class="asterisk">*</sup>
+						</label>
+						<div class="col-sm-8 col-md-8 col-lg-8">
+							<input maxlength="512"
+							       ng-disabled="enableLoading || getriaResponseError !== false || saveRequest"
+							       type="text"
+							       class="form-control required input-sm"
+							       id="subject"
+							       name="subject"
+							       ng-model="appointment.subject"
+							       validator="required,validateAlphanumSpecial"
+							       required-error-message="Subject is required"
+							       placeholder="{{::'appointments.addAppointments.label.subject' | translate}}"
+							       data-validate-alphanum-special-error-message="{{::'appointments.addAppointments.errorMessage.specialCharactorsRequired' | translate}}"
+							       valid-method="watch">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-4 col-md-4 col-lg-4 text-right">{{::'appointments.addAppointments.label.description'
+							| translate}} <sup class="asterisk">*</sup>
+						</label>
+						<div class="col-sm-8 col-md-8 col-lg-8">
+							<textarea maxlength="4096"
+							          ng-disabled="enableLoading || getriaResponseError !== false || saveRequest"
+							          class="form-control required input-sm resizeN"
+							          rows="5"
+							          id="description"
+							          name="description"
+							          ng-model="appointment.description"
+							          validator="required,validateAlphanumSpecial"
+							          required-error-message="Description is required"
+							          ng-attr-placeholder="{{::'appointments.addAppointments.label.description' | translate}}"
+							          data-validate-alphanum-special-error-message="{{::'appointments.addAppointments.errorMessage.specialCharactorsRequired' | translate}}"
+							          valid-method="watch"></textarea>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-4 col-md-4 col-lg-4 text-right">{{::'appointments.addAppointments.label.contactPhone'
+							| translate}} </label>
+						<div class="col-sm-8 col-md-8 col-lg-8">
+							<input maxlength="512"
+							       ng-disabled="enableLoading || getriaResponseError !== false || saveRequest"
+							       type="text"
+							       class="form-control input-sm"
+							       id="contactPhone"
+							       name="contactPhone"
+							       ng-model="contactPhone"
+							       validator="validateAlphanumSpecial"
+							       placeholder="{{::'appointments.addAppointments.label.contactPhone' | translate}}"
+							       data-validate-alphanum-special-error-message="{{::'appointments.addAppointments.errorMessage.specialCharactorsRequired' | translate}}"
+							       valid-method="watch">
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-12 col-md-12 col-lg-12 text-center">
+					<button type="submit"
+					        class="btn btn-success"
+					        ng-disabled="enableLoading || saveRequest"
+					        validation-submit="addAppointmentForm"
+					        id="saveAppointment"
+					        ng-click="saveAppointment();">{{::'appointments.addAppointments.label.sendRequest'
+						| translate}}</button>
+					<span>
+						<button type="submit"
+						        class="btn btn-warning"
+						        id="cancel"
+						        ng-disabled="enableLoading || saveRequest"
+						        ng-click="$state.go('requestAppointAccordion.request',{},{'reload':true})">{{::'common.cancel'
+							| translate}}</button>
+					</span>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

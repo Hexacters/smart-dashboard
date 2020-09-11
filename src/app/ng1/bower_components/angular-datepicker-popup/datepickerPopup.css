@@ -1,0 +1,147 @@
+.datetime-range {
+	padding: 0;
+	position: absolute;
+	z-index: 1060;
+	min-width: 255px;
+}
+
+.datetime-range .datetime-range-panel,
+.datetime-input + ul.dropdown-menu,
+body + ul.dropdown-menu {
+	padding: 0;
+}
+
+.datetime-range .datetime-range-panel table,
+.datetime-input + ul.dropdown-menu table,
+body > ul.dropdown-menu table {
+	background: #F5F5F5;
+}
+
+.datetime-range .datetime-range-panel thead .btn,
+.datetime-input + ul.dropdown-menu thead .btn,
+body > ul.dropdown-menu thead .btn {
+	width: 100%;
+}
+
+.datetime-range .datetime-range-panel table .btn:focus,
+.datetime-input + ul.dropdown-menu table .btn:focus,
+body > ul.dropdown-menu table .btn:focus {
+	outline: 0 !important;
+}
+
+.datetime-range .datetime-range-panel table .btn:active,
+.datetime-input + ul.dropdown-menu table .btn:active {
+	box-shadow: none;
+}
+
+.datetime-range .datetime-range-panel .btn,
+.datetime-input + ul.dropdown-menu .btn,
+body > ul.dropdown-menu .btn {
+	border: 0;
+	border-radius: 0;
+}
+
+.datetime-range .datetime-range-panel .active,
+.datetime-input + ul.dropdown-menu .active,
+body > ul.dropdown-menu .active {
+	background-color: #FFF;
+	box-shadow: none;
+}
+
+.datetime-range .datetime-range-panel .active:hover,
+.datetime-input + ul.dropdown-menu .active:hover,
+body > ul.dropdown-menu .active:hover {
+	background-color: #EBEBEB;
+}
+
+.datetime-range .datetime-range-panel .btn-info.active,
+.datetime-input + ul.dropdown-menu .btn-info.active,
+body > ul.dropdown-menu .btn-info.active {
+	background-color: #39B3D7;
+}
+
+.datetime-range .datetime-range-panel .btn-info.active .text-info {
+	color: #FFF;
+}
+
+.datetime-range .datetime-range-panel .btn-default .text-info,
+.datetime-input + ul.dropdown-menu .btn-default .text-info,
+body > ul.dropdown-menu .btn-default .text-info {
+	color: #FF1501;
+}
+
+.datetime-range .datetime-range-panel thead tr:nth-child(2) th,
+.datetime-input + ul.dropdown-menu thead tr:nth-child(2) th,
+body > ul.dropdown-menu thead tr:nth-child(2) th {
+	padding: 4px 0;
+}
+
+.datetime-range .datetime-range-panel em,
+.datetime-input + ul.dropdown-menu em,
+body > ul.dropdown-menu em {
+	font-style: normal;
+}
+
+.datetime-range .datetime-range-panel .timerange {
+	padding: 6px 10px 5px;
+	background: #EEE;
+	position: relative;
+}
+
+.datetime-range .datetime-range-panel .timerange label {
+	margin-right: 5px;
+	font-weight: normal;
+}
+
+.datetime-range .datetime-range-panel .timerange select {
+	display: inline-block;
+	width: 47px;
+	padding: 0;
+	border: none;
+	border-radius: 0;
+	font-size: 14px;
+	box-shadow: none;
+	height: 22px;
+	line-height: 20px;
+	background: #FFF;
+	cursor: pointer;
+}
+
+.datetime-range .datetime-range-panel .timerange .select {
+	display: inline-block;
+	margin: 0 4px;
+	position: relative;
+	width: 28px;
+	overflow: hidden;
+	vertical-align: bottom;
+}
+
+.datetime-range .datetime-range-panel .timerange .select:after {
+	content: '';
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	width: 0;
+	height: 0;
+	border-style: solid;
+	border-width: 0 0 10px 10px;
+	border-color: transparent transparent #AFC0CF transparent;
+	pointer-events: none;
+}
+
+.datetime-range .datetime-range-panel .timerange .timerange-row {
+	padding: 2px;
+}
+
+.datetime-range .datetime-range-panel .timerange .btn-apply {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	padding: 0 10px;
+	border: 0;
+}
+
+.datetime-range-panel table {
+	width: 100%
+}

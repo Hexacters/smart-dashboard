@@ -1,0 +1,9 @@
+<div class="modal-content" ng-controller="commonController">
+    <div class="modal-header commonDialogHeader">
+        <button id="complianceCautionCloseIcon" id="viewAccountCloseIcon" type="button" class="close" data-dismiss="modal" aria-hidden="true" data-ng-click="$close()">&times;</button>
+        <h3 class="modal-title"><b>{{modal.modalHeading}}</b></h3>
+    </div>
+    <div class="modal-body modelDialogScroll">
+		<span class="whiteSpacePre break-word" ng-bind-html="modal.modalBodyContent | trustAsHtml"></span>        
+    </div>
+</div>

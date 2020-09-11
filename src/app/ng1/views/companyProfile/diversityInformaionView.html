@@ -1,0 +1,1190 @@
+<div ng-controller="googleAnalyticsController"
+	data-ng-init="callGAPageTrack('callDiversityInfo');"></div>
+<div class="row" ng-controller="companyProfileController">
+	<div class="col-sm-12 col-md-12 col-lg-12"
+		data-ng-class="{'dNone':!loading}">
+		<img align="absmiddle" src="app/ng1/img/partial-loading.gif">&nbsp;{{'common.loading'
+		| translate}}
+	</div>
+	<div class="col-sm-12 col-md-12 col-lg-12 padding0">
+		<div class="col-md-10 col-sm-10 col-xs-10 marginB1 marginT1">
+			<h3 class="modal-title">{{'companyProfile.diversityInformation.header.diversityInformation'
+				| translate}}</h3>
+		</div>
+		<div class="col-sm-2 col-md-2 col-lg-2 text-right marginTP5">
+			<sup class="asterisk">*</sup>&nbsp;{{'common.required'
+				| translate}}&nbsp; <a
+				data-ui-sref="companyProfile.diversityInformaionView.help"
+				ng-show="!isFromManageReps">{{'common.help' |
+					translate}}</a> <a
+				data-ui-sref="manage.repAccountDetails.companyProfile.diversityInformaionView.help"
+				ng-show="isFromManageReps">{{'common.help'
+					| translate}}</a>
+		</div>
+		<vision-action> <get-data
+			service="companyProfileServices" root-node="data.successData"
+			form-node="data.diversityDetails"
+			operation="getDiversityInformations"
+			></get-data>
+		<form novalidate name="companyDiversityDetailsForm" autocomplete="off"
+			class="form" vm-form-extras>
+			<span
+				ng-repeat="certificationList in data.diversityDetails.CertificationList">
+				<span ng-if="certificationList.certificationTypeCode == 'MINOW'"
+				ng-init='data.viewCertification1 = certificationList'></span> <span
+				ng-if="certificationList.certificationTypeCode == 'WOMOW'"
+				ng-init='data.viewCertification2 = certificationList'></span> <span
+				ng-if="certificationList.certificationTypeCode == 'SMDOW'"
+				ng-init='data.viewCertification3 = certificationList'></span> <span
+				ng-if="certificationList.certificationTypeCode == 'SBENT'"
+				ng-init='data.viewCertification4 = certificationList'></span> <span
+				ng-if="certificationList.certificationTypeCode == 'DIVOW'"
+				ng-init='data.viewCertification5 = certificationList'></span> <span
+				ng-if="certificationList.certificationTypeCode == 'SDVOW'"
+				ng-init='data.viewCertification6 = certificationList'></span> <span
+				ng-if="certificationList.certificationTypeCode == 'DISOW'"
+				ng-init='data.viewCertification7 = certificationList'></span> <span
+				ng-if="certificationList.certificationTypeCode == 'LGBOW'"
+				ng-init='data.viewCertification8 = certificationList'></span> <span
+				ng-if="certificationList.certificationTypeCode == 'USHUB'"
+				ng-init='data.viewCertification9 = certificationList'></span> <span
+				ng-if="certificationList.certificationTypeCode == 'USEIG'"
+				ng-init='data.viewCertification10 = certificationList'></span>
+			</span> <span ng-if="data.diversityDetails.VendorDetail"
+				ng-init='data.View = data.diversityDetails.VendorDetail'></span> <span
+				data-ng-model="data.minorityOwnedBusiness" class="hidden"></span> <span
+				data-ng-model="data.womenOwnedBusiness" class="hidden"></span> <span
+				data-ng-model="data.smallDisOwnedBusiness" class="hidden"></span> <span
+				data-ng-model="data.veretenOwnedBusiness" class="hidden"></span> <span
+				data-ng-model="data.smallENTOwnedBusiness" class="hidden"></span> <span
+				data-ng-model="data.serviceDisabledOwnedBusiness" class="hidden"></span>
+			<span data-ng-model="data.disabilityOwnedBusiness" class="hidden"></span>
+			<span data-ng-model="data.lgbtOwnedBusiness" class="hidden"></span> <span
+				data-ng-model="data.hubzoneOwnedBusiness" class="hidden"></span> <span
+				data-ng-model="data.eightAOwnedBusiness" class="hidden"></span>
+			<div class="col-sm-12 col-md-12 col-lg-12 marginB1">
+				{{'companyProfile.diversityInformation.label.currentDiversityIndications'
+				| translate}}</div>
+			<div
+				class="col-sm-12 col-md-12 col-lg-12 form-group marginT2 padding0">
+				<div class="col-sm-3 col-md-3 col-lg-3">
+					<label>{{'companyProfile.diversityInformation.header.minorityOwned'
+						| translate}}&nbsp; <span tooltip-append-to-body="true"
+						tooltip="{{'companyProfile.diversityInformation.toolTip.minorityBusinessEnterprise' | translate}}"
+						tooltip-placement="top"> <i
+							class="fa fa-question-circle fa-lg"></i>
+					</span>
+					</label>
+				</div>
+				<div class="col-sm-2 col-md-2 col-lg-2">
+					<span ng-if="data.View.minorityOwnedStr === 'true'">Yes</span> <span
+						ng-if="data.View.minorityOwnedStr === 'false'">No</span>
+				</div>
+			</div>
+			<div class="form-group"
+				data-ng-if="data.View.minorityOwnedStr == 'true'">
+				<div class="form-group col-sm-12 col-md-12 col-lg-12 padding0">
+					<div
+						class="col-sm-2 col-md-2 col-lg-2 col-lg-offset-1 col-sm-offset-1 col-md-offset-1">
+						<label>
+							{{'companyProfile.diversityInformation.label.minorityType' |
+							translate}} <sup class="asterisk">*</sup>
+						</label>
+					</div>
+					<div class="col-sm-5 col-md-5 col-lg-5">
+						<span data-ng-if="data.View.minorityCode == 'AFAMR'">African
+							American/Black</span> <span
+							data-ng-if="data.View.minorityCode == 'ASAMR'">Asian</span> <span
+							data-ng-if="data.View.minorityCode == 'AMIND'">Asian
+							American(Indian)</span> <span
+							data-ng-if="data.View.minorityCode == 'AMPAI'">Asian
+							American(Pacific)</span> <span
+							data-ng-if="data.View.minorityCode == 'HIAMR'">Hispanic
+							American/Latino</span> <span
+							data-ng-if="data.View.minorityCode == 'INAMR'">Native
+							American/Alaskan/Hawaiian</span>
+					</div>
+				</div>
+				<div class="form-group col-sm-12 col-md-12 col-lg-12 padding0">
+					<div
+						class="col-sm-2 col-md-2 col-lg-2 col-lg-offset-1 col-sm-offset-1 col-md-offset-1">
+						<label>
+							{{'companyProfile.diversityInformation.label.certificationAgency'
+							| translate}} <sup class="asterisk">*</sup>
+						</label>
+					</div>
+					<div class="col-sm-5 col-md-5 col-lg-5 break-word">
+						<span
+							data-ng-if="data.viewCertification1.certificationAgencyOid == 'other'">{{'companyProfile.diversityInformation.label.other'
+							| translate}}</span> <span
+							data-ng-if="data.viewCertification1.certificationAgencyOid != 'other'"
+							ng-bind-html="data.viewCertification1.certAgencyName"></span>
+					</div>
+				</div>
+				<div class="form-group col-sm-12 col-md-12 col-lg-12 padding0"
+					data-ng-if="data.viewCertification1.certificationAgencyOid === 'other'">
+					<div
+						class="col-sm-2 col-md-2 col-lg-2 col-lg-offset-1 col-sm-offset-1 col-md-offset-1">
+						<label>
+							{{'companyProfile.diversityInformation.label.certificationOther'
+							| translate}}<sup class="asterisk">*</sup>
+						</label>
+					</div>
+					<div class="col-sm-5 col-md-5 col-lg-5 break-word">
+						{{data.viewCertification1.certAgencyOtherName}}</div>
+				</div>
+				<div class="form-group col-sm-12 col-md-12 col-lg-12 padding0">
+					<div
+						class="col-sm-2 col-md-2 col-lg-2 col-lg-offset-1 col-sm-offset-1 col-md-offset-1">
+						<label>{{'companyProfile.diversityInformation.label.certificationNumber'
+							| translate}}</label>
+					</div>
+					<div class="col-sm-5 col-md-5 col-lg-5 break-word">
+						{{data.viewCertification1.certNumber}}</div>
+				</div>
+				<div class="form-group col-sm-12 col-md-12 col-lg-12 padding0">
+					<div
+						class="col-sm-2 col-md-2 col-lg-2 col-lg-offset-1 col-sm-offset-1 col-md-offset-1">
+						<label>{{'companyProfile.diversityInformation.label.effectiveDate'
+							|translate}}</label>
+					</div>
+					<div class="col-sm-5 col-md-5 col-lg-5">
+						{{data.viewCertification1.certEffectiveDate | dateFormate |
+						date:'MM/dd/yyyy'}}</div>
+				</div>
+				<div class="form-group col-sm-12 col-md-12 col-lg-12 padding0">
+					<div
+						class="col-sm-2 col-md-2 col-lg-2 col-lg-offset-1 col-sm-offset-1 col-md-offset-1">
+						<label>
+							{{'companyProfile.diversityInformation.label.expirationDate' |
+							translate}} <sup class="asterisk">*</sup>
+						</label>
+					</div>
+					<div class="col-sm-5 col-md-5 col-lg-5">
+						{{data.viewCertification1.certExpDate | dateFormate |
+						date:'MM/dd/yyyy'}}</div>
+				</div>
+				<div class="form-group col-sm-12 col-md-12 col-lg-12 padding0">
+					<div
+						class="col-sm-2 col-md-2 col-lg-2 col-lg-offset-1 col-sm-offset-1 col-md-offset-1">
+						<label>
+							{{'companyProfile.diversityInformation.label.certificate' |
+							translate}} <sup class="asterisk">*</sup>
+						</label>
+					</div>
+					<input class="hidden" data-ng-model="minorityOwnedBusiness"
+						data-ng-init="minorityOwnedBusiness = 'false'" />
+					<div class="col-sm-5 col-md-5 col-lg-5 searchOrg"
+						data-ng-show="(data.viewCertification1.mongoKey && data.viewCertification1.certFileOid) || !minorityOwnedBusiness">
+						Uploaded on {{data.viewCertification1.certFileUploadedOnStr}} <a
+							href="javascript:;"
+							data-ng-click="viewDiversityDocument('MINOW');">View</a>
+					</div>
+					<div class="col-sm-8 col-md-8 col-lg-8">
+						<span ng-if="data.viewCertification1.isCertExpired == true">
+							{{'companyProfile.diversityInformation.label.certificateExpired'
+							| translate}} </span><br> <span
+							ng-if="data.viewCertification1.isCertExpiring == true && data.viewCertification1.isCertExpired != true">
+							{{'companyProfile.diversityInformation.label.certificateExpiredSoon'
+							| translate}} </span><br> <span
+							ng-if="data.viewCertification1.certVerifyStatusCode == 'CRREJ'">
+							{{'companyProfile.diversityInformation.label.certificateRejected'
+							| translate}} </span>
+					</div>
+				</div>
+			</div>
+			<div
+				class="col-sm-12 col-md-12 col-lg-12 form-group marginT2 padding0">
+				<div class="col-sm-3 col-md-3 col-lg-3">
+					<label>
+						{{'companyProfile.diversityInformation.header.womanOwned' |
+						translate}}&nbsp; <span tooltip-append-to-body="true"
+						tooltip="{{'companyProfile.diversityInformation.toolTip.womenBusinessEnterprise' | translate}}"
+						tooltip-placement="top"> <i
+							class="fa fa-question-circle fa-lg"></i>
+					</span></label>
+				</div>
+				<div class="col-sm-2 col-md-2 col-lg-2">
+					<span ng-if="data.View.womenOwnedStr === 'true'">Yes</span> <span
+						ng-if="data.View.womenOwnedStr === 'false'">No</span>
+				</div>
+			</div>
+			<div class="form-group"
+				data-ng-if="data.View.womenOwnedStr == 'true'">
+				<div class="form-group col-sm-12 col-md-12 col-lg-12 padding0">
+					<div
+						class="col-sm-2 col-md-2 col-lg-2 col-lg-offset-1 col-sm-offset-1 col-md-offset-1">
+						<label>
+							{{'companyProfile.diversityInformation.label.certificationAgency'
+							| translate}} <sup class="asterisk">*</sup>
+						</label>
+					</div>
+					<div class="col-sm-5 col-md-5 col-lg-5 break-word ">
+						<span
+							data-ng-if="data.viewCertification2.certificationAgencyOid == 'other'">{{'companyProfile.diversityInformation.label.other'
+							| translate}}</span> <span
+							data-ng-if="data.viewCertification2.certificationAgencyOid != 'other'"
+							ng-bind-html="data.viewCertification2.certAgencyName"></span>
+					</div>
+				</div>
+				<div class="form-group col-sm-12 col-md-12 col-lg-12 padding0"
+					data-ng-if="data.viewCertification2.certificationAgencyOid === 'other'">
+					<div
+						class="col-sm-2 col-md-2 col-lg-2 col-lg-offset-1 col-sm-offset-1 col-md-offset-1">
+						<label>
+							{{'companyProfile.diversityInformation.label.certificationOther'
+							| translate}}<sup class="asterisk">*</sup>
+						</label>
+					</div>
+					<div class="col-sm-5 col-md-5 col-lg-5 break-word ">
+						{{data.viewCertification2.certAgencyOtherName}}</div>
+				</div>
+				<div class="form-group col-sm-12 col-md-12 col-lg-12 padding0">
+					<div
+						class="col-sm-2 col-md-2 col-lg-2 col-lg-offset-1 col-sm-offset-1 col-md-offset-1">
+						<label>{{'companyProfile.diversityInformation.label.certificationNumber'
+							| translate}}</label>
+					</div>
+					<div class="col-sm-5 col-md-5 col-lg-5 break-word ">
+						{{data.viewCertification2.certNumber}}</div>
+				</div>
+				<div class="form-group col-sm-12 col-md-12 col-lg-12 padding0">
+					<div
+						class="col-sm-2 col-md-2 col-lg-2 col-lg-offset-1 col-sm-offset-1 col-md-offset-1">
+						<label>{{'companyProfile.diversityInformation.label.effectiveDate'
+							|translate}}</label>
+					</div>
+					<div class="col-sm-5 col-md-5 col-lg-5">
+						{{data.viewCertification2.certEffectiveDate | dateFormate |
+						date:'MM/dd/yyyy'}}</div>
+				</div>
+				<div class="form-group col-sm-12 col-md-12 col-lg-12 padding0">
+					<div
+						class="col-sm-2 col-md-2 col-lg-2 col-lg-offset-1 col-sm-offset-1 col-md-offset-1">
+						<label>
+							{{'companyProfile.diversityInformation.label.expirationDate' |
+							translate}} <sup class="asterisk">*</sup>
+						</label>
+					</div>
+					<div class="col-sm-5 col-md-5 col-lg-5 ">
+						{{data.viewCertification2.certExpDate | dateFormate |
+						date:'MM/dd/yyyy'}}</div>
+				</div>
+				<div class="form-group col-sm-12 col-md-12 col-lg-12 padding0">
+					<div
+						class="col-sm-2 col-md-2 col-lg-2 col-lg-offset-1 col-sm-offset-1 col-md-offset-1">
+						<label>
+							{{'companyProfile.diversityInformation.label.certificate' |
+							translate}} <sup class="asterisk">*</sup>
+						</label>
+					</div>
+					<input class="hidden" data-ng-model="womenOwnedBusiness"
+						data-ng-init="womenOwnedBusiness = 'false'" />
+					<div class="col-sm-5 col-md-5 col-lg-5"
+						data-ng-show="(data.viewCertification2.mongoKey && data.viewCertification2.certFileOid) || !womenOwnedBusiness">
+						Uploaded on {{data.viewCertification2.certFileUploadedOnStr}} <a
+							href="javascript:;"
+							data-ng-click="viewDiversityDocument('WOMOW');">View</a>
+					</div>
+					<div class="col-sm-8 col-md-8 col-lg-8">
+						<span ng-if="data.viewCertification2.isCertExpired == true">
+							{{'companyProfile.diversityInformation.label.certificateExpired'
+							| translate}} </span><br> <span
+							ng-if="data.viewCertification2.isCertExpiring == true && data.viewCertification2.isCertExpired != true">
+							{{'companyProfile.diversityInformation.label.certificateExpiredSoon'
+							| translate}} </span><br> <span
+							ng-if="data.viewCertification2.certVerifyStatusCode == 'CRREJ'">
+							{{'companyProfile.diversityInformation.label.certificateRejected'
+							| translate}} </span>
+					</div>
+				</div>
+			</div>
+			<div
+				class="col-sm-12 col-md-12 col-lg-12 form-group marginT2 padding0">
+				<div class="col-sm-3 col-md-3 col-lg-3">
+					<label>{{'companyProfile.diversityInformation.header.smallDisadvantaged'
+						| translate}}&nbsp; <span tooltip-append-to-body="true"
+						tooltip="{{'companyProfile.diversityInformation.toolTip.smallDisadvantagedBusiness' | translate}}"
+						tooltip-placement="top"> <i
+							class="fa fa-question-circle fa-lg"></i>
+					</span>
+					</label>
+				</div>
+				<div class="col-sm-2 col-md-2 col-lg-2">
+					<span ng-if="data.View.smallDisadvantagedStr === 'true'">Yes</span>
+					<span ng-if="data.View.smallDisadvantagedStr === 'false'">No</span>
+				</div>
+			</div>
+			<div class="form-group"
+				data-ng-if="data.View.smallDisadvantagedStr == 'true'">
+				<div class="form-group col-sm-12 col-md-12 col-lg-12 padding0">
+					<div
+						class="col-sm-2 col-md-2 col-lg-2 col-lg-offset-1 col-sm-offset-1 col-md-offset-1">
+						<label>
+							{{'companyProfile.diversityInformation.label.certificationAgency'
+							| translate}} <sup class="asterisk">*</sup>
+						</label>
+					</div>
+					<div class="col-sm-5 col-md-5 col-lg-5 break-word">
+						<span
+							data-ng-if="data.viewCertification3.certificationAgencyOid == 'other'">{{'companyProfile.diversityInformation.label.other'
+							| translate}}</span> <span
+							data-ng-if="data.viewCertification3.certificationAgencyOid != 'other'"
+							ng-bind-html="data.viewCertification3.certAgencyName"></span>
+					</div>
+				</div>
+				<div class="form-group col-sm-12 col-md-12 col-lg-12 padding0"
+					data-ng-if="data.viewCertification3.certificationAgencyOid === 'other'">
+					<div
+						class="col-sm-2 col-md-2 col-lg-2 col-lg-offset-1 col-sm-offset-1 col-md-offset-1">
+						<label>
+							{{'companyProfile.diversityInformation.label.certificationOther'
+							| translate}}<sup class="asterisk">*</sup>
+						</label>
+					</div>
+					<div class="col-sm-5 col-md-5 col-lg-5 break-word">
+						{{data.viewCertification3.certAgencyOtherName}}</div>
+				</div>
+				<div class="form-group col-sm-12 col-md-12 col-lg-12 padding0">
+					<div
+						class="col-sm-2 col-md-2 col-lg-2 col-lg-offset-1 col-sm-offset-1 col-md-offset-1">
+						<label>{{'companyProfile.diversityInformation.label.certificationNumber'
+							| translate}}</label>
+					</div>
+					<div class="col-sm-5 col-md-5 col-lg-5 break-word">
+						{{data.viewCertification3.certNumber}}</div>
+				</div>
+				<div class="form-group col-sm-12 col-md-12 col-lg-12 padding0">
+					<div
+						class="col-sm-2 col-md-2 col-lg-2 col-lg-offset-1 col-sm-offset-1 col-md-offset-1">
+						<label>{{'companyProfile.diversityInformation.label.effectiveDate'
+							|translate}}</label>
+					</div>
+					<div class="col-sm-5 col-md-5 col-lg-5 break-word">
+						{{data.viewCertification3.certEffectiveDate | dateFormate |
+						date:'MM/dd/yyyy'}}</div>
+				</div>
+				<div class="form-group col-sm-12 col-md-12 col-lg-12 padding0">
+					<div
+						class="col-sm-2 col-md-2 col-lg-2 col-lg-offset-1 col-sm-offset-1 col-md-offset-1">
+						<label>
+							{{'companyProfile.diversityInformation.label.expirationDate' |
+							translate}} <sup class="asterisk">*</sup>
+						</label>
+					</div>
+					<div class="col-sm-5 col-md-5 col-lg-5">
+						{{data.viewCertification3.certExpDate | dateFormate |
+						date:'MM/dd/yyyy'}}</div>
+				</div>
+				<div class="form-group col-sm-12 col-md-12 col-lg-12 padding0">
+					<div
+						class="col-sm-2 col-md-2 col-lg-2 col-lg-offset-1 col-sm-offset-1 col-md-offset-1">
+						<label>
+							{{'companyProfile.diversityInformation.label.certificate' |
+							translate}} <sup class="asterisk">*</sup>
+						</label>
+					</div>
+					<input class="hidden" data-ng-model="smallDisOwnedBusiness"
+						data-ng-init="smallDisOwnedBusiness = 'false'" />
+					<div class="col-sm-5 col-md-5 col-lg-5"
+						data-ng-show="(data.viewCertification3.mongoKey && data.viewCertification3.certFileOid) || !smallDisOwnedBusiness">
+						Uploaded on {{data.viewCertification3.certFileUploadedOnStr}} <a
+							href="javascript:;"
+							data-ng-click="viewDiversityDocument('SMDOW');">View</a>
+					</div>
+					<div class="col-sm-8 col-md-8 col-lg-8">
+						<span ng-if="data.viewCertification3.isCertExpired == true">
+							{{'companyProfile.diversityInformation.label.certificateExpired'
+							| translate}} </span><br> <span
+							ng-if="data.viewCertification3.isCertExpiring == true && data.viewCertification3.isCertExpired != true">
+							{{'companyProfile.diversityInformation.label.certificateExpiredSoon'
+							| translate}} </span><br> <span
+							ng-if="data.viewCertification3.certVerifyStatusCode == 'CRREJ'">
+							{{'companyProfile.diversityInformation.label.certificateRejected'
+							| translate}} </span>
+					</div>
+				</div>
+			</div>
+			<div
+				class="col-sm-12 col-md-12 col-lg-12 form-group marginT2 padding0">
+				<div class="col-sm-3 col-md-3 col-lg-3">
+					<label>{{'companyProfile.diversityInformation.header.smallBusiness'
+						| translate}}&nbsp; <span tooltip-append-to-body="true"
+						tooltip="{{'companyProfile.diversityInformation.toolTip.smallBusinessEnterprise' | translate}}"
+						tooltip-placement="top"> <i
+							class="fa fa-question-circle fa-lg"></i>
+					</span>
+					</label>
+				</div>
+				<div class="col-sm-2 col-md-2 col-lg2">
+					<span ng-if="data.View.smallBusinessEnterpriseStr === 'true'">Yes</span>
+					<span ng-if="data.View.smallBusinessEnterpriseStr === 'false'">No</span>
+				</div>
+			</div>
+			<div class="form-group"
+				data-ng-if="data.View.smallBusinessEnterpriseStr == 'true'">
+				<div class="form-group  col-sm-12 col-md-12 col-lg-12 padding0">
+					<div
+						class="col-sm-2 col-md-2 col-lg-2 col-lg-offset-1 col-sm-offset-1 col-md-offset-1">
+						<label>
+							{{'companyProfile.diversityInformation.label.certificationAgency'
+							| translate}} <sup class="asterisk">*</sup>
+						</label>
+					</div>
+					<div class="col-sm-5 col-md-5 col-lg-5 break-word">
+						<span
+							data-ng-if="data.viewCertification4.certificationAgencyOid == 'other'">{{'companyProfile.diversityInformation.label.other'
+							| translate}}</span> <span
+							data-ng-if="data.viewCertification4.certificationAgencyOid != 'other'"
+							ng-bind-html="data.viewCertification4.certAgencyName"></span>
+					</div>
+				</div>
+				<div class="form-group col-sm-12 col-md-12 col-lg-12 padding0"
+					data-ng-if="data.viewCertification4.certificationAgencyOid === 'other'">
+					<div
+						class="col-sm-2 col-md-2 col-lg-2 col-lg-offset-1 col-sm-offset-1 col-md-offset-1">
+						<label>
+							{{'companyProfile.diversityInformation.label.certificationOther'
+							| translate}}<sup class="asterisk">*</sup>
+						</label>
+					</div>
+					<div class="col-sm-5 col-md-5 col-lg-5 break-word">
+						{{data.viewCertification4.certAgencyOtherName}}</div>
+				</div>
+				<div class="form-group col-sm-12 col-md-12 col-lg-12 padding0">
+					<div
+						class="col-sm-2 col-md-2 col-lg-2 col-lg-offset-1 col-sm-offset-1 col-md-offset-1">
+						<label>
+							{{'companyProfile.diversityInformation.label.certificationNumber'
+							| translate}}</label>
+					</div>
+					<div class="col-sm-5 col-md-5 col-lg-5">
+						{{data.viewCertification4.certNumber}}</div>
+				</div>
+				<div class="form-group col-sm-12 col-md-12 col-lg-12 padding0">
+					<div
+						class="col-sm-2 col-md-2 col-lg-2 col-lg-offset-1 col-sm-offset-1 col-md-offset-1">
+						<label>
+							{{'companyProfile.diversityInformation.label.effectiveDate'
+							|translate}}</label>
+					</div>
+					<div class="col-sm-5 col-md-5 col-lg-5 break-word">
+						{{data.viewCertification4.certEffectiveDate | dateFormate |
+						date:'MM/dd/yyyy'}}</div>
+				</div>
+				<div class="form-group col-sm-12 col-md-12 col-lg-12 padding0">
+					<div
+						class="col-sm-2 col-md-2 col-lg-2 col-lg-offset-1 col-sm-offset-1 col-md-offset-1">
+						<label>
+							{{'companyProfile.diversityInformation.label.expirationDate' |
+							translate}} <sup class="asterisk">*</sup>
+						</label>
+					</div>
+					<div class="col-sm-5 col-md-5 col-lg-5">
+						{{data.viewCertification4.certExpDate | dateFormate |
+						date:'MM/dd/yyyy'}}</div>
+				</div>
+				<div class="form-group col-sm-12 col-md-12 col-lg-12 padding0">
+					<div
+						class="col-sm-2 col-md-2 col-lg-2 col-lg-offset-1 col-sm-offset-1 col-md-offset-1">
+						<label>
+							{{'companyProfile.diversityInformation.label.certificate' |
+							translate}} <sup class="asterisk">*</sup>
+						</label>
+					</div>
+					<input class="hidden" data-ng-model="veretenOwnedBusiness"
+						data-ng-init="veretenOwnedBusiness = 'false'" />
+					<div class="col-sm-5 col-md-5 col-lg-5"
+						data-ng-show="(data.viewCertification4.mongoKey && data.viewCertification4.certFileOid) || !veretenOwnedBusiness">
+						Uploaded on {{data.viewCertification4.certFileUploadedOnStr}} <a
+							href="javascript:;"
+							data-ng-click="viewDiversityDocument('SBENT');">View</a>
+					</div>
+					<div class="col-sm-8 col-md-8 col-lg-8">
+						<span ng-if="data.viewCertification4.isCertExpired == true">
+							{{'companyProfile.diversityInformation.label.certificateExpired'
+							| translate}} </span><br> <span
+							ng-if="data.viewCertification4.isCertExpiring == true && data.viewCertification4.isCertExpired != true">
+							{{'companyProfile.diversityInformation.label.certificateExpiredSoon'
+							| translate}} </span><br> <span
+							ng-if="data.viewCertification4.certVerifyStatusCode == 'CRREJ'">
+							{{'companyProfile.diversityInformation.label.certificateRejected'
+							| translate}} </span>
+					</div>
+				</div>
+			</div>
+			<div
+				class="col-sm-12 col-md-12 col-lg-12 form-group marginT2 padding0">
+				<div class="col-sm-3 col-md-3 col-lg-3">
+					<label>{{'companyProfile.diversityInformation.header.veteranOwned'
+						| translate}}&nbsp; <span tooltip-append-to-body="true"
+						tooltip="{{'companyProfile.diversityInformation.toolTip.veteranBusinessEnterprise' | translate}}"
+						tooltip-placement="top"> <i
+							class="fa fa-question-circle fa-lg"></i>
+					</span>
+					</label>
+				</div>
+				<div class="col-sm-2 col-md-2 col-lg2">
+					<span ng-if="data.View.disabledVeteranStr === 'true'">Yes</span> <span
+						ng-if="data.View.disabledVeteranStr === 'false'">No</span>
+				</div>
+			</div>
+			<div class="form-group"
+				data-ng-if="data.View.disabledVeteranStr == 'true'">
+				<div class="form-group col-sm-12 col-md-12 col-lg-12 padding0">
+					<div
+						class="col-sm-2 col-md-2 col-lg-2 col-lg-offset-1 col-sm-offset-1 col-md-offset-1">
+						<label>
+							{{'companyProfile.diversityInformation.label.certificationAgency'
+							| translate}} <sup class="asterisk">*</sup>
+						</label>
+					</div>
+					<div class="col-sm-5 col-md-5 col-lg-5 break-word">
+						<span
+							data-ng-if="data.viewCertification5.certificationAgencyOid == 'other'">{{'companyProfile.diversityInformation.label.other'
+							| translate}}</span> <span
+							data-ng-if="data.viewCertification5.certificationAgencyOid != 'other'"
+							ng-bind-html="data.viewCertification5.certAgencyName"></span>
+					</div>
+				</div>
+				<div class="form-group col-sm-12 col-md-12 col-lg-12 padding0"
+					data-ng-if="data.viewCertification5.certificationAgencyOid === 'other'">
+					<div
+						class="col-sm-2 col-md-2 col-lg-2 col-lg-offset-1 col-sm-offset-1 col-md-offset-1">
+						<label>
+							{{'companyProfile.diversityInformation.label.certificationOther'
+							| translate}}<sup class="asterisk">*</sup>
+						</label>
+					</div>
+					<div class="col-sm-5 col-md-5 col-lg-5 break-word">
+						{{data.viewCertification5.certAgencyOtherName}}</div>
+				</div>
+				<div class="form-group col-sm-12 col-md-12 col-lg-12 padding0">
+					<div
+						class="col-sm-2 col-md-2 col-lg-2 col-lg-offset-1 col-sm-offset-1 col-md-offset-1">
+						<label>
+							{{'companyProfile.diversityInformation.label.certificationNumber'
+							| translate}}</label>
+					</div>
+					<div class="col-sm-5 col-md-5 col-lg-5 break-word">
+						{{data.viewCertification5.certNumber}}</div>
+				</div>
+				<div class="form-group col-sm-12 col-md-12 col-lg-12 padding0">
+					<div
+						class="col-sm-2 col-md-2 col-lg-2 col-lg-offset-1 col-sm-offset-1 col-md-offset-1">
+						<label>{{'companyProfile.diversityInformation.label.effectiveDate'
+							|translate}}</label>
+					</div>
+					<div class="col-sm-5 col-md-5 col-lg-5">
+						{{data.viewCertification5.certEffectiveDate | dateFormate |
+						date:'MM/dd/yyyy'}}</div>
+				</div>
+				<div class="form-group col-sm-12 col-md-12 col-lg-12 padding0">
+					<div
+						class="col-sm-2 col-md-2 col-lg-2 col-lg-offset-1 col-sm-offset-1 col-md-offset-1">
+						<label>
+							{{'companyProfile.diversityInformation.label.expirationDate' |
+							translate}} <sup class="asterisk">*</sup>
+						</label>
+					</div>
+					<div class="col-sm-5 col-md-5 col-lg-5">
+						{{data.viewCertification5.certExpDate | dateFormate |
+						date:'MM/dd/yyyy'}}</div>
+				</div>
+				<div class="form-group col-sm-12 col-md-12 col-lg-12 padding0">
+					<div
+						class="col-sm-2 col-md-2 col-lg-2 col-lg-offset-1 col-sm-offset-1 col-md-offset-1">
+						<label>
+							{{'companyProfile.diversityInformation.label.certificate' |
+							translate}} <sup class="asterisk">*</sup>
+						</label>
+					</div>
+					<input class="hidden" data-ng-model="smallENTOwnedBusiness"
+						data-ng-init="smallENTOwnedBusiness = 'false'" />
+					<div class="col-sm-5 col-md-5 col-lg-5"
+						data-ng-show="(data.viewCertification5.mongoKey && data.viewCertification5.certFileOid) || !smallENTOwnedBusiness">
+						Uploaded on {{data.viewCertification5.certFileUploadedOnStr}} <a
+							href="javascript:;"
+							data-ng-click="viewDiversityDocument('DIVOW');">View</a>
+					</div>
+					<div class="col-sm-8 col-md-8 col-lg-8">
+						<span ng-if="data.viewCertification5.isCertExpired == true">
+							{{'companyProfile.diversityInformation.label.certificateExpired'
+							| translate}} </span><br> <span
+							ng-if="data.viewCertification5.isCertExpiring == true && data.viewCertification5.isCertExpired != true">
+							{{'companyProfile.diversityInformation.label.certificateExpiredSoon'
+							| translate}} </span><br> <span
+							ng-if="data.viewCertification5.certVerifyStatusCode == 'CRREJ'">
+							{{'companyProfile.diversityInformation.label.certificateRejected'
+							| translate}} </span>
+					</div>
+				</div>
+			</div>
+			<div
+				class="col-sm-12 col-md-12 col-lg-12 form-group marginT2 padding0">
+				<div class="col-sm-3 col-md-3 col-lg-3">
+					<label>{{'companyProfile.diversityInformation.header.serviceDisabledVeteranOwned'
+						| translate}}&nbsp; <span tooltip-append-to-body="true"
+						tooltip="{{'companyProfile.diversityInformation.toolTip.disabledVeteranBusinessEnterprise' | translate}}"
+						tooltip-placement="top"> <i
+							class="fa fa-question-circle fa-lg"></i>
+					</span>
+					</label>
+				</div>
+				<div class="col-sm-2 col-md-2 col-lg2">
+					<span ng-if="data.View.serviceDisabledVeteranOwnedStr === 'true'">Yes</span>
+					<span ng-if="data.View.serviceDisabledVeteranOwnedStr === 'false'">No</span>
+				</div>
+			</div>
+			<div class="form-group "
+				data-ng-if="data.View.serviceDisabledVeteranOwnedStr == 'true'">
+				<div class="form-group col-sm-12 col-md-12 col-lg-12 padding0">
+					<div
+						class="col-sm-2 col-md-2 col-lg-2 col-lg-offset-1 col-sm-offset-1 col-md-offset-1">
+						<label>
+							{{'companyProfile.diversityInformation.label.certificationAgency'
+							| translate}} <sup class="asterisk">*</sup>
+						</label>
+					</div>
+					<div class="col-sm-5 col-md-5 col-lg-5 break-word">
+						<span
+							data-ng-if="data.viewCertification6.certificationAgencyOid == 'other'">{{'companyProfile.diversityInformation.label.other'
+							| translate}}</span> <span
+							data-ng-if="data.viewCertification6.certificationAgencyOid != 'other'"
+							ng-bind-html="data.viewCertification6.certAgencyName"></span>
+					</div>
+				</div>
+				<div class="form-group col-sm-12 col-md-12 col-lg-12 padding0"
+					data-ng-if="data.viewCertification6.certificationAgencyOid === 'other'">
+					<div
+						class="col-sm-2 col-md-2 col-lg-2 col-lg-offset-1 col-sm-offset-1 col-md-offset-1">
+						<label>
+							{{'companyProfile.diversityInformation.label.certificationOther'
+							| translate}}<sup class="asterisk">*</sup>
+						</label>
+					</div>
+					<div class="col-sm-5 col-md-5 col-lg-5 break-word">
+						{{data.viewCertification6.certAgencyOtherName}}</div>
+				</div>
+				<div class="form-group col-sm-12 col-md-12 col-lg-12 padding0">
+					<div
+						class="col-sm-2 col-md-2 col-lg-2 col-lg-offset-1 col-sm-offset-1 col-md-offset-1">
+						<label>{{'companyProfile.diversityInformation.label.certificationNumber'
+							| translate}}</label>
+					</div>
+					<div class="col-sm-5 col-md-5 col-lg-5 break-word">
+						{{data.viewCertification6.certNumber}}</div>
+				</div>
+				<div class="form-group col-sm-12 col-md-12 col-lg-12 padding0">
+					<div
+						class="col-sm-2 col-md-2 col-lg-2 col-lg-offset-1 col-sm-offset-1 col-md-offset-1">
+						<label>{{'companyProfile.diversityInformation.label.effectiveDate'
+							|translate}}</label>
+					</div>
+					<div class="col-sm-5 col-md-5 col-lg-5">
+						{{data.viewCertification6.certEffectiveDate | dateFormate |
+						date:'MM/dd/yyyy'}}</div>
+				</div>
+				<div class="form-group col-sm-12 col-md-12 col-lg-12 padding0">
+					<div
+						class="col-sm-2 col-md-2 col-lg-2 col-lg-offset-1 col-sm-offset-1 col-md-offset-1">
+						<label>
+							{{'companyProfile.diversityInformation.label.expirationDate' |
+							translate}} <sup class="asterisk">*</sup>
+						</label>
+					</div>
+					<div class="col-sm-5 col-md-5 col-lg-5">
+						{{data.viewCertification6.certExpDate | dateFormate |
+						date:'MM/dd/yyyy'}}</div>
+				</div>
+				<div class="form-group col-sm-12 col-md-12 col-lg-12 padding0">
+					<div
+						class="col-sm-2 col-md-2 col-lg-2 col-lg-offset-1 col-sm-offset-1 col-md-offset-1">
+						<label>
+							{{'companyProfile.diversityInformation.label.certificate' |
+							translate}} <sup class="asterisk">*</sup>
+						</label>
+					</div>
+					<input class="hidden" data-ng-model="serviceDisabledOwnedBusiness"
+						data-ng-init="serviceDisabledOwnedBusiness = 'false'" />
+					<div class="col-sm-5 col-md-5 col-lg-5"
+						data-ng-show="(data.viewCertification6.mongoKey && data.viewCertification6.certFileOid) || !serviceDisabledOwnedBusiness">
+						Uploaded on {{data.viewCertification6.certFileUploadedOnStr}} <a
+							href="javascript:;"
+							data-ng-click="viewDiversityDocument('SDVOW');">View</a>
+					</div>
+					<div class="col-sm-8 col-md-8 col-lg-8">
+						<span ng-if="data.viewCertification6.isCertExpired == true">
+							{{'companyProfile.diversityInformation.label.certificateExpired'
+							| translate}} </span><br> <span
+							ng-if="data.viewCertification6.isCertExpiring == true && data.viewCertification6.isCertExpired != true">
+							{{'companyProfile.diversityInformation.label.certificateExpiredSoon'
+							| translate}} </span><br> <span
+							ng-if="data.viewCertification6.certVerifyStatusCode == 'CRREJ'">
+							{{'companyProfile.diversityInformation.label.certificateRejected'
+							| translate}} </span>
+					</div>
+				</div>
+			</div>
+			<div
+				class="col-sm-12 col-md-12 col-lg-12 form-group marginT2 padding0">
+				<div class="col-sm-3 col-md-3 col-lg-3">
+					<label>{{'companyProfile.diversityInformation.header.disabledOwned'
+						| translate}}&nbsp; <span tooltip-append-to-body="true"
+						tooltip="{{'companyProfile.diversityInformation.toolTip.disabilityOwnedBusinessEnterprise' | translate}}"
+						tooltip-placement="top"> <i
+							class="fa fa-question-circle fa-lg"></i>
+					</span>
+					</label>
+				</div>
+				<div class="col-sm-2 col-md-2 col-lg2">
+					<span ng-if="data.View.disabledOwnedStr === 'true'">Yes</span> <span
+						ng-if="data.View.disabledOwnedStr === 'false'">No</span>
+				</div>
+			</div>
+			<div class="form-group"
+				data-ng-if="data.View.disabledOwnedStr == 'true'">
+				<div class="form-group col-sm-12 col-md-12 col-lg-12 padding0">
+					<div
+						class="col-sm-2 col-md-2 col-lg-2 col-lg-offset-1 col-sm-offset-1 col-md-offset-1">
+						<label>
+							{{'companyProfile.diversityInformation.label.certificationAgency'
+							| translate}} <sup class="asterisk">*</sup>
+						</label>
+					</div>
+					<div class="col-sm-5 col-md-5 col-lg-5">
+						<span
+							data-ng-if="data.viewCertification7.certificationAgencyOid == 'other'">{{'companyProfile.diversityInformation.label.other'
+							| translate}}</span> <span
+							data-ng-if="data.viewCertification7.certificationAgencyOid != 'other'"
+							ng-bind-html="data.viewCertification7.certAgencyName"></span>
+					</div>
+				</div>
+				<div class="form-group col-sm-12 col-md-12 col-lg-12 padding0"
+					data-ng-if="data.viewCertification7.certificationAgencyOid === 'other'">
+					<div
+						class="col-sm-2 col-md-2 col-lg-2 col-lg-offset-1 col-sm-offset-1 col-md-offset-1">
+						<label>
+							{{'companyProfile.diversityInformation.label.certificationOther'
+							| translate}}<sup class="asterisk">*</sup>
+						</label>
+					</div>
+					<div class="col-sm-5 col-md-5 col-lg-5 break-word">
+						{{data.viewCertification7.certAgencyOtherName}}</div>
+				</div>
+				<div class="form-group col-sm-12 col-md-12 col-lg-12 padding0">
+					<div
+						class="col-sm-2 col-md-2 col-lg-2 col-lg-offset-1 col-sm-offset-1 col-md-offset-1">
+						<label>{{'companyProfile.diversityInformation.label.certificationNumber'
+							| translate}}</label>
+					</div>
+					<div class="col-sm-5 col-md-5 col-lg-5 break-word">
+						{{data.viewCertification7.certNumber}}</div>
+				</div>
+				<div class="form-group col-sm-12 col-md-12 col-lg-12 padding0">
+					<div
+						class="col-sm-2 col-md-2 col-lg-2 col-lg-offset-1 col-sm-offset-1 col-md-offset-1">
+						<label>{{'companyProfile.diversityInformation.label.effectiveDate'
+							|translate}}</label>
+					</div>
+					<div class="col-sm-5 col-md-5 col-lg-5 break-word">
+						{{data.viewCertification7.certEffectiveDate | dateFormate |
+						date:'MM/dd/yyyy'}}</div>
+				</div>
+				<div class="form-group col-sm-12 col-md-12 col-lg-12 padding0">
+					<div
+						class="col-sm-2 col-md-2 col-lg-2 col-lg-offset-1 col-sm-offset-1 col-md-offset-1">
+						<label>
+							{{'companyProfile.diversityInformation.label.expirationDate' |
+							translate}} <sup class="asterisk">*</sup>
+						</label>
+					</div>
+					<div class="col-sm-5 col-md-5 col-lg-5">
+						{{data.viewCertification7.certExpDate | dateFormate |
+						date:'MM/dd/yyyy'}}</div>
+				</div>
+				<div class="form-group col-sm-12 col-md-12 col-lg-12 padding0">
+					<div
+						class="col-sm-2 col-md-2 col-lg-2 col-lg-offset-1 col-sm-offset-1 col-md-offset-1">
+						<label>
+							{{'companyProfile.diversityInformation.label.certificate' |
+							translate}} <sup class="asterisk">*</sup>
+						</label>
+					</div>
+					<input class="hidden" data-ng-model="disabilityOwnedBusiness"
+						data-ng-init="disabilityOwnedBusiness = 'false'" />
+					<div class="col-sm-5 col-md-5 col-lg-5"
+						data-ng-show="(data.viewCertification7.mongoKey && data.viewCertification7.certFileOid) || !disabilityOwnedBusiness">
+						Uploaded on {{data.viewCertification7.certFileUploadedOnStr}} <a
+							href="javascript:;" ng-click="viewDiversityDocument('DISOW');">View</a>
+					</div>
+					<div class="col-sm-8 col-md-8 col-lg-8">
+						<span ng-if="data.viewCertification7.isCertExpired == true">
+							{{'companyProfile.diversityInformation.label.certificateExpired'
+							| translate}} </span><br> <span
+							ng-if="data.viewCertification7.isCertExpiring == true && data.viewCertification7.isCertExpired != true">
+							{{'companyProfile.diversityInformation.label.certificateExpiredSoon'
+							| translate}} </span><br> <span
+							ng-if="data.viewCertification7.certVerifyStatusCode == 'CRREJ'">
+							{{'companyProfile.diversityInformation.label.certificateRejected'
+							| translate}} </span>
+					</div>
+				</div>
+			</div>
+			<div
+				class="col-sm-12 col-md-12 col-lg-12 form-group marginT2 padding0">
+				<div class="col-sm-3 col-md-3 col-lg-3">
+					<label>{{'companyProfile.diversityInformation.header.lGBTOwned'
+						| translate}}&nbsp; <span tooltip-append-to-body="true"
+						tooltip="{{'companyProfile.diversityInformation.toolTip.lesbianGayBusinessEnterprise' | translate}}"
+						tooltip-placement="top"> <i
+							class="fa fa-question-circle fa-lg"></i>
+					</span>
+					</label>
+				</div>
+				<div class="col-sm-2 col-md-2 col-lg2">
+					<span ng-if="data.View.lgbtOwnedStr === 'true'">Yes</span> <span
+						ng-if="data.View.lgbtOwnedStr === 'false'">No</span>
+				</div>
+			</div>
+			<div class="form-group" data-ng-if="data.View.lgbtOwnedStr == 'true'">
+				<div class="form-group col-sm-12 col-md-12 col-lg-12 padding0">
+					<div
+						class="col-sm-2 col-md-2 col-lg-2 col-lg-offset-1 col-sm-offset-1 col-md-offset-1">
+						<label>
+							{{'companyProfile.diversityInformation.label.certificationAgency'
+							| translate}} <sup class="asterisk">*</sup>
+						</label>
+					</div>
+					<div class="col-sm-5 col-md-5 col-lg-5 break-word">
+						<span
+							data-ng-if="data.viewCertification8.certificationAgencyOid == 'other'">{{'companyProfile.diversityInformation.label.other'
+							| translate}}</span> <span
+							data-ng-if="data.viewCertification8.certificationAgencyOid != 'other'"
+							ng-bind-html="data.viewCertification8.certAgencyName"></span>
+					</div>
+				</div>
+				<div class="form-group col-sm-12 col-md-12 col-lg-12 padding0"
+					data-ng-if="data.viewCertification8.certificationAgencyOid === 'other'">
+					<div
+						class="col-sm-2 col-md-2 col-lg-2 col-lg-offset-1 col-sm-offset-1 col-md-offset-1">
+						<label>
+							{{'companyProfile.diversityInformation.label.certificationOther'
+							| translate}}<sup class="asterisk">*</sup>
+						</label>
+					</div>
+					<div class="col-sm-5 col-md-5 col-lg-5 break-word">
+						{{data.viewCertification8.certAgencyOtherName}}</div>
+				</div>
+				<div class="form-group col-sm-12 col-md-12 col-lg-12 padding0">
+					<div
+						class="col-sm-2 col-md-2 col-lg-2 col-lg-offset-1 col-sm-offset-1 col-md-offset-1">
+						<label>{{'companyProfile.diversityInformation.label.certificationNumber'
+							| translate}}</label>
+					</div>
+					<div class="col-sm-5 col-md-5 col-lg-5 break-word">
+						{{data.viewCertification8.certNumber}}</div>
+				</div>
+				<div class="form-group col-sm-12 col-md-12 col-lg-12 padding0">
+					<div
+						class="col-sm-2 col-md-2 col-lg-2 col-lg-offset-1 col-sm-offset-1 col-md-offset-1">
+						<label>{{'companyProfile.diversityInformation.label.effectiveDate'
+							|translate}}</label>
+					</div>
+					<div class="col-sm-5 col-md-5 col-lg-5">
+						{{data.viewCertification8.certEffectiveDate | dateFormate |
+						date:'MM/dd/yyyy'}}</div>
+				</div>
+				<div class="form-group col-sm-12 col-md-12 col-lg-12 padding0">
+					<div
+						class="col-sm-2 col-md-2 col-lg-2 col-lg-offset-1 col-sm-offset-1 col-md-offset-1">
+						<label>
+							{{'companyProfile.diversityInformation.label.expirationDate' |
+							translate}} <sup class="asterisk">*</sup>
+						</label>
+					</div>
+					<div class="col-sm-5 col-md-5 col-lg-5">
+						{{data.viewCertification8.certExpDate | dateFormate |
+						date:'MM/dd/yyyy'}}</div>
+				</div>
+				<div class="form-group col-sm-12 col-md-12 col-lg-12 padding0">
+					<div
+						class="col-sm-2 col-md-2 col-lg-2 col-lg-offset-1 col-sm-offset-1 col-md-offset-1">
+						<label>
+							{{'companyProfile.diversityInformation.label.certificate' |
+							translate}} <sup class="asterisk">*</sup>
+						</label>
+					</div>
+					<input class="hidden" data-ng-model="lgbtOwnedBusiness"
+						data-ng-init="lgbtOwnedBusiness = 'false'" />
+					<div class="col-sm-5 col-md-5 col-lg-5"
+						data-ng-show="(data.viewCertification8.mongoKey && data.viewCertification8.certFileOid) || !lgbtOwnedBusiness">
+						Uploaded on {{data.viewCertification8.certFileUploadedOnStr}} <a
+							href="javascript:;"
+							data-ng-click="viewDiversityDocument('LGBOW');">View</a>
+					</div>
+					<div class="col-sm-8 col-md-8 col-lg-8">
+						<span ng-if="data.viewCertification8.isCertExpired == true">
+							{{'companyProfile.diversityInformation.label.certificateExpired'
+							| translate}} </span><br> <span
+							ng-if="data.viewCertification8.isCertExpiring == true && data.viewCertification8.isCertExpired != true">
+							{{'companyProfile.diversityInformation.label.certificateExpiredSoon'
+							| translate}} </span><br> <span
+							ng-if="data.viewCertification8.certVerifyStatusCode == 'CRREJ'">
+							{{'companyProfile.diversityInformation.label.certificateRejected'
+							| translate}} </span>
+					</div>
+				</div>
+			</div>
+			<div
+				class="col-sm-12 col-md-12 col-lg-12 form-group marginT2 padding0">
+				<div class="col-sm-3 col-md-3 col-lg-3">
+					<label>{{'companyProfile.diversityInformation.header.uSSmallBusinessHUBZone'
+						| translate}}&nbsp; <span tooltip-append-to-body="true"
+						tooltip="{{'companyProfile.diversityInformation.toolTip.unitedStatesSmallBusiness' | translate}}"
+						tooltip-placement="top"> <i
+							class="fa fa-question-circle fa-lg"></i>
+					</span>
+					</label>
+				</div>
+				<div class="col-sm-2 col-md-2 col-lg-2">
+					<span ng-if="data.View.hubZoneStr === 'true'">Yes</span> <span
+						ng-if="data.View.hubZoneStr === 'false'">No</span>
+				</div>
+			</div>
+			<div class="form-group"
+				data-ng-if="diversity9 || data.View.hubZoneStr == 'true'">
+				<div class="form-group col-sm-12 col-md-12 col-lg-12 padding0">
+					<div
+						class="col-sm-2 col-md-2 col-lg-2 col-lg-offset-1 col-sm-offset-1 col-md-offset-1">
+						<label>
+							{{'companyProfile.diversityInformation.label.certificationAgency'
+							| translate}} <sup class="asterisk">*</sup>
+						</label>
+					</div>
+					<div class="col-sm-5 col-md-5 col-lg-5 break-word">
+						<span
+							data-ng-if="data.viewCertification9.certificationAgencyOid == 'other'">{{'companyProfile.diversityInformation.label.other'
+							| translate}}</span> <span
+							data-ng-if="data.viewCertification9.certificationAgencyOid != 'other'"
+							ng-bind-html="data.viewCertification9.certAgencyName"></span>
+					</div>
+				</div>
+				<div class="form-group col-sm-12 col-md-12 col-lg-12 padding0"
+					data-ng-if="data.viewCertification9.certificationAgencyOid === 'other'">
+					<div
+						class="col-sm-2 col-md-2 col-lg-2 col-lg-offset-1 col-sm-offset-1 col-md-offset-1">
+						<label>
+							{{'companyProfile.diversityInformation.label.certificationOther'
+							| translate}}<sup class="asterisk">*</sup>
+						</label>
+					</div>
+					<div class="col-sm-5 col-md-5 col-lg-5 break-word">
+						{{data.viewCertification9.certAgencyOtherName}}</div>
+				</div>
+				<div class="form-group col-sm-12 col-md-12 col-lg-12 padding0">
+					<div
+						class="col-sm-2 col-md-2 col-lg-2 col-lg-offset-1 col-sm-offset-1 col-md-offset-1">
+						<label>{{'companyProfile.diversityInformation.label.certificationNumber'
+							| translate}}</label>
+					</div>
+					<div class="col-sm-5 col-md-5 col-lg-5 break-word">
+						{{data.viewCertification9.certNumber}}</div>
+				</div>
+				<div class="form-group col-sm-12 col-md-12 col-lg-12 padding0">
+					<div
+						class="col-sm-2 col-md-2 col-lg-2 col-lg-offset-1 col-sm-offset-1 col-md-offset-1">
+						<label>{{'companyProfile.diversityInformation.label.effectiveDate'
+							|translate}}</label>
+					</div>
+					<div class="col-sm-5 col-md-5 col-lg-5">
+						{{data.viewCertification9.certEffectiveDate | dateFormate |
+						date:'MM/dd/yyyy'}}</div>
+				</div>
+				<div class="form-group col-sm-12 col-md-12 col-lg-12 padding0">
+					<div
+						class="col-sm-2 col-md-2 col-lg-2 col-lg-offset-1 col-sm-offset-1 col-md-offset-1">
+						<label>
+							{{'companyProfile.diversityInformation.label.expirationDate' |
+							translate}} <sup class="asterisk">*</sup>
+						</label>
+					</div>
+					<div class="col-sm-5 col-md-5 col-lg-5">
+						{{data.viewCertification9.certExpDate | dateFormate |
+						date:'MM/dd/yyyy'}}</div>
+				</div>
+				<div class="form-group col-sm-12 col-md-12 col-lg-12 padding0">
+					<div
+						class="col-sm-2 col-md-2 col-lg-2 col-lg-offset-1 col-sm-offset-1 col-md-offset-1">
+						<label>
+							{{'companyProfile.diversityInformation.label.certificate' |
+							translate}} <sup class="asterisk">*</sup>
+						</label>
+					</div>
+					<input class="hidden" data-ng-model="hubzoneOwnedBusiness"
+						data-ng-init="hubzoneOwnedBusiness = 'false'" />
+					<div class="col-sm-5 col-md-5 col-lg-5"
+						data-ng-show="(data.viewCertification9.mongoKey && data.viewCertification9.certFileOid) || !hubzoneOwnedBusiness">
+						Uploaded on {{data.viewCertification9.certFileUploadedOnStr}} <a
+							href="javascript:;"
+							data-ng-click="viewDiversityDocument('USHUB');">View</a>
+					</div>
+					<div class="col-sm-8 col-md-8 col-lg-8">
+						<span ng-if="data.viewCertification9.isCertExpired == true">
+							{{'companyProfile.diversityInformation.label.certificateExpired'
+							| translate}} </span><br> <span
+							ng-if="data.viewCertification9.isCertExpiring == true && data.viewCertification9.isCertExpired != true">
+							{{'companyProfile.diversityInformation.label.certificateExpiredSoon'
+							| translate}} </span><br> <span
+							ng-if="data.viewCertification9.certVerifyStatusCode == 'CRREJ'">
+							{{'companyProfile.diversityInformation.label.certificateRejected'
+							| translate}} </span>
+					</div>
+				</div>
+			</div>
+			<div
+				class="col-sm-12 col-md-12 col-lg-12 form-group marginT2 padding0">
+				<div class="col-sm-3 col-md-3 col-lg-3">
+					<label>{{'companyProfile.diversityInformation.header.uSSmallBusiness'
+						| translate}}&nbsp; <span tooltip-append-to-body="true"
+						tooltip="{{'companyProfile.diversityInformation.toolTip.unitedStatesSmallBusinessAdministration' | translate}}"
+						tooltip-placement="top"> <i
+							class="fa fa-question-circle fa-lg"></i>
+					</span>
+					</label>
+				</div>
+				<div class="col-sm-2 col-md-2 col-lg2">
+					<span ng-if="data.View.eightAStr === 'true'">Yes</span> <span
+						ng-if="data.View.eightAStr === 'false'">No</span>
+				</div>
+			</div>
+			<div class="form-group"
+				data-ng-if="diversity10 || data.View.eightAStr == 'true'">
+				<div class="form-group col-sm-12 col-md-12 col-lg-12 padding0">
+					<div
+						class="col-sm-2 col-md-2 col-lg-2 col-lg-offset-1 col-sm-offset-1 col-md-offset-1">
+						<label>
+							{{'companyProfile.diversityInformation.label.certificationAgency'
+							| translate}} <sup class="asterisk">*</sup>
+						</label>
+					</div>
+					<div class="col-sm-5 col-md-5 col-lg-5 break-word">
+						<span
+							data-ng-if="data.viewCertification10.certificationAgencyOid == 'other'">{{'companyProfile.diversityInformation.label.other'
+							| translate}}</span> <span
+							data-ng-if="data.viewCertification10.certificationAgencyOid != 'other'"
+							ng-bind-html="data.viewCertification10.certAgencyName"></span>
+					</div>
+				</div>
+				<div class="form-group col-sm-12 col-md-12 col-lg-12 padding0"
+					data-ng-if="data.viewCertification10.certificationAgencyOid === 'other'">
+					<div
+						class="col-sm-2 col-md-2 col-lg-2 col-lg-offset-1 col-sm-offset-1 col-md-offset-1">
+						<label>
+							{{'companyProfile.diversityInformation.label.certificationOther'
+							| translate}}<sup class="asterisk">*</sup>
+						</label>
+					</div>
+					<div class="col-sm-5 col-md-5 col-lg-5 break-word">
+						{{data.viewCertification10.certAgencyOtherName}}</div>
+				</div>
+				<div class="form-group col-sm-12 col-md-12 col-lg-12 padding0">
+					<div
+						class="col-sm-2 col-md-2 col-lg-2 col-lg-offset-1 col-sm-offset-1 col-md-offset-1">
+						<label>{{'companyProfile.diversityInformation.label.certificationNumber'
+							| translate}}</label>
+					</div>
+					<div class="col-sm-5 col-md-5 col-lg-5 break-word">
+						{{data.viewCertification10.certNumber}}</div>
+				</div>
+				<div class="form-group col-sm-12 col-md-12 col-lg-12 padding0">
+					<div
+						class="col-sm-2 col-md-2 col-lg-2 col-lg-offset-1 col-sm-offset-1 col-md-offset-1">
+						<label>{{'companyProfile.diversityInformation.label.effectiveDate'
+							|translate}}</label>
+					</div>
+					<div class="col-sm-5 col-md-5 col-lg-5">
+						{{data.viewCertification10.certEffectiveDate | dateFormate |
+						date:'MM/dd/yyyy'}}</div>
+				</div>
+				<div class="form-group col-sm-12 col-md-12 col-lg-12 padding0">
+					<div
+						class="col-sm-2 col-md-2 col-lg-2 col-lg-offset-1 col-sm-offset-1 col-md-offset-1">
+						<label>
+							{{'companyProfile.diversityInformation.label.expirationDate' |
+							translate}} <sup class="asterisk">*</sup>
+						</label>
+					</div>
+					<div class="col-sm-5 col-md-5 col-lg-5">
+						{{data.viewCertification10.certExpDate | dateFormate |
+						date:'MM/dd/yyyy'}}</div>
+				</div>
+				<div class="form-group col-sm-12 col-md-12 col-lg-12 padding0">
+					<div
+						class="col-sm-2 col-md-2 col-lg-2 col-lg-offset-1 col-sm-offset-1 col-md-offset-1">
+						<label>
+							{{'companyProfile.diversityInformation.label.certificate' |
+							translate}} <sup class="asterisk">*</sup>
+						</label>
+					</div>
+					<input class="hidden" data-ng-model="eightAOwnedBusiness"
+						data-ng-init="eightAOwnedBusiness = 'false'" />
+					<div class="col-sm-5 col-md-5 col-lg-5"
+						data-ng-show="(data.viewCertification10.mongoKey && data.viewCertification10.certFileOid) || !eightAOwnedBusiness">
+						Uploaded on {{data.viewCertification10.certFileUploadedOnStr}} <a
+							href="javascript:;"
+							data-ng-click="viewDiversityDocument('USEIG');">View</a>
+					</div>
+					<div class="col-sm-8 col-md-8 col-lg-8">
+						<span ng-if="data.viewCertification10.isCertExpired == true">
+							{{'companyProfile.diversityInformation.label.certificateExpired'
+							| translate}} </span><br> <span
+							ng-if="data.viewCertification10.isCertExpiring == true && data.viewCertification10.isCertExpired != true">
+							{{'companyProfile.diversityInformation.label.certificateExpiredSoon'
+							| translate}} </span><br> <span
+							ng-if="data.viewCertification10.certVerifyStatusCode == 'CRREJ'">
+							{{'companyProfile.diversityInformation.label.certificateRejected'
+							| translate}} </span>
+					</div>
+				</div>
+			</div>
+			<div
+				class="col-sm-12 col-md-12 col-lg-12 form-group marginT2 padding0">
+				<div class="col-sm-3 col-md-3 col-lg-3">
+					<label>{{'companyProfile.diversityInformation.header.genderOfCompanyMajorityOwner'
+						| translate}}<sup class="asterisk">*</sup>&nbsp; <span
+						tooltip-append-to-body="true"
+						tooltip="{{'companyProfile.diversityInformation.toolTip.majorityDefined' | translate}}"
+						tooltip-placement="top"> <i
+							class="fa fa-question-circle fa-lg"></i>
+					</span>
+					</label>
+				</div>
+				<div class="col-sm-2 col-md-2 col-lg-2">
+					<span ng-if="data.View.certificationGender === 'm'">Male</span> <span
+						ng-if="data.View.certificationGender === 'f'">Female</span> <span
+						ng-if="data.View.certificationGender === 'n'">Not
+						applicable</span>
+				</div>
+			</div>
+			<div
+				class="col-sm-12 col-md-12 col-lg-12 form-group marginT2 padding0">
+				<div class="col-sm-3 col-md-3 col-lg-3">
+					<label>
+						{{'companyProfile.diversityInformation.header.ethnicityOfCompanyMajorityOwner'
+						| translate}} <sup class="asterisk">*</sup>&nbsp; <span
+						tooltip-append-to-body="true"
+						tooltip="Majority is defined as 51% or greater."
+						tooltip-placement="top"> <i
+							class="fa fa-question-circle fa-lg"></i>
+					</span>
+					</label>
+				</div>
+				<br />
+				<div class="col-sm-2 col-md-2 col-lg-2">
+					{{data.View.certificationEthnicity}}</div>
+			</div>
+		</form>
+		</vision-action>
+	</div>
+</div>

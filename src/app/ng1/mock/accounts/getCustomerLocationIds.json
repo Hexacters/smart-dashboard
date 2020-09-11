@@ -1,0 +1,29 @@
+{
+    "VisionResponse": {
+        "Status": "Ok",
+        "LocationSummaryList": [
+            {
+                "seq": 999999,
+                "id": "Calcutta",
+                "customerOid": "capecodhealth",
+                "oid": "000000069500000002bd",
+                "name": "Falmouth Hospital"
+            },
+            {
+                "seq": 0,
+                "id": "Cape Cod Hospital",
+                "customerOid": "capecodhealth",
+                "oid": "LOCATIONS5",
+                "name": "Cape Cod Hospital"
+            },
+            {
+                "seq": 0,
+                "id": "Falmouth Hospital",
+                "customerOid": "capecodhealth",
+                "oid": "LOCATIONS6",
+                "name": "test"
+            }
+        ],
+        "contentType": "application/json"
+    }
+}

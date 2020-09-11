@@ -1,0 +1,101 @@
+<?xml version="1.0"?>
+<module id="shoppingCartModule">
+	<routers>
+		<router id="shoppingCart" sticky="true" url="/shoppingCart">
+			<views>
+				<view containerId="vendordash" templateUrl="app/ng1/views/shoppingCart/shoppingCart.html"></view>
+			</views>
+		</router>
+		<router id="shoppingCart.repList" sticky="true" url="/repList/{repName}">
+			<views>
+				<view containerId="shoppingCart" templateUrl="app/ng1/views/shoppingCart/repList.html"></view>
+			</views>
+		</router>
+		<router id="shoppingCart.cartSummary" sticky="true" url="/cartSummary">
+			<views>
+				<view containerId="shoppingCart" templateUrl="app/ng1/views/shoppingCart/cardSummary.html"></view>
+			</views>
+		</router>
+		<router id="shoppingCart.billingInfo" sticky="true" url="/billingInfo">
+			<views>
+				<view containerId="shoppingCart" templateUrl="app/ng1/views/shoppingCart/shoppingCartBillingInfo.html"></view>
+			</views>
+		</router>
+		<router id="shoppingCart.checkout" sticky="true" url="/checkout">
+			<views>
+				<view containerId="shoppingCart" templateUrl="app/ng1/views/shoppingCart/shoppingCartCheckout.html"></view>
+			</views>
+		</router>
+		<router id="shoppingCart.shoppingCartSummary" sticky="true" url="/payment">
+			<views>
+				<view containerId="shoppingCart" templateUrl="app/ng1/views/shoppingCart/shoppingCartSummary.html"></view>
+			</views>
+		</router>
+	</routers>
+	<services id="shoppingCartServices">
+		<operations>
+			<operation name="getAllLookupsByCategoriesNonSecure" method="get" serviceName="lookup" requestWrapper="request" responseWrapper="response" mockUrl="app/ng1/mock/users/getLookups.json" mock="false" url="VMClientProxyServlet" requestType="json"></operation>
+			<operation name="getAllLookupsByCategories" method="get" serviceName="lookup" requestWrapper="request" responseWrapper="response" mockUrl="app/ng1/mock/users/getAllLookupsByCategories.json" mock="false" url="VMClientProxyServlet" requestType="json"></operation>
+			<operation name="getAllActiveUser" method="get" requestType="json" requestWrapper="request" serviceName="user" responseWrapper="response"  url="VMClientProxyServlet" mockUrl="app/ng1/mock/shoppingCart/customerList.json" mock="false">
+			</operation>
+			<operation name="deleteUserOASmall" requestType="json" requestWrapper="request" responseWrapper="response"  serviceName="user" method="post" url="VMClientProxyServlet" mockUrl="app/ng1/mock/shoppingCart/deleteCustomerSuccess.json" mock="false">
+			</operation>
+			<operation name="getCardList" requestType="json" requestWrapper="request" responseWrapper="response"  serviceName="customer" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/shoppingCart/cardList.json" mock="true">
+				<params>
+					<param name="userOid" source="userProfile" key="id"></param>
+				</params>
+			</operation>
+			<operation name="getmonthAndYearList" requestType="json" requestWrapper="request" responseWrapper="response"  serviceName="customer" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/shoppingCart/monthAndYear.json" mock="true">
+				<params>
+					<param name="userOid" source="userProfile" key="id"></param>
+				</params>
+			</operation>
+			<operation name="validateOrderDetails" requestType="json" requestWrapper="request" responseWrapper="response"  serviceName="shoppingCart" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/shoppingCart/saveShoppingOrder.json" mock="false">
+			</operation>
+			<operation name="savePaymentProfileDetails" requestType="json" requestWrapper="request" responseWrapper="response"  serviceName="shoppingCart" method="post" url="VMClientProxyServlet" mockUrl="app/ng1/mock/shoppingCart/savePaymentProfileDetails.json" mock="false">
+			</operation>
+			<operation name="deleteUserOASmall" requestType="json" requestWrapper="request" responseWrapper="response"  serviceName="user" method="post" url="VMClientProxyServlet" mockUrl="app/ng1/mock/shoppingCart/savePaymentProfileDetails.json" mock="false">
+			</operation>
+			<operation name="saveShoppingOrder" requestType="json" requestWrapper="request" responseWrapper="response"  serviceName="shoppingCart" method="post" url="VMClientProxyServlet" mockUrl="app/ng1/mock/shoppingCart/saveShoppingOrder.json" mock="false">
+			</operation>
+			<operation name="getPaymentTechUID" secure="true" method="post" requestType="json" serviceName="payment" url="services/getPaymentTechUID" requestWrapper="request" responseWrapper="response" mockUrl="app/ng1/mock/shoppingCart/getPaymentTechUID.json" mock="false">
+   			</operation>
+   			<operation name="doPaymentShoppingCart" secure="true" method="post" requestType="json" serviceName="shoppingCart" url="VMClientProxyServlet" requestWrapper="request" responseWrapper="response" mockUrl="app/ng1/mock/shoppingCart/doPaymentShoppingCart.json" mock="false">
+   			</operation>
+   			<operation name="updatePaymentDetails" requestType="json"
+				requestWrapper="request" responseWrapper="response" method="POST"
+				url="services/updatePaymentDetails" serviceName="payment" mockUrl="savePaymentDetails.json"
+				mock="false">
+			</operation>
+			<operation name="getCardProfile" requestType="json"
+				requestWrapper="request" responseWrapper="response" serviceName="registration"
+				method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/cardProfile/getCardProfileDetails.json"
+				mock="false">
+				<params>
+					<param name="userOid" source="userProfile" key="id"></param>
+				</params>
+			</operation>
+			<operation name="getLatestCardProfile" requestType="json"
+				requestWrapper="request" responseWrapper="response" serviceName="shoppingCart"
+				method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/shoppingCart/getCardProfileSummary.json"
+				mock="false">
+			</operation>
+			
+			<operation name="savePaymentCardDetails" requestType="json"
+				requestWrapper="request" responseWrapper="response" serviceName="shoppingCart"
+				method="POST" url="VMClientProxyServlet" mockUrl="app/ng1/mock/shoppingCart/saveCardProfile.json"
+				mock="false">
+			</operation>
+			<operation name="updatePersonalCardDetails" requestType="json"
+				requestWrapper="request" responseWrapper="response" serviceName="shoppingCart"
+				method="POST" url="VMClientProxyServlet" mockUrl="app/ng1/mock/shoppingCart/saveCardProfile.json"
+				mock="false">
+			</operation>
+			<operation name="cancelRenewalOrder" requestType="json"
+				requestWrapper="request" responseWrapper="response" method="POST"
+				url="VMClientProxyServlet" serviceName="shoppingCart" mockUrl="app/ng1/mock/shoppingCart/cancelRenewalOrder.json"
+				mock="false">
+			</operation>
+		</operations>
+	</services>
+</module>

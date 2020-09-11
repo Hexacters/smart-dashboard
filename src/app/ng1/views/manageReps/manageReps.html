@@ -1,0 +1,85 @@
+<div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12"
+         ng-controller="manageRepController"
+         ng-init="getInitialvalue();">
+        <accordion ng-init="inviteAct='vrepOneToMany'">
+            <accordion-group is-open="$state.includes('manage.accessRepAccounts')"
+                             ng-if="canAccess('vm','ManageRepsAccordion')">
+                <accordion-heading>
+                    <a ui-sref="manage.accessRepAccounts"
+                       class="show">{{::'manageReps.accessRepAccounts' | translate}} <i class="pull-right glyphicon"
+                           ng-class="{'glyphicon-minus': $state.includes('manage.accessRepAccounts'), 'glyphicon-plus': !$state.includes('manage.accessRepAccounts')}"></i></a>
+                </accordion-heading>
+                <div class="minHeight200"
+                     ui-view="viewRepAccountlist"
+                     autoscroll="true"></div>
+            </accordion-group>
+            <accordion-group is-open="$state.includes('manage.inviteReps')"
+                             ng-if="canAccess('vm','InviteRep')">
+                <accordion-heading>
+                    <a ui-sref="manage.inviteReps"
+                       class="show">{{::'manageReps.inviteReps' | translate}} <i class="pull-right glyphicon"
+                           ng-class="{'glyphicon-minus': $state.includes('manage.inviteReps'), 'glyphicon-plus': !$state.includes('manage.inviteReps')}"></i></a>
+                </accordion-heading>
+                <div class="minHeight200"
+                     ui-view="inviteRepContainer"
+                     autoscroll="true"></div>
+            </accordion-group>
+            <accordion-group is-open="$state.includes('manage.shareStaffCredentials')"
+                             data-ng-if="canAccess('vm','Credential Sections') && canAccess('vm','Share Staff Credentials Section')">
+                <accordion-heading>
+                    <a ui-sref="manage.shareStaffCredentials"
+                       class="show">{{::'manageReps.header.shareStaffCredentials' | translate}} <i class="pull-right glyphicon"
+                           ng-class="{'glyphicon-minus': $state.includes('manage.shareStaffCredentials'), 'glyphicon-plus': !$state.includes('manage.shareStaffCredentials')}"></i></a>
+                </accordion-heading>
+                <div class="minHeight200"
+                     ui-view="shareStaffCredentials"
+                     autoscroll="true"></div>
+            </accordion-group>
+            <accordion-group is-open="$state.includes('manage.shareCredentials') || 
+			$state.includes('manage.shareCredentials',({'isFrom':'manageRepsDocuments'})) ||
+			$state.includes('manage.credentialRecipient')"
+                             data-ng-if="canAccess('vm','Credential Sections') && canAccess('vm','Share Credentials Section')">
+                <accordion-heading>
+                    <a ui-sref="manage.shareCredentials({isFrom:'manageRep'})"
+                       class="show"
+                       ng-if="shareMyCredentialShow === false">{{::'manageReps.shareCredentials' | translate}} <i class="pull-right glyphicon"
+                           ng-class="{'glyphicon-minus': $state.includes('manage.shareCredentials',({'isFrom':'manageRepsDocuments'})) || $state.includes('manage.credentialRecipient') || $state.includes('manage.shareCredentialsNoContent'), 'glyphicon-plus': !$state.includes('manage.shareCredentials',({'isFrom':'manageRepsDocuments'})) || !$state.includes('manage.credentialRecipient') || !$state.includes('manage.shareCredentialsNoContent')}"></i></a>
+                    <a ui-sref="manage.shareCredentials"
+                       class="show"
+                       ng-if="shareMyCredentialShow !== false">{{::'manageReps.shareCredentials' | translate}} <i class="pull-right glyphicon"
+                           ng-class="{'glyphicon-minus': $state.includes('manage.shareCredentials') || $state.includes('manage.credentialRecipient') || $state.includes('manage.shareCredentialsNoContent'), 'glyphicon-plus': !$state.includes('manage.shareCredentials') || !$state.includes('manage.credentialRecipient') || !$state.includes('manage.shareCredentialsNoContent')}"></i></a>
+                </accordion-heading>
+                <div data-ng-class="{'dNone':!loading}">
+                    <img align="absmiddle"
+                         src="app/ng1/img/partial-loading.gif"> {{::'common.loading' | translate}}
+                </div>
+                <div class="minHeight200"
+                     ui-view="shareCredentials"
+                     autoscroll="true"></div>
+            </accordion-group>
+            <accordion-group is-open="$state.includes('manage.repAccountDetails.repAccountsTab') || $state.includes('manage.repAccountDetails.clearedForAccess') || 
+			$state.includes('manage.repAccountDetails.documents') || $state.includes('manage.repAccountDetails.paymentReceipt') || 
+			$state.includes('manage.repAccountDetails.clearedForAccess.clearedForAccessHelp') || $state.includes('manage.repAccountDetails.manageRepProfile')|| $state.includes('manage.repAccountDetails.companyProfile')"
+                             ng-if="canAccess('vm','ManageRepsRepDetail')">
+                <accordion-heading>
+                    <a ng-hide="fromAccordion === 'fromAssociatedCompanies'"
+                       ui-sref="manage.repAccountDetails.repAccountsTab"
+                       class="show">{{repAccountDetailsTitle}} <i class="pull-right glyphicon"
+                           ng-class="{'glyphicon-minus': $state.includes('manage.repAccountDetails.repAccountsTab') || $state.includes('manage.repAccountDetails.clearedForAccess') || 
+					$state.includes('manage.repAccountDetails.documents') || 
+					$state.includes('manage.repAccountDetails.myProfile.contactPersonalInfo') || $state.includes('manage.repAccountDetails.clearedForAccess.clearedForAccessHelp'), 'glyphicon-plus': !$state.includes('manage.repAccountDetails.repAccountsTab') || !$state.includes('manage.repAccountDetails.clearedForAccess') || !$state.includes('manage.repAccountDetails.clearedForAccess.clearedForAccessHelp')}"></i></a>
+                    <a ng-show="fromAccordion === 'fromAssociatedCompanies'"
+                       ui-sref="manage.repAccountDetails.companyProfile.viewInformation"
+                       class="show">{{repAccountDetailsTitle}} <i class="pull-right glyphicon"
+                           ng-class="{'glyphicon-minus': $state.includes('manage.repAccountDetails.repAccountsTab') || $state.includes('manage.repAccountDetails.clearedForAccess') || 
+					$state.includes('manage.repAccountDetails.documents') || 
+					$state.includes('manage.repAccountDetails.myProfile.contactPersonalInfo') || $state.includes('manage.repAccountDetails.clearedForAccess.clearedForAccessHelp'), 'glyphicon-plus': !$state.includes('manage.repAccountDetails.repAccountsTab') || !$state.includes('manage.repAccountDetails.clearedForAccess') || !$state.includes('manage.repAccountDetails.clearedForAccess.clearedForAccessHelp')}"></i></a>
+                </accordion-heading>
+                <div class="minHeight200"
+                     ui-view="repAccountDetails"
+                     autoscroll="true"></div>
+            </accordion-group>
+        </accordion>
+    </div>
+</div>

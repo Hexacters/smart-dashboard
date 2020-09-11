@@ -1,0 +1,18 @@
+<div class="col-md-12 col-sm-12 col-lg-12" ng-init="getBillingCountryLookups();">
+	<div class="col-md-7" id="shoppingCartSummaryGrid">
+		<div class="table-responsive marginB0">
+			<table ng-table="addNewRepPaymentGrid" class="table table-striped table-bordered marginB0">
+				<tr>
+					<td data-title="'shoppingCart.label.itemName' | translate">{{'addNewRep.label.oaspTitle' | translate}}</td>
+					<td data-title="'shoppingCart.label.itemDescription' | translate">{{'addNewRep.label.orderSummaryDesc1' | translate}}&nbsp;{{repCountInSummaryDesc}}&nbsp;{{'addNewRep.label.orderSummaryDesc2' | translate}}</td>
+					<td data-title="'shoppingCart.label.price' | translate">{{addNewRepOrderAmount | currency:"$"}}</td>
+				</tr>
+			</table>
+		</div>
+		<div class="paddingT2">
+			<div class="text-right">
+				<button id="checkout" class="btn btn-blue marginT1" data-ng-click="navAddNewRepBillingInfoScreen(orderType);">{{'addNewRep.label.checkout' | translate}}</button>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,14 @@
+{
+    "VisionResponse": {
+        "Status": "Ok",
+        "UserDocAccountsList": [
+            {
+                "customerName": "Adventist Health System",
+                "seq": 99,
+                "verticalCode": "HLTH",
+                "customerOid": "ahss"
+            }
+        ],
+        "contentType": "application/json"
+    }
+}

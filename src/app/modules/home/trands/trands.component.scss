@@ -1,0 +1,44 @@
+.trands {
+    
+    .content {
+        box-shadow: 0px 3px 30px rgba(0, 0, 0, 0.125);
+        padding: 15px 0 10px 0;
+        border-radius: 5px;
+
+        .rating-info {
+            line-height: 0.5em;
+        }
+
+        .rating-up {
+            .material-icons {
+                font-size: 10px;
+            }
+            color: #0e8800;
+            font-size: 10px;
+        }
+        .rating-down {
+            .material-icons {
+                font-size: 10px;
+            }
+            color: #da1b1b;
+            font-size: 10px;
+        }
+        .rating-text {
+            color: var(--light);
+            font-size: 12px;
+        }
+    }
+
+    .register {
+        .info {
+            padding: 0 15px;
+
+            label {
+                font-size: 12px;
+            }
+        }
+        padding: 15px 15px 10px 0;
+        background: linear-gradient(207.79deg, #005BE2 -1.4%, rgba(1, 11, 98, 0.8) 76.82%);
+        color: #ffffff;
+    }
+}

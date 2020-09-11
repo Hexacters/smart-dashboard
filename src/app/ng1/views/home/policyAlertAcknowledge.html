@@ -1,0 +1,49 @@
+<div data-ng-controller="homeController">
+	<div class="marginT2">
+		<div data-ng-class="{'dNone':!policyAckloading}">
+			<img align="absmiddle" src="app/ng1/img/partial-loading.gif">&nbsp;{{'common.loading' | translate}}
+		</div>
+		<div ng-if="!policyAckloading">
+		<div class="policyAck" ng-if="customerData.successData">
+			<div class="col-sm-9 col-md-9 col-lg-9 marginB1"><h4><b>{{customerData.successData.NonCompliancePoliciesDetailsList[0].customerName}}</b></h4></div>
+			<div class="col-sm-3 col-md-3 col-lg-3 marginB1 text-center"><h5><b>{{'home.label.acknowledge' | translate}}</b></h5></div>
+			<div class="marginB1" data-ng-repeat="policyAlert in customerData.successData.NonCompliancePoliciesDetailsList">	
+				<div class="col-sm-9 col-md-9 col-lg-9 marginB1 marginT1">
+					<span ng-if="policyAlert.docDefHasTemplate == true" ng-controller="myDocumentController">
+						<a class="policyAckHeading" ng-click="viewTemplateDocument(policyAlert.docDefOid)">{{policyAlert.docDefName}}</a>
+					</span>
+					<span ng-if="policyAlert.docDefHasTemplate != true">
+						<b>{{policyAlert.docDefName}}</b>
+					</span><br/>
+					<span ng-controller="commonController" ng-if="policyAlert.docDefAckText != null && policyAlert.docDefAckText !=''">
+					<span class="whiteSpacePre" ng-init="numLimit =50" ng-bind-html="policyAlert.docDefAckText | limitTo:numLimit | trustAsHtml"></span> 
+						<span data-ng-if="policyAlert.docDefAckText.length>50">
+							<a ng-hide="showLess" class="readMoreLess cursorPointer" ng-click="readMore('1024')">more...</a>
+							<a ng-show="showLess" class="readMoreLess cursorPointer" ng-click="readLess('50')">less</a>
+						</span>	
+					</span>
+				  </span>
+				</div>
+				<div class="col-sm-3 col-md-3 col-lg-3 text-center marginB1 marginT1">
+						<input type="checkbox"
+							id="policyAlertACK1"
+							data-ng-click="policyAcknowledge(policyAlert.customerOid,policyAlert.docDefOid,policyAlert.templateOid,policyAlert.userOid)"
+							value="policyAlertACK1" name="policyAlertACK1"
+							ng-model="policyAlertACK1" />
+				</div>
+			</div>
+		</div>	
+		<div ng-if="customerData.errorData.ResponseError[0].errorCode">
+			<div data-ng-if="customerData.errorData.Status == 'Error'" class="alert alert-danger" ng-init="reloadHomeTab();">
+				<i class="fa fa-exclamation-triangle"></i> {{customerData.errorData.ResponseError[0].errorCode | translate}}
+			</div>
+		</div>
+		<div class="form-group marginT2" ng-controller="myDocumentController">
+			<div class="text-right">
+				<button class="btn btn-warning" id="policyAlertSubmit" type="submit"
+					ui-sref="home.policy.policyGrid({'random':getRandomSpan()})">{{'common.cancel' | translate}}</button>
+			</div>
+		</div>
+		</div>
+	</div>
+</div>

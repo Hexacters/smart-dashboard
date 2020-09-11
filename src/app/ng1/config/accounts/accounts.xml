@@ -1,0 +1,165 @@
+<?xml version="1.0"?>
+<module id="accountModule">
+	<routers>
+		<router id="accounts" sticky="true" url="/accounts/{tapsFrom}">
+			<views>
+				<view containerId="vendordash" templateUrl="app/ng1/views/accounts/accounts.html"></view>
+			</views>
+		</router>
+		<router id="accounts.manageAccounts" url="/manageAccounts/{homeAction}/{manageRandom}">
+			<views>
+				<view containerId="manageMyAccounts" templateUrl="app/ng1/views/accounts/manageMyAccounts.html"></view>
+			</views>
+		</router>
+		<router id="accounts.manageAccounts.help" url="/help" type="dialog">
+			<views>
+				<view containerId="modal" templateUrl="app/ng1/views/accounts/help.html"></view>
+			</views>
+		</router>
+		<router id="accounts.manageAccounts.viewLocations" type="dialog" url="/viewLocations/{customerOid}/{customerName}">
+			<views>
+				<view containerId="manageAccountsViewLocations@" templateUrl="app/ng1/views/accounts/viewLocations.html"></view>
+			</views>
+		</router>
+		<router id="accounts.accountDetails" url="/accountDetails/{fromPrintBadge}">
+			<views>
+				<view containerId="viewAccountDetails" templateUrl="app/ng1/views/accounts/accountDetails.html"></view>
+			</views>
+		</router>
+		<router id="accounts.accountDetails.normal">
+			<views>
+				<view containerId="viewRegistration" templateUrl="app/ng1/views/registration/normal/normalRegistration.html"></view>
+			</views>
+		</router>
+		<router id="accounts.accountDetails.normal.healthsystemDetails" url="/healthsystemDetails">
+			<views>
+				<view templateUrl="app/ng1/views/registration/normal/healthsystemDetails.html"></view>
+			</views>
+		</router>
+		<router id="accounts.accountDetails.normal.companyDetails" url="/companyDetails">
+			<views>
+				<view templateUrl="app/ng1/views/registration/normal/companyDetails.html"></view>
+			</views>
+		</router>
+		<router id="accounts.accountDetails.normal.companyRelationship" url="/companyRelationship">
+			<views>
+				<view templateUrl="app/ng1/views/registration/normal/companyRelationship.html"></view>
+			</views>
+		</router>
+		<router id="accounts.accountDetails.normal.userRelationship" url="/userRelationship">
+			<views>
+				<view templateUrl="app/ng1/views/registration/normal/userRelationship.html"></view>
+			</views>
+		</router>
+		<router id="accounts.accountDetails.normal.agreements" url="/agreements">
+			<views>
+				<view templateUrl="app/ng1/views/registration/normal/agreements.html"></view>
+			</views>
+		</router>
+		<router id="accounts.accountDetails.normal.agreements.thankYou" abstract="true" type="dialog">
+			<views>
+				<view templateUrl="app/ng1/views/registration/normal/thankYou.html"></view>
+			</views>
+		</router>
+		<router id="accounts.accountDetails.normal.paymentDetails" url="/paymentDetails">
+			<views>
+				<view templateUrl="app/ng1/views/registration/normal/paymentDetails.html"></view>
+			</views>
+		</router>
+		<router id="accounts.accountDetails.normal.paymentDetailsPCI" url="/paymentDetailsPCI">
+			<views>
+				<view templateUrl="app/ng1/views/registration/normal/paymentDetailsPCI.html"></view>
+			</views>
+		</router>
+		<router id="accounts.accountDetails.normal.paymentCardDetails" url="/paymentCardDetails">
+			<views>
+				<view templateUrl="app/ng1/views/registration/normal/paymentCardDetails.html"></view>
+			</views>
+		</router>
+		<router id="accounts.accountDetails.normal.paymentDetails.thankYou" abstract="true" type="dialog">
+			<views>
+				<view templateUrl="app/ng1/views/registration/normal/thankYou.html"></view>
+			</views>
+		</router>
+		<router id="accounts.accountDetails.normal.healthsystemDetails.thankYou" abstract="true" type="dialog">
+			<views>
+				<view templateUrl="app/ng1/views/registration/normal/thankYou.html"></view>
+			</views>
+		</router>
+		<router id="accounts.searchAccounts" url="/searchAccounts/{searchAccount}">
+			<views>
+				<view containerId="searchAccounts" templateUrl="app/ng1/views/accounts/searchAccounts.html"></view>
+			</views>
+		</router>
+		<router id="accounts.searchAccounts.viewLocations" type="dialog" url="/locations/{companyName}">
+			<views>
+				<view containerId="modal" templateUrl="app/ng1/views/accounts/viewLocations.html"></view>
+			</views>
+		</router>
+		<router id="accounts.searchAccounts.searchAccountsGrid" url="/searchAccountsGrid">
+			<views>
+				<view containerId="searchAccountsGrid" templateUrl="app/ng1/views/accounts/searchAccountsGrids.html"></view>
+			</views>
+		</router>
+	</routers>
+	<services id="accountServices">
+		<operations>
+			<operation name="manageAccounts" requestType="json" requestWrapper="request" responseWrapper="response" serviceName="vendorrep" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/accounts/manageAccounts.json" mock="false">
+				<params>
+					<param name="userOid" source="userProfile" key="id"></param>
+				</params>
+			</operation>
+			<operation name="getVendorRepAccounts" requestType="json" requestWrapper="request" responseWrapper="response" serviceName="vendorrep" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/accounts/manageAccounts.json" mock="false">
+				<params>
+					<param name="userOid" source="userProfile" key="id"></param>
+				</params>
+			</operation>
+			<operation name="getVendorRepAccountsReports" operationType="export" requestType="json" requestWrapper="request" responseWrapper="response" serviceName="vendorrep" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mockgetPrioritySearchList.json" mock="false">
+				<params>
+					<param name="userOid" source="userProfile" key="id"></param>
+				</params>
+			</operation>
+			<operation name="getAllInactiveAccountsReports" operationType="export" requestType="json" requestWrapper="request" responseWrapper="response" serviceName="vendorrep" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mockgetPrioritySearchList.json" mock="false">
+				<params>
+					<param name="userOid" source="userProfile" key="id"></param>
+				</params>
+			</operation>
+			<operation name="inActivateRep" requestWrapper="request" responseWrapper="response" serviceName="vendorrep" requestType="json" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/accounts/inActivateRep.json" mock="false">
+				<params>
+					<param name="repOid" source="state" key="repOid"></param>
+				</params>
+			</operation>
+			<operation name="activateRep" requestWrapper="request" responseWrapper="response" serviceName="vendorrep" requestType="json" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/accounts/activateRep.json" mock="false">
+				<params>
+					<param name="repOid" source="state" key="repOid"></param>
+				</params>
+			</operation>
+
+			<operation name="searchCustomerAccounts" requestWrapper="request" responseWrapper="response" requestType="json" serviceName="customers" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/accounts/searchCustomerAccounts.json" mock="false">
+
+			</operation>
+			<operation name="searchCustomerLocationsWithRegFlag" requestWrapper="request" responseWrapper="response" requestType="json" serviceName="customers" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/accounts/searchCustomerLocationsWithRegFlag.json" mock="false"></operation>
+			<operation name="getAllInactiveAccounts" requestType="json" requestWrapper="request" responseWrapper="response" serviceName="vendorrep" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/accounts/getAllInactiveAccounts.json" mock="false">
+				<params>
+					<param name="userOid" source="userProfile" key="id"></param>
+				</params>
+			</operation>
+			<operation name="getAllCustomerLocations" requestType="json" requestWrapper="request" responseWrapper="response" serviceName="customers" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/accounts/getAllCustomerLocations.json" mock="false">
+				<params>
+					<param name="customerOid" source="state" key="customerOid"></param>
+				</params>
+			</operation>
+			<operation name="getRegistrationStatus" requestType="json" requestWrapper="request" responseWrapper="response" serviceName="registration" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/accounts/getRegistrationStatus.json" mock="false"></operation>
+			<operation name="getAutoLoginIframeUrl" serviceName="users" responseWrapper="response" method="get" url="services/getAutoLoginIframeUrl" mockUrl="app/ng1/mocksuccess.json" mock="false"></operation>
+			<operation name="getVendorRepAccount" requestType="json" requestWrapper="request" responseWrapper="response" serviceName="vendorrep" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/accounts/getVendorRepAccount.json" mock="false">
+				<params>
+					<param name="userOid" source="userProfile" key="id"></param>
+					<param name="customerOid" source="data" module="customerDetail" key="customerOid"></param>
+				</params>
+			</operation>
+			<operation name="getCustomerAddressAndLocations" requestType="json" requestWrapper="request" responseWrapper="response" method="get" serviceName="customers" url="VMClientProxyServlet" mockUrl="app/ng1/mock/accounts/getCustomerAddressAndLocations.json" mock="false">
+			</operation>
+			<operation name="updateRepRegistrationStatus" requestType="json" requestWrapper="request" responseWrapper="response" method="get" serviceName="registration" url="VMClientProxyServlet" mockUrl="app/ng1/mockhealthSystemDetails.json" mock="false"></operation>
+		</operations>
+	</services>
+</module>

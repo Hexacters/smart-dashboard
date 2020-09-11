@@ -1,0 +1,21 @@
+<div class="modal-content">
+	<div class="modal-header">
+		<button id="sorAcknowledgeCloseIcon" type="button" class="close"
+			data-dismiss="modal" aria-hidden="true" data-ng-click="$close();">&times;</button>
+		<h3 class="modal-title">
+			<b>{{'manageReps.header.deleteRepUser' | translate}}</b>
+		</h3>
+	</div>
+	<div class="modal-body">
+		<div class="alert alert-danger" ng-if="unDeleteUserError!=''"><i class="fa fa-warning margin"></i> {{unDeleteUserError | translate}}</div>
+		<div class="text-center">
+			<p>{{'manageReps.label.deleteRepInformation' | translate}}</p>
+			<p>{{'manageReps.label.doYouWantToContinue' | translate}}</p>
+			<button type="button" ng-click="$close();"
+				class="btn btn-grey">{{'common.cancel' | translate}}</button>
+			<button type="button" 
+				autofocus class="btn btn-blue" ng-click="deleteUser()">{{'common.delete'
+				| translate}}</button>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,74 @@
+<div class="row">
+	<vision-data-table service="docAlertServices"
+		operation="getAllCustomers"
+		root-node="data.successData.customerList" 
+		total-records-node="data.successData.totalRecords"
+		type="server" id="accountsGrid"
+		initial-request='{"count":10,"page":1,"filter":{"searchString":"*"},"sorting":{"customerStatusCode":"asc"}}'>
+	<div class="col-sm-12 col-md-10 col-lg-12 marginB1">
+		<form class="form-horizantal ng-pristine ng-valid" name="searchAlert" novalidate> 
+			<div class="form-group">
+				<label class="pull-left marginTP5">{{'docAlert.searchTerm' |
+					translate}}</label>
+				<div class="col-sm-3 col-md-3 col-lg-3">
+					<input type="text" id="searchTerm" ng-model="docAlertAccount.searchString" class="form-control input-sm" validator="required" message-id="messgaeId" required-error-message="{{'docAlert.errorMessage.pleaseEnterTheString' | translate}}">
+				</div>
+				<button class="btn btn-primary input-sm" type="submit" validation-submit="searchAlert" ng-click="submit();searchTable(docAlertAccount)">{{'docAlert.search'	| translate}}</button>
+			</div>
+		</form>
+	</div>
+	<div ng-show="accountsGrid.data.length>0">
+	<div class="col-sm-12 col-md-12 col-lg-12">
+		<div class="clearfix col-sm-7 col-md-8 col-lg-8 pull-left paddingL0">
+			<div ng-table-pagination="accountsGrid" template-url="'pagination1.html'"></div>
+		</div>
+		<div class="clearfix col-sm-5 col-md-4 col-lg-4 pull-left paddingR0">
+			<div ng-table-pagination="accountsGrid" template-url="'paginationCount1.html'"></div>
+			<div class="pull-right" ng-controller="commonController">
+				<button id="vendorRepRefresh" ng-click="refreshTable();refreshBtn()" tooltip-placement="left" tooltip-append-to-body="true" toolt tooltip="{{'common.lastRefresh'|translate}} {{todayDate | date:'MMM dd, hh:mm:ss a'}}" class="btn" type="button"><i class="fa fa-refresh"></i></button>&nbsp;&nbsp;
+			</div>
+		</div>
+	</div>	
+	<div class="col-sm-12 col-md-12 col-lg-12">
+			<table ng-table="accountsGrid" template-pagination="style3"
+				class="table table-striped table-bordered marginTP5 marginBP5">
+				<tbody ng-if="accountsGrid.data.length>0">
+					<tr ng-repeat="accounts in $data | orderBy:'accountName'">
+						<td data-title="'docAlert.accountName' | translate" class="text-left col-lg-3" sortable="'companyName'">
+							<a ng-if="accounts.customerStatusCode=='ACT'"
+							ng-click="$state.go('documentAlert.Vendor');getAccountCompanyName(accounts.oid,accounts.companyName);"><strong>{{accounts.companyName}}</strong></a>
+							<span ng-if="accounts.customerStatusCode!='ACT'">{{accounts.companyName}}</span>
+						</td>
+						<td data-title="'docAlert.customerStatus' | translate" 
+							class="text-left col-lg-2"><span ng-if="accounts.customerStatusCode!='ACT'">{{'docAlert.inActive' | translate}}	</span><span ng-if="accounts.customerStatusCode=='ACT'">{{'docAlert.active' | translate}}</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="col-sm-12 col-md-12 col-lg-12">
+			<div class="clearfix col-sm-7 col-md-8 col-lg-8 pull-left paddingL0">
+				<div ng-table-pagination="accountsGrid" template-url="'pagination1.html'"></div>
+			</div>
+			<div class="clearfix col-sm-5 col-md-4 col-lg-4 pull-left paddingR0">
+				<div ng-table-pagination="accountsGrid" template-url="'paginationCount1.html'"></div>
+				<div class="pull-right" ng-controller="commonController">
+					<button id="vendorRepRefresh" ng-click="refreshTable();refreshBtn()" tooltip-placement="left" tooltip-append-to-body="true" toolt tooltip="{{'common.lastRefresh'|translate}} {{todayDate | date:'MMM dd, hh:mm:ss a'}}" class="btn" type="button"><i class="fa fa-refresh"></i></button>&nbsp;&nbsp;
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-sm-12 col-md-12 col-lg-12 ng-table-counts-hide" ng-if="accountsGrid.data.length <= 0">
+		<div class="text-danger" id="messgaeId">
+			<span class="fa fa-warning" aria-hidden="true"></span>
+			{{'5042' | translate}}
+		</div>
+	</div>
+	<div class="col-sm-12 col-md-12 col-lg-12 ng-table-counts-hide" ng-if="accountsGrid.data.errorData.Status=='Error'">
+		<div class="text-danger">
+			<span class="fa fa-warning" aria-hidden="true"></span>
+			{{accountsGrid.data.errorData.ResponseError[0].errorCode | translate}}
+		</div>
+	</div>
+	</vision-data-table>
+</div>
+</div>

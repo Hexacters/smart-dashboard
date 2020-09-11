@@ -1,0 +1,45 @@
+{  
+   "VisionResponse":{  
+      "Status":"Ok",
+      "ResponseError":[  
+
+      ],
+      "resourceCenter":[  
+		{  
+			"id":"1",
+			"name":"Hospital Contact List For Policy Questi...",
+			"description":"Hospital Contact List For Policy Question"
+		},
+		{  
+			"id":"2",
+			"name":"Recently Launched Health System List",
+			"description":"Recently Launched Health System List"
+		},
+		{ 
+			"id":"3",
+			"name":"Vendormate Health System List",
+			"description":"Vendormate Health System List"
+		},
+		{  
+			"id":"4",
+			"name":"Weekly Communications From Hospitals",
+			"description":"Weekly Communications From Hospitals"
+		},
+		{  
+			"id":"5",
+			"name":"Test Template-Feb 20",
+			"description":"Test Template-Feb 20"
+		},
+		{  
+			"id":"6",
+			"name":"Test for encrypt doc",
+			"description":"Test for encrypt doc"
+		},
+		{  
+			"id":"7",
+			"name":"PPTX format 20 July",
+			"description":"PPTX format 20 July"
+		}
+    ]
+ }
+}

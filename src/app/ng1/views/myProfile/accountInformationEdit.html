@@ -1,0 +1,294 @@
+<div class="row">
+	<div class="col-sm-12 col-md-12 col-lg-12"
+		data-ng-class="{'dNone':!loading}">
+		<img align="absmiddle" src="app/ng1/img/partial-loading.gif" />&nbsp;{{'common.loading'|
+		translate}}
+	</div>
+	<div class="col-sm-12 col-md-12 col-lg-12">
+		<div class="col-sm-8 col-md-6 col-lg-6">
+			<h3>{{'myProfile.addressAndInformation.header.addressInformationTitle'
+				| translate}}</h3>
+		</div>
+		<div class="col-sm-4 col-md-6 col-lg-6">
+			<div class="pull-right marginT2">
+				<sup class="asterisk">*</sup>&nbsp;{{'common.required' | translate}}
+				<a data-ui-sref="myProfile.accountInformationEdit.help" ng-show="!isFromManageReps">{{'common.help' | translate}}</a>
+				<a data-ui-sref="manage.repAccountDetails.manageRepProfile.accountInformationEdit.help" ng-show="isFromManageReps">{{'common.help' | translate}}</a>
+			</div>
+		</div>
+		<div class="col-sm-12 col-md-12 col-lg-12" ng-controller="myProfileController">
+			<vision-action> <get-data service="myProfileServices"
+				operation="getBusinessAddressInformation"
+				root-node="data.successData" form-node="data"></get-data> <submit-data
+				service="myProfileServices" operation="saveUserWithAddress"
+				callback="accountEditInfo"
+				remove-keys="Status,divisionDocExist,User.updatedBy,User.updatedOn,User.createdBy,User.createdOn,User.securityMap,User.lastActivityDate,User.passwordExpDate,User.dob,Address.securityMap,Address.createdOn,Address.createdBy,Address.updatedOn,Address.updatedBy">
+			</submit-data>
+			<form novalidate name="addressInformationEdit" autocomplete="off"
+				class="form-horizontal">
+				<div class="table-responsive"
+					data-ng-if="saveUserWithAddressSubmitError.status === 'error'">
+					<div class="alert alert-danger">
+						{{saveUserWithAddressSubmitError.errorData.ResponseError[0].longMessage}}</div>
+				</div>
+
+				<div class="col-sm-6 col-md-6 col-lg-6">
+					<div class="form-group">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right">{{'myProfile.addressAndInformation.label.yourWorkEmail'
+							| translate}} <span tooltip-append-to-body="true"
+							tooltip-placement="bottom"
+							tooltip="{{'myProfile.addressAndInformation.label.yourWorkEmailTooltip' | translate}}">
+								<i class="fa fa-question-circle fa-lg"></i>
+						</span>
+						</label>
+						<div class="col-sm-6 col-md-6 col-lg-6">
+							<div class="break-word" ng-if="($appConfiguration.authentication.mode | lowercase) !== 'sso'">
+								<span ng-if="!isFromManageReps"><a
+									data-ng-click="myProfileChangeUserName();">{{data.User.userId}}</a>
+								</span>
+								<span ng-if="isFromManageReps">
+								{{data.User.userId}}</span>
+							</div>
+							<div class="break-word" ng-if="($appConfiguration.authentication.mode | lowercase) === 'sso'">
+								<span>{{data.User.userId}}</span>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right">{{'myProfile.addressAndInformation.label.streetAddress'
+							| translate}}</label>
+						<div class="col-sm-6 col-md-6 col-lg-6">
+							<input type="text" id="myProfile.addressInformation.addressLine1"
+								class="form-control input-sm" name="addressLine1"
+								validator="validateAlphanumSpecial"
+								validate-alphanum-special-error-message="{{'common.errorMessage.allowedSpecialCharacters' | translate}}"
+								focus-me="true" data-ng-model="data.Address.addressLine1"
+								maxLength="255" /> <input type="text"
+								id="myProfile.addressInformation.addressLine2"
+								class="form-control input-sm" name="addressLine2"
+								validator="validateAlphanumSpecial"
+								validate-alphanum-special-error-message="{{'common.errorMessage.allowedSpecialCharacters' | translate}}"
+								data-ng-model="data.Address.addressLine2" maxLength="255" /> <input
+								type="text" id="myProfile.addressInformation.addressLine3"
+								class="form-control input-sm" name="addressLine3"
+								validator="validateAlphanumSpecial"
+								validate-alphanum-special-error-message="{{'common.errorMessage.allowedSpecialCharacters' | translate}}"
+								data-ng-model="data.Address.addressLine3" maxLength="255" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right">{{'myProfile.addressAndInformation.label.city'
+							| translate}}</label>
+						<div class="col-sm-6 col-md-6 col-lg-6">
+							<input type="text" id="city" class="form-control input-sm"
+								validator="validateAlphanumSpecial"
+								validate-alphanum-special-error-message="{{'common.errorMessage.allowedSpecialCharacters' | translate}}"
+								name="city" data-ng-model="data.Address.city" maxLength="50" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right">{{'myProfile.addressAndInformation.label.stateProvinceDivision'
+							| translate}}</label>
+						<div class="col-sm-6 col-md-6 col-lg-6">
+							<select class="form-control col-sm-12 col-md-12 col-lg-12"
+								id="myProfile.addressInformation.stateProvinceDivision"
+								data-ng-model="data.Address.stateCode" name="stateCode">
+								<option value=""></option>
+								<option ng-repeat="option in stateLookup"
+									value="{{option.stateCode}}">{{option.stateName}}</option>
+								<option value="">---------------</option>
+								<option ng-repeat="option in stateCanLookup"
+									value="{{option.stateCode}}">{{option.stateName}}</option>
+								<option value="">---------------</option>
+								<option ng-repeat="option in stateUsOtherLookup"
+									value="{{option.stateCode}}">{{option.stateName}}</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right">{{'myProfile.addressAndInformation.label.zipPostalCode'
+							| translate}}</label>
+						<div class="col-sm-6 col-md-6 col-lg-6">
+							<input type="text" id="zip" class="form-control input-sm"
+								validator="validateAlphanumSpecial,validateMinMaxValue,validateAlphanumSpecial" validate-min-max-value-error-message="{{'common.errorMessage.invalidZipCodeLength' | translate}}"
+								validate-alphanum-special-error-message="{{'common.errorMessage.allowedSpecialCharacters' | translate}}"
+								name="zip" data-ng-model="data.Address.zip" maxLength="10" min-value="5" max-value="10"
+								validate-alphanum-special-error-message="{{'common.specialCharactersNotAllowed' | translate}}"/>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right">{{'myProfile.addressAndInformation.label.country'
+							| translate}}</label>
+						<div class="col-sm-6 col-md-6 col-lg-6">
+							<select class="form-control col-md-12 input-sm"
+								name="countryCode" data-ng-model="data.Address.countryCode">
+								<option ng-repeat="option in countryLookup"
+									value="{{option.countryCode}}">{{option.countryName}}
+								</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right">{{'myProfile.addressAndInformation.label.businessFax'
+							| translate}}</label>
+						<div class="col-sm-6 col-md-6 col-lg-6">
+							<input type="text" id="businessFax" class="form-control input-sm"
+								validator="validateAlphanumSpecial"
+								validate-alphanum-special-error-message="{{'common.errorMessage.allowedSpecialCharacters' | translate}}"
+								name="businessFax" data-ng-model="data.User.fax" maxLength="50" />
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6 col-md-6 col-lg-6">
+					<div class="form-group">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right">
+							{{'myProfile.addressAndInformation.label.professionalTitle' |
+							translate}}&nbsp;<sup class="asterisk">*</sup> <span
+							tooltip-placement="bottom" tooltip-append-to-body="true"
+							tooltip="{{'myProfile.addressAndInformation.label.professionalTitleTooltip' | translate}}">
+								<i class="fa fa-question-circle fa-lg"></i>
+						</span>
+						</label>
+						<div class="col-sm-6 col-md-6 col-lg-6">
+							<span ng-if="data.User.titleExempt === true"> <input
+								type="text" readonly="true" onfocus="this.blur()"
+								id="professionalTitle" class="form-control input-sm"
+								name="professionalTitle" data-ng-model="data.User.title"
+								data-ng-init="data.User.title = ''" /></span> <span
+								ng-if="data.User.titleExempt === false"> <input
+								type="text" id="professionalTitle"
+								class="form-control input-sm required" name="professionalTitle"
+								data-ng-model="data.User.title"
+								validator="required, validateAlphanumSpecial"
+								required-error-message="{{'myProfile.addressAndInformation.errorMessage.professionalTitleRequired' | translate}}"
+								validate-alphanum-special-error-message="{{'common.errorMessage.allowedSpecialCharacters' | translate}}"
+								valid-method="watch" maxLength="50" /></span>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right">{{'myProfile.addressAndInformation.label.idonothaveaProfessionalTitle'
+							| translate}}</label>
+						<div class="col-sm-6 col-md-6 col-lg-6">
+							<input type="checkbox" class="input-sm"
+								ng-checked="data.User.titleExemptStr = data.User.titleExempt"
+								ng-model="data.User.titleExempt" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right">
+							{{'myProfile.addressAndInformation.label.professionalDesignation'
+							| translate}}&nbsp;<sup class="asterisk">*</sup><span
+							tooltip-placement="bottom" tooltip-append-to-body="true"
+							tooltip="{{'myProfile.addressAndInformation.label.professionalDesignationTooltip' | translate}}">
+								<i class="fa fa-question-circle fa-lg"></i>
+						</span>
+						</label>
+						<div class="col-sm-6 col-md-6 col-lg-6">
+							<span ng-if="data.User.professionalDesignationExempt === true"><input
+								type="text" id="professionalDesignation"
+								class="form-control input-sm" name="professionalDesignation"
+								data-ng-model="data.User.professionalDesignation"
+								ng-init="data.User.professionalDesignation = ''" readonly="true"
+								onfocus="this.blur()"></span> <span
+								ng-if="data.User.professionalDesignationExempt === false"><input
+								type="text" id="professionalDesignation"
+								class="form-control input-sm required"
+								name="professionalDesignation"
+								data-ng-model="data.User.professionalDesignation"
+								validator="required, validateAlphanumSpecial"
+								required-error-message="{{'myProfile.addressAndInformation.errorMessage.professionalDesignationisRequired' | translate}}"
+								validate-alphanum-special-error-message="{{'common.errorMessage.allowedSpecialCharacters' | translate}}"
+								valid-method="watch" maxLength="50"></span>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right">{{'myProfile.addressAndInformation.label.idonothaveaProfessionalDesignation'
+							| translate}}</label>
+						<div class="col-sm-6 col-md-6 col-lg-6">
+							<input type="checkbox" class="input-sm"
+								ng-checked="data.User.professionalDesignationExemptStr = data.User.professionalDesignationExempt"
+								ng-model="data.User.professionalDesignationExempt" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right">
+							{{'myProfile.addressAndInformation.label.professionalLicense' |
+							translate}}&nbsp;<sup class="asterisk">*</sup>&nbsp;<span tooltip-append-to-body="true"
+							tooltip-placement="bottom"
+							tooltip="{{'myProfile.addressAndInformation.label.professionalLicenseTooltip' | translate}}">
+								<i class="fa fa-question-circle fa-lg"></i>
+						</span> </label>
+						<div class="col-sm-6 col-md-6 col-lg-6">
+							<span ng-if="data.User.professionalLicenseExempt === true"><input
+								type="text" id="professionalLicense" readonly="true"
+								onfocus="this.blur()" class="form-control input-sm"
+								name="professionalLicense"
+								data-ng-model="data.User.professionalLicense"
+								data-ng-init="data.User.professionalLicense = ''"></span> <span
+								ng-if="data.User.professionalLicenseExempt === false"><input
+								type="text" id="professionalLicense"
+								class="form-control input-sm required"
+								name="professionalLicense"
+								data-ng-model="data.User.professionalLicense"
+								validator="required, validateAlphanumSpecial"
+								required-error-message="{{'myProfile.addressAndInformation.errorMessage.professionalLicenseisRequired' | translate}}"
+								validate-alphanum-special-error-message="{{'common.errorMessage.allowedSpecialCharacters' | translate}}"
+								valid-method="watch" maxLength="50"></span>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right">{{'myProfile.addressAndInformation.label.idonothaveaProfessionalLicense'
+							| translate}}</label>
+						<div class="col-sm-6 col-md-6 col-lg-6">
+							<input type="checkbox" class="input-sm"
+								data-ng-checked="data.User.professionalLicenseExemptStr = data.User.professionalLicenseExempt"
+								data-ng-model="data.User.professionalLicenseExempt" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right">{{'myProfile.addressAndInformation.label.division'
+							| translate}} <span tooltip-append-to-body="true"
+							tooltip-placement="bottom"
+							tooltip="{{'myProfile.addressAndInformation.label.divisionTooltip' | translate}}">
+								<i class="fa fa-question-circle fa-lg"></i>
+						</span>
+						</label>
+						<div class="col-sm-6 col-md-6 col-lg-6">
+							<input type="text"
+								id="myProfile.addressInformation.homeResidenceCounty"
+								class="form-control input-sm" name="homeResidenceCounty"
+								validator="validateAlphanumSpecial"
+								validate-alphanum-special-error-message="{{'common.errorMessage.allowedSpecialCharacters' | translate}}"
+								data-ng-model="data.User.divisionString" maxLength="1024" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right">{{'myProfile.addressAndInformation.label.employeeID'
+							| translate}} <span tooltip-append-to-body="true"
+							tooltip-placement="bottom"
+							tooltip="{{'myProfile.addressAndInformation.label.employeeIDTooltip' | translate}}">
+								<i class="fa fa-question-circle fa-lg"></i>
+						</span>
+						</label>
+						<div class="col-sm-6 col-md-6 col-lg-6">
+							<input type="text" id="employeeId" class="form-control input-sm"
+								name="employeeId" data-ng-model="data.User.employeeId"
+								validator="validateAlphanumSpecial"
+								validate-alphanum-special-error-message="{{'common.errorMessage.allowedSpecialCharacters' | translate}}"
+								maxLength="50" />
+						</div>
+					</div>
+					<div class="form-group">
+						<div
+							class="col-sm-6 col-md-6 col-lg-6 col-lg-offset-6 col-sm-offset-6 col-md-offset-6 text-left">
+							<button class="btn btn-success" id="addressInformationEdit" ng-disabled="loading"
+								validation-submit="addressInformationEdit" ng-click="submit();callGAPageTrack('saveBusAddressInfo');">{{'common.save'
+								| translate}}</button>
+						</div>
+					</div>
+				</div>
+			</form>
+			</vision-action>
+		</div>
+	</div>
+</div>

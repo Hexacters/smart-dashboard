@@ -1,0 +1,59 @@
+<div class="modal-content" ng-controller="accountController">
+	<div class="modal-header commonDialogHeader">
+		<button id="viewLocationCloseIcon" id="viewAccountCloseIcon"
+			type="button" class="close" data-dismiss="modal" aria-hidden="true"
+			data-ng-click="$close()">&times;</button>
+		<h3 class="modal-title">
+			<b>{{'accounts.manageMyaccount.label.inactivateAccounts' |
+				translate}}</b>
+		</h3>
+	</div>
+	<vision-action> <submit-data service="accountServices"
+		operation="inActivateRep" callback="inCompleteGridReload"
+		form-node='{"repOid":"{{repOid}}"}'></submit-data>
+	<form novalidate name="changePasswordForm" class="changePasswordForm"
+		autocomplete="off" class="form-horizontal">
+		<div data-ng-class="{'dNone':!loading}">
+			<img align="absmiddle" src="app/ng1/img/partial-loading.gif">&nbsp;loading...
+		</div>
+		<div class="modal-body ng-scope">
+			<span class="text-danger"
+				ng-show="inactiveAccountCommonPopupError.errorData.ResponseError[0].errorCode!='5138' && inactiveAccountPopupError.errorData.ResponseError[0].errorCode!='5139'">
+				{{inactiveAccountCommonPopupError.errorData.ResponseError[0].errorCode
+				| translate}} </span>
+			<div ng-show="!inactiveAccountCommonPopupError">
+				<div ng-if="customerLength==1">
+					<div ng-if="accType=='all'">
+						<p>
+							{{'accounts.manageMyaccount.label.inactiveMessageVCStaus' |
+							translate}} <a href="mailto:support@vendormate.com" target="_top">support@vendormate.com</a>.
+						</p>
+						<p>{{'accounts.manageMyaccount.label.inactiveMessage2' |
+							translate}}</p>
+					</div>
+					<div ng-if="accType!='all'">
+						<p>{{'accounts.manageMyaccount.label.inactiveMessage1' |
+							translate}}</p>
+						<p>{{'accounts.manageMyaccount.label.inactiveMessage2' |
+							translate}}</p>
+					</div>
+				</div>
+				<div ng-if="customerLength>1">
+					<p>{{'accounts.manageMyaccount.label.inactiveMessage1' |
+						translate}}</p>
+					<p>{{'accounts.manageMyaccount.label.inactiveMessage2' |
+						translate}}</p>
+				</div>
+			</div>
+		</div>
+		<div class="modal-footer ng-scope" ng-if="!submitError.errorData"
+			ng-show="!inactiveAccountCommonPopupError">
+			<button class="btn btn-info" id="inActiveYes" type="button"
+				data-ng-click="submit()">{{'common.yes' | translate}}</button>
+			<button class="btn btn-warning" id="inActiveNo" type="button"
+				autofocus data-ng-click="$close()">{{'common.no'|
+				translate}}</button>
+		</div>
+	</form>
+	</vision-action>
+</div>

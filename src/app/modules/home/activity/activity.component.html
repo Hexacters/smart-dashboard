@@ -1,0 +1,115 @@
+<div class="activity" [ngClass]="{'hide': hideTab}">
+    <div class="row m-0">
+        <div class="col-md-12 p-4 content-shadow content">
+            <h5 class="m-0 text-primary"><b>{{charts[matCarousel.currentIndex].title}}</b></h5>
+            <p class="text-light desc">Your most visited accounts</p>
+            <!-- <div class="hint">
+                <p>Sign-ins & Compliance</p>
+                <span>Graph View</span>
+            </div> -->
+            <div class="chart-filter">
+                <button class="btn filter">Today</button>
+                <button class="btn filter active">7d</button>
+                <button class="btn filter">15d</button>
+                <button class="btn filter">1m</button>
+                <span class="action float-right" aria-haspopup="true">
+                    <label>{{charts[matCarousel.currentIndex].name}}</label>
+                    <span class="btn events-action" data-toggle="dropdown" aria-expanded="false">
+                        <span class="material-icons text-success">
+                            keyboard_arrow_down
+                        </span>
+                    </span>
+                    <span class="dropdown-menu">
+                        <span class="dropdown-item" href="#" *ngFor="let chart of charts">
+                            {{chart.name}}
+                        </span>
+                    </span>
+                </span>
+            </div>
+
+            <div id="chart">
+                <mat-carousel #matCarousel timings="250ms ease-in" [autoplay]="false" interval="5000" color="accent" slides="3"
+                    [loop]="true" [hideArrows]="false" [hideIndicators]="true" [useKeyboard]="true"
+                    [useMouseWheel]="false" orientation="ltr">
+                    <mat-carousel-slide #matCarouselSlide overlayColor="#00000040" [hideOverlay]="true"
+                        *ngIf="chartOptions">
+                        <div class="container">
+                            <div class="row">
+                                <div class="offset-md-1 col-md-10">
+                                    <apx-chart [series]="chartOptions.series" [chart]="chartOptions.chart"
+                                        [dataLabels]="chartOptions.dataLabels" [plotOptions]="chartOptions.plotOptions"
+                                        [yaxis]="chartOptions.yaxis" [legend]="chartOptions.legend"
+                                        [colors]="chartOptions.colors" [fill]="chartOptions.fill"
+                                        [stroke]="chartOptions.stroke" [tooltip]="chartOptions.tooltip"
+                                        [xaxis]="chartOptions.xaxis">
+                                    </apx-chart>
+                                </div>
+                            </div>
+                        </div>
+                    </mat-carousel-slide>
+                    <mat-carousel-slide #matCarouselSlide overlayColor="#00000040" [hideOverlay]="true"
+                        *ngIf="chartOptions">
+                        <div class="container">
+                            <div class="row">
+                                <div class="offset-md-1 col-md-10">
+                                    <div class="mt-2">
+                                        <h6>Top 5 health center</h6>
+                                    </div>
+                                </div>
+                                <div class="offset-md-1 col-md-3">
+                                    <form>
+                                        <mat-form-field>
+                                            <mat-label>Health center</mat-label>
+                                            <mat-select panelClass="example-panel-red">
+                                                <mat-option value="All">All</mat-option>
+                                                <mat-option value="Vendormate Center">Vendormate Center</mat-option>
+                                                <mat-option value="North Center">North Center</mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </form>
+                                    <div class="leading-activity">
+                                        <p>Leading Activity</p>
+                                        <span>Printed on Site</span>
+                                        <h3>12</h3>
+                                    </div>
+                                </div>
+                                <div class="col-md-7">
+                                    <app-donut-chart [data]="[12, 8, 6, 10]" [height]="'170px'" [legend]="true"
+                                        [legendPosition]="'right'" [centerLabels]="'Total'" [isView]="true"
+                                        [labels]="['Printed on Site', 'Printed with pin', 'Guest Pass', 'Digitally printed']">
+                                    </app-donut-chart>
+                                </div>
+                            </div>
+                        </div>
+                    </mat-carousel-slide>
+                    <mat-carousel-slide #matCarouselSlide overlayColor="#00000040" [hideOverlay]="true"
+                        *ngIf="chartOptions">
+                        <div class="container">
+                            <div class="row">
+                                <div class="offset-md-1 col-md-10">
+                                    <div class="mt-2">
+                                        <h6>Health Center</h6>
+                                    </div>
+                                </div>
+                                <div class="offset-md-1 col-md-3">
+                                    <div class="leading-activity">
+                                        <p>Leading Activity</p>
+                                        <span>Printed With Pin</span>
+                                        <h3>18</h3>
+                                    </div>
+                                </div>
+                                <div class="col-md-7">
+                                    <app-donut-chart [data]="[12, 18, 6, 10]" [height]="'170px'" [legend]="true"
+                                        [legendPosition]="'right'" [centerLabels]="'Total'" [isView]="true"
+                                        [labels]="['Printed on Site', 'Printed with pin', 'Guest Pass', 'Digitally printed']">
+                                    </app-donut-chart>
+                                </div>
+                            </div>
+                        </div>
+                    </mat-carousel-slide>
+                </mat-carousel>
+
+            </div>
+        </div>
+    </div>
+</div>

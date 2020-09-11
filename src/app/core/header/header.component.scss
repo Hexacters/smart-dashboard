@@ -1,0 +1,84 @@
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+.header {
+
+    .logo-container {
+        padding: 10px;
+        width: 200px;
+
+        .ghx-logo {
+            width: 150px;
+        }
+    }
+
+    .notification {
+        .badge {
+            height: 18px;
+            width: 18px;
+            padding: 4px;
+            border-radius: 50%;
+            position: absolute;
+            bottom: 20px;
+            right: 3px;
+        }
+    }
+
+    .dropdown-menu {
+        border: none;
+
+        .dropdown-item {
+            padding: 0 17px;
+        }
+    }
+
+    .mat-icon {
+        color: #5a5a5a;
+    }
+
+    .new-health {
+        font-size: 13px;
+        padding: 5px 10px;
+        border-radius: 5px;
+    }
+
+    .account-icon {
+        width: 40px;
+        height: auto;
+        margin-right: 5px;
+        border-radius: 50%;
+        img {
+            width: 100%;
+        }
+    }
+
+    .account-action {
+        width: auto;
+        height: auto;
+        font-size: 20px;
+    }
+
+    .profile {
+        font-size: 15px;
+    }
+
+    .cpm-icon {
+        margin-right: 20px;
+    }
+}
+
+.header .navbar {
+    padding: 0;
+    min-height: auto;
+    background-color: initial;
+}
+
+.navbar .menu-icon {
+    position: relative;
+    top: -5px;
+}
+
+.profile .dropdown-menu {
+    left: 45%;
+}

@@ -1,0 +1,184 @@
+/* Header Tab */
+
+.nav-pills.nav-wizard > li {
+  position: relative;
+  overflow: visible;
+  border-right: 15px solid #fff;
+  border-left: 4px solid #fff;
+  margin-left:4px;
+}
+.nav-pills.nav-wizard > li:first-child {
+  border-left: 0;
+}
+.nav-pills.nav-wizard > li:first-child a {
+  border-radius: 5px 0 0 5px;
+}
+.nav-pills.nav-wizard > li:last-child {
+  border-right: 0;
+}
+.nav-pills.nav-wizard > li:last-child a {
+  border-radius: 0 5px 5px 0;
+}
+.nav-pills.nav-wizard > li a {
+  border-radius: 0;
+  background-color: #eee;
+  padding: 16px;
+  color:#000;
+}
+.nav-pills.nav-wizard > li .nav-arrow {
+  position: absolute;
+  top: 0px;
+  right: -19px;
+  width: 0px;
+  height: 0px;
+  border-style: solid;
+  border-width: 26px 0 26px 20px;
+  border-color: transparent transparent transparent #eee;
+  
+}
+.nav-pills.nav-wizard > li .nav-wedge {
+  position: absolute;
+  top: 0px;
+  left: -19px;
+  width: 0px;
+  height: 0px;
+  border-style: solid;
+  border-width: 25px 0 26px 20px;
+  border-color: #eee #eee #eee transparent;
+  
+}
+.disabledTab{
+    pointer-events: none;
+}
+
+.nav-pills.nav-wizard > li.previousTab .nav-arrow {
+  border-color: transparent transparent transparent #818285;
+}
+.nav-pills.nav-wizard > li.previousTab .nav-wedge {
+  border-color: #818285 #818285 #818285 transparent;
+}
+.nav-pills.nav-wizard > li.previousTab a {
+  background-color: #818285;
+  padding: 1.14.5em;
+  color:#fff;
+}
+
+.nav-pills.nav-wizard > li:hover .nav-arrow {
+  border-color: transparent transparent transparent #aaa;
+}
+.nav-pills.nav-wizard > li:hover .nav-wedge {
+  border-color: #aaa #aaa #aaa transparent;
+}
+.nav-pills.nav-wizard > li:hover a {
+  background-color: #aaa;
+  color: #fff;
+}
+.nav-pills.nav-wizard > li.active .nav-arrow {
+  border-color: transparent transparent transparent #0076c2;
+}
+.nav-pills.nav-wizard > li.active .nav-wedge {
+  border-color: #0076c2 #0076c2 #0076c2 transparent;
+}
+.nav-pills.nav-wizard > li.active a {
+  background-color: #0076c2;
+  padding: 1.14.5em;
+  color:#fff;
+}
+/* Tab Arrow Class For Chrome Browser */
+@media screen and (-webkit-min-device-pixel-ratio:0)
+{ 
+  .nav-pills.nav-wizard > li .nav-wedge {
+  position: absolute;
+  top: 0px;
+  left: -19px;
+  width: 0px;
+  height: 0px;
+  border-style: solid;
+  border-width: 24px 0 26px 20px;
+  border-color: #eee #eee #eee transparent;  
+  }
+}
+.nav-pills {
+    &.nav-wizard {
+        > li {
+            position: relative;
+            overflow: visible;
+            border-right: 15px solid #fff;
+            border-left: 15px solid #fff;
+
+            &:first-child {
+                border-left: 0;
+
+                a {
+                    border-radius:5px 0 0 5px;
+                }
+            }
+
+            &:last-child {
+                border-right: 0;
+
+                a {
+                    border-radius:0 5px 5px 0;
+                }
+            }
+
+            a {
+                border-radius: 0;
+                background-color: #aaa;
+            }
+
+            .nav-arrow {
+                position: absolute;
+                top: 0px;
+                right: -19.5px;
+                width: 0px;
+                height: 0px;
+                border-style: solid;
+                border-width: 20px 0 20px 20px;
+                border-color: transparent transparent transparent #eee;
+                
+            }
+
+            .nav-wedge {
+                position: absolute;
+                top: 0px;
+                left: -19px;
+                width: 0px;
+                height: 0px;
+                border-style: solid;
+                border-width: 20px 0 20px 20px;
+                border-color: #eee #eee #eee transparent;
+                
+            }
+
+            &:hover {
+                .nav-arrow {
+                    border-color: transparent transparent transparent #aaa;
+                }
+
+                .nav-wedge {
+                    border-color: #aaa #aaa #aaa transparent;
+                }
+
+                a {
+                    background-color: #aaa;
+                    color: #fff;
+                }
+            }
+
+            &.active {
+                .nav-arrow {
+                    border-color: transparent transparent transparent #0076c2;
+                }
+
+                .nav-wedge {
+                    border-color: #0076c2 #0076c2 #0076c2 transparent;
+                }
+
+                a {
+                    background-color: #0076c2;
+                }
+            }
+        }
+    }
+}

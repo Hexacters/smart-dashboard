@@ -1,0 +1,38 @@
+{  
+   "VisionResponse":{  
+      "Status":"Ok",
+      "ResponseError":[
+      ],
+      "UserDocumentList": {
+        "UserDocument": [
+			{
+				"accounts": "Clifton Springs Hospital and Clinic"				
+			},
+			{
+				"accounts": "Freeman"
+			},
+			{
+				"accounts": "Adventist Health System"
+			},
+			{
+				"accounts": "Synovus Financial, Inc"
+			},
+			{
+				"accounts": "Clifton Springs Hospital and Clinic"				
+			},
+			{
+				"accounts": "Freeman"
+			},
+			{
+				"accounts": "Adventist Health System"
+			},
+			{
+				"accounts": "Synovus Financial, Inc"
+			}
+		 ]
+        },
+		"TotalRecords": "8",
+        "ContentType": "text/xml",
+        "ResponseErrors": ""
+    }
+}

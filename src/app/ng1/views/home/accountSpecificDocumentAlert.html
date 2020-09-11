@@ -1,0 +1,13 @@
+<div class="modal-content">
+    <div class="modal-header commonDialogHeader">
+        <button id="accountSpecficDocsCloseIcon" type="button" class="close" data-dismiss="modal" aria-hidden="true" data-ng-click="$close()">&times;
+        </button>
+        <h4 class="modal-title">{{'home.documentAlert' | translate}}</h4>
+    </div>
+    <div data-ng-show="commonAndAccountDocs == 'commonDocuments'">
+        <div data-ui-view="commonDocumentAlertViewer" autoscroll="true"></div>
+    </div>
+    <div data-ng-init="commonAndAccountDocs == 'accountSpecifyDocs'">
+        <div data-ui-view="accountSpecificDocumentViewer" autoscroll="true"></div>
+    </div>
+</div>

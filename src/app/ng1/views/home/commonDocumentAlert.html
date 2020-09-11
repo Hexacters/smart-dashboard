@@ -1,0 +1,9 @@
+<div ng-init="content = $stateParams.id">
+    <input id="commonDoc" type="radio" name="content" ng-model="content" value="commonDoc" data-ng-click="$state.go('home.documentAlert.common.commonDocument',({id: 'commonDoc'}))" />
+    <b class="fontSize19px">{{'home.commonDocuments' | translate}}&nbsp;&nbsp;&nbsp;</b>
+    <input id="specificDoc" type="radio" name="content" ng-model="content" data-ng-click="$state.go('home.documentAlert.common.specific',({id: 'specificDoc'}))" value="specificDoc" /> <b class="fontSize19px">{{'home.accountsSpecificDocuments' | translate}}</b>
+    <p>{{'home.documentAlertDescription' | translate}}</p>
+    <div id="commonDocAlert" ng-if="$stateParams.id=='commonDoc' || $stateParams.id=='specificDoc'">
+        <div data-ui-view="commonDocumentAlertViewer" autoscroll="true"></div>
+    </div>
+</div>

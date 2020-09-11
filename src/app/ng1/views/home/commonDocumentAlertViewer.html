@@ -1,0 +1,72 @@
+<div ng-controller="homeController">
+<div class="col-sm-12 col-md-12 col-lg-12 commonGridBorder marginB1">
+<vision-data-table service="complianceServices"
+	operation="getUserNonComplianceDocuments"
+	root-node="data.successData.UserNonComplianceDocumentList"
+	total-records-node="data.successData.totalRecords" type="server"
+	initial-request='{"page":1,"count":10,"filter":{"autoAssignable":true}}'
+	id="commonDocumentAlertViewData" callback="documentDetailAction"> 
+	<div data-ng-class="{'dNone':!loading}">
+        <img align="absmiddle" src="app/ng1/img/partial-loading.gif">&nbsp;{{'common.loading' | translate}}
+    </div>
+	<div ng-show="!loading" class="table-responsive vision-margin-10">
+		<div class="clearfix" ng-table-pagination="commonDocumentAlertViewData" template-url="'ng-table/style3.html'"></div>
+		<table ng-table="commonDocumentAlertViewData"
+			class="table table-striped table-bordered marginB0 marginT1">
+			<tbody ng-if="commonDocumentAlertViewData.data.length>0">
+				<tr data-ng-repeat="commonDocumentAlert in $data">
+					<td data-title="''" class="text-center col-sm-1"
+						ng-init="commonDocument=''"><span
+						ng-if="commonDocumentAlert.templateDocCategoryCode == 'OPVC'"><input
+							type="radio" value="{{commonDocumentAlert.templateOid}}"
+							ng-click="showCautionPopup(commonDocumentAlert.documentOid,commonDocumentAlert.docDefOid,commonDocumentAlert.templateAutoAssignable,commonDocument,commonDocumentAlert.sortKey,'commonDocument');noDocumentCloseDialog(commonDocumentAlertViewData.data.length);setProviderTemplate(commonDocumentAlert.providerTemplate);"
+							name="common" ng-model="commonDocument" /></span> <span
+						ng-if="commonDocumentAlert.templateDocCategoryCode != 'OPVC'">
+						<input ng-if="commonDocumentAlert.templateOid !== 'BADGE_PHOTO-Rep'"
+							type="radio" value="{{commonDocumentAlert.templateOid}}"
+							ng-click="loadUploadDocumentForm(commonDocumentAlert.documentOid,commonDocumentAlert.docDefOid,commonDocumentAlert.templateAutoAssignable,commonDocument,commonDocumentAlert.sortKey,'commonDocument',commonDocumentAlert.templateDocCategoryCode);noDocumentCloseDialog(commonDocumentAlertViewData.data.length);setProviderTemplate(commonDocumentAlert.providerTemplate);"
+							name="common" ng-model="commonDocument" />
+						<input ng-if="commonDocumentAlert.templateOid === 'BADGE_PHOTO-Rep'"
+							type="radio" value="{{commonDocumentAlert.templateOid}}"
+							ng-click="openBadgePhotoFromHome();setProviderTemplate(commonDocumentAlert.providerTemplate);"
+							name="common" ng-model="commonDocument" /></span></td>
+					<td data-title="'Status'" sortable="'sortKey'"
+						class="text-left col-sm-3"><span
+						data-ng-if="commonDocumentAlert.sortKey==1"> <span
+							class="text-danger">{{'home.label.rejected' | translate}}</span>
+					</span> <span data-ng-if="commonDocumentAlert.sortKey==4"> <span
+							class="text-danger">{{'home.label.missing' | translate}}</span>
+					</span> <span data-ng-if="commonDocumentAlert.sortKey==2"> <span
+							class="text-danger">{{'home.label.expired' | translate}}</span>
+					</span></td>
+					<td data-title="'Document Name'" sortable="'docName'"
+						class="text-left col-sm-8">
+						<span ng-if="commonDocumentAlert.templateAutoAssignable && commonDocumentAlert.templateAutoAssignable ==true">
+							<span ng-if="commonDocumentAlert.docDefName">
+								{{commonDocumentAlert.docDefName}}
+							</span>
+							<span ng-if="!commonDocumentAlert.docDefName">
+								{{commonDocumentAlert.templateName}}
+							</span>
+						</span>
+					</td>
+				</tr>
+			</tbody>
+			<tbody ng-if="commonDocumentAlertViewData.data.errorData.Status=='Error'" ng-init="cancelDialog();$state.go('home',{},{'reload':true});">
+				<tr>
+					<td colspan="11">
+						<div class="text-danger">
+							<span class="fa fa-warning" aria-hidden="true"></span>
+							{{commonDocumentAlertViewData.data.errorData.ResponseError[0].errorCode | translate}}
+						</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</vision-data-table>
+</div>
+<div id="docAlertInfo" ng-show="showDocumentDetails">
+	<div data-ui-view="commonDocumentAlertInformation" autoscroll="true"></div>
+</div>
+</div>

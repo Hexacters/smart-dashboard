@@ -1,0 +1,237 @@
+<?xml version="1.0"?>
+<module id="companyProfileModule">
+	<routers>
+		<router id="companyProfile" sticky="true" url="/companyProfile">
+			<views>
+				<view containerId="vendordash" templateUrl="app/ng1/views/companyProfile/companyProfile.html"></view>
+			</views>
+		</router>
+		<router id="companyProfile.viewInformation" url="/viewCompanyInformation">
+			<views>
+				<view containerId="viewCompanyInformation" templateUrl="app/ng1/views/companyProfile/companyInformationView.html"></view>
+			</views>
+		</router>
+		<router id="companyProfile.editInformation" url="/editCompanyInformation">
+			<views>
+				<view containerId="editCompanyInformation" templateUrl="app/ng1/views/companyProfile/companyInformationEdit.html"></view>
+			</views>
+		</router>
+		<router id="companyProfile.editInformation.affliatedGPO" type="dialog" url="/companyAffliatedGPO" modalClass="commonDialogW70">
+			<views>
+				<view containerId="modal" templateUrl="app/ng1/views/companyProfile/companyAffliatedGPO.html"></view>
+			</views>
+		</router>
+		<router id="companyProfile.editInformation.help" type="dialog" url="/companyInformationHelp">
+			<views>
+				<view containerId="modal" templateUrl="app/ng1/views/companyProfile/companyProfileHelp.html"></view>
+			</views>
+		</router>
+		<router id="companyProfile.viewInformation.help" type="dialog" url="/companyInformationHelp">
+			<views>
+				<view containerId="modal" templateUrl="app/ng1/views/companyProfile/companyProfileHelp.html"></view>
+			</views>
+		</router>
+		<router id="companyProfile.viewContactInformation" url="/viewContactInformation">
+			<views>
+				<view containerId="viewContactInformation" templateUrl="app/ng1/views/companyProfile/contactInformationView.html"></view>
+			</views>
+		</router>
+		<router id="companyProfile.editContactInformation" url="/editContactInformation">
+			<views>
+				<view containerId="editContactInformation" templateUrl="app/ng1/views/companyProfile/contactInformationEdit.html"></view>
+			</views>
+		</router>
+		<router id="companyProfile.viewContactInformation.help" type="dialog" url="/contactInformationHelp">
+			<views>
+				<view containerId="modal" templateUrl="app/ng1/views/companyProfile/companyProfileHelp.html"></view>
+			</views>
+		</router>
+		<router id="companyProfile.editContactInformation.help" type="dialog" url="/contactInformationHelp">
+			<views>
+				<view containerId="modal" templateUrl="app/ng1/views/companyProfile/companyProfileHelp.html"></view>
+			</views>
+		</router>
+		<router id="companyProfile.companyLogo" url="/companyLogo">
+			<views>
+				<view containerId="companyLogoContainer" templateUrl="app/ng1/views/companyProfile/companyLogo.html"></view>
+			</views>
+		</router>
+		<router id="companyProfile.companyPrincipals" url="/companyPrincipals">
+			<views>
+				<view containerId="companyPrincipalsContainer" templateUrl="app/ng1/views/companyProfile/companyPrincipals.html"></view>
+			</views>
+		</router>
+		<router id="companyProfile.companyPrincipals.add" type="dialog" url="/addCompanyPrincipals" modalClass="commonDialogW80">
+			<views>
+				<view containerId="modal" templateUrl="app/ng1/views/companyProfile/companyPrincipalsAdd.html"></view>
+			</views>
+		</router>
+		<router id="companyProfile.companyPrincipals.edit" type="dialog" url="/editCompanyPrincipals" modalClass="commonDialogW80">
+			<views>
+				<view containerId="modal" templateUrl="app/ng1/views/companyProfile/companyPrincipalsEdit.html"></view>
+			</views>
+		</router>
+		<router id="companyProfile.companyPrincipals.view" type="dialog" url="/viewCompanyPrincipals" modalClass="commonDialogW80">
+			<views>
+				<view containerId="modal" templateUrl="app/ng1/views/companyProfile/companyPrincipalsView.html"></view>
+			</views>
+		</router>
+		<router id="companyProfile.companyPrincipals.help" type="dialog" url="/companyPrincipalsHelp">
+			<views>
+				<view containerId="modal" templateUrl="app/ng1/views/companyProfile/companyProfileHelp.html"></view>
+			</views>
+		</router>
+		<router id="companyProfile.companyPrincipals.commonDialogAlert" type="dialog" url="/commonDialogAlert">
+			<views>
+				<view containerId="modal" templateUrl="app/ng1/views/companyProfile/companyPrincipalsEditAlert.html"></view>
+			</views>
+		</router>
+		<router id="companyProfile.viewGeographicSalesCapability" url="/viewSalesCapability">
+			<views>
+				<view containerId="viewGeoSalesCapability" templateUrl="app/ng1/views/companyProfile/geoSalesView.html"></view>
+			</views>
+		</router>
+		<router id="companyProfile.editGeographicSalesCapability" url="/editSalesCapability">
+			<views>
+				<view containerId="editGeoSalesCapability" templateUrl="app/ng1/views/companyProfile/geoSalesEdit.html"></view>
+			</views>
+		</router>
+		<router id="companyProfile.viewGeographicSalesCapability.help" type="dialog" url="/geoSalesCapabilityHelp">
+			<views>
+				<view containerId="modal" templateUrl="app/ng1/views/companyProfile/companyProfileHelp.html"></view>
+			</views>
+		</router>
+		<router id="companyProfile.editGeographicSalesCapability.help" type="dialog" url="/geoSalesCapabilityHelp">
+			<views>
+				<view containerId="modal" templateUrl="app/ng1/views/companyProfile/companyProfileHelp.html"></view>
+			</views>
+		</router>
+		<router id="companyProfile.diversityInformaionView" url="/diversityInformaionView">
+			<views>
+				<view containerId="viewDiversityInformation" templateUrl="app/ng1/views/companyProfile/diversityInformaionView.html"></view>
+			</views>
+		</router>
+		<router id="companyProfile.diversityInformaionEdit" url="/diversityInformaionEdit">
+			<views>
+				<view containerId="editDiversityInformation" templateUrl="app/ng1/views/companyProfile/diversityInformaionEdit.html"></view>
+			</views>
+		</router>
+		<router id="companyProfile.diversityInformaionView.help" type="dialog" url="/diversityInformaionHelp">
+			<views>
+				<view containerId="modal" templateUrl="app/ng1/views/companyProfile/companyProfileHelp.html"></view>
+			</views>
+		</router>
+		<router id="companyProfile.diversityInformaionEdit.help" type="dialog" url="/diversityInformaionHelp">
+			<views>
+				<view containerId="modal" templateUrl="app/ng1/views/companyProfile/companyProfileHelp.html"></view>
+			</views>
+		</router>
+		<router id="companyProfile.complainceOfficerView" url="/complainceOfficerView">
+			<views>
+				<view containerId="viewComplainceOfficer" templateUrl="app/ng1/views/companyProfile/complainceOfficerView.html"></view>
+			</views>
+		</router>
+		<router id="companyProfile.complainceOfficerEdit" url="/complainceOfficerEdit">
+			<views>
+				<view containerId="editComplainceOfficer" templateUrl="app/ng1/views/companyProfile/complainceOfficerEdit.html"></view>
+			</views>
+		</router>
+		<router id="companyProfile.complainceOfficerView.help" type="dialog" url="/complainceOfficerHelp">
+			<views>
+				<view containerId="modal" templateUrl="app/ng1/views/companyProfile/companyProfileHelp.html"></view>
+			</views>
+		</router>
+		<router id="companyProfile.complainceOfficerEdit.help" type="dialog" url="/complainceOfficerHelp">
+			<views>
+				<view containerId="modal" templateUrl="app/ng1/views/companyProfile/companyProfileHelp.html"></view>
+			</views>
+		</router>
+	</routers>
+	<services id="companyProfileServices">
+		<operations>
+			<operation name="getCompanyPrincipal" requestWrapper="request" requestType="json" serviceName="vendor" responseWrapper="response" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/companyProfile/getCompanyPrincipal.json" mock="false">
+				<params>
+					<param name="vendorOid" source="data" key="vendorOid" module="userDetail"></param>
+				</params>
+			</operation>
+			<operation name="saveCompanyPrincipal" requestWrapper="request" requestType="json" responseWrapper="response" serviceName="vendor" method="post" url="VMClientProxyServlet" mockUrl="app/ng1/mock/companyProfile/saveCompanyPrincipal.json" mock="false"></operation>
+			<operation name="getCompanyPrincipalByOid" requestWrapper="request" requestType="json" responseWrapper="response" serviceName="vendor" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/companyProfile/getCompanyPrincipalByOid.json" mock="false">
+				<params>
+					<param name="vendorOid" source="data" key="vendorOid" module="userDetail"></param>
+					<param name="companyPrincipalOid" source="data" module="principals" key="companyPrincipalOid"></param> 
+				</params>
+			</operation>
+			<operation name="deleteCompanyPrincipal" requestWrapper="request" requestType="json" responseWrapper="response" serviceName="vendor" method="post" url="VMClientProxyServlet" mockUrl="app/ng1/mock/companyProfile/deleteCompanyPrincipal.json" mock="false">
+			</operation>
+			<operation name="geoSalesLookups" requestWrapper="request" responseWrapper="response" method="post" url="VMClientProxyServlet" mockUrl="app/ng1/mock/companyProfile/lookups.json" mock="false"></operation>
+			<operation name="getCompanyContactInformation" serviceName="common" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/myProfile/getCompanyContactInformation.json" mock="false" requestType="json" requestWrapper="request" responseWrapper="response"  >
+				<params>
+					<param name="vendorOid" source="data" key="vendorOid" module="userDetail"></param>
+					<param name="parentOid" source="data" key="vendorDetailOid" module="userDetail"></param>
+				</params>
+			</operation>
+			<operation name="getVendorDetailandVendorGPOs" serviceName="vendor" method="get" url="VMClientProxyServlet" mock="false" mockUrl="app/ng1/mock/companyProfile/getVendorDetailandVendorGPOs.json" requestType="json" requestWrapper="request" responseWrapper="response">
+				<params>
+					<param name="vendorOid" source="data" key="vendorOid" module="userDetail"></param>
+					<param name="vendorDetailOid" source="data" key="vendorDetailOid" module="userDetail"></param>
+				</params>
+			</operation>
+			<operation name="saveCompanyContactInformation" serviceName="vendor" method="post" url="VMClientProxyServlet" mock="false" mockUrl="app/ng1/mock/users/success.json" requestType="json" requestWrapper="request" responseWrapper="response">
+				<params>
+					<param name="vendorOid" source="data" key="vendorOid" module="userDetail"></param>
+					<param name="vendorDetailOid" source="data" key="vendorDetailOid" module="userDetail"></param>
+					<param name="Address" property="AddressList" ></param>
+				</params>
+			</operation>
+			<operation name="saveVendorContactDetail" serviceName="vendor" method="post" url="VMClientProxyServlet" mock="false" mockUrl="app/ng1/mock/users/success.json" requestType="json" requestWrapper="request" responseWrapper="response"></operation>
+			<operation name="saveVendorDetailandVendorGPOs" serviceName="vendor" method="post" url="VMClientProxyServlet" mock="false" mockUrl="app/ng1/mock/companyProfile/saveVendorDetailandVendorGPOs.json" requestType="json" requestWrapper="request" responseWrapper="response">
+				<params>
+					<param name="vendorOid" source="data" key="vendorOid" module="userDetail"></param>
+					<param name="vendorDetailOid" source="data" key="vendorDetailOid" module="userDetail"></param>
+				</params>
+			</operation>
+			<operation name="getGeoSalesTerritoriesProcess" serviceName="common" method="get" url="VMClientProxyServlet" mock="false" mockUrl="app/ng1/mock/companyProfile/getGeoSalesTerritoriesProcess.json" requestType="json" requestWrapper="request" responseWrapper="response"></operation>
+			<operation name="getComplianceOfficerInformation" serviceName="vendor" method="get" url="VMClientProxyServlet" mock="false" mockUrl="app/ng1/mock/companyProfile/getComplianceOfficerInformation.json" requestType="json" requestWrapper="request" responseWrapper="response">
+				<params>
+					<param name="vendorOid" source="data" key="vendorOid" module="userDetail"></param>
+					<param name="parentOid" source="data" key="vendorDetailOid" module="userDetail"></param>
+				</params>
+			</operation>
+			<operation name="saveComplianceOfficerInformation" serviceName="vendor" method="post" url="VMClientProxyServlet" mock="false" mockUrl="app/ng1/mock/companyProfile/saveComplianceOfficerInformation.json" requestType="json" requestWrapper="request" responseWrapper="response">
+				<params>
+					<param name="vendorOid" source="data" key="vendorOid" module="userDetail"></param>
+				</params>
+			</operation>
+			<operation name="getAllGPOs" serviceName="common" method="get" url="VMClientProxyServlet" mock="false" mockUrl="app/ng1/mock/companyProfile/getAllGPOs.json" requestType="json" requestWrapper="request" responseWrapper="response">
+			</operation>
+			<operation name="getDiversityInformations" requestType="json" serviceName="vendor" requestWrapper="request" responseWrapper="response" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/companyProfile/getDiversityInformations.json" mock="false">
+				<params>
+					<param name="vendorOid" source="data" key="vendorOid" module="userDetail"></param>
+					<param name="vendorDetailOid" source="data" key="vendorDetailOid" module="userDetail"></param>
+				</params>
+			</operation>
+			<operation name="saveDiversityInformation" requestType="json" serviceName="vendor" requestWrapper="request" responseWrapper="response" method="post" url="VMClientProxyServlet" mockUrl="app/ng1/mock/companyProfile/saveDiversityInformation.json" mock="false">
+			<!-- <params>
+					<param name="vendorOid" source="userProfile" key="detail.vendorOid"></param>
+					<param name="vendorDetailOid" source="userProfile" key="detail.vendorDetailOid"></param>
+				</params>  -->
+			</operation>
+			<operation name="uploadFile" serviceName="common" method="post" operationType="file" url="services/uploadFile" requestWrapper="request"	responseWrapper="response" mockUrl="app/ng1/mock/common/uploadFileDetail.json" mock="false"></operation>
+			<operation name="downloadFile" serviceName="common" method="get" operationType="file" url="services/downloadFile" requestWrapper="request" responseWrapper="response" mockUrl="app/ng1/mock/common/success.json" mock="false"></operation>
+			<operation name="validateAddresses" requestType="json"
+				requestWrapper="request" responseWrapper="response" method="POST"
+				url="VMClientProxyServlet" serviceName="registration" mockUrl="app/ng1/mock/companyProfile/validateAddresses.json"
+				mock="false">
+			</operation>
+			<operation name="getVendorDocument" requestType="json" serviceName="vendor" requestWrapper="request" responseWrapper="response" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/manageReps/getVendorDocument.json" mock="false"></operation>
+			<operation name="saveCompanyLogo" requestType="json" serviceName="vendor" requestWrapper="request" responseWrapper="response" method="post" url="VMClientProxyServlet" mockUrl="app/ng1/mock/companyProfile/saveCompanyLogo.json" mock="false"></operation>
+			<operation name="deleteFile" requestType="json"
+				requestWrapper="request" responseWrapper="response" method="post" serviceName="common"
+				url="services/deleteFile" mockUrl="app/ng1/mockgetPolicies.json" 
+				mock="false">
+			</operation>
+			<operation name="getCompanyLogo" requestType="json" serviceName="vendor" requestWrapper="request" responseWrapper="response" method="get" operationType="file"  url="VMClientProxyServlet" mockUrl="app/ng1/mock/companyProfile/saveCompanyLogo.json" mock="false"></operation>
+			<operation name="downloadFileFromMongo" serviceName="common" method="get"  url="services/downloadFileFromMongo" requestWrapper="request" responseWrapper="response" operationType="file" mockUrl="app/ng1/mock/common/success.json" mock="false"></operation>
+		</operations> 
+	</services>
+</module>

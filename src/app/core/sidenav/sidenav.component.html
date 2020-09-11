@@ -1,0 +1,71 @@
+<div class="side-nav" [ngClass]="{'collapse-navbar': !isOpen}">
+    <div class="contabgciner-fluid">
+        <div class="menus">
+            <div >
+                <div class="menu-item" ui-sref-active="active">
+                    <p class="m-0" ui-sref="home">
+                        <span class="material-icons align-middle">home</span>
+                        <span class="pl-2 align-middle">Home</span>
+                    </p>
+                </div>
+                <div class="menu-item" ui-sref-active="active">
+                    <p class="m-0" ui-sref="documents.commonDocuments">
+                        <span class="material-icons align-middle">insert_drive_file</span>
+                        <span class="pl-2 align-middle">My Documents</span>
+                    </p>
+                </div>
+                <div class="menu-item">
+                    <p class="m-0">
+                        <span class="material-icons align-middle">account_balance</span>
+                        <span class="pl-2 align-middle">Accounts</span>
+                    </p>
+                </div>
+                <div class="menu-item ">
+                    <p class="m-0">
+                        <span class="material-icons align-middle">groups</span>
+                        <span class="pl-2 align-middle">Manage Reps</span>
+                    </p>
+                </div>
+                <div class="menu-item">
+                    <p class="m-0">
+                        <span class="material-icons align-middle">insert_chart_outlined</span>
+                        <span class="pl-2 align-middle">Reports</span>
+                    </p>
+                </div>
+                <div class="menu-item">
+                    <p class="m-0">
+                        <span class="material-icons align-middle">recent_actors</span>
+                        <span class="pl-2 align-middle">Resource Center</span>
+                    </p>
+                </div>
+                <div class="menu-item">
+                    <p class="m-0">
+                        <span class="material-icons align-middle">read_more</span>
+                        <span class="pl-2 align-middle">Extras</span>
+                    </p>
+                </div>
+                <div class="menu-item" ui-sref-active="active">
+                    <p class="m-0" ui-sref="addNewRep.inviteRep">
+                        <span class="material-icons align-middle">add_circle_outline</span>
+                        <span class="pl-2 align-middle">Invite Rep</span>
+                    </p>
+                </div>
+                <div class="menu-item">
+                    <p class="m-0" (click)="toggleMenu()">
+                        <span class="material-icons align-middle">settings</span>
+                        <span class="pl-2 align-middle">Actions</span>
+                    </p>
+                    <div class="sub-menu" [hidden]="!isSubMenu">
+                        <div class="menu-item" *ngFor="let menu of menus">
+                            <p class="m-0">
+                                <span class="material-icons align-middle">{{menu.icon}}</span>
+                                <span class="pl-2 align-middle">{{menu.name}}</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>

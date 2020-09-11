@@ -1,0 +1,95 @@
+<div class="modal-content" ng-controller="myDocumentController">
+   <div class="modal-header commonDialogHeader">
+      <button id="complianceCautionCloseIcon" type="button" class="close" data-dismiss="modal" aria-hidden="true" data-ng-click="$close()">&times;</button>
+      <h3 class="modal-title"><b>{{'actions.documentAlert'|translate}}</b></h3>
+   </div>
+   <div class="modal-body modelDialogScroll">
+      <vision-action>
+         <get-data service="myDocumentServices" operation="documentAlertSteps" response-node="data.successData.UserDocumentList.UserDocument" current-scope-node="CommonDocument"></get-data>
+         <div class="">
+            <div class="text-left">
+               <h4><b>{{'myDocuments.document(s)'|translate}}
+                  {{selectedArr +1}} of {{selectedCheckbox.length}}</b>
+               </h4>
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-12 paddingL0 paddingR0">
+               <div class="text-left col-sm-6 col-md-6 col-lg-6 paddingL0 paddingR0">
+                  <h4>
+                  <b>{{'myDocuments.secretaryOfStateFiling'|translate}}</b>
+                  <h4>
+               </div>
+               <label class="text-right col-sm-6 col-md-6 col-lg-6 paddingL0 paddingR0"><span class="asterisk">*</span>&nbsp;{{'common.required' | translate}}</label>
+            </div>
+            <submit-data service="myDocumentServices" operation="updateDocument"
+               redirect="accountSpecificDocuments"></submit-data>
+            <form name="updateDocumentForm" autocomplete="off"
+               class="form-horizontal"
+               ng-init="data.VisionResponse.updateDocuments=[];">
+               <div>
+                  <div class="form-group">
+                     <label class="col-sm-4 col-md-4 col-lg-4 text-right">{{'myDocuments.why'|translate}}
+                     </label>
+                     <div class="col-sm-8 col-md-8 col-lg-8">{{data.successData.UserDocumentList.UserDocument.docWhy}}</div>
+                  </div>
+                  <div class="form-group">
+                     <label class="col-sm-4 col-md-4 col-lg-4 text-right">{{'myDocuments.how'|translate}}</label>
+                     <div class="col-sm-8 col-md-8 col-lg-8">{{data.successData.UserDocumentList.UserDocument.docHow}}</div>
+                  </div>
+                  <div class="form-group">
+                     <label class="col-sm-4 col-md-4 col-lg-4 text-right">{{'myDocuments.type'|translate}}</label>
+                     <div class="col-sm-8 col-md-8 col-lg-8">{{data.successData.UserDocumentList.UserDocument.docType}}</div>
+                  </div>
+                  <div class="form-group">
+                     <label class="col-sm-4 col-md-4 col-lg-4 text-right">{{'myDocuments.category'|translate}}</label>
+                     <div class="col-sm-8 col-md-8 col-lg-8">{{data.successData.UserDocumentList.UserDocument.docCategory}}</div>
+                  </div>
+                  <div class="form-group"  ng-controller="commonController">
+                     <label class="col-lg-4 text-right" >{{'myDocuments.template' | translate}}</label>
+                     <div class="col-sm-8 col-md-8 col-lg-8"><a class="cursorPointer" ng-click="openNewWindow('img/ghx_logo.jpg')">Proof of competency template</a></div>
+                  </div>
+                  <div class="form-group">
+                     <label class="col-sm-4 col-md-4 col-lg-4 text-right">
+                     {{'myDocuments.effectiveDate'|translate}}&nbsp;<span class="asterisk">*</span>
+                     </label>
+                     <div class="col-sm-8 col-md-8 col-lg-8">
+                        <input type="text" class="form-control input-sm required" readonly="true"
+                           datetime-picker="MM-dd-yyyy" enable-time='false'
+                           close-on-date-selection="true" append-to-body="true"
+                           ng-click="openCalendar($event, 'startdate')"
+                           ng-model="data.successData.UserDocumentList.UserDocument.docEffectiveDate"
+                           is-open="open.startdate" datepicker-options=" {showWeeks:true}"
+                           min-date={{todayDate}} />
+                     </div>
+                  </div>
+                  <div class="form-group">
+                     <label class="col-sm-4 col-md-4 col-lg-4 text-right">
+                     {{'myDocuments.expirationDate'|translate}}&nbsp;<span class="asterisk">*</span>
+                     </label>
+                     <div class="col-sm-8 col-md-8 col-lg-8">
+                        <input type="text" class="form-control input-sm required" readonly="true"
+                           datetime-picker="MM-dd-yyyy" enable-time='false'
+                           close-on-date-selection="true" append-to-body="true"
+                           ng-click="openCalendar($event, 'expirationDate')"
+                           ng-model="data.successData.UserDocumentList.UserDocument.docExpirationDate"
+                           is-open="open.expirationDate"
+                           datepicker-options=" {showWeeks:true}" min-date={{todayDate}} />
+                     </div>
+                  </div>
+               </div>
+               <div class="text-center">
+                  <button ng-if="selectedCheckbox.length > selectedArr+1" class="btn btn-success" type="submit"
+                     data-ng-click="submit();multipleUplaodDocSteps(selectedArr)" id="uploadDocumentDetails">{{'common.saveAndContinue'|translate}}</button>
+                  <button ng-if="selectedCheckbox.length == selectedArr+1" class="btn btn-success" type="submit"
+                     data-ng-click="$close()" id="uploadDocumentDetailsSave">{{'common.save'|translate}}</button>			
+                  <button ng-if="selectedCheckbox.length > selectedArr+1" class="btn btn-primary"
+                     data-ng-click="submit();multipleUplaodDocSteps(selectedArr)" id="uploadDocumentDetailsSkip">{{'common.skip'|translate}}</button>
+                  <button ng-if="selectedCheckbox.length == selectedArr+1" class="btn btn-primary" type="submit"
+                     data-ng-click="$close()" id="uploadDocumentDetailsSkip1">{{'common.skip'|translate}}</button>
+                  <button class="btn btn-warning" type="button"
+                     data-ng-click="$close()">{{'myDocuments.returntoList'|translate}}</button>
+               </div>
+            </form>
+         </div>
+      </vision-action>
+   </div>
+</div>

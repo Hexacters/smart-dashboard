@@ -1,0 +1,2480 @@
+{
+    "VisionResponse": {
+        "Status": "Ok",
+        "permissions": [
+            {
+                "permissionMask": "001",
+                "resourceId": "AssociatedCompany",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "CompanyContactInformation",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "YourCompanyLogo",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "CompanyPrinciples",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "GeographicSalesCapability",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "DiversityInformation",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "ComplianceOfficer",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "CompanyFinancials",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "CompanyProfile",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "CompanyInfo",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "100",
+                "resourceId": "Company.LegalNameOfBusiness",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "100",
+                "resourceId": "Company.DoingBusinessAs",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "100",
+                "resourceId": "Company.TaxID",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Company.BradstreetNumber",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Company.TypeOfBusiness",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Company.ParentCompany",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Company.DescOfYourBusiness",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Company.ProvinceOfIncorporation",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Company.DateYouWereFounded",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Company.NoOfEmployees",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Company.BestDescOfCompanyFunc",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Company.EDICapabilitiesForOrdAndInv",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Company.HasYouCompEverFailToFillBid",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Company.DollarAmtOfLargestContract",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Company.AreYouMemberOfGPO",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "CompanyContactInformation",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "YourCompanyLogo",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "CompanyPrinciples",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "GeographicSalesCapability",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "DiversityInformation",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "001",
+                "resourceId": "Admin",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "001",
+                "resourceId": "ProfileSearch",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "001",
+                "resourceId": "Admin",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "001",
+                "resourceId": "ProfileSearch",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Admin",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "ProfileSearch",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "ProfileSearch",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "ProfileSearch",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Accounts",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "100",
+                "resourceId": "MyAccounts",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Accounts",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "100",
+                "resourceId": "MyAccounts",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Accounts",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "100",
+                "resourceId": "MyAccounts",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Accounts",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "100",
+                "resourceId": "MyAccounts",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Accounts",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "100",
+                "resourceId": "MyAccounts",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "MyProfile",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "BadgePhoto",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "ContactAndPersonalInformation",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "BusinessAddressAndInformation",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "100",
+                "resourceId": "User.WorkEmailAddress",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "ManageYourDocuments",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "SalesTerritory",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "SupervisorInformation",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "References",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "MyProfile",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "BadgePhoto",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "ContactAndPersonalInformation",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "BusinessAddressAndInformation",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "100",
+                "resourceId": "User.WorkEmailAddress",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "ManageYourDocuments",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "SalesTerritory",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "SupervisorInformation",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "References",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "MyProfile",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "BadgePhoto",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "ContactAndPersonalInformation",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "BusinessAddressAndInformation",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "100",
+                "resourceId": "User.WorkEmailAddress",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "ManageYourDocuments",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "SalesTerritory",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "SupervisorInformation",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "References",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "MyProfile",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "BadgePhoto",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "ContactAndPersonalInformation",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "BusinessAddressAndInformation",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "100",
+                "resourceId": "User.WorkEmailAddress",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "ManageYourDocuments",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "SalesTerritory",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "SupervisorInformation",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "References",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "MyProfile",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "BadgePhoto",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "ContactAndPersonalInformation",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "BusinessAddressAndInformation",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "100",
+                "resourceId": "User.WorkEmailAddress",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "ManageYourDocuments",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "SalesTerritory",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "SupervisorInformation",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "References",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "100",
+                "resourceId": "CompanyProfile",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "100",
+                "resourceId": "CompanyInfo",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "100",
+                "resourceId": "Company.LegalNameOfBusiness",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "100",
+                "resourceId": "Company.DoingBusinessAs",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "100",
+                "resourceId": "Company.TaxID",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "100",
+                "resourceId": "Company.BradstreetNumber",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "100",
+                "resourceId": "Company.TypeOfBusiness",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "100",
+                "resourceId": "Company.ParentCompany",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "100",
+                "resourceId": "Company.DescOfYourBusiness",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "100",
+                "resourceId": "Company.ProvinceOfIncorporation",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "100",
+                "resourceId": "Company.DateYouWereFounded",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "100",
+                "resourceId": "Company.NoOfEmployees",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "100",
+                "resourceId": "Company.BestDescOfCompanyFunc",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "100",
+                "resourceId": "Company.EDICapabilitiesForOrdAndInv",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "100",
+                "resourceId": "Company.HasYouCompEverFailToFillBid",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "100",
+                "resourceId": "Company.DollarAmtOfLargestContract",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "100",
+                "resourceId": "Company.AreYouMemberOfGPO",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "100",
+                "resourceId": "CompanyContactInformation",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "100",
+                "resourceId": "YourCompanyLogo",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "100",
+                "resourceId": "CompanyPrinciples",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "100",
+                "resourceId": "GeographicSalesCapability",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "100",
+                "resourceId": "DiversityInformation",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "100",
+                "resourceId": "ComplianceOfficer",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "001",
+                "resourceId": "CompanyFinancials",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "CompanyProfile",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "CompanyInfo",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "100",
+                "resourceId": "Company.LegalNameOfBusiness",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "100",
+                "resourceId": "Company.DoingBusinessAs",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "100",
+                "resourceId": "Company.TaxID",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Company.BradstreetNumber",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Company.TypeOfBusiness",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Company.ParentCompany",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Company.DescOfYourBusiness",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Company.ProvinceOfIncorporation",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Company.DateYouWereFounded",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Company.NoOfEmployees",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Company.BestDescOfCompanyFunc",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Company.EDICapabilitiesForOrdAndInv",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Company.HasYouCompEverFailToFillBid",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Company.DollarAmtOfLargestContract",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Company.AreYouMemberOfGPO",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "CompanyContactInformation",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "YourCompanyLogo",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "CompanyPrinciples",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "GeographicSalesCapability",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "DiversityInformation",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "ComplianceOfficer",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "CompanyFinancials",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "CompanyProfile",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "CompanyInfo",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "100",
+                "resourceId": "Company.LegalNameOfBusiness",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "100",
+                "resourceId": "Company.DoingBusinessAs",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "100",
+                "resourceId": "Company.TaxID",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Company.BradstreetNumber",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Company.TypeOfBusiness",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Company.ParentCompany",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Company.DescOfYourBusiness",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Company.ProvinceOfIncorporation",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Company.DateYouWereFounded",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Company.NoOfEmployees",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Company.BestDescOfCompanyFunc",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Company.EDICapabilitiesForOrdAndInv",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Company.HasYouCompEverFailToFillBid",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Company.DollarAmtOfLargestContract",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Company.AreYouMemberOfGPO",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "CompanyContactInformation",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "YourCompanyLogo",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "CompanyPrinciples",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "GeographicSalesCapability",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "DiversityInformation",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "ComplianceOfficer",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "CompanyFinancials",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "CompanyProfile",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "CompanyInfo",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "100",
+                "resourceId": "Company.LegalNameOfBusiness",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "100",
+                "resourceId": "Company.DoingBusinessAs",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "100",
+                "resourceId": "Company.TaxID",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Company.BradstreetNumber",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Company.TypeOfBusiness",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Company.ParentCompany",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Company.DescOfYourBusiness",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Company.ProvinceOfIncorporation",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Company.DateYouWereFounded",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Company.NoOfEmployees",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Company.BestDescOfCompanyFunc",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Company.EDICapabilitiesForOrdAndInv",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Company.HasYouCompEverFailToFillBid",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Company.DollarAmtOfLargestContract",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Company.AreYouMemberOfGPO",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "ComplianceOfficer",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "CompanyFinancials",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "001",
+                "resourceId": "AssociatedCompany",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "001",
+                "resourceId": "AssociatedCompany",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "001",
+                "resourceId": "AssociatedCompany",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "AssociatedCompany",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "001",
+                "resourceId": "Admin",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "001",
+                "resourceId": "Admin",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Actions",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Credential Sections",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Share My Credentials",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Share Staff Credentials",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Report",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Share My Credentials History Report",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Share Staff Credentials History Report",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Admin",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "AssociatedCompany",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Extras",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Extras",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Extras",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Extras",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Extras",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Actions",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "InviteRep",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Advanced Reports",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "SignInEvents",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Actions",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "HealthSystemPolicies",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "HealthSystemPolicies",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "HealthSystemPolicies",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "AdminResources",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "AdminResources",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "AdminResources",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "DocumentAlertsComparision",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Hospital Vendor Credentialing",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Hospital Vendor Credentialing",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Premium Support Hotline",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "001",
+                "resourceId": "Extras",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "HealthSystemPolicies",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Premium Support Hotline",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Accounts",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Accounts.SearchForAccounts",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Accounts.SearchForAccounts",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Accounts.SearchForAccounts",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Accounts.SearchForAccounts",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Accounts.SearchForAccounts",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "MyProfile",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Myprofile.ProductServiceOffering",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Myprofile.ProductServiceOffering",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Myprofile.ProductServiceOffering",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Myprofile.ProductServiceOffering",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Myprofile.ProductServiceOffering",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Myprofile.SalesTerritory",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Myprofile.SalesTerritory",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Myprofile.SalesTerritory",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Myprofile.SalesTerritory",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Myprofile.SalesTerritory",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "CompanyProfile",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "CompanyInfo",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "100",
+                "resourceId": "Company.LegalNameOfBusiness",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "100",
+                "resourceId": "Company.TaxID",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "100",
+                "resourceId": "Company.PublicSymbol",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Company.PublicSymbol",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Company.PublicSymbol",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Company.PublicSymbol",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Company.PublicSymbol",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "CompanyContactInformation",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "ComplianceOfficer",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Actions",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "InviteRep",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Extras",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Accounts",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "MyProfile",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "CompanyProfile",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "CompanyInfo",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "100",
+                "resourceId": "Company.LegalNameOfBusiness",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "100",
+                "resourceId": "Company.TaxID",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "CompanyContactInformation",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "ComplianceOfficer",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "100",
+                "resourceId": "Extras",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "100",
+                "resourceId": "Company.PubliclyTraded",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Company.PubliclyTraded",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Company.PubliclyTraded",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Company.PubliclyTraded",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Company.PubliclyTraded",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "AdminResources",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Hospital Vendor Credentialing",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Premium Support Hotline",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "HealthSystemPolicies",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "AdminResources",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Hospital Vendor Credentialing",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Premium Support Hotline",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "001",
+                "resourceId": "Report",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "001",
+                "resourceId": "Report",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "001",
+                "resourceId": "Report",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "001",
+                "resourceId": "Report",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "001",
+                "resourceId": "Report",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Report",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "AdminManageUser",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "AdminRepDetail",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "AdminManageUser",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "AdminRepDetail",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Admin",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Admin",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Admin",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Admin",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "ActionsPrintBadgeCheckCompliance",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "ActionsPrintBadgeCheckCompliance",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Actions",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Actions",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "ActionsPrintBadgeCheckCompliance",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "ActionsPrintBadgeCheckCompliance",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "MyDocuments",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "RepDocuments",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Home",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "DocRepo",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "ResourceCenter",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "ResourceCenter",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "ResourceCenter",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "ResourceCenter",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "ResourceCenter",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "ManageReps",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "ManageReps",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "ManageRepsAccordion",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "ManageRepsAccordion",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "ManageRepsRepDetail",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "ManageRepsRepDetail",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Share Staff Credentials Section",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Share Credentials Section",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "FeinAdminResource",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "GlobalAdminResource",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "FeinRepResource",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "GlobalRepResource",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "FeinRepResource",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "GlobalRepResource",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "GlobalRepResource",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "FeinRepResource",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "ResourceCenterSection",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "ResourceCenter",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "ResourceCenter",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "001",
+                "resourceId": "CompanyContactInfoEdit",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "001",
+                "resourceId": "YourCompanyLogoEdit",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "001",
+                "resourceId": "CompanyPrinciplesEdit",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "001",
+                "resourceId": "GeoSalesCapabilityEdit",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "001",
+                "resourceId": "DiversityInfoEdit",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "001",
+                "resourceId": "ComplianceOfficerEdit",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "001",
+                "resourceId": "CompanyFinancialsEdit",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "001",
+                "resourceId": "CompanyInfoEdit",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "001",
+                "resourceId": "CompanyContactInfoEdit",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "001",
+                "resourceId": "YourCompanyLogoEdit",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "001",
+                "resourceId": "CompanyPrinciplesEdit",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "001",
+                "resourceId": "GeoSalesCapabilityEdit",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "001",
+                "resourceId": "DiversityInfoEdit",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "001",
+                "resourceId": "CompanyInfoEdit",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "001",
+                "resourceId": "CompanyContactInfoEdit",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "001",
+                "resourceId": "YourCompanyLogoEdit",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "001",
+                "resourceId": "CompanyPrinciplesEdit",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "001",
+                "resourceId": "GeoSalesCapabilityEdit",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "001",
+                "resourceId": "DiversityInfoEdit",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "001",
+                "resourceId": "ComplianceOfficerEdit",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "001",
+                "resourceId": "CompanyInfoEdit",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "001",
+                "resourceId": "CompanyContactInfoEdit",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "001",
+                "resourceId": "YourCompanyLogoEdit",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "001",
+                "resourceId": "CompanyPrinciplesEdit",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "001",
+                "resourceId": "GeoSalesCapabilityEdit",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "001",
+                "resourceId": "DiversityInfoEdit",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "001",
+                "resourceId": "ComplianceOfficerEdit",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "001",
+                "resourceId": "CompanyFinancialsEdit",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "001",
+                "resourceId": "CompanyInfoEdit",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "001",
+                "resourceId": "CompanyContactInfoEdit",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "001",
+                "resourceId": "YourCompanyLogoEdit",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "001",
+                "resourceId": "CompanyPrinciplesEdit",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "001",
+                "resourceId": "GeoSalesCapabilityEdit",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "001",
+                "resourceId": "DiversityInfoEdit",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "001",
+                "resourceId": "ComplianceOfficerEdit",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "001",
+                "resourceId": "CompanyFinancialsEdit",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "001",
+                "resourceId": "CompanyInfoEdit",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "001",
+                "resourceId": "ComplianceOfficerEdit",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "001",
+                "resourceId": "CompanyFinancialsEdit",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "001",
+                "resourceId": "CompanyContactInfoEdit",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "001",
+                "resourceId": "ComplianceOfficerEdit",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "CompanyInfoEdit",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "CompanyContactInfoEdit",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "CompanyPrinciplesEdit",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "CompanyFinancialsEdit",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "GeoSalesCapabilityEdit",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "DiversityInfoEdit",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "ComplianceOfficerEdit",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "YourCompanyLogoEdit",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Extras.TrainingCertification",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Extras.BackgroundChecksDrug",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Extras.ContactPreferences",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Extras.VendormateMobile",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Extras.VendormatePurchasePlan",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Extras.TrainingCertification",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Extras.TravelReservations",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Extras.TravelExpense",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Extras.BackgroundChecksDrug",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Extras.ContactPreferences",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Extras.VendormateMobile",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Extras.VendormatePurchasePlan",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Extras.TrainingCertification",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Extras.TravelReservations",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Extras.TravelExpense",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Extras.BackgroundChecksDrug",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Extras.ContactPreferences",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Extras.VendormateMobile",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Extras.VendormatePurchasePlan",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Extras.TrainingCertification",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Extras.TravelReservations",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Extras.TravelExpense",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Extras.BackgroundChecksDrug",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Extras.ContactPreferences",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Extras.VendormateMobile",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Extras.VendormatePurchasePlan",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Extras.TrainingCertification",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Extras.TravelReservations",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Extras.TravelExpense",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Extras.BackgroundChecksDrug",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Extras.ContactPreferences",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Extras.VendormateMobile",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Extras.VendormatePurchasePlan",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Extras.TrainingCertification",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Extras.TravelReservations",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Extras.TravelExpense",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Extras.BackgroundChecksDrug",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Extras.ContactPreferences",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Extras.TrainingCertification",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Extras.BackgroundChecksDrug",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "permissionMask": "110",
+                "resourceId": "Extras.ContactPreferences",
+                "updateAction": false,
+                "deleteAction": false
+            }
+        ],
+        "contentType": "application/json"
+    }
+}

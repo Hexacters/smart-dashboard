@@ -1,0 +1,93 @@
+{
+	"VisionResponse": {
+		"userProfile": {
+			"id": "000000530100000014b7",
+			"userCredential": "rO0ABXQAMXBzMTAxNTUzQHRlc3Qudm06NTE2MzY5MGQ5NzQyNzVhNGMxMGYzN2NlYWRlYTA4ZjQ003d",
+			"lastName": "Admin",
+			"detail": {
+				"vendorOid": "000000530800000014bd",
+				"legalName": "hospitality care",
+				"userCredential": "rO0ABXQAMXBzMTAxNTUzQHRlc3Qudm06NTE2MzY5MGQ5NzQyNzVhNGMxMGYzN2NlYWRlYTA4ZjQ003d",
+				"phone": "132456",
+				"vendorDetailOid": "c0100006565000006569",
+				"repName": "dsad dsad-dsadasdasdas SekarSekarSekarSekarSekarSekarSekarSekarSekarSekar",
+				"actorOid": "c01000099a70000099a9",
+				"stateCode": "KY",
+				"vmURL": "baymedical.vendormate.net",
+				"isHideSysMessage": true,
+				"statusCode": "ACT",
+				"custEnableApptRequest": true,
+				"actorType": "VREP",
+				"token": "o01000007b80000008b0",
+				"customerTypeList": [
+					"HLTH",
+					"HLTH",
+					"HLTH",
+					"1CRED"
+				],
+				"vcRelationOid": "c0100000f58000000f66",
+				"vcEnableApptRequest": true,
+				"medzo": true,
+				"fein": "hc123",
+				"repEnableApptRequest": true
+			},
+			"authorities": [{
+					"role": "ROLE_BUYER"
+				},
+				{
+					"role": "ROLE_VENDOR_ID_CONFIRM"
+				},
+				{
+					"role": "ROLE_VENDOR_DOCUMENT_REPOSITORY_ADMIN"
+				},
+				{
+					"role": "ROLE_VENDOR_ADMIN"
+				},
+				{
+					"role": "ROLE_VENDOR_ADMIN_CLONE_WITH_PROFILE_SEARCH"
+				},
+				{
+					"role": "ROLE_VENDOR_SUPER_ADMIN_CLONE_WITH_PROFILE_SEARCH"
+				},
+				{
+					"role": "ROLE_VENDOR_OPEN_ACCESS_ADMIN"
+				},
+				{
+					"role": "ROLE_REPORTDASH_TEMP"
+				},
+				{
+					"role": "CAN_EDIT_COMPANY_DOCUMENTS"
+				},
+				{
+					"role": "ROLE_VENDOR_SUPER_ADMIN"
+				},
+				{
+					"role": "ROLE_VENDOR_ADVANCE_PURCHASE_ADMIN"
+				},
+				{
+					"role": "ROLE_TEST"
+				},
+				{
+					"role": "ROLE_VENDOR_SHARE_CREDENTIALS"
+				},
+				{
+					"role": "ROLE_VENDOR_REP"
+				},
+				{
+					"role": "ROLE_VENDOR_ADMIN_ID_CONFIRM"
+				},
+				{
+					"role": "ROLE_VENDOR_MY_CREDENTIAL_MANAGER_ADMIN"
+				}
+			],
+			"token": "o01000007b80000008b0",
+			"customerTypeListContainHealthCare": true,
+			"userId": "ps101553@test.vm",
+			"name": "Admin Admin",
+			"isMedzo": true,
+			"firstName": "Admin"
+		},
+		"Status": "Ok",
+		"contentType": "application/json"
+	}
+}

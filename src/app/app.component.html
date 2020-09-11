@@ -1,0 +1,27 @@
+<app-header [drawer]="drawer" ></app-header>
+<mat-drawer-container class="example-container" [hasBackdrop]="false" autosize>
+    <mat-drawer #drawer [mode]="!mobileQuery.matches ? 'push' : 'over'" class="side-nav" opened>
+       <app-sidenav></app-sidenav>
+    </mat-drawer>
+    <mat-drawer-content class="main-content">
+
+        <div class="main">
+            <div class="container-fluid bodyStarts maincontainer"
+                 ng-controller="analyticsController">
+                <div class="bs-docs-section">
+                    <!-- Body -->
+                    <div class="row"
+                         ng-controller="initController">
+                        <div class="col-md-12"
+                             ui-view="vendordash"></div>
+                        <div class="col-md-12"
+                             ui-view="modal"></div>
+                    </div>
+                </div>
+            </div>
+            <router-outlet></router-outlet>
+
+        </div>
+        <app-footer></app-footer>
+    </mat-drawer-content>
+</mat-drawer-container>

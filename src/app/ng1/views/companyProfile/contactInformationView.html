@@ -1,0 +1,94 @@
+<div class="row">
+	<div class="col-sm-12 col-md-12 col-lg-12"
+		data-ng-class="{'dNone':!loading}">
+		<img align="absmiddle" src="app/ng1/img/partial-loading.gif">&nbsp;{{'common.loading'
+		| translate}}
+	</div>
+	<div class="row col-sm-12 col-md-12 col-lg-12"
+		ng-controller="companyProfileController">
+		<div class="col-sm-10 col-md-10 col-lg-10 marginB1 marginT1">
+			<h3 class="modal-title">{{'companyProfile.companyContactInformation.header.companyContactInfo'
+				| translate}}</h3>
+		</div>
+		<div class="col-sm-2 col-md-2 col-lg-2 text-right marginTP5">
+			<sup class="asterisk">*</sup>&nbsp;{{'common.required' | translate}}&nbsp;
+			<a data-ui-sref="companyProfile.viewContactInformation.help" ng-show="!isFromManageReps">{{'common.help' | translate}}</a>
+			<a data-ui-sref="manage.repAccountDetails.companyProfile.viewContactInformation.help" ng-show="isFromManageReps">{{'common.help' | translate}}</a>
+		</div>
+		<vision-action>
+		<get-data service="companyProfileServices" response-formatter="getContactInformation" operation="getCompanyContactInformation"
+		root-node="data.successData"
+		form-node="data"></get-data>
+		<div class="col-sm-12 col-md-12 col-lg-12 marginB1">
+			<div class="col-sm-6 col-md-6 col-lg-6 marginB1">
+				<div class="form-group col-sm-12 col-md-12 col-lg-12 ">
+					<label class="col-sm-6 col-md-6 col-lg-6 text-right control-label">{{'companyProfile.companyContactInformation.label.headStreetAddress'
+						| translate}}&nbsp;<sup class="asterisk">*</sup>
+					</label>
+					<div class="col-sm-6 col-md-6 col-lg-6 break-word">
+						{{data.AddressList[0].addressLine1}}<br>{{data.AddressList[0].addressLine2}}<br>{{data.AddressList[0].addressLine3}}
+					</div>
+				</div>
+				<div class="form-group col-sm-12 col-md-12 col-lg-12">
+					<label class="col-sm-6 col-md-6 col-lg-6 text-right control-label">{{'companyProfile.companyContactInformation.label.city'
+						| translate}}&nbsp;<sup class="asterisk">*</sup>
+					</label>
+					<div class="col-sm-6 col-md-6 col-lg-6 break-word">{{data.AddressList[0].city}}</div>
+				</div>
+				<div class="form-group col-sm-12 col-md-12 col-lg-12">
+					<label class="col-sm-6 col-md-6 col-lg-6 text-right control-label">{{'companyProfile.companyContactInformation.label.stateProvinceDivision'
+						| translate}}&nbsp;<sup class="asterisk">*</sup>
+					</label>
+					<div class="col-sm-6 col-md-6 col-lg-6 break-word">
+						<span
+							ng-repeat="item in internationalStatesLookup | filter:{code:data.AddressList[0].stateCode}:true">
+							{{item.name}} </span>
+					</div>
+				</div>
+				<div class="form-group col-sm-12 col-md-12 col-lg-12">
+					<label class="col-sm-6 col-md-6 col-lg-6 text-right control-label">{{'companyProfile.companyContactInformation.label.zipPostal'
+						| translate}}&nbsp;<sup class="asterisk">*</sup></label>
+					<div class="col-sm-6 col-md-6 col-lg-6 break-word">{{data.AddressList[0].zip}}</div>
+				</div>
+				<div class="form-group col-sm-12 col-md-12 col-lg-12">
+					<label class="col-sm-6 col-md-6 col-lg-6 text-right control-label">{{'companyProfile.companyContactInformation.label.country'
+						| translate}}&nbsp;<sup class="asterisk">*</sup>
+					</label>
+
+					<div class="col-sm-6 col-md-6 col-lg-6 break-word">
+						<span
+							ng-repeat="item in countryLookup | filter:{countryCode:data.AddressList[0].countryCode}:true">
+							{{item.countryName}} </span>
+					</div>
+				</div>
+				<div class="form-group col-sm-12 col-md-12 col-lg-12">
+					<label class="col-sm-6 col-md-6 col-lg-6 text-right control-label">{{'companyProfile.companyContactInformation.label.headquatersPhone'
+						| translate}}&nbsp;<sup class="asterisk">*</sup>
+					</label>
+					<div class="col-sm-6 col-md-6 col-lg-6 break-word">{{data.VendorDetail.headquartersPhone}}
+					</div>
+				</div>
+				<div class="form-group col-sm-12 col-md-12 col-lg-12">
+					<label class="col-sm-6 col-md-6 col-lg-6 text-right control-label">{{'companyProfile.companyContactInformation.label.headquatersFax'
+						| translate}} </label>
+					<div class="col-sm-6 col-md-6 col-lg-6 break-word">{{data.VendorDetail.headquartersFax}}</div>
+				</div>
+			</div>
+			<div class="col-sm-6 col-md-6 col-lg-6 marginB1">
+				<div class="form-group col-sm-12 col-md-12 col-lg-12">
+					<label class="col-sm-6 col-md-6 col-lg-6 text-right control-label">{{'companyProfile.companyContactInformation.label.primaryEmail'
+						| translate}}&nbsp;<sup class="asterisk">*</sup>
+					</label>
+					<div class="col-sm-6 col-md-6 col-lg-6 break-word">{{data.VendorDetail.mainEmailAddress}}</div>
+				</div>
+				<div class="form-group col-sm-12 col-md-12 col-lg-12">
+					<label class="col-sm-6 col-md-6 col-lg-6 text-right control-label">{{'companyProfile.companyContactInformation.label.companyWebsite'
+						| translate}} </label>
+					<div class="col-sm-6 col-md-6 col-lg-6 break-word">{{data.VendorDetail.websiteURL}}</div>
+				</div>
+			</div>
+		</div>
+		</vision-action>
+	</div>
+</div>
+<div ng-controller="googleAnalyticsController" data-ng-init="callGAPageTrack('callCompContactInfo');"></div>

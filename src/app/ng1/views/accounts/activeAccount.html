@@ -1,0 +1,41 @@
+<div class="modal-content" ng-controller="accountController">
+	<div class="modal-header commonDialogHeader">
+		<button id="viewLocationCloseIcon" id="viewAccountCloseIcon"
+			type="button" class="close" data-dismiss="modal" aria-hidden="true"
+			data-ng-click="$close()">&times;</button>
+		<h3 class="modal-title">
+			<b>{{'accounts.manageMyaccount.label.activeAccounts' |
+				translate}}</b>
+		</h3>
+	</div>
+	<vision-action> <submit-data service="accountServices"
+		operation="activateRep" callback="inActiveGridReload"
+		form-node='{"repOid":"{{repOid}}"}'></submit-data>
+	<form novalidate name="changePasswordForm" class="changePasswordForm"
+		autocomplete="off" class="form-horizontal">
+		<div data-ng-class="{'dNone':!loading}">
+			<img align="absmiddle" src="app/ng1/img/partial-loading.gif">&nbsp;loading...
+		</div>
+		<div class="modal-body ng-scope">
+			<span class="text-danger"
+				ng-show="activeAccountCommonPopupError.errorData.ResponseError[0].errorCode!='5139'">
+				{{activeAccountCommonPopupError.errorData.ResponseError[0].errorCode
+				| translate}} </span>
+			<div ng-show="!activeAccountCommonPopupError">
+				<p>{{'accounts.manageMyaccount.label.activeMessage1' |
+					translate}}</p>
+				<p>{{'accounts.manageMyaccount.label.activeMessage2' |
+					translate}}</p>
+			</div>
+		</div>
+		<div class="modal-footer ng-scope" ng-if="!submitError.errorData"
+			ng-show="!activeAccountCommonPopupError">
+			<button class="btn btn-info" type="button" id="activeAccountYes"
+				data-ng-click="submit()">{{'common.yes' | translate}}</button>
+			<button class="btn btn-warning" type="button" id="activeAccountNo"
+				autofocus data-ng-click="$close()">{{'common.no'|
+				translate}}</button>
+		</div>
+	</form>
+	</vision-action>
+</div>

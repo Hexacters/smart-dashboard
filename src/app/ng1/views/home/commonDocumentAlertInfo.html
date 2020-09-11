@@ -1,0 +1,76 @@
+<h4><b><span class="text-danger" ng-if="$state.params.softKey =='1'">Rejected</span><span class="text-danger" ng-if="$state.params.softKey =='2'"> Expired</span><span class="text-danger" ng-if="$state.params.softKey =='4'"> Missing</span>: Product / Service Competency</b></h4>
+<p>Your Product / Service competency has been rejected at the following accounts. Please replace the current document with an acceptable document.</p>
+<div ng-if="$state.params.softKey =='1'">
+    <h5>Rejected reason: Document is not filled out or completed.</h5>
+    <p>Note: Document is incomplete and required to be completely filled to fulfill the criteria.
+        <br/>
+    </p>
+</div>
+<p><a ng-if="$state.params.id == 'commonDoc'" ui-sref="home.documentAlert.common.commonDocument.information.viewAccounts">View accounts</a><a ng-if="$state.params.id == 'specificDoc'" ui-sref="home.documentAlert.common.specific.information.viewAccounts">View accounts</a>
+</p>
+
+<h4><b>{{'home.HIPAATraining' | translate}}</b></h4>
+<vision-action>
+    <get-data service="complianceServices" operation="documentAlertInfo"> </get-data>
+    <div class="table-responsive" data-ng-if="data.submitError.Status=='Error' || dataError.submitError.Status=='Error'">
+        <div class="alert text-danger">
+            <span class="fa fa-warning" aria-hidden="true"></span> {{data.submitError.ResponseError[0].errorCode | translate}} {{dataError.submitError.ResponseError[0].errorCode | translate}}
+        </div>
+    </div>
+    <form novalidate name="documentAlertInfo" autocomplete="off" class="form-horizontal" ng-controller="commonController">
+        <div class="form-group">
+            <label class="col-lg-4 text-right">{{'home.why' | translate}}</label>
+            <div class="col-lg-8" ng-init="numLimit=50">
+                <span>{{data.successData.DocumentAlert.why | limitTo:numLimit}} <a ng-hide="showLess" class="readMoreLess cursorPointer" ng-click="readMore('1024')">more...</a><a ng-show="showLess" class="readMoreLess cursorPointer" ng-click="readLess('50')">less</a></span>
+            </div>
+        </div>
+        <div class="form-group" ng-init="numLimit=50" ng-controller="commonController">
+            <label class="col-lg-4 text-right">{{'home.how' | translate}}</label>
+            <div class="col-lg-8"><span>{{data.successData.DocumentAlert.how | limitTo:numLimit}} <a ng-hide="showLess" class="readMoreLess cursorPointer" ng-click="readMore('1024')">more...</a><a ng-show="showLess" class="readMoreLess cursorPointer" ng-click="readLess('50')">less</a></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-4 text-right">{{'home.type' | translate}}</label>
+            <div class="col-lg-8"><span>{{data.successData.DocumentAlert.type}}</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-4 text-right">{{'home.category' | translate}}</label>
+            <div class="col-lg-8"><span>{{data.successData.DocumentAlert.category}}</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-4 text-right">{{'home.template' | translate}}</label>
+            <div class="col-lg-8"><span><a class="cursorPointer" ng-click="openNewWindow('img/ghx_logo.jpg')">Proof of competency template</a></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-4 text-right">{{'home.effectiveDate' | translate}}</label>
+            <div class="col-lg-5">
+                <input type="text" class="form-control input-sm" readonly="true" datetime-picker="MM/dd/yyyy" ng-click="openCalendar($event, 'effectiveDate')" enable-time='false' ng-model="data.successData.DocumentAlert.effectiveDate" is-open="open.effectiveDate" datepicker-options=" {showWeeks:true}" timepicker-options="{hourStep: 1,minuteStep: 15, showMeridian: false,meridians: null,readonlyInput: false,mousewheel: true}" date-disabled="disabled(date,mode)" close-on-date-selection="true" append-to-body="true" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-4 text-right">{{'home.expirationDate' | translate}}</label>
+            <div class="col-lg-5">
+                <input type="text" class="form-control input-sm" readonly="true" datetime-picker="MM/dd/yyyy" ng-click="openCalendar($event, 'expirationDate')" enable-time='false' ng-model="data.successData.DocumentAlert.expirationDate" is-open="open.expirationDate" datepicker-options=" {showWeeks:true}" timepicker-options="{hourStep: 1,minuteStep: 15,showMeridian: true,meridians: null,readonlyInput: false,mousewheel: true}" date-disabled="disabled(date,mode)" close-on-date-selection="true" append-to-body="true" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-4 text-right">{{'home.document' | translate}} <span tooltip-placement="right" tooltip-append-to-body="true" uib-tooltip-html="'{'home.label.maxFileUploadTooltip' | translate}'"> <i class="fa fa-question-circle fa-lg"></i></span>
+            </label>
+            <div class="col-lg-5">
+                <file-upload max-upload-file-count="5" file-size="5" file-extensions="[jpg,jpeg,gif,png]" file-name-length-error-msg="{{'myDocuments.errorMessage.fileInvalidsupportFormatName' | translate}}" parent-scope-level="$parent" parent-root-node="DocumentAlert" parent-data-field="logo.id" class="btn-info"></file-upload>
+                <input type="text" id="compliance.document" data-ng-model="data.DocumentAlert.document" name="uploadBlobId" class="displayN" />
+            </div>
+        </div>
+        <div class="form-group ">
+            <label class="col-lg-4 text-right ng-binding"></label>
+            <div class="col-lg-8">
+                <button ng-if="$state.params.id == 'commonDoc'" class="btn btn-success" id="docAlertSubmit" type="submit" ui-sref="home.documentAlert.common.commonDocument.information.multipleUploadDocGrid">{{'common.save' | translate}}</button>
+                <button ng-if="$state.params.id == 'specificDoc'" class="btn btn-success" id="docAlertSubmit" type="submit" ui-sref="home.documentAlert.common.specific">{{'common.save' | translate}}</button>
+                <button class="btn btn-warning" id="docAlertSubmit" type="submit" ng-click="$close()">{{'common.cancel' | translate}}</button>
+            </div>
+        </div>
+    </form>
+</vision-action>

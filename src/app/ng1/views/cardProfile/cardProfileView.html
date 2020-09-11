@@ -1,0 +1,135 @@
+<div ng-init="getBillingCountryLookups();">
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12" ng-show="loading">
+            <img align="absmiddle" src="app/ng1/img/partial-loading.gif">&nbsp;{{'common.loading'| translate}}
+        </div>
+        <!-- <div class="col-sm-12 col-md-12 col-lg-12">
+            <a ng-click="$state.go('accounts.manageAccounts');" data-ng-if="!showCardProfile">{{'cardProfile.label.backToAccounts' | translate}}</a>
+            <a ng-click="goToCardProfileEdit()" data-ng-if="showCardProfile">{{'cardProfile.label.backToBillingAddress' | translate}}</a>
+        </div> -->
+        <vision-action>
+            <get-data service="cardServices" root-node="data.successData.CardProfile" form-node="data.viewProfile" operation="getCardProfile"></get-data>            
+            <div class="col-sm-12 col-md-12 col-lg-12 padding0">
+                <div class="col-sm-12 col-md-12 col-lg-12 marginT1">
+                    <h3 class="modal-title">{{data.viewProfile.nameOnCard}}</h3>
+                </div>
+                <div class="col-sm-10 col-md-10 col-lg-10 marginB1" ng-init="setCardHolderName(data.viewProfile)" ng-if="data.viewProfile.nameOnCard">
+                    <span>{{'cardProfile.messages.paymentNotes' | translate}}</span>
+                </div>
+                <div class="col-sm-12 col-md-12 col-lg-12 marginB1">
+                    <div class="col-sm-6 col-md-6 col-lg-6 credit-card-box text-center">
+                        <b>{{'cardProfile.label.creditCardNumber' | translate}} : {{data.viewProfile.cardNumber}}</b>
+                    </div>
+                    <div class="col-sm-3 col-md-3 col-lg-3"></div>
+                </div>
+
+                <form novalidate name="viewCardProfile" autocomplete="off" class="form-horizontal">
+                    <div class="col-sm-12 col-md-12 col-lg-12 marginB1">
+                        <div class="table-responsive" data-ng-if="complainceOfficerSubmitError.status=='error'">
+                            <div class="alert alert-danger">
+                                {{complainceOfficerSubmitError.errorData.ResponseError[0].longMessage | translate}}</div>
+                        </div>
+                        <div class="col-sm-6 col-md-6 col-lg-6 marginB1 credit-card-box" ng-if="!showCardProfile">
+                            <div class="col-md-12 padLeft0">
+                                <div class="form-group">
+                                    <div class="col-md-6 control-label">
+                                        {{'registration.normal.billingAddress' | translate}}<sup class="validation-required">*</sup>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" name="billingAddress1" maxlength="30" id="billingAddress1" ng-model="data.viewProfile.billingAddress1"
+                                            placeholder="{{'registration.normal.street1Placeholder' | translate}}" data-ng-readonly="true">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 padLeft0">
+                                <div class="form-group">
+                                    <div class="col-md-6"></div>
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" name="billingAddress2" maxlength="30" id="billingAddress2" ng-model="data.viewProfile.billingAddress2"
+                                            placeholder="{{'registration.normal.street2Placeholder' | translate}}" data-ng-readonly="true">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 padLeft0">
+                                <div class="form-group">
+                                    <div class="col-md-6 control-label">
+                                        {{'registration.normal.billingCity' | translate}}<sup class="validation-required">*</sup>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" name="billingCity" maxlength="20" ng-model="data.viewProfile.billingCity" placeholder="{{'registration.normal.billingCityPlaceholder' | translate}}"
+                                            data-ng-readonly="true">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 padLeft0">
+                                <div class="form-group">
+                                    <div class="col-md-6 control-label">
+                                        {{'registration.normal.billingStateProvince' | translate}}<sup class="validation-required">*</sup>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <select name="billingStateCode" class="form-control" data-ng-model="data.viewProfile.billingStateCode" data-ng-disabled="viewCardProfile">
+		                                 	<option value="">{{'common.select' | translate}}</option>
+											<option ng-repeat="option in billingStateLookup"
+												ng-selected="option.code && (option.code === data.viewProfile.billingStateCode)"
+												value="{{option.code}}" ng-disabled="option.disabled">{{option.name}}</option>
+										</select>
+                                    </div>
+                                </div>
+                            </div>                           
+                            <div class="col-md-12 padLeft0">
+                                <div class="form-group">
+                                    <div class="col-md-6 control-label">
+                                        {{'registration.normal.billingCountry' | translate}}<sup class="validation-required">*</sup>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <select name="billingCountryCode" id="billingCountryCode" class="form-control" ng-model="data.viewProfile.billingCountryCode"
+                                            data-ng-disabled="true">
+                                            <option value="">{{'common.select' | translate}}</option>
+                                            <option ng-repeat="option in billingCountryLookup" ng-selected="option.code === data.viewProfile.billingCountryCode"
+											value="{{option.code}}">{{option.name}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                             <div class="col-md-12 padLeft0">
+                                <div class="form-group">
+                                    <div class="col-md-6 control-label">
+                                        {{'registration.normal.billingZipPostalCode' | translate}}<sup class="validation-required">*</sup>
+                                        <span tooltip-append-to-body="true" tooltip-class="customToolTip" tooltip="{{'messages.zipCodeNote1' | translate}}{{'messages.zipCodeNote2' | translate}}{{'messages.zipCodeNote3' | translate}}"
+                                            tooltip-placement="top"> <i class="fa fa-question-circle fa-lg"></i>
+                                            </span>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" name="billingZip" ng-model="data.viewProfile.billingZip" maxlength="10" placeholder="{{'registration.normal.billingZipPostalCode' | translate}}"
+                                            data-ng-readonly="true">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 padLeft0">
+                                <div class="form-group">
+                                    <div class="col-md-6 control-label">
+                                        {{'registration.normal.cardHolderEmail' | translate}}<sup class="validation-required">*</sup>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" name="billingEmail" maxlength="20" ng-model="data.viewProfile.billingEmail" placeholder="{{'registration.normal.cardHolderEmail' | translate}}"
+                                            data-ng-readonly="true">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 padLeft0">
+                                <div class="form-group">
+                                    <div class="col-md-6 control-label"></div>
+                                    <div class="col-md-6">
+                                        <!-- <button type="button" data-ng-click="$state.go('accounts.manageAccounts');" class="btn btn-grey">
+										{{'common.cancel' | translate}}</button> -->
+                                        <button type="button" ng-disabled="loading" data-ng-click="$state.go('cardProfile.edit',{cardProfileOid:data.viewProfile.oid});" class="btn btn-blue">
+                                    {{'cardProfile.label.editPaymentMethod' | translate}}</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </vision-action>
+    </div>

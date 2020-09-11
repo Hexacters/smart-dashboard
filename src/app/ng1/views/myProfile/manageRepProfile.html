@@ -1,0 +1,127 @@
+<div class="row">
+	<div class="col-sm-12 col-md-12 col-lg-12">
+		<accordion class="tab-animation"> <accordion-group
+			is-open="$state.includes('manage.repAccountDetails.manageRepProfile.contactPersonalInfoView') || $state.includes('manage.repAccountDetails.manageRepProfile.contactPersonalInfoEdit')">
+		<accordion-heading>
+		<a data-ui-sref="manage.repAccountDetails.manageRepProfile.contactPersonalInfoView" class="show">
+			{{'myProfile.contactAndPersonalInformation.header.contactPersonalInformationTitle'
+			| translate}} <i class="pull-right glyphicon"
+			ng-class="{'glyphicon-minus': $state.includes('manage.repAccountDetails.manageRepProfile.contactPersonalInfoView') || $state.includes('manage.repAccountDetails.manageRepProfile.contactPersonalInfoEdit'), 'glyphicon-plus': !status.isFirstOpen}"></i>
+		</a> </accordion-heading>
+		<ul tabset>
+			<li tab heading="View"
+				data-ui-sref="manage.repAccountDetails.manageRepProfile.contactPersonalInfoView"
+				active="$state.includes('manage.repAccountDetails.manageRepProfile.contactPersonalInfoView')">
+				<div data-ui-view="viewContactPersonalInfo"></div>
+			</li>
+			<li tab heading="Edit"
+				data-ui-sref="manage.repAccountDetails.manageRepProfile.contactPersonalInfoEdit"
+				active="$state.includes('manage.repAccountDetails.manageRepProfile.contactPersonalInfoEdit')">
+				<div data-ui-view="editContactPersonalInfo"></div>
+			</li>
+		</ul>
+		</accordion-group> <accordion-group
+			is-open="$state.includes('manage.repAccountDetails.manageRepProfile.accountInformationView') || $state.includes('manage.repAccountDetails.manageRepProfile.accountInformationEdit')">
+		<accordion-heading>
+		<a data-ui-sref="manage.repAccountDetails.manageRepProfile.accountInformationView" class="show">{{'myProfile.addressAndInformation.header.addressInformationTitle'
+			| translate}} <i class="pull-right glyphicon"
+			ng-class="{'glyphicon-minus': $state.includes('manage.repAccountDetails.manageRepProfile.accountInformationView') || $state.includes('manage.repAccountDetails.manageRepProfile.accountInformationEdit'), 'glyphicon-plus': !status.isSecondOpen}"></i>
+		</a> </accordion-heading>
+		<ul tabset>
+			<li tab heading="View"
+				data-ui-sref="manage.repAccountDetails.manageRepProfile.accountInformationView"
+				active="$state.includes('manage.repAccountDetails.manageRepProfile.accountInformationView')">
+				<div data-ui-view="viewAccountInformation"></div>
+			</li>
+			<li tab heading="Edit"
+				data-ui-sref="manage.repAccountDetails.manageRepProfile.accountInformationEdit"
+				active="$state.includes('manage.repAccountDetails.manageRepProfile.accountInformationEdit')">
+				<div data-ui-view="editAccountInformation"></div>
+			</li>
+		</ul>
+		</accordion-group> <accordion-group is-open="$state.includes('manage.repAccountDetails.manageRepProfile.badgePhoto')">
+		<accordion-heading>
+		<a data-ui-sref="manage.repAccountDetails.manageRepProfile.badgePhoto" class="show">{{'myProfile.badgePhoto.header.badgePhotoTitle'
+			| translate}} <i class="pull-right glyphicon"
+			ng-class="{'glyphicon-minus': $state.includes('manage.repAccountDetails.manageRepProfile.badgePhoto'), 'glyphicon-plus': !status.isthirdOpen}"></i>
+		</a> </accordion-heading>
+		<div ui-view="badgePhoto" autoscroll="true"></div>
+		</accordion-group> <accordion-group
+			is-open="$state.includes('manage.repAccountDetails.manageRepProfile.productServiceOfferingView') || $state.includes('manage.repAccountDetails.manageRepProfile.productServiceOfferingEdit')" data-ng-if="canAccess('vm','Myprofile.ProductServiceOffering')">
+		<accordion-heading>
+		<a data-ui-sref="manage.repAccountDetails.manageRepProfile.productServiceOfferingView" class="show">
+			{{'myProfile.productAndServiceOffering.header.productServiceOfferingTitle'
+			| translate}} <i class="pull-right glyphicon"
+			ng-class="{'glyphicon-minus': $state.includes('manage.repAccountDetails.manageRepProfile.productServiceOfferingView') || $state.includes('manage.repAccountDetails.manageRepProfile.productServiceOfferingEdit'), 'glyphicon-plus': !status.isFirstOpen}"></i>
+		</a> </accordion-heading>
+		<ul tabset>
+			<li tab heading="View"
+				data-ui-sref="manage.repAccountDetails.manageRepProfile.productServiceOfferingView"
+				active="$state.includes('manage.repAccountDetails.manageRepProfile.productServiceOfferingView')">
+				<div data-ui-view="viewProductServiceOffering"></div>
+			</li>
+			<li tab heading="Edit"
+				data-ui-sref="manage.repAccountDetails.manageRepProfile.productServiceOfferingEdit"
+				active="$state.includes('manage.repAccountDetails.manageRepProfile.productServiceOfferingEdit')">
+				<div data-ui-view="editProductServiceOffering"></div>
+			</li>
+		</ul>
+		</accordion-group> <accordion-group
+			is-open="$state.includes('manage.repAccountDetails.manageRepProfile.salesTerritoryView') || $state.includes('manage.repAccountDetails.manageRepProfile.salesTerritoryEdit')"  data-ng-if="canAccess('vm','Myprofile.SalesTerritory')">
+		<accordion-heading>
+		<a data-ui-sref="manage.repAccountDetails.manageRepProfile.salesTerritoryView" class="show">{{'myProfile.salesTerritory.header.salesTerritoryTitle'
+			| translate}} <i class="pull-right glyphicon"
+			ng-class="{'glyphicon-minus': $state.includes('manage.repAccountDetails.manageRepProfile.salesTerritoryView') || $state.includes('manage.repAccountDetails.manageRepProfile.salesTerritoryEdit'), 'glyphicon-plus': !status.isfiveOpen}"></i>
+		</a> </accordion-heading>
+		<ul tabset>
+			<li tab heading="View" data-ui-sref="manage.repAccountDetails.manageRepProfile.salesTerritoryView"
+				active="$state.includes('manage.repAccountDetails.manageRepProfile.salesTerritoryView')">
+				<div data-ui-view="viewSalesTerritory"></div>
+			</li>
+			<li tab heading="Edit" data-ui-sref="manage.repAccountDetails.manageRepProfile.salesTerritoryEdit"
+				active="$state.includes('manage.repAccountDetails.manageRepProfile.salesTerritoryEdit')">
+				<div data-ui-view="editSalesTerritory"></div>
+			</li>
+		</ul>
+		</accordion-group> <accordion-group
+			is-open="$state.includes('manage.repAccountDetails.manageRepProfile.supervisorInformationView') || $state.includes('manage.repAccountDetails.manageRepProfile.supervisorInformationEdit')">
+		<accordion-heading>
+		<a data-ui-sref="manage.repAccountDetails.manageRepProfile.supervisorInformationView" class="show">{{'myProfile.supervisorInformation.header.supervisorInformationTitle'
+			| translate}} <i class="pull-right glyphicon"
+			ng-class="{'glyphicon-minus': $state.includes('manage.repAccountDetails.manageRepProfile.supervisorInformationView') || $state.includes('manage.repAccountDetails.manageRepProfile.supervisorInformationEdit'), 'glyphicon-plus': !status.issixOpen}"></i>
+		</a> </accordion-heading>
+		<ul tabset>
+			<li tab heading="View"
+				data-ui-sref="manage.repAccountDetails.manageRepProfile.supervisorInformationView"
+				active="$state.includes('manage.repAccountDetails.manageRepProfile.supervisorInformationView')">
+				<div data-ui-view="viewSupervisorInformation"></div>
+			</li>
+			<li tab heading="Edit"
+				data-ui-sref="manage.repAccountDetails.manageRepProfile.supervisorInformationEdit"
+				active="$state.includes('manage.repAccountDetails.manageRepProfile.supervisorInformationEdit')">
+				<div data-ui-view="editSupervisorInformation"></div>
+			</li>
+		</ul>
+		</accordion-group> <accordion-group
+			is-open="$state.includes('manage.repAccountDetails.manageRepProfile.referencesView') || $state.includes('manage.repAccountDetails.manageRepProfile.referencesEdit')">
+		<accordion-heading>
+		<a data-ui-sref="manage.repAccountDetails.manageRepProfile.referencesView" class="show">{{'myProfile.references.header.referencesTitle'
+			| translate}} <i class="pull-right glyphicon"
+			ng-class="{'glyphicon-minus': $state.includes('manage.repAccountDetails.manageRepProfile.referencesView') || $state.includes('manage.repAccountDetails.manageRepProfile.referencesEdit'), 'glyphicon-plus': !status.issevanOpen}"></i>
+		</a> </accordion-heading>
+		<ul tabset>
+			<li tab heading="View" data-ui-sref="manage.repAccountDetails.manageRepProfile.referencesView"
+				active="$state.includes('manage.repAccountDetails.manageRepProfile.referencesView')">
+				<div data-ui-view="viewReferences"></div>
+			</li>
+			<li tab heading="Edit" data-ui-sref="manage.repAccountDetails.manageRepProfile.referencesEdit"
+				active="$state.includes('manage.repAccountDetails.manageRepProfile.referencesEdit')">
+				<div data-ui-view="editReferences"></div>
+			</li>
+		</ul>
+		</accordion-group> </accordion>
+		<strong>{{'common.accuracyInformation' | translate}}</strong>
+
+		<p class="marginT1">{{'common.accuracyContent' | translate}}</p>
+	</div>
+</div>

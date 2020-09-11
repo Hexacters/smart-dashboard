@@ -1,0 +1,47 @@
+<div class="modal-content">
+	<div class="modal-header commonDialogHeader">
+		<button id="viewLocationCloseIcon" id="viewAccountCloseIcon"
+			type="button" class="close" data-dismiss="modal" aria-hidden="true"
+			data-ng-click="$close()">&times;</button>
+		<h3 class="modal-title">
+			{{'shoppingCart.label.addAdditionalReps' | translate}}
+		</h3>
+	</div>
+	<div class="modal-body ng-scope">
+		<div class="row" >
+			<form novalidate name="addAdditionalRepsCount" class="form-horizontal"
+					autocomplete="off">
+				<div class="text-center">
+					<div class="col-sm-offset-4 col-md-offset-4 col-lg-offset-4 col-sm-8 col-md-8 col-lg-8">
+						<div class="col-sm-6 col-md-6 col-lg-6">
+							<div class="input-group margin-bottom-sm">
+								<span class="input-group-addon btn" ng-disabled="additionalReps <= 0" ng-click="additionalReps = minusOne(additionalReps)"><i class="fa fa-minus fa-fw"></i></span>
+								<input id="additionalReps" type="text" name="additionalReps" 
+								ng-model="additionalReps" message-id="errorMessageId" 
+								validator="required, validateDigits, validateNegative, validateAdditionalRepCount"
+								pending-rep-count="{{pendingRepCount}}"
+								validate-negative-error-message="Please enter a reps count greater than or equal to 0"
+								validate-additional-rep-count-error-message="Number of adding reps count exceeded"
+								validate-digits-error-message="No of adding reps must be numeric"
+								required-error-message="Number of adding reps required" 
+								class="form-control input-number" value="1" maxlength="3" type="number"
+								style="text-align:center;" readonly="true">
+								<span ng-disabled="additionalReps === pendingRepCount" class="input-group-addon btn" ng-click="additionalReps = plusOne(additionalReps)"><i class="fa fa-plus fa-fw"></i></span>
+							</div>
+							<span id="errorMessageId" messageId="errorMessageId"></span>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-12 col-md-12 col-lg-12 marginT4 text-center">
+					{{'shoppingCart.label.totalRepsOfPurchasd' | translate}}[&nbsp;&nbsp;{{(pendingRepCount - additionalReps) <= 0 ? 0:(pendingRepCount - additionalReps)}}&nbsp;&nbsp;]
+				</div>
+				<div class="col-sm-12 col-md-12 col-lg-12 text-center marginT4">
+					<button class="btn btn-grey" type="button" data-ng-click="closeModal()">{{'common.cancel'|
+						translate}}</button>
+						<button class="btn btn-blue" type="button" validation-submit="addAdditionalRepsCount" data-ng-click="evalAdditionalRepsCount(additionalReps)">{{'common.ok'|
+						translate}}</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

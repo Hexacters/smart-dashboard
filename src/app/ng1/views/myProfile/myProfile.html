@@ -1,0 +1,188 @@
+<div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+        <accordion class="tab-animation">
+            <accordion-group
+                             is-open="$state.includes('myProfile.contactPersonalInfoView') || $state.includes('myProfile.contactPersonalInfoEdit')">
+                <accordion-heading>
+                    <a data-ui-sref="myProfile.contactPersonalInfoView"
+                       class="show">
+                        {{'myProfile.contactAndPersonalInformation.header.contactPersonalInformationTitle' | translate}}
+                        <i class="pull-right glyphicon"
+                           ng-class="{'glyphicon-minus': $state.includes('myProfile.contactPersonalInfoView') || $state.includes('myProfile.contactPersonalInfoEdit'), 'glyphicon-plus': !status.isFirstOpen}">
+                        </i>
+                    </a>
+                </accordion-heading>
+                <ul tabset>
+                    <li tab
+                        heading="View"
+                        data-ui-sref="myProfile.contactPersonalInfoView"
+                        active="$state.includes('myProfile.contactPersonalInfoView')">
+                        <div data-ui-view="viewContactPersonalInfo"></div>
+                    </li>
+                    <li tab
+                        heading="Edit"
+                        data-ui-sref="myProfile.contactPersonalInfoEdit"
+                        active="$state.includes('myProfile.contactPersonalInfoEdit')">
+                        <div data-ui-view="editContactPersonalInfo"></div>
+                    </li>
+                </ul>
+            </accordion-group>
+            <accordion-group
+                             is-open="$state.includes('myProfile.accountInformationView') || $state.includes('myProfile.accountInformationEdit')">
+                <accordion-heading>
+                    <a data-ui-sref="myProfile.accountInformationView"
+                       class="show">{{'myProfile.addressAndInformation.header.addressInformationTitle' | translate}}
+                        <i class="pull-right glyphicon"
+                           ng-class="{'glyphicon-minus': $state.includes('myProfile.accountInformationView') || $state.includes('myProfile.accountInformationEdit'), 'glyphicon-plus': !status.isSecondOpen}">
+                        </i>
+                    </a>
+                </accordion-heading>
+                <ul tabset>
+                    <li tab
+                        heading="View"
+                        data-ui-sref="myProfile.accountInformationView"
+                        active="$state.includes('myProfile.accountInformationView')">
+                        <div data-ui-view="viewAccountInformation"></div>
+                    </li>
+                    <li tab
+                        heading="Edit"
+                        data-ui-sref="myProfile.accountInformationEdit"
+                        active="$state.includes('myProfile.accountInformationEdit')">
+                        <div data-ui-view="editAccountInformation"></div>
+                    </li>
+                </ul>
+            </accordion-group>
+            <accordion-group class="cardManagement"
+                             is-open="$state.includes('myProfile.cardManagement')">
+                <accordion-heading>
+                    <a data-ui-sref="myProfile.cardManagement"
+                       data-ng-click="checkCMOpen()"
+                       class="show">{{'myProfile.cardManagement.header.paymentMethodTitle' | translate}}
+                        <i class="pull-right glyphicon"
+                           ng-class="{'glyphicon-minus': $state.includes('myProfile.cardManagement'), 'glyphicon-plus': !status.iseightOpen}">
+                        </i>
+                    </a>
+                </accordion-heading>
+                <div ui-view="cardManagement"
+                     id="cardManagementContainer"
+                     ng-controller="cardManagementController"
+                     autoscroll="true"></div>
+            </accordion-group>
+            <accordion-group is-open="$state.includes('myProfile.badgePhoto')">
+                <accordion-heading>
+                    <a data-ui-sref="myProfile.badgePhoto"
+                       class="show">{{'myProfile.badgePhoto.header.badgePhotoTitle' | translate}}
+                        <i class="pull-right glyphicon"
+                           ng-class="{'glyphicon-minus': $state.includes('myProfile.badgePhoto'), 'glyphicon-plus': !status.isthirdOpen}">
+                        </i>
+                    </a>
+                </accordion-heading>
+                <div ui-view="badgePhoto"
+                     autoscroll="true"></div>
+            </accordion-group>
+            <accordion-group is-open="$state.includes('myProfile.productServiceOfferingView') || $state.includes('myProfile.productServiceOfferingEdit')"
+                             data-ng-if="canAccess('vm','Myprofile.ProductServiceOffering')">
+                <accordion-heading>
+                    <a data-ui-sref="myProfile.productServiceOfferingView"
+                       class="show">
+                        {{'myProfile.productAndServiceOffering.header.productServiceOfferingTitle' | translate}}
+                        <i class="pull-right glyphicon"
+                           ng-class="{'glyphicon-minus': $state.includes('myProfile.productServiceOfferingView') || $state.includes('myProfile.productServiceOfferingEdit'), 'glyphicon-plus': !status.isFirstOpen}">
+                        </i>
+                    </a>
+                </accordion-heading>
+                <ul tabset>
+                    <li tab
+                        heading="View"
+                        data-ui-sref="myProfile.productServiceOfferingView"
+                        active="$state.includes('myProfile.productServiceOfferingView')">
+                        <div data-ui-view="viewProductServiceOffering"></div>
+                    </li>
+                    <li tab
+                        heading="Edit"
+                        data-ui-sref="myProfile.productServiceOfferingEdit"
+                        active="$state.includes('myProfile.productServiceOfferingEdit')">
+                        <div data-ui-view="editProductServiceOffering"></div>
+                    </li>
+                </ul>
+            </accordion-group>
+            <accordion-group is-open="$state.includes('myProfile.salesTerritoryView') || $state.includes('myProfile.salesTerritoryEdit')"
+                             data-ng-if="canAccess('vm','Myprofile.SalesTerritory')">
+                <accordion-heading>
+                    <a data-ui-sref="myProfile.salesTerritoryView"
+                       class="show">{{'myProfile.salesTerritory.header.salesTerritoryTitle' | translate}}
+                        <i class="pull-right glyphicon"
+                           ng-class="{'glyphicon-minus': $state.includes('myProfile.salesTerritoryView') || $state.includes('myProfile.salesTerritoryEdit'), 'glyphicon-plus': !status.isfiveOpen}">
+                        </i>
+                    </a>
+                </accordion-heading>
+                <ul tabset>
+                    <li tab
+                        heading="View"
+                        data-ui-sref="myProfile.salesTerritoryView"
+                        active="$state.includes('myProfile.salesTerritoryView')">
+                        <div data-ui-view="viewSalesTerritory"></div>
+                    </li>
+                    <li tab
+                        heading="Edit"
+                        data-ui-sref="myProfile.salesTerritoryEdit"
+                        active="$state.includes('myProfile.salesTerritoryEdit')">
+                        <div data-ui-view="editSalesTerritory"></div>
+                    </li>
+                </ul>
+            </accordion-group>
+            <accordion-group
+                             is-open="$state.includes('myProfile.supervisorInformationView') || $state.includes('myProfile.supervisorInformationEdit')">
+                <accordion-heading>
+                    <a data-ui-sref="myProfile.supervisorInformationView"
+                       class="show">{{'myProfile.supervisorInformation.header.supervisorInformationTitle' | translate}}
+                        <i class="pull-right glyphicon"
+                           ng-class="{'glyphicon-minus': $state.includes('myProfile.supervisorInformationView') || $state.includes('myProfile.supervisorInformationEdit'), 'glyphicon-plus': !status.issixOpen}">
+                        </i>
+                    </a>
+                </accordion-heading>
+                <ul tabset>
+                    <li tab
+                        heading="View"
+                        data-ui-sref="myProfile.supervisorInformationView"
+                        active="$state.includes('myProfile.supervisorInformationView')">
+                        <div data-ui-view="viewSupervisorInformation"></div>
+                    </li>
+                    <li tab
+                        heading="Edit"
+                        data-ui-sref="myProfile.supervisorInformationEdit"
+                        active="$state.includes('myProfile.supervisorInformationEdit')">
+                        <div data-ui-view="editSupervisorInformation"></div>
+                    </li>
+                </ul>
+            </accordion-group>
+            <accordion-group
+                             is-open="$state.includes('myProfile.referencesView') || $state.includes('myProfile.referencesEdit')">
+                <accordion-heading>
+                    <a data-ui-sref="myProfile.referencesView"
+                       class="show">{{'myProfile.references.header.referencesTitle' | translate}}
+                        <i class="pull-right glyphicon"
+                           ng-class="{'glyphicon-minus': $state.includes('myProfile.referencesView') || $state.includes('myProfile.referencesEdit'), 'glyphicon-plus': !status.issevanOpen}">
+                        </i>
+                    </a>
+                </accordion-heading>
+                <ul tabset>
+                    <li tab
+                        heading="View"
+                        data-ui-sref="myProfile.referencesView"
+                        active="$state.includes('myProfile.referencesView')">
+                        <div data-ui-view="viewReferences"></div>
+                    </li>
+                    <li tab
+                        heading="Edit"
+                        data-ui-sref="myProfile.referencesEdit"
+                        active="$state.includes('myProfile.referencesEdit')">
+                        <div data-ui-view="editReferences"></div>
+                    </li>
+                </ul>
+            </accordion-group>
+        </accordion>
+        <strong>{{'common.accuracyInformation' | translate}}</strong>
+        <p class="marginT1">{{'common.accuracyContent' | translate}}</p>
+    </div>
+</div>

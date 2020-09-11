@@ -1,0 +1,26 @@
+<div class="row px-4 py-2">
+	<div class="col-sm-12 col-md-12 col-lg-12">
+		<accordion ng-init="status.isFirstOpen='true'">
+			<accordion-group is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
+				<accordion-heading>
+					<span data-ng-if="$state.current.name == 'addNewRep.inviteRep'">
+						{{'addNewRep.header.addNewRep' | translate}}</span>
+					<span data-ng-if="$state.current.name == 'addNewRep.cartSummary'">
+						{{'addNewRep.header.addNewRep' | translate}}</span>
+					<span data-ng-if="$state.current.name == 'addNewRep.billingInfo'">
+						{{'manageReps.addNewRep' | translate}}</span>
+					<span data-ng-if="$state.current.name == 'addNewRep.checkout'">
+						{{'addNewRep.header.addNewRep' | translate}}</span>
+					<span class="invite-rep">
+						<span tooltip-placement="right" tooltip-append-to-body="true"
+							tooltip="Complete all required fields and then Invite.">
+							<i class="material-icons align-middle">info_outline</i>
+						</span>
+					</span>
+				</accordion-heading>
+				<div id="addNewRepContainer" ng-controller="addNewRepController" class="minHeight200"
+					ui-view="addNewRepView" autoscroll="true"></div>
+			</accordion-group>
+		</accordion>
+	</div>
+</div>

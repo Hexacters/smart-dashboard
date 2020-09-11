@@ -1,0 +1,27 @@
+<div class="modal-content">
+	<div class="modal-header commonDialogHeader">
+		<button id="viewLocationCloseIcon" id="viewAccountCloseIcon"
+			type="button" class="close" data-dismiss="modal" aria-hidden="true"
+			data-ng-click="$close();">&times;</button>
+		<h3 class="modal-title">
+			<b>{{companyNameTitle}}</b>
+		</h3>
+	</div>
+	<div class="modal-body modelDialogScroll">
+		<h5 class="col-sm-12 col-md-12 col-lg-12 paddingL0">
+			<b>{{'accounts.cautionMessage1' | translate}}: </b>
+		</h5>
+		<div class="col-sm-12 col-md-12 col-lg-12 paddingL0">
+			<h5>
+				<a data-ng-click="accountUpgradeDecision('express');$close()"><b><span ng-bind-html="'accounts.cautionMessage1a' | translate"></span></b></a>
+			</h5>
+			<p ng-bind-html="'accounts.cautionMessage2' | translate : customerDetails | trustAsHtml"></p>
+		</div>
+		<div class="col-sm-12 col-md-12 col-lg-12 paddingL0">
+			<h5>
+				<a data-ng-click="accountUpgradeDecision('normal');$close()"><b><span ng-bind-html="'accounts.cautionMessage3' | translate"></span></b></a>
+			</h5>
+			<p ng-bind-html="'accounts.cautionMessage4' | translate : customerDetails | trustAsHtml"></p>
+		</div>
+	</div>
+</div>

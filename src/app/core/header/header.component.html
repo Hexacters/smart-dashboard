@@ -1,0 +1,107 @@
+<div class="header shadow">
+    <mat-toolbar class="p-0">
+        <div class="logo-container text-center">
+            <img alt="logo"
+                 class="ghx-logo"
+                 src="/assets/images/logo/logo.png" />
+        </div>
+        <button (click)="updateNav()"
+                mat-icon-button
+                class="menu-icon"
+                aria-label="Example icon-button with menu icon">
+            <mat-icon>menu</mat-icon>
+        </button>
+        <h1><b>Vendormate Credentialing</b></h1>
+        <span class="example-spacer"></span>
+        <button class="btn btn-primary cpm-icon new-health"
+                aria-label="Example icon-button with share icon">
+            + New Health System
+        </button>
+        <div>
+            <button mat-icon-button
+                    class="cpm-icon notification"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                    aria-label="Example icon-button with share icon">
+                <mat-icon>notifications_active</mat-icon>
+                <span class="badge badge-success">3</span>
+            </button>
+            <div class="dropdown-menu shadow"
+                 aria-labelledby="btnGroupDrop1">
+                <app-notification></app-notification>
+            </div>
+        </div>
+        <button mat-icon-button
+                class="cpm-icon info"
+                aria-label="Example icon-button with heart icon">
+            <mat-icon>help</mat-icon>
+        </button>
+        <button mat-icon-button
+                class="cpm-icon info"
+                aria-label="Example icon-button with heart icon">
+            <mat-icon>shopping_cart</mat-icon>
+        </button>
+        <div>
+            <button mat-icon-button
+                    class="cpm-icon info"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                    aria-label="Example icon-button with heart icon">
+                <mat-icon>apps</mat-icon>
+            </button>
+            <div class="dropdown-menu shadow"
+                 aria-labelledby="btnGroupDrop1">
+                <span class="dropdown-item"
+                      href="#">
+                    <b>Compliance & Credentialing</b>
+                </span>
+                <span class="dropdown-item"
+                      href="#">Vendormate Credentialing</span>
+                <span class="dropdown-item"
+                      href="#">Vendor Manager</span>
+
+                <div role="separator"
+                     class="dropdown-divider"></div>
+                <span class="dropdown-item"
+                      href="#">
+                    <b>My Exchange</b>
+                </span>
+                <span class="dropdown-item"
+                      href="#">Notifications</span>
+                <span class="dropdown-item"
+                      href="#">Invoices</span>
+                <span class="dropdown-item"
+                      href="#">Transactions</span>
+                <span class="dropdown-item"
+                      href="#">Orders</span>
+            </div>
+        </div>
+        <div>
+            <img alt="profile"
+                 class="align-middle account-icon"
+                 src="assets/images/avatar.jpg" />
+            <span class="align-middle profile">Jone Deo</span>
+            <button mat-icon-button
+                    class="cpm-icon"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                    aria-label="Example icon-button with share icon">
+                <mat-icon class="align-middle account-action">expand_more</mat-icon>
+            </button>
+            <div class="dropdown-menu"
+                 aria-labelledby="btnGroupDrop1">
+                <span class="dropdown-item"
+                      href="#">Profile</span>
+                <span class="dropdown-item"
+                      href="#">Company Profile</span>
+                <div role="separator"
+                     class="dropdown-divider"></div>
+                <span class="dropdown-item"
+                      href="#">Logout</span>
+            </div>
+        </div>
+    </mat-toolbar>
+</div>

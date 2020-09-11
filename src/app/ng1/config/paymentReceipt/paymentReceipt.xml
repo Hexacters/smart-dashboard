@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<module id="paymentReceiptModule">
+	<routers>
+		<router id="paymentReceipt" url="/payment">
+			<views>
+				<view containerId="vendordash" templateUrl="app/ng1/views/paymentReceipt/paymentReceipt.html"></view>
+			</views>
+		</router>
+		<router id="paymentReceipt.grid" url="/paymentReceipt/{tabsState}">
+			<views>
+				<view containerId="paymentReceipt" templateUrl="app/ng1/views/paymentReceipt/paymentReceiptGrid.html"></view>
+			</views>
+		</router>
+	</routers>
+	<services id="paymentReceiptServices">
+		<operations>
+			<operation
+				name="getPaymentReceiptDetails"
+				requestType="json"
+				requestWrapper="request"
+				responseWrapper="response"
+				serviceName="vendor"
+				method="POST"
+				url="VMClientProxyServlet"
+				mockUrl="app/ng1/mock/paymentReceipt/getPaymentReceipt.json"
+				mock="false">
+				<params>
+					<param name="searchRequest.pageIndex" property="searchRequest.startIndex" />
+					<param name="searchRequest.numberOfRecord" property="searchRequest.results" />
+				</params>
+			</operation>
+			<operation
+				name="getPaymentReceiptContent"
+				requestType="json"
+				requestWrapper="request"
+				responseWrapper="response"
+				serviceName="vendor"
+				method="POST"
+				url="VMClientProxyServlet"
+				mockUrl="app/ng1/mock/paymentReceipt/viewPaymentReceipt.json"
+				mock="false">
+			</operation>
+		</operations>
+	</services>
+</module>

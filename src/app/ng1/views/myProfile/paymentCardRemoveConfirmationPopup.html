@@ -1,0 +1,25 @@
+<div class="modal-content">
+    <div class="modal-header commonDialogHeader">
+        <h4 class="modal-title">
+            <b>{{"myProfile.cardManagement.label.removePaymentMethod" | translate}}</b>
+        </h4>
+    </div>
+    <div class="modal-body">
+        <div class="col-md-12 col-md-12 col-lg-12 text-center">
+            {{"myProfile.cardManagement.label.removePaymentMethodConfirmationMessage" | translate}}
+        </div>
+        <div class="col-md-12 col-md-12 col-lg-12 text-center marginT3">
+            <button type="button"
+                    class="btn btn-blue"
+                    autofocus
+                    data-ng-click="removePaymentCard();$close()">
+                {{"common.yes" | translate}}
+            </button>
+            <button type="button"
+                    class="btn btn-grey ng-binding"
+                    data-ng-click="$close();">
+                {{"common.no" | translate}}
+            </button>
+        </div>
+    </div>
+</div>

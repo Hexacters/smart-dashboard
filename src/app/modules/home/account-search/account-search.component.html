@@ -1,0 +1,85 @@
+<div class="account-search" [ngClass]="{'hide': hideTab}">
+    <div class="row m-0">
+        <div class="col-md-12 content-shadow p-4" [ngClass]="{'fullscreen': fullScreen}">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5 class="text-primary"><b>ACCOUNT SEARCH</b></h5>
+
+                    <!-- Search Box -->
+                    <div class="search-data">
+                        <form>
+                            <mat-form-field appearance="fill">
+                                <mat-label>Search</mat-label>
+                                <mat-icon matPrefix>search</mat-icon>
+                                <input matInput placeholder="search">
+                            </mat-form-field>
+                            <button mat-raised-button type="button" class="btn btn-primary">Search</button>
+                        </form>
+                        <!-- <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">
+                                    <span class="material-icons">
+                                        search
+                                    </span>
+                                </span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="Username" aria-label="Username"
+                                aria-describedby="basic-addon1">
+                            <button mat-raised-button class="btn btn-primary">Search</button>
+                        </div> -->
+                    </div>
+
+                    <!-- Recent Search -->
+                    <div class="recent-search">
+                        <p class="text-light">Recent Search</p>
+                        <div class="search-results">
+                            <div class="row mt-4" *ngFor="let data of [0,1]">
+                                <div class="col-7">
+                                    <p class="title"><b>Wellstar Health System</b></p>
+                                    <span class="address">
+                                        WellStar Paulding Hospital - Hiram
+                                        2518 Jimmy Lee Smith Pkwy
+                                        Hiram, Georgia 30066-6340
+                                    </span>
+                                </div>
+                                <div class="col-5 ">
+                                    <div class="float-right">
+                                        <span class="material-icons rating-star">star_rate</span>
+                                        <button mat-raised-button class="btn register">Register Now</button>
+                                        <span class="material-icons more">more_vert</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 footer">
+                                    <div class="float-right">
+                                        ( 2 of 6 ) <span class="text-primary">View All</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+
+                    <!-- Fav -->
+                    <div class="fav-org">
+                        <p class="text-light">
+                            Favorites ( 5 )
+                            <span class="material-icons float-right">more_vert</span>
+                        </p>
+                        <div class="data">
+                            <span class="pr-2" *ngFor="let img of [1, 2, 3, 4, 5]">
+                                <img src="{{'assets/images/' + img + '.png'}}" />
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Country Chart -->
+                <div class="col-md-6">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

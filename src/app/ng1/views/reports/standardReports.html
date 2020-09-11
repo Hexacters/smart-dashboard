@@ -1,0 +1,10 @@
+<div class="row" ng-controller="reportsController" data-ng-if="canAccess('vm','Credential Sections')">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+		<div data-ng-class="{'dNone':!loading}">
+			<img align="absmiddle" src="app/ng1/img/partial-loading.gif" />{{'common.loading' | translate}}
+		</div>
+		<h3><b>{{'reports.header.standardReports' | translate}}</b></h3>
+		<div data-ng-if="canAccess('vm','Share My Credentials History Report')" class="col-sm-12 col-md-12 col-lg-12 paddingL0 marginBP5"><a data-ng-click="$state.go('reports.shareMyCredentialsHistoryReport');callGAPageTrack('callShareMyHistoryReport');">{{'reports.label.shareMyCredentialsHistoryReport' | translate}}</a></div>
+		<div data-ng-if="canAccess('vm','Share Staff Credentials History Report')" class="col-sm-12 col-md-12 col-lg-12 paddingL0"><a data-ng-click="$state.go('reports.shareStaffCredentialsHistoryReport');callGAPageTrack('callShareStaffHistoryReport');">{{'reports.label.shareStaffCredentialsHistoryReport' | translate}}</a></div>
+	</div>
+</div>

@@ -1,0 +1,57 @@
+{
+    "VisionResponse": {
+        "Status": "Ok",
+        "contentType": "application/json",
+        "products": [
+            {
+                "id": 1,
+                "name": "Credentialing & Compliance",
+                "description": "Solutions to manage vendor credentialing services to help improve compliance.",
+                "activeFlag": true,
+                "isDelete": false,
+                "isVisible": false,
+                "products": [
+                    {
+                        "productName": "Credential Manager",
+                        "clientName": "PCM UI",
+                        "clientUri": "http://192.168.1.134:7070/pcm/openid_connect_login",
+                        "targetType": "_blank"
+                    },
+                    {
+                        "productName": "Vendor Manager",
+                        "clientName": "PCM UI",
+                        "clientUri": "",
+                        "targetType": "_self"
+                    },
+                    {
+                        "productName": "Compliance Document Manager",
+                        "clientName": "PCM UI",
+                        "clientUri": "",
+                        "targetType": "_self"
+                    },
+                    {
+                        "productName": "Credential Manager",
+                        "clientName": "SM UI",
+                        "clientUri": "http://192.168.1.134:6060/medzoSSO/openid_connect_login",
+                        "targetType": "_blank"
+                    }
+                ],
+                "order": 0
+            },
+            {
+            	"id": 2,
+                "name": "Single Sign On",
+                "activeFlag": true,
+                "isVisible": true,
+                "products": [
+                    {
+                        "clientName": "GHX Portal",
+                        "clientUri": "http://192.168.1.37:8088/openid_connect_login",
+                        "productName": "Home"
+                    }
+                ],
+                "order": 0
+            }
+        ]
+    }
+}

@@ -1,0 +1,57 @@
+{
+    "VisionResponse": {
+        "Status": "Ok",
+        "CustomerAddress": {
+            "allowUploadEntityDocuments": false,
+            "zip": "67214",
+            "verticalCode": "HLTH",
+            "enabledOnBoardingForms": false,
+            "credentialManagerCustomer": true,
+            "stateCode": "KS",
+            "enablePhiSecurityQuestions": false,
+            "addressLine3": "",
+            "companyName": "West Georgia Health System",
+            "addressLine2": "",
+            "enableVendorDetailDiversity": false,
+            "addressLine1": "550 N. Hillside",
+            "city": "Wichita",
+            "enabledNormalRegistration": true,
+            "oid": "wghs",
+            "enableExpressRegistration": true,
+            "stateName": "Kansas",
+            "domainUrl": "wghealth.vendormate.net",
+            "enableVendorDetailContacts": false,
+            "allowAckDuringEntityRegistration": false
+        },
+        "CustomerLocationList": [
+            {
+                "oid": "00000235410000005bfe",
+                "customerOid": "wghs",
+                "id": "Group",
+                "deleted": false,
+                "hideDuringRegistration": false,
+                "seq": 999999,
+                "seqString": "999999",
+                "daylightSavings": false,
+                "geoCodeUpdateSkipped": false,
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "oid": "00000235410000005bff",
+                "customerOid": "wghs",
+                "id": "Location",
+                "parentLocationOid": "00000235410000005bfe",
+                "deleted": false,
+                "hideDuringRegistration": false,
+                "seq": 999999,
+                "seqString": "999999",
+                "daylightSavings": false,
+                "geoCodeUpdateSkipped": false,
+                "updateAction": false,
+                "deleteAction": false
+            }
+        ],
+        "contentType": "application/json"
+    }
+}

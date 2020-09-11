@@ -1,0 +1,39 @@
+<div class="modal-view">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal"
+			aria-hidden="true" data-ng-click="closeValidateAddressPopup();">&times;</button>
+		<h3 ng-if="hgHeader" class="modal-title" style="font-size: 14px; font-weight: bold;">
+		HQ Address - {{'companyProfile.validateAddress.header.title'| translate}}</h3>
+		<h3 ng-if="!hgHeader" class="modal-title" style="font-size: 14px; font-weight: bold;">
+		Remit Address - {{'companyProfile.validateAddress.header.title'| translate}}</h3>
+	</div>
+	<div class="modal-body modelDialogScroll">
+		<div class="table-responsive">
+			<table data-ng-table="addressListTable" show-filter="false"
+				id="addressListTable" class="table table-striped table-bordered">
+				<tbody data-ng-if="addressList.length>0">
+					<tr data-ng-repeat="addressInfo in addressList">
+						<td class="col-md-1 text-center"
+							data-title="'Action'"><div>
+								<button class="btn btn-primary"
+									data-ng-click="updateMalisaAddress(addressInfo);"
+									type="button">Select</button>
+							</div></td>
+						<td class="text-left col-lg-2" data-title="'companyProfile.validateAddress.label.streetAddress1' | translate">{{addressInfo.addressLine1}}</td>
+						<td class="text-left col-lg-2" data-title="'companyProfile.validateAddress.label.streetAddress2' | translate">{{addressInfo.addressLine2}}</td>
+						<td class="text-left col-lg-2" data-title="'companyProfile.validateAddress.label.city' | translate">{{addressInfo.city}}</td>
+						<td class="text-left col-lg-2" data-title="'companyProfile.validateAddress.label.state' | translate">{{addressInfo.stateCode}}</td>
+						<td class="text-left col-lg-2" data-title="'companyProfile.validateAddress.label.country' | translate">{{addressInfo.countryCode}}</td>
+						<td class="text-left col-lg-2" data-title="'companyProfile.validateAddress.label.zip' | translate">{{addressInfo.zip}}</td>						
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="col-md-12" data-ng-table-pagination="addressListTable"
+			template-url="'ng-table/pager.html'"></div>
+		<div class="text-center margin">
+			<button class="btn btn-primary"
+				data-ng-click="closeValidateAddressPopup();">Close</button>
+		</div>
+	</div>
+</div>

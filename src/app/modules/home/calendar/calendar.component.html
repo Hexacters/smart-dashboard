@@ -1,0 +1,25 @@
+<div class="calendar" [ngClass]="{'hide': hideTab}">
+    <div class="row m-0">
+        <div class="col-md-12 p-4 content-shadow content">
+            <!-- <h5 class="text-primary head">Calendar</h5>
+            <p class="text-light desc">Will display hear</p> -->
+            <div class="w-100 text-center">
+                
+                <ngb-datepicker class="custom-datepicker" #dp [displayMonths]="1"
+                    [showWeekdays]="true" navigation="none">
+                    <ng-template ngbDatepickerContent>
+                        <div *ngFor="let month of dp.state.months">
+                            <div class="text-primary p-1 text-center navigation d-flex justify-content-center">
+                                <div><span class="material-icons" (click)="navigate(-1);">keyboard_arrow_left</span></div>
+                                <div class="month">{{ i18n.getMonthShortName(month.month) }}</div>
+                                <div><span class="material-icons" (click)="navigate(1);">keyboard_arrow_right</span></div>
+
+                            </div>
+                            <ngb-datepicker-month [month]="month"></ngb-datepicker-month>
+                        </div>
+                    </ng-template>
+                </ngb-datepicker>
+            </div>
+        </div>
+    </div>
+</div>

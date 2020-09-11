@@ -1,0 +1,14 @@
+{
+    "VisionResponse": {
+        "serverTimezoneOffet": 240,
+        "Status": "Ok",
+        "TZ009": -480,
+        "TZ013": -420,
+        "serverDateTime": "05/02/2016/9/53/18/72",
+        "TZ001": -420,
+        "contentType": "application/json",
+        "TZ002": -360,
+        "TZ003": -300,
+        "TZ004": -240
+    }
+}

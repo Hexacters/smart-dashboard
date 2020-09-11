@@ -1,0 +1,26 @@
+<footer>
+	<div class="container-fluid footerColor" ng-controller="footerController">
+		<div class="footer-version footer-version-color text-center" data-ng-init="footercurrtentYear();">
+			<div class="col-sm-12 col-md-12 col-lg-12 text-center ng-binding">
+					{{'footer.label.footerContent1' | translate }}&nbsp&copy;&nbsp{{footerYear}}&nbsp{{'footer.label.footerContent2' | translate}}
+					<span class="margin">|</span> <a target="_blank" href="{{$appConfiguration.footer.termsOfUse}}">{{'footer.label.termsOfUse' | translate}}</a>
+					<span class="margin">|</span> <a target="_blank" href="{{$appConfiguration.footer.privacyPolicy}}">{{'footer.label.privacyPolicy' | translate}}</a>
+					<span class="margin">|</span> <a href="javascript:;" data-ng-click="supportLink();" >{{'footer.label.customerCare' | translate}}</a>
+			</div>
+		</div>
+		<div class="iconnectChatContainer" id="iconnectChatContainer">
+			<div ng-show="showRingChat" class="chatMinimizeButton" data-ng-click="toggleRingChat()">
+				<i class="glyphicon glyphicon-chevron-down"></i>
+			</div>
+			<div ng-if="showRingChat && isOfficeWorkingHour && isChatAvailableDay">
+				<iframe ng-show="showRingChat" width="480px" height="375px" src="https://home-c27.incontact.com/incontact/chatclient/chatclient.aspx?poc=5268c4f5-dfa3-42f0-86f6-e1c06c31a169&bu=4598948"></iframe>
+			</div>
+			<div ng-if="showRingChat && (!isOfficeWorkingHour || !isChatAvailableDay)" class="chatWorkingHours">
+				{{'footer.label.footerContent3' | translate }}
+			</div>
+		</div>
+		<div class="chatIcon" ng-if="userProfile && !isSupplierBlocked" data-ng-click="toggleRingChat()">
+			<img src="app/ng1/img/lets-chat.png" width="50px" alt="Live chat" />
+		</div>
+	</div>
+</footer>

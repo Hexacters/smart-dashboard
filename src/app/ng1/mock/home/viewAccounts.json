@@ -1,0 +1,23 @@
+{  
+   "VisionResponse":{  
+      "Status":"Ok",
+      "ResponseError":[
+      ],
+      "UserDocumentList": {
+        "UserDocument": [
+			{
+				"accounts": "St Joseph's Hospital"				
+			},
+			{
+				"accounts": "Detroit Medical Center"				
+			},
+			{
+				"accounts": "Benton Volley Clinic"				
+			}			
+		 ]
+        },
+		"totalRecords": "3",
+        "ContentType": "text/xml",
+        "ResponseErrors": ""
+    }
+}

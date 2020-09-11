@@ -1,0 +1,41 @@
+<div class="row">
+	<div class="col-sm-12 col-md-12 col-lg-12"
+		ng-controller="accountController">
+		<h3 class="marginTP5 marginB1">
+			<i class="glyphicon glyphicon-plus-sign btn-lg padding0 healthSystemIcon healthSystemIconSize"></i>
+			<a id="connectWithANewHealthSystem" data-ng-if="canAccess('vm','Accounts.SearchForAccounts')" ng-click="$state.go('accounts.searchAccounts');"><b>{{'home.label.connectWithANewHealthSystem' | translate}}</b></a>
+			<a id="connectWithANewHealthSystem" data-ng-if="!canAccess('vm','Accounts.SearchForAccounts')"><b>{{'home.label.connectWithANewHealthSystem' | translate}}</b></a>
+		</h3>
+		<accordion close-others="true" ng-init="status.isFirstOpen= 'true'">
+		<accordion-group is-open="$state.includes('accounts.manageAccounts')">
+		<accordion-heading> <a class="show"
+			data-ui-sref="accounts.manageAccounts">
+			{{'accounts.manageMyaccount.header.manageMyAccounts' | translate}} <i
+			class="pull-right glyphicon"
+			ng-class="{'glyphicon-minus':  $state.includes('accounts.manageAccounts'), 'glyphicon-plus': !status.Open}"></i>
+		</a> </accordion-heading>
+		<div data-ng-class="{'dNone':!(loading || loadingManageAccounts)}">
+			<img align="absmiddle" src="app/ng1/img/partial-loading.gif"/>&nbsp;{{'common.loading'
+			| translate}}
+		</div>
+		<div ui-view="manageMyAccounts" autoscroll="true"></div>
+		</accordion-group> <accordion-group is-open="$state.includes('accounts.searchAccounts')" data-ng-if="canAccess('vm','Accounts.SearchForAccounts')">
+		<accordion-heading> <a class="show"
+			data-ui-sref="accounts.searchAccounts">{{'accounts.searchAccounts.header.searchForAccounts'
+			| translate}} <i class="pull-right glyphicon"
+			ng-class="{'glyphicon-minus': $state.includes('accounts.searchAccounts'), 'glyphicon-plus': !status.Open}"></i>
+		</a> </accordion-heading>
+		<div ui-view="searchAccounts" autoscroll="true"></div>
+		</accordion-group> <accordion-group is-open="$state.includes('accounts.accountDetails')">
+		<accordion-heading> <a class="show"
+			data-ui-sref="accounts.accountDetails">
+			<span ng-if="$stateParams.fromPrintBadge === 'manageAccount'" ng-bind-html="accountDetailsTitleFromPrintBadge | trustAsHtml">{{'accounts.accountDetails.header.accountDetails' | translate}}</span>
+			<span ng-if="$stateParams.fromPrintBadge != 'manageAccount'" ng-bind-html="accountDetailsTitle | trustAsHtml"></span>
+			<i
+			class="pull-right glyphicon"
+			ng-class="{'glyphicon-minus': $state.includes('accounts.accountDetails'), 'glyphicon-plus': !status.Open}"></i>
+		</a> </accordion-heading>
+		<div ui-view="viewAccountDetails" autoscroll="true"></div>
+		</accordion-group> </accordion>
+	</div>
+</div>

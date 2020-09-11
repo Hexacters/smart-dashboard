@@ -1,0 +1,18 @@
+{
+    "VisionResponse": {
+        "Status": "Ok",
+        "totalRecords": "6",
+        "AssociatedCompanyList": {
+            "AssociatedCompany":[ {
+                "vendorOid": "c010000b7d500000b7dc",
+                "vendorDetailOid": "c010000b7d700000b7de",
+                "className": "AssociatedCompany",
+                "fein": "258478887",
+                "companyName": "vicks"
+			}
+           ]
+        },
+        "ContentType": "text/xml",
+        "ResponseErrors": ""
+    }
+}

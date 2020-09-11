@@ -1,0 +1,119 @@
+<div class="row">
+	<div class="col-sm-12 col-md-12 col-lg-12">
+		<accordion class="tab-animation"> <accordion-group
+			is-open="$state.includes('manage.repAccountDetails.companyProfile.viewInformation') || $state.includes('manage.repAccountDetails.companyProfile.editInformation')" data-ng-if="canAccess('vm','CompanyInfo')">
+		<accordion-heading> <a
+			ui-sref="manage.repAccountDetails.companyProfile.viewInformation"
+			class="accordion-toggle show">{{'companyProfile.companyInformation.header.companyInformation'
+			| translate}}<i class="pull-right glyphicon"
+			ng-class="{'glyphicon-minus': $state.includes('manage.repAccountDetails.companyProfile.viewInformation'), 'glyphicon-plus': !status.open}"></i>
+		</a> </accordion-heading>
+		<ul tabset>
+			<li tab heading="{{'common.view' | translate}}"
+				ui-sref="manage.repAccountDetails.companyProfile.viewInformation"
+				active="$state.includes('manage.repAccountDetails.companyProfile.viewInformation')">
+				<div ui-view="viewCompanyInformation"></div>
+			</li>
+			<li tab heading="{{'common.edit' | translate}}"
+				ui-sref="manage.repAccountDetails.companyProfile.editInformation"
+				active="$state.includes('manage.repAccountDetails.companyProfile.editInformation')" data-ng-if="canAccess('vm','CompanyInfoEdit') || !restrictCompanyDocuments">
+				<div ui-view="editCompanyInformation"></div>
+			</li>
+		</ul>
+		<div ui-view="companyInformationContainer"></div>
+		</accordion-group> <accordion-group
+			is-open="$state.includes('manage.repAccountDetails.companyProfile.viewContactInformation') || $state.includes('manage.repAccountDetails.companyProfile.editContactInformation')" data-ng-if="canAccess('vm','CompanyContactInformation')">
+		<accordion-heading> <a
+			ui-sref="manage.repAccountDetails.companyProfile.viewContactInformation"
+			class="accordion-toggle show">{{'companyProfile.companyContactInformation.header.companyContactInfo'
+			| translate}}<i class="pull-right glyphicon"
+			ng-class="{'glyphicon-minus': $state.includes('manage.repAccountDetails.companyProfile.viewContactInformation'), 'glyphicon-plus': !status.open}"></i>
+		</a> </accordion-heading>
+		<ul tabset>
+			<li tab heading="{{'common.view' | translate}}"
+				ui-sref="manage.repAccountDetails.companyProfile.viewContactInformation"
+				active="$state.includes('manage.repAccountDetails.companyProfile.viewContactInformation')">
+				<div ui-view="viewContactInformation"></div>
+			</li>
+			<li tab heading="{{'common.edit' | translate}}"
+				ui-sref="manage.repAccountDetails.companyProfile.editContactInformation"
+				active="$state.includes('manage.repAccountDetails.companyProfile.editContactInformation')" data-ng-if="canAccess('vm','CompanyContactInfoEdit') || !restrictCompanyDocuments">
+				<div ui-view="editContactInformation"></div>
+			</li>
+		</ul>
+		<div ui-view="contactInformationContainer"></div>
+		</accordion-group> <accordion-group is-open="$state.includes('manage.repAccountDetails.companyProfile.companyLogo')" data-ng-if="canAccess('vm','YourCompanyLogo')">
+				<accordion-heading>
+					<a ui-sref="manage.repAccountDetails.companyProfile.companyLogo" class="accordion-toggle show">{{'companyProfile.companyLogo.header.companyLogo' | translate}}<i class="pull-right glyphicon" ng-class="{'glyphicon-minus': $state.includes('manage.repAccountDetails.companyProfile.companyLogo'), 'glyphicon-plus': !status.open}"></i>
+					</a>
+				</accordion-heading>		
+				<div data-ng-class="{'dNone':!loading}">
+					<img align="absmiddle" src="app/ng1/img/partial-loading.gif">&nbsp;{{'common.loading' | translate}}
+				</div>
+				<div ui-view="companyLogoContainer"></div>
+			</accordion-group> <accordion-group
+			is-open="$state.includes('manage.repAccountDetails.companyProfile.companyPrincipals')" data-ng-if="canAccess('vm','CompanyPrinciples')">
+		<accordion-heading> <a
+			ui-sref="manage.repAccountDetails.companyProfile.companyPrincipals"
+			class="accordion-toggle show">{{'companyProfile.companyPrincipals.header.companyPrincipals'
+			| translate}}<i class="pull-right glyphicon"
+			ng-class="{'glyphicon-minus': $state.includes('manage.repAccountDetails.companyProfile.companyPrincipals'), 'glyphicon-plus': !status.open}"></i>
+		</a> </accordion-heading>
+		<div ui-view="companyPrincipalsContainer"></div>
+		</accordion-group>
+		<accordion-group is-open="$state.includes('manage.repAccountDetails.companyProfile.viewGeographicSalesCapability') || $state.includes('manage.repAccountDetails.companyProfile.editGeographicSalesCapability')" data-ng-if="canAccess('vm','GeographicSalesCapability')">
+				<accordion-heading>
+					<a ui-sref="manage.repAccountDetails.companyProfile.viewGeographicSalesCapability" class="accordion-toggle show">{{'companyProfile.geographicSalesCapability.header.geographicSalesCapability' | translate}}<i class="pull-right glyphicon" ng-class="{'glyphicon-minus': $state.includes('manage.repAccountDetails.companyProfile.viewGeographicSalesCapability'), 'glyphicon-plus': !status.open}"></i>
+					</a>
+				</accordion-heading>
+				<ul tabset>
+					<li tab heading="{{'common.view' | translate}}" ui-sref="manage.repAccountDetails.companyProfile.viewGeographicSalesCapability" active="$state.includes('manage.repAccountDetails.companyProfile.viewGeographicSalesCapability')">
+						<div ui-view="viewGeoSalesCapability"></div>
+					</li>
+					<li tab heading="{{'common.edit' | translate}}" ui-sref="manage.repAccountDetails.companyProfile.editGeographicSalesCapability" active="$state.includes('manage.repAccountDetails.companyProfile.editGeographicSalesCapability')" data-ng-if="canAccess('vm','GeoSalesCapabilityEdit') || !restrictCompanyDocuments">
+						<div ui-view="editGeoSalesCapability"></div>
+					</li>
+				</ul>
+				<div ui-view="geoSalesCapabilityContainer"></div>
+			</accordion-group>
+			  <accordion-group is-open="$state.includes('manage.repAccountDetails.companyProfile.diversityInformaionView') || $state.includes('manage.repAccountDetails.companyProfile.diversityInformaionEdit')" data-ng-if="canAccess('vm','DiversityInformation')">
+				<accordion-heading>
+					<a ui-sref="manage.repAccountDetails.companyProfile.diversityInformaionView" class="accordion-toggle show">{{'companyProfile.diversityInformation.header.diversityInformation' | translate}}<i class="pull-right glyphicon" ng-class="{'glyphicon-minus': $state.includes('manage.repAccountDetails.companyProfile.diversityInformaionView'), 'glyphicon-plus': !status.open}"></i>
+					</a>
+				</accordion-heading>
+				<ul tabset>
+					<li tab heading="{{'common.view' | translate}}" ui-sref="manage.repAccountDetails.companyProfile.diversityInformaionView" active="$state.includes('manage.repAccountDetails.companyProfile.diversityInformaionView')">
+						<div ui-view="viewDiversityInformation"></div>
+					</li>
+					<li tab heading="{{'common.edit' | translate}}" ui-sref="manage.repAccountDetails.companyProfile.diversityInformaionEdit" active="$state.includes('manage.repAccountDetails.companyProfile.diversityInformaionEdit')" data-ng-if="canAccess('vm','DiversityInfoEdit') || !restrictCompanyDocuments">
+						<div ui-view="editDiversityInformation"></div>
+					</li>
+				</ul>
+				<div ui-view="geoSalesCapabilityContainer"></div>
+			</accordion-group> 
+			<accordion-group
+			is-open="$state.includes('manage.repAccountDetails.companyProfile.complainceOfficerView') || $state.includes('manage.repAccountDetails.companyProfile.complainceOfficerEdit')" data-ng-if="canAccess('vm','ComplianceOfficer')">
+		<accordion-heading> <a
+			ui-sref="manage.repAccountDetails.companyProfile.complainceOfficerView"
+			class="accordion-toggle show">{{'companyProfile.complianceOfficer.header.complianceOfficer'
+			| translate}}<i class="pull-right glyphicon"
+			ng-class="{'glyphicon-minus': $state.includes('manage.repAccountDetails.companyProfile.complainceOfficerView'), 'glyphicon-plus': !status.open}"></i>
+		</a> </accordion-heading>
+		<ul tabset>
+			<li tab heading="{{'common.view' | translate}}"
+				ui-sref="manage.repAccountDetails.companyProfile.complainceOfficerView"
+				active="$state.includes('manage.repAccountDetails.companyProfile.complainceOfficerView')">
+				<div ui-view="viewComplainceOfficer"></div>
+			</li>
+			<li tab heading="{{'common.edit' | translate}}"
+				ui-sref="manage.repAccountDetails.companyProfile.complainceOfficerEdit"
+				active="$state.includes('manage.repAccountDetails.companyProfile.complainceOfficerEdit')" data-ng-if="canAccess('vm','ComplianceOfficerEdit') || !restrictCompanyDocuments">
+				<div ui-view="editComplainceOfficer"></div>
+			</li>
+		</ul>
+		<div ui-view="geoSalesCapabilityContainer"></div>
+		</accordion-group> </accordion>
+		<strong>{{'common.accuracyInformation' | translate}}</strong> </br>
+		<p class="marginT1">{{'common.accuracyContent' | translate}}</p>
+	</div>
+</div>

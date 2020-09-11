@@ -1,0 +1,58 @@
+<div ng-controller="googleAnalyticsController" data-ng-init="callGAPageTrack('callGeoSalesCap');"></div>
+<div ng-controller="myProfileController" class="row">
+	<div class="col-sm-12 col-md-12 col-lg-12"
+		data-ng-class="{'dNone':!loading}">
+		<img align="absmiddle" src="app/ng1/img/partial-loading.gif" />&nbsp;{{'common.loading'
+		| translate}}
+	</div>
+	<div class="col-sm-12 col-md-12 col-lg-12">
+		<vision-action> <get-data
+			service="companyProfileServices" request-formatter="getGeoSalesTerritoriesaParam"
+			operation="getGeoSalesTerritoriesProcess"></get-data>
+		<div class="col-sm-12 col-md-12 col-lg-12 padding0">
+			<div class="col-sm-8 col-md-6 col-lg-6">
+				<h3>
+					<b><sup class="asterisk">*</sup>{{'companyProfile.geographicSalesCapability.header.geographicSalesCapability'
+						| translate}}</b>
+				</h3>
+			</div>
+			<div class="col-sm-4 col-md-6 col-lg-6 clear">
+				<div class="pull-right marginT2">
+					<sup class="asterisk">*</sup>&nbsp;{{'common.required' | translate}}
+					<a data-ui-sref="companyProfile.viewGeographicSalesCapability.help" ng-show="!isFromManageReps">{{'common.help' | translate}}</a>
+					<a data-ui-sref="manage.repAccountDetails.companyProfile.viewGeographicSalesCapability.help" ng-show="isFromManageReps">{{'common.help' | translate}}</a>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-6 col-md-6 col-lg-6 marginB2">
+			<h5>
+				<b>{{'companyProfile.geographicSalesCapability.label.stateProvince'
+					| translate}}</b>
+			</h5>
+			<div class="col-sm-9 col-md-9 col-lg-9 paddingL0 salesTerritory"
+				ng-model="q.orderNo">
+				<span ng-if="data.successData.stateSalesTerritories.length > 0"
+					ng-repeat="states in data.successData.stateSalesTerritories">
+					<div>{{states.stateName}}</div>
+				</span> <span ng-if="!data.successData.stateSalesTerritories">
+					{{'companyProfile.geographicSalesCapability.errorMessage.noStateFound'
+					| translate}} </span>
+			</div>
+		</div>
+		<div class="col-sm-6 col-md-6 col-lg-6 marginB2">
+			<h5>
+				<b>{{'companyProfile.geographicSalesCapability.label.country' |
+					translate}}</b>
+			</h5>
+			<div class="col-sm-9 col-md-9 col-lg-9 paddingL0 salesTerritory">
+				<span ng-if="data.successData.countrySalesTerritories.length > 0"
+					ng-repeat="country in data.successData.countrySalesTerritories">
+					<div>{{country.countryName}}</div>
+				</span> <span ng-if="!data.successData.countrySalesTerritories">
+					{{'companyProfile.geographicSalesCapability.errorMessage.noCountryFound'
+					| translate}} </span>
+			</div>
+		</div>
+		</vision-action>
+	</div>
+</div>

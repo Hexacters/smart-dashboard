@@ -1,0 +1,64 @@
+<div ng-controller="homeController">
+	<div class="col-sm-12 col-md-12 col-lg-12 commonGridBorder marginB1">
+		<vision-data-table service="complianceServices"
+			operation="getBackgroundCheckDetails" request-formatter="getBackgroundCheckDetailsFormatter"
+			root-node="data.successData.BCDetails" type="server"
+			id="nosrAlertViewData">
+		<div data-ng-class="{'dNone':!loading}">
+			<img align="absmiddle" src="app/ng1/img/partial-loading.gif">&nbsp;{{'common.loading'
+			| translate}}
+		</div>
+		<div ng-show="!loading" class="table-responsive vision-margin-10">
+			<table ng-table="nosrAlertViewData"
+				class="table table-striped table-bordered marginB0 marginT1">
+				<tbody
+					ng-if="nosrAlertViewData.data.length>0 && data.status=='success'">
+					<tr data-ng-repeat="specificDocument in $data">
+						<td data-title="''" class="text-center col-sm-1"><span>
+								<input ng-if="(((((specificDocument.nsorStatus | lowercase) === 'pass' && specificDocument.isNsorExpired) || (specificDocument.nsorStatus | lowercase) === 'incomplete' || (specificDocument.nsorStatus | lowercase) === 'fail') && specificDocument.typeCode === 'NSOR') ||
+												((((specificDocument.cbcStatus | lowercase) === 'pass' && specificDocument.isCbcExpired) || (specificDocument.cbcStatus | lowercase) === 'incomplete' || (specificDocument.cbcStatus | lowercase) === 'fail') && specificDocument.typeCode === 'CBC'))" type="radio" value="{{specificDocument.templateOid}}"
+								ng-click="showDocumentState(true);uploadSorDocument(specificDocument,'homeAlertPopup');"
+								name="common" ng-model="accountSpecificDocument" />
+								
+								<input ng-if="(((specificDocument.nsorStatus | lowercase) === 'pass' && !specificDocument.isNsorExpired && specificDocument.typeCode === 'NSOR') || ((specificDocument.cbcStatus | lowercase) === 'pass' && !specificDocument.isCbcExpired && specificDocument.typeCode === 'CBC'))" type="radio" value="{{specificDocument.templateOid}}"
+								name="common" ng-model="accountSpecificDocument" disabled/>
+						</span></td>
+						<td data-title="'nsor.label.status' | translate" class="text-left col-md-3">
+							<span ng-if="specificDocument.typeCode === 'NSOR'">
+								<span class="text-danger" ng-if="(specificDocument.nsorStatus | lowercase) === 'incomplete'" tooltip-append-to-body="true" uib-tooltip-html="'{{'nsor.errorMessage.nsorStatusIncomplete'|translate}}'">{{'nsor.label.alert' | translate}}</span>
+								<span class="text-danger" ng-if="((specificDocument.nsorStatus | lowercase) === 'pass' && specificDocument.isNsorExpired)" tooltip-append-to-body="true" uib-tooltip-html="'{{'nsor.errorMessage.nsorStatusExpired'|translate}}'">{{'nsor.label.alert' | translate}}</span>
+								<span class="text-success" ng-if="((specificDocument.nsorStatus | lowercase) === 'pass' && !specificDocument.isNsorExpired)">{{'nsor.label.pass' | translate}}</span>
+								<span class="text-danger" ng-if="(specificDocument.nsorStatus | lowercase) === 'fail'" tooltip-append-to-body="true" uib-tooltip-html="'{{'nsor.errorMessage.nsorStatusFail'|translate}}'">{{'nsor.label.fail' | translate}}</span>
+							</span>
+							<span ng-if="specificDocument.typeCode === 'CBC'">
+								<span class="text-danger" ng-if="(specificDocument.cbcStatus | lowercase) === 'incomplete'" tooltip-append-to-body="true" uib-tooltip-html="'{{'nsor.errorMessage.cbcStatusIncomplete'|translate}}'">{{'nsor.label.alert' | translate}}</span>
+								<span class="text-danger" ng-if="((specificDocument.cbcStatus | lowercase) === 'pass' && specificDocument.isCbcExpired)" tooltip-append-to-body="true" uib-tooltip-html="'{{'nsor.errorMessage.cbcStatusExpired'|translate}}'">{{'nsor.label.alert' | translate}}</span>
+								<span class="text-success" ng-if="((specificDocument.cbcStatus | lowercase) === 'pass' && !specificDocument.isCbcExpired)">{{'nsor.label.pass' | translate}}</span>
+								<span class="text-danger" ng-if="(specificDocument.cbcStatus | lowercase) === 'fail'" tooltip-append-to-body="true" uib-tooltip-html="'{{'nsor.errorMessage.cbcStatusFail'|translate}}'">{{'nsor.label.fail' | translate}}</span>
+							</span>
+						</td>
+						<td data-title="'nsor.label.documentsName' | translate" class="text-left col-md-8">
+							<span> {{specificDocument.name}} </span>
+						</td>
+					</tr>
+				</tbody>
+				<tbody ng-if="nosrAlertViewData.data.errorData.Status=='Error'"
+					ng-init="cancelDialog();$state.go('home',{},{'reload':true});">
+					<tr>
+						<td colspan="3">
+							<div class="text-danger">
+								<span class="fa fa-warning" aria-hidden="true"></span>
+								{{nosrAlertViewData.data.errorData.ResponseError[0].errorCode |
+								translate}}
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		</vision-data-table>
+	</div>
+	<div id="docAlertInfo" ng-show="showDocumentDetails">
+		<div data-ui-view="backgroundCheckDocumentUpload" autoscroll="true"></div>
+	</div>
+</div>

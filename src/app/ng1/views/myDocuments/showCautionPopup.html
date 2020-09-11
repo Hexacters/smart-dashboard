@@ -1,0 +1,12 @@
+<div class="modal-header">
+  <button id="complianceCautionCloseIcon" type="button" class="close" data-dismiss="modal" aria-hidden="true" data-ng-click="$close()">&times;</button>
+  <h3 class="modal-title"><b>{{'myDocuments.caution'| translate}}</b></h3>
+</div>
+<div class="modal-body" >
+  <p>{{'myDocuments.cautionContent.upload'| translate}}</p>
+  <p ng-bind-html="'myDocuments.cautionContent.ensure'| translate"></p>
+  <div class="text-center" ng-controller="myDocumentController">
+	 <button class="btn btn-info" id="cautionContinue" data-ng-click="hideCaution();">{{'common.continue'| translate}}</button>
+	 <button autofocus class="btn btn-warning" id="cautionCancel" data-ng-click="cancel()">{{'common.cancel'| translate}}</button>
+  </div>
+</div>

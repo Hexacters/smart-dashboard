@@ -1,0 +1,32 @@
+<div class="row" data-ng-controller="homeController"
+	ng-init="welcomePage();">
+	<div ng-show="showWelcomPage === false"
+		class="col-sm-12 col-md-12 col-lg-12">
+		<img align="absmiddle" src="app/ng1/img/partial-loading.gif">&nbsp;{{'common.loading'|
+		translate}}
+	</div>
+	<div ng-show="showWelcomPage === true">
+		<div class="col-sm-12 col-md-12 col-lg-12 paddingT2 minHeight300">
+			<div class="col-sm-12 col-md-12 col-lg-12 padding0">
+				<div class="alert alert-danger col-sm-7 col-md-7 col-lg-7"
+					ng-show="showWelcomePageError" id="welcomeMessageError">
+					{{errorMessage}}</div>
+			</div>
+			<div bind-html-compile="showWelcomeMsg"></div>
+		</div>
+		<div class="col-sm-12 col-md-12 col-lg-12 paddingB1">
+			<span><input id="hideSysMessage"
+				data-ng-init="hideMessage = false" data-ng-model="hideMessage"
+				name="hideMessage" type="checkbox"
+				data-ng-keydown="$event.keyCode == 13 && messageHide(hideMessage);"
+				value="true" />&nbsp;&nbsp;{{'home.label.checkboxMessage' |
+				translate}}</span>
+		</div>
+		<div class="col-sm-12 col-md-12 col-lg-12">
+			<button ng-disabled="disabledBtn" type="submit"
+				class="btn btn-primary input-sm" autofocus
+				data-ng-click="messageHide(hideMessage);" id="hideMessageBtn">{{'common.continue'
+				| translate}}</button>
+		</div>
+	</div>
+</div>

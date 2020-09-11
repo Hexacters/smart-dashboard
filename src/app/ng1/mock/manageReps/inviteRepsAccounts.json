@@ -1,0 +1,28 @@
+{
+    "VisionResponse": {
+        "Status": "Ok",
+        "totalRecords": "6",
+        "CustomerList": {
+            "Customer":[ {
+  
+                "vmUrl": "https://smiskr.vendormate.org",
+                "customerLocation": "",
+                "customerOid": "smiskr",
+                "objectId": "smiskr",
+                "domainUrl": "smiskr.vendormate.org",
+                "className": "Customer",
+                "customerCityState": "",
+                "customerStatusCode": "ACT",
+                "locationLongDescription": "",
+                "searchableCustomer": "true",
+                "companyName": "smiskr health system",
+                "registerFlag": "false",
+                "geoCode": "",
+                "address": "?^??^?https://smiskr.vendormate.org/vmdev/login.do,ACT,smiskr health system"
+          	}
+           ]
+        },
+        "ContentType": "text/xml",
+        "ResponseErrors": ""
+    }
+}

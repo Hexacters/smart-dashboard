@@ -1,0 +1,110 @@
+<div class="row minHeight minHeight200" data-ng-init="clearSearchError();">
+   <div class="col-sm-10 col-md-10 col-lg-10 marginL1 alert alert-danger"
+				data-ng-if="searchResponseError!=''">
+				<strong><i class="fa fa-warning"></i></strong> {{
+				searchResponseError}}
+	</div>
+	 <div class="col-sm-12 col-md-12 col-lg-12 marginB1" data-ng-class="{'dNone':!(getCustomerAddressLoading || getVendorRepLoading)}">
+		<img align="absmiddle" src="app/ng1/img/partial-loading.gif"/>&nbsp;{{'common.loading'
+		| translate}}
+	</div>
+   <div class="col-sm-12 col-md-12 col-lg-12 marginB1" ng-if="$state.params.searchAccount !=''"><a ui-sref="home">{{'printBadge.backtoHome' | translate}}</a></div>
+   <div data-ng-controller="searchAccountController">
+	   <div class="col-sm-12 col-md-12 col-lg-12 marginB1" data-ng-class="{'dNone':!enableLoading}">
+			<img align="absmiddle" src="app/ng1/img/partial-loading.gif"/>&nbsp;{{'common.loading'
+			| translate}}
+		</div>
+		<form name="searchForm" autocomplete="off" id="validateSearchForm">
+			<div class="marginT1">
+				<div class="col-sm-3 col-md-3 col-lg-3" data-ng-init="searchAccounts.searchString=''">
+					<input type="text" class="form-control input-sm" ng-if="searchAccounts.searchType=='COMPANY_NAME_SEARCH'"name="searchString" id="searchString" placeholder="{{'accounts.searchAccounts.label.searchStringPlaceholderHealthSystem' | translate}}" data-ng-model="searchAccounts.searchString"  ng-focus="hideErrorMessage()" ng-keypress="($event.which === 13)?changeSearchString(searchAccounts,$event):hideErrorMessage();" maxlength="100">
+					<input type="text" class="form-control input-sm" ng-if="searchAccounts.searchType=='LOCATION_SEARCH'" name="searchString" id="searchString" placeholder="{{'accounts.searchAccounts.label.searchStringPlaceholderLocation' | translate}}" data-ng-model="searchAccounts.searchString"  ng-focus="hideErrorMessage()" ng-keypress="($event.which === 13)?changeSearchString(searchAccounts,$event):hideErrorMessage();" maxlength="100">
+					<input type="text" class="form-control input-sm" ng-if="searchAccounts.searchType=='CITY_SEARCH'" name="searchString" id="searchString" placeholder="{{'accounts.searchAccounts.label.searchStringPlaceholderCity' | translate}}" data-ng-model="searchAccounts.searchString" ng-focus="hideErrorMessage()" ng-keypress="($event.which === 13)?changeSearchString(searchAccounts,$event):hideErrorMessage();" maxlength="100">
+					<input type="text" class="form-control input-sm" ng-if="searchAccounts.searchType=='STATE_SEARCH'" name="searchString" id="searchString" placeholder="{{'accounts.searchAccounts.label.searchStringPlaceholderState' | translate}}" data-ng-model="searchAccounts.searchString" ng-focus="hideErrorMessage()" ng-keypress="($event.which === 13)?changeSearchString(searchAccounts,$event):hideErrorMessage();" maxlength="100">
+				</div>
+				<div class="col-sm-3 col-md-3 col-lg-3">
+					<select class="form-control input-sm" name="searchType" id="searchType" data-ng-model="searchAccounts.searchType" ng-change="hideErrorMessage()" ng-init="searchAccounts.searchType='COMPANY_NAME_SEARCH'">
+						<option value="COMPANY_NAME_SEARCH" >Health System</option>
+						<option value="LOCATION_SEARCH">Location</option>
+						<option value="CITY_SEARCH">City</option>
+						<option value="STATE_SEARCH">State</option>
+					</select>
+				</div>
+				<div class="col-sm-1 col-md-1 col-lg-1">
+					<div class="col-sm-4 col-md-4 col-lg-4">
+						<button class="curveButton btn btn-primary" type="button" ng-click="changeSearchString(searchAccounts);">{{'common.search' | translate}}</button>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-12 col-md-12 col-lg-12 validation-invalid" ng-if="showRequiredError">{{'accounts.searchAccounts.errorMessage.pleaseEnterTheAccount'| translate}}</div>
+			<div class="col-sm-12 col-md-12 col-lg-12 validation-invalid" ng-if="showSpecialCharError">{{'messages.specialCharactersLikeAreNotAllowed' | translate}}</div>
+		</form>
+		<!--  Grid Response Start -->
+		<div class="col-sm-12 col-md-12 col-lg-12"
+			ng-if="showTableContent">
+			<div data-ng-class="{'dNone':enableLoading}">
+				<div ng-if="searchAccountsList.data.length > 0 && data.successData.actualRecords >= data.successData.paginationMessage.paginationMaxCount" >
+					<p class="text-left col-sm-12 col-md-12 col-lg-12 paddingL0 marginT1 pagination-max-message">
+						<b> {{'paginationMaximumMessage' | translate:data.successData.paginationMessage }}</b>
+					</p>
+				</div>
+				<div class="row">
+					<div
+						class="clearfix ng-table-counts-hide marginBP5 marginTP5 col-sm-12 col-md-12 col-lg-12"
+						ng-table-pagination="searchAccountsList"
+						ng-show="searchAccountsList.data.length>0"
+						template-url="'ng-table/style1.html'"></div>
+				</div>
+				<div class="table-responsive tableResponsive">
+					<table ng-table="searchAccountsList" template-pagination="style3"
+						class="table marginB0 table-striped table-bordered">
+						<tbody ng-if="searchAccountsList.data.length>0">
+							<tr data-ng-repeat="customerInfo in searchAccountsList.data">
+								<td
+									data-title="'accounts.searchAccounts.header.action' | translate">
+									<span ng-if="!customerInfo.registerFlag">
+										<button class="btn btn-primary" type="button"
+											data-ng-click="checkFlowDecisionPopup(customerInfo);customerSearchUrl(customerInfo.customerName,customerInfo.expressVmUrl, customerInfo.normalVmUrl)">{{'accounts.searchAccounts.label.registration'
+											| translate}}</button>
+								</span> <span ng-if="customerInfo.registerFlag"> <a
+										data-ng-click="viewRegisteredAccountDetails(customerInfo);">{{'accounts.searchAccounts.label.Registered'
+											| translate}}</a>
+								</span>
+								</td>
+								<td
+									data-title="'accounts.searchAccounts.header.companyName' | translate | unwrapFilter : 20">
+									<div class="width350px break-word" ng-bind-html="customerInfo.customerName | trustAsHtml"></div>
+								</td>
+								<td
+									data-title="'accounts.searchAccounts.header.hospitalLocations' | translate | unwrapFilter : 20">
+									<div class="width200px break-word" ng-bind-html="customerInfo.locationId | trustAsHtml"></div></td>
+								<td
+									data-title="'accounts.searchAccounts.header.city' | translate | unwrapFilter : 20">
+									<div class="width200px break-word" ng-bind-html="customerInfo.city | trustAsHtml"></div></td>
+								<td
+									data-title="'accounts.searchAccounts.header.state' | translate | unwrapFilter : 20">
+									<div class="width200px break-word" ng-bind-html="customerInfo.stateName | trustAsHtml"></div></td>
+							</tr>
+						</tbody>
+						<tbody ng-if="searchAccountsList.data.errorData.Status=='Error'">
+							<tr>
+								<td colspan="11">
+									<div class="text-danger">
+										<span class="fa fa-warning" aria-hidden="true"></span>
+										{{searchAccountsList.data.errorData.ResponseError[0].longMessage
+										| translate}}
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="clearfix marginBP5 marginTP5"
+					ng-table-pagination="searchAccountsList"
+					ng-show="searchAccountsList.data.length>0"
+					template-url="'ng-table/style1.html'"></div>
+			</div>
+		</div>
+		<!--  Grid Response End -->
+	</div>
+</div>

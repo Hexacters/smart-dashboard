@@ -1,0 +1,11 @@
+{
+	"VisionResponse" : {
+	"Status" : "Ok",
+	"contentType": "application/json",
+	"fileMimeType" : "image/jpeg",
+	"fileName" : "download.jpg",
+	"fileSize" : "75160",
+	"mongoKey" : "8c4073ea483e35f7d24af5617442cd14",
+	"uploadedTime" : "2016/07/05 04:37:12"
+	}
+}	

@@ -1,0 +1,63 @@
+<div ng-controller="googleAnalyticsController" data-ng-init="callGAPageTrack('resourceCenterTab');"></div>
+<div class="row">
+	<div class="col-sm-12 col-md-12 col-lg-12" ng-controller="resourceCenterController">
+		<accordion>
+			<accordion-group is-open="$state.includes('resourceCenter.feinAdminResource')" data-ng-if="canAccess('vm','FeinAdminResource')">
+				<accordion-heading>
+					<a class="show" ui-sref="resourceCenter.feinAdminResource" data-ng-if="canAccess('vm','ResourceCenterSection')">
+						<span ng-show="feinAdminResourceName ==''">{{userProfile.detail.legalName}} {{'resourceCenter.adminResources.header.adminResources' | translate}}</span>
+						<span ng-show="feinAdminResourceName !=''">{{feinAdminResourceName}} {{'resourceCenter.adminResources.header.adminResources' | translate}}</span>
+						<i class="pull-right glyphicon" ng-class="{'glyphicon glyphicon-minus': $state.includes('resourceCenter.feinAdminResource'), 'glyphicon glyphicon-plus': !$state.includes('resourceCenter.feinAdminResource')}"></i>
+					</a>
+					<a class="show" data-ng-if="!canAccess('vm','ResourceCenterSection')">
+						<span ng-show="feinAdminResourceName ==''">{{userProfile.detail.legalName}} {{'resourceCenter.adminResources.header.adminResources' | translate}}</span>
+						<span ng-show="feinAdminResourceName !=''">{{feinAdminResourceName}} {{'resourceCenter.adminResources.header.adminResources' | translate}}</span>
+						<i class="pull-right glyphicon" ng-class="{'glyphicon glyphicon-minus': $state.includes('resourceCenter.feinAdminResource'), 'glyphicon glyphicon-plus': !$state.includes('resourceCenter.feinAdminResource')}"></i>
+					</a>
+				</accordion-heading>
+				<div class="minHeight200" ui-view="feinAdminResources" autoscroll="true">
+					<span class="text-danger col-sm-12 col-md-12 col-lg-12 paddingL0" data-ng-if="!canAccess('vm','ResourceCenterSection')">
+						<strong><i class="fa fa-warning"></i></strong>{{'resourceCenter.commonMessage' | translate}} <a data-ng-click='supportWindow();' href='javascript:;'>{{'resourceCenter.commonMessage1' | translate}}</a>{{'common.dot' | translate}}
+					</span>
+				</div>
+			</accordion-group>
+			<accordion-group is-open="$state.includes('resourceCenter.feinRepResource')" data-ng-if="canAccess('vm','FeinRepResource')">
+				<accordion-heading>
+					<a class="show" ui-sref="resourceCenter.feinRepResource" data-ng-if="canAccess('vm','ResourceCenterSection')">
+					<span ng-show="feinRepResourceName ==''">{{userProfile.detail.legalName}} {{'resourceCenter.repResources.header.repResources' | translate}}</span>
+						<span ng-show="feinRepResourceName !=''">{{feinRepResourceName}} {{'resourceCenter.repResources.header.repResources' | translate}}</span>
+						<i class="pull-right glyphicon" ng-class="{'glyphicon glyphicon-minus': $state.includes('resourceCenter.feinRepResource'), 'glyphicon glyphicon-plus': !$state.includes('resourceCenter.feinRepResource')}"></i>
+					</a>
+					<a class="show" data-ng-if="!canAccess('vm','ResourceCenterSection')">
+						<span ng-show="feinRepResourceName ==''">{{userProfile.detail.legalName}} {{'resourceCenter.repResources.header.repResources' | translate}}</span>
+						<span ng-show="feinRepResourceName !=''">{{feinRepResourceName}} {{'resourceCenter.repResources.header.repResources' | translate}}</span>
+						<i class="pull-right glyphicon" ng-class="{'glyphicon glyphicon-minus': $state.includes('resourceCenter.feinRepResource'), 'glyphicon glyphicon-plus': !$state.includes('resourceCenter.feinRepResource')}"></i>
+					</a>
+				</accordion-heading>
+				<div class="minHeight200" ui-view="fienRepResources" autoscroll="true">
+					<span class="text-danger col-sm-12 col-md-12 col-lg-12 paddingL0" data-ng-if="!canAccess('vm','ResourceCenterSection')">
+						<strong><i class="fa fa-warning"></i></strong>{{'resourceCenter.commonMessage' | translate}} <a data-ng-click='supportWindow();' href='javascript:;'>{{'resourceCenter.commonMessage1' | translate}}</a>{{'common.dot' | translate}}
+					</span>
+				</div>
+			</accordion-group>
+			<accordion-group is-open="$state.includes('resourceCenter.vendormateAdminResources')" data-ng-if="canAccess('vm','GlobalAdminResource')">
+				<accordion-heading><a class="show" ui-sref="resourceCenter.vendormateAdminResources">{{'resourceCenter.vendormateadminResources.header.adminResources' | translate}}
+					<i class="pull-right glyphicon" ng-class="{'glyphicon glyphicon-minus': $state.includes('resourceCenter.vendormateAdminResources'), 'glyphicon glyphicon-plus': !$state.includes('resourceCenter.vendormateAdminResources')}"></i></a>
+				</accordion-heading>
+				<div class="minHeight200" ui-view="vendormateAdminResources" autoscroll="true"></div>
+			</accordion-group>
+				<accordion-group is-open="$state.includes('resourceCenter.vendormateRepResources')" data-ng-if="canAccess('vm','GlobalRepResource')">
+				<accordion-heading><a class="show" ui-sref="resourceCenter.vendormateRepResources">{{'resourceCenter.vendormaterepResources.header.repResources' | translate}}
+					<i class="pull-right glyphicon" ng-class="{'glyphicon glyphicon-minus': $state.includes('resourceCenter.vendormateRepResources'), 'glyphicon glyphicon-plus': !$state.includes('resourceCenter.vendormateRepResources')}"></i></a>
+				</accordion-heading>
+				<div class="minHeight200" ui-view="vendormateRepResources" autoscroll="true"></div>
+			</accordion-group>
+			<accordion-group is-open="$state.includes('resourceCenter.healthSystem')" data-ng-if="canAccess('vm','HealthSystemPolicies')">
+				<accordion-heading><a class="show" ui-sref="resourceCenter.healthSystem">{{'resourceCenter.policiesLibrary.header.policiesLibrary' | translate}}
+					<i class="pull-right glyphicon" ng-class="{'glyphicon glyphicon-minus': $state.includes('resourceCenter.healthSystem'), 'glyphicon glyphicon-plus': !$state.includes('resourceCenter.healthSystem')}"></i></a>
+				</accordion-heading>
+				<div class="minHeight200" ui-view="healthSystemPoliciesLibrary" autoscroll="true"></div>
+			</accordion-group>
+		</accordion>
+	</div>
+</div>

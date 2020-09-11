@@ -1,0 +1,135 @@
+<div ng-if="addNewRepInvalid && addNewRepInvalid.deletedUser"
+     class="alert alert-danger">
+	<i class="fa fa-exclamation-triangle"></i><span ng-bind-html="'manageReps.errorMessage.undeleteValidationRep' | translate"></span>
+</div>
+<div ng-if="addNewRepInvalid && addNewRepInvalid.notRep"
+     class="alert alert-danger">
+	<i class="fa fa-exclamation-triangle"></i> {{'manageReps.errorMessage.registeredWithNotRep'| translate :
+	addNewRepInvalid }}
+</div>
+<div ng-if="addNewRepInvalid && addNewRepInvalid.anotherVendorCompany"
+     class="alert alert-danger">
+	<i class="fa fa-exclamation-triangle"></i> {{'manageReps.errorMessage.registeredWithAnotherVendor'| translate
+	}}{{addNewRepInvalid.vendorName}}
+</div>
+<div ng-if="addNewRepInvalid && addNewRepInvalid.notAllowRepRegistration"
+     class="alert alert-danger">
+	<i class="fa fa-exclamation-triangle"></i> {{addNewRepInvalid.errorMessage}}
+</div>
+<div ng-if="addNewRepInvalid && addNewRepInvalid.error && addNewRepInvalid.data.errorData.ResponseError[0].errorCode !== 'CM_7035'"
+     class="alert alert-danger">
+	<i class="fa fa-exclamation-triangle"></i> {{addNewRepInvalid.data.errorData.ResponseError[0].errorCode | translate}}
+</div>
+<div data-ng-show="maximumSelectedError.error == true && maximumSelectedError.usersError == true"
+     class="alert alert-danger">
+	<i class="fa fa-exclamation-triangle"></i> {{'manageReps.errorMessage.exceededMaxRepCount'| translate }}
+</div>
+<div ng-if="addNewRepInvalid && addNewRepInvalid.error && addNewRepInvalid.data.errorData.ResponseError[0].errorCode === 'CM_7035'"
+     class="alert alert-danger">
+	<i class="fa fa-exclamation-triangle"></i> {{addNewRepInvalid.data.errorData.ResponseError[0].longMessage}}
+</div>
+<div class="marginT8">
+	<div data-ng-show="!enableValidateButton">
+		<img align="absmiddle"
+		     src="app/ng1/img/partial-loading.gif">&nbsp;{{'common.loading' | translate}}
+	</div>
+	<h4>
+		<b>{{'manageReps.addRep' | translate}}</b>
+		<span tooltip-placement="right"
+		      tooltip-append-to-body="true"
+		      tooltip="Add a rep not currently on the rep list. Complete all rep fields and then select account(s).">
+			<i class="fa fa-question-circle fa-lg"></i>
+		</span></h4>
+	<form novalidate
+	      name="addNewReptForm"
+	      class="form-horizontal"
+	      autocomplete="off">
+		<div class="col-sm-12 col-md-12 col-lg-12">
+			<div class="form-group col-sm-12 col-md-12 col-lg-12">
+				<label class="col-sm-4 col-md-4 col-lg-4 text-right"><span class="asterisk">*</span>&nbsp;{{'manageReps.addReps.firstName'
+					|
+					translate}}</label>
+				<div class="col-sm-8 col-md-8 col-lg-8">
+					<input id="addRepFirstName"
+					       class="form-control required input-sm"
+					       size="35"
+					       validator="required,validateAlphaWithOneSpaceAndPunctuation"
+					       required-error-message="{{'manageReps.addReps.firstNameRequired' | translate}}"
+					       validate-Alpha-With-One-Space-And-Punctuation-error-message="{{'manageReps.errorMessage.firstNameNotValid' | translate}}"
+					       valid-method="watch"
+					       ng-model="inviteRep.firstname"
+					       type="text"
+					       maxlength="50"
+					       name="firstname"
+					       ng-disabled="!enableValidateButton" />
+				</div>
+			</div>
+			<div class="form-group col-sm-12 col-md-12 col-lg-12">
+				<label class="col-sm-4 col-md-4 col-lg-4 text-right"><span class="asterisk">*</span>
+					{{'manageReps.addReps.lastName' |
+					translate}}</label>
+				<div class="col-sm-8 col-md-8 col-lg-8">
+					<input id="addRepLastName"
+					       class="form-control required input-sm"
+					       size="35"
+					       validator="required,validateAlphaWithOneSpaceAndPunctuation"
+					       required-error-message="{{'manageReps.addReps.lastNameRequired' | translate}}"
+					       validate-Alpha-With-One-Space-And-Punctuation-error-message="{{'manageReps.errorMessage.lastNameNotValid' | translate}}"
+					       valid-method="watch"
+					       ng-model="inviteRep.lastname"
+					       type="text"
+					       maxlength="50"
+					       name="lastname"
+					       ng-disabled="!enableValidateButton" />
+				</div>
+			</div>
+			<div class="form-group col-sm-12 col-md-12 col-lg-12">
+				<label class="col-sm-4 col-md-4 col-lg-4 text-right"><span class="asterisk">*</span> {{'manageReps.addReps.email' |
+					translate}}</label>
+				<div class="col-sm-8 col-md-8 col-lg-8">
+					<input id="addRepEmail"
+					       class="form-control required input-sm"
+					       size="35"
+					       validator="required ,validateAlphanumSpecial, validateEmail"
+					       validate-email-error-message="{{'manageReps.addReps.emailNotValid' | translate}}"
+					       validate-alphanum-special-error-message="{{'common.errorMessage.allowedSpecialCharacters' | translate}}"
+					       required-error-message="{{'manageReps.addReps.emailRequired' | translate}}"
+					       valid-method="watch"
+					       ng-model="inviteRep.email"
+					       type="text"
+					       maxlength="100"
+					       name="recipientEmail"
+					       ng-disabled="!enableValidateButton" />
+				</div>
+			</div>
+			<div class="form-group col-sm-12 col-md-12 col-lg-12">
+				<label class="col-sm-4 col-md-4 col-lg-4 text-right"><span class="asterisk">*</span> {{'manageReps.addReps.phone' |
+					translate}}</label>
+				<div class="col-sm-8 col-md-8 col-lg-8">
+					<input id="addRepPhone"
+					       class="form-control required input-sm"
+					       size="35"
+					       validator="required,validateAlphanumSpecial"
+					       validate-alphanum-special-error-message="{{'common.errorMessage.allowedSpecialCharacters' | translate}}"
+					       required-error-message="{{'manageReps.addReps.phoneRequired' | translate}}"
+					       valid-method="watch"
+					       ng-model="inviteRep.workPhone"
+					       type="text"
+					       maxlength="20"
+					       name="recipientPhone"
+					       ng-disabled="!enableValidateButton" />
+				</div>
+			</div>
+		</div>
+		<p class="marginT1">{{'manageReps.10RepsMaximum'| translate}}&nbsp;<span ng-if="userSelectedList.length > 0">{{'manageReps.label.youHaveSelected'
+				| translate}}:&nbsp;{{userSelectedList.length}}</span></p>
+		<div class="col-sm-12 col-md-12 col-lg-12 padding0"
+		     ng-show="showAddRepForm">
+			<button class="btn btn-primary"
+			        ng-disabled="!checkBoxValid || !enableValidateButton"
+			        validation-submit="addNewReptForm"
+			        ng-click="validateAddNewRep(inviteRep);">{{'manageReps.addtoInviteeList'
+				| translate}}</button>
+		</div>
+	</form>
+</div>

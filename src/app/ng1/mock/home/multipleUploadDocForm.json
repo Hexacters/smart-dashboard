@@ -1,0 +1,21 @@
+{  
+   "VisionResponse":{  
+      "Status":"Ok",
+      "ResponseError":[
+      ],
+      "UserDocumentList": {
+        "UserDocument":
+			{
+				"docWhy": "Secretary of State Filing",
+				"docHow": "The hard copy of the document should be scanned into electronic format and then uploaded here.",
+				"docType": "compoany",
+				"docCategory":"Immunization",
+				"docEffectiveDate":"06/01/2015",
+				"docExpirationDate":"06/25/2015"				
+			}			
+		 },
+		"totalRecords": "1",
+        "ContentType": "text/xml",
+        "ResponseErrors": ""
+    }
+}

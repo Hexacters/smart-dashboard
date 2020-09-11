@@ -1,0 +1,863 @@
+#primaryContainerRD{
+	float: left;
+	text-align: left;
+	font-size: 1em;
+	width: 945px;
+	margin: 0px 0px 0px 0px;
+	padding: 2px 0px 0px 0px;
+	border-style: dotted;
+	border-color: #cccccc;
+	border-width: 0px 0px 0px 0px;
+	clear: left;
+	height:350px;
+	min-height:500px;
+}
+
+
+#primaryContainerRD div.formElemC span.formInput select.editSelect{
+	border-color: #BAD4F0;
+	border-style: solid;
+	border-width: 1px 1px 1px 1px;
+	color: #666666;
+	float:left;
+}
+
+#primaryContainerRD div.formElemC span.formInput select.mandatory{
+	border-color: #FFA02F;
+	border-style: solid;
+	border-width: 1px 1px 1px 1px;
+	color: #666666;
+	float:left;	
+}
+
+#primaryContainerRD .editText{
+	border-color: #BAD4F0;
+	border-style: solid;
+	border-width: 1px 1px 1px 1px;
+	color: #666666;
+	float:left;
+	height: 19px;
+}
+
+#primaryContainerRD .mandatory{
+	border-style: solid;
+	border-color: #FFA02F;
+	border-width: 1px 1px 1px 1px;
+	color: #666666;
+}
+
+#primaryContainerRD select.mandatory{
+	border-style: solid;
+	border-color: #FFA02F;
+	border-width: 1px 1px 1px 1px;
+	color: #666666;
+}
+
+#primaryContainerRD input.saveOrangeLog{
+	display: block;
+	float:left;
+	background-image:url("images/butExpander.png");
+	background-repeat: repeat-x;
+	background-position: 100% 100%;
+	height: 35px;
+	border: 0px;
+	margin: 0px 0px 0px 0px;
+	padding: 0px 0px 5px 0px;
+	cursor: pointer;
+	color: #ffffff;
+	font-weight: bold;
+	background-color: transparent;
+}
+
+#primaryContainerRD .rightRounder{
+	display: block;
+	float:left;
+	background-image:url("images/rightButRound.png");
+	background-repeat: no-repeat;
+	background-position: 100% 100%;
+	width: 13px;
+	height: 35px;
+	border: 0px;
+	margin: 0px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
+	cursor: pointer;
+	background-color: transparent;
+}
+
+#primaryContainerRD .leftRounder{
+	display: block;
+	float: left;
+	background-image:url("images/leftButRound.png");
+	background-repeat: no-repeat;
+	background-position: 100% 100%;
+	width: 13px;
+	height: 35px;
+	border: 0px;
+	margin: 0px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
+	cursor: pointer;
+	background-color: transparent;
+}
+
+#primaryContainerRD #getReport{
+	display: block;
+	float:left;
+	background-image:url("images/butExpander.png");
+	background-repeat: repeat-x;
+	background-position: 100% 100%;
+	height: 35px;
+	border: 0px;
+	margin: 0px 0px 0px 0px;
+	padding: 3px 0px 5px 0px;
+	cursor: pointer;
+	color: #ffffff;
+	font-weight: bold;
+	background-color: transparent;
+	width:130px;
+}
+
+#primaryContainerRD .resetRadio{
+	display: block;
+	float:left;
+	background-image:url("images/smallButExpander.png");
+	background-repeat: repeat-x;
+	background-position: 100% 100%;
+	height: 20px;
+	border: 0px;
+	margin: 0px 0px 0px 0px;
+	padding: 3px 0px 5px 0px;
+	cursor: pointer;
+	color: #ffffff;
+	font-weight: bold;
+	font-size: 9px;
+	background-color: transparent;
+	width:40px;
+}
+
+#primaryContainerRD .rightRounderResetRadio{
+	display: block;
+	float:left;
+	background-image:url("images/smallRightButRound.png");
+	background-repeat: no-repeat;
+	background-position: 0% 100%;
+	width: 13px;
+	height: 20px;
+	border: 0px;
+	margin: 0px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
+	cursor: pointer;
+	background-color: transparent;
+}
+
+#primaryContainerRD .leftRounderResetRadio{
+	display: block;
+	float: left;
+	background-image:url("images/smallLeftButRound.png");
+	background-repeat: no-repeat;
+	background-position: 100% 100%;
+	width: 13px;
+	height: 20px;
+	border: 0px;
+	margin: 0px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
+	cursor: pointer;
+	background-color: transparent;
+}
+
+#primaryContainerRD .horFormHolderForm{
+	float: left;
+	width: 100%;
+	margin: 14px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
+	/*background: #cccccc;*/
+}
+
+#primaryContainerRD .horFormHolderFormPW{
+	float: left;
+	width: 100%;
+	margin: 7px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
+	/*background: #cccccc;*/
+}
+
+#primaryContainerRD div.horFormHolderFormPW span.liLabelLogin{
+	float: left;
+	width: 140px;
+	text-align: left;
+	margin: 0px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
+}
+
+#primaryContainerRD div.horFormHolderFormPW span.liInputLogin{
+	float: left;
+	width: 310px;
+	text-align: left;
+	margin: 0px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
+}
+
+#primaryContainerRD h1{font-size: 2.2em; line-height: 102%; margin: 9px 5px 14px 0px; padding: 0px 0px 0px 0px;}
+#primaryContainerRD h2{font-size: 1.9em; line-height: 102%; margin: 9px 5px 11px 0px; padding: 0px 0px 0px 0px;}
+#primaryContainerRD h3{font-size: 1.6em; line-height: 102%; margin: 2px 5px 9px 0px; padding: 0px 0px 0px 0px; color: #666666;}
+#primaryContainerRD h4{font-size: 1.4em; line-height: 102%; margin: 9px 5px 14px 0px; padding: 0px 0px 0px 0px;}
+#primaryContainerRD h5{font-size: 1.2em; line-height: 102%; margin: 14px 0px 7px 0px; padding: 2px 0px 0px 0px;}
+#primaryContainerRD h6{font-size: 1.0em; line-height: 102%; margin: 14px 5px 21px 0px; padding: 0px 0px 0px 0px;}
+
+#primaryContainerRD #loginDiv{
+	position: relative;
+	float:left;	
+	width:50%;
+	height:100%;
+	vertical-align:top;
+	padding-top:0px;
+}
+
+#primaryContainerRD div.horFormHolderForm span.liInputLogin{
+	float: left;
+	width: 310px;
+	text-align: left;
+	margin: 0px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
+}
+
+#primaryContainerRD div.horFormHolderForm span.liLabelLogin{
+	float: left;
+	width: 140px;
+	text-align: left;
+	margin: 0px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
+}
+
+#primaryContainerRD .horFormHolderFormE{
+	float: left;
+	width: 100%;
+	margin: 0px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
+	/*background: #cccccc;*/
+}
+
+#primaryContainerRD div.horFormHolderFormE span.liLabelLogin{
+	float: left;
+	width: 140px;
+	text-align: left;
+	margin: 0px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
+}
+
+#primaryContainerRD div.horFormHolderFormE span.liInputLogin{
+	float: left;
+	width: 310px;
+	text-align: left;
+	margin: 0px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
+}
+
+#primaryContainerRD .edit{
+	border-color: #BAD4F0;
+	border-style: solid;
+	border-width: 1px 1px 1px 1px;
+	color: #666666;
+}
+
+#primaryContainerRD .h4withoutmargin{
+	margin:0px;
+}
+
+#primaryContainerRD #footer{
+	clear: both;
+	text-align: left;
+	font-size: 0.75em;
+	width: 960px;
+	height: 120px;
+	margin: 0px 0px 0px 28px;
+	padding: 200px 0px 0px 0px;
+	color: #666666;
+	border-style: dotted;
+	border-color: #919183;
+	border-width: 0px 0px 0px 0px;
+}
+
+#primaryContainerRD #primaryLoadingContainer{
+	width:100%;
+	height:500px;
+	text-align:center;
+}
+
+
+#primaryContainerRD #dashboardLoadingContainer{
+	width:100px;
+	height:100px;
+	text-align:center;
+	padding:150px 0px 0px 400px;
+}
+
+#primaryContainerRD .dashboardLoadingImg{
+	margin-top:10px;
+}
+
+#primaryContainerRD .mainLoadingImg{
+	margin-top:200px;
+}
+
+#primaryContainerRD .loading{
+	position:absolute;
+	left:8px;
+	top:3px;
+	width:95%;
+	align:center;
+	text-align:center;
+	padding-left:30px;
+}
+
+#primaryContainerRD #veryTopElementForMessage{
+	width: 960px;
+	height: 25px;
+	/*background-color: #ebebeb;*/
+	margin: 7px 0px 7px 0px;
+	padding: 0px 0px 0px 0px;
+	text-align: right;
+}
+
+#primaryContainerRD a:link {
+	color:#6194ce;
+}
+
+#primaryContainerRD .tlcHolderL{
+	float: left;
+	margin: 0px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
+	width: 35%;
+}
+
+#primaryContainerRD #veryTopElement{
+	width: 960px;
+	height: 25px;
+	/*background-color: #ebebeb;*/
+	margin: 7px 0px 7px 0px;
+	padding: 0px 0px 0px 0px;
+	text-align: right;
+}
+
+#primaryContainerRD .horHolder{
+	float: left;
+}
+
+#primaryContainerRD .vertBuffer{
+	height: 14px;
+	clear: both;
+	margin: 0px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
+}
+
+#primaryContainerRD .commonTextwrap{
+	word-wrap: break-word;
+	white-space:-moz-pre-wrap;
+	white-space: normal;
+}
+
+
+#primaryContainerRD .minHeight{
+	min-height:315px;
+}
+
+#primaryContainerRD .treeContainer{
+	margin: 0px 0px 0px 0px;
+	padding: 7px 7px 7px 7px;
+	float: left;	
+	width:380px;
+	height:402px;
+	overflow:auto;
+	/*border-right:solid 1px #CCCCCC;*/
+	background-repeat: repeat-y;
+	background-position: 100% 0%;
+	background-image: url("images/border.jpg");
+	display:none;
+}
+
+#primaryContainerRD #sideNavigtor{
+	float: left;	
+	width:12px;
+	height:350px;
+}
+
+#primaryContainerRD .rightContainer{
+	margin: 0px 0px 0px 0px;
+	padding: 9px 0px 0px 5px;
+	float: left;	
+	width:460px;
+}
+
+#primaryContainerRD .multi_select{
+	height:4em;
+}
+
+#primaryContainerRD div.formElemC{
+	clear: both;
+	margin: 0px 0px 5px 10px;
+	width: 435px;
+	float:left;
+}
+
+#primaryContainerRD div.formElemC span.formLabel {
+	float: left;
+	width: 150px;
+	text-align: right;
+	margin: 0px 0px 0px 0px;
+	padding: 2px 0px 0px 0px;
+}
+
+#primaryContainerRD div.formElemC span.formInput {
+	float: right;
+	width: 270px;
+	text-align: left;
+	margin: 0px 0px 0px 0px;
+	padding: 2px 0px 0px 0px;
+}
+
+#primaryContainerRD img.loginWarningIcon{
+	width: 18px;
+	height: 18px;
+	margin: 0px 9px 0px 0px;	
+	vertical-align:bottom;
+	float: right;
+}
+
+#primaryContainerRD img.loginWarningCommon{
+	width: 18px;
+	height: 18px;
+	vertical-align:baseline;
+	float: left;
+}
+
+#primaryContainerRD .allTheWay{
+	width: 100%;
+	margin: 0px 0px 0px 0px;
+	padding: 7px 7px 0px 0px;
+	float: left;
+	clear: both;
+}
+
+#primaryContainerRD .fLeft{
+	text-align: left;
+	margin: 0px 0px 0px 10px;
+	font-weight: bold;
+	padding: 0px 0px 0px 0px;
+	height:85%;
+	width:80%;
+	word-wrap:break-word;
+}
+
+#primaryContainerRD .fLeft{
+	float: left;
+}
+
+#primaryContainerRD .asteriskTop{
+	color: #FFA02F;
+	font-size: 1.2em;
+	font-weight: normal;
+	margin: 0px 4px 0px 0px;
+	padding: 0px 0px 0px 0px;
+	float:left;
+}
+
+#primaryContainerRD .asterisk{
+	color: #FFA02F;
+	font-size: 1.2em;
+	font-weight: normal;
+	margin: 0px 4px 0px 0px;
+	padding: 0px 0px 0px 0px;
+}
+
+#primaryContainerRD .fRight{
+	text-align: right;
+	padding: 0px 0px 0px 0px;
+	position: relative;
+	overflow: auto;
+}
+#primaryContainerRD .help{
+	background-image:url("images/qm.jpg");
+	background-repeat: no-repeat;
+	background-position: 0% 0%;
+	margin: 0px 0px 0px 7px;
+	padding: 0px 0px 0px 0px;
+	width: 18px;
+	height: 18px;
+	float: right;
+}
+
+#primaryContainerRD img.loginErrorIcon{
+	width: 18px;
+	height: 18px;
+	vertical-align: bottom;
+	padding-top:5px;	
+}
+
+#primaryContainerRD .vmNormalText {  font-family: Arial, Helvetica, sans-serif; font-size: 12px; line-height: 17px; color: #333333; font-weight: normal}
+
+#primaryContainerRD .wrapDetail{
+	word-wrap:break-word;
+	white-space:pre-wrap;
+	float:left;
+	width: 100%;
+}
+
+
+/* Date Time picker Styles  */
+
+/*
+ * "Cupertino" Theme for jQuery UI Datepicker
+ * Generated by Theme Roller ( http://ui.jquery.com/themeroller/ )
+ * Authors: 
+ *		Filament Group ( http://www.filamentgroup.com )
+ * 		Marc Grabanski ( http://marcgrabanski.com/ )
+*/
+#datetimepicker_div,
+#datetimepicker_div table,
+.datetimepicker_div,
+.datetimepicker_div table {
+	font-size: 12px !important;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.datetimepicker_div, #datetimepicker_div {
+	/*resets*/margin: 0; padding: 0; border: 0; outline: 0; line-height: 1.3; text-decoration: none; font-size: 100%; list-style: none;
+	/*font-family: Lucida Grande, Lucida Sans, Arial, sans-serif;*/
+	
+	background: #FFFFFF;
+	/*font-size: 1.2em;*/
+	border: 1px solid gray;
+	width: 15.5em;
+	/*padding: 2.5em .5em .5em .5em;*/
+	position: relative;
+}
+
+#datetimepicker_div {
+	z-index: 9999; /*must have*/
+	display: none;
+	background: #FFFFFF;
+	width:200px;
+}
+
+.datetimepicker_daysCellCurrent{
+	background-color:red;
+}
+
+.timer{
+	border:1px solid #eeeeee;
+	width:24px;
+}
+
+.datetimepicker_Time{
+	font-size: 11px;
+	font-family: Arial;
+	color: #FFFFFF;
+	font-weight:normal;
+	height:13px;
+	padding-left:2px;
+}
+
+table.header{
+	background-color: #336699;
+	height:20px;
+}
+
+table.header span{
+	color: #FFFFFF;
+	font-size: 11px;
+	font-family:Arial;
+	font-weight:bold;
+}
+
+table.datetimepicker {
+	/*width: 15.5em;*/
+	text-align: right;
+}
+
+table.datetimepicker td a.empty {
+	padding: .1em .3em .1em 0;
+	display: block;
+	color: #FFFFFF;
+	background: #eeeeee url(images/e0e0e0_40x100_textures_02_glass_80.png) 0 50% repeat-x;
+	cursor: pointer;
+	border: 1px solid #ffffff;
+}
+
+table.datetimepicker td a.empty:hover {
+	border: 1px solid #eeeeee;
+	color: #FFFFFF;
+	background: #336699 url(images/d8d8d8_40x100_textures_02_glass_90.png) 0 50% repeat-x;
+}
+
+table.datetimepicker td a.empty:active {
+	border: 1px solid #eeeeee;
+	color: #FFFFFF;
+	background: #336699 url(images/8ab9ff_40x100_textures_02_glass_50.png) 0 50% repeat-x;
+}
+
+
+table.datetimepicker td a.weekEnd {
+	padding: .1em .3em .1em 0;
+	display: block;
+	color: #FFFFFF;
+	background: #336699 url(images/e0e0e0_40x100_textures_02_glass_80.png) 0 50% repeat-x;
+	cursor: pointer;
+	border: 1px solid #ffffff;
+}
+
+table.datetimepicker td a.weekEnd:hover {
+	border: 1px solid #888888;
+	color: #FFFFFF;
+	background: #336699 url(images/d8d8d8_40x100_textures_02_glass_90.png) 0 50% repeat-x;
+}
+
+table.datetimepicker td a.weekEnd:active {
+	border: 1px solid #2694e8;
+	color: #FFFFFF;
+	background: #336699 url(images/8ab9ff_40x100_textures_02_glass_50.png) 0 50% repeat-x;
+}
+
+table.datetimepicker td a.current {
+	padding: .1em .3em .1em 0;
+	display: block;
+	color: #000000;
+	background: #ffffff url(images/e0e0e0_40x100_textures_02_glass_80.png) 0 50% repeat-x;
+	cursor: pointer;
+	border: 1px solid #888888;
+}
+
+table.datetimepicker td a.current:hover {
+	border: 1px solid #888888;
+	color: #000000;
+	background: #ffffff url(images/d8d8d8_40x100_textures_02_glass_90.png) 0 50% repeat-x;
+}
+
+table.datetimepicker td a.current:active {
+	border: 1px solid #888888;
+	color: #000000;
+	background: #ffffff url(images/8ab9ff_40x100_textures_02_glass_50.png) 0 50% repeat-x;
+}
+
+table.datetimepicker td a {
+	padding: .1em .3em .1em 0;
+	display: block;
+	color: #444444;
+	background: #e0e0e0 url(images/e0e0e0_40x100_textures_02_glass_80.png) 0 50% repeat-x;
+	cursor: pointer;
+	border: 1px solid #ffffff;
+}
+table.datetimepicker td a:hover {
+	border: 1px solid #888888;
+	color: #111111;
+	background: #d8d8d8 url(images/d8d8d8_40x100_textures_02_glass_90.png) 0 50% repeat-x;
+}
+
+table.datetimepicker td a:active {
+	border: 1px solid #2694e8;
+	color: #000000;
+	background: #8ab9ff url(images/8ab9ff_40x100_textures_02_glass_50.png) 0 50% repeat-x;
+}
+
+table.datetimepicker td a.weekEndDays {
+	padding: .1em .3em .1em 0;
+	display: block;
+	color: red;
+	background: #e0e0e0 url(images/e0e0e0_40x100_textures_02_glass_80.png) 0 50% repeat-x;
+	cursor: pointer;
+	border: 1px solid #ffffff;
+}
+
+table.datetimepicker td a.weekEndDays:hover {
+	border: 1px solid #888888;
+	color: red;
+	background: #d8d8d8 url(images/d8d8d8_40x100_textures_02_glass_90.png) 0 50% repeat-x;
+}
+
+table.datetimepicker td a.weekEndDays:active {
+	border: 1px solid #2694e8;
+	color: red;
+	background: #8ab9ff url(images/8ab9ff_40x100_textures_02_glass_50.png) 0 50% repeat-x;
+}
+
+table.datetimepicker td a.weekEndDaysCurrent {
+	padding: .1em .3em .1em 0;
+	display: block;
+	color: red;
+	background: #ffffff url(images/e0e0e0_40x100_textures_02_glass_80.png) 0 50% repeat-x;
+	cursor: pointer;
+	border: 1px solid #888888;
+}
+
+table.datetimepicker td a.weekEndDaysCurrent:hover {
+	border: 1px solid #888888;
+	color: red;
+	background: #ffffff url(images/d8d8d8_40x100_textures_02_glass_90.png) 0 50% repeat-x;
+}
+
+table.datetimepicker td a.weekEndDaysCurrent:active {
+	border: 1px solid #888888;
+	color: red;
+	background: #ffffff url(images/8ab9ff_40x100_textures_02_glass_50.png) 0 50% repeat-x;
+}
+
+
+table.datetimepicker .datetimepicker_title_row td {
+	padding: .3em 0;
+	text-align: center;
+	/*font-size: .9em;*/
+	color: #362b36;
+	text-transform: uppercase;
+	/*border-bottom: 1px solid #cccccc;*/
+}
+
+table.datetimepicker .datetimepicker_title_row td a {
+	color: #362b36;
+}
+
+/* ___________ IE6 IFRAME FIX ________ */
+.datetimepicker_cover {
+    display: none; /*sorry for IE5*/
+    display/**/: block; /*sorry for IE5*/
+    position: absolute; /*must have*/
+    z-index: -1; /*must have*/
+    filter: mask(); /*must have*/
+    top: -4px; /*must have*/
+    left: -4px; /*must have*/
+    width: 200px; /*must have*/
+    height: 200px; /*must have*/
+}
+
+.datetimepicker_dialog {
+	padding: 0px !important;
+	border: 4px ridge #222 !important;
+}
+
+.datetimepicker_control,  .datetimepicker_links,  .datetimepicker_header,  .datetimepicker {
+	clear: both;
+	float: left;
+	width: 100%;
+
+}
+
+.datetimepicker_control {
+	padding: 0px;
+}
+
+.datetimepicker_links {
+	
+	padding: 0px;
+}
+
+.datetimepicker_control,  .datetimepicker_links {
+	font-weight: bold;
+	font-size: 10px;
+	letter-spacing: 1px;
+}
+
+.datetimepicker_links label {
+	padding:0px;
+
+}
+
+.datetimepicker_clear,  .datetimepicker_prev {
+	float: left;
+	width: 34%;
+	cursor:pointer;
+}
+
+.datetimepicker_current {
+	float: left;
+	width: 30%;
+	text-align: center;
+	color: #444444;
+	font-size: 11px;
+	font-family:Arial;
+	font-weight:normal;
+	height:18px;
+}
+
+.datetimepicker_close,  .datetimepicker_next {
+	float: right;
+	width: 34%;
+	text-align: right;
+	cursor:pointer;
+}
+
+.datetimepicker_header {
+	background-color:#336699;
+}
+table.datetimepicker td label.empty {
+	padding: .1em .3em .1em 0;
+	display: block;
+	color: #9E9E9E;
+	background: #eeeeee url(images/e0e0e0_40x100_textures_02_glass_80.png) 0 50% repeat-x;
+	border: 1px solid #ffffff;
+}
+
+.datetimepicker_trigger{
+	vertical-align:middle;
+	padding-left:3px;
+}
+
+/*
+Copyright (c) 2009, Yahoo! Inc. All rights reserved.
+Code licensed under the BSD License:
+http://developer.yahoo.net/yui/license.txt
+version: 2.8.0r4
+*/
+* html .ygtvchildren{height:2%;}
+table.ygtvtable{margin-bottom:0;border:none;border-collapse:collapse;}
+td.ygtvcell{border:none;padding:0;}
+
+/* Root & Child Nodes Collapse mouseover */
+.ygtvlm{width:18px;height:22px;cursor:pointer;background:url(/rd/lib/yui/treeview/assets/skins/sam/treeview-sprite.gif) 0 0 no-repeat;}
+.ygtvlmh,.ygtvlmhh{width:18px;height:22px;cursor:pointer;background:url(/rd/lib/yui/treeview/assets/skins/sam/treeview-sprite.gif) 0 -800px no-repeat;}
+/* Root & Child Nodes Collapse mouseover */
+
+/* Child Node Expander Icon mouseover */
+.ygtvtp{width:18px;height:22px;cursor:pointer;background:url(/rd/lib/yui/treeview/assets/skins/sam/treeview-sprite.gif) 0 -6400px no-repeat;}
+.ygtvtph,.ygtvtphh{width:18px;height:22px;cursor:pointer;background:url(/rd/lib/yui/treeview/assets/skins/sam/treeview-sprite.gif) 0 -7200px no-repeat;}
+/* Child Node Expander Icon mouseover */
+
+/* Collapse Icon Empty */
+.ygtvln{width:18px;height:22px;background:url(/rd/lib/yui/treeview/assets/skins/sam/treeview-sprite.gif) 0 -1600px no-repeat;cursor:pointer;}
+/* Collapse Icon Empty */
+
+/* Link Node Expander */
+.ygtvtn{width:18px;height:22px;background:url(/rd/lib/yui/treeview/assets/skins/sam/treeview-sprite.gif) 0 -5600px no-repeat;cursor:pointer;}
+/* Link Node Expander */
+
+/* Child Node Depth-1 Expander Icon mouseover */
+.ygtvtm{width:18px;height:22px;cursor:pointer;background:url(/rd/lib/yui/treeview/assets/skins/sam/treeview-sprite.gif) 0 -4000px no-repeat;}
+.ygtvtmh,.ygtvtmhh{width:18px;height:22px;cursor:pointer;background:url(/rd/lib/yui/treeview/assets/skins/sam/treeview-sprite.gif) 0 -4800px no-repeat;}
+/* Child Node Depth-1 Expander Icon mouseover */
+
+/* Root node Expander icon mouseover */
+.ygtvlp{width:18px;height:22px;cursor:pointer;background:url(/rd/lib/yui/treeview/assets/skins/sam/treeview-sprite.gif) 0 -2400px no-repeat;}
+.ygtvlph,.ygtvlphh{width:18px;height:22px;cursor:pointer;background:url(/rd/lib/yui/treeview/assets/skins/sam/treeview-sprite.gif) 0 -3200px no-repeat;cursor:pointer;}
+/* Root node Expander icon mouseover */
+
+.ygtvblankdepthcell{width:18px;height:22px;}
+.ygtvdepthcell{width:18px;height:22px;background:url(/rd/lib/yui/treeview/assets/skins/sam/treeview-sprite.gif) 0 -8000px no-repeat;}
+.ygtvcontent{cursor:default;}
+
+/* Link node styles */
+.ygtvlabel,.ygtvlabel:link,.ygtvlabel:visited,.ygtvlabel:hover{margin-left:2px;text-decoration:none;background-color:white;cursor:pointer;}
+/* Link node styles */
+
+/* Expander Icon styles */
+.ygtvspacer{height:22px;width:18px;}
+a.ygtvspacer{text-decoration:none;outline-style:none;display:block;}
+/* Expander Icon styles */
+
+.ygtvloading{width:18px;height:22px;background:url(/rd/lib/yui/treeview/assets/skins/sam/treeview-loading.gif) 0 0 no-repeat;}
+
+.ygtvfocus{background-color:#D1D1D1;border:none;}
+.ygtvfocus .ygtvlabel,.ygtvfocus .ygtvlabel:link,.ygtvfocus .ygtvlabel:visited,.ygtvfocus .ygtvlabel:hover{background-color:#D1D1D1;/* background-color:#c0e0e0; */}
+.ygtvfocus a{outline-style:none;}
+
+/* minimized /lib/yui/tabview/assets/skins/sam/tabview.css */
+.yui-navset .yui-content,.yui-navset .yui-content div{zoom:1;}
+.yui-skin-sam .yui-navset .yui-content{background:#ffffff;}
+.yui-skin-sam .yui-navset .yui-content,.yui-skin-sam .yui-navset .yui-navset-top .yui-content{border:1px solid #cccccc;border-top-color:#cccccc;padding:.25em .5em;}
+.yui-navset .yui-content:after{content:'';display:block;clear:both;}
+.yui-navset{position:relative;zoom:1;}

@@ -1,0 +1,107 @@
+<div class="modal-content" ng-controller="companyProfileController">
+	<div class="modal-header commonDialogHeader">
+		<button id="accountHelpCloseIcon" type="button" class="close"
+			aria-hidden="true" data-ng-click="$close();">&times;</button>
+		<h3 class="modal-title">{{'companyProfile.companyPrincipals.header.viewCompanyPrincipal'
+			| translate}}</h3>
+	</div>
+	<div class="modal-body modelDialogScroll">
+		<div class="col-sm-12 col-md-12 col-lg-12 "
+			data-ng-class="{'dNone':!loading}">
+			<img align="absmiddle" src="app/ng1/img/partial-loading.gif" />&nbsp;{{'common.loading'
+			| translate}}
+		</div>
+		<div class="col-sm-12 col-md-12 col-lg-12 marginB1 "
+			data-ng-class="{'dNone':loading}">
+			<div class="col-sm-12 col-md-12 col-lg-12 text-right" data-ng-show="companyPrincipalView.errorData.Status != 'Error'">
+				<sup class="asterisk">*</sup>&nbsp;{{'common.required' |
+				translate}}
+			</div>
+			<div data-ng-show="companyPrincipalView.errorData.Status == 'Error' && companyPrincipalView.errorData.ResponseError[0].errorCode != '5024'" class="alert alert-danger">
+				<i class="fa fa-exclamation-triangle"></i> {{companyPrincipalView.errorData.ResponseError[0].errorCode | translate}}
+			</div>
+			<div class="row" data-ng-show="companyPrincipalView.errorData.Status != 'Error' && companyPrincipalView.errorData.ResponseError[0].errorCode != '5024'">
+				<div class="col-sm-6 col-md-6 col-lg-6 marginB1">
+					<div class="form-group col-sm-12 col-md-12 col-lg-12 ">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right control-label">{{'companyProfile.companyPrincipals.label.socialTitle'
+							| translate}}</label>
+						<div class="col-sm-6 col-md-6 col-lg-6 break-word">
+							<span
+								ng-repeat="item in saluationLookup | filter:{value:companyPrincipalView.successData.CompanyPrincipalList[0].salutation}:true">
+								{{item.label}} </span>
+						</div>
+					</div>
+					<div class="form-group col-sm-12 col-md-12 col-lg-12 ">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right control-label">{{'companyProfile.companyPrincipals.label.firstName'
+							| translate}}&nbsp;<sup class="asterisk">*</sup></label>
+						<div class="col-sm-6 col-md-6 col-lg-6 break-word">
+							{{companyPrincipalView.successData.CompanyPrincipalList[0].firstName}}</div>
+					</div>
+					<div class="form-group col-sm-12 col-md-12 col-lg-12">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right control-label">{{'companyProfile.companyPrincipals.label.middleName'
+							| translate}}</label>
+						<div class="col-sm-6 col-md-6 col-lg-6">
+							{{companyPrincipalView.successData.CompanyPrincipalList[0].middleInitial}}</div>
+					</div>
+					<div class="form-group col-sm-12 col-md-12 col-lg-12">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right control-label">{{'companyProfile.companyPrincipals.label.lastName'
+							| translate}}&nbsp;<sup class="asterisk">*</sup></label>
+						<div class="col-sm-6 col-md-6 col-lg-6 break-word">
+							{{companyPrincipalView.successData.CompanyPrincipalList[0].lastName}}</div>
+					</div>
+					<div class="form-group col-sm-12 col-md-12 col-lg-12">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right control-label">{{'companyProfile.companyPrincipals.label.email'
+							| translate}}&nbsp;<sup class="asterisk">*</sup> <span tooltip-append-to-body="true"
+							tooltip="{{'companyProfile.companyPrincipals.label.complianceEmailTooltip' | translate}}"
+							tooltip-placement="bottom"> <i
+								class="fa fa-question-circle fa-lg"></i>
+						</span>
+						</label>
+						<div class="col-sm-6 col-md-6 col-lg-6 break-word">
+							{{companyPrincipalView.successData.CompanyPrincipalList[0].email}}</div>
+					</div>
+					<div class="form-group col-sm-12 col-md-12 col-lg-12 ">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right control-label">{{'companyProfile.companyPrincipals.label.phoneNumber'
+							| translate}}</label>
+						<div class="col-sm-6 col-md-6 col-lg-6 break-word">
+							{{companyPrincipalView.successData.CompanyPrincipalList[0].workPhone}}</div>
+					</div>
+				</div>
+				<div class="col-sm-6 col-md-6 col-lg-6 marginB1">
+					<div class="form-group col-sm-12 col-md-12 col-lg-12 ">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right control-label">{{'companyProfile.companyPrincipals.label.suffix'
+							| translate}}<span tooltip-append-to-body="true" tooltip-placement="bottom"
+							tooltip="{{'companyProfile.companyPrincipals.label.suffixTooltip' | translate}}">
+								<i class="fa fa-question-circle fa-lg"></i>
+						</span>
+						</label>
+						<div class="col-sm-6 col-md-6 col-lg-6 break-word">
+							{{companyPrincipalView.successData.CompanyPrincipalList[0].suffix}}</div>
+					</div>
+					<div class="form-group col-sm-12 col-md-12 col-lg-12">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right control-label">{{'companyProfile.companyPrincipals.label.nickName'
+							| translate}}</label>
+						<div class="col-sm-6 col-md-6 col-lg-6 break-word">
+							{{companyPrincipalView.successData.CompanyPrincipalList[0].nickName}}</div>
+					</div>
+					<div class="form-group col-sm-12 col-md-12 col-lg-12">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right control-label">{{'companyProfile.companyPrincipals.label.professionalTitle'
+							| translate}} </label>
+						<div class="col-sm-6 col-md-6 col-lg-6 break-word">
+							{{companyPrincipalView.successData.CompanyPrincipalList[0].title}}</div>
+					</div>
+					<div class="form-group col-sm-12 col-md-12 col-lg-12">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right control-label">{{'companyProfile.companyPrincipals.label.dateofBirth'
+							| translate}}(MM/DD Only)</label>
+						<div class="col-sm-6 col-md-6 col-lg-6 break-word">
+							{{companyPrincipalView.successData.CompanyPrincipalList[0].dobstring}}</div>
+					</div>
+				</div>
+				<div class="form-group col-sm-7 col-md-7 col-lg-7 pull-right">
+					<button data-ng-click="$close();" class="btn btn-warning"
+						type="button">{{'common.cancel' | translate}}</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

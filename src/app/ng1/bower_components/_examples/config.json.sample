@@ -1,0 +1,82 @@
+{
+	"mock" :true,
+	"locale" : "en-US",
+	"supportedLanguages" : "en-US,fr-FR",
+	
+	"initModule" : {
+		"file" : ["config/users/users.xml", "config/organization/organization.xml"]		
+	},
+	
+	"defaultLandingPage" : "dashboard",
+	"serviceBaseURL" : "",
+	
+	"file" : {
+		"maxFileSize" : "5",
+    	"autoUpload" : true
+	},
+
+	"request" : {
+		"param" : "visionrequest",
+		"value" : "visionRequest"
+	},
+
+	"response" : {
+		"param" : "VisionResponse",
+		"successFlag" : "Status=Ok",
+		"failureFlag" : "Status=Error"
+	},
+	
+	"requestTPM":{
+		"param" : "",
+		"value" : ""
+	},
+	
+	"responseTPM" : {
+		"successFlag" : "statusFlag=Ok",
+		"failureFlag" : "statusFlag=Error"
+	},
+	
+	"requestHeader" : {
+		"param" : "Authorization",
+		"value" : "Bearer "
+	},
+	
+	"authentication" : {
+		"mode" : "SSO",
+		"SSOLogoutUrl" : "logout",
+		"required" : true,
+		"page" : "login",
+		"passwordExpired" : "resetPassword",
+		"accessDenied" : "accessDenied",
+		"accountLocked" : "forgotPassword",
+		"attemptFailure" :"attemptFailure",
+		"attemptLock" :"attemptLock",
+		"enablePasswordEncryption" : true
+		"entryPointUrls" : "gotoDashboard,gotoPCM,gotoInvoice"
+	},
+	
+	"authorization" : {
+		"required" : true,
+		"page" : "permissionDenied"
+	},
+	
+	"dashboards":{
+		"dashboardKey" : "userProfile.vision_user_type",
+		"admin":{
+			"authTrueUrlLandingPage": "dashboard"
+		}
+	},
+	
+	"googleAnalytics" : {
+		"domainName" : "none",
+		"trackPrefix" : ""
+	},
+	"sessionExpiration":{
+		"alertBeforeSec":60,
+		"sessionTimeoutInSec":3600, // Web.xml, session_timeout_value * 60
+		"service":"users",
+		"operation":"sessionAlive"
+	},	
+	"deployDate" :"201510081030", //YYYYMMDDHHMM	
+	"html5Mode" : true
+}

@@ -1,0 +1,43 @@
+<div class="row"
+     id="cardManagementContainer"
+     ng-init="getBillingCountryLookups();getCardList();initCardManagement()">
+    <div class="col-sm-12 col-md-12 col-lg-12"
+         ng-show="popupLoading">
+        <img align="absmiddle"
+             src="app/ng1/img/partial-loading.gif">&nbsp;{{'common.loading'| translate}}
+    </div>
+    <div class="col-sm-12 col-md-12 col-lg-12">
+        <div class="cardManagementInfo">
+            <h4 class="marginT0 marginR1"
+                data-ng-if="corporateCardRegistered && !hasSupplierSuperAdmin && !popupLoading">
+                {{'myProfile.cardManagement.label.supplierUserMessage' | translate}}
+            </h4>
+            <h4 class="marginT0"
+                data-ng-if="!corporateCardRegistered && !hasSupplierSuperAdmin && cardList.length < 2 && !popupLoading">
+                {{ 'myProfile.cardManagement.label.noCardAvailableForSupplierUsersMessage' | translate}}
+            </h4>
+            <h4 class="
+                marginT0 marginR1"
+                data-ng-if="!corporateCardRegistered && hasSupplierSuperAdmin && !popupLoading">
+                {{'myProfile.cardManagement.label.supplierAdminMessage' | translate}}
+            </h4>
+            <button data-ng-if="!popupLoading && $state.current.name === 'myProfile.cardManagement.cardList' && ((cardList.length < 3 && hasSupplierSuperAdmin) || (cardList.length < 2 && !hasSupplierSuperAdmin))"
+                    class="btn btn-primary pull-right marginLA marginB1"
+                    data-ng-disabled="popupLoading"
+                    ng-click="openAddNewCardPaymentPage()">
+                {{'myProfile.cardManagement.label.addCard' | translate}}
+            </button>
+        </div>
+        <div class="row paddingL1">
+            <a data-ng-if="!loading && ($state.current.name === 'myProfile.cardManagement.addNewCardPayment' && cardList.length !== 0) || ($state.current.name === 'myProfile.cardManagement.paymentCardDetails.edit')"
+               ng-click="backToCardListPage()">
+                {{'myProfile.cardManagement.label.backToPaymentPage' | translate}}
+            </a>
+            <a data-ng-if="!loading && $state.current.name === 'myProfile.cardManagement.paymentCardDetails'"
+               ng-click="backToBillingAddressPage()">
+                {{'myProfile.cardManagement.label.backToBillingAddressPage' | translate}}
+            </a>
+        </div>
+        <div ui-view="cardManagementDetails"></div>
+    </div>
+</div>

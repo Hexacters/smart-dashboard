@@ -1,0 +1,21 @@
+<div class="modal-content">
+	<div class="modal-header commonDialogHeader">
+		<button type="button" class="close" data-dismiss="modal"
+			aria-hidden="true" data-ng-click="closePersonalPopup();">&times;</button>
+		<h4 class="modal-title">
+			<b>{{'common.alert' | translate}}</b>
+		</h4>
+	</div>
+	<div class="modal-body">
+		<div class="searchOrg">
+			<div class="col-md-12 searchOrg col-md-12 col-lg-12 text-left">
+				{{'shoppingCart.label.personalProfileConfirmationTitle' | translate}}</div>
+			<div class="col-md-12 col-md-12 col-lg-12 text-center marginT3">
+				<button type="button" class="btn btn-warning"
+					data-ng-click="closePersonalPopup();">{{'common.no' | translate}}</button>
+				<button type="button" class="btn btn-blue"
+					data-ng-click="continuePersonalPopup();">{{'common.yes' | translate}}</button>
+			</div>
+		</div>
+	</div>
+</div>

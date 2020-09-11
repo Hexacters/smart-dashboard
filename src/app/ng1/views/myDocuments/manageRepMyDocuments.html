@@ -1,0 +1,213 @@
+<div ng-controller="googleAnalyticsController"
+     data-ng-init="callGAPageTrack('callRepDocuments');"></div>
+<div class="row"
+     ng-controller="commonController"
+     ng-init="fromAccountDetails(false)">
+	<div class="col-sm-12 col-md-12 col-lg-12">
+		<accordion>
+			<accordion-group is-open="$state.includes('manage.repAccountDetails.documents')">
+				<accordion-heading><a class="show"
+					   data-ui-sref="manage.repAccountDetails.documents.commonDocuments">{{::'myDocuments.documents' | translate}}
+						<i class="pull-right glyphicon"
+						   ng-class="{'glyphicon-plus': $state.includes('manage.repAccountDetails.documents'), 'glyphicon-minus': !status.Open}"></i></a>
+				</accordion-heading>
+				<div class="marginB1">
+					<a ng-if="isFromeHome"
+					   ng-click="$state.go('home');">{{::'common.backtoHome' | translate}}</a>
+				</div>
+				<div>
+					<tabset ng-controller="myDocumentController"
+					        ng-init="documentStatus()">
+						<tab data-ui-sref="manage.repAccountDetails.documents.commonDocuments({tabsState:'commonDoc'})"
+						     active="$state.includes('manage.repAccountDetails.documents.commonDocuments')">
+							<tab-heading>
+								<span ng-if="documentStatusData.successData.sharableDocumentComplianceAlertStatus===false">
+									<img src="app/ng1/img/no.png"
+									     width="18" /></span>
+								<span ng-if="documentStatusData.successData.sharableDocumentComplianceAlertStatus===true">
+									<img src="app/ng1/img/okay.png"
+									     width="18" /></span>
+								<span>{{::'myDocuments.tabs.commonDocuments' | translate}}</span>
+							</tab-heading>
+							<div class="minHeight300"
+							     data-ui-view="viewCommonDocuments"></div>
+						</tab>
+						<tab data-ui-sref="manage.repAccountDetails.documents.accountSpecificDocuments({tabsState:'accountSpecDoc'})"
+						     active="$state.includes('manage.repAccountDetails.documents.accountSpecificDocuments')">
+							<tab-heading>
+								<span ng-if="documentStatusData.successData.nonSharableDocumentComplianceAlertStatus===false">
+									<img src="app/ng1/img/no.png"
+									     width="20" /></span>
+								<span ng-if="documentStatusData.successData.nonSharableDocumentComplianceAlertStatus==true">
+									<img src="app/ng1/img/okay.png"
+									     width="20" /></span>
+								<span>{{::'myDocuments.tabs.accountSpecificDocuments' | translate}}</span>
+							</tab-heading>
+							<div class="minHeight300"
+							     data-ui-view="viewAccountSpecificDocuments"></div>
+						</tab>
+						<tab ng-if="documentStatusData.successData.bcStatus && (documentStatusData.successData.bcStatus | lowercase) !== 'na'"
+						     data-ui-sref="manage.repAccountDetails.documents.backgroundCheck"
+						     active="$state.includes('manage.repAccountDetails.documents.backgroundCheck')">
+							<tab-heading>
+								<span>
+									<img ng-if="!globalDocumentPassed"
+									     src="app/ng1/img/no.png"
+									     width="20" />
+									<img ng-if="globalDocumentPassed"
+									     src="app/ng1/img/okay.png"
+									     width="20" />
+								</span>
+								<span>{{::'myDocuments.tabs.backgroundCheck' | translate}}</span>
+							</tab-heading>
+							<div class="minHeight300"
+							     data-ui-view="viewBackgroundCheck"></div>
+						</tab>
+						<tab data-ui-sref="manage.repAccountDetails.documents.optionalDocuments({tabsState:'optionalDoc'})"
+						     active="$state.includes('manage.repAccountDetails.documents.optionalDocuments')">
+							<tab-heading>
+								{{::'myDocuments.tabs.optionalDocuments' | translate}}
+							</tab-heading>
+							<div class="minHeight300"
+							     data-ui-view="viewOptionalDocuments"></div>
+						</tab>
+						<div class="pull-right"
+						     ng-if="canAccess('vm','Credential Sections') && canAccess('vm','Share My Credentials')">
+							<button id="shareCredentialsBtn"
+							        class="btn btn-primary marginL1 ng-binding"
+							        ng-click="$state.go('manage.shareCredentials',({'isFrom':'manageRepsDocuments'}));">{{::'shareCredential.shareCredentials'|
+								translate}}
+							</button>
+						</div>
+					</tabset>
+					</vision-action>
+				</div>
+			</accordion-group>
+		</accordion>
+	</div>
+	<div class="col-sm-12 col-md-12 col-lg-12">
+		<accordion>
+			<accordion-group is-open="true">
+				<accordion-heading>
+					<a class="show"> {{::'myDocuments.policies'| translate}}
+						<i class="pull-right glyphicon"
+						   ng-class="{'glyphicon-plus': $state.includes('manage.repAccountDetails.documents'), 'glyphicon-minus': !status.Open}"></i></a>
+				</accordion-heading>
+				<div class="minHeight300">
+					<div class="row">
+						<div class="col-sm-12 col-md-12 col-lg-12 myDocumentMaxHeight">
+							<vision-data-table service="myDocumentServices"
+							                   operation="getUserPolicies"
+							                   root-node="data.successData.UserPolicyList"
+							                   total-records-node="data.successData.totalRecords"
+							                   type="server"
+							                   id="documentPolicy"
+							                   initial-request='{"pagination":true,"count":10,"page":1,"sorting":{"sortKey":"asc"}}'>
+								<div data-ng-class="{'dNone':!loading}">
+									<img align="absmiddle"
+									     src="app/ng1/img/partial-loading.gif" />{{::'common.loading' | translate}}
+								</div>
+								<div class="row">
+									<div class="clearfix col-sm-12 col-md-12 col-lg-12 marginBP5"
+									     data-ng-table-pagination="documentPolicy"
+									     template-url="'ng-table/style3.html'"></div>
+								</div>
+								<div class="table-responsive"
+								     ng-controller="myDocumentController">
+									<table ng-table="documentPolicy"
+									       template-pagination="style3"
+									       class="table table-striped table-bordered" show-filter="true">
+										<tbody ng-if="documentPolicy.data.length>0">
+											<tr ng-repeat="documentPolicy in $data">
+												<td data-title="'myDocuments.label.status' | translate"
+												    class="col-sm-1 text-center vAlignMiddle"
+												    filter="{ 'docStatus': 'select' }"
+													    filter-data="[{id:'',title:'ALL'},{id:'Missing',title:'Missing'},{id:'Completed',title:'Completed'}]">
+													<span ng-if="documentPolicy.sortKey === 4">
+														<img  src="app/ng1/img/no.png"
+														     width="20" /><br />{{::'myDocuments.label.Missing' | translate}}
+													</span>
+													<span ng-if="documentPolicy.sortKey === 2">
+														<img src="app/ng1/img/no.png"
+														     width="20" /><br />{{::'myDocuments.label.expired' | translate}}
+													</span>
+													<span ng-if="documentPolicy.sortKey === 1">
+														<span ng-if="!documentPolicy.docNote">
+															<img src="app/ng1/img/no.png"
+															     width="20" />
+															     <br /><a class="cursorPointer"
+																	   ng-click="docRejectedReasonDialog('Reason', documentPolicy.docRejectionString, '')">{{::'myDocuments.label.rejected'
+																		| translate}}</a>
+														</span>
+														<span ng-if="documentPolicy.docNote !== '' && documentPolicy.docNote !== null">
+															  <img   src="app/ng1/img/no.png"
+															     width="20" />
+															     <br /><a class="cursorPointer"
+																	   ng-click="docRejectedReasonDialog('Reason', documentPolicy.docRejectionString, documentPolicy.docNote)">{{::'myDocuments.label.rejected'
+																		| translate}}</a>
+														</span>
+													</span>
+													<span ng-if=" documentPolicy.sortKey !== 1 && documentPolicy.sortKey !== 2 && documentPolicy.sortKey !== 4">
+														<img src="app/ng1/img/okay.png"
+														     width="20" /><br />{{::'myDocuments.acknowledged' | translate}}</span>
+												</td>
+												<td header="'myDocumentWhat.html'"
+												    class="text-left col-sm-4">
+													<span ng-if="documentPolicy.docDefHasTemplate === true">
+														<a ng-click="viewTemplateDocument(documentPolicy.docDefOid)">
+															<span ng-if="documentPolicy.docDefName">{{documentPolicy.docDefName}}</span>
+															<span ng-if="!documentPolicy.docDefName">{{documentPolicy.templateName}}</span>
+														</a>
+													</span>
+													<span ng-if="documentPolicy.docDefHasTemplate !== true">
+														<span ng-if="documentPolicy.docDefName">{{documentPolicy.docDefName}}</span>
+														<span ng-if="!documentPolicy.docDefName">{{documentPolicy.templateName}}</span>
+													</span>
+													<br />
+													<div class="fontSize11px noLinkSpan marginT2">
+														<span ng-if="!documentPolicy.docAckSig">
+															<button class="btn btn-primary"
+															        ng-click="showPolicyAcknowledgementDialog('Acknowledge','Do you want to Acknowledge?','documents','myDocumentServices','savePolicyAcknowlegment',{userOid:documentPolicy.userOid,docDefOid:documentPolicy.docDefOid,isAcknowledge:true,templateOid:documentPolicy.templateOid});">{{::'myDocuments.acknowledge'
+																| translate}}</button>
+														</span>
+													</div>
+												</td>
+												<td data-title="'myDocuments.acknowledgement' | translate"
+												    class="text-left col-sm-5"
+												    ng-controller="commonController">
+													<span ng-if="documentPolicy.docAckSig !=null && documentPolicy.docAckSig !=''">
+														<span class="whiteSpacePre"
+														      ng-bind-html="documentPolicy.docDefAckText | limitTo:120 | trustAsHtml"></span>
+														<span data-ng-if="documentPolicy.docDefAckText.length>120">
+															<a class="cursorPointer"
+															   ng-click="moreDialog(documentPolicy.docDefAckText,'Acknowledgement')">  {{::'common.more' |
+																translate}}...</a></span>
+													</span>
+												</td>
+												<td header="'myDocumentWhere.html'"
+												    class="text-left col-sm-2">
+													<a ng-click="opencAccountSpecViewAccount(documentPolicy.customerName,documentPolicy.customerVerticalCode);"
+													   id="viewAccounts">{{::'myDocuments.viewAccounts' | translate}}</a>
+												</td>
+											</tr>
+										</tbody>
+										<tbody ng-if="documentPolicy.data.errorData.Status === 'Error'">
+											<tr>
+												<td colspan="4">
+													<div class="text-danger">
+														<span class="fa fa-warning"
+														      aria-hidden="true"></span> {{documentPolicy.data.errorData.ResponseError[0].errorCode | translate}}
+													</div>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</vision-data-table>
+						</div>
+					</div>
+				</div>
+			</accordion-group>
+		</accordion>
+	</div>
+</div>

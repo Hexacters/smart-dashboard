@@ -1,0 +1,418 @@
+<div class="modal-content">
+	<div class="modal-header ng-scope">
+		<button type="button" class="close" data-dismiss="modal"
+			data-ng-click="closeRecurringPopup();setApptType();">&times;</button>
+		<h3 class="modal-title">Repeat</h3>
+	</div>
+	<div class="modal-body">
+		<form novalidate name="recurringAppointmentForm"
+			class="form-horizontal" autocomplete="off">
+			<div class="col-sm-12 col-md-12 col-lg-12 "
+				ng-controller="commonController">
+				<div class="form-group">
+					<label class="col-sm-3 col-md-3 col-lg-3 control-label">Repeats<sup
+						class="asterisk">*</sup></label>
+					<div class="col-sm-6 col-smd-6 col-lg-6">
+						<select class="form-control validationInput input-sm"
+							name="repeats" ng-model="recurringAppt.repeats"
+							data-ng-change="loadInitDetails(recurringAppt.repeats);recurringAppt.every = 1;">
+							<option value="DAILY" selected>Every Day</option>
+							<option value="WEEKDAYSONLY" title="Repeats Weekdays Only">Weekdays
+								Only</option>
+							<option value="WEEKLY" title="Repeats Weekly">Weekly</option>
+							<option value="MONTHLY" title="Repeats Monthly">Monthly</option>
+							<option value="YEARLY" title="Repeats Yearly">Yearly</option>
+						</select>
+					</div>
+				</div>
+
+				<div ng-if="recurringAppt.repeats=='DAILY'">
+					<div class="form-group">
+						<label class="col-sm-3 col-md-3 col-lg-3 control-label">Every<sup
+							class="asterisk">*</sup></label>
+						<div class="col-sm-3 col-md-3 col-lg-3 form-inline">
+							<select class="form-control validationInput input-sm"
+								name="every" ng-model="recurringAppt.every">
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+								<option value="6">6</option>
+								<option value="7">7</option>
+							</select> day(s)
+						</div>
+					</div>
+				</div>
+				<div ng-if="recurringAppt.repeats=='WEEKDAYSONLY'">
+					<div class="form-group">
+						<label class="col-sm-3 col-md-3 col-lg-3 control-label">Every<sup
+							class="asterisk">*</sup></label>
+						<div class="col-sm-4 col-md-4 col-lg-4 form-inline">
+							<select class="form-control validationInput input-sm"
+								name="every" ng-model="recurringAppt.every">
+								<option value="1" selected>1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+								<option value="6">6</option>
+								<option value="7">7</option>
+								<option value="8">8</option>
+								<option value="9">9</option>
+								<option value="10">10</option>
+								<option value="11">11</option>
+								<option value="12">12</option>
+							</select> Week(s)
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 col-md-3 col-lg-3 control-label">On<sup
+							class="asterisk">*</sup></label>
+						<div class="col-md-7">
+							<label class="checkbox-inline"> <input type="checkbox"
+								id="inlineCheckbox1" value="Monday"
+								ng-change="changePickerDisable(recurringAppt.repeats,recurringAppt);"
+								ng-model="recurringAppt.weekdaysMonday"> Mo
+							</label> <label class="checkbox-inline"> <input type="checkbox"
+								id="inlineCheckbox2" value="Tuesday"
+								ng-change="changePickerDisable(recurringAppt.repeats,recurringAppt);"
+								ng-model="recurringAppt.weekdaysTuesday"> Tu
+							</label> <label class="checkbox-inline"> <input type="checkbox"
+								id="inlineCheckbox3" value="Wednesday"
+								ng-change="changePickerDisable(recurringAppt.repeats,recurringAppt);"
+								ng-model="recurringAppt.weekdaysWednesday"> We
+							</label> <label class="checkbox-inline"> <input type="checkbox"
+								id="inlineCheckbox3" value="Thursday"
+								ng-change="changePickerDisable(recurringAppt.repeats,recurringAppt);"
+								ng-model="recurringAppt.weekdaysThursday"> Th
+							</label> <label class="checkbox-inline"> <input type="checkbox"
+								id="inlineCheckbox3" value="Friday"
+								ng-change="changePickerDisable(recurringAppt.repeats,recurringAppt);"
+								ng-model="recurringAppt.weekdaysFriday"> Fr
+							</label> <input type="hidden" id="subject" name="subject"
+								ng-model="defaultDays" validator="required"
+								required-error-message="{{'appointments.addAppointments.errorMessage.shouldBeSelectedToProceedFurther' | translate}}"
+								valid-method="watch" />
+						</div>
+					</div>
+				</div>
+
+				<div ng-if="recurringAppt.repeats=='WEEKLY'">
+					<div class="form-group">
+						<label class="col-sm-3 col-md-3 col-lg-3 control-label">Every<sup
+							class="asterisk">*</sup></label>
+						<div class="col-sm-4 col-md-4 col-lg-4 form-inline">
+							<select class="form-control validationInput input-sm"
+								name="weekdaysOnly" ng-model="recurringAppt.every">
+								<option value="1" selected>1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+								<option value="6">6</option>
+								<option value="7">7</option>
+								<option value="8">8</option>
+								<option value="9">9</option>
+								<option value="10">10</option>
+								<option value="11">11</option>
+								<option value="12">12</option>
+							</select> Week(s)
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 col-md-3 col-lg-3 control-label">On<sup
+							class="asterisk">*</sup></label>
+						<div class="col-md-9">
+							<label class="checkbox-inline"> <input type="checkbox"
+								id="inlineCheckbox1" value="Sunday"
+								ng-change="changePickerDisable(recurringAppt.repeats,recurringAppt);"
+								ng-model="recurringAppt.weeklySunday"> Su
+							</label> <label class="checkbox-inline"> <input type="checkbox"
+								id="inlineCheckbox1" value="Monday"
+								ng-change="changePickerDisable(recurringAppt.repeats,recurringAppt);"
+								ng-model="recurringAppt.weeklyMonday"> Mo
+							</label> <label class="checkbox-inline"> <input type="checkbox"
+								id="inlineCheckbox2" value="Tuesday"
+								ng-change="changePickerDisable(recurringAppt.repeats,recurringAppt);"
+								ng-model="recurringAppt.weeklyTuesday"> Tu
+							</label> <label class="checkbox-inline"> <input type="checkbox"
+								id="inlineCheckbox3" value="Wednesday"
+								ng-change="changePickerDisable(recurringAppt.repeats,recurringAppt);"
+								ng-model="recurringAppt.weeklyWednesday"> We
+							</label> <label class="checkbox-inline"> <input type="checkbox"
+								id="inlineCheckbox3" value="Thursday"
+								ng-change="changePickerDisable(recurringAppt.repeats,recurringAppt);"
+								ng-model="recurringAppt.weeklyThursday"> Th
+							</label> <label class="checkbox-inline"> <input type="checkbox"
+								id="inlineCheckbox3" value="Friday"
+								ng-change="changePickerDisable(recurringAppt.repeats,recurringAppt);"
+								ng-model="recurringAppt.weeklyFriday"> Fr
+							</label> <label class="checkbox-inline"> <input type="checkbox"
+								id="inlineCheckbox1" value="Saturday"
+								ng-change="changePickerDisable(recurringAppt.repeats,recurringAppt);"
+								ng-model="recurringAppt.weeklySaturday"> Sa
+							</label> <input type="hidden" id="subject" name="subject"
+								ng-model="defaultDays" validator="required"
+								required-error-message="{{'appointments.addAppointments.errorMessage.shouldBeSelectedToProceedFurther' | translate}}"
+								valid-method="watch" />
+						</div>
+
+					</div>
+				</div>
+				<div ng-if="recurringAppt.repeats=='MONTHLY'">
+					<div class="form-group">
+						<label class="col-sm-3 col-md-3 col-lg-3 control-label">Every<sup
+							class="asterisk">*</sup></label>
+						<div class="col-sm-4 col-md-4 col-lg-4 form-inline">
+							<select class="form-control validationInput input-sm"
+								name="every" ng-model="recurringAppt.every">
+								<option value="1" selected>1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+								<option value="6">6</option>
+								<option value="7">7</option>
+								<option value="8">8</option>
+								<option value="9">9</option>
+								<option value="10">10</option>
+								<option value="11">11</option>
+							</select>month(s)
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 col-md-3 col-lg-3 control-label">Repeat
+							by<sup class="asterisk">*</sup>
+						</label>
+						<div class="col-sm-9 col-md-9 col-lg-9">
+							<div class="col-sm-1 col-md-1 col-lg-1">
+								<input type="radio" id="inlineRadio1" name="monthly"
+									ng-click="changeMonthlyDate('dm')" value="dw"
+									data-ng-model="recurringAppt.monthByWeekAndDate">
+							</div>
+							<div class="col-sm-3 col-md-3 col-lg-3 form-inline">
+								<select ng-change="changeMonthlyDate('true')" ng-disabled="recurringAppt.monthByWeekAndDate === 'dm'"
+									class="col-sm-3 col-md-3 col-lg-3 form-control validationInput input-sm"
+									name="every" ng-model="recurringAppt.monthDays">
+									<option value="FIRST">1st</option>
+									<option value="SECOND">2nd</option>
+									<option value="THIRD">3rd</option>
+									<option value="FOURTH">4th</option>
+									<option value="LAST">Last</option>
+								</select>
+							</div>
+							<div class="col-sm-5 col-md-5 col-lg-5">
+								<select ng-change="changeMonthlyDate('true')" ng-disabled="recurringAppt.monthByWeekAndDate === 'dm'"
+									class="col-sm-3 col-md-3 col-lg-3 form-control input-sm"
+									name="everyDay" ng-model="recurringAppt.everyMonth">
+									<option value="Sunday">Sunday</option>
+									<option value="Monday">Monday</option>
+									<option value="Tuesday">Tuesday</option>
+									<option value="Wednesday">Wednesday</option>
+									<option value="Thursday">Thursday</option>
+									<option value="Friday">Friday</option>
+									<option value="Saturday">Saturday</option>
+								</select>
+							</div>
+						</div>
+
+						<div class="col-sm-9 col-md-9 col-lg-9 col-md-offset-3">
+							<div class="col-sm-1 col-md-1 col-lg-1">
+								<input type="radio" id="inlineRadio1"
+									ng-click="changeMonthlyDate('dw')"  name="monthly"
+									value="dm" data-ng-model="recurringAppt.monthByWeekAndDate">
+							</div>
+							<div class="col-sm-8 col-md-8 col-lg-8 form-inline">
+								<select ng-change="changeMonthlyDate('true');setMonthOnDays(recurringAppt.monthOnDays);" ng-disabled="recurringAppt.monthByWeekAndDate === 'dw'"
+									class="form-control validationInput input-sm" name="every"
+									ng-model="recurringAppt.monthOnDays">
+									<option value="1">1st</option>
+									<option value="2">2nd</option>
+									<option value="3">3rd</option>
+									<option value="4">4th</option>
+									<option value="5">5th</option>
+									<option value="6">6th</option>
+									<option value="7">7th</option>
+									<option value="8">8th</option>
+									<option value="9">9th</option>
+									<option value="10">10th</option>
+									<option value="11">11th</option>
+									<option value="12">12th</option>
+									<option value="13">13th</option>
+									<option value="14">14th</option>
+									<option value="15">15th</option>
+									<option value="16">16th</option>
+									<option value="17">17th</option>
+									<option value="18">18th</option>
+									<option value="19">19th</option>
+									<option value="20">20th</option>
+									<option value="21">21st</option>
+									<option value="22">22nd</option>
+									<option value="23">23rd</option>
+									<option value="24">24th</option>
+									<option value="25">25th</option>
+									<option value="26">26th</option>
+									<option value="27">27th</option>
+									<option value="28">28th</option>
+								</select> day of the month
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div ng-if="recurringAppt.repeats=='YEARLY'">
+					<div class="form-group">
+						<label class="col-sm-3 col-md-3 col-lg-3 control-label">Every<sup
+							class="asterisk">*</sup></label>
+						<div class="col-sm-3 col-md-3 col-lg-3 form-inline">
+							<select class="form-control validationInput input-sm"
+								name="every" ng-model="recurringAppt.every">
+								<option value="1" selected>1</option>
+							</select> year
+						</div>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="col-sm-3 col-md-3 col-lg-3 control-label">Starts<sup
+						class="asterisk">*</sup></label>
+					<div class="col-sm-6 col-md-6 col-lg-6">
+						<input class="form-control input-sm datetime-input" readonly type="text"
+							id="recurringStartdate" name="recurringStartdate" valid-method="submit"
+							data-ng-model="recurringAppt.startDate" min-date="minDate"
+							max-date="maxDate" show-weeks="false" show-button-bar="false"
+							validator="required"
+							required-error-message="{{'appointments.addAppointments.errorMessage.pleaseSelectStartDate' | translate}}"
+							uib-datepicker-popup="MM/dd/yyyy"
+							ng-click="enableStartDatePopup()" is-open="startDatePopup.opened"
+							date-disabled="disabled(date, mode)"
+							ng-change="setRecurringDate('startDate', recurringAppt.startDate, recurringAppt.repeats);" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-3 col-md-3 col-lg-3 control-label">Ends<sup
+						class="asterisk">*</sup></label>
+					<div class="col-sm-6 col-md-6 col-lg-6">
+						<input class="form-control input-sm datetime-input" readonly type="text"
+							id="recurringEnddate" name="recurringEnddate" valid-method="submit"
+							data-ng-model="recurringAppt.endDate"
+							min-date="recurringAppt.startDate" max-date="maxDate"
+							show-weeks="false" show-button-bar="false" validator="required"
+							required-error-message="{{'appointments.addAppointments.errorMessage.pleaseSelectEndDate' | translate}}"
+							uib-datepicker-popup="MM/dd/yyyy" ng-click="enableEndDatePopup()"
+							is-open="endDatePopup.opened"
+							date-disabled="disabled(date, mode)"
+							ng-change="setRecurringDate('endDate', recurringAppt.endDate, recurringAppt.repeats);" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-3 col-md-3 col-lg-3 control-label">Summary</label>
+					<label class="paddingT1 col-sm-8 col-md-8 col-lg-8"
+						ng-model="recurringAppt.summary"
+						ng-if="recurringAppt.repeats=='DAILY'"> <span
+						ng-if="recurringAppt.every == 1">Daily,</span> <span
+						ng-if="recurringAppt.every != 1">Every
+							{{recurringAppt.every}} days,</span> Starts on {{recurringStartDate}},
+						Until {{recurringEndDate}}
+					</label> <label class="paddingT1 col-sm-8 col-md-8 col-lg-8"
+						ng-model="recurringAppt.summary"
+						ng-if="recurringAppt.repeats=='WEEKDAYSONLY'"> <span
+						ng-if="recurringAppt.every == 1">Weekly </span> <span
+						ng-if="recurringAppt.every >1">Every
+							{{recurringAppt.every}} weeks </span> <span
+						ng-if="recurringAppt.weekdaysMonday===true && recurringAppt.weekdaysTuesday===true && recurringAppt.weekdaysWednesday===true && recurringAppt.weekdaysThursday===true && recurringAppt.weekdaysFriday===true">on
+							weekdays, </span> <span
+						ng-if="recurringAppt.weekdaysMonday!==true || recurringAppt.weekdaysTuesday!==true || recurringAppt.weekdaysWednesday!==true || recurringAppt.weekdaysThursday!==true || recurringAppt.weekdaysFriday!==true">
+							<span
+							ng-if="recurringAppt.weekdaysMonday===true || recurringAppt.weekdaysTuesday===true || recurringAppt.weekdaysWednesday===true || recurringAppt.weekdaysThursday===true || recurringAppt.weekdaysFriday===true">on</span>
+							<span
+							ng-if="recurringAppt.weekdaysMonday===true && (recurringAppt.weekdaysTuesday!==true && recurringAppt.weekdaysWednesday!==true && recurringAppt.weekdaysThursday!==true && recurringAppt.weekdaysFriday!==true)">Monday</span>
+							<span
+							ng-if="recurringAppt.weekdaysMonday===true && (recurringAppt.weekdaysTuesday===true || recurringAppt.weekdaysWednesday===true || recurringAppt.weekdaysThursday===true || recurringAppt.weekdaysFriday===true)">Monday,
+						</span> <span
+							ng-if="recurringAppt.weekdaysTuesday===true && (recurringAppt.weekdaysWednesday!==true && recurringAppt.weekdaysThursday!==true && recurringAppt.weekdaysFriday!==true)">Tuesday</span>
+							<span
+							ng-if="recurringAppt.weekdaysTuesday===true && (recurringAppt.weekdaysWednesday===true || recurringAppt.weekdaysThursday===true || recurringAppt.weekdaysFriday===true)">Tuesday,
+						</span> <span
+							ng-if="recurringAppt.weekdaysWednesday===true && (recurringAppt.weekdaysThursday!==true && recurringAppt.weekdaysFriday!==true)">Wednesday</span>
+							<span
+							ng-if="recurringAppt.weekdaysWednesday===true && (recurringAppt.weekdaysThursday===true || recurringAppt.weekdaysFriday===true)">Wednesday,
+						</span> <span
+							ng-if="recurringAppt.weekdaysThursday===true && (recurringAppt.weekdaysFriday!==true)">Thursday</span>
+							<span
+							ng-if="recurringAppt.weekdaysThursday===true && (recurringAppt.weekdaysFriday===true)">Thursday,
+						</span> <span ng-if="recurringAppt.weekdaysFriday===true && recurringStartDate == ''">Friday</span> <span
+							ng-if="recurringAppt.weekdaysFriday===true && recurringStartDate != '' && recurringEndDate != ''">Friday,
+						</span>
+					</span> <span
+						data-ng-if="recurringStartDate != '' && recurringEndDate != ''">Starts
+							on {{recurringStartDate}}, Until {{recurringEndDate}}</span>
+					</label> <label class="paddingT1 col-sm-8 col-md-8 col-lg-8"
+						ng-model="recurringAppt.summary"
+						ng-if="recurringAppt.repeats=='WEEKLY'"> <span
+						ng-if="recurringAppt.every == 1">Weekly </span> <span
+						ng-if="recurringAppt.every >1">Every
+							{{recurringAppt.every}} weeks </span> <span
+						ng-if="recurringAppt.weeklySunday===true && recurringAppt.weeklyMonday===true && recurringAppt.weeklyTuesday===true && recurringAppt.weeklyWednesday===true && recurringAppt.weeklyThursday===true && recurringAppt.weeklyFriday===true && recurringAppt.weeklySaturday===true && recurringStartDate == '' && recurringEndDate == ''">on
+							all days</span> <span
+						ng-if="recurringAppt.weeklySunday===true && recurringAppt.weeklyMonday===true && recurringAppt.weeklyTuesday===true && recurringAppt.weeklyWednesday===true && recurringAppt.weeklyThursday===true && recurringAppt.weeklyFriday===true && recurringAppt.weeklySaturday===true && recurringStartDate != '' && recurringEndDate != ''">on
+							all days, </span> <span
+						ng-if="recurringAppt.weeklySunday!==true || recurringAppt.weeklyMonday!==true || recurringAppt.weeklyTuesday!==true || recurringAppt.weeklyWednesday!==true || recurringAppt.weeklyThursday!==true || recurringAppt.weeklyFriday!==true || recurringAppt.weeklySaturday!==true">
+							<span
+							ng-if="recurringAppt.weeklySunday===true || recurringAppt.weeklyMonday===true || recurringAppt.weeklyTuesday===true || recurringAppt.weeklyWednesday===true || recurringAppt.weeklyThursday===true || recurringAppt.weeklyFriday===true || recurringAppt.weeklySaturday===true">on
+						</span> <span
+							ng-if="recurringAppt.weeklySunday===true && (recurringAppt.weeklyMonday!==true && recurringAppt.weeklyTuesday!==true && recurringAppt.weeklyWednesday!==true && recurringAppt.weeklyThursday!==true && recurringAppt.weeklyFriday!==true && recurringAppt.weeklySaturday!==true && recurringStartDate == '' && recurringEndDate == '')">Sunday</span>
+							<span
+							ng-if="recurringAppt.weeklySunday===true && ((recurringAppt.weeklyMonday===true || recurringAppt.weeklyTuesday===true || recurringAppt.weeklyWednesday===true || recurringAppt.weeklyThursday===true || recurringAppt.weeklyFriday===true || recurringAppt.weeklySaturday===true) || (recurringStartDate != '' && recurringEndDate != ''))">Sunday,
+						</span> <span
+							ng-if="recurringAppt.weeklyMonday===true && (recurringAppt.weeklyTuesday!==true && recurringAppt.weeklyWednesday!==true && recurringAppt.weeklyThursday!==true && recurringAppt.weeklyFriday!==true && recurringAppt.weeklySaturday!==true && recurringStartDate == '' && recurringEndDate == '')">Monday</span>
+							<span
+							ng-if="recurringAppt.weeklyMonday===true && ((recurringAppt.weeklyTuesday===true || recurringAppt.weeklyWednesday===true || recurringAppt.weeklyThursday===true || recurringAppt.weeklyFriday===true || recurringAppt.weeklySaturday===true) || (recurringStartDate != '' && recurringEndDate != ''))">Monday,
+						</span> <span
+							ng-if="recurringAppt.weeklyTuesday===true && (recurringAppt.weeklyWednesday!==true && recurringAppt.weeklyThursday!==true && recurringAppt.weeklyFriday!==true && recurringAppt.weeklySaturday!==true && recurringStartDate == '' && recurringEndDate == '')">Tuesday</span>
+							<span
+							ng-if="recurringAppt.weeklyTuesday===true && ((recurringAppt.weeklyWednesday===true || recurringAppt.weeklyThursday===true || recurringAppt.weeklyFriday===true || recurringAppt.weeklySaturday===true) || (recurringStartDate != '' && recurringEndDate != ''))">Tuesday,
+						</span> <span
+							ng-if="recurringAppt.weeklyWednesday===true && (recurringAppt.weeklyThursday!==true && recurringAppt.weeklyFriday!==true && recurringAppt.weeklySaturday!==true && recurringStartDate == '' && recurringEndDate == '')">Wednesday</span>
+							<span
+							ng-if="recurringAppt.weeklyWednesday===true && ((recurringAppt.weeklyThursday===true || recurringAppt.weeklyFriday===true || recurringAppt.weeklySaturday===true) || (recurringStartDate != '' && recurringEndDate != ''))">Wednesday,
+						</span> <span
+							ng-if="recurringAppt.weeklyThursday===true && (recurringAppt.weeklyFriday!==true && recurringAppt.weeklySaturday!==true && recurringStartDate == '' && recurringEndDate == '')">Thursday</span>
+							<span
+							ng-if="recurringAppt.weeklyThursday===true && ((recurringAppt.weeklyFriday===true || recurringAppt.weeklySaturday===true) || (recurringStartDate != '' && recurringEndDate != ''))">Thursday,
+						</span> <span
+							ng-if="recurringAppt.weeklyFriday===true && (recurringAppt.weeklySaturday!==true && recurringStartDate == '' && recurringEndDate == '')">Friday</span>
+							<span
+							ng-if="recurringAppt.weeklyFriday===true && ((recurringAppt.weeklySaturday===true) || (recurringStartDate != '' && recurringEndDate != ''))">Friday,
+						</span> <span ng-if="recurringAppt.weeklySaturday===true && recurringStartDate == ''">Saturday</span>
+							<span
+							ng-if="recurringAppt.weeklySaturday===true && recurringStartDate != '' && recurringEndDate != ''">Saturday</span>
+					</span> <span
+						data-ng-if="recurringStartDate != '' && recurringEndDate != ''">Starts
+							on {{recurringStartDate}}, Until {{recurringEndDate}}</span>
+					</label>
+					<label class="paddingT1 col-sm-8 col-md-8 col-lg-8" ng-model="recurringAppt.summary" ng-if="recurringAppt.repeats=='MONTHLY'">
+						<span ng-if="recurringAppt.every == 1">Monthly on the </span>
+						<span ng-if="recurringAppt.every >1">Every {{recurringAppt.every}} months on the</span> 
+						<span ng-if="recurringAppt.monthByWeekAndDate === 'dw'">{{recurringAppt.monthDays | lowercase}} {{recurringAppt.everyMonth}}<span ng-if="recurringAppt.startDate != ''">, Starts on {{recurringStartDate}}, Until {{recurringEndDate}}</span></span>
+						<span ng-if="recurringAppt.monthByWeekAndDate  === 'dm'">{{monthOnDays}}<span ng-if="recurringAppt.startDate != ''">, Starts on {{recurringStartDate}}, Until {{recurringEndDate}}</span></span>
+					</label>
+					<label class="paddingT1 col-sm-8 col-md-8 col-lg-8" ng-model="recurringAppt.summary" ng-if="recurringAppt.repeats=='YEARLY'">
+						<span ng-if="recurringAppt.every == 1">Annually on {{recurringAppointmentYearStartDate}}, Starts on </span>
+						<span ng-if="recurringAppt.every > 1">Every {{recurringAppt.every}} years on {{recurringAppointmentYearStartDate}}</span> {{recurringStartDate}}, Until {{recurringEndDate}}
+					</label>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-3 col-md-3 col-lg-3"></label> <label
+						class="col-sm-8 col-md-8 col-lg-8 ">
+						<button class="btn btn-primary"
+							validation-submit="recurringAppointmentForm" type="button"
+							ng-model="clicked"
+							data-ng-click="getAllRecurringAppt(recurringAppt, 'popup');">Done</button>
+					</label>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

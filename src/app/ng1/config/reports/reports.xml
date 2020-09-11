@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<module id="reportsModule">
+	<routers>
+		<router id="reports" sticky="true" url="/reports">
+			<views>
+				<view containerId="vendordash" templateUrl="app/ng1/views/reports/reports.html"></view>
+			</views>
+		</router>
+		<router id="reports.advancedReports" url="/advancedReports">
+			<views>
+				<view containerId="advancedReportView" templateUrl="app/ng1/views/reports/advancedReports.html"></view>
+			</views>
+		</router>
+		<router id="reports.standardReports" url="/standardReports">
+			<views>
+				<view containerId="standardReportsView" templateUrl="app/ng1/views/reports/standardReports.html"></view>
+			</views>
+		</router>
+		<router id="reports.shareMyCredentialsHistoryReport" url="/shareMyCredentialsHistoryReport/{reportIsFrom}">
+			<views>
+				<view containerId="standardReportsView" templateUrl="app/ng1/views/reports/shareMyCredentialsHistoryReport.html"></view>
+			</views>
+		</router>
+		<router id="reports.shareMyCredentialsHistoryReportDetails" url="/shareMyCredentialsHistoryReportDetails">
+			<views>
+				<view containerId="standardReportsView" templateUrl="app/ng1/views/reports/shareMyCredentialsHistoryReportDetails.html"></view>
+			</views>
+		</router>
+		
+		<router id="reports.shareStaffCredentialsHistoryReport" url="/shareStaffCredentialsHistoryReport/{reportIsFrom}">
+			<views>
+				<view containerId="standardReportsView" templateUrl="app/ng1/views/reports/shareMyCredentialsHistoryReport.html"></view>
+			</views>
+		</router>
+		<router id="reports.shareStaffCredentialsHistoryReportDetails" url="/shareStaffCredentialsHistoryReportDetails">
+			<views>
+				<view containerId="standardReportsView" templateUrl="app/ng1/views/reports/shareMyCredentialsHistoryReportDetails.html"></view>
+			</views>
+		</router>
+	</routers>
+	<services id="reportServices">
+		<operations>
+			<operation name="getSharedCredentialsHistory" serviceName="vendorrep" requestWrapper="request" responseWrapper="response" requestType="json" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/reports/getSharedCredentialsHistory.json" mock="false">
+				<params>
+					<param name="userOid" source="userProfile" key="id"></param>
+					<param name="isFromAdmin" source="data" key="isFromAdmin" module="credentialsFrom"/>
+				</params>
+			</operation>
+			<operation name="getSharedCredentialsHistoryDetails" serviceName="vendorrep" requestWrapper="request" responseWrapper="response" requestType="json" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/reports/getSharedCredentialsHistoryDetails.json" mock="false">
+				<params>
+					<param name="parentOid" source="data" key="oid" module="shareMyCredentials"/>
+					<param name="startDate" source="data" key="startDate" module="shareMyCredentials"/>
+					<param name="endDate" source="data" key="endDate" module="shareMyCredentials"/>
+				</params>
+			</operation>			
+		</operations>
+	</services>
+</module>

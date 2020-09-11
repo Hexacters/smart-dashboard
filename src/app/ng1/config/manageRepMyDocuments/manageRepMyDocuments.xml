@@ -1,0 +1,125 @@
+<?xml version="1.0"?>
+<module id="myDocumentModule">
+	<routers>
+		<router id="manage.repAccountDetails.documents" sticky="true" url="/documents">
+			<views>
+				<view containerId="manageRepMyDocuments" templateUrl="app/ng1/views/myDocuments/manageRepMyDocuments.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.documents.commonDocuments" url="/commonDocuments/{random}">
+			<views>
+				<view containerId="viewCommonDocuments" templateUrl="app/ng1/views/myDocuments/commonDocuments.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.documents.accountSpecificDocuments" url="/accountSpecificDocuments/{random}">
+			<views>
+				<view containerId="viewAccountSpecificDocuments" templateUrl="app/ng1/views/myDocuments/accountSpecificDocuments.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.documents.backgroundCheck" url="/accountSpecificDocuments/{random}">
+			<views>
+				<view containerId="viewBackgroundCheck" templateUrl="app/ng1/views/myDocuments/backgroundCheck.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.documents.optionalDocuments" url="/optionalDocuments/{random}">
+			<views>
+				<view containerId="viewOptionalDocuments" templateUrl="app/ng1/views/myDocuments/optionalDocuments.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.documents.commonDocuments.cautionPopupUpdate" url="updateDocument" type="dialog">
+			<views>
+				<view containerId="model" templateUrl="app/ng1/views/myDocuments/commonDocumentsUpdate.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.documents.commonDocuments.commonDialog" type="dialog">
+			<views>
+				<view containerId="modal" templateUrl="app/ng1/views/myDocuments/commonDocumentsCommonDialog.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.documents.commonDocuments.commonDialog.cautions" url="/cautions">
+			<views>
+				<view containerId="CommonDocument@" templateUrl="app/ng1/views/myDocuments/commonDocumentsCaution.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.documents.commonDocuments.commonDialog.updateDocument" url="/updateDocument">
+			<views>
+				<view containerId="CommonDocument@" templateUrl="app/ng1/views/myDocuments/commonDocumentsUpdate.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.documents.commonDocuments.commonDialog.documentAlert" url="/documentAlert">
+			<views>
+				<view containerId="CommonDocument@" templateUrl="app/ng1/views/myDocuments/commonDocumentsDocumentAlert.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.documents.commonDocuments.commonDialog.documentAlertSteps" url="/documentAlertSteps">
+			<views>
+				<view containerId="CommonDocument@" templateUrl="app/ng1/views/myDocuments/commonDocumentsDocumentAlertSteps.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.documents.commonDocuments.deleteDocument" url="/delete/{id}" type="dialog">
+			<views>
+				<view containerId="modal" templateUrl="app/ng1/views/myDocuments/commonDocumentsDelete.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.documents.commonDocuments.account" url="/accounts" type="dialog">
+			<views>
+				<view containerId="modal" templateUrl="app/ng1/views/myDocuments/commonDocumentsAccounts.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.documents.commonDocuments.acknowledge" url="/acknowledge" type="dialog">
+			<views>
+				<view containerId="modal" templateUrl="app/ng1/views/myDocuments/acknowledge.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.documents.accountSpecificDocuments.cautions" type="dialog">
+			<views>
+				<view containerId="modal" templateUrl="app/ng1/views/myDocuments/accountSpecificDocumentsCaution.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.documents.accountSpecificDocuments.updateDocument" type="dialog">
+			<views>
+				<view containerId="modal" templateUrl="app/ng1/views/myDocuments/accountSpecificDocumentsUpdate.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.documents.accountSpecificDocuments.deleteDocument" type="dialog" url="/delete">
+			<views>
+				<view containerId="modal" templateUrl="app/ng1/views/myDocuments/accountSpecificDocumentsDelete.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.documents.accountSpecificDocuments.account" url="/accounts" type="dialog">
+			<views>
+				<view containerId="modal" templateUrl="app/ng1/views/myDocuments/accountSpecificDocumentsAccounts.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.documents.accountSpecificDocuments.acknowledge" url="/acknowledge" type="dialog">
+			<views>
+				<view containerId="modal" templateUrl="app/ng1/views/myDocuments/acknowledge.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.documents.optionalDocuments.cautions" type="dialog">
+			<views>
+				<view containerId="modal" templateUrl="app/ng1/views/myDocuments/optionalDocumentsCaution.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.documents.optionalDocuments.updateDocument" type="dialog">
+			<views>
+				<view containerId="modal" templateUrl="app/ng1/views/myDocuments/optionalDocumentsUpdate.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.documents.optionalDocuments.deleteDocument" type="dialog" url="/delete">
+			<views>
+				<view containerId="modal" templateUrl="app/ng1/views/myDocuments/optionalDocumentsDelete.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.documents.optionalDocuments.account" url="/accounts" type="dialog">
+			<views>
+				<view containerId="modal" templateUrl="app/ng1/views/myDocuments/optionalDocumentsAccounts.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.documents.optionalDocuments.acknowledge" url="/acknowledge" type="dialog">
+			<views>
+				<view containerId="modal" templateUrl="app/ng1/views/myDocuments/acknowledge.html"></view>
+			</views>
+		</router>
+	</routers>
+</module>

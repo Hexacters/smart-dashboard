@@ -1,0 +1,4 @@
+<div data-ng-controller="userController">
+<div loading-container="loading"></div>
+ <auto-login service="users" operation="goToDashboard" params='{"token":"{{$state.params.token}}"}' callback="afterLoginCallbackFn" />
+</div>

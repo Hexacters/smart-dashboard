@@ -1,0 +1,128 @@
+<!-- vrepOneToMany -->
+<div >
+	<div class="col-sm-6 col-md-6 col-lg-6" ng-class="{divDisabled: inviteRepOverlay}" ng-init="search.State = 'state'">
+		<div ng-init="searchState = 'state';searchKeyWords='';searchByState='';">
+			<div data-ng-include="'views/manageReps/manyToOneSearchAccountFrom.html?rnd='+randomManyToOne"></div>
+		</div>
+		<div class="col-sm-12 col-md-12 col-lg-12 padding0">
+				<div data-ng-class="{'dNone':!loadingManyToOneAccounts}">
+					<img align="absmiddle" src="app/ng1/img/partial-loading.gif">&nbsp;{{'common.loading' | translate}}
+				</div>
+				<div data-ng-show="maximumSelectedError.error == true && maximumSelectedError.customerError == true" class="alert alert-danger">
+					<i class="fa fa-exclamation-triangle"></i> You have exceeded the maximum number of accounts (10) that a rep may be invited to in one invitation.
+				</div>
+				<div class="table-responsive" ng-show="!manyToOneSearchAccountsValidateError">
+					<div class="clearfix" ng-table-pagination="manytToOneAccountsGrid" template-url="'ng-table/style3.html'"></div>
+					<table ng-table="manytToOneAccountsGrid" show-filter="false" template-pagination="style3" class="table table-striped table-bordered marginT1 marginB1">
+						<tbody ng-if="manytToOneAccountsGrid.data.length>0">
+							<tr ng-repeat="selectedAccount in $data">
+								<td class="text-center col-md-1">
+									<input ng-disabled="loadingManyToOneAccounts" type="radio" id="{{selectedAccount.companyName}}" name="selectAccounts" ng-click="SelectedManyToOne('accountsGrid',selectedAccount.customerOid,selectedAccount.companyName);selectRepsGrid(selectedAccount);showAddtoListBtnMany2One(selectedAccount,selectedAccountId)" value="{{selectedAccount.customerOid}}" data-ng-checked="{{selectedAccount.checked}}" ng-model="selectedInviteRepMO" />
+								</td>
+								<td data-title="'Account'" sortable="'companyName'" class="text-left col-md-11 wrapword" filter="{ 'companyName': 'text' }">{{selectedAccount.companyName}}</td>
+							</tr>
+						</tbody>
+						<tbody ng-if="manytToOneAccountsGrid.data.errorData.Status=='Error'">
+							<tr>
+								<td colspan="11">
+									<div class="text-danger">
+										<span class="fa fa-warning" aria-hidden="true"></span>
+										<span>{{ manytToOneAccountsGrid.data.errorData.ResponseError[0].errorCode | translate}}</span>
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<div class="clearfix" ng-table-pagination="manytToOneAccountsGrid" template-url="'ng-table/style3.html'"></div>
+				</div>
+				<div ng-show="manyToOneSearchAccountsValidateError" class="table-responsive">
+					<table ng-table="manyToOneAccountsErrorGrid" class="table table-striped table-bordered marginT1 marginB1">
+					 <thead>
+							<th class="col-lg-2">Account</th>
+					  </thead>
+					  <tbody>
+						 <tr>
+							<td colspan="11">
+								<div class="text-danger">
+									<span class="fa fa-warning" aria-hidden="true"></span>
+									<span>{{'common.errorMessage.allowedSpecialCharacters' | translate}}</span>
+								</div>
+							</td>
+						 </tr>
+					  </tbody>
+					</table>
+				</div>
+				<p class="marginT1">{{'manageReps.10AccountsMaximum'| translate}}</p>
+		</div>
+	</div>
+	<div class="col-sm-6 col-md-6 col-lg-6" ng-class="{divDisabled: inviteRepOverlay}">
+		<h4><b>{{'manageReps.selectRep' | translate}}</b></h4>
+		<div class="col-sm-12 col-md-12 col-lg-12 padding0 form-inline" ng-init="oneToManySearchColumn='firstName,lastName,userId';oneToManySearchTearm=''">
+			<div ng-include="'views/manageReps/manyToOneSearchRepFrom.html?rnd='+randomManyToOne"></div>
+		</div>
+		<p ng-show="maxRepSelected" class="text-danger">{{'manageReps.maximun3RepErrorMsg'| translate}}</p>
+		<div class="col-sm-12 col-md-12 col-lg-12 padding0">
+				<div data-ng-class="{'dNone':!loadingManyToOneReps}">
+					<img align="absmiddle" src="app/ng1/img/partial-loading.gif">&nbsp;{{'common.loading' | translate}}
+				</div>
+				<div ng-class="{'dNone':loadingManyToOneReps}"
+					ng-if="manytToOneAccountsGrid.data.length > 0 && data.successData.actualRecords >= data.successData.paginationMessage.paginationMaxCount">
+					<p
+						class="text-left col-sm-12 col-md-12 col-lg-12 paddingL0 pagination-max-message">
+						<b> {{'paginationMaximumMessage' |
+							translate:data.successData.paginationMessage }}</b>
+					</p>
+				</div>
+				<div data-ng-show="maximumSelectedError.error == true && maximumSelectedError.usersError == true" class="alert alert-danger">
+					<i class="fa fa-exclamation-triangle"></i> You have exceeded the maximum number of reps (10) that may be invited in one invitation.
+				</div>
+				<div class="table-responsive" ng-show="!manyToOneSearchRepValidateError">
+					<div class="clearfix" ng-table-pagination="manytToOneRepsGrid" template-url="'ng-table/style3.html'"></div>
+					<table ng-table="manytToOneRepsGrid" show-filter="false" template-pagination="style3" class="table table-striped table-bordered marginT1 marginB1">
+						<tbody ng-if="manytToOneRepsGrid.data.length>0">
+							<tr ng-repeat="selectedRep in $data">
+								<td class="text-center col-md-1" ng-click="showAddtoListBtnMany2One(selectedInviteRep,selectedAccountId)">
+									<input ng-disabled="loadingManyToOneReps" id="{{selectedRep.vendorOid}}" ng-model="selectedRep.checked" type="checkbox" ng-click="manyToOneCheckedValue(selectedRep.checked,selectedRep);">
+								</td>
+								<td data-title="'First Name'" sortable="'firstName'" class="text-left col-md-3 wrapword" filter="{ 'firstName': 'text' }">{{selectedRep.firstName}}</td>
+								<td data-title="'Last Name'" sortable="'lastName'" class="text-left col-md-3 wrapword" filter="{ 'lastName': 'text' }">{{selectedRep.lastName}}</td>
+								<td data-title="'Email'" sortable="'userId'" class="text-left col-md-5 wrapword" filter="{ 'userId': 'text' }">{{selectedRep.userId}}</td>
+							</tr>
+						</tbody>
+						<tbody ng-if="manytToOneRepsGrid.data.errorData.Status=='Error'">
+							<tr>
+								<td colspan="11">
+									<div class="text-danger">
+										<span class="fa fa-warning" aria-hidden="true"></span> 
+										<span>{{ manytToOneRepsGrid.data.errorData.ResponseError[0].errorCode | translate}}</span>
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<div class="clearfix" ng-table-pagination="manytToOneRepsGrid" template-url="'ng-table/style3.html'"></div>
+				</div>
+				<div ng-show="manyToOneSearchRepValidateError" class="table-responsive">
+						<table ng-table="ManyToOneRepsErrorGrid" class="table table-striped table-bordered marginT1 marginB1">
+						 <thead>
+								<th class="text-left col-lg-1"></th>
+								<th class="col-lg-2">First Name</th>
+								<th class="col-lg-2">Last Name</th>
+								<th class="col-lg-2">Email</th>
+						  </thead>
+						  <tbody>
+							 <tr>
+								<td colspan="11">
+									<div class="text-danger">
+										<span class="fa fa-warning" aria-hidden="true"></span>
+										<span>{{'common.errorMessage.allowedSpecialCharacters' | translate}}</span>
+									</div>
+								</td>
+							 </tr>
+						  </tbody>
+						</table>
+					</div>
+				<p class="marginT1">{{'manageReps.10RepsMaximum'| translate}}&nbsp;<span ng-if="userSelectedList.length > 0">{{'manageReps.label.youHaveSelected' | translate}}:&nbsp;{{userSelectedList.length}}</span>
+		</div>
+	</div>
+</div>

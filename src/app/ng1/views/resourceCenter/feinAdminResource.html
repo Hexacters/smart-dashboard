@@ -1,0 +1,40 @@
+<div ng-controller="googleAnalyticsController" data-ng-init="callGAPageTrack('feinAdminResources');"></div>
+<div class="col-sm-12 col-md-12 col-lg-12 marginB2" ng-controller="resourceCenterController">
+    <div ng-init="getFeinAdminRepResource(userProfile.id,'FA');">
+	    <div data-ng-class="{'dNone':!resourceLoading}">
+            <img align="absmiddle" src="app/ng1/img/partial-loading.gif" />{{'common.loading' | translate}}
+        </div>
+		<div ng-show="data">
+			<label class="col-sm-3 col-md-2 col-lg-2 paddingL0 paddingR0 marginTP5">{{'resourceCenter.adminResources.label.associateCompanies'| translate}}</label>
+			<div class="col-sm-5 col-md-4 col-lg-4 paddingL0">
+				<select id="associatedCompany" class="form-control" ng-model="feinAdminResource.associatedCompany" ng-change="changeFeinResourceCenter(feinAdminResource.associatedCompany,'FA')" name="associatedCompany">
+					<option ng-selected="feinAdminResource.associatedCompany == associatedCompany.companyName+'#@#'+associatedCompany.vendorOid" ng-repeat="associatedCompany in data.successData.AssociatedCompanyList" value="{{associatedCompany.companyName+'#@#'+associatedCompany.vendorOid}}">{{associatedCompany.companyName}}-{{associatedCompany.fein}}</option>
+				</select>
+			</div>
+		</div>
+		<div ng-show="!resourceLoading">
+		<div class="text-danger col-sm-12 col-md-12 col-lg-12 paddingL0" ng-show="feinAdmin.errorData.Status == 'Error' && feinAdmin.errorData.ResponseError[0].errorCode !='5061'" id="forgotPasswordError">
+            <strong><i class="fa fa-warning"></i></strong>&nbsp; {{feinAdmin.errorData.ResponseError[0].errorCode | translate}}</div>
+		<div class="text-danger col-sm-12 col-md-12 col-lg-12 paddingL0" ng-show="feinAdmin.errorData.Status == 'Error' && feinAdmin.errorData.ResponseError[0].errorCode =='5061'" id="forgotPasswordError">
+            <strong><i class="fa fa-warning"></i></strong>&nbsp; {{'resourceCenter.adminResources.errorMessage.noAdminResourcesFor' | translate}} {{feinAdminResource.companyName}}.</div>
+		<div class="col-sm-12 col-md-12 col-lg-12 paddingL0" ng-repeat="item in feinAdmin.successData.ResourceList" ng-switch on="$index % 3">
+			<div class="col-sm-5 col-md-4 col-lg-4 marginBP5 paddingL0" ng-switch-when="0">
+				<a ng-if="feinAdmin.successData.ResourceList[$index].resourceType != 'URL'" data-ng-click="viewResourceCenterDocument(feinAdmin.successData.ResourceList[$index].mongoKey);" tooltip="{{feinAdmin.successData.ResourceList[$index].resourceDescription}}" tooltip-placement="right" tooltip-append-to-body="true"><span ng-if="feinAdmin.successData.ResourceList[$index].resourceName.length>=30">{{feinAdmin.successData.ResourceList[$index].resourceName | limitTo:30}}...</span><span ng-if="feinAdmin.successData.ResourceList[$index].resourceName.length<30">{{feinAdmin.successData.ResourceList[$index].resourceName}}</span></a>
+				<a ng-if="feinAdmin.successData.ResourceList[$index].resourceType == 'URL'" data-ng-click="loadURLVendorResource(feinAdmin.successData.ResourceList[$index].resourceUrl);" tooltip="{{feinAdmin.successData.ResourceList[$index].resourceDescription}}" tooltip-placement="right" tooltip-append-to-body="true"><span ng-if="feinAdmin.successData.ResourceList[$index].resourceName.length>=30">{{feinAdmin.successData.ResourceList[$index].resourceName | limitTo:30}}...</span><span ng-if="feinAdmin.successData.ResourceList[$index].resourceName.length<30">{{feinAdmin.successData.ResourceList[$index].resourceName}}</span></a><br>
+			</div>
+			<span ng-show="feinAdmin.successData.ResourceList[$index+1]">
+				<div class="col-sm-5 col-md-4 col-lg-4 marginBP5 paddingL0" ng-switch-when="0">
+					<a ng-if="feinAdmin.successData.ResourceList[$index+1].resourceType != 'URL'" data-ng-click="viewResourceCenterDocument(feinAdmin.successData.ResourceList[$index+1].mongoKey);" tooltip="{{feinAdmin.successData.ResourceList[$index+1].resourceDescription}}" tooltip-placement="top" tooltip-append-to-body="true"><span ng-if="feinAdmin.successData.ResourceList[$index+1].resourceName.length>=30">{{feinAdmin.successData.ResourceList[$index+1].resourceName | limitTo:30}}..</span><span ng-if="feinAdmin.successData.ResourceList[$index+1].resourceName.length<30">{{feinAdmin.successData.ResourceList[$index+1].resourceName}}</span></a>
+					<a ng-if="feinAdmin.successData.ResourceList[$index+1].resourceType == 'URL'" data-ng-click="loadURLVendorResource(feinAdmin.successData.ResourceList[$index+1].resourceUrl);" tooltip="{{feinAdmin.successData.ResourceList[$index+1].resourceDescription}}" tooltip-placement="top" tooltip-append-to-body="true"><span ng-if="feinAdmin.successData.ResourceList[$index+1].resourceName.length>=30">{{feinAdmin.successData.ResourceList[$index+1].resourceName | limitTo:30}}..</span><span ng-if="feinAdmin.successData.ResourceList[$index+1].resourceName.length<30">{{feinAdmin.successData.ResourceList[$index+1].resourceName}}</span></a><br>
+				</div>
+			</span>
+			<span ng-show="feinAdmin.successData.ResourceList[$index+2]">
+				<div class="col-sm-5 col-md-4 col-lg-4 marginBP5 paddingL0" ng-switch-when="0">
+					<a ng-if="feinAdmin.successData.ResourceList[$index+2].resourceType != 'URL'" data-ng-click="viewResourceCenterDocument(feinAdmin.successData.ResourceList[$index+2].mongoKey);" tooltip="{{feinAdmin.successData.ResourceList[$index+2].resourceDescription}}" tooltip-placement="left" tooltip-append-to-body="true"><span ng-if="feinAdmin.successData.ResourceList[$index+2].resourceName.length>=30">{{feinAdmin.successData.ResourceList[$index+2].resourceName | limitTo:30}}...</span><span ng-if="feinAdmin.successData.ResourceList[$index+2].resourceName.length<30">{{feinAdmin.successData.ResourceList[$index+2].resourceName}}</span></a>
+					<a ng-if="feinAdmin.successData.ResourceList[$index+2].resourceType == 'URL'" data-ng-click="loadURLVendorResource(feinAdmin.successData.ResourceList[$index+2].resourceUrl);" tooltip="{{feinAdmin.successData.ResourceList[$index+2].resourceDescription}}" tooltip-placement="left" tooltip-append-to-body="true"><span ng-if="feinAdmin.successData.ResourceList[$index+2].resourceName.length>=30">{{feinAdmin.successData.ResourceList[$index+2].resourceName | limitTo:30}}...</span><span ng-if="feinAdmin.successData.ResourceList[$index+2].resourceName.length<30">{{feinAdmin.successData.ResourceList[$index+2].resourceName}}</span></a><br>
+				</div>
+			</span>
+		</div>
+		</div>
+    </div>
+</div>

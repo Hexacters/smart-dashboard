@@ -1,0 +1,66 @@
+	<div data-ng-class="{'dNone':!policyAckloading}">
+			<img align="absmiddle" alt="loader" src="app/ng1/img/partial-loading.gif">&nbsp;{{'common.loading' | translate}}
+		</div>
+<div ng-show="showCriticalAck === true">
+	<div class="marginT2">
+	
+		<div ng-if="!policyAckloading">
+		<div class="policyAck" ng-if="globalPolicy.successData"> 
+			<div class="col-sm-9 col-md-9 col-lg-9 marginB1"><h4><b>{{globalPolicy.cusName}}</b></h4></div>
+			<div class="col-sm-3 col-md-3 col-lg-3 marginB1 text-center"><h5><b>{{'home.label.acknowledge' | translate}}</b></h5></div>
+			<div class="marginB1" data-ng-repeat="emergencyPolicyAlert in globalPolicy.successData.globalPolicies">	
+				<div class="col-sm-9 col-md-9 col-lg-9 marginB1 marginT1">
+					<span ng-if="emergencyPolicyAlert.hasPolicyTemplate === true" ng-controller="myDocumentController">
+						<a class="policyAckHeading" ng-click="viewTemplateDocument(emergencyPolicyAlert.definitionOid)">{{emergencyPolicyAlert.credDefname}}</a>
+					</span>
+					<span ng-if="emergencyPolicyAlert.hasPolicyTemplate != true">
+						<b>{{emergencyPolicyAlert.credDefname}}</b>
+					</span><br/>
+					<span ng-if="emergencyPolicyAlert.why != null">
+                        <b>{{'myDocuments.label.why' | translate}}</b>
+                    </span><br/>
+                    <span ng-controller="commonController" ng-if="emergencyPolicyAlert.why != null && emergencyPolicyAlert.why  !=''">
+                    <span class="whiteSpacePre" ng-init="numLimit =50" ng-bind-html="emergencyPolicyAlert.why | limitTo:numLimit | trustAsHtml"></span> 
+                        <span data-ng-if="emergencyPolicyAlert.why.length>50">
+                            <a ng-hide="showLess" class="readMoreLess cursorPointer" ng-click="readMore('1024')">more...</a>
+                            <a ng-show="showLess" class="readMoreLess cursorPointer" ng-click="readLess('50')">less</a>
+                        </span>
+                    </span><br/>
+                    <span ng-if="emergencyPolicyAlert.how != null">
+                        <b>{{'myDocuments.label.how' | translate}}</b>
+                    </span><br/>
+					<span ng-controller="commonController" ng-if="emergencyPolicyAlert.how != null && emergencyPolicyAlert.how  !=''">
+					<span class="whiteSpacePre" ng-init="numLimit =50" ng-bind-html="emergencyPolicyAlert.how | limitTo:numLimit | trustAsHtml"></span> 
+						<span data-ng-if="emergencyPolicyAlert.how.length>50">
+							<a ng-hide="showLess" class="readMoreLess cursorPointer" ng-click="readMore('1024')">more...</a>
+							<a ng-show="showLess" class="readMoreLess cursorPointer" ng-click="readLess('50')">less</a>
+						</span>	
+					</span>
+				</div>
+				<div class="col-sm-3 col-md-3 col-lg-3 text-center marginB1 marginT1" ng-if="showLoader === false">
+						<input type="checkbox"
+							id="emergencyPolicyAlertACK1"
+							data-ng-click="saveEmergencyPolicyAcknowledge(emergencyPolicyAlert.definitionOid)"
+							value="emergencyPolicyAlertACK1" name="emergencyPolicyAlertACK1"
+							ng-model="emergencyPolicyAlertACK1" ng-if="emergencyPolicyAlert.statusCode === 3 && !policyAccept"/>
+							<h4 class="marginT2 marginBP5" ng-if="emergencyPolicyAlert.statusCode === 1 || policyAccept">
+								<img src="app/ng1/img/okay.png" width="23" alt="okay"/>
+							</h4>
+							
+							
+				</div>
+				<div class="col-sm-3 col-md-3 col-lg-3 text-center marginB1 marginT1" ng-if="showLoader === true">
+						<img align="absmiddle" alt="loader" src="app/ng1/img/partial-loading.gif">&nbsp;{{'common.loading' | translate}}		
+			  </div>
+		</div>
+			
+		</div>	
+		<div ng-if="globalPolicy.errorData.ResponseError[0].errorCode">
+			<div data-ng-if="customerData.errorData.Status === 'Error'" class="alert alert-danger" ng-init="reloadHomeTab();">
+				<i class="fa fa-exclamation-triangle"></i> {{globalPolicy.errorData.ResponseError[0].errorCode | translate}}
+			</div>
+		</div>
+		
+		</div>
+	</div>
+</div>

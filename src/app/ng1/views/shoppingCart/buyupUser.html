@@ -1,0 +1,36 @@
+<div class="modal-content">
+	<div class="modal-header commonDialogHeader">
+		<button id="viewLocationCloseIcon" id="viewAccountCloseIcon"
+			type="button" class="close" data-dismiss="modal" aria-hidden="true"
+			data-ng-click="$close()">&times;</button>
+		<h3 class="modal-title">
+			<b>{{'shoppingCart.label.buyupUser' | translate}}</b>
+		</h3>
+	</div>
+	<div class="modal-body ng-scope">
+		<div class="alert alert-danger text-danger" data-ng-if="showBuyupUserError">
+			<span class="fa fa-warning" aria-hidden="true"></span>
+			Number of additional buyup user limit exceeded.
+		</div>
+		<form novalidate name="buyupUserForm" class="form-horizontal" autocomplete="off">
+			<div class="col-sm-12 col-md-12 col-lg-12">
+				<div class="form-group">
+					<label class="col-sm-6 col-md-6 col-lg-6 text-right">
+						{{'shoppingCart.label.userToBuy'| translate }}&nbsp;<span class="asterisk">*</span> 
+					</label>
+					<div class="col-sm-6 col-md-6 col-lg-6">
+						<input type="text" class="form-control input-sm" maxlength="1" validator="required,number" id="buyupUser" name="buyupUser" ng-model="buyupUser" required-error-message="{{'shoppingCart.errorMessage.userToBuyRequired'| translate }}"/>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-12 col-md-12 col-lg-12">
+				<div class="col-sm-4 col-md-4 col-lg-4">
+				</div>
+				<div class="col-sm-8 col-md-8 col-lg-8">
+					<button name="buyupUserSubmit" class="btn btn-blue" validation-submit="buyupUserForm" id="buyupUserSubmit"buyupUserSubmit ng-click="updateBuyupUser(buyupUser)">{{'common.ok'| translate }}</button>
+					<button name="buyupUserCancel" class="btn btn-grey" id="buyupUserCancel" data-ng-click="$close()">{{'common.cancel'| translate }}</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

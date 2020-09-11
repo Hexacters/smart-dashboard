@@ -1,0 +1,18 @@
+{
+	"VisionResponse": {
+		"Status": "Ok",
+		"eligibilityDetails": {
+			"purchasedUserAmount": "2304.0",
+			"orderType": "Renewal",
+			"shoppingCartEnabled": true,
+			"unPaidUsersCount": 0,
+			"activeUsersCount": 6,
+			"notificationCount": 1,
+			"unPaidUser": false,
+			"purchasedUserCount": 4,
+			"showShoppingCartIcon": true,
+			"expirationDate": "05/02/2019"
+		},
+		"contentType": "application/json"
+	}
+}

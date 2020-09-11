@@ -1,0 +1,103 @@
+<div class="row">
+		<div class="col col-sm-12">
+			<div class="table-responsive">
+			
+				<vision-data-table service="organizationServices"
+					operation="searchEmployeeWithFilters"
+					root-node="data.successData.employeeDetails"
+					search-type="searchRequestWithPagination"
+					total-records-node="data.successData.TotalRecords"
+					has-external-search='{"searchString" : "{{query}}"}' 
+					params='{"id":1212,"extraparam":"sdfdsfds","dsfdsfdsf":"dsfdsfdsfd"}'
+					min-length="3"
+					initial-request='{"sorting":{"firstName":"asc"},"filter":{"firstName":"test"}}'
+					type="server"
+					id="employeeList"
+					fixed-header="true"
+					height="200">
+				<div
+					ng-init="checkAll.checked=false; checkAll.itemField='id'"
+					class="table-responsive clearfix vision-margin-10 vision-overlay-table"
+					id="searchEmployee" data-double-scroll-bar-horizontal
+					id="employeeSearchGrid">
+					<table ng-table="employeeList" show-filter="true" width="100%"
+						class="table table-fixed table-striped table-bordered vision-overlay-table vision-margin-0" ng-show="employeeList.data.length>0">
+						<tbody ng-if="employeeList.data.length>0">
+							<tr class="GridviewScrollHeader" ng-repeat="employee in $data track by $index">
+								<td header="'checkbox.html'"><input type="checkbox" id="checkAll_{{employee.id}}" name="checkAll"
+									ng-model="checkAll.itemsChecked[employee.id]" ng-click="checkboxHandling(checkAll.itemsChecked[employee.id],employee)"/></td>
+								<td
+									data-title="'employeeSearchGrid.firstName' | translate | unwrapFilter : 20"
+									place-holder="'RepName, Lastname, description'"
+									max-length="100"
+									sortable="'firstName'" filter="{ 'firstName': 'text' }">
+									{{employee.firstName | limitTo: 20}} <span
+									ng-if="employee.firstName.length>20" tooltip-placement="top"
+									tooltip="{{employee.firstName}}">...</span>
+								</td>
+								<td
+									max-length="500"
+									data-title="'employeeSearchGrid.lastName' | translate | unwrapFilter : 20"
+									sortable="'lastName'" filter="{ 'lastName': 'text' }">
+									{{employee.lastName | limitTo: 20}} <span
+									ng-if="employee.lastName.length>20" tooltip-placement="top"
+									tooltip="{{employee.lastName}}">...</span>
+								</td>
+								<td
+									data-title="'employeeSearchGrid.doj' | translate | unwrapFilter : 50"
+									filter="{ 'dateOfJoining': 'dateRange' }">
+									{{employee.dateOfJoining | date:'dd/MM/yyyy'}}</td>
+								<td
+									data-title="'employeeSearchGrid.performanceScore' | translate | unwrapFilter : 30"
+									filter="{ 'performanceScore': 'number'}"
+									filter-data="[{id:' ', title:'Select'},{id:'eq', title:'='}, {id:'btn', title:'<>'}, {id:'gte', title:'>='}, {id:'lte', title:'<='}]"
+									class="col-lg-1">{{ employee.performanceScore}}</td>
+								<td
+									data-title="'employeeSearchGrid.status' | translate | unwrapFilter : 30"
+									filter="{ 'status': 'select'}"
+									filter-data="[{id:'Active', title:'Active'}, {id:'InActive', title:'InActive'},{id:'Pending', title:'Pending'}]">
+									{{employee.status }}</td>
+								<td
+									data-title="'employeeSearchGrid.state' | translate | unwrapFilter : 30">
+									{{employee.addressState }}</td>
+								<td
+									data-title="'employeeSearchGrid.city'| translate | unwrapFilter : 30"
+									filter="{ 'addressCity': 'text' }"><span
+									ng-bind-html="employee.addressCity | trustAsHtml"> </span></td>
+								<td
+									data-title="'employeeSearchGrid.resume'| translate | unwrapFilter : 30"
+									filter="{ 'resume': 'text' }"></td>
+								<td
+									data-title="'employeeSearchGrid.departments'| translate | unwrapFilter : 30"
+									filter="{ 'departments': 'text' }">{{
+									employee.departments | limitTo: 20 }} <span
+									ng-if="employee.departments.length>20" tooltip-placement="top"
+									tooltip="{{employee.departments}}">...</span>
+								</td>
+							</tr>
+						</tbody>
+						<tbody ng-if="employeeList.data.errorData">
+							<tr>
+								<td colspan="11">
+									<div class="text-danger">
+										<span class="fa fa-warning" aria-hidden="true"></span>
+										{{employeeList.data.errorData.ResponseError[0].errorCode}}
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="clearfix" ng-table-pagination="employeeList"
+					template-url="'ng-table/style3.html'"></div>
+				<div class="clearfix" vision-data-table-export="employeeList"
+					service="organizationServices"
+					type="server"
+					operation="searchEmployeeExport" 
+					search-type="searchRequestWithPagination"
+					params='{"id":1212,"extraparam":"sdfdsfds","dsfdsfdsf":"dsfdsfdsfd"}'
+					export-type="csv,xls,txt"></div>
+				</vision-data-table>
+			</div>
+		</div>
+	</div>

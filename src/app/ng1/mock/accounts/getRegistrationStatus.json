@@ -1,0 +1,31 @@
+{
+	"VisionResponse": {
+		"Status": "Ok",
+		"RegistrationStatus": {
+			"companyDetailsUpdated": true,
+			"repRegistration": "NA",
+			"enabledNormalRegistration": true,
+			"enabledOnboardingForms": true,
+			"repOid": "c010000e85600000e867",
+			"completedPage": "SFA",
+			"enableVendorDetailDiversity": true,
+			"expressRegistered": false,
+			"onboardCompleted": "Completed",
+			"enablePhiSecurityQuestions": true,
+			"enableExpressRegistration": true,
+			"vcOid": "c010000e1e500000e1eb",
+			"repFullyPaidForCredentialing": true,
+			"allowAckDuringEntityRegistration": true,
+			"vrpAnswered": true,
+			"registrationCompleted": true,
+			"eulaSigned": true,
+			"vcStatus": "ACT",
+			"corporateRegistration": "Completed",
+			"allowUploadEntityDocuments": true,
+			"enableVendorDetailContacts": true,
+			"rrpAnswered": true,
+			"regType": "NETWORK"
+		},
+		"contentType": "application/json"
+	}
+}

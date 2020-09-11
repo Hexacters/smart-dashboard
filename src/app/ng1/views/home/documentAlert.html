@@ -1,0 +1,30 @@
+<div ng-controller="myDocumentController">
+<div class="modal-content">
+    <div class="modal-header commonDialogHeader">
+        <button ng-if="!$state.params.random" id="commonDocumentAlertCloseIcon" type="button" class="close" data-dismiss="modal" aria-hidden="true" data-ng-click="cancelDialog()">&times;</button>
+		<button ng-if="$state.params.id=='commonDoc' && $state.params.random" id="commonDocumentAlertCloseIcon" type="button" class="close" data-dismiss="modal" aria-hidden="true" data-ng-click="cancelDialog();$state.go('home');">&times;</button>
+		<button ng-if="$state.params.id=='specificDoc' && $state.params.random" id="commonDocumentAlertCloseIcon" type="button" class="close" data-dismiss="modal" aria-hidden="true" data-ng-click="cancelDialog();$state.go('home');">&times;</button>
+		<button ng-if="$state.params.id=='backgroundCheckDoc' && $state.params.random" id="commonDocumentAlertCloseIcon" type="button" class="close" data-dismiss="modal" aria-hidden="true" data-ng-click="cancelDialog();$state.go('home');">&times;</button>
+        <h3 class="modal-title"><img src="app/ng1/img/no.png" alt="No Document"/> <b>{{'home.documentAlert' | translate}}</b></h3>
+    </div>
+    <div class="modal-body modelDialogScroll" ng-init="documentStatus()">
+      <div ng-init="content = $stateParams.id">
+			<input ng-if="documentStatusData.successData.sharableDocumentComplianceAlertStatus == false" id="commonDoc" type="radio" name="content" ng-model="content" value="commonDoc" data-ng-click="$state.go('home.documentAlert.commonDocument',({id: 'commonDoc'}))" />
+			<input ng-if="documentStatusData.successData.sharableDocumentComplianceAlertStatus == true" id="commonDoc" type="radio" name="content" ng-model="content" value="commonDoc" data-ng-click="$state.go('home.documentAlert.commonDocument',({id: 'commonDoc'}))" disabled/>
+			<b class="fontSize19px">{{'home.commonDocuments' | translate}}&nbsp;&nbsp;&nbsp;</b>
+			<input ng-if="documentStatusData.successData.nonSharableDocumentComplianceAlertStatus == false" id="specificDoc" type="radio" name="content" ng-model="content" data-ng-click="$state.go('home.documentAlert.specific',({id: 'specificDoc'}))" value="specificDoc" />
+			<input ng-if="documentStatusData.successData.nonSharableDocumentComplianceAlertStatus == true" id="specificDoc" type="radio" name="content" ng-model="content" data-ng-click="$state.go('home.documentAlert.specific',({id: 'specificDoc'}))" value="specificDoc" disabled/>
+			<b class="fontSize19px">{{'home.accountsSpecificDocuments' | translate}}</b>
+			<span ng-if="documentStatusData.successData.bcStatus && (documentStatusData.successData.bcStatus | lowercase) !== 'na'">
+			&nbsp;&nbsp;&nbsp;
+			<input ng-if="((documentStatusData.successData.bcStatus | lowercase) === 'incomplete' || (documentStatusData.successData.bcStatus | lowercase) === 'fail' || ((documentStatusData.successData.bcStatus | lowercase) === 'pass' && documentStatusData.successData.bcExpired))" id="sorDoc" type="radio" data-ng-click="$state.go('home.documentAlert.backgroundCheck',({id: 'backgroundCheckDoc','random':getRandomSpan()}));" name="content" ng-model="content" value="backgroundCheckDoc" />
+			<input ng-if="((documentStatusData.successData.bcStatus | lowercase) === 'pass' && !documentStatusData.successData.bcExpired)" id="sorDoc" type="radio" data-ng-click="$state.go('home.documentAlert.backgroundCheck',({id: 'backgroundCheckDoc'}));" name="content" ng-model="content" value="backgroundCheckDoc" disabled/>
+			<b class="fontSize19px">{{'myDocuments.tabs.backgroundCheck' | translate}}</b></span>
+			<p>{{'home.documentAlertDescription' | translate}}</p>
+			<div id="commonDocAlert" ng-if="$stateParams.id=='commonDoc' || $stateParams.id=='specificDoc' || $stateParams.id=='backgroundCheckDoc'">
+				<div data-ui-view="commonDocumentAlertViewer" autoscroll="true"></div>
+			</div>
+		</div>
+    </div>
+</div>
+</div>

@@ -1,0 +1,379 @@
+<div class="row">
+	<div class="col-sm-12 col-md-12 col-lg-12"
+		data-ng-class="{'dNone':!loading}">
+		<img align="absmiddle" src="app/ng1/img/partial-loading.gif">&nbsp;{{'common.loading'
+		| translate}}
+	</div>
+	<div ng-controller="companyProfileController">
+		<div class="col-sm-10 col-md-10 col-lg-10 marginB1 marginT1">
+			<h3 class="modal-title">{{'companyProfile.companyInformation.header.companyInformation'
+				| translate}}</h3>
+		</div>
+		<div class="col-sm-2 col-md-2 col-lg-2 text-right marginTP5">
+			<sup class="asterisk">*</sup>&nbsp;{{'common.required' |
+				translate}}&nbsp;<a data-ui-sref="companyProfile.editInformation.help"
+				ng-show="!isFromManageReps">{{'common.help' |
+					translate}}</a> <a
+				data-ui-sref="manage.repAccountDetails.companyProfile.editInformation.help"
+				ng-show="isFromManageReps">{{'common.help' |
+					translate}}</a>
+		</div>
+		<vision-action> <get-data
+			service="companyProfileServices"
+			operation="getVendorDetailandVendorGPOs" response-formatter="getGpoMember"
+			root-node="data.successData" form-node="data"></get-data> <submit-data
+			service="companyProfileServices"
+			operation="saveVendorDetailandVendorGPOs"
+			remove-keys="Status,contentType,VendorDetail.createdOn,VendorDetail.createdBy,VendorDetail.updatedOn,VendorDetail.updatedBy,VendorDetail.createdOnStr,vendorDetail.updatedOnStr,VendorDetail.publiclyTraded"
+			callback="companyInfo" request-formatter="splitGpovalue">
+		</submit-data>
+		<form novalidate name="editCompanyInformation" autocomplete="off"
+			class="form-horizontal">
+			<div class="col-sm-12 col-md-12 col-lg-12 marginB1">
+				<div class="table-responsive"
+					data-ng-if="companyInfoSubmitError.status === 'error'">
+					<div class="alert alert-danger">
+						{{companyInfoSubmitError.errorData.ResponseError[0].errorCode | translate}}</div>
+				</div>
+				<div class="col-sm-6 col-md-6 col-lg-6 marginB1">
+					<div class="form-group col-sm-12 col-md-12 col-lg-12">
+						<label class="col-md-6 col-sm-6 col-lg-6 text-right control-label">{{'companyProfile.companyInformation.label.legalNameofBusiness'
+							| translate}}&nbsp;<sup class="asterisk">*</sup> <span tooltip-append-to-body="true"
+							tooltip="{{'companyProfile.companyInformation.label.legalNameTooltip' | translate}}"
+							tooltip-placement="bottom"> <i
+								class="fa fa-question-circle fa-lg"></i>
+						</span>
+						</label>
+						<div class="col-sm-6 col-md-6 col-lg-6">
+							<p class="form-control-static">{{data.VendorDetail.legalName}}</p>
+						</div>
+					</div>
+					<div class="form-group col-sm-12 col-md-12 col-lg-12">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right control-label">{{'companyProfile.companyInformation.label.doingBusinessAs'
+							| translate}}</label>
+						<div class="col-sm-6 col-md-6 col-lg-6">
+							<p class="form-control-static">{{data.VendorDetail.dbaName}}</p>
+						</div>	
+					</div>
+					<div class="form-group col-sm-12 col-md-12 col-lg-12">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right control-label">{{'companyProfile.companyInformation.label.taxId'
+							| translate}}&nbsp;<sup class="asterisk">*</sup>
+						</label>
+						<div class="col-sm-6 col-md-6 col-lg-6">
+							<p class="form-control-static">{{data.VendorDetail.einOrSsn}}</p>
+						</div>
+					</div>
+					<div class="form-group col-sm-12 col-md-12 col-lg-12">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right">{{'companyProfile.companyInformation.label.dbDunsNumber'
+							| translate}} <span tooltip-append-to-body="true"
+							tooltip="{{'companyProfile.companyInformation.label.dbDunsTooltip' | translate}}"
+							tooltip-placement="bottom"> <i
+								class="fa fa-question-circle fa-lg"></i>
+						</span>
+						</label>
+						<div class="col-sm-6 col-md-6 col-lg-6">
+							<span ng-if="!data.VendorDetail.dnbListingNumber"><input type="text"
+								class="form-control input-sm" name="dunsNuber"
+								placeholder="{{'companyProfile.companyInformation.placeHolder.DUNNumber'
+						| translate}}"
+								validator="validateNumber,validateMinMaxValue" min-value="9"
+								validate-min-max-value-error-message="{{'companyProfile.companyInformation.errorMessage.dbDunsNumberValid' | translate}}"
+								validate-number-error-message="{{'companyProfile.companyInformation.errorMessage.dbDunsNumberValid' | translate}}"
+								maxlength="9" ng-model="data.VendorDetail.dnbListingNumberNew" /></span>
+							<span ng-if="data.VendorDetail.dnbListingNumber != ''">{{data.VendorDetail.dnbListingNumber}}</span>
+						</div>
+					</div>
+					<div class="form-group col-sm-12 col-md-12 col-lg-12">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right control-label">{{'companyProfile.companyInformation.label.publiclyTraded'
+							| translate}}</label>
+						<div class="col-sm-6 col-md-6 col-lg-6">
+							<label class="radio-inline"> <input type="radio"
+								id="publiclyTradedyes" name="publiclyTraded"
+								ng-model="data.VendorDetail.publiclyTradedStr" value="true" />{{'common.yes'
+								| translate}}
+							</label> <label class="radio-inline"> <input type="radio"
+								id="publiclyTradedno" name="publiclyTraded"
+								ng-model="data.VendorDetail.publiclyTradedStr" value="false" />{{'common.no'
+								| translate}}
+							</label>
+						</div>
+					</div>
+					<div class="form-group col-sm-12 col-md-12 col-lg-12"
+						ng-if="data.VendorDetail.publiclyTradedStr === 'true'">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right control-label">{{'companyProfile.companyInformation.label.stockSymbol'
+							| translate}}&nbsp;<sup class="asterisk">*</sup></label>
+						<div class="col-sm-6 col-md-6 col-lg-6">
+							<input type="text" class="form-control input-sm required"
+								name="stockSymbol" maxlength="20"
+								validator="validateAlphanumSpecial ,required" valid-method="submit"
+								validate-alphanum-special-error-message="{{'common.errorMessage.allowedSpecialCharacters' | translate}}"
+								required-error-message="{{'companyProfile.companyInformation.errorMessage.stockSymbolRequired' | translate}}"
+								ng-model="data.VendorDetail.publicSymbol">
+						</div>
+					</div>
+					<input type="hidden"
+						ng-if="data.VendorDetail.publiclyTradedStr != 'true'"
+						class="form-control input-sm required" name="stockSymbol"
+						maxlength="50" ng-model="data.VendorDetail.publicSymbol"
+						ng-init="data.VendorDetail.publicSymbol = ''" />
+					<div class="form-group col-sm-12 col-md-12 col-lg-12">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right">{{'companyProfile.companyInformation.label.typeofBusiness'
+							| translate}}&nbsp;<sup class="asterisk">*</sup>
+						</label>
+						<div class="col-sm-6 col-md-6 col-lg-6">
+							<select class="form-control input-sm required"
+								ng-model="data.VendorDetail.typeOfBusinessCode"
+								name="typeOfBusinessCode" id="salutation" validator="required"
+								valid-method="submit"
+								required-error-message="{{'companyProfile.companyInformation.errorMessage.businessTypeRequired'|translate}}">
+								<option value=""></option>
+								<option ng-repeat="option in vendorBusinessLookup"
+									value="{{option.value}}">{{option.label}}</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group col-sm-12 col-md-12 col-lg-12">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right">{{'companyProfile.companyInformation.label.parentCompany'
+							| translate}}</label>
+						<div class="col-sm-6 col-md-6 col-lg-6">
+							<input type="text" class="form-control input-sm"
+								name="parentCompany" maxlength="100"
+								placeholder="{{'companyProfile.companyInformation.placeHolder.parentCompany'| translate}}"
+								validator="validateAlphanumSpecial" valid-method="submit"
+								validate-alphanum-special-error-message="{{'common.errorMessage.allowedSpecialCharacters' | translate}}"
+								ng-model="data.VendorDetail.parentCompany">
+						</div>
+					</div>
+					<div class="form-group col-sm-12 col-md-12 col-lg-12">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right">{{'companyProfile.companyInformation.label.descriptionBusiness'
+							| translate}} <span tooltip-append-to-body="true"
+							tooltip="{{'companyProfile.companyInformation.label.descriptionTooltip' | translate}}"
+							tooltip-placement="bottom"> <i
+								class="fa fa-question-circle fa-lg"></i>
+						</span>
+						</label>
+						<div class="col-sm-6 col-md-6 col-lg-6">
+							<textarea name="allowedSpecialCharacters"
+								class="form-control input-sm resizeN" rows="3" col="2"
+								ng-model="data.VendorDetail.vendorDescription" maxLength="1024"
+								validator="validateAlphanumSpecial" valid-method="submit"
+								ng-attr-placeholder="{{'companyProfile.companyInformation.placeHolder.descOfYourBusiness'| translate}}"
+								validate-alphanum-special-error-message="{{'common.errorMessage.allowedSpecialCharacters' | translate}}" ng-bind-html="data.VendorDetail.vendorDescription"></textarea>
+						</div>
+					</div>
+					<div class="form-group col-sm-12 col-md-12 col-lg-12">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right">{{'companyProfile.companyInformation.label.ediCapablityOrder'
+							| translate}} <span tooltip-append-to-body="true"
+							tooltip="{{'companyProfile.companyInformation.label.ediTooltip' | translate}}"
+							tooltip-placement="bottom"> <i
+								class="fa fa-question-circle fa-lg"></i>
+						</span>
+						</label>
+						<div class="col-sm-6 col-md-6 col-lg-6">
+
+							<select class="form-control input-sm"
+								ng-model="data.VendorDetail.ediCapableCode"
+								name="ediCapableCode" id="ediCapableCode">
+								<option value=""></option>
+								<option ng-repeat="option in ediCapabilitiesLookup"
+									value="{{option.value}}">{{option.label}}</option>
+							</select>
+
+						</div>
+					</div>
+					<div class="form-group col-sm-12 col-md-12 col-lg-12">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right">
+							{{'companyProfile.companyInformation.label.failedtoCompleteBid' |
+							translate}} </label>
+						<div class="col-sm-6 col-md-6 col-lg-6">
+							<select class="form-control input-sm" ng-change="data.VendorDetail.failedBidExplanation = ''"
+								ng-model="data.VendorDetail.failedBidCode" name="failedBids"
+								id="failedBids">
+								<option value=""></option>
+								<option ng-repeat="option in failedBidsLookup"
+									value="{{option.value}}">{{option.label}}</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group col-sm-12 col-md-12 col-lg-12"
+						data-ng-show="data.VendorDetail.failedBidCode == 'Y'">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right">
+							{{'companyProfile.companyInformation.label.pleaseExplainIfYes' |
+							translate}}&nbsp;<sup class="asterisk">*</sup>
+						</label>
+						<div class="col-sm-6 col-md-6 col-lg-6">
+							<span data-ng-if="data.VendorDetail.failedBidCode == 'Y'">
+								<textarea class="form-control input-sm resizeN required" rows="3" col="2" maxlength="255"
+									validator="validateAlphanumSpecial,required" name="failedBidExplanation" id="failedBidExplanation"
+									valid-method="submit"
+									ng-attr-placeholder="{{'companyProfile.companyInformation.placeHolder.failedBidCode'| translate}}"
+									validate-alphanum-special-error-message="{{'common.errorMessage.allowedSpecialCharacters' | translate}}"
+									required-error-message="{{'companyProfile.companyInformation.errorMessage.failedBidExplanationIsRequired' | translate}}"
+									data-ng-model="data.VendorDetail.failedBidExplanation" ng-bind-html="data.VendorDetail.failedBidExplanation"></textarea>
+							</span> <span
+								data-ng-if="data.VendorDetail.failedBidCode != 'Y'">
+								<textarea class="form-control input-sm vresize" rows="3" col="2"
+									ng-attr-placeholder="{{'companyProfile.companyInformation.placeHolder.failedBidCode'| translate}}"
+									data-ng-model="data.VendorDetail.failedBidExplanation"
+									data-ng-init="data.VendorDetail.failedBidExplanation = ''" ng-bind-html="data.VendorDetail.failedBidExplanation"></textarea>
+							</span>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6 col-sm-6 col-lg-6 marginB1">
+					<div class="form-group col-sm-12 col-md-12 col-lg-12">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right">{{'companyProfile.companyInformation.label.stateProvince'
+							| translate}}</label>
+						<div class="col-sm-6 col-md-6 col-lg-6">
+							<select class="form-control input-sm" name="incorporationState"
+								id="incorporationState"
+								ng-model="data.VendorDetail.stateOrProvinceOfInc">
+								<option value=""></option>
+								<option ng-repeat="option in stateLookup"
+									value="{{option.stateName}}">{{option.stateName}}</option>
+								<option disabled value=""></option>
+								<option ng-repeat="option in stateCanLookup"
+									value="{{option.stateName}}">{{option.stateName}}</option>
+								<option disabled value=""></option>
+								<option ng-repeat="option in stateUsOtherLookup"
+									value="{{option.stateName}}">{{option.stateName}}</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group col-sm-12 col-md-12 col-lg-12">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right">{{'companyProfile.companyInformation.label.dateFounded'
+							| translate}}&nbsp;<sup class="asterisk">*</sup>
+						</label>
+						<div class="col-sm-4 col-md-4 col-lg-4">
+							<select class="form-control input-sm"
+								ng-model="data.VendorDetail.foundedMonthCode" valid-method="submit"
+								validator="validateFoundedDate" message-id="foundedYearErrror"
+								custom-validate="month,{{data.VendorDetail.foundedYearStr}}"
+								id="companyInformation.foundedMonth" name="foundedMonthCode">
+								<option ng-repeat="option in monthLookup | orderBy: 'value'"
+									value="{{$index+1}}">{{option.label}}</option>
+							</select>
+						</div>
+						<div class="col-sm-2 col-md-2 col-lg-2"
+							ng-init="companyInformation.foundedYear='2010'">
+							<input type="text" class="form-control input-sm required"
+								name="foundedYear" maxlength="4" message-id="foundedYearErrror"
+								ng-model="data.VendorDetail.foundedYearStr"
+								validator="required,number,validateYear,validateFoundedDate" valid-method="submit"
+								custom-validate="year,{{data.VendorDetail.foundedMonthCode}}"
+								number-error-message="{{'common.errorMessage.invalidNumberFormat' | translate}}"
+								validate-year-error-message="{{'companyProfile.companyInformation.errorMessage.foundedYearValied' | translate}}"
+								required-error-message="{{'companyProfile.companyInformation.errorMessage.foundedYearRequired'|translate}}">
+						</div>
+						<div class="col-sm-6 col-md-6 col-lg-6 col-sm-offset-6 col-md-offset-6 col-lg-offset-6" id="foundedYearErrror"></div>
+					</div>
+					<div class="form-group col-sm-12 col-md-12 col-lg-12">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right ">{{'companyProfile.companyInformation.label.totalEmployees'
+							| translate}}</label>
+						<div class="col-sm-6 col-md-6 col-lg-6">
+							<input type="text" class="form-control input-sm"
+								name="numberOfEmployeesStr" maxlength="8"
+								validator="validateDigits,validateZero" valid-method="submit"
+								validate-zero-error-message="{{'common.errorMessage.validateZero' | translate}}"
+								validate-digits-error-message="No of employees must be numeric."
+								placeholder="{{'companyProfile.companyInformation.placeHolder.totalNoEmployee'| translate}}"
+								ng-model="data.VendorDetail.numberOfEmployeesStr">
+						</div>
+					</div>
+					<div class="form-group col-sm-12 col-md-12 col-lg-12">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right control-label">{{'companyProfile.companyInformation.label.bestDescribesCompany'
+							| translate}}</label>
+						<div class="col-sm-6 col-md-6 col-lg-6">
+							<div class="checkbox">
+								<label> <input
+									ng-model="data.VendorDetail.functionBroker" type="checkbox"
+									ng-checked="data.VendorDetail.functionBrokerStr = data.VendorDetail.functionBroker">{{'companyProfile.companyInformation.label.broker'
+									| translate}}
+								</label>
+							</div>
+							<div class="checkbox">
+								<label> <input
+									ng-model="data.VendorDetail.functionDistributor"
+									type="checkbox"
+									ng-checked="data.VendorDetail.functionDistributorStr = data.VendorDetail.functionDistributor">{{'companyProfile.companyInformation.label.distributor'
+									| translate}}
+								</label>
+							</div>
+							<div class="checkbox">
+								<label> <input
+									ng-model="data.VendorDetail.functionManuf" type="checkbox"
+									ng-checked="data.VendorDetail.functionManufStr = data.VendorDetail.functionManuf">{{'companyProfile.companyInformation.label.manufacturer'
+									| translate}}
+								</label>
+							</div>
+							<div class="checkbox">
+								<label> <input
+									ng-model="data.VendorDetail.functionManufRep" type="checkbox"
+									ng-checked="data.VendorDetail.functionManufRepStr = data.VendorDetail.functionManufRep">
+									{{'companyProfile.companyInformation.label.manufacturerRepresentative'
+									| translate}}
+								</label>
+							</div>
+							<div class="checkbox">
+								<label> <input
+									ng-model="data.VendorDetail.functionServices" type="checkbox"
+									ng-checked="data.VendorDetail.functionServicesStr = data.VendorDetail.functionServices">{{'companyProfile.companyInformation.label.services'
+									| translate}}
+								</label>
+							</div>
+						</div>
+					</div>
+					<div class="form-group col-sm-12 col-md-12 col-lg-12">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right">{{'companyProfile.companyInformation.label.dollarAmount'
+							| translate}}</label>
+						<div class="col-sm-6 col-md-6 col-lg-6">
+							<input type="text" class="form-control input-sm"
+								name="largestContractAmount" maxlength="15"
+								custom-validate-from="companyProfile"
+								validator="validateDouble,validateAlphanumSpecial" valid-method="submit"
+								validate-alphanum-special-error-message="{{'common.errorMessage.allowedSpecialCharacters' | translate}}"
+								validate-double-special-error-message="Invalid Number Format."
+								ng-focus="data.VendorDetail.largestContractAmountStr = convertDollerToNumber(data.VendorDetail.largestContractAmountStr)"
+								ng-blur="data.VendorDetail.largestContractAmountStr = convertNumberToDoller(data.VendorDetail.largestContractAmountStr)"
+								ng-model="data.VendorDetail.largestContractAmountStr"/>
+						</div>
+					</div>
+					<div class="form-group col-sm-12 col-md-12 col-lg-12">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right control-label">{{'companyProfile.companyInformation.label.contractGroupPurchasing'
+							| translate}}</label>
+						<div class="col-sm-6 col-md-6 col-lg-6">
+							<div class="col-sm-12 col-md-12 col-lg-12 paddingL0 paddingB3">
+								<label class="radio-inline"> <input type="radio"
+									name="contractGroup" id="gpoMemberYes"
+									ng-click="openGpos(data);data.VendorDetail.gpoMember=true;data.VendorDetail.gpoMemberStr='true'"
+									ng-model="data.VendorDetail.gpoMember" ng-value="true">
+									{{'common.yes' | translate}}
+								</label> <label class="radio-inline"> <input type="radio"
+									ng-click="data.VendorDetail.gpoMember = false;data.VendorDetail.gpoMemberStr = 'false'"
+									name="contractGroup" id="gpoMemberNo"
+									ng-model="data.VendorDetail.gpoMember" ng-value="false">
+									{{'common.no' | translate}}
+								</label>
+							</div>
+							<div class="boderedDiv"
+								ng-show="data.VendorDetail.gpoMember === true">
+								<div ng-repeat="gpo in data.vendorGPOList">{{gpo.name}}{{$last ? '' : ', '}}</div>
+								<div ng-show="data.VendorDetail.gpoOther != ''">{{data.VendorDetail.gpoOther}}</div>
+								<div ng-if="!data.vendorGPOList && !companyInfo.VendorDetail.gpoOther">{{'companyProfile.companyInformation.errorMessage.noSelectedGPO'| translate}}</div>
+							</div>
+						</div>
+					</div>
+					<div class="form-group col-sm-12 col-md-12 col-lg-12">
+						<div
+							class="col-md-6 col-sm-6 col-lg-6 col-sm-offset-6 col-md-offset-6 col-lg-offset-6 text-left">
+							<button type="submit" class="btn btn-success" ng-disabled="loading"
+								validation-submit="editCompanyInformation" ng-click="submit();callGAPageTrack('saveCompanyInfo');">{{'common.save'
+								| translate}}</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+		</vision-action>
+	</div>
+</div>

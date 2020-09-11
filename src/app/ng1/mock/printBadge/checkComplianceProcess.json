@@ -1,0 +1,8 @@
+{
+    "VisionResponse": {
+        "Status": "Ok",
+        "Action": "Info",
+        "Message": "info Message SHOWN AS prevent Message",
+        "contentType": "application/json"
+    }
+}

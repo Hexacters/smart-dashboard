@@ -1,0 +1,343 @@
+<header class="header">
+	<div class="navbar navbar-default marginB0">
+		<div class="logo-left">
+			<div class="navbar-header">
+				<a class="navbar-brand navbar-brand-extra"
+				   id="logo"></a>
+			</div>
+			<ul class="nav navbar-nav menu-item no-pointer sm">
+				<li>
+					<h3 id="headerAppName"
+					    class="header-name ng-binding">{{::'common.appClientName' | translate}}</h3>
+				</li>
+			</ul>
+			<ul data-ng-show="forceToShoppingCartCheckout"
+			    class="nav navbar-nav navbar-right top-menu-right menu-item">
+				<li class="dropdown header-two-rows-menu-item">
+					<a class="dropdown-toggle"
+					   href="javascript:;"
+					   id="headerUsername"
+					   aria-haspopup="true"
+					   aria-expanded="true">
+						<div>
+							<div ng-if='userProfile.firstName.length > 30'>{{userProfile.firstName | limitTo:30}}... <b class="caret"></b></div>
+							<div ng-if='userProfile.firstName.length <= 30'> {{userProfile.firstName}} <b class="caret"></b>
+							</div>
+						</div>
+					</a>
+					<ul class="header-dropdown-menu dropdown-menu paddingT1"
+					    ng-controller="commonController">
+						<li class="text-right">
+							<a id="headerLogout"
+							   ng-click="gaEventAndLogout();"> <i class="fa fa-sign-out fa-white"></i>{{::'userHeader.label.logout' | translate}}</a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+			<ul data-ng-show="userProfile.detail.isHideSysMessage != false && !forceToShoppingCartCheckout"
+			    class="nav navbar-nav navbar-right top-menu-right menu-item"
+			    ng-controller="appController">
+				<li class="dropdown header-two-rows-menu-item">
+					<a class="dropdown-toggle"
+					   href="javascript:;"
+					   id="headerUsername"
+					   aria-haspopup="true"
+					   aria-expanded="true">
+						<div>
+							<div ng-if='userProfile.firstName.length > 30'>{{userProfile.firstName | limitTo:30}}... <b class="caret"></b></div>
+							<div ng-if='userProfile.firstName.length <= 30'> {{userProfile.firstName}} <b class="caret"></b>
+							</div>
+						</div>
+					</a>
+					<ul class="header-dropdown-menu dropdown-menu paddingT1"
+					    ng-controller="commonController">
+						<li class="text-right"
+						    data-ng-if="($appConfiguration.authentication.mode | lowercase) !== 'sso'">
+							<a ng-click="changeUsernamePassword('changePassword')"
+							   id="changePassword"> <i class="fa fa-exchange"></i>{{::'userHeader.label.changePassword'|translate}}</a>
+						</li>
+						<li class="text-right"
+						    data-ng-if="($appConfiguration.authentication.mode | lowercase) !== 'sso'">
+							<a ng-click="changeUsernamePassword('changeUsername')"
+							   id="changeUser"> <i class="fa fa-user fa-white"></i>{{::'userHeader.label.changeUsername'|translate}}</a>
+						</li>
+						<li class="text-right"
+						    data-ng-if="canAccess('vm','MyProfile')">
+							<a data-ui-sref="myProfile.contactPersonalInfoView"
+							   ng-click="fromManageReps(false);"
+							   id="myProfile"><i class="fa fa-user fa-white"></i>{{::'userHeader.label.myProfile'|translate}}</a>
+						</li>
+						<li class="text-right"
+						    data-ng-if="canAccess('vm','CompanyProfile')">
+							<a data-ui-sref="companyProfile.viewInformation"
+							   id="companyProfile"
+							   ng-click="fromManageReps(false);"> {{::'userHeader.label.companyProfile'|translate}}</a>
+						</li>
+						<li class="text-right">
+							<a id="headerLogout"
+							   ng-click="fromManageReps(false);gaEventAndLogout();"> <i class="fa fa-sign-out fa-white"></i>{{::'userHeader.label.logout'
+								| translate}}</a>
+						</li>
+					</ul>
+				</li>
+				<li class="dropdown header-two-rows-menu-item product-popover"
+				    data-ng-if="( $appConfiguration.authentication.mode | lowercase ) === 'sso'">
+					<vision-action>
+						<get-data service="users"
+						          operation="getSubscribedProduct"
+						          root-node="data.successData.products"
+						          form-node="data.subscribedProducts">
+						</get-data>
+						<a id="headerSwitcher"
+						   interapp-popover
+						   placement="bottom"
+						   template="mulitiAppSSO.html"><i aria-hidden="true"
+							   class="fa fa-th fa-white"></i></a>
+						<script type="text/ng-template"
+						        id="mulitiAppSSO.html">
+							<div class='row affix-row'>
+								<a ng-if="::showHideScrollLink()" class="popupArrow show" id="scrollUp" ng-click="scrollContentTop($event)"><i class="fa fa-caret-up" id="scrollUp" aria-hidden="true"></i></a>
+								<div id="multiAppContent">
+									<div class='sidebar-nav'>
+										<ul class='nav navbar'>
+											<li class='product-data' ng-repeat='item in data.subscribedProducts track by $index' ng-if="item.products.length > 0 "> 
+												<a href="#"class='text-left' data-toggle="collapse" data-target="#{{ item.id  }}">{{ item.name }}</a>
+												<div id="{{ item.id }}" class="collapse in" ng-class="{in: $index==0}" >
+													<ul class="nav nav-list">
+														<li ng-repeat="subscribeProducts in item.products">
+															<a class='subproduct-data' data-ng-click='changeApp(subscribeProducts.clientUri)' >
+																<span>{{ subscribeProducts.productName }}</span>
+															</a>
+														</li>
+													</ul>
+												</div>
+											</li>
+											<li ng-if="data.subscribedProducts === undefined">
+												 <div class="product-empty ng-binding ng-scope">No products available</div>
+											</li>
+										</ul>
+									</div>
+								</div>
+								<a ng-if="::showHideScrollLink()" class="popupArrow show" id="scrollDown" ng-click="scrollContentBottom($event)"><i class="fa fa-caret-down" id="scrollDown" aria-hidden="true"></i></a>
+						  </div>	
+						</script>
+					</vision-action>
+				</li>
+				<li class="dropdown header-two-rows-menu-item"
+				    ng-if="shoppingCartEnabled && shoppingCarIcon">
+					<a ng-click="checkShoppingcartEligibility('SC_ICON')"
+					   class="shoppingCartIcon">
+						<i class="fa fa-shopping-cart fa-lg"
+						   aria-hidden="true"></i>
+						<span ng-if="(orderType | lowercase) !== 'initial'"
+						      class="fa-stack scNotification">
+							<i class="fa fa-circle fa-stack-2x"
+							   style="color:red;font-size: 26px;"></i>
+							<i class="fa fa-exclamation fa-stack-1x"
+							   style="font-size: 16px;"></i>
+						</span>
+					</a>
+				</li>
+				<li class="dropdown header-two-rows-menu-item"
+				    data-ng-if="( $appConfiguration.authentication.mode | lowercase ) !== 'sso'">
+					<a href="javascript:;"
+					   interapp-popover
+					   placement="bottom"
+					   template="mulitiApp.html"
+					   title="My Products"
+					   class="myAppClass">
+						<i aria-hidden="true"
+						   class="fa fa-th fa-white"></i>
+					</a>
+					<script type="text/ng-template"
+					        id="mulitiApp.html">
+					  		<div class='row affix-row'>
+						  			<div class='sidebar-nav'>
+										<ul class='nav navbar' >
+											<li class='product-data' > 
+											      <a ng-click="goToPcm();" href="#" class='text-left'><span>Contracting & Compliance Solutions</span></a>
+											</li>
+										</ul>
+									</div>
+							</div>
+					</script>
+				</li>
+				<li data-ng-if="($appConfiguration.authentication.mode | lowercase) === 'sso'"
+				    class="dropdown header-two-rows-menu-item">
+					<a title="{{::'common.systemStatusInformation' | translate}}"
+					   id="systemInformation"
+					   href=""
+					   data-ng-click="showSystemInformation();">
+						<i aria-hidden="true"
+						   class="fa fa-desktop fa-white"></i>
+					</a>
+				</li>
+				<li class="dropdown header-two-rows-menu-item"><a title="{{::'common.help' | translate}}"
+					   class="pointer"
+					   target="_blank"
+					   href="{{$appConfiguration.header.supplierURL}}">{{::'common.helpTitle' | translate}}</a></li>
+			</ul>
+		</div>
+	</div>
+	<!-- Static navbar -->
+	<div class="navbar-custom"
+	     role="navigation"
+	     data-ng-show="userProfile.detail.isHideSysMessage != false && !forceToShoppingCartCheckout">
+		<div class="navbar-header">
+			<button type="button"
+			        class="navbar-toggle"
+			        data-toggle="collapse"
+			        data-target="#navbar-collapse"
+			        id="navToggleBtn">
+				<span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+		</div>
+		<div class="navbar-collapse collapse"
+		     id="navbar-collapse"
+		     data-ng-init="Mmenu='vendor'"
+		     ng-controller="commonController">
+			<!-- Left nav -->
+			<!-- <ul class="nav navbar-nav">
+				<li ng-class="{active: $state.includes('reports')}"><a ui-sref="#">{{::'userHeader.label.reports' | translate}}</a></li>
+			</ul> -->
+			<ul class="nav navbar-nav">
+				<li ng-class="{active: $state.includes('home')}"
+				    ng-init="fromManageReps(false);fromAccountDetails(false);"
+				    ng-click="fromManageReps(false);fromAccountDetails(false);"
+				    trackUserEvent('Home');"><a data-ui-sref="home">{{::'userHeader.label.home' |
+						translate}}</a></li>
+				<li ng-controller="homeController"
+				    ng-class="{active: $state.includes('documents')}"
+				    ng-if="canAccess('vm','MyDocuments')">
+					<a ng-click="notFromHome();fromManageReps(false);fromAccountDetails(false);trackUserEvent('My Documents');$state.go('documents.commonDocuments',{'tabsState':'commonDoc'});">{{::'userHeader.label.myDocuments'
+						| translate}}</a>
+				</li>
+				<li ng-class="{active: $state.includes('accounts.manageAccounts') || $state.includes('accounts.searchAccounts') || $state.includes('accounts.accountDetails')}"
+				    ng-if="canAccess('vm','Accounts')"
+				    ng-click="fromManageReps(false);fromAccountDetails(false);trackUserEvent('Accounts');">
+					<a data-ui-sref="accounts.manageAccounts">{{::'userHeader.label.accounts' | translate}}</a></li>
+				<li ng-class="{active: $state.includes('manage.accessRepAccounts') || $state.includes('manage.inviteReps')|| $state.includes('manage.shareStaffCredentials')|| $state.includes('manage.shareCredentials')|| $state.includes('manage.repAccountDetails.repAccountsTab')|| $state.includes('manage.repAccountDetails.clearedForAccess')|| $state.includes('manage.credentialRecipient') || $state.includes('manage.repAccountDetails.paymentReceipt')}"
+				    ng-if="canAccess('vm','ManageReps')"
+				    ng-click="fromManageReps(true);fromAccountDetails(false);trackUserEvent('Manage Reps');">
+					<a data-ui-sref="manage.accessRepAccounts">{{::'userHeader.label.manageReps' | translate}}</a>
+				</li>
+				<li ng-class="{active: $state.includes('reports')}"
+				    ng-if="canAccess('vm','Report')"
+				    ng-click="fromManageReps(false);trackUserEvent('Report');"><a data-ui-sref="reports.advancedReports">{{::'userHeader.label.reports'
+						| translate}}</a></li>
+				<li ng-class="{active: $state.includes('resourceCenter.feinAdminResource') || $state.includes('resourceCenter.feinRepResource') || $state.includes('resourceCenter.vendormateAdminResources')|| $state.includes('resourceCenter.vendormateRepResources')|| $state.includes('resourceCenter.healthSystem')}"
+				    ng-if="canAccess('vm','ResourceCenter')"
+				    ng-click="fromManageReps(false);trackUserEvent('Resource Center');">
+					<a data-ng-if="canAccess('vm','GlobalRepResource')"
+					   data-ui-sref="resourceCenter.vendormateRepResources">{{::'userHeader.label.resourceCenter' | translate}}</a>
+					<a data-ng-if="!canAccess('vm','GlobalRepResource') && !canAccess('vm','FeinRepResource') && !canAccess('vm','GlobalAdminResource') && !canAccess('vm','HealthSystemPolicies') && canAccess('vm','FeinAdminResource')"
+					   data-ui-sref="resourceCenter.feinAdminResource">{{::'userHeader.label.resourceCenter' | translate}}</a>
+					<a data-ng-if="!canAccess('vm','GlobalRepResource') && !canAccess('vm','FeinAdminResource') && !canAccess('vm','GlobalAdminResource') && !canAccess('vm','HealthSystemPolicies') && canAccess('vm','FeinRepResource')"
+					   data-ui-sref="resourceCenter.feinRepResource">{{::'userHeader.label.resourceCenter' | translate}}</a>
+					<a data-ng-if="!canAccess('vm','GlobalRepResource') && !canAccess('vm','FeinAdminResource') && !canAccess('vm','FeinRepResource') && !canAccess('vm','HealthSystemPolicies') && canAccess('vm','GlobalAdminResource')"
+					   data-ui-sref="resourceCenter.vendormateAdminResources">{{::'userHeader.label.resourceCenter' | translate}}</a>
+					<a data-ng-if="!canAccess('vm','GlobalRepResource') && !canAccess('vm','FeinAdminResource') && !canAccess('vm','FeinRepResource') && !canAccess('vm','GlobalAdminResource') && canAccess('vm','HealthSystemPolicies')"
+					   data-ui-sref="resourceCenter.healthSystem">{{::'userHeader.label.resourceCenter' | translate}}</a>
+				</li>
+				<li ng-class="{active: $state.includes('extras')}"
+				    ng-if="canAccess('vm','Extras') && userProfile.customerTypeListContainHealthCare === true && userProfile.detail.fein != '310958666'"
+				    ng-click="fromManageReps(false);trackUserEvent('Extras');"><a ui-sref="extras">{{::'userHeader.label.extras' |
+						translate}}</a></li>
+			</ul>
+			<!-- Right nav -->
+			<ul class="nav navbar-nav navbar-right"
+			    ng-show="canAccess('vm','Actions')">
+				<li>
+					<a id="addNewRep"
+					   href="javascript:;"
+					   ng-click="fromManageReps(false);$state.go('addNewRep.inviteRep',{});">
+						<span class="glyphicon glyphicon-plus-sign"></span>&nbsp;{{'addNewRep.header.title' | translate}}
+					</a>
+				</li>
+				<li>
+					<a id="userHeaderAction"
+					   href="javascript:;"><span class="glyphicon glyphicon-cog"></span>
+						{{::'userHeader.label.action' | translate}}</a>
+					<ul class="header-dropdown-menu dropdown-menu"
+					    ng-controller="commonController">
+						<li class="ng-hide" ng-if="canAccess('vm','DocumentAlertsComparision')" ng-click="fromManageReps(false);"><a ui-sref="documentAlert.accounts">{{::'userHeader.label.documentAlert' | translate}}</a></li>
+						<li class="cursorD">
+							<div>{{::'userHeader.label.manageCardProfile' | translate}}</div>
+						</li>
+						<li><a id="viewCardProfile"
+							   ng-click="goToUpdateCardProfile()">{{::'userHeader.label.updateCardProfile' | translate}}</a></li>
+						<li ng-if="isIframeEnabled === 'false'"><a id="paymentReceipts"
+							   ng-click="fromManageReps(false);$state.go('paymentReceipt.grid',{isFrom:'action'});">{{::'userHeader.label.paymentReceipts' | translate}}</a></li>
+						<li class="cursorD"
+						    ng-if="canAccess('vm','Credential Sections') && canAccess('vm','Share My Credentials')">
+							<div>{{::'userHeader.label.credentials' | translate}}</div>
+						</li>
+						<li ng-if="canAccess('vm','Credential Sections') && canAccess('vm','Share My Credentials') && !$state.params.isFrom">
+							<a id="actionShareMyCredential"
+							   ng-click="fromManageReps(false);$state.go('shareCredentials.myCredentials',{'isFrom':'action'});">{{::'userHeader.label.shareMyCredentials'
+								| translate}}</a></li>
+						<li ng-if="canAccess('vm','Credential Sections') && canAccess('vm','Share My Credentials') && $state.params.isFrom">
+							<a id="actionShareMyCredential"
+							   ng-click="fromManageReps(false);$state.go('shareCredentials.myCredentials',{'isFrom':'action'},{reload:true});">{{::'userHeader.label.shareMyCredentials'
+								| translate}}</a></li>
+
+						<li class="cursorD"
+						    ng-if="canAccess('vm','ActionsPrintBadgeCheckCompliance')">
+							<div>{{::'userHeader.label.visits' | translate}}</div>
+						</li>
+						<li ng-if="canAccess('vm','ActionsPrintBadgeCheckCompliance')">
+							<a id="actionViewAccessStatus"
+							   ng-if="!$state.params.printBadge"
+							   ng-click="fromManageReps(false);$state.go('printBadge.prepareForVisit',{'printBadge':'action'});">{{::'userHeader.label.viewAccessStatus'
+								| translate}}</a>
+							<a id="actionViewAccessStatus"
+							   ng-if="$state.params.printBadge"
+							   ng-click="fromManageReps(false);$state.go('printBadge.prepareForVisit',{'printBadge':'action'},{'reload':true});">{{::'userHeader.label.viewAccessStatus'
+								| translate}}</a>
+						</li>
+						<li ng-if="canAccess('vm','ActionsPrintBadgeCheckCompliance')">
+							<a id="actionPrintBadge"
+							   ng-if="!$state.params.printBadge"
+							   ng-click="fromManageReps(false);$state.go('printBadge.prepareForVisit',{'printBadge':'action'});">{{::'userHeader.label.printBadge'
+								| translate}}</a>
+							<a id="actionPrintBadge"
+							   ng-if="$state.params.printBadge"
+							   ng-click="fromManageReps(false);$state.go('printBadge.prepareForVisit',{'printBadge':$state.params.printBadge},{'reload':true});">{{::'userHeader.label.printBadge'
+								| translate}}</a>
+						</li>
+
+						<li class="cursorD"
+						    data-ng-if="userProfile.detail.custEnableApptRequest === true">
+							<div>{{::'userHeader.label.appointments' | translate}}</div>
+						</li>
+						<li data-ng-if="userProfile.detail.custEnableApptRequest === true">
+							<a id="actionRequestAppointment"
+							   data-ng-click="fromManageReps(false);$state.go('requestAppointAccordion.request',{'requestFrom':'actions','appointmentRandom': getRandomSpan()});">
+								{{::'userHeader.label.requestAppointment' | translate}}</a>
+						</li>
+						<li data-ng-if="userProfile.detail.custEnableApptRequest === true"
+						    ng-click="fromManageReps(false);"><a id="actionViewRequest"
+							   data-ui-sref="requestAppointAccordion.viewRequest">{{::'userHeader.label.viewRequests' | translate}}</a>
+						</li>
+
+						<li class="cursorD"
+						    ng-if="canAccess('vm','SignInEvents')">
+							<div>{{::'userHeader.label.signOut' | translate}}</div>
+						</li>
+						<li ng-click="fromManageReps(false);"><a id="actionSignOut"
+							   ui-sref="signOut.signupList"
+							   id="signOut"
+							   ng-if="canAccess('vm','SignInEvents')">{{::'userHeader.label.signOut' | translate}}</a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+		<div data-ng-if="userProfile.detail.isAppMessageConfigured && userProfile.detail.appMessage.length > 0" class="info-default break-word">
+			<p>{{userProfile.detail.appMessage}}</p>
+		</div>
+	</div>
+</header>
+<script>
+	smartNavMenu();
+</script>

@@ -1,0 +1,21 @@
+<div class="row forgot-log">
+	<div class="col-sm-12 col-lg-12 col-md-12">
+		<div class="modal-header">
+			<h4 class="modal-title">
+				<b>{{'login.label.frozenAccount' | translate}}</b>
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true" data-ng-click="closeAndRedirect('login');"
+					id="closeDialog">&times;</button>
+			</h4>
+		</div>
+		<div class="modal-body">
+			<p ng-bind-html="'login.label.loginUserAttemptLock' | translate"></p>
+			<div class="row text-center">
+				<button class="btn btn-info input-sm" autofocus
+					id="loginUserAttemptLock" name="loginUserAttemptLock"
+					data-ng-click="closeAndRedirect('login');">{{'common.ok' |
+					translate}}</button>
+			</div>
+		</div>
+	</div>
+</div>

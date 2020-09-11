@@ -1,0 +1,64 @@
+{
+    "VisionResponse": {
+        "Status": "Ok",
+        "AssociatedCompanyList": [
+            {
+                "fein": "hc123",
+                "companyName": "hospitality care",
+                "vendorOid": "000000530800000014bd",
+                "vendorDetailOid": "c0100006565000006569",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "fein": "487876756",
+                "companyName": "Vendormate",
+                "vendorOid": "00000199440000004ded",
+                "vendorDetailOid": "00000199460000004def",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "fein": "567342987",
+                "companyName": "Vendormate",
+                "vendorOid": "00000194340000004bec",
+                "vendorDetailOid": "00000194360000004bee",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "fein": "647849528",
+                "companyName": "Vendormate",
+                "vendorOid": "00000195460000004c5c",
+                "vendorDetailOid": "00000195480000004c5e",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "fein": "785398528",
+                "companyName": "Vendormate",
+                "vendorOid": "00000195460000004c5b",
+                "vendorDetailOid": "00000195480000004c5d",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "fein": "test12349",
+                "companyName": "Vendormate",
+                "vendorOid": "00000200230000004e3a",
+                "vendorDetailOid": "00000200250000004e3c",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "fein": "203141892",
+                "companyName": "Vendormate, Inc.",
+                "vendorOid": "00000194850000004c1e",
+                "vendorDetailOid": "00000194870000004c20",
+                "updateAction": false,
+                "deleteAction": false
+            }
+        ],
+        "contentType": "application/json"
+    }
+}

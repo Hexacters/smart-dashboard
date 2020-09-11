@@ -1,0 +1,32 @@
+{
+  "VisionResponse": {
+    "Status": "Ok",
+    "activeUserList": [
+      {
+        "firstName": "Christine",
+        "lastName": "Lewis",
+        "userOid": "c01000104b50000104c4",
+        "userId": "lewis@yopmail.com",
+        "vendorOid": "c01000104f00000104fa",
+        "emailAddress": "christineLawis@ghx.com"
+      },
+      {
+        "firstName": "Justin",
+        "lastName": "Morgan",
+        "userOid": "c01000104b50000104c4",
+        "userId": "justin@yopmail.com",
+        "vendorOid": "c01000104f00000104fa",
+        "emailAddress": "justinMorgan@ghx.com"
+      },
+      {
+        "firstName": "Albert",
+        "lastName": "Morris",
+        "userOid": "c01000104b50000104c4",
+        "userId": "albert@yopmail.com",
+        "vendorOid": "c01000104f00000104fa",
+        "emailAddress": "albertMorris@ghx.com"
+      }
+    ],
+    "contentType": "application/json"
+  }
+}

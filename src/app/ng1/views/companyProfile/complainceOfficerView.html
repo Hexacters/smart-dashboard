@@ -1,0 +1,142 @@
+<div ng-controller="googleAnalyticsController" data-ng-init="callGAPageTrack('callComplianceOfficer');"></div>
+<div class="row" ng-controller="companyProfileController">
+	<div class="col-sm-12 col-md-12 col-lg-12"
+		data-ng-class="{'dNone':!loading}">
+		<img align="absmiddle" src="app/ng1/img/partial-loading.gif">&nbsp;{{'common.loading'
+		| translate}}
+	</div>
+	<div class="col-sm-12 col-md-12 col-lg-12 padding0">
+		<vision-action> <get-data
+			service="companyProfileServices"
+			operation="getComplianceOfficerInformation"></get-data>
+		<div class="col-sm-10 col-md-10 col-lg-10 marginB1 marginT1">
+			<h3 class="modal-title">{{'companyProfile.complianceOfficer.header.complianceOfficer'
+				| translate}}</h3>
+		</div>
+		<div
+			data-ng-show="getError.status != 'error' && data.successData.Status === 'Ok'"
+			class="col-sm-2 col-md-2 col-lg-2 text-right marginTP5">
+			<a data-ui-sref="companyProfile.complainceOfficerView.help" ng-show="!isFromManageReps">{{'common.help' | translate}}</a>
+			<a data-ui-sref="manage.repAccountDetails.companyProfile.complainceOfficerView.help" ng-show="isFromManageReps">{{'common.help' | translate}}</a>
+		</div>
+		<div class="table-responsive col-sm-12 col-md-12 col-lg-12"
+			data-ng-show="getError.status === 'error'">
+			<div class="alert alert-danger">
+				{{getError.errorData.ResponseError[0].errorCode | translate}}</div>
+		</div>
+		<div
+			data-ng-show="getError.status != 'error' && data.successData.Status === 'Ok'"
+			class="col-sm-12 col-md-12 col-lg-12 marginB1">
+			<div class="col-sm-6 col-md-6 col-lg-6 marginB1">
+				<div class="form-group col-sm-12 col-md-12 col-lg-12">
+					<label class="col-sm-6 col-md-6 col-lg-6 text-right control-label">{{'companyProfile.complianceOfficer.label.socialTitle'
+						| translate}}</label>
+					<div class="col-sm-6 col-md-6 col-lg-6 break-word">
+						<span
+							ng-repeat="item in saluationLookup | filter:{value:data.successData.ComplianceOfficer.salutation}:true">
+							{{item.label}} </span>
+					</div>
+				</div>
+				<div class="form-group col-sm-12 col-md-12 col-lg-12">
+					<label class="col-sm-6 col-md-6 col-lg-6 text-right control-label">{{'companyProfile.complianceOfficer.label.firstName'
+						| translate}}</label>
+					<div class="col-sm-6 col-md-6 col-lg-6 break-word">
+						{{data.successData.ComplianceOfficer.firstName}}</div>
+				</div>
+				<div class="form-group col-sm-12 col-md-12 col-lg-12">
+					<label class="col-sm-6 col-md-6 col-lg-6 text-right control-label">{{'companyProfile.complianceOfficer.label.middleInitial'
+						| translate}}</label>
+					<div class="col-sm-6 col-md-6 col-lg-6 break-word">
+						{{data.successData.ComplianceOfficer.middleInitial}}</div>
+				</div>
+				<div class="form-group col-sm-12 col-md-12 col-lg-12">
+					<label class="col-sm-6 col-md-6 col-lg-6 text-right control-label">{{'companyProfile.complianceOfficer.label.lastName'
+						| translate}}</label>
+					<div class="col-sm-6 col-md-6 col-lg-6 break-word">
+						{{data.successData.ComplianceOfficer.lastName}}</div>
+				</div>
+				<div class="form-group col-sm-12 col-md-12 col-lg-12">
+					<label class="col-sm-6 col-md-6 col-lg-6 text-right control-label">{{'companyProfile.complianceOfficer.label.suffix'
+						| translate}} <span tooltip-append-to-body="true"
+						tooltip="{{'companyProfile.complianceOfficer.label.suffixTooltip' | translate}}"
+						tooltip-placement="bottom"> <i
+							class="fa fa-question-circle fa-lg"></i>
+					</span>
+					</label>
+					<div class="col-sm-6 col-md-6 col-lg-6 break-word">
+						{{data.successData.ComplianceOfficer.suffix}}</div>
+				</div>
+				<div class="form-group col-sm-12 col-md-12 col-lg-12">
+					<label class="col-sm-6 col-md-6 col-lg-6 text-right control-label">{{'companyProfile.complianceOfficer.label.nickName'
+						| translate}}</label>
+					<div class="col-sm-6 col-md-6 col-lg-6 break-word">
+						{{data.successData.ComplianceOfficer.nickName}}</div>
+				</div>
+				<div class="form-group col-sm-12 col-md-12 col-lg-12">
+					<label class="col-sm-6 col-md-6 col-lg-6 text-right control-label">{{'common.email'
+						| translate}} </label>
+					<div class="col-sm-6 col-md-6 col-lg-6 break-word">
+						{{data.successData.ComplianceOfficer.email}}</div>
+				</div>
+			</div>
+			<div class="col-sm-6 col-md-6 col-lg-6 marginB1">
+				<div class="form-group col-sm-12 col-md-12 col-lg-12">
+					<label class="col-sm-6 col-md-6 col-lg-6 text-right control-label">{{'companyProfile.complianceOfficer.label.streetAddress'
+						| translate}}</label>
+					<div class="col-sm-6 col-md-6 col-lg-6 break-word">
+						{{data.successData.Address.addressLine1}}</div>
+					<div class="col-sm-6 col-md-6 col-lg-6 col-sm-offset-6 col-md-offset-6 col-lg-offset-6 break-word">
+						{{data.successData.Address.addressLine2}}</div>
+					<div class="col-sm-6 col-md-6 col-lg-6 col-sm-offset-6 col-md-offset-6 col-lg-offset-6 break-word">
+						{{data.successData.Address.addressLine3}}</div>
+				</div>
+				<div class="form-group col-sm-12 col-md-12 col-lg-12">
+					<label class="col-sm-6 col-md-6 col-lg-6 text-right control-label">{{'companyProfile.complianceOfficer.label.city'
+						| translate}}</label>
+					<div class="col-sm-6 col-md-6 col-lg-6 break-word">{{data.successData.Address.city}}</div>
+				</div>
+				<div class="form-group col-sm-12 col-md-12 col-lg-12">
+					<label class="col-sm-6 col-md-6 col-lg-6 text-right control-label">{{'companyProfile.complianceOfficer.label.zipPostal'
+						| translate}} </label>
+					<div class="col-sm-6 col-md-6 col-lg-6 break-word">{{data.successData.Address.zip}}</div>
+				</div>
+				<div class="form-group col-sm-12 col-md-12 col-lg-12">
+					<label class="col-sm-6 col-md-6 col-lg-6 text-right control-label">{{'companyProfile.complianceOfficer.label.country'
+						| translate}} </label>
+					<div class="col-sm-6 col-md-6 col-lg-6 break-word">
+						<span
+							ng-repeat="item in countryLookup | filter:{countryCode:data.successData.Address.countryCode}:true">
+							{{item.countryName}} </span>
+
+					</div>
+				</div>
+				<div class="form-group col-sm-12 col-md-12 col-lg-12">
+					<label class="col-sm-6 col-md-6 col-lg-6 text-right control-label">{{'companyProfile.complianceOfficer.label.stateProvince'
+						| translate}} </label>
+					<div class="col-sm-6 col-md-6 col-lg-6 break-word">
+						<span
+							ng-repeat="item in stateLookup | filter:{stateCode:data.successData.Address.stateCode}:true">
+							{{item.stateName}} </span> <span
+							ng-repeat="item in stateCanLookup | filter:{stateCode:data.successData.Address.stateCode}:true">
+							{{item.stateName}} </span> <span
+							ng-repeat="item in stateUsOtherLookup | filter:{stateCode:data.successData.Address.stateCode}:true">
+							{{item.stateName}} </span>
+					</div>
+				</div>
+				<div class="form-group col-sm-12 col-md-12 col-lg-12">
+					<label class="col-sm-6 col-md-6 col-lg-6 text-right control-label">{{'companyProfile.complianceOfficer.label.phone'
+						| translate}} </label>
+					<div class="col-sm-6 col-md-6 col-lg-6 break-word">
+						{{data.successData.ComplianceOfficer.workPhone}}</div>
+				</div>
+				<div class="form-group col-sm-12 col-md-12 col-lg-12">
+					<label class="col-sm-6 col-md-6 col-lg-6 text-right control-label">{{'companyProfile.complianceOfficer.label.dateofBirth'
+						| translate}}(MM/DD only) </label>
+					<div class="col-sm-6 col-md-6 col-lg-6 break-word">
+						{{data.successData.ComplianceOfficer.dobstring}}</div>
+				</div>
+			</div>
+		</div>
+		</vision-action>
+	</div>
+</div>

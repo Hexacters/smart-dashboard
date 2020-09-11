@@ -1,0 +1,190 @@
+<div class="modal-content" ng-controller="companyProfileController">
+	<div class="modal-header commonDialogHeader">
+		<button id="accountHelpCloseIcon" type="button" class="close"
+			aria-hidden="true" data-ng-click="cancelDialog();">&times;</button>
+		<h3 class="modal-title">{{'companyProfile.companyPrincipals.header.addCompanyPrincipal'
+			| translate}}</h3>
+	</div>
+	<div class="modal-body modelDialogScroll">
+		<vision-action> <submit-data
+			service="companyProfileServices" operation="saveCompanyPrincipal" request-formatter="companyPrincipalSave"
+			callback="companyPrinciplesInfo"
+			remove-keys="CompanyPrincipal.maskedDriversLicense,CompanyPrincipal.maskedSsn,CompanyPrincipal.queueSearchString,CompanyPrincipal.dob"
+			></submit-data>
+		<div data-ng-class="{'dNone':!loading}">
+			<img align="absmiddle" src="app/ng1/img/partial-loading.gif">&nbsp;{{'common.loading'
+			| translate}}
+		</div>
+		<div class="table-responsive"
+			data-ng-if="companyPrinciplesSubmitError.status === 'error'">
+			<div class="alert alert-danger">
+				{{companyPrinciplesSubmitError.errorData.ResponseError[0].errorCode | translate}}</div>
+		</div>
+		<div class="col-sm-12 col-md-12 col-lg-12 text-right">
+			<sup class="asterisk">*</sup>&nbsp;{{'common.required' |
+				translate}}
+		</div>
+		<form novalidate name="addPrincipal" autocomplete="off"
+			class="form-horizontal">
+			<div class="col-sm-12 col-md-12 col-lg-12 marginB1">
+				<div class="col-sm-6 col-md-6 col-lg-6 marginB1">
+					<div class="form-group col-sm-12 col-md-12 col-lg-12">
+						<label class="col-sm-5 col-md-5 col-lg-5 control-label">{{'companyProfile.companyPrincipals.label.socialTitle'
+							| translate}}</label>
+						<div class="col-sm-7 col-md-7 col-lg-7"
+							ng-init="data.CompanyPrincipal.salutation='select'">
+							<select class="form-control col-md-12 input-sm" name="salutation"
+								id="salutation" ng-model="data.CompanyPrincipal.salutation">
+								<option value="select">Select</option>
+								<option ng-repeat="option in saluationLookup"
+									value="{{option.value}}">{{option.label}}</option>
+							</select>
+						</div>
+					</div>
+
+					<div class="form-group col-sm-12 col-md-12 col-lg-12 ">
+						<label class="col-sm-5 col-md-5 col-lg-5 control-label">{{'companyProfile.companyPrincipals.label.firstName'
+							| translate}}&nbsp;<sup class="asterisk">*</sup></label>
+						<div class="col-sm-7 col-md-7 col-lg-7">
+							<input type="text" class="form-control input-sm required"
+								name="firstName" maxlength="50"
+								placeholder="{{'companyProfile.companyInformation.placeHolder.firstName'| translate}}"
+								ng-model="data.CompanyPrincipal.firstName"
+								validator="required,validateAlphanumSpecial,validateAlphaWithOneSpaceAndPunctuation"
+								validate-Alpha-With-One-Space-And-Punctuation-error-message="{{'companyProfile.companyPrincipals.errorMessage.firstNameValidateAlpha' | translate}}"
+								validate-alphanum-special-error-message="{{'companyProfile.companyPrincipals.errorMessage.firstNameValidateAlpha' | translate}}"
+								required-error-message="{{'companyProfile.companyPrincipals.errorMessage.firstNameRequired'|translate}}" />
+							<input type="hidden" id="officerContactTypeCode"
+								name="officerContactTypeCode" value="VOPRI"
+								ng-model="data.CompanyPrincipal.officerContactTypeCode"
+								ng-init="data.CompanyPrincipal.officerContactTypeCode='VOPRI'" />
+							<input type="hidden" id="oid" name="oid" value=""
+								ng-model="data.CompanyPrincipal.oid"
+								ng-init="data.CompanyPrincipal.oid=''" />
+						</div>
+					</div>
+					<div class="form-group col-sm-12 col-md-12 col-lg-12">
+						<label class="col-sm-5 col-md-5 col-lg-5 control-label">{{'companyProfile.companyPrincipals.label.middleName'
+							| translate}}</label>
+						<div class="col-sm-7 col-md-7 col-lg-7">
+							<input type="text" class="form-control input-sm"
+								validator="validateAlphanumSpecial,validateAlphaWithOneSpaceAndPunctuation"
+								validate-Alpha-With-One-Space-And-Punctuation-error-message="{{'companyProfile.companyPrincipals.errorMessage.middleNameValidateAlpha' | translate}}"
+								validate-alphanum-special-error-message="{{'companyProfile.companyPrincipals.errorMessage.middleNameValidateAlpha' | translate}}"
+								name="MiddleName" maxlength="50"
+								placeholder="{{'companyProfile.companyInformation.placeHolder.middleName'| translate}}"
+								ng-model="data.CompanyPrincipal.middleInitial">
+						</div>
+					</div>
+					<div class="form-group col-sm-12 col-md-12 col-lg-12">
+						<label class="col-sm-5 col-md-5 col-lg-5 control-label">
+						{{'companyProfile.companyPrincipals.label.lastName' | translate}}&nbsp;<sup class="asterisk">*</sup></label>
+						<div class="col-sm-7 col-md-7 col-lg-7">
+							<input type="text" class="form-control input-sm required"
+								name="LastName" maxlength="50"
+								placeholder="{{'companyProfile.companyInformation.placeHolder.lastName'| translate}}"
+								validator="required,validateAlphanumSpecial,validateAlphaWithOneSpaceAndPunctuation"
+								validate-Alpha-With-One-Space-And-Punctuation-error-message="{{'companyProfile.companyPrincipals.errorMessage.lasttNameValidateAlpha' | translate}}"
+								validate-alphanum-special-error-message="{{'companyProfile.companyPrincipals.errorMessage.lasttNameValidateAlpha' | translate}}"
+								ng-model="data.CompanyPrincipal.lastName" validator="required"
+								required-error-message="{{'companyProfile.companyPrincipals.errorMessage.lastNameRequired'|translate}}">
+						</div>
+					</div>
+					<div class="form-group col-sm-12 col-md-12 col-lg-12">
+						<label class="col-sm-5 col-md-5 col-lg-5 control-label">{{'companyProfile.companyPrincipals.label.email'
+							| translate}}&nbsp;<sup class="asterisk">*</sup> <span
+							tooltip-append-to-body="true" tooltip-placement="bottom"
+							tooltip="{{'companyProfile.companyPrincipals.label.complianceEmailTooltip' | translate}}">
+								<i class="fa fa-question-circle fa-lg"></i>
+						</span>
+						</label>
+						<div class="col-sm-7 col-md-7 col-lg-7">
+							<input type="text" class="form-control input-sm required"
+								name="email" maxlength="100"
+								ng-model="data.CompanyPrincipal.email"
+								validator="required,validateEmail"
+								placeholder="{{'companyProfile.companyInformation.placeHolder.email'| translate}}"
+								validate-email-error-message="{{'companyProfile.companyPrincipals.errorMessage.valiedEmail'|translate}}"
+								required-error-message="{{'companyProfile.companyPrincipals.errorMessage.emailRequired'|translate}}">
+						</div>
+					</div>
+					<div class="form-group col-sm-12 col-md-12 col-lg-12">
+						<label class="col-sm-5 col-md-5 col-lg-5 control-label">{{'companyProfile.companyPrincipals.label.phoneNumber'
+							| translate}}</label>
+						<div class="col-sm-7 col-md-7 col-lg-7">
+							<input type="text" class="form-control input-sm" name="phone"
+								validator="validateAlphanumSpecial"
+								validate-alphanum-special-error-message="{{'common.errorMessage.allowedSpecialCharacters' | translate}}"
+								placeholder="{{'companyProfile.companyInformation.placeHolder.phoneNumber'| translate}}"
+								maxlength="12" ng-model="data.CompanyPrincipal.workPhone">
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6 col-md-6 col-lg-6 marginB1">
+					<div class="form-group col-sm-12 col-md-12 col-lg-12">
+						<label class="col-sm-5 col-md-5 col-lg-5 control-label">{{'companyProfile.companyPrincipals.label.suffix'
+							| translate}} <span tooltip-append-to-body="true"
+							tooltip-placement="bottom"
+							tooltip="{{'companyProfile.companyPrincipals.label.suffixTooltip' | translate}}">
+								<i class="fa fa-question-circle fa-lg"></i>
+						</span>
+						</label>
+						<div class="col-sm-7 col-md-7 col-lg-7">
+							<input type="text" class="form-control input-sm" name="suffix"
+								validator="validateAlphanumSpecial"
+								validate-alphanum-special-error-message="{{'common.errorMessage.allowedSpecialCharacters' | translate}}"
+								placeholder="{{'companyProfile.companyInformation.placeHolder.suffix'| translate}}"
+								maxlength="10" ng-model="data.CompanyPrincipal.suffix">
+						</div>
+					</div>
+					<div class="form-group col-sm-12 col-md-12 col-lg-12">
+						<label class="col-sm-5 col-md-5 col-lg-5 control-label">{{'companyProfile.companyPrincipals.label.nickName'
+							| translate}}</label>
+						<div class="col-sm-7 col-md-7 col-lg-7">
+							<input type="text" class="form-control input-sm" name="nickName"
+								validator="validateAlphanumSpecial,validateAlphaWithOneSpaceAndPunctuation"
+								validate-Alpha-With-One-Space-And-Punctuation-error-message="{{'companyProfile.companyPrincipals.errorMessage.nickNameValidateAlpha' | translate}}"
+								validate-alphanum-special-error-message="{{'companyProfile.companyPrincipals.errorMessage.nickNameValidateAlpha' | translate}}"
+								placeholder="{{'companyProfile.companyInformation.placeHolder.nickName'| translate}}"
+								maxlength="50" ng-model="data.CompanyPrincipal.nickName">
+						</div>
+					</div>
+					<div class="form-group col-sm-12 col-md-12 col-lg-12">
+						<label class="col-sm-5 col-md-5 col-lg-5 control-label">{{'companyProfile.companyPrincipals.label.professionalTitle'
+							| translate}}</label>
+						<div class="col-sm-7 col-md-7 col-lg-7">
+							<input type="text" class="form-control input-sm" name="title"
+								validator="validateAlphanumSpecial"
+								validate-alphanum-special-error-message="{{'common.errorMessage.allowedSpecialCharacters' | translate}}"
+								placeholder="{{'companyProfile.companyInformation.placeHolder.professionalTitle'| translate}}"
+								maxlength="50" ng-model="data.CompanyPrincipal.title">
+						</div>
+					</div>
+					<div class="form-group col-sm-12 col-md-12 col-lg-12">
+						<label class="col-sm-5 col-md-5 col-lg-5 control-label">{{'companyProfile.companyPrincipals.label.dateofBirth'
+							| translate}}(MM/DD Only) <span tooltip-append-to-body="true"
+							tooltip-placement="bottom"
+							tooltip="{{'companyProfile.companyPrincipals.label.dobTooltip' | translate}}">
+								<i class="fa fa-question-circle fa-lg"></i>
+						</span>
+						</label>
+						<div class="col-sm-7 col-md-7 col-lg-7">
+							<input type="text" class="form-control input-sm" name="dob" validator="validateDateWithYear"
+								placeholder="{{'companyProfile.companyInformation.placeHolder.DOB'| translate}}"
+								maxlength="10" ng-model="data.CompanyPrincipal.dobstring" validate-date-with-year-error-message="{{'companyProfile.companyPrincipals.errorMessage.dobvalidateDate' | translate}}">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="form-group col-sm-7 col-md-7 col-lg-7 pull-right">
+				<button class="btn btn-success" type="submit"
+					data-validation-submit="addPrincipal"
+					ng-click="submit();">{{'common.save'
+					| translate}}</button>
+				<button data-ng-click="cancelDialog();" class="btn btn-warning"
+					type="reset">{{'common.cancel' | translate}}</button>
+			</div>
+		</form>
+		</vision-action>
+	</div>
+</div>

@@ -1,0 +1,58 @@
+<div>
+    <vision-data-table service="complianceServices"
+                operation="getGlobalPolicyEnabledCustomers"
+                root-node="data.successData.globalPolicyEnabledCustomerList"
+                type="server"
+                id="emergencyPolicyAlertView"
+                total-records-node="data.successData.totalNoOfRecords"
+                initial-request='{"pagination":true,"count":5,"page":1,"results":5, "startIndex":0}' 
+                callback="criticalPolicies">
+         	 <div data-ng-class="{'dNone':!loading}" >
+                <img align="absmiddle" src="app/ng1/img/partial-loading.gif">&nbsp;{{'common.loading'
+                | translate}}
+            </div>
+            <div class="form-group marginT2" ng-controller="myDocumentController">
+                <div class="text-right" ng-show="false">
+                    <button class="btn btn-success" id="policyAlertSubmit" type="submit"
+                        ui-sref="home.criticalPolicy.criticalPolicyGrid({'random':getRandomSpan()})">{{'common.done' | translate}}</button>
+                </div>
+            </div>
+            <div class="table-responsive commonGridBorder">
+              
+                <div class="clearfix" ng-table-pagination="emergencyPolicyAlertView"
+                    template-url="'ng-table/style3.html'"></div>
+                <table ng-table="emergencyPolicyAlertView" template-pagination="style3"
+                    class="table table-striped table-bordered marginT1 marginB0">
+                    <tbody ng-if="emergencyPolicyAlertView.data.length>0">
+                        <tr data-ng-repeat="emergencyPolicy in $data">
+                            <td class="text-center col-sm-1">
+                                <input id="emergencyPolicyAlert" type="radio" name="criticalPolicyAlert" value="{{emergencyPolicy.repOid}}"
+                                    ng-click="getEmergencyNonCompliancePolicies(emergencyPolicy.customerOid,emergencyPolicy.repOid,emergencyPolicy.customerName)" ng-model="emergencyPolicyAlert" />
+                            </td>
+                            <td data-title="'Account'" sortable="'customerName'"
+                                class="text-left col-sm-11">{{emergencyPolicy.customerName}}
+                            </td>
+                            <td  class="text-left col-sm-11">
+                                <h4 class="marginT2 marginBP5">
+                                    <img ng-if="emergencyPolicy.statusCode === 1" alt="okay" src="app/ng1/img/okay.png" width="23" />
+                                    <img ng-if="emergencyPolicy.statusCode === 0"  alt="no" src="app/ng1/img/no.png" width="23" />
+                                </h4>
+                        </td>
+                        </tr>
+                    </tbody>
+                    <tbody ng-if="emergencyPolicyAlertView.data.errorData.Status=='Error'">
+                        <tr>
+                            <td colspan="11">
+                                <div class="text-danger">
+                                    <span class="fa fa-warning" aria-hidden="true"></span>
+                                    {{emergencyPolicyAlertView.data.errorData.ResponseError[0].errorCode |
+                                    translate}}
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            </vision-data-table>
+      <div ui-view="criticalPolicyAlertAcknowledge"></div>
+    </div>

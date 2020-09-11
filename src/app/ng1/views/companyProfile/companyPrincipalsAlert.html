@@ -1,0 +1,15 @@
+<div class="modal-content">
+	<div class="modal-header commonDialogHeader">
+		<button id="accountHelpCloseIcon" type="button" class="close" aria-hidden="true" data-ng-click="$close();deleteAlertCancel();">&times;</button>
+		<h3 class="modal-title">{{companyPrincipalAlertTitle}}</h3>
+	</div>
+	<div class="modal-body modelDialogScroll">
+		<div class="col-sm-12 col-md-12 col-lg-12 marginB1 text-danger">
+			<span><i class="fa fa-exclamation-triangle"></i> The selected principal has been deleted.</span>
+		</div>
+		<div class="col-sm-12 col-md-12 col-lg-12 marginB1 text-center">
+			<button data-ng-click="$close();deleteAlertCancel();" id="companyPrincipalViewOk"  autoFocus class="btn btn-warning"
+				type="button">{{'common.ok' | translate}}</button>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,9 @@
+{
+    "VisionResponse": {
+        "isAssoWithVendor": "false",
+        "Status": "Ok",
+        "isExist": "false",
+        "contentType": "application/json",
+        "isInActiveUser": "false"
+    }
+}

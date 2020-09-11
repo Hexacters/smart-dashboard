@@ -1,0 +1,16 @@
+<div class="modal-content">
+	<div class="modal-header commonDialogHeader">
+		<button id="viewLocationCloseIcon" id="viewAccountCloseIcon"
+			type="button" class="close" data-dismiss="modal" aria-hidden="true"
+			data-ng-click="closeErrorPopup()">&times;</button>
+		<h3 class="modal-title">
+			<b>{{'shoppingCart.label.attention' | translate}}</b>
+		</h3>
+	</div>
+	<div class="modal-body ng-scope">
+		<div class="alert alert-danger text-danger">
+			<span class="fa fa-warning" aria-hidden="true"></span>
+			{{deleteUserErrorMsg | translate}}
+		</div>
+	</div>
+</div>

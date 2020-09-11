@@ -1,0 +1,68 @@
+<div class="information" [ngClass]="{'hide': hideTab}">
+    <!-- Info Content -->
+    <div class="row m-0 mt-2">
+
+        <!-- Informations -->
+        <div class="col-lg-4 col-md-6 content" *ngFor="let announce of announcementBanner, let i = index">
+            <div class="info d-flex flex-row" >
+                <div class="info-content">
+                    <p class="text-primary">
+                        <b>{{announce.title}}</b>
+                    </p>
+                    <div class="d-flex flex-row">
+                        <label class="description">
+                            {{announce.description}}
+                        </label>
+                        <div class="actions">
+                            <button class="btn" [ngClass]="{'btn-success':announce.actions === 'View Policy','btn-primary': announce.actions !== 'View Policy'}">{{announce.actions}}</button>
+                            <button class="btn btn-secondary" (click)="dismissAnnounce(i)">Dismiss</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Informations -->
+        <!-- <div class="col-lg-4 col-md-6 content ">
+            <div class="info d-flex flex-row">
+                <div class="info-content">
+                    <p class="text-primary">
+                        <b>New Health Systems</b>
+                    </p>
+                    <div class="d-flex flex-row">
+                        <label class="description">
+                            Providence St. Joseph Health locations
+                            have joined Vendormate: AK, CA, MT,
+                            OR, TX, WA
+                        </label>
+                        <div class="actions">
+                            <button class="btn btn-primary">Register</button>
+                            <button class="btn btn-secondary">View later</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
+        <!-- Informations -->
+        <!-- <div class="col-lg-4 col-md-6 content mt-lg-0 mt-md-3">
+            <div class="info d-flex flex-row" *ngFor="let announce of announcementBanner">
+                <div class="info-content">
+                    <p class="text-primary">
+                        <b>{{announce.title}}</b>
+                    </p>
+                    <div class="d-flex flex-row">
+                        <label class="description">
+                            {{announce.description}}
+                        </label>
+                        <div class="actions">
+                            <button class="btn btn-primary">See Courses</button>
+                            <button class="btn btn-secondary">View later</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
+    </div>
+</div>

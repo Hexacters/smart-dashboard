@@ -1,0 +1,46 @@
+<div class="modal-content">
+	<div class="modal-header commonDialogHeader">
+		<button id="activeInactiveRepClose"
+			type="button" class="close" aria-hidden="true"
+			data-ng-click="cancelModalDialog()">&times;</button>
+		<h3 class="modal-title">
+			<span ng-if="showActiveInactiveMsg == 'Activate'"><b>{{'manageReps.label.activateRep' | translate}}</b></span>
+			<span ng-if="showActiveInactiveMsg == 'Inactive'"><b>{{'manageReps.label.inactivateRep' | translate}}</b></span>
+		</h3>
+	</div>
+	<form novalidate name="activeInactiveRepForm" id="activeInactiveRepForm" autocomplete="off" class="form-horizontal">
+		<div class="modal-body">
+			<div class="col-sm-12 col-md-12 col-lg-12 padding0">
+				<div data-ng-class="{'dNone':!activeInactiveLoading}">
+					<img align="absmiddle" src="app/ng1/img/partial-loading.gif">&nbsp;{{'common.loading' | translate}}
+				</div>
+				<div data-ng-if="activeInactiveRepError.errorData.Status == 'Error'" class="alert alert-danger">
+					<i class="fa fa-exclamation-triangle"></i> {{activeInactiveRepError.errorData.ResponseError[0].longMessage}}
+				</div>
+				<div ng-if="showActiveInactiveMsg == 'Activate'">
+					<p>{{'manageReps.label.activeMessage1' | translate}}</p>
+					<p>{{'manageReps.label.doYouWantToContinue' | translate}}</p>
+				</div>
+				<div ng-if="showActiveInactiveMsg == 'Inactive'">
+					<p>{{'manageReps.label.inactivateMessage1' | translate}}</p>
+					<p>{{'manageReps.label.inactivateMessage2' | translate}}</p>
+					<p>{{'manageReps.label.doYouWantToContinue' | translate}}</p>
+				</div>
+			</div>	
+		</div>
+		<div class="modal-footer">
+			<div class="col-sm-12 col-md-12 col-lg-12">
+				<span ng-if="showActiveInactiveMsg == 'Activate'">
+					<button class="btn btn-info" id="activeRepYes" name="activeRepYes" type="button"
+						data-ng-click="activeInactiveRepRegistration('Active')" >{{'common.yes' | translate}}</button>
+				</span>
+				<span ng-if="showActiveInactiveMsg == 'Inactive'">
+					<button class="btn btn-info" id="inActiveRepYes" name="inActiveRepYes" type="button"
+						data-ng-click="activeInactiveRepRegistration('Inactive')" >{{'common.yes' | translate}}</button>
+				</span>&nbsp;&nbsp;
+				<button class="btn btn-warning" id="activeInactiveRepNo" name="activeInactiveRepNo" type="button"
+					autofocus data-ng-click="cancelModalDialog()">{{'common.no'| translate}}</button>
+			</div>
+		</div>
+	</form>
+</div>

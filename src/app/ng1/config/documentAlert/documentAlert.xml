@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<module id="documentAlertModule">
+	<routers>
+		<router id="documentAlert" sticky="true" url="/docAlert">
+			<views>
+				<view containerId="vendordash" templateUrl="app/ng1/views/documentAlert/documentAlert.html"></view>
+			</views>
+		</router>
+		<router id="documentAlert.accounts" url="/docAlertAccounts">
+			<views>
+				<view containerId="docAlertAccountsContainer" templateUrl="app/ng1/views/documentAlert/documentAlertAccounts.html"></view>
+			</views>
+		</router>
+		<router id="documentAlert.Vendor" url="/docAlertVendor">
+			<views>
+				<view containerId="docAlertvendorContainer" templateUrl="app/ng1/views/documentAlert/documentAlertVendor.html"></view>
+			</views>
+		</router>
+		<router id="documentAlert.VendorReps" url="/docAlertVendorReps">
+			<views>
+				<view containerId="docAlertVendorRepsContainer" templateUrl="app/ng1/views/documentAlert/documentAlertVendorReps.html"></view>
+			</views>
+		</router>
+	</routers>
+	<services id="docAlertServices">
+		<operations>
+			<operation name="getAllCustomers" secure="true" serviceName="customers" requestWrapper="request" responseWrapper="response" requestType="json" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/users/updatePassword.json" mock="false">
+				<params>
+					<param name="sort" source="static" value="companyName"></param>
+				</params>
+			</operation>
+			<operation name="getAssociatedVendorsDetailsByCustomerOid" secure="true" serviceName="common" requestWrapper="request" responseWrapper="response" requestType="json" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/users/updatePassword.json" mock="false"></operation>
+			<operation name="getAssociatedRepsByVCRelationOid" secure="true" serviceName="common" requestWrapper="request" responseWrapper="response" requestType="json" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/users/updatePassword.json" mock="false"></operation>
+			<operation name="docAlertAccounts" requestWrapper="request" responseWrapper="response" method="post" url="/mock/docAlert/accounts" mockUrl="app/ng1/mock/docAlert/docAlertAccounts.json" mock="false"></operation>
+			<operation name="docAlertVendor" requestWrapper="request" responseWrapper="response" method="post" url="/mock/docAlert/vendors" mockUrl="app/ng1/mock/docAlert/docAlertvendor.json" mock="false"></operation>
+			<operation name="docAlertVendorRep" requestWrapper="request" responseWrapper="response"  method="post" url="/mock/docAlert/vendorReps" mockUrl="app/ng1/mock/docAlert/docAlertvendorRep.json" mock="false"></operation>
+		</operations> 
+	</services>
+</module>

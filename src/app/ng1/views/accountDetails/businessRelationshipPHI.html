@@ -1,0 +1,243 @@
+<div class="row marginT1">
+	<vision-action>
+		<get-data service="accountDetailServices"
+		          operation=getBusinessRelationship
+		          root-node="data.successData" response-formatter="getBusinessRelationshipFormatter"
+		          form-node="businessInfoDetails"></get-data>
+		<submit-data service="accountDetailServices"
+		             operation="updateBusinessRelationship"
+		             form-node="businessInfoDetails" request-formatter="saveBusinessRelationshipFormatter"
+		             remove-keys="Status,contentType,repCount,onSite,enablePhiSecurityQues"></submit-data>
+		<form novalidate
+		      name="saveOrUpdatePHIQuestionForm"
+		      id="saveOrUpdatePHIQuestionForm"
+		      autocomplete="off"
+		      class="form-horizontal">
+			<div class="col-sm-12 col-md-12 col-lg-12"
+			     data-ng-class="{'dNone':!loading}">
+				<img align="absmiddle"
+				     src="app/ng1/img/partial-loading.gif">
+				{{::'common.loading' | translate}}
+			</div>
+			<div class="table-responsive col-sm-12 col-md-12 col-lg-12"
+			     data-ng-if="getError.status === 'error'">
+				<div class="alert alert-danger">
+					{{getError.errorData.ResponseError[0].errorCode | translate}}</div>
+			</div>
+			<div ng-hide="getError.status === 'error' || !businessInfoDetails">
+				<div class="col-sm-12 col-md-12 col-lg-12 padding4">
+					<fieldset class="scheduler-border scheduler-border-height">
+						<legend class="scheduler-border fieldSetHeading accountDetailsFont">
+							<b>{{::'businessRelationship.title' |
+								translate:translationCustomerName}}</b>
+						</legend>
+						<div class="col-sm-12 col-md-12 col-lg-12 marginT1">
+							<div class="form-group">
+								<div class="col-sm-8 col-md-8 col-lg-8">
+									<label>{{::'businessRelationship.vrpQuestion1' |
+										translate:translationCustomerName}}<sup class="validation-required">*</sup>
+									</label>
+								</div>
+								<div class="col-sm-4 col-md-4 col-lg-4">
+									<input type="text"
+									       data-ng-model="businessInfoDetails.repCount"
+									       class="form-control width100px"
+									       name="repCount"
+									       id="repCount"
+									       ng-disabled="true" />
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-12 col-md-12 col-lg-12">
+							<div class="form-group">
+								<div class="col-sm-8 col-md-8 col-lg-8">
+									<label>{{::'businessRelationship.vrpQuestion2' |
+										translate:translationCustomerName}}<sup class="validation-required">*</sup>
+									</label>
+								</div>
+								<div class="col-sm-4 col-md-4 col-lg-4">
+									<input type="radio"
+									       name="onSite"
+									       id="onSite"
+									       data-ng-model="businessInfoDetails.onSite"
+									       data-ng-value="true"
+									       ng-disabled="true" /> {{::'common.yes' | translate}}
+									<input type="radio"
+									       name="onSite"
+									       id="onSite"
+									       data-ng-model="businessInfoDetails.onSite"
+									       data-ng-value="false"
+									       ng-disabled="true" /> {{::'common.no' | translate}}
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-12 col-md-12 col-lg-12 marginT1">
+							<div class="form-group">
+								<div class="col-sm-8 col-md-8 col-lg-8">
+									<label>{{::'businessRelationship.vrpQuestion3' |
+										translate:translationCustomerName}}<sup class="validation-required">*</sup>
+									</label>
+								</div>
+								<div class="col-sm-4 col-md-4 col-lg-4">
+									<input type="radio"
+									       name="hasCurrentContractRel"
+									       id="hasCurrentContractRel"
+									       data-ng-model="businessInfoDetails.hasCurrentContractRel"
+									       data-ng-value="true" /> {{::'common.yes' | translate}}
+									<input type="radio"
+									       name="hasCurrentContractRel"
+									       id="hasCurrentContractRel"
+									       data-ng-model="businessInfoDetails.hasCurrentContractRel"
+									       data-ng-value="false" /> {{::'common.no' | translate}}
+									<input type="text"
+									       data-ng-model="businessInfoDetails.hasCurrentContractRel"
+									       class="ng-hide hidden"
+									       name="hasCurrentContractRel"
+									       id="hasCurrentContractRel"
+									       valid-method="watch"
+									       data-validator="required"
+									       data-required-error-message="{{'messages.questionRequired' | translate}}" />
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-12 col-md-12 col-lg-12 marginT1">
+							<div class="form-group">
+								<div class="col-sm-8 col-md-8 col-lg-8">
+									<label>{{::'businessRelationship.vrpQuestion4' |
+										translate:translationCustomerName}}<sup class="validation-required">*</sup>
+									</label>
+								</div>
+								<div class="col-sm-4 col-md-4 col-lg-4">
+									<input type="radio"
+									       name="hasCustCutPoPastYear"
+									       id="hasCustCutPoPastYear"
+									       data-ng-model="businessInfoDetails.hasCustCutPoPastYear"
+									       data-ng-value="true" /> {{::'common.yes' | translate}}
+									<input type="radio"
+									       name="hasCustCutPoPastYear"
+									       id="hasCustCutPoPastYear"
+									       data-ng-model="businessInfoDetails.hasCustCutPoPastYear"
+									       data-ng-value="false" /> {{::'common.no' | translate}}
+									<input type="text"
+									       data-ng-model="businessInfoDetails.hasCustCutPoPastYear"
+									       class="ng-hide hidden"
+									       name="vrpQuestion4"
+									       id="hasCustCutPoPastYear"
+									       valid-method="watch"
+									       data-validator="required"
+									       data-required-error-message="{{'messages.questionRequired' | translate}}" />
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-12 col-md-12 col-lg-12 marginT1">
+							<div class="form-group">
+								<div class="col-sm-8 col-md-8 col-lg-8">
+									<label>{{::'businessRelationship.vrpQuestion5' |
+										translate:translationCustomerName}}<sup class="validation-required">*</sup>
+									</label>
+								</div>
+								<div class="col-sm-4 col-md-4 col-lg-4">
+									<input type="text"
+									       data-ng-model="businessInfoDetails.totalCompanySpend"
+									       class="form-control width100px"
+									       name="totalCompanySpend"
+									       id="totalCompanySpend"
+									       maxlength="20"
+									       ng-focus="businessInfoDetails.totalCompanySpend = convertDollerToNumber(businessInfoDetails.totalCompanySpend)"
+									       ng-blur="businessInfoDetails.totalCompanySpend = convertNumberToDoller(businessInfoDetails.totalCompanySpend)"
+									       data-validator="required,validateDouble"
+									       data-required-error-message="{{::'messages.thisFieldIsRequired' | translate}}"
+									       data-validate-double-error-message="{{::'messages.numberOfRepsPattern' | translate}}" />
+								</div>
+							</div>
+						</div>
+					</fieldset>
+				</div>
+				<div ng-if="businessInfoDetails.enablePhiSecurityQues"
+				     class="col-sm-12 col-md-12 col-lg-12 padding4">
+					<fieldset class="scheduler-border scheduler-border-height">
+						<legend class="scheduler-border fieldSetHeading accountDetailsFont">
+							<b>{{::'accounts.accountDetails.header.PHISecurityQuestion' |
+								translate}}</b>
+						</legend>
+						<div class="col-sm-12 col-md-12 col-lg-12 marginT1">
+							<div class="form-group">
+								<div class="col-sm-8 col-md-8 col-lg-8">
+									<label>{{::'registration.express.doesYourCompanyReceive'
+										| translate}}<sup class="validation-required">*</sup>
+									</label>
+								</div>
+								<div class="col-sm-3 col-md-3 col-lg-3">
+									<input type="radio"
+									       name="maintainPhiOnBehalfOfHospital"
+									       id="maintainPhiOnBehalfOfHospital"
+									       data-ng-model="businessInfoDetails.maintainPhiOnBehalfOfHospital"
+									       data-ng-value="true" /> {{::'common.yes' | translate}}
+									<input type="radio"
+									       name="maintainPhiOnBehalfOfHospital"
+									       id="maintainPhiOnBehalfOfHospital"
+									       data-ng-model="businessInfoDetails.maintainPhiOnBehalfOfHospital"
+									       data-ng-value="false" /> {{::'common.no' | translate}}
+									<input type="text"
+									       data-ng-model="businessInfoDetails.maintainPhiOnBehalfOfHospital"
+									       class="ng-hide"
+									       name="maintainPhiOnBehalfOfHospital"
+									       id="maintainPhiOnBehalfOfHospital"
+									       valid-method="watch"
+									       data-validator="required"
+									       data-required-error-message="{{'messages.questionRequired' | translate}}" />
+								</div>
+								<div class="col-sm-1 col-md-1 col-lg-1">
+									<a class="underline"
+									   tooltip-placement="left"
+									   tooltip-append-to-body="true"
+									   uib-tooltip-html="'accounts.help.phiQuestion' | translate">
+										{{'common.help'|translate}} </a>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-12 col-md-12 col-lg-12 marginT1">
+							<div class="form-group">
+								<div class="col-sm-8 col-md-8 col-lg-8">
+									<label>{{::'registration.express.doesYourCompanyHaveRepresentatives'
+										| translate}}<sup class="validation-required">*</sup>
+									</label>
+								</div>
+								<div class="col-sm-4 col-md-4 col-lg-4">
+									<input type="radio"
+									       name="phiOnSite"
+									       id="phiOnSite"
+									       data-ng-model="businessInfoDetails.phiOnSite"
+									       data-ng-value="true" /> {{::'common.yes' | translate}}
+									<input type="radio"
+									       name="phiOnSite"
+									       id="phiOnSite"
+									       data-ng-model="businessInfoDetails.phiOnSite"
+									       data-ng-value="false" /> {{::'common.no' | translate}}
+									<input type="text"
+									       data-ng-model="businessInfoDetails.phiOnSite"
+									       class="ng-hide hidden"
+									       name="phiOnSite"
+									       id="phiOnSite"
+									       valid-method="watch"
+									       data-validator="required"
+									       data-required-error-message="{{'messages.questionRequired' | translate}}" />
+								</div>
+							</div>
+						</div>
+					</fieldset>
+				</div>
+			</div>
+			<div class="col-sm-12 col-md-12 col-lg-12 padLeft0 marginT2">
+				<div class="col-sm-6 col-md-6 col-lg-6 padLeft0 marginB1"></div>
+				<div class="col-sm-6 col-md-6 col-lg-6 padLeft0">
+					<button type="submit"
+					        data-validation-submit="saveOrUpdatePHIQuestionForm"
+					        data-ng-click="submit();"
+					        class="btn btn-primary">{{::'common.update'
+						| translate}}</button>
+				</div>
+			</div>
+		</form>
+	</vision-action>
+</div>

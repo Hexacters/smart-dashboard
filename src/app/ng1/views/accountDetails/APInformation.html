@@ -1,0 +1,290 @@
+<div class="col-sm-12 col-md-12 col-lg-12 padding0 marginT1"
+     ng-init="getAPInformationLookup()">
+	<div class="col-sm-12 col-md-12 col-lg-12 padding0 text-right">
+		<a ng-click="apInformationSendMail()"
+		   tooltip-placement="left"
+		   tooltip-append-to-body="true"
+		   id="apInformationSendMail"
+		   tooltip="{{::'accounts.accountDetails.label.sendEmailTooltip' | translate}}">{{::'accounts.accountDetails.label.sendEmail'
+			| translate}}</a>
+	</div>
+	<vision-action>
+		<get-data service="accountDetailServices"
+		          operation="getAPOnBoardingDetails"
+		          root-node="data.successData.apOnboardingDetails"
+		          form-node="apInformation"
+		          callback="apInformationCallback"></get-data>
+		<div data-ng-class="{'dNone':!(loading || saveAPInformationLoading)}">
+			<img align="absmiddle"
+			     src="app/ng1/img/partial-loading.gif"> {{::'common.loading' | translate}}
+		</div>
+		<div class="alert alert-danger col-sm-12 col-md-12 col-lg-12"
+		     ng-show="getError.errorData.Status === 'Error' && getError.errorData.ResponseError[0].errorCode !== '5062'"
+		     ng-init="apInformation.eftAcceptance = false">
+			<strong><i class="fa fa-warning"></i></strong>
+			{{getError.errorData.ResponseError[0].longMessage}}</div>
+		<div class="alert alert-danger col-sm-12 col-md-12 col-lg-12"
+		     ng-show="saveAPInformationError.errorData.Status === 'Error'">
+			<strong><i class="fa fa-warning"></i></strong>
+			{{saveAPInformationError.errorData.ResponseError[0].longMessage}}</div>
+		<div id="APInformationContainer"
+		     ng-show="!loading">
+			<form novalidate
+			      name="APInformationForm"
+			      id="APInformationForm"
+			      autocomplete="off"
+			      class="form">
+				<fieldset class="scheduler-border scheduler-border-height">
+					<legend class="scheduler-border fieldSetHeading">
+						<div><b class="repDetailsFont">{{::'accounts.accountDetails.label.businessClassification' | translate}}</b></div>
+					</legend>
+					<div class="col-sm-12 col-md-8 col-lg-8 paddingT1 paddingB1">
+						<div class="form-group col-sm-12 col-md-12 col-lg-12 padding0">
+							<label class="col-sm-5 col-md-5 col-lg-4 control-label padding0 ">{{::'accounts.accountDetails.label.SICCode' |
+								translate}}<sup class="validation-required">*</sup></label>
+							<div class="col-sm-7 col-md-7 col-lg-5 break-word padding0">
+								<input type="text"
+								       class="form-control required input-sm"
+								       id="SICCode"
+								       name="SICCode"
+								       ng-model="apInformation.sicCode"
+								       validator="required,validateAlphanumSpecial"
+								       maxlength="20"
+								       required-error-message="{{::'accounts.accountDetails.errorMessage.SICCodeRequired' | translate}}"
+								       placeholder="{{::'accounts.accountDetails.label.SICCode' | translate}}"
+								       data-validate-alphanum-special-error-message="{{::'common.errorMessage.allowedSpecialCharacters' | translate}}">
+							</div>
+						</div>
+						<div class="form-group col-sm-12 col-md-12 col-lg-12 padding0">
+							<label class="col-sm-5 col-md-5 col-lg-4 control-label padding0 ">{{::'accounts.accountDetails.label.EEO' |
+								translate}}</label>
+							<div class="col-sm-7 col-md-7 col-lg-8 padding0">
+								<div class="col-sm-6 col-md-6 col-lg-6 padding0"
+								     data-ng-repeat="eeoCode in APIInformationEEOCode">
+									<div id="{{eeoCode.value}}"><input type="checkbox"
+										       ng-model="eeoCode.checked"
+										       ng-disabled="apinfoCheckedCount >= 2 && !eeoCode.checked"
+										       name="eeoCode.value"
+										       ng-click="toggleEEOApInfo(eeoCode)"> {{eeoCode.label}}</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</fieldset>
+				<fieldset class="scheduler-border scheduler-border-height">
+					<legend class="scheduler-border fieldSetHeading">
+						<div><b class="repDetailsFont">{{::'accounts.accountDetails.label.shippingAndPaymentInformation' | translate}}</b></div>
+					</legend>
+					<div class="col-sm-12 col-md-6 col-lg-6 paddingT1 paddingB1">
+						<div class="form-group col-sm-12 col-md-12 col-lg-12 padding0">
+							<label class="col-sm-5 col-md-5 col-lg-5 control-label padding0 ">{{::'accounts.accountDetails.label.FOBTerms' |
+								translate}}<sup class="validation-required">*</sup></label>
+							<div class="col-sm-7 col-md-7 col-lg-7 break-word padding0"
+							     ng-init="FOBTerms =''">
+								<select class="form-control input-sm required"
+								        name="FOBTerms"
+								        ng-model="apInformation.fobCode"
+								        id="FOBTerms"
+								        validator="required"
+								        required-error-message="{{::'accounts.accountDetails.errorMessage.FOBTermCodeRequired' | translate}}"
+								        ng-options="FOBTerms.value as FOBTerms.label for FOBTerms in APIInformationFOBCode">
+									<option value="">-- Select --</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group col-sm-12 col-md-12 col-lg-12 padding0">
+							<label class="col-sm-5 col-md-5 col-lg-5 control-label padding0 ">{{::'accounts.accountDetails.label.payment' |
+								translate}}<sup class="validation-required">*</sup></label>
+							<div class="col-sm-7 col-md-7 col-lg-7 break-word padding0"
+							     ng-init="payment =''">
+								<select class="form-control input-sm required"
+								        name="payment"
+								        ng-model="apInformation.paymentTermsCode"
+								        id="payment"
+								        validator="required"
+								        required-error-message="{{::'accounts.accountDetails.errorMessage.PaymentTermCode' | translate}}"
+								        ng-options="payment.value as payment.label for payment in APIInformationPaymentTermsCode">
+									<option value="">-- Select --</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group col-sm-12 col-md-12 col-lg-12 padding0">
+							<label class="col-sm-5 col-md-5 col-lg-5 control-label padding0 ">{{::'accounts.accountDetails.label.EFTAcceptance'
+								| translate}}<sup class="validation-required">*</sup></label>
+							<div class="col-sm-7 col-md-7 col-lg-7 break-word padding0">
+								<input type="radio"
+								       name="EFTAcceptance"
+								       id="EFTAcceptance"
+								       data-ng-model="apInformation.eftAcceptance"
+								       data-ng-value="true"
+								       ng-checked="apInformation.eftAcceptance === true">
+								{{::'common.yes' | translate}} <input type="radio"
+								       name="EFTAcceptance"
+								       id="EFTAcceptance"
+								       data-ng-model="apInformation.eftAcceptance"
+								       data-ng-value="false"
+								       ng-checked="apInformation.eftAcceptance === false">
+								{{::'common.no' | translate}} <input type="text"
+								       data-ng-model="apInformation.eftAcceptance"
+								       class="ng-hide"
+								       name="EFTAcceptance"
+								       id="EFTAcceptance"
+								       valid-method="watch"
+								       data-validator="required"
+								       data-required-error-message="{{::'accounts.accountDetails.errorMessage.EFTAcceptanceRequired' | translate}}" />
+							</div>
+						</div>
+						<div class="form-group col-sm-12 col-md-12 col-lg-12 padding0">
+							<label class="col-sm-5 col-md-5 col-lg-5 control-label padding0 ">{{::'accounts.accountDetails.label.bankName' |
+								translate}}</label>
+							<div class="col-sm-7 col-md-7 col-lg-7 break-word padding0">
+								<input type="text"
+								       class="form-control input-sm"
+								       id="bankName"
+								       name="bankName"
+								       ng-model="apInformation.bankName"
+								       validator="validateAlphanumSpecial"
+								       maxlength="250"
+								       placeholder="{{::'accounts.accountDetails.label.bankName' | translate}}"
+								       data-validate-alphanum-special-error-message="{{::'common.errorMessage.allowedSpecialCharacters' | translate}}">
+							</div>
+						</div>
+					</div>
+				</fieldset>
+				<fieldset class="scheduler-border scheduler-border-height">
+					<legend class="scheduler-border fieldSetHeading">
+						<div><b class="repDetailsFont">{{::'accounts.accountDetails.label.customerServiceContactInformation' |
+								translate}}</b></div>
+					</legend>
+					<div class="col-sm-12 col-md-6 col-lg-6 paddingT1 paddingB1">
+						<div class="form-group col-sm-12 col-md-12 col-lg-12 padding0">
+							<label class="col-sm-5 col-md-5 col-lg-5 control-label padding0 ">{{::'accounts.accountDetails.label.customerServiceEmailAddress'
+								| translate}}<sup class="validation-required">*</sup></label>
+							<div class="col-sm-7 col-md-7 col-lg-7 break-word padding0">
+								<input type="text"
+								       class="form-control required input-sm"
+								       id="customerServiceEmailAddress"
+								       name="customerServiceEmailAddress"
+								       ng-model="apInformation.customerServiceEmail"
+								       validator="required,validateAlphanumSpecial, validateEmail"
+								       maxlength="100"
+								       required-error-message="{{::'accounts.accountDetails.errorMessage.customerServiceEmailRequired' | translate}}"
+								       placeholder="{{::'accounts.accountDetails.label.customerServiceEmailAddress' | translate}}"
+								       data-validate-email-error-message="{{'messages.validEmailAddress' | translate}}"
+								       data-validate-alphanum-special-error-message="{{::'common.errorMessage.allowedSpecialCharacters' | translate}}">
+							</div>
+						</div>
+						<div class="form-group col-sm-12 col-md-12 col-lg-12 padding0">
+							<label class="col-sm-5 col-md-5 col-lg-5 control-label padding0 ">{{::'accounts.accountDetails.label.customerServicePhoneNumber'
+								| translate}}<sup class="validation-required">*</sup></label>
+							<div class="col-sm-7 col-md-7 col-lg-7 break-word padding0">
+								<input type="text"
+								       class="form-control required input-sm"
+								       id="customerServicePhoneNumber"
+								       name="customerServicePhoneNumber"
+								       ng-model="apInformation.customerServicePhone"
+								       validator="required,validateAlphanumSpecial"
+								       maxlength="50"
+								       required-error-message="{{::'accounts.accountDetails.errorMessage.customerServicePhoneRequired' | translate}}"
+								       placeholder="{{::'accounts.accountDetails.label.customerServicePhoneNumber' | translate}}"
+								       data-validate-alphanum-special-error-message="{{::'common.errorMessage.allowedSpecialCharacters' | translate}}">
+							</div>
+						</div>
+						<div class="form-group col-sm-12 col-md-12 col-lg-12 padding0">
+							<label class="col-sm-5 col-md-5 col-lg-5 control-label padding0 ">{{::'accounts.accountDetails.label.customerServiceFaxNumber'
+								| translate}}</label>
+							<div class="col-sm-7 col-md-7 col-lg-7 break-word padding0">
+								<input type="text"
+								       class="form-control input-sm"
+								       id="customerServiceFaxNumber"
+								       name="customerServiceFaxNumber"
+								       ng-model="apInformation.customerServiceFax"
+								       validator="validateAlphanumSpecial"
+								       maxlength="50"
+								       placeholder="{{::'accounts.accountDetails.label.customerServiceFaxNumber' | translate}}"
+								       data-validate-alphanum-special-error-message="{{::'common.errorMessage.allowedSpecialCharacters' | translate}}">
+							</div>
+						</div>
+						<div class="form-group col-sm-12 col-md-12 col-lg-12 padding0">
+							<label class="col-sm-5 col-md-5 col-lg-5 control-label padding0 ">{{::'accounts.accountDetails.label.customerServiceWebsite'
+								| translate}}</label>
+							<div class="col-sm-7 col-md-7 col-lg-7 break-word padding0">
+								<input type="text"
+								       class="form-control input-sm"
+								       id="customerServiceWebsite"
+								       name="customerServiceWebsite"
+								       ng-model="apInformation.customerServiceWebsite"
+								       validator="validateAlphanumSpecial"
+								       maxlength="100"
+								       placeholder="{{::'accounts.accountDetails.label.customerServiceWebsite' | translate}}"
+								       data-validate-alphanum-special-error-message="{{::'common.errorMessage.allowedSpecialCharacters' | translate}}">
+							</div>
+						</div>
+					</div>
+				</fieldset>
+				<fieldset class="scheduler-border scheduler-border-height">
+					<legend class="scheduler-border fieldSetHeading">
+						<div><b class="repDetailsFont">{{::'accounts.accountDetails.label.EDIInformation' | translate}}</b></div>
+					</legend>
+					<div class="col-sm-12 col-md-6 col-lg-6 paddingT1 paddingB1">
+						<div class="form-group col-sm-12 col-md-12 col-lg-12 padding0">
+							<label class="col-sm-5 col-md-5 col-lg-5 control-label padding0 ">{{::'accounts.accountDetails.label.EDIContactEmailAddress'
+								| translate}}</label>
+							<div class="col-sm-7 col-md-7 col-lg-7 break-word padding0">
+								<input type="text"
+								       class="form-control input-sm"
+								       id="EDIContactEmailAddress"
+								       name="EDIContactEmailAddress"
+								       ng-model="apInformation.ediContactEmail"
+								       validator="validateAlphanumSpecial,validateEmail"
+								       maxlength="100"
+								       placeholder="{{::'accounts.accountDetails.label.EDIContactEmailAddress' | translate}}"
+								       data-validate-email-error-message="{{'messages.validEmailAddress' | translate}}"
+								       data-validate-alphanum-special-error-message="{{::'common.errorMessage.allowedSpecialCharacters' | translate}}">
+							</div>
+						</div>
+						<div class="form-group col-sm-12 col-md-12 col-lg-12 padding0">
+							<label class="col-sm-5 col-md-5 col-lg-5 control-label padding0 ">{{::'accounts.accountDetails.label.EDIContactPhoneNumber'
+								| translate}}</label>
+							<div class="col-sm-7 col-md-7 col-lg-7 break-word padding0">
+								<input type="text"
+								       class="form-control input-sm"
+								       id="EDIContactPhoneNumber"
+								       name="EDIContactPhoneNumber"
+								       ng-model="apInformation.ediContactPhone"
+								       validator="validateAlphanumSpecial"
+								       maxlength="50"
+								       placeholder="{{::'accounts.accountDetails.label.EDIContactPhoneNumber' | translate}}"
+								       data-validate-alphanum-special-error-message="{{::'common.errorMessage.allowedSpecialCharacters' | translate}}">
+							</div>
+						</div>
+						<div class="form-group col-sm-12 col-md-12 col-lg-12 padding0">
+							<label class="col-sm-5 col-md-5 col-lg-5 control-label padding0 ">{{::'accounts.accountDetails.label.EDIWebsite'
+								| translate}}</label>
+							<div class="col-sm-7 col-md-7 col-lg-7 break-word padding0">
+								<input type="text"
+								       class="form-control input-sm"
+								       id="EDIWebsite"
+								       name="EDIWebsite"
+								       ng-model="apInformation.ediWebsite"
+								       validator="validateAlphanumSpecial"
+								       maxlength="100"
+								       placeholder="{{::'accounts.accountDetails.label.EDIWebsite' | translate}}"
+								       data-validate-alphanum-special-error-message="{{::'common.errorMessage.allowedSpecialCharacters' | translate}}">
+							</div>
+						</div>
+					</div>
+				</fieldset>
+				<div class="col-sm-12 col-md-12 col-lg-12 padLeft0">
+					<div class="col-sm-6 col-md-6 col-lg-6 padLeft0 marginB1"></div>
+					<div class="col-sm-6 col-md-6 col-lg-6 padLeft0">
+						<button type="submit"
+						        ng-click="saveOrUpdateAPInformation(apInformation, APIInformationEEOCode);"
+						        data-validation-submit="APInformationForm"
+						        class="btn btn-primary">{{::'common.update' | translate}}</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</vision-action>
+</div>

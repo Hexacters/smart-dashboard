@@ -1,0 +1,150 @@
+<div class="row" ng-controller="myProfileController">
+	<div class="col-sm-12 col-md-12 col-lg-12"
+		data-ng-class="{'dNone':!loading}">
+		<img align="absmiddle" src="app/ng1/img/partial-loading.gif">&nbsp;{{'common.loading'
+		| translate}}
+	</div>
+	<div class="col-sm-12 col-md-12 col-lg-12">
+		<div class="col-sm-8 col-md-6 col-lg-6">
+			<h3>
+				<b>{{'myProfile.supervisorInformation.header.supervisorInformationTitle'
+					| translate}}</b>
+			</h3>
+		</div>
+		<div class="col-sm-4 col-md-6 col-lg-6">
+			<div class="pull-right marginT2">
+				<sup class="asterisk">*</sup>&nbsp;{{'common.required' | translate}} 
+				<a data-ui-sref="myProfile.supervisorInformationEdit.supervisorInformationEditHelp" ng-show="!isFromManageReps">{{'common.help'
+					| translate}}</a>
+				<a data-ui-sref="manage.repAccountDetails.manageRepProfile.supervisorInformationEdit.supervisorInformationEditHelp" 
+					ng-show="isFromManageReps">{{'common.help'| translate}}</a>
+			</div>
+			</div>
+		</div>
+		<div class="col-sm-12 col-md-12 col-lg-12">
+			<vision-action> <get-data service="myProfileServices"
+				operation="getSupervisor" root-node="data.successData.Reference"
+				form-node="data.Reference"></get-data> <submit-data
+				service="myProfileServices" operation="saveSupervisor"
+				callback="supervisorEditInfo"
+				redirectParams="{'status':'success'}"
+				remove-keys="updatedOn,deleteAction,updateAction,updatedBy,createdBy,createdOn"></submit-data>
+			<div class="table-responsive"
+				data-ng-if="supervisorEditInfoSubmitError.status === 'error'">
+				<div class="alert alert-danger">
+				{{supervisorEditInfoSubmitError.errorData.ResponseError[0].longMessage}}</div>
+			</div>
+			<form novalidate name="SupervisorInformation" autocomplete="off"
+				class="form-horizontal">
+				<div class="col-sm-6 col-md-6 col-lg-6">
+					<div class="form-group">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right">
+							{{'myProfile.supervisorInformation.label.firstName' | translate}}&nbsp;<sup
+							class="asterisk">*</sup>
+						</label>
+						<div class="col-sm-6 col-md-6 col-lg-6">
+							<input type="text" id="myProfile.supervisorInformation.firstName"
+								class="form-control required input-sm" name="firstName"
+								focus-me="true" data-ng-model="data.Reference.firstName"
+								validator="required, validateAlphanumSpecial"
+								required-error-message="{{'myProfile.supervisorInformation.errorMessage.firstNameRequired' | translate}}"
+								validate-alphanum-special-error-message="{{'common.errorMessage.allowedSpecialCharacters' | translate}}"
+								valid-method="watch" maxLength="50" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right">
+							{{'myProfile.supervisorInformation.label.lastName' | translate}}&nbsp;<sup
+							class="asterisk">*</sup>
+						</label>
+						<div class="col-sm-6 col-md-6 col-lg-6">
+							<input type="text" id="myProfile.supervisorInformation.lastName"
+								class="form-control required input-sm" name="lastName"
+								data-ng-model="data.Reference.lastName"
+								validator="required, validateAlphanumSpecial"
+								required-error-message="{{'myProfile.supervisorInformation.errorMessage.lastNameRequired' | translate}}"
+								validate-alphanum-special-error-message="{{'common.errorMessage.allowedSpecialCharacters' | translate}}"
+								valid-method="watch" maxLength="50" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right">
+							{{'myProfile.supervisorInformation.label.professionalTitle' |
+							translate}}&nbsp;<sup class="asterisk">*</sup> <span
+							tooltip-append-to-body="true"
+							tooltip-placement="bottom"
+							tooltip="{{'myProfile.supervisorInformation.label.professionalTitleTooltip' | translate}}">
+								<i class="fa fa-question-circle fa-lg"></i>
+						</span>
+						</label>
+						<div class="col-sm-6 col-md-6 col-lg-6">
+							<input type="text"
+								id="myProfile.supervisorInformation.professionalTitle"
+								class="form-control required input-sm" name="professionalTitle"
+								data-ng-model="data.Reference.title"
+								validator="required, validateAlphanumSpecial"
+								required-error-message="{{'myProfile.supervisorInformation.errorMessage.professionalTitleRequired' | translate}}"
+								validate-alphanum-special-error-message="{{'common.errorMessage.allowedSpecialCharacters' | translate}}"
+								valid-method="watch" maxLength="50" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right">
+							{{'myProfile.supervisorInformation.label.phone' | translate}}&nbsp;<sup
+							class="asterisk">*</sup>
+						</label>
+						<div class="col-sm-6 col-md-6 col-lg-6">
+							<input type="text" id="myProfile.supervisorInformation.phone"
+								class="form-control required input-sm" name="phone"
+								data-ng-model="data.Reference.workPhone"
+								validator="required, validateAlphanumSpecial"
+								required-error-message="{{'myProfile.supervisorInformation.errorMessage.phoneRequired' | translate}}"
+								validate-alphanum-special-error-message="{{'common.errorMessage.allowedSpecialCharacters' | translate}}"
+								valid-method="watch" maxLength="20" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right">
+							{{'myProfile.supervisorInformation.label.email' | translate}}&nbsp;<sup
+							class="asterisk">*</sup> <span tooltip-append-to-body="true" tooltip-placement="bottom"
+							tooltip="{{'myProfile.supervisorInformation.label.emailTooltip' | translate}}">
+								<i class="fa fa-question-circle fa-lg"></i>
+						</span>
+						</label>
+						<div class="col-sm-6 col-md-6 col-lg-6">
+							<input type="text" id="myProfile.supervisorInformation.Email"
+								class="form-control required input-sm" name="Email"
+								data-ng-model="data.Reference.email"
+								validator="required,validateEmail"
+								required-error-message="{{'myProfile.supervisorInformation.errorMessage.emailRequired' | translate}}"
+								validate-email-error-message="{{'myProfile.supervisorInformation.errorMessage.emailInvalid'|translate}}"
+								valid-method="watch" maxLength="100" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right">{{'myProfile.supervisorInformation.label.department'
+							| translate}}</label>
+						<div class="col-sm-6 col-md-6 col-lg-6">
+							<input type="text"
+								id="myProfile.supervisorInformation.department"
+								class="form-control input-sm" name="department"
+								validator="validateAlphanumSpecial"
+								validate-alphanum-special-error-message="{{'myProfile.supervisorInformation.errorMessage.departmentRequiredspecialCharactoeError' | translate}}"
+								data-ng-model="data.Reference.department" valid-method="watch"
+								maxLength="100" />
+						</div>
+					</div>
+					<div class="form-group">
+						<div
+							class="col-sm-6 col-md-6 col-lg-6 col-lg-offset-6 col-sm-offset-6 col-md-offset-6 text-left">
+							<button class="btn btn-success"
+								id="contactPersonalInformationEdit"
+								validation-submit="SupervisorInformation" ng-click="submit();callGAPageTrack('saveSuperInfo');">{{'common.save' | translate}}</button>
+						</div>
+					</div>
+				</div>
+			</form>
+			</vision-action>
+		</div>
+	</div>
+</div>

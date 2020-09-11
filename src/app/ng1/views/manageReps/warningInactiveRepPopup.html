@@ -1,0 +1,33 @@
+<div class="modal-content">
+	<div class="modal-header commonDialogHeader">
+		<button id="activeInactiveRepClose"
+			type="button" class="close" aria-hidden="true"
+			data-ng-click="$close()">&times;</button>
+		<h3 class="modal-title">
+			<b>{{'manageReps.label.warningInactivateFinalRep' | translate}}</b>
+		</h3>
+	</div>
+	<form novalidate name="warningInactiveRepForm" id="warningInactiveRepForm" autocomplete="off" class="form-horizontal">
+		<div class="modal-body">
+			<div class="col-sm-12 col-md-12 col-lg-12 padding0">
+				<div data-ng-class="{'dNone':!activeInactiveLoading}">
+					<img align="absmiddle" src="app/ng1/img/partial-loading.gif">&nbsp;{{'common.loading' | translate}}
+				</div>
+				<div data-ng-if="warningInactiveRepError.errorData.Status == 'Error'" class="alert alert-danger">
+					<i class="fa fa-exclamation-triangle"></i> {{warningInactiveRepError.errorData.ResponseError[0].longMessage}}
+				</div>
+				<p>{{'manageReps.label.warningInactivateFinalRep1' | translate}}</p>
+				<p ng-controller="footerController">{{'manageReps.label.warningInactivateFinalRep2' | translate}} <a href="javascript:;" data-ng-click="supportLink();">{{'manageReps.label.warningInactivateFinalRep3' | translate}}</a>.</p>
+				<p>{{'manageReps.label.doYouWantToContinue' | translate}}</p>
+			</div>	
+		</div>
+		<div class="modal-footer">
+			<div class="col-sm-12 col-md-12 col-lg-12">
+				<button class="btn btn-info" id="warningInactiveRepYes" name="warningInactiveRepYes" type="button"
+					data-ng-click="warningInactiveRepRegistration()" >{{'common.yes' | translate}}</button>&nbsp;&nbsp;
+				<button class="btn btn-warning" id="warningInactiveRepNo" name="warningInactiveRepNo" type="button"
+					autofocus data-ng-click="$close()">{{'common.no'| translate}}</button>
+			</div>
+		</div>
+	</form>
+</div>

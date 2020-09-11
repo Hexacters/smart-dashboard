@@ -1,0 +1,17 @@
+<div ng-controller="googleAnalyticsController" data-ng-init="callGAPageTrack('extrasTab');"></div>
+<div class="row" ng-controller="myDocumentController">
+	<div class="col-sm-12 col-md-9 col-lg-9">
+		<div class="col-sm-4 col-md-3 col-lg-3" data-ng-if="canAccess('vm','Extras.VendormateMobile')">
+			<a href="javascript:;" data-ng-click="openWindow(vendormateMobileURL, vendormateMobile)"><img class="text-left extras" src="app/ng1/img/extras/vendormateMobile.jpg" alt="vendormateMobile"/></a>
+		</div>
+		<!--<div class="col-sm-4 col-md-3 col-lg-3" data-ng-if="canAccess('vm','Extras.VendormatePurchasePlan')">
+			<a href="javascript:;" data-ng-click="openWindow(credentialingPlansURL, credentialingPlans)"><img class="text-left extras" src="app/ng1/img/extras/credentialingPlans.jpg" alt="credentialingPlans"/></a>
+		</div>-->
+		<div class="col-sm-4 col-md-3 col-lg-3" data-ng-if="canAccess('vm','Extras.TrainingCertification')">
+			<a href="javascript:;" data-ng-click="openWindow(trainingCertificationURL, trainingCertification)"><img class="text-left extras" src="app/ng1/img/extras/trainingCertification.jpg" alt="trainingCertification"/></a>
+		</div>
+		<div class="col-sm-4 col-md-3 col-lg-3" data-ng-if="canAccess('vm','Extras.BackgroundChecksDrug')">
+			<a href="javascript:;" data-ng-click="openWindow(backgroundChecksURL, backgroundChecks)"><img class="text-left extras" src="app/ng1/img/extras/backgroundChecks.jpg" alt="backgroundChecks"/></a>
+		</div>
+	</div>
+</div>

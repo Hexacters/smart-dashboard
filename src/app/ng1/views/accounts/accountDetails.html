@@ -1,0 +1,149 @@
+<div ng-if="!$appConfiguration.mock || isIframeEnabled === 'false'"
+     ng-init="showLoadingForIframe();">
+    <div class="row"
+         ng-if="showIFrame === true || repProfileLoginUrl">
+        <div class="col-sm-6 col-md-6 col-lg-6">
+            <div>
+                <span class="pull-left"><a id="manageAccountsHelp"
+                       data-ng-click="backToList(iframeFrom);">{{
+                        ::'accounts.accountDetails.label.backtolist' | translate}}</a></span>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-6 col-lg-6"
+             data-ng-if="repProfileLoginUrlLoading===true && isIframeEnabled === 'true'">
+            <span class="pull-right"
+                  class="toolTip"
+                  tooltip-placement="left"
+                  tooltip="{{'accounts.accountDetails.label.reloadTooltip' | translate}}"><a data-ng-click="reloadIframe();">{{::'common.reload'
+                    | translate}}</a></span>
+        </div>
+        <div class="col-sm-12 col-md-12 col-lg-12 marginT2"
+             data-ng-if="flowServiceResponseError!=''">
+            <div class="col-sm-10 col-md-10 col-lg-10 alert alert-danger">
+                <a href="#"
+                   class="close"
+                   data-dismiss="alert"
+                   aria-label="close"><i class="fa fa-times"></i></a>
+                <strong><i class="fa fa-warning"></i></strong> {{flowServiceResponseError}}
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-12 col-lg-12">
+            <div loading-container="loading"
+                 data-ng-hide="repProfileLoginUrlLoading===true"
+                 class="registrationClass">
+                <div ui-view="viewRegistration"
+                     autoscroll="true"></div>
+            </div>
+            <div id="divIFrameHide"
+                 class="iframeContainer"
+                 data-ng-if="repProfileLoginUrlLoading===true && isIframeEnabled === 'true'">
+                <div id="divLoading"
+                     ng-show="iframeLoading">
+                    <img align="absmiddle"
+                         src="app/ng1/img/partial-loading.gif"> {{::'common.loading'
+                    | translate}}
+                </div>
+                <div ng-show="!iframeLoading">
+                    <iframe id="repProfileUrl"
+                            width="100%"
+                            class="col-sm-12 col-md-12 col-lg-12"
+                            ng-src="{{repProfileLoginUrl | trustAsResourceUrl}}"
+                            iframe-onload="iframeLoadedCallBack()"
+                            frameborder="0"> </iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Iframe URL from clear for Access -->
+    <div class="row"
+         ng-if="printBadgeRepProfileUrl && isIframeEnabled === 'true'">
+        <div class="col-sm-6 col-md-6 col-lg-6">
+            <div>
+                <span class="pull-left"
+                      ng-if="$stateParams.fromPrintBadge === 'manageAccount'"><a data-ng-click="backToList('manageAccounts');"
+                       id="manageAccountsHelp">{{
+                        ::'accounts.accountDetails.label.backtolist' | translate}}</a></span>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-6 col-lg-6"
+             ng-if="$stateParams.fromPrintBadge === 'manageAccount' || $stateParams.fromPrintBadge === 'searchAccount'">
+            <span class="pull-right"
+                  class="toolTip"
+                  tooltip-placement="left"
+                  tooltip="Select to reload the contents of this section if you have been logged out"><a data-ng-click="reloadPrintbadgeIframe();">{{::'common.reload'
+                    |
+                    translate}}</a></span>
+        </div>
+        <div ng-if="printBadgeRepProfileUrl"
+             class="col-sm-12 col-md-12 col-lg-12 iframeContainer">
+            <div id="divLoading"
+                 ng-show="iframeLoading">
+                <img align="absmiddle"
+                     src="app/ng1/img/partial-loading.gif"> {{::'common.loading'
+                | translate}}
+            </div>
+            <div ng-show="!iframeLoading">
+                <iframe id="printBadgeRepProfileUrl"
+                        width="100%"
+                        class="col-sm-12 col-md-12 col-lg-12"
+                        ng-src="{{printBadgeRepProfileUrl | trustAsResourceUrl}}"
+                        iframe-onload="iframeLoadedCallBack()"
+                        frameborder="0"> </iframe>
+            </div>
+        </div>
+    </div>
+    <!-- New Account Details -->
+    <div id="divIFrameHide"
+         class="iframeContainer"
+         data-ng-if="repProfileLoginUrlLoading === true && isIframeEnabled === 'false'"
+         ng-controller="accountDetailController">
+        <div ng-include
+             src="'views/accountDetails/generalInfo.html?rnd='+generalInfoRandom"></div>
+        <div class="col-sm-12 col-md-12 col-lg-12 form-group padding0">
+            <ul tabset>
+                <li tab
+                    data-ui-sref="accounts.accountDetails.documents.commonDocuments"
+                    heading="{{::'accounts.accountDetails.header.documentsAndPolicies'| translate}}"
+                    active="$state.includes('accounts.accountDetails.documents.commonDocuments') || $state.includes('accounts.accountDetails.documents.backgroundCheck') || $state.includes('accounts.accountDetails.documents.optionalDocuments')">
+                    <div data-ui-view="accountDetailDocuments"></div>
+                </li>
+                <li tab
+                    data-ui-sref="accounts.accountDetails.userReleationship"
+                    heading="{{::'accounts.accountDetails.header.userRelationship'| translate}}"
+                    active="$state.includes('accounts.accountDetails.userReleationship')">
+                    <div data-ui-view="accountDetailUserRelationship"></div>
+                </li>
+                <li tab
+                    data-ui-sref="accounts.accountDetails.businessRelationshipPHI"
+                    heading="{{::'accounts.accountDetails.header.businessRelationship' | translate}}"
+                    active="$state.includes('accounts.accountDetails.businessRelationshipPHI')">
+                    <div data-ui-view="accountDetailBusinessRelationshipPHI"></div>
+                </li>
+                <li tab
+                    data-ui-sref="accounts.accountDetails.conflictsOfInterest"
+                    heading="{{::'accounts.accountDetails.header.conflictsOfInterest' | translate}}"
+                    active="$state.includes('accounts.accountDetails.conflictsOfInterest')">
+                    <div data-ui-view="accountDetailConflictsOfInterest"></div>
+                </li>
+                <li tab
+                    data-ui-sref="accounts.accountDetails.apInformation"
+                    heading="{{::'accounts.accountDetails.header.APInformation'| translate}}"
+                    active="$state.includes('accounts.accountDetails.apInformation') || $state.includes('accounts.accountDetails.apInformationSendMail')">
+                    <div data-ui-view="accountDetailAPInformation"></div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div ng-if="$state.params.fromPrintBadge && $state.params.fromPrintBadge !== 'manageAccount'">
+        <div class="minHeight200"
+             ng-if="(showIFrame === false && !repProfileLoginUrl) || (showIFrame === false && !printBadgeRepProfileUrl )">
+            <span>{{::'accounts.accountDetails.label.pleaseSelectAnAccountFrom' | translate}}
+                <a data-ui-sref="accounts.manageAccounts">{{
+                    ::'accounts.manageMyaccount.header.manageMyAccounts' | translate}}</a>
+                {{::'accounts.accountDetails.label.section' | translate}}
+            </span>
+        </div>
+    </div>
+</div>
+<div ng-include ng-if="$appConfiguration.mock && isIframeEnabled === 'true'"
+            src="'views/accounts/accountIframeDetail.html?rnd='+generalInfoRandom"></div>

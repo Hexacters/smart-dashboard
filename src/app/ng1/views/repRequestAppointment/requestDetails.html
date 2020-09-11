@@ -1,0 +1,120 @@
+<div class="modal-content form-horizontal">
+	<div class="modal-header ng-scope">
+		<button type="button" class="close" data-dismiss="modal"
+			data-ng-click="cancelDialog()">&times;</button>
+		<h3 class="modal-title col-md-offset-0">
+			{{'appointments.addAppointments.manageAppointments.requestDetails' | translate}}
+		</h3>
+	</div>
+	<div class="modal-body ng-scope modelDialogScroll" ng-controller="requestappoinmentController">
+	<vision-action> <get-data
+			service="repRequestAppointmentServices"
+			operation="getAppointmentRequestById" response-formatter="setAppointmentDetailSummery"
+			root-node="data" form-node="appointmentRequestDetails"></get-data>
+			<div class="col-sm-12 col-md-12 col-lg-12 padding0" data-ng-class="{'dNone':!loading}">
+				<img align="absmiddle" data-ng-src="app/ng1/img/partial-loading.gif" />&nbsp;{{'common.loading'
+				| translate}}
+			</div>
+		<div class="table-responsive"
+			ng-if="getError.status === 'error'">
+			<div class="alert alert-danger">
+				{{getError.errorData.ResponseError[0].errorCode | translate}}</div>
+		</div>
+		<div class="col-sm-12 col-md-12 col-lg-12 padding0" ng-if="appointmentRequestDetails.status === 'success'" ng-show="!loading">
+			<div class="col-sm-12 col-md-12 col-lg-12">
+					<label class="col-sm-4 col-md-4 col-lg-4">{{'appointments.addAppointments.manageAppointments.appointmentStatus'
+					| translate}}</label>
+				<div class="col-sm-8 col-md-8 col-lg-8" ng-show="appointmentRequestDetails.successData.ApptRequestDetail.requestStatus=='PEND'">
+				{{'appointments.addAppointments.manageAppointments.pending' | translate}}</div>
+				<div class="col-sm-8 col-md-8 col-lg-8" ng-show="appointmentRequestDetails.successData.ApptRequestDetail.requestStatus=='EXP'">
+				{{'appointments.addAppointments.manageAppointments.expired' | translate}}</div>
+				<div class="col-sm-8 col-md-8 col-lg-8" ng-show="appointmentRequestDetails.successData.ApptRequestDetail.requestStatus=='ACPT'">
+				{{'appointments.addAppointments.manageAppointments.accepted' | translate}}</div>
+				<div class="col-sm-8 col-md-8 col-lg-8" ng-show="appointmentRequestDetails.successData.ApptRequestDetail.requestStatus=='DCLN'">
+				{{'appointments.addAppointments.manageAppointments.declined' | translate}}
+				</div>
+			</div> 
+			<div class="col-sm-12 col-md-12 col-lg-12">
+				<label class="col-sm-4 col-md-4 col-lg-4 break-word">{{'appointments.addAppointments.manageAppointments.account' | translate}}</label>
+				<div class="col-sm-8 col-md-8 col-lg-8 break-word">{{appointmentRequestDetails.successData.ApptRequestDetail.customerName}}</div>
+			</div>
+			<div class="col-sm-12 col-md-12 col-lg-12">
+				<label class="col-sm-4 col-md-4 col-lg-4 break-word">{{'appointments.addAppointments.manageAppointments.requestedStaff'
+					| translate}}</label>
+				<div class="col-sm-8 col-md-8 col-lg-8 break-word">{{appointmentRequestDetails.successData.ApptRequestDetail.requestedStaff}}</div>
+			</div>
+			<div class="col-sm-12 col-md-12 col-lg-12" ng-if ="appointmentRequestDetails.successData.ApptRequestDetail.locationOid ==='other'">
+				<label class="col-sm-4 col-md-4 col-lg-4 break-word">{{'appointments.addAppointments.manageAppointments.location'
+					| translate}}</label>
+				<div class="col-sm-8 col-md-8 col-lg-8">Other</div>
+			</div>
+			<div class="col-sm-12 col-md-12 col-lg-12">
+				<label ng-if ="appointmentRequestDetails.successData.ApptRequestDetail.locationOid !=='other'" class="col-sm-4 col-md-4 col-lg-4 break-word">{{'appointments.addAppointments.manageAppointments.location'
+					| translate}}</label>
+				<label ng-if ="appointmentRequestDetails.successData.ApptRequestDetail.locationOid ==='other'" class="col-sm-4 col-md-4 col-lg-4 break-word">{{'appointments.addAppointments.manageAppointments.otherLocation'
+					| translate}}</label>
+				<div class="col-sm-8 col-md-8 col-lg-8 break-word">{{appointmentRequestDetails.successData.ApptRequestDetail.locationForDisplay}}</div>
+			</div>
+			<div class="col-sm-12 col-md-12 col-lg-12" ng-if ="appointmentRequestDetails.successData.ApptRequestDetail.departmentOid ==='other'">
+				<label class="col-sm-4 col-md-4 col-lg-4 break-word">{{'appointments.addAppointments.manageAppointments.department'
+					| translate}}</label>
+				<div class="col-sm-8 col-md-8 col-lg-8">Other</div>
+			</div>
+			<div class="col-sm-12 col-md-12 col-lg-12">
+				<label ng-if ="appointmentRequestDetails.successData.ApptRequestDetail.departmentOid !=='other'" class="col-sm-4 col-md-4 col-lg-4 break-word">{{'appointments.addAppointments.manageAppointments.department'
+					| translate}}</label>
+				<label ng-if ="appointmentRequestDetails.successData.ApptRequestDetail.departmentOid ==='other'" class="col-sm-4 col-md-4 col-lg-4 break-word">{{'appointments.addAppointments.manageAppointments.otherDepartment'
+					| translate}}</label>
+				<div class="col-sm-8 col-md-8 col-lg-8 break-word">{{appointmentRequestDetails.successData.ApptRequestDetail.departmentForDisplay}}</div>
+			</div>
+			<div class="col-sm-12 col-md-12 col-lg-12" ng-if ="appointmentRequestDetails.successData.ApptRequestDetail.isReccurAppointment">
+				<label class="col-sm-4 col-md-4 col-lg-4 break-word">{{'appointments.addAppointments.manageAppointments.startAndEndTime'
+					| translate}}</label>
+				<div class="col-sm-8 col-md-8 col-lg-8 break-word">{{appointmentRequestDetails.successData.ApptRequestDetail.apptStartTime | dateFormate | date:'hh:mm a'}} / {{appointmentRequestDetails.successData.ApptRequestDetail.apptEndTime | dateFormate | date:'hh:mm a'}}</div>
+			</div>
+			<div class="col-sm-12 col-md-12 col-lg-12">
+				<label class="col-sm-4 col-md-4 col-lg-4 break-word">{{'appointments.addAppointments.manageAppointments.recurrence'
+					| translate}}</label>
+				<div class="col-sm-8 col-md-8 col-lg-8 break-word">{{appointmentRequestDetails.successData.ApptRequestDetail.freq}}</div>
+			</div>
+			<div class="col-sm-12 col-md-12 col-lg-12" ng-if="!appointmentRequestDetails.successData.ApptRequestDetail.isReccurAppointment">
+				<label class="col-sm-4 col-md-4 col-lg-4 break-word">{{'appointments.addAppointments.manageAppointments.startTime'
+					| translate}}</label>
+				<div class="col-sm-8 col-md-8 col-lg-8 break-word">{{appointmentRequestDetails.successData.ApptRequestDetail.apptStartTime
+					| dateFormate | date:'MM/dd/yyyy hh:mm a'}}</div>
+			</div>
+			<div class="col-sm-12 col-md-12 col-lg-12" ng-if ="!appointmentRequestDetails.successData.ApptRequestDetail.isReccurAppointment">
+					<label class="col-sm-4 col-md-4 col-lg-4 break-word">{{'appointments.addAppointments.manageAppointments.endTime'
+					| translate}}</label>
+				<div class="col-sm-8 col-md-8 col-lg-8 break-word">{{appointmentRequestDetails.successData.ApptRequestDetail.apptEndTime
+					| dateFormate | date:'MM/dd/yyyy hh:mm a'}}</div>
+			</div>
+			<div class="col-sm-12 col-md-12 col-lg-12" ng-if ="appointmentRequestDetails.successData.ApptRequestDetail.isReccurAppointment">
+				<label class="col-sm-4 col-md-4 col-lg-4 break-word">{{'appointments.addAppointments.manageAppointments.summary'
+					| translate}}</label>
+				<div class="col-sm-8 col-md-8 col-lg-8 break-word">{{appointmentRequestDetails.successData.ApptRequestDetail.summery}}</div>
+			</div>
+			<div class="col-sm-12 col-md-12 col-lg-12">
+				<label class="col-sm-4 col-md-4 col-lg-4 break-word">{{'appointments.addAppointments.manageAppointments.subject'
+					| translate}}</label>
+				<div class="col-sm-8 col-md-8 col-lg-8 break-word">{{appointmentRequestDetails.successData.ApptRequestDetail.subject}}</div>
+			</div>
+			<div class="col-sm-12 col-md-12 col-lg-12">
+				<label class="col-sm-4 col-md-4 col-lg-4 break-word">{{'appointments.addAppointments.manageAppointments.description'
+					| translate}}</label>
+				<div class="col-sm-8 col-md-8 col-lg-8 break-word"><pre>{{appointmentRequestDetails.successData.ApptRequestDetail.description}}</pre></div>
+			</div>
+			<div class="col-sm-12 col-md-12 col-lg-12">
+				<label class="col-sm-4 col-md-4 col-lg-4 break-word">{{'appointments.addAppointments.manageAppointments.contactPhone'
+					| translate}}</label>
+				<div class="col-sm-8 col-md-8 col-lg-8 break-word">{{appointmentRequestDetails.successData.ApptRequestDetail.contactPhone}}</div>
+			</div>
+		</div>
+		<div class="col-sm-12 col-md-12 col-lg-12">
+			<div class="col-sm-8 col-md-8 col-lg-8 col-sm-offset-4 col-md-offset-4 col-lg-offset-4 paddingT1">
+				<button type="button" class="btn btn-info" data-dismiss="modal" data-ng-click="cancelDialog()" autofocus>{{'common.ok' | translate}}</button>
+			</div>
+		</div>
+		</vision-action> 
+	</div>
+</div>

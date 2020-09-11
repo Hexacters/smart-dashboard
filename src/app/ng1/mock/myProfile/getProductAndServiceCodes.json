@@ -1,0 +1,185 @@
+{
+    "VisionResponse": {
+        "Status": "Ok",
+        "productAndServiceCodes": "30222600,50221202,60105600,60105605,70122000,70122005,70122010,80111622,80121611,84131600,84131602,85000000,85100000,85101500,85101508,85101600,85101605,85101700,85101701,85101702,85101703,85101704,85101705,85101706,85101707,85121700,85122200,85122201,86101706,86101806,91101501,93121711,93131700,93141808,94101602",
+        "contentType": "application/json",
+        "ProductCodeList": [
+            {
+                "status": "selected",
+                "description": "Sports and health structures",
+                "code": "30222600"
+            },
+            {
+                "status": "selected",
+                "description": "Health or breakfast bars",
+                "code": "50221202"
+            },
+            {
+                "status": "selected",
+                "description": "Health education and nutrition and food preparation instructional materials",
+                "code": "60105600"
+            },
+            {
+                "status": "selected",
+                "description": "Healthy food choices demonstration units",
+                "code": "60105605"
+            },
+            {
+                "status": "selected",
+                "description": "Animal health",
+                "code": "70122000"
+            },
+            {
+                "status": "selected",
+                "description": "Animal health preventive medication services",
+                "code": "70122005"
+            },
+            {
+                "status": "selected",
+                "description": "Animal health information services",
+                "code": "70122010"
+            },
+            {
+                "status": "selected",
+                "description": "Temporary safety health environmental services",
+                "code": "80111622"
+            },
+            {
+                "status": "selected",
+                "description": "Healthcare claim law services",
+                "code": "80121611"
+            },
+            {
+                "status": "selected",
+                "description": "Life and health and accident insurance",
+                "code": "84131600"
+            },
+            {
+                "status": "selected",
+                "description": "Health or hospitalization insurance",
+                "code": "84131602"
+            },
+            {
+                "status": "selected",
+                "description": "Healthcare Services",
+                "code": "85000000"
+            },
+            {
+                "status": "selected",
+                "description": "Comprehensive health services",
+                "code": "85100000"
+            },
+            {
+                "status": "selected",
+                "description": "Healthcare centers",
+                "code": "85101500"
+            },
+            {
+                "status": "selected",
+                "description": "Mobile healthcare centers or services",
+                "code": "85101508"
+            },
+            {
+                "status": "selected",
+                "description": "Healthcare provider support persons",
+                "code": "85101600"
+            },
+            {
+                "status": "selected",
+                "description": "Home health assistants",
+                "code": "85101605"
+            },
+            {
+                "status": "selected",
+                "description": "Health administration services",
+                "code": "85101700"
+            },
+            {
+                "status": "selected",
+                "description": "Health policy",
+                "code": "85101701"
+            },
+            {
+                "status": "selected",
+                "description": "Health legislation or regulations",
+                "code": "85101702"
+            },
+            {
+                "status": "selected",
+                "description": "Health service planning",
+                "code": "85101703"
+            },
+            {
+                "status": "selected",
+                "description": "Health economics",
+                "code": "85101704"
+            },
+            {
+                "status": "selected",
+                "description": "Public health administration",
+                "code": "85101705"
+            },
+            {
+                "status": "selected",
+                "description": "Traditional healthcare services",
+                "code": "85101706"
+            },
+            {
+                "status": "selected",
+                "description": "Health systems evaluation services",
+                "code": "85101707"
+            },
+            {
+                "status": "selected",
+                "description": "Healthcare providers specialists services",
+                "code": "85121700"
+            },
+            {
+                "status": "selected",
+                "description": "Individual health screening and assessment services",
+                "code": "85122200"
+            },
+            {
+                "status": "selected",
+                "description": "Individual health assessment",
+                "code": "85122201"
+            },
+            {
+                "status": "selected",
+                "description": "Health assistance vocational training services",
+                "code": "86101706"
+            },
+            {
+                "status": "selected",
+                "description": "Health sector manpower development",
+                "code": "86101806"
+            },
+            {
+                "status": "selected",
+                "description": "Health or fitness clubs",
+                "code": "91101501"
+            },
+            {
+                "status": "selected",
+                "description": "International health organizations services",
+                "code": "93121711"
+            },
+            {
+                "status": "selected",
+                "description": "Health programs",
+                "code": "93131700"
+            },
+            {
+                "status": "selected",
+                "description": "Occupational health or safety services",
+                "code": "93141808"
+            },
+            {
+                "status": "selected",
+                "description": "Medical health associations",
+                "code": "94101602"
+            }
+        ],
+        "userOid": "000000530100000014b7"
+    }
+}

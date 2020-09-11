@@ -1,0 +1,306 @@
+<div class="row marginT1">
+	<div class="row">
+		<div class="col-sm-10 col-md-10 col-lg-10 marginL2 alert alert-danger"
+			data-ng-if="serviceResponseError">
+			<a href="#" class="close" data-dismiss="alert" aria-label="close"
+				id="serviceErrorCloseIcon">&times;</a> <strong><i
+				class="fa fa-warning"></i></strong> {{serviceResponseError}}
+		</div>
+	</div>
+	<vision-action>
+		<get-data service="accountDetailServices"
+		          response-formatter="repRiskProfileResponseFormatter"
+		          operation="getRepRiskProfileAndLocDeptProcess"
+		          root-node="data.successData"
+		          form-node="data"></get-data>
+		<div class="table-responsive col-sm-12 col-md-12 col-lg-12"
+			data-ng-if="getError.status === 'error'">
+			<div class="alert alert-danger">
+				{{getError.errorData.ResponseError[0].errorCode | translate}}</div>
+		</div>
+		<div class="col-sm-12 col-md-12 col-lg-12"
+			data-ng-class="{'dNone':!(loadingYourRelationship || loading)}">
+			<img align="absmiddle" src="app/ng1/img/partial-loading.gif" />
+			{{::'common.loading'| translate}}
+		</div>
+		<div ng-hide="getError.status === 'error' || loading">
+			<form novalidate
+			      name="userRelationShipForm"
+			      id="userRelationShipForm"
+			      autocomplete="off"
+			      class="form"
+			      vm-form-extras>
+				<div class="col-sm-12 col-md-12 col-lg-12 marginT1 padLeft0">
+					<div class="form-group">
+						<div class="col-sm-12 col-md-12 col-lg-12">
+							<label>{{::'registration.normal.userRelationshipHeader' | translate}}</label>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-12 col-md-12 col-lg-12 marginT1 padLeft0"
+					data-ng-if="data.RepRiskSummary.rrpRiskQuestion1">
+					<div class="form-group">
+						<div class="col-sm-8 col-md-6 col-lg-6">
+							<label>{{data.RepRiskSummary.rrpRiskQuestion1}}</label>
+						</div>
+						<div class="col-sm-4 col-md-6 col-lg-6">
+							<input type="radio"
+							       name="data.RepRiskSummary.q_1"
+							       id="data.RepRiskSummary.q_1"
+							       data-ng-model="data.RepRiskSummary.q_1"
+							       data-ng-value="true"
+							       ng-checked="data.RepRiskSummary.q_1 === true">
+							{{::'common.yes' | translate}} <input type="radio"
+							       name="data.RepRiskSummary.q_1"
+							       id="data.RepRiskSummary.q_1"
+							       data-ng-model="data.RepRiskSummary.q_1"
+							       data-ng-value="false"
+							       ng-checked="data.RepRiskSummary.q_1 === false">
+							{{::'common.no' | translate}} <input type="text"
+							       data-ng-model="data.RepRiskSummary.q_1"
+							       class="ng-hide"
+							       name="data.RepRiskSummary.q_1"
+							       id="data.RepRiskSummary.q_1"
+							       valid-method="watch"
+							       data-validator="required"
+							       data-required-error-message="{{'messages.questionRequired' | translate}}" />
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-12 col-md-12 col-lg-12 marginT1 padLeft0"
+				     data-ng-if="data.RepRiskSummary.rrpRiskQuestion2">
+					<div class="form-group">
+						<div class="col-sm-8 col-md-6 col-lg-6">
+							<label>{{data.RepRiskSummary.rrpRiskQuestion2}}</label>
+						</div>
+						<div class="col-sm-4 col-md-6 col-lg-6">
+							<input type="radio"
+							       name="data.RepRiskSummary.q_2"
+							       id="data.RepRiskSummary.q_2"
+							       data-ng-model="data.RepRiskSummary.q_2"
+							       data-ng-value="true"
+							       ng-checked="data.RepRiskSummary.q_2 === true">
+							{{::'common.yes' | translate}} <input type="radio"
+							       name="data.RepRiskSummary.q_2"
+							       id="data.RepRiskSummary.q_2"
+							       data-ng-model="data.RepRiskSummary.q_2"
+							       data-ng-value="false"
+							       ng-checked="data.RepRiskSummary.q_2 === false">
+							{{::'common.no' | translate}} <input type="text"
+							       data-ng-model="data.RepRiskSummary.q_2"
+							       class="ng-hide"
+							       name="data.RepRiskSummary.q_2"
+							       id="data.RepRiskSummary.q_2"
+							       valid-method="watch"
+							       data-validator="required"
+							       data-required-error-message="{{'messages.questionRequired' | translate}}" />
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-12 col-md-12 col-lg-12 marginT1 padLeft0"
+				     data-ng-if="data.RepRiskSummary.rrpRiskQuestion3">
+					<div class="form-group">
+						<div class="col-sm-8 col-md-6 col-lg-6">
+							<label>{{data.RepRiskSummary.rrpRiskQuestion3}}</label>
+						</div>
+						<div class="col-sm-4 col-md-6 col-lg-6">
+							<input type="radio"
+							       name="data.RepRiskSummary.q_3"
+							       id="data.RepRiskSummary.q_3"
+							       data-ng-model="data.RepRiskSummary.q_3"
+							       data-ng-value="true"
+							       ng-checked="data.RepRiskSummary.q_3 === true">
+							{{::'common.yes' | translate}} <input type="radio"
+							       name="data.RepRiskSummary.q_3"
+							       id="data.RepRiskSummary.q_3"
+							       data-ng-model="data.RepRiskSummary.q_3"
+							       data-ng-value="false"
+							       ng-checked="data.RepRiskSummary.q_3 === false">
+							{{::'common.no' | translate}} <input type="text"
+							       data-ng-model="data.RepRiskSummary.q_3"
+							       class="ng-hide"
+							       name="data.RepRiskSummary.q_3"
+							       id="data.RepRiskSummary.q_3"
+							       valid-method="watch"
+							       data-validator="required"
+							       data-required-error-message="{{'messages.questionRequired' | translate}}" />
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-12 col-md-12 col-lg-12 marginT1 padLeft0"
+				     data-ng-if="data.RepRiskSummary.rrpRiskQuestion4">
+					<div class="form-group">
+						<div class="col-sm-8 col-md-6 col-lg-6">
+							<label>{{data.RepRiskSummary.rrpRiskQuestion4}}</label>
+						</div>
+						<div class="col-sm-4 col-md-6 col-lg-6">
+							<input type="radio"
+							       name="data.RepRiskSummary.q_4"
+							       id="data.RepRiskSummary.q_4"
+							       data-ng-model="data.RepRiskSummary.q_4"
+							       data-ng-value="true"
+							       ng-checked="data.RepRiskSummary.q_4 === true">
+							{{::'common.yes' | translate}} <input type="radio"
+							       name="data.RepRiskSummary.q_4"
+							       id="data.RepRiskSummary.q_4"
+							       data-ng-model="data.RepRiskSummary.q_4"
+							       data-ng-value="false"
+							       ng-checked="data.RepRiskSummary.q_4 === false">
+							{{::'common.no' | translate}} <input type="text"
+							       data-ng-model="data.RepRiskSummary.q_4"
+							       class="ng-hide"
+							       name="data.RepRiskSummary.q_4"
+							       id="data.RepRiskSummary.q_4"
+							       valid-method="watch"
+							       data-validator="required"
+							       data-required-error-message="{{'messages.questionRequired' | translate}}" />
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-12 col-md-12 col-lg-12 marginT1 padLeft0"
+				     data-ng-if="data.RepRiskSummary.rrpRiskQuestion5">
+					<div class="form-group">
+						<div class="col-sm-8 col-md-6 col-lg-6">
+							<label>{{data.RepRiskSummary.rrpRiskQuestion5}}</label>
+						</div>
+						<div class="col-sm-4 col-md-6 col-lg-6">
+							<input type="radio"
+							       name="data.RepRiskSummary.q_5"
+							       id="data.RepRiskSummary.q_5"
+							       data-ng-model="data.RepRiskSummary.q_5"
+							       data-ng-value="true"
+							       ng-checked="data.RepRiskSummary.q_5 === true">
+							{{::'common.yes' | translate}} <input type="radio"
+							       name="data.RepRiskSummary.q_5"
+							       id="data.RepRiskSummary.q_5"
+							       data-ng-model="data.RepRiskSummary.q_5"
+							       data-ng-value="false"
+							       ng-checked="data.RepRiskSummary.q_5 === false">
+							{{::'common.no' | translate}} <input type="text"
+							       data-ng-model="data.RepRiskSummary.q_5"
+							       class="ng-hide"
+							       name="data.RepRiskSummary.q_5"
+							       id="data.RepRiskSummary.q_5"
+							       valid-method="watch"
+							       data-validator="required"
+							       data-required-error-message="{{'messages.questionRequired' | translate}}" />
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-12 col-md-12 col-lg-12 marginT1 padLeft0"
+				     ng-if="data.RepRiskSummary.customerDynamicQues"
+				     data-ng-repeat="dynamicRepQuestion in data.RepRiskSummary.customerDynamicQues">
+					<div class="form-group">
+						<div class="col-sm-8 col-md-6 col-lg-6">
+							<label>{{dynamicRepQuestion.question}}</label>
+						</div>
+						<div class="col-sm-4 col-md-6 col-lg-6">
+							<input type="radio"
+							       name="dynamicRepQuestion{{[$index]}}.questionOid"
+							       id="dynamicRepQuestion{{[$index]}}.questionOid"
+							       data-ng-model="dynamicRepQuestion.answer"
+							       data-ng-value="true">
+							{{::'common.yes' | translate}} <input type="radio"
+							       name="dynamicRepQuestion{{[$index]}}.questionOid"
+							       id="dynamicRepQuestion{{[$index]}}.questionOid"
+							       data-ng-model="dynamicRepQuestion.answer"
+							       data-ng-value="false">
+							{{::'common.no' | translate}} <input type="text"
+							       data-ng-model="dynamicRepQuestion.answer"
+							       class="ng-hide"
+							       name="dynamicRepQuestion{{[$index]}}.questionOid"
+							       id="dynamicRepQuestion{{[$index]}}.questionOid"
+							       valid-method="watch"
+							       data-validator="required"
+							       data-required-error-message="{{'messages.questionRequired' | translate}}" />
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-12 col-md-12 col-lg-12 marginT1 padLeft0">
+					<div class="form-group">
+						<div class="col-sm-8 col-md-6 col-lg-6">
+							<label>{{::'registration.normal.rrpOnSite' |
+								translate}}<b>{{translationCustomerName.customerName}}</b>?</label>
+						</div>
+						<div class="col-sm-4 col-md-6 col-lg-6">
+							<input type="radio"
+							       name="data.RepRiskSummary.repOnSite"
+							       id="data.RepRiskSummary.repOnSite"
+							       data-ng-model="data.RepRiskSummary.repOnSite"
+							       data-ng-value="true"
+							       ng-checked="data.RepRiskSummary.repOnSite === true">
+							{{::'common.yes' | translate}} <input type="radio"
+							       name="data.RepRiskSummary.repOnSite"
+							       id="data.RepRiskSummary.repOnSite"
+							       data-ng-model="data.RepRiskSummary.repOnSite"
+							       data-ng-value="false"
+							       ng-checked="data.RepRiskSummary.repOnSite === false">
+							{{::'common.no' | translate}} <input type="text"
+							       data-ng-model="data.RepRiskSummary.repOnSite"
+							       class="ng-hide"
+							       name="data.RepRiskSummary.repOnSite"
+							       id="data.RepRiskSummary.repOnSite"
+							       valid-method="watch"
+							       data-validator="required"
+							       data-required-error-message="{{'messages.questionRequired' | translate}}" />
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-12 col-md-12 col-lg-12 fontWeightBold marginT1 marginB1 searchOrg"
+				     data-ng-if="data.CustomerLocations">{{::'registration.normal.selectAllLocationsYouVisitIntendToVisit'
+					| translate}}
+				</div>
+				<div class="col-sm-12 col-md-8 col-lg-8">
+					<div class="col-sm-12 col-md-8 col-lg-8"
+					     data-ng-repeat="customerLocation in data.CustomerLocations  | orderBy:'parentId'">
+						<div class="form-group">
+							<input type="checkbox"
+							       id="data.customerLocation.parentLocation"
+							       data-ng-model="customerLocation.checked"
+							       data-ng-click="checkLocationGroup(customerLocation.childLocationList, customerLocation.checked)"
+							       name="data.customerLocation.parentLocation"> <strong>{{customerLocation.parentId}}</strong>
+						</div>
+						<div class="col-sm-4 col-md-4 col-lg-4"
+						     data-ng-repeat="customerChildLocation in customerLocation.childLocationList | orderBy:'locationId'">
+							<div class="form-group">
+								<input type="checkbox"
+								       id="data.customerChildLocation.locationOid"
+								       data-ng-model="customerChildLocation.checked"
+								       name="data.customerChildLocation.locationOid"> {{customerChildLocation.locationId}}
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-12 col-md-12 col-lg-12 fontWeightBold marginB1 searchOrg"
+				     data-ng-if="data.DepartmentSummaryList">{{::'registration.normal.departments'
+					| translate}}
+				</div>
+				<div class="col-sm-12 col-md-12 col-lg-12 searchOrg marginB1"
+				     data-ng-if="data.DepartmentSummaryList">{{::'registration.normal.pleaseSelectTheAppropriateDepartments1'
+					| translate}}<br>{{::'registration.normal.pleaseSelectTheAppropriateDepartments2'
+					| translate}}
+				</div>
+				<div class="col-sm-12 col-md-8 col-lg-8">
+					<div class="col-sm-4 col-md-4 col-lg-4 marginL2"
+					     data-ng-repeat="department in data.DepartmentSummaryList  | orderBy:'id'">
+						<div class="form-group">
+							<input type="checkbox"
+							       id="department.id"
+							       ng-model="department.checked"
+							       name="department.id"> {{department.id}}
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-12 col-md-12 col-lg-12 padLeft0 marginT5">
+					<div class="col-sm-6 col-md-6 col-lg-6 padLeft0 marginB1"></div>
+					<div class="col-sm-6 col-md-6 col-lg-6 padLeft0">
+						<button type="submit"
+						        data-validation-submit="userRelationShipForm"
+						        data-ng-click="submitYourRelationship(data);"
+						        class="btn btn-primary">{{::'common.update' | translate}}</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</vision-action>
+</div>

@@ -1,0 +1,13 @@
+{
+	"VisionResponse": {
+		"Status": "Ok",
+		"contentType": "application/json",
+		"onSite": true,
+		"repCount": 10,
+		"hasCustCutPoPastYear ": true,
+		"totalCompanySpend": true,
+		"enablePhiSecurityQues": true,
+		"phiOnSite": true,
+		"maintainPhiOnBehalfOfHospital": true
+	}
+}

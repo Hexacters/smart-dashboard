@@ -1,0 +1,65 @@
+<div class="modal-content">
+	<div class="modal-header commonDialogHeader">
+		<button id="accountHelpCloseIcon" type="button" class="close"
+			aria-hidden="true" data-ng-click="cancelGPOs(gpoOtherEnable,data.VendorDetail.gpoOther);">&times;</button>
+		<h3 class="modal-title">
+			{{'companyProfile.companyInformation.header.selectAffliated' |
+			translate}}</h3>
+	</div>
+	<div class="modal-body modelDialogScroll">
+		<div class="col-sm-12 col-md-12 col-lg-12"
+			data-ng-class="{'dNone':!loading}">
+			<img align="absmiddle" src="app/ng1/img/partial-loading.gif">&nbsp;{{'common.loading'
+			| translate}}
+		</div>
+		<div class="col-sm-12 col-md-12 col-lg-12 marginB1"
+			data-ng-class="{'dNone':loading}">
+			<form novalidate name="selectGPO" autocomplete="off"
+				class="form-horizontal">
+				<input type="text" data-ng-model="gpoListFromEdit" name="gpoList"
+					id="gpoList" class="displayN" validator="validateGpo"
+					custom-validate="{{data.VendorDetail.gpoOther}},{{gpoOtherEnable}}"
+					validate-gpo-error-message="{{'companyProfile.companyInformation.errorMessage.mustSelectOneGpo'| translate}}"
+					/>
+				<multi-select mode='1-1' return-type="object"
+					return-fields="name,oid" service="companyProfileServices"
+					operation="getAllGPOs" root-node="data.successData.gpoList"
+					parent-data-field="$parent.gpoListFromEdit"> <lpanel
+					id="lpanelaffliatedGPO" class-name="MultiSelecterPanelHeight" filter="isLookup=true" label="" size="7"
+					order-by="name" value="oid" text="name"></lpanel> <cpanel
+					id="cpanelaffliatedGPO" class-Name="cPanelMargin"></cpanel> <rpanel id="assignedaffliatedGPO"
+					class-name="MultiSelecterPanelHeight" label="" size="7" order-by="name" filter="isLookup=false"
+					value="oid" text="name"></rpanel> </multi-select>
+				<div
+					class="col-sm-offset-7 col-md-offset-7 col-lg-offset-7 col-sm-5 col-mg-5 col-lg-5 padding0">
+					<div class="checkbox">
+						<label> <input type="checkbox" ng-model="gpoOtherEnable" ng-click="clearGpos(gpoOtherEnable,data.VendorDetail.gpoOther);"
+							ng-true-value="'true'" ng-false-value="'false'"
+							name="gpoOtherCheck">{{'companyProfile.companyInformation.label.gpoOther'
+							| translate}}
+						</label>
+					</div>
+				</div>
+				<div ng-if="gpoOtherEnable == 'true'"
+					class="col-sm-offset-7 col-md-offset-7 
+					col-lg-offset-7 col-sm-5 col-md-5 col-lg-5 padding0"
+					>
+					<input type="text" class="form-control input-sm required" 
+						name="gpoOtherValue" maxlength="50" id="gpoOtherValue"
+						ng-model="data.VendorDetail.gpoOther"
+						validator="required, validateAlphanumSpecial"
+						validate-alphanum-special-error-message="{{'common.errorMessage.allowedSpecialCharacters' | translate}}"
+						required-error-message="{{'companyProfile.companyInformation.errorMessage.mustProvideGpoother' | translate}}"/>
+				</div>
+				<div
+					class="col-sm-offset-7 col-md-offset-7 col-lg-offset-7 col-sm-5 col-md-5 col-lg-5 padding0 marginT1">
+					<button class="btn btn-primary" type="submit"
+						validation-submit="selectGPO" ng-click="closeGpos(gpoOtherEnable,data.VendorDetail.gpoOther,gpoListFromEdit);">{{'common.saveAndClose'
+						| translate}}</button>
+					<button ng-click="cancelGPOs(gpoOtherEnable,data.VendorDetail.gpoOther);" class="btn btn-warning"
+						type="reset">{{'common.cancel' | translate}}</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

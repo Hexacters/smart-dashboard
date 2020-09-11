@@ -1,0 +1,313 @@
+<?xml version="1.0"?>
+<module id="myDocumentModule">
+	<routers>
+		<router id="documents" sticky="true" url="/documents">
+			<views>
+				<view containerId="vendordash" templateUrl="app/ng1/views/myDocuments/documents.html"></view>
+			</views>
+		</router>
+		<router id="documents.commonDocuments" url="/commonDocuments/{tabsState}/{random}">
+			<views>
+				<view containerId="viewCommonDocuments" templateUrl="app/ng1/views/myDocuments/commonDocuments.html"></view>
+			</views>
+		</router>
+		<router id="documents.backgroundCheck" url="/backgroundCheck">
+			<views>
+				<view containerId="viewBackgroundCheck" templateUrl="app/ng1/views/myDocuments/backgroundCheck.html"></view>
+			</views>
+		</router>
+		<router id="documents.accountSpecificDocuments" url="/accountSpecificDocuments">
+			<views>
+				<view containerId="viewAccountSpecificDocuments" templateUrl="app/ng1/views/myDocuments/accountSpecificDocuments.html"></view>
+			</views>
+		</router>
+		<router id="documents.optionalDocuments" url="/optionalDocuments/{tabsState}">
+			<views>
+				<view containerId="viewOptionalDocuments" templateUrl="app/ng1/views/myDocuments/optionalDocuments.html"></view>
+			</views>
+		</router>
+		<router id="documents.commonDocuments.cautionPopupUpdate" url="updateDocument" type="dialog">
+			<views>
+				<view containerId="model" templateUrl="app/ng1/views/myDocuments/commonDocumentsUpdate.html"></view>
+			</views>
+		</router>
+		<router id="documents.commonDocuments.commonDialog" type="dialog">
+			<views>
+				<view containerId="modal" templateUrl="app/ng1/views/myDocuments/commonDocumentsCommonDialog.html"></view>
+			</views>
+		</router>
+		<router id="documents.commonDocuments.commonDialog.cautions" url="/cautions">
+			<views>
+				<view containerId="CommonDocument@" templateUrl="app/ng1/views/myDocuments/commonDocumentsCaution.html"></view>
+			</views>
+		</router>
+		<router id="documents.commonDocuments.commonDialog.updateDocument" url="/updateDocument">
+			<views>
+				<view containerId="CommonDocument@" templateUrl="app/ng1/views/myDocuments/commonDocumentsUpdate.html"></view>
+			</views>
+		</router>
+		<router id="documents.commonDocuments.commonDialog.documentAlert" url="/documentAlert">
+			<views>
+				<view containerId="CommonDocument@" templateUrl="app/ng1/views/myDocuments/commonDocumentsDocumentAlert.html"></view>
+			</views>
+		</router>
+		<router id="documents.commonDocuments.commonDialog.documentAlertSteps" url="/documentAlertSteps">
+			<views>
+				<view containerId="CommonDocument@" templateUrl="app/ng1/views/myDocuments/commonDocumentsDocumentAlertSteps.html"></view>
+			</views>
+		</router>
+		<router id="documents.commonDocuments.deleteDocument" url="/delete/{id}" type="dialog">
+			<views>
+				<view containerId="modal" templateUrl="app/ng1/views/myDocuments/commonDocumentsDelete.html"></view>
+			</views>
+		</router>
+		<router id="documents.commonDocuments.account" url="/accounts" type="dialog">
+			<views>
+				<view containerId="modal" templateUrl="app/ng1/views/myDocuments/commonDocumentsAccounts.html"></view>
+			</views>
+		</router>
+		<router id="documents.commonDocuments.acknowledge" url="/acknowledge" type="dialog">
+			<views>
+				<view containerId="modal" templateUrl="app/ng1/views/myDocuments/acknowledge.html"></view>
+			</views>
+		</router>
+		<router id="documents.accountSpecificDocuments.cautions" type="dialog">
+			<views>
+				<view containerId="modal" templateUrl="app/ng1/views/myDocuments/accountSpecificDocumentsCaution.html"></view>
+			</views>
+		</router>
+		<router id="documents.accountSpecificDocuments.updateDocument" type="dialog">
+			<views>
+				<view containerId="modal" templateUrl="app/ng1/views/myDocuments/accountSpecificDocumentsUpdate.html"></view>
+			</views>
+		</router>
+		<router id="documents.accountSpecificDocuments.deleteDocument" type="dialog" url="/delete">
+			<views>
+				<view containerId="modal" templateUrl="app/ng1/views/myDocuments/accountSpecificDocumentsDelete.html"></view>
+			</views>
+		</router>
+		<router id="documents.accountSpecificDocuments.account" url="/accounts" type="dialog">
+			<views>
+				<view containerId="modal" templateUrl="app/ng1/views/myDocuments/accountSpecificDocumentsAccounts.html"></view>
+			</views>
+		</router>
+		<router id="documents.accountSpecificDocuments.acknowledge" url="/acknowledge" type="dialog">
+			<views>
+				<view containerId="modal" templateUrl="app/ng1/views/myDocuments/acknowledge.html"></view>
+			</views>
+		</router>
+		<router id="documents.optionalDocuments.cautions" type="dialog">
+			<views>
+				<view containerId="modal" templateUrl="app/ng1/views/myDocuments/optionalDocumentsCaution.html"></view>
+			</views>
+		</router>
+		<router id="documents.optionalDocuments.updateDocument" type="dialog">
+			<views>
+				<view containerId="modal" templateUrl="app/ng1/views/myDocuments/optionalDocumentsUpdate.html"></view>
+			</views>
+		</router>
+		<router id="documents.optionalDocuments.deleteDocument" type="dialog" url="/delete">
+			<views>
+				<view containerId="modal" templateUrl="app/ng1/views/myDocuments/optionalDocumentsDelete.html"></view>
+			</views>
+		</router>
+		<router id="documents.optionalDocuments.account" url="/accounts" type="dialog">
+			<views>
+				<view containerId="modal" templateUrl="app/ng1/views/myDocuments/optionalDocumentsAccounts.html"></view>
+			</views>
+		</router>
+		<router id="documents.optionalDocuments.acknowledge" url="/acknowledge" type="dialog">
+			<views>
+				<view containerId="modal" templateUrl="app/ng1/views/myDocuments/acknowledge.html"></view>
+			</views>
+		</router>
+		<router id="documents.optionalDocuments.badgePhoto" url="/acknowledge" type="dialog">
+			<views>
+				<view containerId="modal" templateUrl="app/ng1/views/myDocuments/optionalDocumentsBadgePhoto.html"></view>
+			</views>
+		</router>
+		<router id="documents.commonDocuments.badgePhoto" url="/acknowledge" type="dialog">
+			<views>
+				<view containerId="modal" templateUrl="app/ng1/views/myDocuments/optionalDocumentsBadgePhoto.html"></view>
+			</views>
+		</router>
+	</routers>
+	<services id="myDocumentServices">
+		<operations>
+			<operation name="getUserDocuments" secure="true" serviceName="user" requestWrapper="request" responseWrapper="response" requestType="json" responseType="json" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/myDocuments/getUserDocuments.json" mock="false">
+				<params>
+					<param name="userOid" source="data" key="userOid" module="userDetail"></param>
+				</params>
+			</operation>
+			<operation name="getBackgroundCheck" secure="true" serviceName="user" requestWrapper="request" responseWrapper="response" requestType="json" responseType="json" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/myDocuments/getBackgroundCheck.json" mock="false">
+			</operation>
+			<operation name="getUserPolicies" secure="true" serviceName="user" requestWrapper="request" responseWrapper="response" requestType="json" responseType="json" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/myDocuments/getUserPolicies.json" mock="false">
+				<params>
+					<param name="userOid" source="data" key="userOid" module="userDetail"></param>
+				</params>
+			</operation>
+			<operation name="getUserDocAccounts" secure="true" serviceName="user" requestWrapper="request" responseWrapper="response" requestType="json" responseType="json" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/myDocuments/getUserDocAccounts.json" mock="false">
+				<params>
+					<param name="userOid" source="data" key="userOid" module="userDetail"></param>
+					<param name="templateOid" source="data" key="templateOid" module="viewAccounts"></param>
+					<param name="requiredDoc" source="data" key="requiredDoc" module="viewAccounts"></param>
+				</params>
+			</operation>
+			<operation name="getAttachedDocumentDetails" secure="true" serviceName="documentrepository" requestWrapper="request" responseWrapper="response" requestType="json" responseType="json" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/myDocuments/getAttachedDocumentDetails.json" mock="false"></operation>
+
+			<operation name="updateDocument" requestWrapper="request" responseWrapper="response" method="post" url="/mock/myDocuments/updateDocument" mockUrl="app/ng1/mock/myDocuments/updateDocument.json" mock="false"></operation>
+			<operation name="deleteDocument" requestType="json" requestWrapper="request" responseWrapper="response" method="post" serviceName="documentrepository" url="VMClientProxyServlet" mockUrl="app/ng1/mock/myDocuments/deleteDocument.json" mock="false">
+				<params>
+					<param name="userOid" source="data" key="userOid" module="userDetail"></param>
+					<param name="vendorOid" source="data" key="vendorOid" module="userDetail"></param>
+				</params>
+			</operation>
+			<operation name="accountSpecificDoc" requestWrapper="request" responseWrapper="response" requestType="json" method="get" url="mock/myDocuments/accountSpecificDocuments" mockUrl="app/ng1/mock/myDocuments/accountSpecificDocuments.json" mock="false">
+				<params>
+					<param name="tabsState" source="state" key="tabsState"></param>
+				</params>
+			</operation>
+			<operation name="commonDocuments" requestWrapper="request" responseWrapper="response" requestType="json" method="get" url="mock/myDocuments/commonDocuments" mockUrl="app/ng1/mock/myDocuments/commonDocuments.json" mock="false">
+				<params>
+					<param name="tabsState" source="state" key="tabsState"></param>
+				</params>
+			</operation>
+			<operation name="optionalDocuments" requestWrapper="request" responseWrapper="response" requestType="json" method="get" url="mock/myDocuments/optionalDocuments" mockUrl="app/ng1/mock/myDocuments/optionalDocuments.json" mock="false">
+				<params>
+					<param name="tabsState" source="state" key="tabsState"></param>
+				</params>
+			</operation>
+			<operation name="documentpolicylist" requestWrapper="request" responseWrapper="response" requestType="json" method="get" url="mock/myDocuments/policies" mockUrl="app/ng1/mock/myDocuments/policies.json" mock="false"></operation>
+			<operation name="accountSpecificDocViewAccounts" requestType="json" method="get" url="mock/myDocuments/accountSpecificDocViewAccounts" mockUrl="app/ng1/mock/myDocuments/accountSpecificDocumentsAccounts.json" mock="false"></operation>
+			<operation name="getCommonDocument" requestWrapper="request" responseWrapper="response" requestType="json" method="get" url="mock/myDocuments/getCommonDocument" mockUrl="app/ng1/mock/myDocuments/getCommonDocument.json" mock="false"></operation>
+			<operation name="documentAlertSteps" requestType="json" method="get" url="mock/myDocuments/documentAlertSteps" mockUrl="app/ng1/mock/myDocuments/documentAlertSteps.json" mock="false"></operation>
+			<operation name="documentAlert" requestWrapper="request" responseWrapper="response" requestType="json" method="get" url="mock/myDocuments/documentAlert" mockUrl="app/ng1/mock/myDocuments/documentAlertGrid.json" mock="false"></operation>
+			<operation name="getUserSharableDocuments" serviceName="vendorrep" requestWrapper="request" responseWrapper="response" requestType="json" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/myDocuments/getUserSharableDocuments.json" mock="false"></operation>
+			<operation name="savePolicyAcknowlegment" requestType="json" requestWrapper="request" responseWrapper="response" method="post" targetOperation="saveDocumentMetaData" serviceName="documentrepository" url="VMClientProxyServlet" mockUrl="app/ng1/mock/myDocuments/savePolicyAcknowlegment.json" mock="false">
+				<params>
+					<param name="templateOid" source="data" key="templateOid" module="policy"></param>
+					<param name="docDefOid" source="data" key="docDefOid" module="policy"></param>
+					<param name="isAcknowledge" source="data" key="isAcknowledge" module="policy"></param>
+				</params>
+			</operation>
+			<operation name="getDocumentDetailsProcess" requestType="json" requestWrapper="request" responseWrapper="response" method="get" serviceName="documentrepository" url="VMClientProxyServlet" mockUrl="app/ng1/mock/myDocuments/getDocumentDetailsProcess.json" mock="false">
+				<params>
+					<param name="docOid" source="data" key="templateOid" module="document"></param>
+					<param name="docDefOid" source="data" key="docDefOid" module="document"></param>
+					<param name="docType" source="data" key="docType" module="document"></param>
+					<param name="vendorOid" source="data" key="vendorOid" module="userDetail"></param>
+				</params>
+			</operation>
+			<operation name="uploadFile" serviceName="common" method="post" operationType="file" url="services/uploadFile" requestWrapper="request" responseWrapper="response" mockUrl="app/ng1/mock/myDocuments/uploadFile.json" mock="false"></operation>
+			<operation name="downloadFile" serviceName="common" method="get" operationType="file" url="services/downloadFile" requestWrapper="request" responseWrapper="response" mockUrl="app/ng1/mock/myDocuments/downloadFile.json" mock="false"></operation>
+			<operation name="getDocumentDetails" requestType="json" requestWrapper="request" responseWrapper="response" method="get" serviceName="documentrepository" url="VMClientProxyServlet" mockUrl="app/ng1/mock/myDocuments/getDocumentDetails.json" mock="false">
+				<params>
+					<param name="docOid" source="data" key="templateOid" module="document"></param>
+					<param name="docDefOid" source="data" key="docDefOid" module="document"></param>
+					<param name="docType" source="data" key="docType" module="document"></param>
+					<param name="vendorOid" source="data" key="vendorOid" module="userDetail"></param>
+				</params>
+			</operation>
+			<operation name="saveDocumentMetaData" requestType="json" requestWrapper="request" responseWrapper="response" method="post" serviceName="documentrepository" url="VMClientProxyServlet" mockUrl="app/ng1/mock/myDocuments/saveDocumentMetaData.json" mock="false">
+				<params>
+					<param name="docDefOid" property="DocumentDetail.defOid"></param>
+					<param name="templateOid" property="DocumentDetail.templateOid"></param>
+					<param name="DocumentDetail.oid" property="DocumentDetail.docOid"></param>
+					<param name="DocumentDetail.name" property="name"></param>
+					<param name="DocumentDetail.description" property="DocumentDetail.docDescription"></param>
+					<param name="DocumentDetail.certificationAuthority" property="DocumentDetail.docCertificationAuthority"></param>
+					<param name="DocumentDetail.effectiveDate" property="DocumentDetail.docEffectiveDate"></param>
+					<param name="DocumentDetail.expirationDate" property="DocumentDetail.docExpirationDate"></param>
+					<param name="DocumentDetail.maximumValue" property="DocumentDetail.docMaximumValue"></param>
+					<param name="DocumentDetail.minimumValue" property="DocumentDetail.docMinimumValue"></param>
+					<param name="DocumentDetail.notorizedDate" property="DocumentDetail.docNotorizedDate"></param>
+					<param name="DocumentDetail.notorizedName" property="DocumentDetail.docNotorizedName"></param>
+					<param name="DocumentDetail.notorizedSealOrNumber" property="DocumentDetail.docNotorizedSealOrNumber"></param>
+					<param name="DocumentDetail.outClauseDate" property="DocumentDetail.docOutClauseDate"></param>
+					<param name="DocumentDetail.sigTitle" property="DocumentDetail.docSigTitle"></param>
+					<param name="DocumentDetail.sigDate" property="DocumentDetail.docSigDate"></param>
+					<param name="DocumentDetail.sigName" property="DocumentDetail.docSigName"></param>
+					<param name="docMongoKey" property="DocumentDetail.docMongoKey"></param>
+				</params>
+			</operation>
+			<operation name="getOPREPMissingDocuments" requestType="json" requestWrapper="request" responseWrapper="response" method="get" serviceName="user" url="VMClientProxyServlet" mockUrl="app/ng1/mock/myDocuments/getOPREPMissingDocuments.json" mock="false">
+				<params>
+					<param name="userOid" source="data" key="userOid" module="userDetail"></param>
+					<param name="requiredDoc" source="data" key="requiredDoc" module="document"></param>
+					<param name="templateDocCategoryCode" source="data" key="categoryCode" module="document"></param>
+				</params>
+			</operation>
+			<operation name="checkCompanyDocumentEditPermission" requestType="json" requestWrapper="request" responseWrapper="response" method="get" serviceName="vendor" url="VMClientProxyServlet" mockUrl="app/ng1/mock/myDocuments/checkCompanyDocumentEditPermission.json" mock="false">
+				<params>
+					<param name="vendorOid" source="userProfile" key="detail.vendorOid"></param>
+				</params>
+			</operation>
+			<operation name="copyDocFile" serviceName="documentrepository" method="post" url="VMClientProxyServlet" mockUrl="app/ng1/mock/myDocuments/saveMultipleDocumentMetaProcess.json" mock="false"></operation>
+			<operation name="saveMultipleDocumentMetaProcess" requestType="json" requestWrapper="request" responseWrapper="response" method="post" serviceName="documentrepository" url="VMClientProxyServlet" mockUrl="app/ng1/mock/myDocuments/saveMultipleDocumentMetaProcess.json" mock="false">
+				<params>
+					<param name="docDefOid" property="DocumentDetail.defOid"></param>
+					<param name="templateOid" property="DocumentDetail.templateOid"></param>
+					<param name="DocumentDetail.oid" property="DocumentDetail.docOid"></param>
+					<param name="DocumentDetail.name" property="name"></param>
+					<param name="DocumentDetail.description" property="DocumentDetail.docDescription"></param>
+					<param name="DocumentDetail.certificationAuthority" property="DocumentDetail.docCertificationAuthority"></param>
+					<param name="DocumentDetail.effectiveDate" property="DocumentDetail.docEffectiveDate"></param>
+					<param name="DocumentDetail.expirationDate" property="DocumentDetail.docExpirationDate"></param>
+					<param name="DocumentDetail.maximumValue" property="DocumentDetail.docMaximumValue"></param>
+					<param name="DocumentDetail.minimumValue" property="DocumentDetail.docMinimumValue"></param>
+					<param name="DocumentDetail.notorizedDate" property="DocumentDetail.docNotorizedDate"></param>
+					<param name="DocumentDetail.notorizedName" property="DocumentDetail.docNotorizedName"></param>
+					<param name="DocumentDetail.notorizedSealOrNumber" property="DocumentDetail.docNotorizedSealOrNumber"></param>
+					<param name="DocumentDetail.outClauseDate" property="DocumentDetail.docOutClauseDate"></param>
+					<param name="DocumentDetail.sigTitle" property="DocumentDetail.docSigTitle"></param>
+					<param name="DocumentDetail.sigDate" property="DocumentDetail.docSigDate"></param>
+					<param name="DocumentDetail.sigName" property="DocumentDetail.docSigName"></param>
+					<param name="docMongoKey" property="DocumentDetail.docMongoKey"></param>
+					<param name="parentMongoKey" property="DocumentDetail.parentMongoKey"></param>
+				</params>
+			</operation>
+			<operation name="getAccountSpecificDocuments" secure="true" serviceName="vendorrep" requestWrapper="request" responseWrapper="response" requestType="json" responseType="json" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/myDocuments/getAccountSpecificDocuments.json" mock="false">
+			</operation>
+			<operation name="getAccountSpecificCommonDocuments" targetOperation="getAccountSpecificDocuments" secure="true" serviceName="vendorrep" requestWrapper="request" responseWrapper="response" requestType="json" responseType="json" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/myDocuments/getAccountSpecificDocuments.json" mock="false">
+				<params>
+					<param name="searchRequest.pageIndex" property="searchRequest.startIndex" />
+					<param name="searchRequest.numberOfRecord" property="searchRequest.results" />
+					<param name="requiredDoc" source="static" value="TRUE"/>
+					<param name="docTypeCode" source="static" value="OTHER"/>
+					<param name="repOid" source="data" module="repDetails" key="repOid"/>
+				</params>
+			</operation>
+			<operation name="getAccountSpecificOptionalDocuments" targetOperation="getAccountSpecificDocuments" secure="true" serviceName="vendorrep" requestWrapper="request" responseWrapper="response" requestType="json" responseType="json" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/myDocuments/getAccountSpecificDocuments.json" mock="false">
+				<params>
+					<param name="searchRequest.pageIndex" property="searchRequest.startIndex" />
+					<param name="searchRequest.numberOfRecord" property="searchRequest.results" />
+					<param name="requiredDoc" source="static" value="FALSE"/>
+					<param name="docTypeCode" source="static" value="OTHER"/>
+					<param name="repOid" source="data" module="repDetails" key="repOid"/>
+				</params>
+			</operation>
+			<operation name="getAccountSpecificPoliciesDocuments" targetOperation="getAccountSpecificDocuments" secure="true" serviceName="vendorrep" requestWrapper="request" responseWrapper="response" requestType="json" responseType="json" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/myDocuments/getUserPoliciesForRep.json" mock="false">
+				<params>
+					<param name="searchRequest.pageIndex" property="searchRequest.startIndex" />
+					<param name="searchRequest.numberOfRecord" property="searchRequest.results" />
+					<param name="requiredDoc" source="static" value="FALSE"/>
+					<param name="docTypeCode" source="static" value="ACK"/>
+					<param name="repOid" source="data" module="repDetails" key="repOid"/>
+				</params>
+			</operation>
+			<operation name="getRepComplianceStatus" requestType="json" requestWrapper="request" responseWrapper="response" method="get" serviceName="vendorrep" url="VMClientProxyServlet" mockUrl="app/ng1/mock/home/getUserComplianceStatus.json" mock="false">
+				<params>
+					<param name="userOid" source="data" module="userDetail" key="userOid"></param>
+					<param name="actorOid" source="data" module="repDetails" key="repOid"></param>
+					<param name="customerOid" source="data" module="repDetails" key="customerOid"/>
+				</params>
+			</operation>
+			<operation name="getCustomerPolicies" requestType="json" requestWrapper="request" responseWrapper="response" method="get" serviceName="customers" url="VMClientProxyServlet" mockUrl="app/ng1/mock/myDocuments/getCustomerPolicies.json" mock="false">
+				<params>
+					<param name="configDocType" source="static" value="POLF"/>
+					<param name="customerOid" source="data" module="repDetails" key="customerOid"/>
+				</params>
+			</operation>
+		</operations>
+	</services>
+</module>

@@ -1,0 +1,41 @@
+{
+    "VisionResponse": {
+        "Status":"Ok",
+        "products": [
+                 {
+					"productId": "4",
+                    "productName": "PCM",
+                    "clientDescription": "Procurement Cycle Management (PCM) manages contracts/vendors/business associates.",                    
+                    "logoUri": "img/products/pcm/vm.png",
+                    "logoMinUri":"img/products/pcm/vm-small.png",
+                    "clientUri": "http://ghx-salesdemo.awsdsi.ghx.com/pcm_angular/#/home"  
+                },
+                {
+					"productId": "5",
+                    "productName": "CrM",
+                    "clientDescription": "Credential Manager provides Compliance Management for Vendors and Access management for Health Systems / Hospitals.",                    
+                    "logoUri": "img/products/crm/cm.png",
+                    "logoMinUri":"img/products/crm/cm-small.png",
+                    "clientUri": "http://ghx-salesdemo.awsdsi.ghx.com/vendorDash_angular/" 					
+                    
+                },
+				{
+					"productId": "6",
+                    "productName": "CoreX",
+                    "clientDescription": "MeX CoreX Visibility Web App is a platform for both Supplier and Providers to get a Unified view of data within CoreX platform.",                    
+                    "logoUri": "img/products/heimdall/heimdall.jpg",
+                    "logoMinUri":"img/products/heimdall/heimdall-small.png",
+                    "clientUri": "http://corex-dev.awsdsi.ghx.com/lang/en/login" 					
+                    
+                },
+                {
+                    "productId": "7",
+                    "productName": "Mex",
+                    "clientDescription": "MeX CoreX Visibility Web App is a platform for both Supplier and Providers to get a Unified view of data within CoreX platform.",                    
+                    "logoUri": "img/products/heimdall/heimdall.jpg",
+                    "logoMinUri":"img/products/heimdall/heimdall-small.png",
+                    "clientUri": "http://ghx-salesdemo.awsdsi.ghx.com/mex_angular/#/dashboard/angularAnalytics/transaction"     
+                }
+            ]
+    }
+}

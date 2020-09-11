@@ -1,0 +1,68 @@
+{  
+   "VisionResponse":{  
+      "Status":"Ok",
+      "ResponseError":[
+      ],
+      "UserPolicyList": {
+        "UserPolicy": [
+			{
+				"company": "PASS",
+				"individual": "PASS",
+				"description" : "Office of Foreign Affairs Specially Designated Nationals",
+				"name" : "OFAC"
+			},
+			{
+				"company": "PASS",
+				"individual": "PASS",
+				"description" : "GSA (Government) Excluded Parties List System",
+				"name" : "GSA"
+			},
+			{
+				"company": "PASS",
+				"individual": "PASS",
+				"description" : "Office of Inspector General List of Excluded Individuals/Entities",
+				"name" : "OIG"
+			},
+			{
+				"company": "PASS",
+				"individual": "PASS",
+				"description" : "Office of Diversion Control (ODC) Registrant Actions",
+				"name" : "DEA"
+			},
+			{
+				"company": "PASS",
+				"individual": "PASS",
+				"description" : "FDA Actions (Debarment, Disqualified, Restricted, etc.)",
+				"name" : "FDA"
+			},
+			{
+				"company": "PASS",
+				"individual": "PASS",
+				"description" : "Reported TriCare (Military Insurance) Actions",
+				"name" : "TriCare"
+			},
+			{
+				"company": "PASS",
+				"individual": "PASS",
+				"description" : "Public Health Service Commissioned Corps Action",
+				"name" : "PHS"
+			},
+			{
+				"company": "PASS",
+				"individual": "PASS",
+				"description" : "Federal Register",
+				"name" : "NARA"
+			},
+			{
+				"company": "PASS",
+				"individual": "PASS",
+				"description" : "State Board Actions, State Medicaid Exclusions",
+				"name" : "State"
+			}
+		 ]
+        },
+		"totalRecords": "5",
+        "ContentType": "text/xml",
+        "ResponseErrors": ""
+    }
+}

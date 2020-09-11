@@ -1,0 +1,248 @@
+<div class="row"
+     ng-show="!popupLoading">
+    <div class="col-sm-12 col-md-12 col-lg-12"
+         ng-show="loading">
+        <img align="absmiddle"
+             src="app/ng1/img/partial-loading.gif">&nbsp;{{'common.loading'| translate}}
+    </div>
+    <div data-ng-if="servciesErrorMessage"
+         class="alert alert-danger marginL1 marginR1 marginT1">
+        <a class="close"
+           ng-click="closeCardErrorMessage()">×</a>
+        <strong>
+            <i class="fa fa-warning"></i>
+        </strong>
+        {{servciesErrorMessage}}
+    </div>
+    <h4>
+        <b class="paddingL1">{{'myProfile.cardManagement.header.addCardTitle' | translate}}</b>
+    </h4>
+    <div class="col-sm-12 col-md-12 col-lg-12 padding0">
+        <form novalidate
+              name="addNewPayment"
+              id="addNewPayment"
+              autocomplete="off"
+              class="form-horizontal">
+            <div class="col-sm-12 col-md-12 col-lg-12"
+                 data-ng-if="hasSupplierSuperAdmin">
+                <div class="col-sm-6 col-md-6 col-lg-6 marginB1">
+                    <div class="col-md-12 padLeft0">
+                        <div class="form-group marginB0 selectCardType">
+                            <div class="col-md-6 control-label textAlignLeft padding0">
+                                <b>{{'myProfile.cardManagement.label.selectCardType' | translate}}</b><sup
+                                     class="validation-required">*</sup>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="radio"
+                                       id="primary"
+                                       name="cardType"
+                                       class="cursorPointer"
+                                       data-ng-model="selectedCardType"
+                                       data-ng-checked="selectedCardType === 'primary'"
+                                       data-ng-disabled="loading || isPrimaryCardAvailable && isSecondaryCardAvailable"
+                                       data-ng-click="setCardType('primary')"
+                                       data-ng-value="'primary'" />
+                                <label for="primary"
+                                       class="paddingR5 cursorPointer"
+                                       data-ng-class="{'field-disabled': isPrimaryCardAvailable && isSecondaryCardAvailable}"
+                                       data-ng-disabled="loading || isPrimaryCardAvailable && isSecondaryCardAvailable">{{'myProfile.cardManagement.label.personal' | translate}}</label>
+                                <input type="radio"
+                                       id="corporate"
+                                       name="cardType"
+                                       class="cursorPointer"
+                                       data-ng-model="selectedCardType"
+                                       data-ng-checked="selectedCardType === 'corporate'"
+                                       data-ng-disabled="loading || isCorporateCardAvailable"
+                                       data-ng-click="setCardType('corporate')"
+                                       data-ng-value="'corporate'" />
+                                <label for="corporate"
+                                       class="cursorPointer"
+                                       data-ng-class="{'field-disabled': isCorporateCardAvailable}"
+                                       data-ng-disabled="loading || isCorporateCardAvailable">{{'myProfile.cardManagement.label.corporate' | translate}}</label>
+                                <br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-12 marginB0">
+                <div class="col-sm-12 col-md-12 col-lg-12 marginB1 paddingL0">
+                    <b>{{'myProfile.cardManagement.label.enterBillingAddress' | translate}}</b>
+                </div>
+                <div class="col-sm-6 col-md-6 col-lg-6 marginB1">
+                    <div class="col-md-12 padLeft0"
+                         data-ng-if="cardList.length > 0 && (isCorporateCardAvailable || isPrimaryCardAvailable)">
+                        <div class="form-group">
+                            <div class="col-md-6 control-label">
+                            </div>
+                            <div class="col-md-6">
+                                <input type="checkbox"
+                                       data-ng-disabled="loading"
+                                       id="sameAsBillingAddress"
+                                       class="cursorPointer"
+                                       data-ng-checked="isPrecedenceAddressSelected"
+                                       data-ng-model="isPrecedenceAddressSelected"
+                                       data-ng-click="selectPrecedenceBillingAddress($event)" />
+                                <label for="sameAsBillingAddress"
+                                       data-ng-disabled="loading"
+                                       class="cursorPointer sameAsAddress">
+                                    {{'myProfile.cardManagement.label.sameAsBillingAddress' | translate}}
+                                </label>
+                                <span tooltip-append-to-body="true"
+                                      tooltip-class="customToolTip"
+                                      tooltip="{{isCorporateCardAvailable ? 'Corporate Billing Address' : hasSupplierSuperAdmin ? 'Personal Billing Address' : 'Primary Billing Address'}}"
+                                      tooltip-placement="top"> <i class="fa fa-info-circle fa-lg"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 padLeft0">
+                        <div class="form-group">
+                            <div class="col-md-6 control-label">
+                                {{'myProfile.cardManagement.label.billingAddress' | translate}}<sup
+                                     class="validation-required">*</sup>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text"
+                                       class="form-control"
+                                       name="billingAddress1"
+                                       autocomplete="off"
+                                       maxlength="30"
+                                       id="billingAddress1"
+                                       ng-model="cardProfileBillingAddress.billingAddress1"
+                                       ng-disabled="isPrecedenceAddressSelected"
+                                       placeholder="{{'myProfile.cardManagement.label.street1Placeholder' | translate}}"
+                                       validator="required"
+                                       data-valid-method="submit"
+                                       data-required-error-message="{{'messages.addressRequired' | translate}}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 padLeft0">
+                        <div class="form-group">
+                            <div class="col-md-6"></div>
+                            <div class="col-md-6">
+                                <input type="text"
+                                       class="form-control"
+                                       name="billingAddress2"
+                                       autocomplete="off"
+                                       maxlength="30"
+                                       id="billingAddress2"
+                                       ng-disabled="isPrecedenceAddressSelected"
+                                       ng-model="cardProfileBillingAddress.billingAddress2"
+                                       placeholder="{{'myProfile.cardManagement.label.street2Placeholder' | translate}}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 padLeft0">
+                        <div class="form-group">
+                            <div class="col-md-6 control-label">
+                                {{'myProfile.cardManagement.label.billingCity' | translate}}<sup
+                                     class="validation-required">*</sup>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text"
+                                       class="form-control"
+                                       name="billingCity"
+                                       maxlength="20"
+                                       autocomplete="off"
+                                       ng-model="cardProfileBillingAddress.billingCity"
+                                       ng-disabled="isPrecedenceAddressSelected"
+                                       placeholder="{{'myProfile.cardManagement.label.billingCityPlaceholder' | translate}}"
+                                       validator="required"
+                                       data-valid-method="submit"
+                                       data-required-error-message="{{'messages.cityIsRequired' | translate}}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 padLeft0">
+                        <div class="form-group">
+                            <div class="col-md-6 control-label">
+                                {{'myProfile.cardManagement.label.billingStateProvince' | translate}}<sup
+                                     class="validation-required">*</sup>
+                            </div>
+                            <div class="col-md-6">
+                                <select name="billingStateCode"
+                                        class="form-control"
+                                        data-ng-model="cardProfileBillingAddress.billingStateCode"
+                                        ng-disabled="isPrecedenceAddressSelected"
+                                        validator="required"
+                                        data-required-error-message="{{'messages.stateRequired' | translate}}"
+                                        valid-method="submit">
+                                    <option value="">{{'common.select' | translate}}</option>
+                                    <option ng-repeat="option in billingStateLookup"
+                                            ng-selected="option.code && (option.code === cardProfileBillingAddress.billingStateCode)"
+                                            value="{{option.code}}"
+                                            ng-disabled="option.disabled">{{option.name}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 padLeft0">
+                        <div class="form-group">
+                            <div class="col-md-6 control-label">
+                                {{'myProfile.cardManagement.label.billingCountry' | translate}}<sup
+                                     class="validation-required">*</sup>
+                            </div>
+                            <div class="col-md-6">
+                                <select name="billingCountryCode"
+                                        id="billingCountryCode"
+                                        class="form-control"
+                                        ng-disabled="isPrecedenceAddressSelected"
+                                        ng-model="cardProfileBillingAddress.billingCountryCode"
+                                        validator="required"
+                                        data-required-error-message="{{'messages.countryRequired' | translate}}"
+                                        valid-method="submit">
+                                    <option value="">{{'common.select' | translate}}</option>
+                                    <option ng-repeat="option in billingCountryLookup"
+                                            ng-selected="option.code === cardProfileBillingAddress.billingCountryCode"
+                                            value="{{option.code}}">{{option.name}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 padLeft0">
+                        <div class="form-group">
+                            <div class="col-md-6 control-label">
+                                {{'myProfile.cardManagement.label.billingZipPostalCode' | translate}}<sup
+                                     class="validation-required">*</sup> <span tooltip-append-to-body="true"
+                                      tooltip-class="customToolTip"
+                                      tooltip="{{'messages.zipCodeNote1' | translate}}{{'messages.zipCodeNote2' | translate}}{{'messages.zipCodeNote3' | translate}}"
+                                      tooltip-placement="top">
+                                    <i class="fa fa-question-circle fa-lg"></i>
+                                </span>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text"
+                                       class="form-control"
+                                       name="billingZip"
+                                       autocomplete="off"
+                                       ng-model="cardProfileBillingAddress.billingZip"
+                                       maxlength="10"
+                                       placeholder="{{'myProfile.cardManagement.label.billingZipPostalCode' | translate}}"
+                                       ng-disabled="isPrecedenceAddressSelected"
+                                       data-required-error-message="{{'messages.zipRequired' | translate}}"
+                                       validator="required,validateZipCode"
+                                       data-valid-method="submit"
+                                       data-validate-zip-code-error-message="{{'messages.PostalCodeError' | translate}}"
+                                       zipcode-format="{{cardProfileBillingAddress.billingCountryCode}}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 padLeft0">
+                        <div class="form-group">
+                            <div class="col-md-6 control-label"></div>
+                            <div class="col-md-6">
+                                <button type="submit"
+                                        data-ng-disabled="loading"
+                                        data-validation-submit="addNewPayment"
+                                        data-ng-click="goToPaymentCardDetailsPage(cardProfileBillingAddress);"
+                                        class="btn btn-primary">{{'common.next' | translate}}</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

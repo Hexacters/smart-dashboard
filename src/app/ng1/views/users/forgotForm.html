@@ -1,0 +1,57 @@
+<div class="row">
+	<div class="col col-sm-12 col-md-12 col-lg-12">
+		<div class="modal-header commonDialogHeader">
+			<h3 class="modal-title">
+				<b>{{'login.header.forgotTitle' | translate}}</b>
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true" data-ng-click="closeAndRedirect('login');">&times;</button>
+			</h3>
+		</div>
+		<div class="modal-body modelDialogScroll">
+			<div ng-class="{'dNone':!loading}">
+				<img align="absmiddle" src="app/ng1/img/partial-loading.gif" />&nbsp;{{'common.loading'|
+				translate}}
+			</div>
+			<p class="marginB3">{{'login.label.forgotPara' | translate}}</p>
+			<vision-action> <submit-data service="users"
+				operation="forgotPassword" redirectStateType="dialog"
+				redirectState="login.forgotPasswordSuccess"></submit-data>
+			<div class="col-sm-12 col-md-12 col-lg-12 paddingL0">
+				<div
+					class="alert alert-danger col-lg-10 col-sm-10 col-md-10 padding"
+					ng-show="submitError.status == 'error'" id="forgotPasswordError">
+					{{submitError.errorData.ResponseError[0].errorCode | translate}}</div>
+			</div>
+			<form autocomplete="off" id="forgotPasswordForm"
+				name="forgotPasswordForm" class="marginT1 form-horizontal"
+				novalidate="">
+				<div class="form-element col-sm-12 col-md-12 col-lg-12 padding0">
+					<label
+						class="col-sm-3 col-md-3 col-lg-3 padding0 marginT1 ng-binding">{{'common.emailAddress'
+						| translate}}&nbsp;<sup class="asterisk">*</sup>
+					</label> <span class="col-sm-7 col-md-7 col-lg-7 padding0">
+						<input type="text" valid-method="watch" maxlength="100"
+						placeholder="{{'common.emailAddress' | translate}}"
+						validate-email-error-message="{{'login.errorMessage.emailInvalid'| translate}}"
+						required-error-message="{{'login.errorMessage.forgotEmailRequired'| translate}}"
+						focus-me="true" validator="required,validateEmail"
+						data-ng-model="data.userId" class="form-control input-sm" value=""
+						id="forgotPassword.email" name="email" />
+					</span>
+				</div>
+				<div class="padding0 col-sm-12 col-md-12 col-lg-12 text-center">
+					<div
+						class="col-sm-9 col-md-9 col-lg-9 col-sm-offset-3 col-md-offset-3 col-lg-offset-3 padding0 text-left">
+						<div class="marginT2">
+							<button ng-click="submit()"
+								validation-submit="forgotPasswordForm" id="forgotPasswordSubmit"
+								name="forgotPasswordSubmit" class="btn btn-success input-sm">{{'common.send'
+								| translate}}</button>
+						</div>
+					</div>
+				</div>
+			</form>
+			</vision-action>
+		</div>
+	</div>
+</div>

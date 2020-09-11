@@ -1,0 +1,13 @@
+<div class="modal-content">
+   <div class="modal-header commonDialogHeader">
+      <button id="complianceCautionCloseIcon" type="button" class="close" data-dismiss="modal" aria-hidden="true" data-ng-click="$close()">&times;</button>
+      <h3 class="modal-title"><b>{{'myDocuments.acknowledge'| translate}}</b></h3>
+   </div>
+   <div class="modal-body modelDialogScroll">
+      <p>{{'myDocuments.doYouWanttoAcknowledge'| translate}}</p>
+      <div class="text-center"  vision-form-extras>
+      	<button class="btn btn-info" id="cautionContinue" ng-click="$close();callFormEvent('myDocumentServices','savePolicyAcknowlegment',{},{'type':'updateModel','reloadTable':'documentPolicy','dataModel':'documentPolicy'});">{{'common.yes'| translate}}</button>
+		<button id="complianceCautionCancelIcon" id="cautionCancel" class="btn btn-warning" data-ng-click="$close()">{{'common.no'| translate}}</button>
+	  </div>
+   </div>
+</div>

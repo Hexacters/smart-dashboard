@@ -1,0 +1,60 @@
+{
+    "VisionResponse": {
+        "Status": "Ok",
+        "apptReqEnabled": true,
+        "ApptReqPermissionSummaryList": [
+            {
+                "customerOid": "baptisthealth",
+                "actorOid": "c010000975900000975a",
+                "vcOid": "c0100009756000009757",
+                "vcEnableApptRequest": true,
+                "repEnableApptRequest": true,
+                "custEnableApptRequest": true,
+                "showInRepAppt": false,
+                "enableAutoAccept": false,
+                "custEnableAutoAccept": true,
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "customerOid": "stanthony",
+                "actorOid": "00000037070016187d62",
+                "vcOid": "00000037120016201e87",
+                "vcEnableApptRequest": true,
+                "repEnableApptRequest": true,
+                "custEnableApptRequest": true,
+                "showInRepAppt": false,
+                "enableAutoAccept": false,
+                "custEnableAutoAccept": true,
+                "updateAction": false,
+                "deleteAction": false
+            }
+        ],
+        "contentType": "application/json",
+        "RepRiaAccountsSummaryList": [
+            {
+                "userOid": "000000370800161a0403",
+                "customerCompanyName": "Baptist Health South Florida",
+                "customerOid": "baptisthealth",
+                "custEnableApptRequest": true,
+                "vcEnableApptRequest": true,
+                "repEnableApptRequest": true,
+                "workPhone": "34567",
+                "updateAction": false,
+                "deleteAction": false
+            },
+            {
+                "userOid": "000000370800161a0403",
+                "customerCompanyName": "stanthony - Andrew Badge",
+                "customerOid": "stanthony",
+                "custEnableApptRequest": true,
+                "vcEnableApptRequest": true,
+                "repEnableApptRequest": true,
+                "workPhone": "34567",
+                "updateAction": false,
+                "deleteAction": false
+            }
+        ],
+        "workPhone": "34567"
+    }
+}

@@ -1,0 +1,14 @@
+{
+  "VisionResponse": {
+    "Status": "Ok",
+    "enforceMaxCountRule": false,
+    "maxVcCount": 0,
+    "allowRepRegistration": true,
+    "grpPlan": "OpenAccessPlan",
+    "maxRepCount": 0,
+    "allowVendorRistration": true,
+    "registeredVcCount": 1,
+    "registeredVrepCount": 2,
+    "contentType": "application/json"
+  }
+}

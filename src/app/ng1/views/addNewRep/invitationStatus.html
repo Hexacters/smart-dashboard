@@ -1,0 +1,34 @@
+<div class="modal-content">
+	<div class="modal-header commonDialogHeader">
+		<button id="closeBtn" id="viewAccountCloseIcon" type="button"
+			class="close" data-dismiss="modal" aria-hidden="true"
+			data-ng-click="closeInviteStatusPopup();">&times;</button>
+		<h3 class="modal-title" ng-if="errorPopupObject.invitationStatus !== 'success'"><img src="app/ng1/img/no.png" alt="No Document"/> <b>{{'addNewRep.label.attention' | translate}}</b></h3>
+		<h3 class="modal-title" ng-if="errorPopupObject.invitationStatus === 'success'"><img src="app/ng1/img/okay.png" alt="No Document"/> <b>{{'addNewRep.label.attention' | translate}}</b></h3>
+		
+	</div>
+	<div class="modal-body modelDialogScroll">
+		<div ng-if="!errorPopupObject.errorFromArray && errorPopupObject.invitationStatus !== 'tpmAlert' && errorPopupObject.errorMessage === 'DELETED_USER_ERROR_5183'" class="alert alert-danger tpmAlertIcon">
+			<div><i class="fa fa-warning margin"></i></div>
+			<div><span ng-bind-html="'addNewRep.errorMessage.undeleteValidationRep' | translate"></span></div>
+		</div>
+		<div ng-if="!errorPopupObject.errorFromArray && errorPopupObject.invitationStatus !== 'tpmAlert' && errorPopupObject.invitationStatus !== 'success' && errorPopupObject.errorMessage !== 'DELETED_USER_ERROR_5183'" class="break-word">
+			<span ng-if="errorPopupObject.isNewRep"><div><span>{{errorPopupObject.errorMessage}}</span></div></span>
+			<span ng-if="!errorPopupObject.isNewRep">
+				<div><span>{{'addNewRep.errorMessage.alreadyRegisteredUser' | translate}} <a target="_blank" href="https://login.ghx.com" rel="noopener noreferrer">{{'addNewRep.label.ghxLoginAddress' | translate}}</a>{{'common.dot' | translate}}</span></div>
+			</span>
+		</div>
+		<div ng-if="!errorPopupObject.errorFromArray && errorPopupObject.invitationStatus === 'tpmAlert'" class="alert alert-danger tpmAlertIcon">
+			<div><i class="fa fa-warning margin"></i></div>
+			<div><span ng-bind-html="errorPopupObject.errorMessage | translate | trustAsHtml" ></span></div>
+		</div>
+		<div ng-if="errorPopupObject.errorFromArray"><span>{{errorPopupObject.errorMessageList[0].errorMessage}}</span></div>
+		
+		<div ng-if="!errorPopupObject.errorFromArray && errorPopupObject.invitationStatus === 'success'">
+			<div><span>{{'addNewRep.label.successTooltip' | translate}}</span></div>
+		</div>
+		<div class="text-center paddingT1">
+			<button class="btn btn-info" ng-click="closeInviteStatusPopup();">{{'common.ok' | translate}}</button>
+		</div>
+	</div>
+</div>

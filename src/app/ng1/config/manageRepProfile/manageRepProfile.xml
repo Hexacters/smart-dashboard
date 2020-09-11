@@ -1,0 +1,141 @@
+<?xml version="1.0"?>
+<module id="profileModule">
+	<routers>
+			<router id="manage.repAccountDetails.manageRepProfile" url="/myProfile">
+			<views>
+				<view containerId="manageRepUserProfile" templateUrl="app/ng1/views/myProfile/manageRepProfile.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.manageRepProfile.contactPersonalInfoView" url="/contactPersonalInfoView/{emailKey}">
+			<views>
+				<view containerId="viewContactPersonalInfo" templateUrl="app/ng1/views/myProfile/contactPersonalInfoView.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.manageRepProfile.contactPersonalInfoView.help" type="dialog" url="/contactPersonalViewHelp">
+			<views>
+				<view containerId="modal" templateUrl="app/ng1/views/myProfile/myProfileHelp.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.manageRepProfile.contactPersonalInfoEdit.help" type="dialog" url="/contactPersonalEditHelp">
+			<views>
+				<view containerId="modal" templateUrl="app/ng1/views/myProfile/myProfileHelp.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.manageRepProfile.contactPersonalInfoEdit.changeUsername" type="dialog" url="/changeUsername">
+			<views>
+				<view containerId="modal" templateUrl="app/ng1/views/users/changeUsername.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.manageRepProfile.contactPersonalInfoEdit" url="/contactPersonalInfoEdit">
+			<views>
+				<view containerId="editContactPersonalInfo" templateUrl="app/ng1/views/myProfile/contactPersonalInfoEdit.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.manageRepProfile.accountInformationView" url="/accountInformationView">
+			<views>
+				<view containerId="viewAccountInformation" templateUrl="app/ng1/views/myProfile/accountInformationView.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.manageRepProfile.accountInformationEdit" url="/accountInformationEdit">
+			<views>
+				<view containerId="editAccountInformation" templateUrl="app/ng1/views/myProfile/accountInformationEdit.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.manageRepProfile.accountInformationView.help" type="dialog" url="/accountInformationViewHelp">
+			<views>
+				<view containerId="modal" templateUrl="app/ng1/views/myProfile/myProfileHelp.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.manageRepProfile.accountInformationEdit.help" type="dialog" url="/accountInformationEditHelp">
+			<views>
+				<view containerId="modal" templateUrl="app/ng1/views/myProfile/myProfileHelp.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.manageRepProfile.productServiceOfferingView" url="/productServiceOfferingView">
+			<views>
+				<view containerId="viewProductServiceOffering" templateUrl="app/ng1/views/myProfile/productServiceOfferingView.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.manageRepProfile.productServiceOfferingEdit.help" type="dialog" url="/productServiceOfferingEditHelp">
+			<views>
+				<view containerId="modal" templateUrl="app/ng1/views/myProfile/productServiceOfferingHelp.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.manageRepProfile.productServiceOfferingEdit" url="/productServiceOfferingEdit">
+			<views>
+				<view containerId="editProductServiceOffering" templateUrl="app/ng1/views/myProfile/productServiceOfferingEdit.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.manageRepProfile.salesTerritoryView" url="/salesTerritoryView">
+			<views>
+				<view containerId="viewSalesTerritory" templateUrl="app/ng1/views/myProfile/salesTerritoryView.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.manageRepProfile.salesTerritoryEdit" url="/salesTerritoryEdit">
+			<views>
+				<view containerId="editSalesTerritory" templateUrl="app/ng1/views/myProfile/salesTerritoryEdit.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.manageRepProfile.salesTerritoryView.help" type="dialog" url="/salesTerritoryViewHelp">
+			<views>
+				<view containerId="modal" templateUrl="app/ng1/views/myProfile/myProfileHelp.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.manageRepProfile.salesTerritoryEdit.help" type="dialog" url="/salesTerritoryEditHelp">
+			<views>
+				<view containerId="modal" templateUrl="app/ng1/views/myProfile/myProfileHelp.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.manageRepProfile.supervisorInformationView" url="/supervisorInformationView">
+			<views>
+				<view containerId="viewSupervisorInformation" templateUrl="app/ng1/views/myProfile/supervisorInformationView.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.manageRepProfile.supervisorInformationEdit" url="/supervisorInformationEdit">
+			<views>
+				<view containerId="editSupervisorInformation" templateUrl="app/ng1/views/myProfile/supervisorInformationEdit.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.manageRepProfile.supervisorInformationView.supervisorInformationViewHelp" type="dialog" url="/supervisorInformationViewHelp">
+			<views>
+				<view containerId="modal" templateUrl="app/ng1/views/myProfile/myProfileHelp.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.manageRepProfile.supervisorInformationEdit.supervisorInformationEditHelp" type="dialog" url="/supervisorInformationEditHelp">
+			<views>
+				<view containerId="modal" templateUrl="app/ng1/views/myProfile/myProfileHelp.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.manageRepProfile.referencesView" url="/referencesView">
+			<views>
+				<view containerId="viewReferences" templateUrl="app/ng1/views/myProfile/referencesView.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.manageRepProfile.referencesEdit" url="/referencesEdit">
+			<views>
+				<view containerId="editReferences" templateUrl="app/ng1/views/myProfile/referencesEdit.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.manageRepProfile.referencesView.referencesViewHelp" type="dialog" url="/referencesViewHelp">
+			<views>
+				<view templateUrl="app/ng1/views/myProfile/myProfileHelp.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.manageRepProfile.referencesEdit.referencesEditHelp" type="dialog" url="/referencesEditHelp">
+			<views>
+				<view templateUrl="app/ng1/views/myProfile/myProfileHelp.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.manageRepProfile.badgePhoto" url="/badgePhoto/{tapsFrom}/{random}">
+			<views>
+				<view containerId="badgePhoto" templateUrl="app/ng1/views/myProfile/badgePhoto.html"></view>
+			</views>
+		</router>
+		<router id="manage.repAccountDetails.manageRepProfile.badgePhoto.badgePhotoHelp" type="dialog" url="/badgePhotoHelp">
+			<views>
+			    <view containerId="modal" templateUrl="app/ng1/views/myProfile/badgePhotoHelp.html"></view>
+			</views>
+		</router>
+	</routers>
+	
+</module>

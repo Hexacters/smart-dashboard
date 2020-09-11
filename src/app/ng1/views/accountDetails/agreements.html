@@ -1,0 +1,731 @@
+<div class="row marginT2">
+	<div class="row">
+		<div class="col-sm-10 col-md-10 col-lg-10 marginL2 alert alert-danger"
+		     data-ng-if="serviceResponseError">
+			<a href="#"
+			   id="closeErrorBtn"
+			   class="close"
+			   data-dismiss="alert"
+			   aria-label="close"><i class="fa fa-close"></i></a> <strong><i class="fa fa-warning"></i></strong>
+			{{serviceResponseError}}
+		</div>
+	</div>
+	<vision-action>
+		<get-data service="accountDetailServices"
+		          response-formatter="formateGetVendorRepAgreement"
+		          operation="getVendorRepAgreement"
+		          root-node="data.successData"
+		          form-node="data"></get-data>
+		<div class="table-responsive col-sm-12 col-md-12 col-lg-12"
+		     data-ng-if="getError.status === 'error'">
+			<div class="alert alert-danger">
+				{{getError.errorData.ResponseError[0].errorCode | translate}}</div>
+		</div>
+		<div class="col-sm-12 col-md-12 col-lg-12"
+			data-ng-class="{'dNone':!(loadingSaveAgreements || loading)}">
+			<img align="absmiddle" src="app/ng1/img/partial-loading.gif" />
+			{{::'common.loading'| translate}}
+		</div>
+		<div ng-hide="getError.status === 'error' || loading">
+		<form novalidate
+		      name="conflictOfInterest"
+		      id="conflictOfInterest"
+		      autocomplete="off"
+		      class="form">
+			<div class="col-sm-12 col-md-12 col-lg-12 padLeft0">
+				<div class="col-sm-12 col-md-12 col-lg-12 margin-bottom">
+					<div class="form-group">
+						<div class="col-sm-12 col-md-12 col-lg-12 control-label padLeft0">
+							{{::'registration.normal.relationship' | translate}}<sup class="validation-required">*</sup>
+						</div>
+						<div class="col-sm-12 col-md-12 col-lg-12 marginT1 padLeft0">
+							<div class="form-group">
+								<div class="col-sm-8 col-md-6 col-lg-6">
+									<label class="ng-binding">
+										{{::'registration.normal.relationShipDetail' | translate}} </label>
+								</div>
+								<div class="col-sm-4 col-md-6 col-lg-6">
+									<input type="radio"
+									       name="cfiRelationship"
+									       id="cfiRelationship"
+									       data-ng-model="data.conflictSummary.cfiRelationship"
+									       ng-value="true" /> {{::'common.yes' | translate}} <input type="radio"
+									       name="cfiRelationship"
+									       id="cfiRelationship"
+									       data-ng-model="data.conflictSummary.cfiRelationship"
+									       ng-value="false" /> {{::'common.no' | translate}}
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-12 col-md-12 col-lg-12 padLeft0"
+			     ng-if="data.conflictSummary.cfiRelationship">
+				<div class="form-group">
+					<div class="col-md-offset-4 col-md-8">
+						<div class="col-md-5 col-md-offset-3 padding0">
+							<span class="error"
+							      ng-if="showRelationShipError">{{::'messages.agreementSelectOne'
+								| translate}}</span>
+						</div>
+					</div>
+				</div>
+				<div class="row marginB2">
+					<div class="form-group"
+					     data-ng-init="data.conflictsOfInterestDetails.relat[0].seq='1';">
+						<div class="col-md-8 col-md-offset-4">
+							<div class="col-md-3 padding0 control-label">
+								{{::'registration.express.organization' | translate}}</div>
+							<div class="col-md-5 padding0">
+								<input type="text"
+								       class="form-control"
+								       name="relationshipOrganization1"
+								       id="relationshipOrganization1"
+								       ng-model="data.conflictsOfInterestDetails.relat[0].organization"
+								       maxlength="100"
+								       data-valid-method="watch"
+								       data-validator="validateCustomField,validateAlphanumSpecial"
+								       data-validate-custom-field-error-message="{{::'messages.nameOfOrganization' | translate}}"
+								       data-validate-alphanum-special-error-message="{{::'messages.specialCharactersLikeAreNotAllowed' | translate}}"
+								       custom-validate="{{data.conflictsOfInterestDetails.relat[0].person}},{{data.conflictsOfInterestDetails.relat[0].natureOfRelationship}}" />
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-md-8 col-md-offset-4">
+							<div class="col-md-3 padding0 control-label">
+								{{::'registration.express.person' | translate}}</div>
+							<div class="col-md-5 padding0">
+								<input type="text"
+								       class="form-control"
+								       name="relationshipPerson1"
+								       id="relationshipPerson1"
+								       ng-model="data.conflictsOfInterestDetails.relat[0].person"
+								       data-valid-method="watch"
+								       maxlength="100"
+								       data-validator="validateCustomField,validateAlphanumSpecial"
+								       data-validate-custom-field-error-message="{{::'messages.nameOfPerson' | translate}}"
+								       data-validate-alphanum-special-error-message="{{::'messages.specialCharactersLikeAreNotAllowed' | translate}}"
+								       custom-validate="{{data.conflictsOfInterestDetails.relat[0].organization}},{{data.conflictsOfInterestDetails.relat[0].natureOfRelationship}}" />
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-md-8 col-md-offset-4">
+							<div class="col-md-3 padding0 control-label">
+								{{::'registration.express.natureOfRelationship' | translate}}</div>
+							<div class="col-md-5 padding0">
+								<textarea name="relationshipNature1"
+								          id="relationshipNature1"
+								          ng-model="data.conflictsOfInterestDetails.relat[0].natureOfRelationship"
+								          data-valid-method="watch"
+								          class="form-control vresize"
+								          maxlength="1024"
+								          data-validator="validateCustomField,validateAlphanumSpecial"
+								          data-validate-custom-field-error-message="{{::'messages.natureOfRelationship' | translate}}"
+								          data-validate-alphanum-special-error-message="{{::'messages.specialCharactersLikeAreNotAllowed' | translate}}"
+								          custom-validate="{{data.conflictsOfInterestDetails.relat[0].organization}},{{data.conflictsOfInterestDetails.relat[0].person}}"></textarea>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row marginB2">
+					<div class="form-group"
+					     data-ng-init="data.conflictsOfInterestDetails.relat[1].seq='2'">
+						<div class="col-md-8 col-md-offset-4">
+							<div class="col-md-3 padding0 control-label">
+								{{::'registration.express.organization' | translate}}</div>
+							<div class="col-md-5 padding0">
+								<input type="text"
+								       class="form-control"
+								       name="relationshipOrganization2"
+								       id="relationshipOrganization2"
+								       ng-model="data.conflictsOfInterestDetails.relat[1].organization"
+								       maxlength="100"
+								       data-valid-method="watch"
+								       data-validator="validateCustomField,validateAlphanumSpecial"
+								       data-validate-custom-field-error-message="{{::'messages.nameOfOrganization' | translate}}"
+								       data-validate-alphanum-special-error-message="{{::'messages.specialCharactersLikeAreNotAllowed' | translate}}"
+								       custom-validate="{{data.conflictsOfInterestDetails.relat[1].person}},{{data.conflictsOfInterestDetails.relat[1].natureOfRelationship}}" />
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-md-8 col-md-offset-4">
+							<div class="col-md-3 padding0 control-label">
+								{{::'registration.express.person' | translate}}</div>
+							<div class="col-md-5 padding0">
+								<input type="text"
+								       class="form-control"
+								       name="relationshipPerson2"
+								       id="relationshipPerson2"
+								       ng-model="data.conflictsOfInterestDetails.relat[1].person"
+								       data-valid-method="watch"
+								       maxlength="100"
+								       data-validator="validateCustomField,validateAlphanumSpecial"
+								       data-validate-custom-field-error-message="{{::'messages.nameOfPerson' | translate}}"
+								       data-validate-alphanum-special-error-message="{{::'messages.specialCharactersLikeAreNotAllowed' | translate}}"
+								       custom-validate="{{data.conflictsOfInterestDetails.relat[1].organization}},{{data.conflictsOfInterestDetails.relat[1].natureOfRelationship}}" />
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-md-8 col-md-offset-4">
+							<div class="col-md-3 padding0 control-label">
+								{{::'registration.express.natureOfRelationship' | translate}}</div>
+							<div class="col-md-5 padding0">
+								<textarea name="relationshipNature2"
+								          id="relationshipNature2"
+								          ng-model="data.conflictsOfInterestDetails.relat[1].natureOfRelationship"
+								          data-valid-method="watch"
+								          class="form-control vresize"
+								          maxlength="1024"
+								          data-validator="validateCustomField,validateAlphanumSpecial"
+								          data-validate-custom-field-error-message="{{::'messages.natureOfRelationship' | translate}}"
+								          data-validate-alphanum-special-error-message="{{::'messages.specialCharactersLikeAreNotAllowed' | translate}}"
+								          custom-validate="{{data.conflictsOfInterestDetails.relat[1].organization}},{{data.conflictsOfInterestDetails.relat[1].person}}"></textarea>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row marginB2">
+					<div class="form-group"
+					     data
+					     -ng-init="data.conflictsOfInterestDetails.relat[2].seq='3'">
+						<div class="col-md-8 col-md-offset-4">
+							<div class="col-md-3 padding0 control-label">
+								{{::'registration.express.organization' | translate}}</div>
+							<div class="col-md-5 padding0">
+								<input type="text"
+								       class="form-control"
+								       name="relationshipOrganization3"
+								       id="relationshipOrganization3"
+								       ng-model="data.conflictsOfInterestDetails.relat[2].organization"
+								       maxlength="100"
+								       data-valid-method="watch"
+								       data-validator="validateCustomField,validateAlphanumSpecial"
+								       data-validate-custom-field-error-message="{{::'messages.nameOfOrganization' | translate}}"
+								       data-validate-alphanum-special-error-message="{{::'messages.specialCharactersLikeAreNotAllowed' | translate}}"
+								       custom-validate="{{data.conflictsOfInterestDetails.relat[2].person}},{{data.conflictsOfInterestDetails.relat[2].natureOfRelationship}}" />
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-md-8 col-md-offset-4">
+							<div class="col-md-3 padding0 control-label">
+								{{::'registration.express.person' | translate}}</div>
+							<div class="col-md-5 padding0">
+								<input type="text"
+								       class="form-control"
+								       name="relationshipPerson3"
+								       id="relationshipPerson3"
+								       ng-model="data.conflictsOfInterestDetails.relat[2].person"
+								       data-valid-method="watch"
+								       maxlength="100"
+								       data-validator="validateCustomField,validateAlphanumSpecial"
+								       data-validate-custom-field-error-message="{{::'messages.nameOfPerson' | translate}}"
+								       data-validate-alphanum-special-error-message="{{::'messages.specialCharactersLikeAreNotAllowed' | translate}}"
+								       custom-validate="{{data.conflictsOfInterestDetails.relat[2].organization}},{{data.conflictsOfInterestDetails.relat[2].natureOfRelationship}}" />
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-md-8 col-md-offset-4">
+							<div class="col-md-3 padding0 control-label">
+								{{::'registration.express.natureOfRelationship' | translate}}</div>
+							<div class="col-md-5 padding0">
+								<textarea name="relationshipNature3"
+								          id="relationshipNature3"
+								          ng-model="data.conflictsOfInterestDetails.relat[2].natureOfRelationship"
+								          data-valid-method="watch"
+								          class="form-control vresize"
+								          maxlength="1024"
+								          data-validator="validateCustomField,validateAlphanumSpecial"
+								          data-validate-custom-field-error-message="{{::'messages.natureOfRelationship' | translate}}"
+								          data-validate-alphanum-special-error-message="{{::'messages.specialCharactersLikeAreNotAllowed' | translate}}"
+								          custom-validate="{{data.conflictsOfInterestDetails.relat[2].organization}},{{data.conflictsOfInterestDetails.relat[2].person}}"></textarea>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-12 col-md-12 col-lg-12 padLeft0">
+				<div class="col-sm-12 col-md-12 col-lg-12 margin-bottom">
+					<div class="form-group">
+						<div class="col-sm-12 col-md-12 col-lg-12 control-label padLeft0">
+							{{::'registration.normal.affiliations' | translate}}<sup class="validation-required">*</sup>
+						</div>
+						<div class="col-sm-12 col-md-12 col-lg-12 marginT1 padLeft0">
+							<div class="form-group">
+								<div class="col-sm-8 col-md-6 col-lg-6">
+									<label class="ng-binding">
+										{{::'registration.normal.affiliationsDetail' | translate}} </label>
+								</div>
+								<div class="col-sm-4 col-md-6 col-lg-6">
+									<input type="radio"
+									       name="cfiBoardAffl"
+									       id="cfiBoardAffl"
+									       data-ng-model="data.conflictSummary.cfiBoardAffl"
+									       ng-value="true" /> {{::'common.yes' | translate}} <input type="radio"
+									       name="cfiBoardAffl"
+									       id="cfiBoardAffl"
+									       data-ng-model="data.conflictSummary.cfiBoardAffl"
+									       ng-value="false" /> {{::'common.no' | translate}}
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-12 col-md-12 col-lg-12 padLeft0"
+			     ng-if="data.conflictSummary.cfiBoardAffl">
+				<div class="form-group">
+					<div class="col-md-8 col-md-offset-4">
+						<div class="col-md-5 col-md-offset-3 padding0">
+							<span class="error"
+							      ng-if="showAffiliationsError">{{::'messages.agreementSelectOne'
+								| translate}}</span>
+						</div>
+					</div>
+				</div>
+				<div class="row marginB2">
+					<div class="form-group"
+					     ng-init="data.conflictsOfInterestDetails.serve[0].seq='4'">
+						<div class="col-md-8 col-md-offset-4">
+							<div class="col-md-3 padding0 control-label">
+								{{::'registration.express.organization' | translate}}</div>
+							<div class="col-md-5 padding0">
+								<input type="text"
+								       class="form-control"
+								       name="affiliationsOrganization1"
+								       id="affiliationsOrganization1"
+								       ng-model="data.conflictsOfInterestDetails.serve[0].organization"
+								       maxlength="100"
+								       data-valid-method="watch"
+								       data-validator="validateCustomField,validateAlphanumSpecial"
+								       data-validate-custom-field-error-message="{{::'messages.nameOfOrganization' | translate}}"
+								       data-validate-alphanum-special-error-message="{{::'messages.specialCharactersLikeAreNotAllowed' | translate}}"
+								       custom-validate="{{data.conflictsOfInterestDetails.serve[0].person}},{{data.conflictsOfInterestDetails.serve[0].natureOfRelationship}}" />
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-md-8 col-md-offset-4">
+							<div class="col-md-3 padding0 control-label">
+								{{::'registration.express.person' | translate}}</div>
+							<div class="col-md-5 padding0">
+								<input type="text"
+								       class="form-control"
+								       name="affiliationsPerson1"
+								       id="affiliationsPerson1"
+								       ng-model="data.conflictsOfInterestDetails.serve[0].person"
+								       data-valid-method="watch"
+								       maxlength="100"
+								       data-valid-method="watch"
+								       data-validator="validateCustomField,validateAlphanumSpecial"
+								       data-validate-custom-field-error-message="{{::'messages.nameOfPerson' | translate}}"
+								       data-validate-alphanum-special-error-message="{{::'messages.specialCharactersLikeAreNotAllowed' | translate}}"
+								       custom-validate="{{data.conflictsOfInterestDetails.serve[0].organization}},{{data.conflictsOfInterestDetails.serve[0].natureOfRelationship}}" />
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-md-8 col-md-offset-4">
+							<div class="col-md-3 padding0 control-label">
+								{{::'registration.express.natureOfRelationship' | translate}}</div>
+							<div class="col-md-5 padding0">
+								<textarea name="affiliationsNature1"
+								          id="affiliationsNature1"
+								          ng-model="data.conflictsOfInterestDetails.serve[0].natureOfRelationship"
+								          data-valid-method="watch"
+								          class="form-control vresize"
+								          maxlength="1024"
+								          data-validator="validateCustomField,validateAlphanumSpecial"
+								          data-validate-custom-field-error-message="{{::'messages.natureOfRelationship' | translate}}"
+								          data-validate-alphanum-special-error-message="{{::'messages.specialCharactersLikeAreNotAllowed' | translate}}"
+								          custom-validate="{{data.conflictsOfInterestDetails.serve[0].organization}},{{data.conflictsOfInterestDetails.serve[0].person}}"></textarea>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row marginB2">
+					<div class="form-group"
+					     data-ng-init="data.conflictsOfInterestDetails.serve[1].seq='5'">
+						<div class="col-md-8 col-md-offset-4">
+							<div class="col-md-3 padding0 control-label">
+								{{::'registration.express.organization' | translate}}</div>
+							<div class="col-md-5 padding0">
+								<input type="text"
+								       class="form-control"
+								       name="affiliationsOrganization2"
+								       id="affiliationsOrganization2"
+								       ng-model="data.conflictsOfInterestDetails.serve[1].organization"
+								       maxlength="100"
+								       data-valid-method="watch"
+								       data-validator="validateCustomField,validateAlphanumSpecial"
+								       data-validate-custom-field-error-message="{{::'messages.nameOfOrganization' | translate}}"
+								       data-validate-alphanum-special-error-message="{{::'messages.specialCharactersLikeAreNotAllowed' | translate}}"
+								       custom-validate="{{data.conflictsOfInterestDetails.serve[1].person}},{{data.conflictsOfInterestDetails.serve[1].natureOfRelationship}}" />
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-md-8 col-md-offset-4">
+							<div class="col-md-3 padding0 control-label">
+								{{::'registration.express.person' | translate}}</div>
+							<div class="col-md-5 padding0">
+								<input type="text"
+								       class="form-control"
+								       name="affiliationsPerson2"
+								       id="affiliationsPerson2"
+								       ng-model="data.conflictsOfInterestDetails.serve[1].person"
+								       data-valid-method="watch"
+								       maxlength="100"
+								       data-validator="validateCustomField,validateAlphanumSpecial"
+								       data-validate-custom-field-error-message="{{::'messages.nameOfPerson' | translate}}"
+								       data-validate-alphanum-special-error-message="{{::'messages.specialCharactersLikeAreNotAllowed' | translate}}"
+								       custom-validate="{{data.conflictsOfInterestDetails.serve[1].organization}},{{data.conflictsOfInterestDetails.serve[1].natureOfRelationship}}" />
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-md-8 col-md-offset-4">
+							<div class="col-md-3 padding0 control-label">
+								{{::'registration.express.natureOfRelationship' | translate}}</div>
+							<div class="col-md-5 padding0">
+								<textarea name="affiliationsNature2"
+								          id="affiliationsNature2"
+								          ng-model="data.conflictsOfInterestDetails.serve[1].natureOfRelationship"
+								          data-valid-method="watch"
+								          class="form-control vresize"
+								          maxlength="1024"
+								          data-validator="validateCustomField,validateAlphanumSpecial"
+								          data-validate-custom-field-error-message="{{::'messages.natureOfRelationship' | translate}}"
+								          data-validate-alphanum-special-error-message="{{::'messages.specialCharactersLikeAreNotAllowed' | translate}}"
+								          custom-validate="{{data.conflictsOfInterestDetails.serve[1].organization}},{{data.conflictsOfInterestDetails.serve[1].person}}"></textarea>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row marginB2">
+					<div class="form-group"
+					     data-ng-init="data.conflictsOfInterestDetails.serve[2].seq='6'">
+						<div class="col-md-8 col-md-offset-4">
+							<div class="col-md-3 padding0 control-label">
+								{{::'registration.express.organization' | translate}}</div>
+							<div class="col-md-5 padding0">
+								<input type="text"
+								       class="form-control"
+								       name="affiliationsOrganization3"
+								       id="affiliationsOrganization3"
+								       ng-model="data.conflictsOfInterestDetails.serve[2].organization"
+								       maxlength="100"
+								       data-valid-method="watch"
+								       data-validator="validateCustomField,validateAlphanumSpecial"
+								       data-validate-custom-field-error-message="{{::'messages.nameOfOrganization' | translate}}"
+								       data-validate-alphanum-special-error-message="{{::'messages.specialCharactersLikeAreNotAllowed' | translate}}"
+								       custom-validate="{{data.conflictsOfInterestDetails.serve[2].person}},{{data.conflictsOfInterestDetails.serve[2].natureOfRelationship}}" />
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-md-8 col-md-offset-4">
+							<div class="col-md-3 padding0 control-label">
+								{{::'registration.express.person' | translate}}</div>
+							<div class="col-md-5 padding0">
+								<input type="text"
+								       class="form-control"
+								       name="affiliationsPerson3"
+								       id="affiliationsPerson3"
+								       ng-model="data.conflictsOfInterestDetails.serve[2].person"
+								       data-valid-method="watch"
+								       maxlength="100"
+								       data-validator="validateCustomField,validateAlphanumSpecial"
+								       data-validate-custom-field-error-message="{{::'messages.nameOfPerson' | translate}}"
+								       data-validate-alphanum-special-error-message="{{::'messages.specialCharactersLikeAreNotAllowed' | translate}}"
+								       custom-validate="{{data.conflictsOfInterestDetails.serve[2].organization}},{{data.conflictsOfInterestDetails.serve[2].natureOfRelationship}}" />
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-md-8 col-md-offset-4">
+							<div class="col-md-3 padding0 control-label">
+								{{::'registration.express.natureOfRelationship' | translate}}</div>
+							<div class="col-md-5 padding0">
+								<textarea name="affiliationsNature3"
+								          id="affiliationsNature3"
+								          ng-model="data.conflictsOfInterestDetails.serve[2].natureOfRelationship"
+								          data-valid-method="watch"
+								          class="form-control vresize"
+								          maxlength="1024"
+								          data-validator="validateCustomField,validateAlphanumSpecial"
+								          data-validate-custom-field-error-message="{{::'messages.natureOfRelationship' | translate}}"
+								          data-validate-alphanum-special-error-message="{{::'messages.specialCharactersLikeAreNotAllowed' | translate}}"
+								          custom-validate="{{data.conflictsOfInterestDetails.serve[2].organization}},{{data.conflictsOfInterestDetails.serve[2].person}}"></textarea>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-12 col-md-12 col-lg-12 padLeft0">
+				<div class="col-sm-12 col-md-12 col-lg-12 margin-bottom">
+					<div class="form-group">
+						<div class="col-sm-12 col-md-12 col-lg-12 control-label padLeft0">
+							{{::'registration.normal.compensation' | translate}}<sup class="validation-required">*</sup>
+						</div>
+						<div class="col-sm-12 col-md-12 col-lg-12 marginT1 padLeft0">
+							<div class="form-group">
+								<div class="col-sm-8 col-md-6 col-lg-6">
+									<label class="ng-binding">
+										{{::'registration.normal.compensationDetail' | translate}} </label>
+								</div>
+								<div class="col-sm-4 col-md-6 col-lg-6">
+									<input type="radio"
+									       name="cfiCompensation"
+									       id="cfiCompensation"
+									       data-ng-model="data.conflictSummary.cfiCompensation"
+									       ng-value="true" /> {{::'common.yes' | translate}} <input type="radio"
+									       name="cfiCompensation"
+									       id="cfiCompensation"
+									       data-ng-model="data.conflictSummary.cfiCompensation"
+									       ng-value="false" /> {{::'common.no' | translate}}
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-12 col-md-12 col-lg-12 padLeft0"
+			     ng-if="data.conflictSummary.cfiCompensation">
+				<div class="form-group">
+					<div class="col-md-8 col-md-offset-4">
+						<div class="col-md-5 col-md-offset-3 padding0">
+							<span class="error"
+							      ng-if="showCompensationError">{{::'messages.agreementSelectOne'
+								| translate}}</span>
+						</div>
+					</div>
+				</div>
+				<div class="row marginB2">
+					<div class="form-group"
+					     data-ng-init="data.conflictsOfInterestDetails.comps[0].seq='7'">
+						<div class="col-md-8 col-md-offset-4">
+							<div class="col-md-3 padding0 control-label">
+								{{::'registration.express.organization' | translate}}</div>
+							<div class="col-md-5 padding0">
+								<input type="text"
+								       class="form-control"
+								       name="compensationOrganization1"
+								       id="compensationOrganization1"
+								       ng-model="data.conflictsOfInterestDetails.comps[0].organization"
+								       maxlength="100"
+								       data-valid-method="watch"
+								       data-validator="validateCustomField,validateAlphanumSpecial"
+								       data-validate-custom-field-error-message="{{::'messages.nameOfOrganization' | translate}}"
+								       data-validate-alphanum-special-error-message="{{::'messages.specialCharactersLikeAreNotAllowed' | translate}}"
+								       custom-validate="{{data.conflictsOfInterestDetails.comps[0].person}},{{data.conflictsOfInterestDetails.comps[0].natureOfRelationship}}" />
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-md-8 col-md-offset-4">
+							<div class="col-md-3 padding0 control-label">
+								{{::'registration.express.person' | translate}}</div>
+							<div class="col-md-5 padding0">
+								<input type="text"
+								       class="form-control"
+								       name="compensationPerson1"
+								       id="compensationPerson1"
+								       ng-model="data.conflictsOfInterestDetails.comps[0].person"
+								       data-valid-method="watch"
+								       maxlength="100"
+								       data-validator="validateCustomField,validateAlphanumSpecial"
+								       data-validate-custom-field-error-message="{{::'messages.nameOfPerson' | translate}}"
+								       data-validate-alphanum-special-error-message="{{::'messages.specialCharactersLikeAreNotAllowed' | translate}}"
+								       custom-validate="{{data.conflictsOfInterestDetails.comps[0].organization}},{{data.conflictsOfInterestDetails.comps[0].natureOfRelationship}}" />
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-md-8 col-md-offset-4">
+							<div class="col-md-3 padding0 control-label">
+								{{::'registration.express.natureOfRelationship' | translate}}</div>
+							<div class="col-md-5 padding0">
+								<textarea name="compensationNature1"
+								          id="compensationNature1"
+								          ng-model="data.conflictsOfInterestDetails.comps[0].natureOfRelationship"
+								          data-valid-method="watch"
+								          class="form-control vresize"
+								          maxlength="1024"
+								          data-validator="validateCustomField,validateAlphanumSpecial"
+								          data-validate-custom-field-error-message="{{::'messages.natureOfRelationship' | translate}}"
+								          data-validate-alphanum-special-error-message="{{::'messages.specialCharactersLikeAreNotAllowed' | translate}}"
+								          custom-validate="{{data.conflictsOfInterestDetails.comps[0].organization}},{{data.conflictsOfInterestDetails.comps[0].person}}"></textarea>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row marginB2">
+					<div class="form-group"
+					     data-ng-init="data.conflictsOfInterestDetails.comps[1].seq='8'">
+						<div class="col-md-8 col-md-offset-4">
+							<div class="col-md-3 padding0 control-label">
+								{{::'registration.express.organization' | translate}}</div>
+							<div class="col-md-5 padding0">
+								<input type="text"
+								       class="form-control"
+								       name="compensationOrganization2"
+								       id="compensationOrganization2"
+								       ng-model="data.conflictsOfInterestDetails.comps[1].organization"
+								       maxlength="100"
+								       data-valid-method="watch"
+								       data-validator="validateCustomField,validateAlphanumSpecial"
+								       data-validate-custom-field-error-message="{{::'messages.nameOfOrganization' | translate}}"
+								       data-validate-alphanum-special-error-message="{{::'messages.specialCharactersLikeAreNotAllowed' | translate}}"
+								       custom-validate="{{data.conflictsOfInterestDetails.comps[1].person}},{{data.conflictsOfInterestDetails.comps[1].natureOfRelationship}}" />
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-md-8 col-md-offset-4">
+							<div class="col-md-3 padding0 control-label">
+								{{::'registration.express.person' | translate}}</div>
+							<div class="col-md-5 padding0">
+								<input type="text"
+								       class="form-control"
+								       name="compensationPerson2"
+								       id="compensationPerson2"
+								       ng-model="data.conflictsOfInterestDetails.comps[1].person"
+								       data-valid-method="watch"
+								       maxlength="100"
+								       data-validator="validateCustomField,validateAlphanumSpecial"
+								       data-validate-custom-field-error-message="{{::'messages.nameOfPerson' | translate}}"
+								       data-validate-alphanum-special-error-message="{{::'messages.specialCharactersLikeAreNotAllowed' | translate}}"
+								       custom-validate="{{data.conflictsOfInterestDetails.comps[1].organization}},{{data.conflictsOfInterestDetails.comps[1].natureOfRelationship}}" />
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-md-8 col-md-offset-4">
+							<div class="col-md-3 padding0 control-label">
+								{{::'registration.express.natureOfRelationship' | translate}}</div>
+							<div class="col-md-5 padding0">
+								<textarea name="compensationNature2"
+								          id="compensationNature2"
+								          ng-model="data.conflictsOfInterestDetails.comps[1].natureOfRelationship"
+								          data-valid-method="watch"
+								          class="form-control vresize"
+								          maxlength="1024"
+								          data-validator="validateCustomField,validateAlphanumSpecial"
+								          data-validate-custom-field-error-message="{{::'messages.natureOfRelationship' | translate}}"
+								          data-validate-alphanum-special-error-message="{{::'messages.specialCharactersLikeAreNotAllowed' | translate}}"
+								          custom-validate="{{data.conflictsOfInterestDetails.comps[1].organization}},{{data.conflictsOfInterestDetails.comps[1].person}}"></textarea>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row marginB2">
+					<div class="form-group"
+					     data-ng-init="data.conflictsOfInterestDetails.comps[2].seq='9'">
+						<div class="col-md-8 col-md-offset-4">
+							<div class="col-md-3 padding0 control-label">
+								{{::'registration.express.organization' | translate}}</div>
+							<div class="col-md-5 padding0">
+								<input type="text"
+								       class="form-control"
+								       name="compensationOrganization3"
+								       id="compensationOrganization3"
+								       ng-model="data.conflictsOfInterestDetails.comps[2].organization"
+								       maxlength="100"
+								       data-valid-method="watch"
+								       data-validator="validateCustomField,validateAlphanumSpecial"
+								       data-validate-custom-field-error-message="{{::'messages.nameOfOrganization' | translate}}"
+								       data-validate-alphanum-special-error-message="{{::'messages.specialCharactersLikeAreNotAllowed' | translate}}"
+								       custom-validate="{{data.conflictsOfInterestDetails.comps[2].person}},{{data.conflictsOfInterestDetails.comps[2].natureOfRelationship}}" />
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-md-8 col-md-offset-4">
+							<div class="col-md-3 padding0 control-label">
+								{{::'registration.express.person' | translate}}</div>
+							<div class="col-md-5 padding0">
+								<input type="text"
+								       class="form-control"
+								       name="compensationPerson3"
+								       id="compensationPerson3"
+								       ng-model="data.conflictsOfInterestDetails.comps[2].person"
+								       data-valid-method="watch"
+								       maxlength="100"
+								       data-validator="validateCustomField,validateAlphanumSpecial"
+								       data-validate-custom-field-error-message="{{::'messages.nameOfPerson' | translate}}"
+								       data-validate-alphanum-special-error-message="{{::'messages.specialCharactersLikeAreNotAllowed' | translate}}"
+								       custom-validate="{{data.conflictsOfInterestDetails.comps[2].organization}},{{data.conflictsOfInterestDetails.comps[2].natureOfRelationship}}" />
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-md-8 col-md-offset-4">
+							<div class="col-md-3 padding0 control-label">
+								{{::'registration.express.natureOfRelationship' | translate}}</div>
+							<div class="col-md-5 padding0">
+								<textarea name="compensationNature3"
+								          id="compensationNature3"
+								          ng-model="data.conflictsOfInterestDetails.comps[2].natureOfRelationship"
+								          data-valid-method="watch"
+								          class="form-control vresize"
+								          maxlength="1024"
+								          data-validator="validateCustomField,validateAlphanumSpecial"
+								          data-validate-custom-field-error-message="{{::'messages.natureOfRelationship' | translate}}"
+								          data-validate-alphanum-special-error-message="{{::'messages.specialCharactersLikeAreNotAllowed' | translate}}"
+								          custom-validate="{{data.conflictsOfInterestDetails.comps[2].organization}},{{data.conflictsOfInterestDetails.comps[2].person}}"></textarea>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-12 col-md-12 col-lg-12 padLeft0">
+				<div class="col-md-6 font-size17 marginT2">
+					<h4>
+						{{::'registration.termsOfUse' | translate}} and
+						{{::'registration.privacyPolicy' | translate}}<sup class="validation-required">*</sup>
+					</h4>
+				</div>
+				<div class="col-md-6 control-label marginT2">
+					<input type="checkbox"
+					       data-ng-model="data.conflictSummary.eulaSignedSig"
+					       name="licenseAgreement"
+					       id="licenseAgreement"
+					       ng-click="data.conflictSummary.eulaSignedSigValidate = assignEulaSignedValue(data.conflictSummary.eulaSignedSig)"
+					       valid-method="watch" /> {{::'registration.ihaveReadAndUnderstand'
+					| translate}} <a target="_blank"
+					   href="{{footerLink.termsOfUse}}">{{::'registration.termsOfUse'
+						| translate}}</a> and <a target="_blank"
+					   href="{{footerLink.privacyPolicy}}">{{::'registration.privacyPolicy'
+						| translate}}</a>.
+					<div class="col-sm-12 col-md-12 col-lg-12 padding0">
+						<input type="text"
+						       data-ng-model="data.conflictSummary.eulaSignedSigValidate"
+						       class="hidden"
+						       name="licenseAgreement"
+						       id="licenseAgreement"
+						       valid-method="watch"
+						       data-validator="required"
+						       required-error-message="{{::'messages.endUserLicenseAgreement' | translate}}" />
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-12 col-md-12 col-lg-12 marginT5">
+				<div class="col-md-offset-6 col-md-2 padding0">
+					<button type="submit"
+					        data-validation-submit="conflictOfInterest"
+					        data-ng-click="validateAgreement(data);"
+					        class="btn btn-primary">{{::'common.update'
+						| translate}}</button>
+				</div>
+			</div>
+		</form>
+		</div>
+	</vision-action>
+</div>

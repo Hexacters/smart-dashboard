@@ -1,0 +1,25 @@
+{
+    "VisionResponse": {
+        "Status": "Ok",
+        "AddressList": [
+            {
+                "addressLine1": "100 Fox Meadows Dr  ",
+                "addressLine2": "Test",
+                "city": "Murray",
+                "stateCode": "Kentucky",
+                "countryCode": "United States of America",
+                "zip": "42071-2876",
+                "createdBy": "System",
+                "createdOn": "2016-05-03 11:02:41",
+                "updatedBy": "System",
+                "updatedOn": "2016-05-03 11:02:41",
+                "addressValidated": false,
+                "normalizedNote": "Sub Premise Number Missing, Street Only Match",
+                "securityMap": {},
+                "updateAction": false,
+                "deleteAction": false
+            }
+        ],
+        "contentType": "application/json"
+    }
+}

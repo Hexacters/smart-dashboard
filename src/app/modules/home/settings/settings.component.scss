@@ -1,0 +1,44 @@
+.float-on-screen {
+    position: fixed;
+    top: 0;
+    min-width: 200px;
+    right: 0;
+    z-index: 1000000;
+}
+.settings {
+    opacity: 0;
+    z-index: 1000;
+    background-color: #ffffff;
+    padding: 3px 8px;
+    position: absolute;
+    text-align: center;
+    border-radius: 0 0 6px 6px;
+    box-shadow: 0px 9px 20px rgba(183, 183, 183, 0.17);
+    right: 16px;
+
+    .app-info {
+        font-size: 0px;
+        float: right;
+        font-weight: bold;
+        
+    }
+    .app-info-show {
+        margin-right: 23px;
+        font-size: 11px;
+        transition: 0.5s all;
+    }
+
+    .material-icons {
+        padding: 1px 1px;
+        text-align: center;
+        float: right;
+        cursor: pointer;
+        width: 18px;
+        font-size: 16px;
+        vertical-align: middle;
+    }
+}
+
+.show-settings {
+    opacity: 1;
+}

@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<module id="repRequestAppointmentModule">
+	<routers>
+		<router id="requestAppointAccordion" sticky="true" url="/appoinment">
+			<views>
+				<view containerId="vendordash" templateUrl="app/ng1/views/repRequestAppointment/requestAppointAccordion.html"></view>
+			</views>
+		</router>
+		<router id="requestAppointAccordion.request" url="/request/{requestFrom}/{appointmentRandom}">
+			<views>
+				<view containerId="requestAppointment" templateUrl="app/ng1/views/repRequestAppointment/requestAppoinment.html"></view>
+			</views>
+		</router>
+		<router id="requestAppointAccordion.request.success" url="/success" type="dialog">
+			<views>
+				<view containerId="modal" templateUrl="app/ng1/views/repRequestAppointment/requestAppointmentSuccess.html"></view>
+			</views>
+		</router>
+		<router id="requestAppointAccordion.request.recurring" url="/recurring" type="dialog">
+			<views>
+				<view containerId="modal" templateUrl="app/ng1/views/repRequestAppointment/recurringAppointment.html"></view>
+			</views>
+		</router>
+		<router id="requestAppointAccordion.viewRequest" url="/viewRequest">
+			<views>
+				<view containerId="viewAppointment" templateUrl="app/ng1/views/repRequestAppointment/viewAppoinment.html"></view>
+			</views>
+		</router>
+		<router id="requestAppointAccordion.viewRequest.requestDetails" url="/requestDetails" type="dialog">
+			<views>
+				<view containerId="modal" templateUrl="app/ng1/views/repRequestAppointment/requestDetails.html"></view>
+			</views>
+		</router>
+	</routers>
+	<services id="repRequestAppointmentServices">
+		<operations>
+			<operation name="sendAppoinmentRequest" requestWrapper="request" responseWrapper="response" method="post" url="mock/appoinmentRequest" mockUrl="app/ng1/mock/repRequestAppointment/saveAppointmentRequest.json" mock="false"></operation>
+			<operation name="viewAppoinments" requestWrapper="request" responseWrapper="response" requestType="json" method="get" url="mock/viewAppoinments" mockUrl="app/ng1/mock/repRequestAppointment/viewAppoinments.json" mock="false"></operation>
+			<operation name="sendAppoinmentRequest" requestWrapper="request" responseWrapper="response" method="post" url="mock/appoinmentRequest" mockUrl="app/ng1/mock/repRequestAppointment/saveAppointmentRequest.json" mock="false"></operation>
+			<operation name="viewAppoinments" requestWrapper="request" responseWrapper="response" requestType="json" method="get" url="mock/viewAppoinments" mockUrl="app/ng1/mock/repRequestAppointment/viewAppoinments.json" mock="false"></operation>
+			<operation name="getAllRiaAccounts" requestType="json" requestWrapper="request" responseWrapper="response"  serviceName="vendorrep" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/repRequestAppointment/getAllRiaAccounts.json" mock="false">
+				<params>
+					<param name="userOid" source="userProfile" key="id"></param>
+					<param name="actorTypeCode" source="userProfile" key="detail.actorType"></param>
+				</params>
+			</operation>
+			<operation name="saveAppointmentRequest" requestType="json" requestWrapper="request" responseWrapper="response"  serviceName="vendorrep" method="post" url="VMClientProxyServlet" mockUrl="app/ng1/mock/repRequestAppointment/getAllRiaAccounts.json" mock="false">
+				<params>
+					<param name="appointmentRequest.userOid" source="userProfile" key="id"></param>
+					<param name="appointmentRequest.vendorOid" source="userProfile" key="detail.vendorOid"></param>
+					<param name="appointmentRequest.legalName" source="userProfile" key="detail.legalName"></param>
+					<param name="appointmentRequest.requesterName" source="userProfile" key="detail.repName"></param>
+				</params>
+			</operation>
+			<operation name="getRIARepRequestCustomerDetailsProcess" requestType="json" requestWrapper="request" responseWrapper="response"  serviceName="vendorrep" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/repRequestAppointment/getRIARepRequestCustomerDetailsProcess.json" mock="false">
+			</operation>
+			<operation name="getAllRequestedAppointmentDetails" serviceName="vendorrep" requestType="json" requestWrapper="request" responseWrapper="response"
+				method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/repRequestAppointment/getAllRequestedAppointmentDetails.json" mock="false">
+				<params>
+					<param name="searchType" source="static" value="Filter"></param>
+					<param name="userOid" source="userProfile" key="id"></param>
+					<param name="actorTypeCode" source="static" value="VREP"></param>
+					<param name="submittedFrom" property="createdOn_startDate"></param>
+					<param name="submittedTo" property="createdOn_endDate"></param>
+				</params>
+			</operation>
+			<operation name="getAppointmentRequestById" serviceName="vendorrep"
+				requestType="json" requestWrapper="request" responseWrapper="response"
+				method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/repRequestAppointment/getAppointmentRequestById.json"
+				mock="false">
+				<params>
+					<param name="requestOid" source="data" key="requestOid" module="appointMentDetail"></param>
+				</params>
+			</operation>
+			<operation name="getTimeZoneDateAndTime" method="get" serviceName="users" requestWrapper="request" responseWrapper="response" mockUrl="app/ng1/mock/users/getTimeZoneDateAndTime.json" mock="false" url="services/getTimeZoneDateAndTime"></operation>
+		</operations>
+	</services>
+</module>

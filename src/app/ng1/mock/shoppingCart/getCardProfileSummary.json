@@ -1,0 +1,10 @@
+{
+    "VisionResponse": {
+        "Status": "Ok",
+        "cardProfileDetail": {
+           "nameOnCard": "sowm",
+   			 "cardNumber": "XXXXXXXXXXX1347"
+        },
+        "contentType": "application/json"
+    }
+}

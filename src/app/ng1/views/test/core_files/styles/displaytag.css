@@ -1,0 +1,156 @@
+/*
+if this is uncommented it will break the vendor dashboard - tim
+th,td {
+	padding: 2px 4px 2px 4px !important;
+	text-align: left;
+	vertical-align: top;
+}
+*/
+/*
+thead tr {
+	background-color: #fc0;
+}
+*/
+/*
+th.sorted {
+	background-color: orange;
+}
+*/
+
+th a,th a:visited {
+	color: black;
+}
+
+th a:hover {
+	text-decoration: underline;
+	color: black;
+}
+
+th.sorted a,th.sortable a {
+	background-position: right;
+	display: block;
+	width: 90%; 
+}
+
+/*
+th.sortable a {
+	background-image: url(../images/arrow_off.png);
+	background-position: right;
+	background-repeat: no-repeat;
+}
+
+th.order1 a {
+	background-image: url(../images/arrow_down.png);
+	background-position: right;
+	background-repeat: no-repeat;
+}
+
+th.order2 a {
+	background-image: url(../images/arrow_up.png);
+	background-position: right;
+	background-repeat: no-repeat;
+}
+*/
+
+tr.odd {
+	background-color: #fff
+}
+
+tr.tableRowEven,tr.even {
+	background-color: #fea
+}
+
+div.exportlinks {
+	background-color: #eee;
+	border: 1px dotted #999;
+	padding: 2px 4px 2px 4px;
+	margin: 2px 0 10px 0;
+	width: 79%;
+}
+
+span.export {
+	padding: 1px 15px 1px 20px;
+	display: inline;
+	display: inline-block;
+	cursor: pointer;
+}
+
+span.excel {
+	background-image: url(../images/ico_file_excel.png);
+	background-position: right;
+	background-repeat: no-repeat;
+}
+
+span.csv {
+	background-image: url(../images/ico_file_csv.png);
+	background-position: right;
+	background-repeat: no-repeat;
+}
+
+span.xml {
+	background-image: url(../images/ico_file_xml.png);
+	background-position: right;
+	background-repeat: no-repeat;
+}
+
+span.pdf {
+	background-image: url(../images/ico_file_pdf.png);
+	background-position: right;
+	background-repeat: no-repeat;
+}
+
+span.rtf {
+	background-image: url(../images/ico_file_rtf.png);
+	background-position: right;
+	background-repeat: no-repeat;
+}
+
+span.pagebanner {
+	background-color: #eee;
+	border: 1px dotted #999;
+	padding: 2px 4px 2px 4px;
+	width: 79%;
+	margin-top: 10px;
+	display: block;
+	border-bottom: none;
+}
+
+span.pagelinks {
+	background-color: #eee;
+	border: 1px dotted #999;
+	padding: 2px 4px 2px 4px;
+	width: 79%;
+	display: block;
+	border-top: none;
+	margin-bottom: -5px;
+}
+
+.scroller {
+	scrollbar-face-color: #E6E6E6;
+	scrollbar-highlight-color: white;
+	scrollbar-3dlight-color: #949393;
+	scrollbar-darkshadow-color: #333333;
+	scrollbar-shadow-color: #949393;
+	scrollbar-arrow-color: black;
+	scrollbar-track-color: #505351;
+}
+.odd { background: #F8FFF6; }
+.even { background: #EEFFE8; }
+tr.ruled { cursor: pointer; background: #90A720; }
+.grnDrk { background-color: #EEFFE8; }
+.grnLt { background-color: #F8FFF6; }
+.ylwLt { background-color: #FEFFEB; }
+.ylwDrk { background-color: #FDFFD7; }
+.bold { font-weight: bold }
+.greyDrk { background-color: #F0F0F0; }
+.greyLt { background-color: #FAFAFA; }
+.myodd { background: #EBEBEB; }
+.myeven { background: #FFFFFF; }
+.hidden { display: none; }
+.reverse { font-weight: bold; background-color: black; color: white; }
+.underline { text-decoration: underline; }
+.white { background-color: #FFFFFF; }
+
+.left { text-align: left }
+.right { text-align: right }
+.center { text-align: center }

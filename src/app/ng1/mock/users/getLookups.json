@@ -1,0 +1,3151 @@
+{
+    "VisionResponse": {
+        "Status": "Ok",
+        "PAYMENT_TYPE": [
+            {
+                "code": "visa",
+                "name": "VISA"
+            },
+            {
+                "code": "MA",
+                "name": "Master Card"
+            },
+            {
+                "code": "AX",
+                "name": "American Express"
+            }
+        ],
+        "SALUTATION": [
+            {
+                "label": "Dr",
+                "value": "DR"
+            },
+            {
+                "label": "Miss",
+                "value": "MISS"
+            },
+            {
+                "label": "Mr",
+                "value": "MR"
+            },
+            {
+                "label": "Mrs",
+                "value": "MRS"
+            },
+            {
+                "label": "Ms",
+                "value": "MS"
+            }
+        ],
+        "COUNTRY": [
+            {
+                "countryName": "Afghanistan",
+                "countryCode": "AF",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Albania",
+                "countryCode": "AL",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Algeria",
+                "countryCode": "DZ",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "American Samoa",
+                "countryCode": "AS",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Andorra",
+                "countryCode": "AD",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Angola",
+                "countryCode": "AO",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Anguilla",
+                "countryCode": "AI",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Antarctica",
+                "countryCode": "AQ",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Antigua And Barbuda",
+                "countryCode": "AG",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Argentina",
+                "countryCode": "AR",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Armenia",
+                "countryCode": "AM",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Aruba",
+                "countryCode": "AW",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Australia",
+                "countryCode": "AU",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Austria",
+                "countryCode": "AT",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Azerbaidjan",
+                "countryCode": "AZ",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Bahamas",
+                "countryCode": "BS",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Bahrain",
+                "countryCode": "BH",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Bangladesh",
+                "countryCode": "BD",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Barbados",
+                "countryCode": "BB",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Belarus",
+                "countryCode": "BY",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Belgium",
+                "countryCode": "BE",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Belize",
+                "countryCode": "BZ",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Benin",
+                "countryCode": "BJ",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Bermuda",
+                "countryCode": "BM",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Bhutan",
+                "countryCode": "BT",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Bolivia",
+                "countryCode": "BO",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Bosnia-Herzegovina",
+                "countryCode": "BA",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Botswana",
+                "countryCode": "BW",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Bouvet Island",
+                "countryCode": "BV",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Brazil",
+                "countryCode": "BR",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "British Indian Ocean Territory",
+                "countryCode": "IO",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Brunei Darussalam",
+                "countryCode": "BN",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Bulgaria",
+                "countryCode": "BG",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Burkina Faso",
+                "countryCode": "BF",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Burundi",
+                "countryCode": "BI",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Cambodia",
+                "countryCode": "KH",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Cameroon",
+                "countryCode": "CM",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Canada",
+                "countryCode": "CA",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Cape Verde",
+                "countryCode": "CV",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Cayman Islands",
+                "countryCode": "KY",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Central African Republic",
+                "countryCode": "CF",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Chad",
+                "countryCode": "TD",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Chile",
+                "countryCode": "CL",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "China",
+                "countryCode": "CN",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Christmas Island",
+                "countryCode": "CX",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Cocos (Keeling) Islands",
+                "countryCode": "CC",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Colombia",
+                "countryCode": "CO",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Commercial",
+                "countryCode": "COM",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Comoros",
+                "countryCode": "KM",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Congo",
+                "countryCode": "CG",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Cook Islands",
+                "countryCode": "CK",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Costa Rica",
+                "countryCode": "CR",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Croatia",
+                "countryCode": "HR",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Cuba",
+                "countryCode": "CU",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Cyprus",
+                "countryCode": "CY",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Czech Republic",
+                "countryCode": "CZ",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Denmark",
+                "countryCode": "DK",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Djibouti",
+                "countryCode": "DJ",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Dominica",
+                "countryCode": "DM",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Dominican Republic",
+                "countryCode": "DO",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "East Timor",
+                "countryCode": "TP",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Ecuador",
+                "countryCode": "EC",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Egypt",
+                "countryCode": "EG",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "El Salvador",
+                "countryCode": "SV",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Equatorial Guinea",
+                "countryCode": "GQ",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Eritrea",
+                "countryCode": "ER",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Estonia",
+                "countryCode": "EE",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Ethiopia",
+                "countryCode": "ET",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Falkland Islands",
+                "countryCode": "FK",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Faroe Islands",
+                "countryCode": "FO",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Fiji",
+                "countryCode": "FJ",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Finland",
+                "countryCode": "FI",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Former Czechoslovakia",
+                "countryCode": "CS",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Former Ussr",
+                "countryCode": "SU",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "France",
+                "countryCode": "FR",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "France (European Territory)",
+                "countryCode": "FX",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "French Guyana",
+                "countryCode": "GF",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "French Southern Territories",
+                "countryCode": "TF",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Gabon",
+                "countryCode": "GA",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Gambia",
+                "countryCode": "GM",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Georgia",
+                "countryCode": "GE",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Germany",
+                "countryCode": "DE",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Ghana",
+                "countryCode": "GH",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Gibraltar",
+                "countryCode": "GI",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Great Britain",
+                "countryCode": "GB",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Greece",
+                "countryCode": "GR",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Greenland",
+                "countryCode": "GL",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Grenada",
+                "countryCode": "GD",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Guadeloupe (French)",
+                "countryCode": "GP",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Guam (Usa)",
+                "countryCode": "GU",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Guatemala",
+                "countryCode": "GT",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Guinea",
+                "countryCode": "GN",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Guinea Bissau",
+                "countryCode": "GW",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Guyana",
+                "countryCode": "GY",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Haiti",
+                "countryCode": "HT",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Heard And Mcdonald Islands",
+                "countryCode": "HM",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Honduras",
+                "countryCode": "HN",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Hong Kong",
+                "countryCode": "HK",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Hungary",
+                "countryCode": "HU",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Iceland",
+                "countryCode": "IS",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "India",
+                "countryCode": "IN",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Indonesia",
+                "countryCode": "ID",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "International",
+                "countryCode": "INT",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Iran",
+                "countryCode": "IR",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Iraq",
+                "countryCode": "IQ",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Ireland",
+                "countryCode": "IE",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Israel",
+                "countryCode": "IL",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Italy",
+                "countryCode": "IT",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Ivory Coast (Cote D'ivoire)",
+                "countryCode": "CI",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Jamaica",
+                "countryCode": "JM",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Japan",
+                "countryCode": "JP",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Jordan",
+                "countryCode": "JO",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Kazakhstan",
+                "countryCode": "KZ",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Kenya",
+                "countryCode": "KE",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Kiribati",
+                "countryCode": "KI",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Kuwait",
+                "countryCode": "KW",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Kyrgyzstan",
+                "countryCode": "KG",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Laos",
+                "countryCode": "LA",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Latvia",
+                "countryCode": "LV",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Lebanon",
+                "countryCode": "LB",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Lesotho",
+                "countryCode": "LS",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Liberia",
+                "countryCode": "LR",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Libya",
+                "countryCode": "LY",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Liechtenstein",
+                "countryCode": "LI",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Lithuania",
+                "countryCode": "LT",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Luxembourg",
+                "countryCode": "LU",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Macau",
+                "countryCode": "MO",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Macedonia",
+                "countryCode": "MK",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Madagascar",
+                "countryCode": "MG",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Malawi",
+                "countryCode": "MW",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Malaysia",
+                "countryCode": "MY",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Maldives",
+                "countryCode": "MV",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Mali",
+                "countryCode": "ML",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Malta",
+                "countryCode": "MT",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Marshall Islands",
+                "countryCode": "MH",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Martinique (French)",
+                "countryCode": "MQ",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Mauritania",
+                "countryCode": "MR",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Mauritius",
+                "countryCode": "MU",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Mayotte",
+                "countryCode": "YT",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Mexico",
+                "countryCode": "MX",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Micronesia",
+                "countryCode": "FM",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Moldavia",
+                "countryCode": "MD",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Monaco",
+                "countryCode": "MC",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Mongolia",
+                "countryCode": "MN",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Montserrat",
+                "countryCode": "MS",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Morocco",
+                "countryCode": "MA",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Mozambique",
+                "countryCode": "MZ",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Myanmar",
+                "countryCode": "MM",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Namibia",
+                "countryCode": "NA",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Nauru",
+                "countryCode": "NR",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Nepal",
+                "countryCode": "NP",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Netherlands",
+                "countryCode": "NL",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Netherlands Antilles",
+                "countryCode": "AN",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Network",
+                "countryCode": "NET",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Neutral Zone",
+                "countryCode": "NT",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "New Caledonia (French)",
+                "countryCode": "NC",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "New Zealand",
+                "countryCode": "NZ",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Nicaragua",
+                "countryCode": "NI",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Niger",
+                "countryCode": "NE",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Nigeria",
+                "countryCode": "NG",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Niue",
+                "countryCode": "NU",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Norfolk Island",
+                "countryCode": "NF",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "North Korea",
+                "countryCode": "KP",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Northern Mariana Islands",
+                "countryCode": "MP",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Norway",
+                "countryCode": "NO",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Oman",
+                "countryCode": "OM",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Other",
+                "countryCode": "OTHR",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Pakistan",
+                "countryCode": "PK",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Palau",
+                "countryCode": "PW",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Panama",
+                "countryCode": "PA",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Papua New Guinea",
+                "countryCode": "PG",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Paraguay",
+                "countryCode": "PY",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Peru",
+                "countryCode": "PE",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Philippines",
+                "countryCode": "PH",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Pitcairn Island",
+                "countryCode": "PN",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Poland",
+                "countryCode": "PL",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Polynesia (French)",
+                "countryCode": "PF",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Portugal",
+                "countryCode": "PT",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Puerto Rico",
+                "countryCode": "PR",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Qatar",
+                "countryCode": "QA",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Reunion (French)",
+                "countryCode": "RE",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Romania",
+                "countryCode": "RO",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Russian Federation",
+                "countryCode": "RU",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Rwanda",
+                "countryCode": "RW",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "S. Georgia  & S. Sandwich Isls.",
+                "countryCode": "GS",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Saint Helena",
+                "countryCode": "SH",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Saint Kitts  & Nevis Anguilla",
+                "countryCode": "KN",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Saint Lucia",
+                "countryCode": "LC",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Saint Pierre And Miquelon",
+                "countryCode": "PM",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Saint Tome (Sao Tome) And Principe",
+                "countryCode": "ST",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Saint Vincent  & Grenadines",
+                "countryCode": "VC",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Samoa",
+                "countryCode": "WS",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "San Marino",
+                "countryCode": "SM",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Saudi Arabia",
+                "countryCode": "SA",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Senegal",
+                "countryCode": "SN",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Seychelles",
+                "countryCode": "SC",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Sierra Leone",
+                "countryCode": "SL",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Singapore",
+                "countryCode": "SG",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Slovak Republic",
+                "countryCode": "SK",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Slovenia",
+                "countryCode": "SI",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Solomon Islands",
+                "countryCode": "SB",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Somalia",
+                "countryCode": "SO",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "South Africa",
+                "countryCode": "ZA",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "South Korea",
+                "countryCode": "KR",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Spain",
+                "countryCode": "ES",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Sri Lanka",
+                "countryCode": "LK",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Sudan",
+                "countryCode": "SD",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Suriname",
+                "countryCode": "SR",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Svalbard And Jan Mayen Islands",
+                "countryCode": "SJ",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Swaziland",
+                "countryCode": "SZ",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Sweden",
+                "countryCode": "SE",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Switzerland",
+                "countryCode": "CH",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Syria",
+                "countryCode": "SY",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Tadjikistan",
+                "countryCode": "TJ",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Taiwan",
+                "countryCode": "TW",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Tanzania",
+                "countryCode": "TZ",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Thailand",
+                "countryCode": "TH",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Togo",
+                "countryCode": "TG",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Tokelau",
+                "countryCode": "TK",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Tonga",
+                "countryCode": "TO",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Trinidad And Tobago",
+                "countryCode": "TT",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Tunisia",
+                "countryCode": "TN",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Turkey",
+                "countryCode": "TR",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Turkmenistan",
+                "countryCode": "TM",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Turks And Caicos Islands",
+                "countryCode": "TC",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Tuvalu",
+                "countryCode": "TV",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Uganda",
+                "countryCode": "UG",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Ukraine",
+                "countryCode": "UA",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "United Arab Emirates",
+                "countryCode": "AE",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "United Kingdom",
+                "countryCode": "UK",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "United States",
+                "countryCode": "US",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Uruguay",
+                "countryCode": "UY",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Uzbekistan",
+                "countryCode": "UZ",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Vanuatu",
+                "countryCode": "VU",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Vatican City State",
+                "countryCode": "VA",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Venezuela",
+                "countryCode": "VE",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Vietnam",
+                "countryCode": "VN",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Virgin Islands (British)",
+                "countryCode": "VG",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Virgin Islands (USA)",
+                "countryCode": "VI",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Wallis And Futuna Islands",
+                "countryCode": "WF",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Western Sahara",
+                "countryCode": "EH",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Yemen",
+                "countryCode": "YE",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Yugoslavia",
+                "countryCode": "YU",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Zaire",
+                "countryCode": "ZR",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Zambia",
+                "countryCode": "ZM",
+                "fromLookup": "true"
+            },
+            {
+                "countryName": "Zimbabwe",
+                "countryCode": "ZW",
+                "fromLookup": "true"
+            }
+        ],
+        "MONTH": [
+            {
+                "label": "April",
+                "value": "04"
+            },
+            {
+                "label": "August",
+                "value": "08"
+            },
+            {
+                "label": "December",
+                "value": "12"
+            },
+            {
+                "label": "February",
+                "value": "02"
+            },
+            {
+                "label": "January",
+                "value": "01"
+            },
+            {
+                "label": "July",
+                "value": "07"
+            },
+            {
+                "label": "June",
+                "value": "06"
+            },
+            {
+                "label": "March",
+                "value": "03"
+            },
+            {
+                "label": "May",
+                "value": "05"
+            },
+            {
+                "label": "November",
+                "value": "11"
+            },
+            {
+                "label": "October",
+                "value": "10"
+            },
+            {
+                "label": "September",
+                "value": "09"
+            }
+        ],
+        "VENDOR_TYPE_OF_BUSINESS": [
+            {
+                "label": "Corporation",
+                "value": "CORP"
+            },
+            {
+                "label": "Joint Venture",
+                "value": "JONT"
+            },
+            {
+                "label": "LLC",
+                "value": "LLC"
+            },
+            {
+                "label": "LLP",
+                "value": "LLP"
+            },
+            {
+                "label": "Partnership",
+                "value": "PART"
+            },
+            {
+                "label": "Sole Proprietor (individual)",
+                "value": "SP"
+            }
+        ],
+        "EDI_CAPABLE": [
+            {
+                "label": "I don't know",
+                "value": "n/a"
+            },
+            {
+                "label": "No",
+                "value": "N"
+            },
+            {
+                "label": "No, but within six months",
+                "value": "6 mo"
+            },
+            {
+                "label": "Yes",
+                "value": "Y"
+            }
+        ],
+        "FAILED_BID": [
+            {
+                "label": "I don't know",
+                "value": "NDN"
+            },
+            {
+                "label": "No",
+                "value": "N"
+            },
+            {
+                "label": "Yes",
+                "value": "Y"
+            }
+        ],
+        "STATE": [
+            {
+                "stateName": "Alabama",
+                "fromLookup": "true",
+                "stateCode": "AL"
+            },
+            {
+                "stateName": "Alaska",
+                "fromLookup": "true",
+                "stateCode": "AK"
+            },
+            {
+                "stateName": "Arizona",
+                "fromLookup": "true",
+                "stateCode": "AZ"
+            },
+            {
+                "stateName": "Arkansas",
+                "fromLookup": "true",
+                "stateCode": "AR"
+            },
+            {
+                "stateName": "California",
+                "fromLookup": "true",
+                "stateCode": "CA"
+            },
+            {
+                "stateName": "Colorado",
+                "fromLookup": "true",
+                "stateCode": "CO"
+            },
+            {
+                "stateName": "Connecticut",
+                "fromLookup": "true",
+                "stateCode": "CT"
+            },
+            {
+                "stateName": "Delaware",
+                "fromLookup": "true",
+                "stateCode": "DE"
+            },
+            {
+                "stateName": "Florida",
+                "fromLookup": "true",
+                "stateCode": "FL"
+            },
+            {
+                "stateName": "Georgia",
+                "fromLookup": "true",
+                "stateCode": "GA"
+            },
+            {
+                "stateName": "Hawaii",
+                "fromLookup": "true",
+                "stateCode": "HI"
+            },
+            {
+                "stateName": "Idaho",
+                "fromLookup": "true",
+                "stateCode": "ID"
+            },
+            {
+                "stateName": "Illinois",
+                "fromLookup": "true",
+                "stateCode": "IL"
+            },
+            {
+                "stateName": "Indiana",
+                "fromLookup": "true",
+                "stateCode": "IN"
+            },
+            {
+                "stateName": "Iowa",
+                "fromLookup": "true",
+                "stateCode": "IA"
+            },
+            {
+                "stateName": "Kansas",
+                "fromLookup": "true",
+                "stateCode": "KS"
+            },
+            {
+                "stateName": "Kentucky",
+                "fromLookup": "true",
+                "stateCode": "KY"
+            },
+            {
+                "stateName": "Louisiana",
+                "fromLookup": "true",
+                "stateCode": "LA"
+            },
+            {
+                "stateName": "Maine",
+                "fromLookup": "true",
+                "stateCode": "ME"
+            },
+            {
+                "stateName": "Maryland",
+                "fromLookup": "true",
+                "stateCode": "MD"
+            },
+            {
+                "stateName": "Massachusetts",
+                "fromLookup": "true",
+                "stateCode": "MA"
+            },
+            {
+                "stateName": "Michigan",
+                "fromLookup": "true",
+                "stateCode": "MI"
+            },
+            {
+                "stateName": "Minnesota",
+                "fromLookup": "true",
+                "stateCode": "MN"
+            },
+            {
+                "stateName": "Mississippi",
+                "fromLookup": "true",
+                "stateCode": "MS"
+            },
+            {
+                "stateName": "Missouri",
+                "fromLookup": "true",
+                "stateCode": "MO"
+            },
+            {
+                "stateName": "Montana",
+                "fromLookup": "true",
+                "stateCode": "MT"
+            },
+            {
+                "stateName": "Nebraska",
+                "fromLookup": "true",
+                "stateCode": "NE"
+            },
+            {
+                "stateName": "Nevada",
+                "fromLookup": "true",
+                "stateCode": "NV"
+            },
+            {
+                "stateName": "New Hampshire",
+                "fromLookup": "true",
+                "stateCode": "NH"
+            },
+            {
+                "stateName": "New Jersey",
+                "fromLookup": "true",
+                "stateCode": "NJ"
+            },
+            {
+                "stateName": "New Mexico",
+                "fromLookup": "true",
+                "stateCode": "NM"
+            },
+            {
+                "stateName": "New York",
+                "fromLookup": "true",
+                "stateCode": "NY"
+            },
+            {
+                "stateName": "North Carolina",
+                "fromLookup": "true",
+                "stateCode": "NC"
+            },
+            {
+                "stateName": "North Dakota",
+                "fromLookup": "true",
+                "stateCode": "ND"
+            },
+            {
+                "stateName": "Ohio",
+                "fromLookup": "true",
+                "stateCode": "OH"
+            },
+            {
+                "stateName": "Oklahoma",
+                "fromLookup": "true",
+                "stateCode": "OK"
+            },
+            {
+                "stateName": "Oregon",
+                "fromLookup": "true",
+                "stateCode": "OR"
+            },
+            {
+                "stateName": "Pennsylvania",
+                "fromLookup": "true",
+                "stateCode": "PA"
+            },
+            {
+                "stateName": "Rhode Island",
+                "fromLookup": "true",
+                "stateCode": "RI"
+            },
+            {
+                "stateName": "South Carolina",
+                "fromLookup": "true",
+                "stateCode": "SC"
+            },
+            {
+                "stateName": "South Dakota",
+                "fromLookup": "true",
+                "stateCode": "SD"
+            },
+            {
+                "stateName": "Tennessee",
+                "fromLookup": "true",
+                "stateCode": "TN"
+            },
+            {
+                "stateName": "Texas",
+                "fromLookup": "true",
+                "stateCode": "TX"
+            },
+            {
+                "stateName": "Utah",
+                "fromLookup": "true",
+                "stateCode": "UT"
+            },
+            {
+                "stateName": "Vermont",
+                "fromLookup": "true",
+                "stateCode": "VT"
+            },
+            {
+                "stateName": "Virginia",
+                "fromLookup": "true",
+                "stateCode": "VA"
+            },
+            {
+                "stateName": "Washington",
+                "fromLookup": "true",
+                "stateCode": "WA"
+            },
+            {
+                "stateName": "West Virginia",
+                "fromLookup": "true",
+                "stateCode": "WV"
+            },
+            {
+                "stateName": "Wisconsin",
+                "fromLookup": "true",
+                "stateCode": "WI"
+            },
+            {
+                "stateName": "Wyoming",
+                "fromLookup": "true",
+                "stateCode": "WY"
+            }
+        ],
+        "STATE_CAN": [
+            {
+                "stateName": "Alberta",
+                "fromLookup": "true",
+                "stateCode": "AB"
+            },
+            {
+                "stateName": "British Columbia",
+                "fromLookup": "true",
+                "stateCode": "BC"
+            },
+            {
+                "stateName": "Manitoba",
+                "fromLookup": "true",
+                "stateCode": "MB"
+            },
+            {
+                "stateName": "New Brunswick",
+                "fromLookup": "true",
+                "stateCode": "NB"
+            },
+            {
+                "stateName": "Newfoundland and Labrador",
+                "fromLookup": "true",
+                "stateCode": "NL"
+            },
+            {
+                "stateName": "Northwest Territories",
+                "fromLookup": "true",
+                "stateCode": "NT"
+            },
+            {
+                "stateName": "Nova Scotia",
+                "fromLookup": "true",
+                "stateCode": "NS"
+            },
+            {
+                "stateName": "Nunavut",
+                "fromLookup": "true",
+                "stateCode": "NU"
+            },
+            {
+                "stateName": "Ontario",
+                "fromLookup": "true",
+                "stateCode": "ON"
+            },
+            {
+                "stateName": "Prince Edward Island",
+                "fromLookup": "true",
+                "stateCode": "PE"
+            },
+            {
+                "stateName": "Quebec",
+                "fromLookup": "true",
+                "stateCode": "QC"
+            },
+            {
+                "stateName": "Saskatchewan",
+                "fromLookup": "true",
+                "stateCode": "SK"
+            },
+            {
+                "stateName": "Yukon",
+                "fromLookup": "true",
+                "stateCode": "YT"
+            }
+        ],
+        "CERTIFICATION_AGENCY": [
+            {
+                "label": "Arkansas Regional Min. Suplr. Dev.Council",
+                "value": "00000010000005f5e4ea"
+            },
+            {
+                "label": "Association for Service Disabled Veterans (ASDV)",
+                "value": "c0100008835000008836"
+            },
+            {
+                "label": "Astra Women's Bus. Alliance",
+                "value": "00000010000005f5e4eb"
+            },
+            {
+                "label": "Carolinas Min. Suplr. Dev.Councils",
+                "value": "00000010000005f5e4ec"
+            },
+            {
+                "label": "Center for Veterans Enterprise (CVE)",
+                "value": "c0100008835000008837"
+            },
+            {
+                "label": "Center for Women & Enterprise",
+                "value": "00000010000005f5e4ed"
+            },
+            {
+                "label": "Central & South Texas Min. Bus. Council",
+                "value": "00000010000005f5e4ee"
+            },
+            {
+                "label": "Chicago Min. Bus. Dev.Council",
+                "value": "00000010000005f5e4ef"
+            },
+            {
+                "label": "Connecticut Min. Suplr. Dev.Council",
+                "value": "00000010000005f5e4f0"
+            },
+            {
+                "label": "Consortium of African American Organizations (CAAO)",
+                "value": "c0100008835000008838"
+            },
+            {
+                "label": "Dallas/Fort Worth Min. Bus. Dev.Council",
+                "value": "00000010000005f5e4f1"
+            },
+            {
+                "label": "Federal Acquisition Regulation (FAR)",
+                "value": "c0100008835000008839"
+            },
+            {
+                "label": "Florida Min. Suplr. Dev.Council",
+                "value": "00000010000005f5e4f2"
+            },
+            {
+                "label": "Florida Regional Min. Bus. Council",
+                "value": "00000010000005f5e4f3"
+            },
+            {
+                "label": "Georgia Department of Transportation (GDOT)",
+                "value": "c010000883500000883a"
+            },
+            {
+                "label": "Georgia Min. Suplr. Dev.Council",
+                "value": "00000010000005f5e4f4"
+            },
+            {
+                "label": "Georgia Women's Bus. Council",
+                "value": "00000010000005f5e4f5"
+            },
+            {
+                "label": "Grand Canyon Min. Suplr. Dev.Council",
+                "value": "00000010000005f5e4f6"
+            },
+            {
+                "label": "Great Plains Min. Suplr. Dev.Council",
+                "value": "00000010000005f5e4f7"
+            },
+            {
+                "label": "Greater Cincinnati Health Council (GCHC)",
+                "value": "c010000883500000883b"
+            },
+            {
+                "label": "Greater New England Minority Supplier Development Council",
+                "value": "c010000883500000883c"
+            },
+            {
+                "label": "Greater San Diego Bus. Dev.Council",
+                "value": "00000010000005f5e4f8"
+            },
+            {
+                "label": "Houston Min. Bus. Council",
+                "value": "00000010000005f5e4f9"
+            },
+            {
+                "label": "Indiana Department of Administration",
+                "value": "c010000883500000883d"
+            },
+            {
+                "label": "Indiana Minority Supplier Development Council (IMSDC)",
+                "value": "c010000883500000883e"
+            },
+            {
+                "label": "Indiana Regional Min. Suplr. Dev.Council",
+                "value": "00000010000005f5e4fa"
+            },
+            {
+                "label": "Kentuckiana Min. Suplr. Dev.Council",
+                "value": "00000010000005f5e4fb"
+            },
+            {
+                "label": "Louisiana Min. Bus. Council",
+                "value": "00000010000005f5e4fc"
+            },
+            {
+                "label": "Maryland/DC Min. Suplr. Dev.Council",
+                "value": "00000010000005f5e4fd"
+            },
+            {
+                "label": "Michigan Min. Bus. Dev.Council",
+                "value": "00000010000005f5e4fe"
+            },
+            {
+                "label": "Michigan Women's Bus. Council",
+                "value": "00000010000005f5e4ff"
+            },
+            {
+                "label": "Min. Suplr. Council",
+                "value": "00000010000005f5e501"
+            },
+            {
+                "label": "Min. Suplr. Dev.Council of NY and NJ",
+                "value": "00000010000005f5e502"
+            },
+            {
+                "label": "Min. Suplr. Dev.Council of PA-NJ-DE",
+                "value": "00000010000005f5e503"
+            },
+            {
+                "label": "Minnesota Min. Suplr. Dev.Council",
+                "value": "00000010000005f5e500"
+            },
+            {
+                "label": "Minority Business Development Agency (MBDA)",
+                "value": "c010000883500000883f"
+            },
+            {
+                "label": "National Association of Women Business Owners (NAWBO)",
+                "value": "c0100008835000008841"
+            },
+            {
+                "label": "National Gay & Lesbian Chamber of Commerce (NGLCC)",
+                "value": "c0100008835000008840"
+            },
+            {
+                "label": "National Minority Supplier Development Council (NMSDC)",
+                "value": "c0100008835000008842"
+            },
+            {
+                "label": "National Women Business Owners Corporation (NWBOC)",
+                "value": "c0100008835000008843"
+            },
+            {
+                "label": "Nevada Min. Purchasing Council",
+                "value": "00000010000005f5e504"
+            },
+            {
+                "label": "New England Suplr. Dev.Council",
+                "value": "00000010000005f5e505"
+            },
+            {
+                "label": "North American Board of Min. Trade",
+                "value": "00000010000005f5e4e9"
+            },
+            {
+                "label": "Northern California Suplr. Dev.Council",
+                "value": "00000010000005f5e506"
+            },
+            {
+                "label": "Northern Ohio Min. Bus. Council",
+                "value": "00000010000005f5e507"
+            },
+            {
+                "label": "Northern Ohio Minority Supplier Development Council (NOMSDC)",
+                "value": "c0100008835000008844"
+            },
+            {
+                "label": "Northwest Min. Bus. Council",
+                "value": "00000010000005f5e508"
+            },
+            {
+                "label": "Oklahoma Min. Suplr. Dev.Council",
+                "value": "00000010000005f5e509"
+            },
+            {
+                "label": "Pittsburgh Regional Min. Purchasing Council",
+                "value": "00000010000005f5e50a"
+            },
+            {
+                "label": "Puerto Rico Suplr. Dev.Council",
+                "value": "00000010000005f5e50b"
+            },
+            {
+                "label": "Rocky Mountain Min. Suplr. Dev.Council",
+                "value": "00000010000005f5e50c"
+            },
+            {
+                "label": "South Central Ohio Min. Bus. Council",
+                "value": "00000010000005f5e50d"
+            },
+            {
+                "label": "South Central Ohio Supplier Development Council's (SCOMSDC)",
+                "value": "c0100008835000008845"
+            },
+            {
+                "label": "South Central Texas Regional Certification Agency (SCTRCA)",
+                "value": "c0100008835000008846"
+            },
+            {
+                "label": "South Regions Min. Bus. Council",
+                "value": "00000010000005f5e50e"
+            },
+            {
+                "label": "Southern California Min. Bus. Dev.Council",
+                "value": "00000010000005f5e50f"
+            },
+            {
+                "label": "Southwest Minority Supplier Development Council (SMSDC)",
+                "value": "c0100008835000008847"
+            },
+            {
+                "label": "St. Louis Min. Bus. Council",
+                "value": "00000010000005f5e510"
+            },
+            {
+                "label": "Tennessee Min. Suplr. Dev.Council",
+                "value": "00000010000005f5e511"
+            },
+            {
+                "label": "Upstate New York Regional Min. Purchasing Council",
+                "value": "00000010000005f5e512"
+            },
+            {
+                "label": "US Hispanic Chamber of Commerce (USHCC)",
+                "value": "c0100008835000008849"
+            },
+            {
+                "label": "US Pan Asian American Chamber of Commerce",
+                "value": "c010000883500000884b"
+            },
+            {
+                "label": "US Small Business Administration (SBA)",
+                "value": "c010000883500000884a"
+            },
+            {
+                "label": "Virginia Min. Suplr. Dev.Council",
+                "value": "00000010000005f5e513"
+            },
+            {
+                "label": "Wisconsin Minority Supplier Development Council",
+                "value": "c010000883500000884c"
+            },
+            {
+                "label": "Wisconsin Suplr. Dev.Council",
+                "value": "00000010000005f5e514"
+            },
+            {
+                "label": "Women Presidents' Educational Org. - DC",
+                "value": "00000010000005f5e515"
+            },
+            {
+                "label": "Women Presidents' Educational Org. - New York",
+                "value": "00000010000005f5e516"
+            },
+            {
+                "label": "Women's Bus. Council - Southwest",
+                "value": "00000010000005f5e517"
+            },
+            {
+                "label": "Women's Bus. Council Gulf Coast",
+                "value": "00000010000005f5e518"
+            },
+            {
+                "label": "Women's Bus. Dev.Center/Chicago",
+                "value": "00000010000005f5e519"
+            },
+            {
+                "label": "Women's Bus. Dev.Center/Miami",
+                "value": "00000010000005f5e51a"
+            },
+            {
+                "label": "Women's Bus. Dev.Center/Philadelphia",
+                "value": "00000010000005f5e51b"
+            },
+            {
+                "label": "Women's Bus. Enterprise Alliance",
+                "value": "00000010000005f5e51c"
+            },
+            {
+                "label": "Women's Bus. Enterprise Council-Southeast",
+                "value": "00000010000005f5e51d"
+            },
+            {
+                "label": "Women's Bus. Enterprise Council-West",
+                "value": "00000010000005f5e51e"
+            },
+            {
+                "label": "Women's Business Enterprise National Council (WBENC)",
+                "value": "c0100008835000008848"
+            }
+        ],
+        "MINORITY_TYPE": [
+            {
+                "label": "African American/Black",
+                "value": "AFAMR"
+            },
+            {
+                "label": "Asian",
+                "value": "ASAMR"
+            },
+            {
+                "label": "Asian American(Indian)",
+                "value": "AMIND"
+            },
+            {
+                "label": "Asian American(Pacific)",
+                "value": "AMPAI"
+            },
+            {
+                "label": "Hispanic American/Latino",
+                "value": "HIAMR"
+            },
+            {
+                "label": "Native American/Alaskan/Hawaiian",
+                "value": "INAMR"
+            }
+        ],
+        "TIME_ZONE": [
+            {
+                "label": "Abidjan",
+                "value": "TZ005"
+            },
+            {
+                "label": "Abu Dhabi, Muscat",
+                "value": "TZ006"
+            },
+            {
+                "label": "Accra",
+                "value": "TZ007"
+            },
+            {
+                "label": "Adelaide",
+                "value": "TZ008"
+            },
+            {
+                "label": "Alaska",
+                "value": "TZ009"
+            },
+            {
+                "label": "Almaty, Novosibirsk",
+                "value": "TZ010"
+            },
+            {
+                "label": "Amman",
+                "value": "TZ011"
+            },
+            {
+                "label": "Amsterdam",
+                "value": "TZ012"
+            },
+            {
+                "label": "Arizona",
+                "value": "TZ013"
+            },
+            {
+                "label": "Astana, Dhaka",
+                "value": "TZ014"
+            },
+            {
+                "label": "Athens, Bucharest, Istanbul",
+                "value": "TZ015"
+            },
+            {
+                "label": "Atlantic Time (Canada)",
+                "value": "TZ016"
+            },
+            {
+                "label": "Auckland, Wellington",
+                "value": "TZ017"
+            },
+            {
+                "label": "Azores",
+                "value": "TZ018"
+            },
+            {
+                "label": "Baghdad",
+                "value": "TZ019"
+            },
+            {
+                "label": "Baku",
+                "value": "TZ020"
+            },
+            {
+                "label": "Bamako",
+                "value": "TZ021"
+            },
+            {
+                "label": "Bangkok, Hanoi, Jakarta",
+                "value": "TZ022"
+            },
+            {
+                "label": "Beijing, Chongqing, Hong Kong, Urumqi",
+                "value": "TZ023"
+            },
+            {
+                "label": "Beirut",
+                "value": "TZ024"
+            },
+            {
+                "label": "Belgrade",
+                "value": "TZ025"
+            },
+            {
+                "label": "Berlin",
+                "value": "TZ026"
+            },
+            {
+                "label": "Bern",
+                "value": "TZ027"
+            },
+            {
+                "label": "Bissau",
+                "value": "TZ028"
+            },
+            {
+                "label": "Bogota, Lima, Quito, Rio Branco",
+                "value": "TZ029"
+            },
+            {
+                "label": "Brasilia",
+                "value": "TZ030"
+            },
+            {
+                "label": "Bratislava",
+                "value": "TZ031"
+            },
+            {
+                "label": "Brisbane",
+                "value": "TZ032"
+            },
+            {
+                "label": "Brussels",
+                "value": "TZ033"
+            },
+            {
+                "label": "Budapest",
+                "value": "TZ034"
+            },
+            {
+                "label": "Buenos Aires",
+                "value": "TZ035"
+            },
+            {
+                "label": "Cairo",
+                "value": "TZ036"
+            },
+            {
+                "label": "Canberra, Melbourne, Sydney",
+                "value": "TZ037"
+            },
+            {
+                "label": "Cape_Verde",
+                "value": "TZ038"
+            },
+            {
+                "label": "Caracas",
+                "value": "TZ039"
+            },
+            {
+                "label": "Casablanca",
+                "value": "TZ040"
+            },
+            {
+                "label": "Caucasus Standard Time",
+                "value": "TZ041"
+            },
+            {
+                "label": "Central America",
+                "value": "TZ042"
+            },
+            {
+                "label": "Central Time (US & Canada)",
+                "value": "TZ003"
+            },
+            {
+                "label": "Chennai, Kolkata, Mumbai, New Delhi",
+                "value": "TZ043"
+            },
+            {
+                "label": "Chihuahua, La Paz, Mazatlan - New",
+                "value": "TZ044"
+            },
+            {
+                "label": "Chihuahua, La Paz, Mazatlan - New",
+                "value": "TZ072"
+            },
+            {
+                "label": "Chihuahua, La Paz, Mazatlan - Old",
+                "value": "TZ045"
+            },
+            {
+                "label": "Chihuahua, La Paz, Mazatlan - Old",
+                "value": "TZ073"
+            },
+            {
+                "label": "Copenhagen",
+                "value": "TZ046"
+            },
+            {
+                "label": "Darwin",
+                "value": "TZ047"
+            },
+            {
+                "label": "Dublin",
+                "value": "TZ048"
+            },
+            {
+                "label": "Eastern Time (US & Canada)",
+                "value": "TZ004"
+            },
+            {
+                "label": "Edinburgh",
+                "value": "TZ049"
+            },
+            {
+                "label": "Ekaterinburg",
+                "value": "TZ050"
+            },
+            {
+                "label": "Fiji, Kamchatka, Marshall Is.",
+                "value": "TZ051"
+            },
+            {
+                "label": "Fiji, Nuku alofa",
+                "value": "TZ052"
+            },
+            {
+                "label": "Freetown",
+                "value": "TZ053"
+            },
+            {
+                "label": "Georgetown",
+                "value": "TZ054"
+            },
+            {
+                "label": "Greenland",
+                "value": "TZ055"
+            },
+            {
+                "label": "Guadalajara, Mexico City, Monterrey - New",
+                "value": "TZ056"
+            },
+            {
+                "label": "Guadalajara, Mexico City, Monterrey - Old",
+                "value": "TZ057"
+            },
+            {
+                "label": "Guam, Port Moresby",
+                "value": "TZ058"
+            },
+            {
+                "label": "Harare, Pretoria",
+                "value": "TZ059"
+            },
+            {
+                "label": "Helsinki, Kyiv, Riga",
+                "value": "TZ060"
+            },
+            {
+                "label": "Hobart",
+                "value": "TZ061"
+            },
+            {
+                "label": "Indiana (East)",
+                "value": "TZ062"
+            },
+            {
+                "label": "International Date Line West",
+                "value": "TZ063"
+            },
+            {
+                "label": "Irkutsk, Ulaan Bataar",
+                "value": "TZ064"
+            },
+            {
+                "label": "Islamabad, Karachi",
+                "value": "TZ065"
+            },
+            {
+                "label": "Jerusalem",
+                "value": "TZ066"
+            },
+            {
+                "label": "Kabul",
+                "value": "TZ067"
+            },
+            {
+                "label": "Kathmandu",
+                "value": "TZ068"
+            },
+            {
+                "label": "Krasnoyarsk",
+                "value": "TZ069"
+            },
+            {
+                "label": "Kuala Lumpur, Singapore",
+                "value": "TZ070"
+            },
+            {
+                "label": "Kuwait, Riyadh",
+                "value": "TZ071"
+            },
+            {
+                "label": "Lisbon",
+                "value": "TZ074"
+            },
+            {
+                "label": "Ljubljana",
+                "value": "TZ075"
+            },
+            {
+                "label": "London",
+                "value": "TZ076"
+            },
+            {
+                "label": "Madrid",
+                "value": "TZ077"
+            },
+            {
+                "label": "Magadan, Solomon Is., New Caledonia",
+                "value": "TZ078"
+            },
+            {
+                "label": "Manaus",
+                "value": "TZ079"
+            },
+            {
+                "label": "Mid-Atlantic",
+                "value": "TZ080"
+            },
+            {
+                "label": "Midway Island, Somao",
+                "value": "TZ081"
+            },
+            {
+                "label": "Minsk",
+                "value": "TZ082"
+            },
+            {
+                "label": "Monrovia",
+                "value": "TZ083"
+            },
+            {
+                "label": "Montevideo",
+                "value": "TZ084"
+            },
+            {
+                "label": "Moscow, St.Petersburg, Volgograd",
+                "value": "TZ085"
+            },
+            {
+                "label": "Mountain Time (US & Canada)",
+                "value": "TZ002"
+            },
+            {
+                "label": "Nairobi",
+                "value": "TZ086"
+            },
+            {
+                "label": "Newfoundland",
+                "value": "TZ087"
+            },
+            {
+                "label": "Osaka, Sapporo, Tokyo",
+                "value": "TZ088"
+            },
+            {
+                "label": "Pacific Time (US & Canada)",
+                "value": "TZ001"
+            },
+            {
+                "label": "Pacific/Marquesas (Marquesas Time)",
+                "value": "TZ089"
+            },
+            {
+                "label": "Paris",
+                "value": "TZ090"
+            },
+            {
+                "label": "Perth",
+                "value": "TZ091"
+            },
+            {
+                "label": "Port Louis",
+                "value": "TZ092"
+            },
+            {
+                "label": "Prague",
+                "value": "TZ093"
+            },
+            {
+                "label": "Reykjavik",
+                "value": "TZ094"
+            },
+            {
+                "label": "Rome",
+                "value": "TZ095"
+            },
+            {
+                "label": "Santiago",
+                "value": "TZ096"
+            },
+            {
+                "label": "Sarajevo, Skopje, Warsaw, Zagreb",
+                "value": "TZ097"
+            },
+            {
+                "label": "Saskatchewan",
+                "value": "TZ098"
+            },
+            {
+                "label": "Seoul",
+                "value": "TZ099"
+            },
+            {
+                "label": "Sofia, Tallinn, Vilnius",
+                "value": "TZ100"
+            },
+            {
+                "label": "Sri Jayawardenepura",
+                "value": "TZ101"
+            },
+            {
+                "label": "Stockholm",
+                "value": "TZ102"
+            },
+            {
+                "label": "Taipei",
+                "value": "TZ103"
+            },
+            {
+                "label": "Tashkent",
+                "value": "TZ104"
+            },
+            {
+                "label": "Tbilisi",
+                "value": "TZ105"
+            },
+            {
+                "label": "Tehran",
+                "value": "TZ106"
+            },
+            {
+                "label": "Tijuana, Baja California",
+                "value": "TZ107"
+            },
+            {
+                "label": "US/Hawaii (Hawaii Standard Time)",
+                "value": "TZ108"
+            },
+            {
+                "label": "Vienna",
+                "value": "TZ109"
+            },
+            {
+                "label": "Vladivostok",
+                "value": "TZ110"
+            },
+            {
+                "label": "West Central Africa",
+                "value": "TZ111"
+            },
+            {
+                "label": "Windhoek",
+                "value": "TZ112"
+            },
+            {
+                "label": "Yakutsk",
+                "value": "TZ113"
+            },
+            {
+                "label": "Yangon (Rangoon)",
+                "value": "TZ114"
+            },
+            {
+                "label": "Yerevan",
+                "value": "TZ115"
+            }
+        ],
+        "TIME_ZONE_GMT": [
+            {
+                "label": "Africa/Abidjan",
+                "value": "TZ005"
+            },
+            {
+                "label": "Africa/Accra",
+                "value": "TZ007"
+            },
+            {
+                "label": "Africa/Bamako",
+                "value": "TZ021"
+            },
+            {
+                "label": "Africa/Bissau",
+                "value": "TZ028"
+            },
+            {
+                "label": "Africa/Cairo",
+                "value": "TZ036"
+            },
+            {
+                "label": "Africa/Casablanca",
+                "value": "TZ040"
+            },
+            {
+                "label": "Africa/Freetown",
+                "value": "TZ053"
+            },
+            {
+                "label": "Africa/Harare",
+                "value": "TZ059"
+            },
+            {
+                "label": "Africa/Lagos",
+                "value": "TZ111"
+            },
+            {
+                "label": "Africa/Monrovia",
+                "value": "TZ083"
+            },
+            {
+                "label": "Africa/Nairobi",
+                "value": "TZ086"
+            },
+            {
+                "label": "Africa/Windhoek",
+                "value": "TZ112"
+            },
+            {
+                "label": "America/Bogota",
+                "value": "TZ029"
+            },
+            {
+                "label": "America/Buenos_Aires",
+                "value": "TZ035"
+            },
+            {
+                "label": "America/Caracas",
+                "value": "TZ039"
+            },
+            {
+                "label": "America/Chicago",
+                "value": "TZ003"
+            },
+            {
+                "label": "America/Chihuahua",
+                "value": "TZ044"
+            },
+            {
+                "label": "America/Chihuahua",
+                "value": "TZ045"
+            },
+            {
+                "label": "America/Chihuahua",
+                "value": "TZ072"
+            },
+            {
+                "label": "America/Chihuahua",
+                "value": "TZ073"
+            },
+            {
+                "label": "America/Denver",
+                "value": "TZ002"
+            },
+            {
+                "label": "America/Godthab",
+                "value": "TZ055"
+            },
+            {
+                "label": "America/Guatemala",
+                "value": "TZ042"
+            },
+            {
+                "label": "America/Indianapolis",
+                "value": "TZ062"
+            },
+            {
+                "label": "America/La_Paz",
+                "value": "TZ054"
+            },
+            {
+                "label": "America/Los_Angeles",
+                "value": "TZ001"
+            },
+            {
+                "label": "America/Manaus",
+                "value": "TZ079"
+            },
+            {
+                "label": "America/Mexico_City",
+                "value": "TZ056"
+            },
+            {
+                "label": "America/Monterrey",
+                "value": "TZ057"
+            },
+            {
+                "label": "America/Montevideo",
+                "value": "TZ084"
+            },
+            {
+                "label": "America/New_York",
+                "value": "TZ004"
+            },
+            {
+                "label": "America/Santiago",
+                "value": "TZ096"
+            },
+            {
+                "label": "America/Sao_Paulo",
+                "value": "TZ030"
+            },
+            {
+                "label": "America/Tijuana",
+                "value": "TZ107"
+            },
+            {
+                "label": "Asia/Amman",
+                "value": "TZ011"
+            },
+            {
+                "label": "Asia/Baghdad",
+                "value": "TZ019"
+            },
+            {
+                "label": "Asia/Baku",
+                "value": "TZ020"
+            },
+            {
+                "label": "Asia/Bangkok",
+                "value": "TZ022"
+            },
+            {
+                "label": "Asia/Beirut",
+                "value": "TZ024"
+            },
+            {
+                "label": "Asia/Calcutta",
+                "value": "TZ043"
+            },
+            {
+                "label": "Asia/Chongqing",
+                "value": "TZ023"
+            },
+            {
+                "label": "Asia/Colombo",
+                "value": "TZ101"
+            },
+            {
+                "label": "Asia/Dhaka",
+                "value": "TZ014"
+            },
+            {
+                "label": "Asia/Dubai",
+                "value": "TZ006"
+            },
+            {
+                "label": "Asia/Irkutsk",
+                "value": "TZ064"
+            },
+            {
+                "label": "Asia/Jerusalem",
+                "value": "TZ066"
+            },
+            {
+                "label": "Asia/Kabul",
+                "value": "TZ067"
+            },
+            {
+                "label": "Asia/Karachi",
+                "value": "TZ065"
+            },
+            {
+                "label": "Asia/Katmandu",
+                "value": "TZ068"
+            },
+            {
+                "label": "Asia/Krasnoyarsk",
+                "value": "TZ069"
+            },
+            {
+                "label": "Asia/Kuala_Lumpur",
+                "value": "TZ070"
+            },
+            {
+                "label": "Asia/Kuwait",
+                "value": "TZ071"
+            },
+            {
+                "label": "Asia/Magadan",
+                "value": "TZ078"
+            },
+            {
+                "label": "Asia/Novosibirsk",
+                "value": "TZ010"
+            },
+            {
+                "label": "Asia/Rangoon",
+                "value": "TZ114"
+            },
+            {
+                "label": "Asia/Seoul",
+                "value": "TZ099"
+            },
+            {
+                "label": "Asia/Taipei",
+                "value": "TZ103"
+            },
+            {
+                "label": "Asia/Tashkent",
+                "value": "TZ104"
+            },
+            {
+                "label": "Asia/Tbilisi",
+                "value": "TZ105"
+            },
+            {
+                "label": "Asia/Tehran",
+                "value": "TZ106"
+            },
+            {
+                "label": "Asia/Tokyo",
+                "value": "TZ088"
+            },
+            {
+                "label": "Asia/Vladivostok",
+                "value": "TZ110"
+            },
+            {
+                "label": "Asia/Yakutsk",
+                "value": "TZ113"
+            },
+            {
+                "label": "Asia/Yekaterinburg",
+                "value": "TZ050"
+            },
+            {
+                "label": "Asia/Yerevan",
+                "value": "TZ041"
+            },
+            {
+                "label": "Asia/Yerevan",
+                "value": "TZ115"
+            },
+            {
+                "label": "Atlantic/Azores",
+                "value": "TZ018"
+            },
+            {
+                "label": "Atlantic/Cape_Verde",
+                "value": "TZ038"
+            },
+            {
+                "label": "Atlantic/Reykjavik",
+                "value": "TZ094"
+            },
+            {
+                "label": "Australia/Adelaide",
+                "value": "TZ008"
+            },
+            {
+                "label": "Australia/Brisbane",
+                "value": "TZ032"
+            },
+            {
+                "label": "Australia/Canberra",
+                "value": "TZ037"
+            },
+            {
+                "label": "Australia/Darwin",
+                "value": "TZ047"
+            },
+            {
+                "label": "Australia/Hobart",
+                "value": "TZ061"
+            },
+            {
+                "label": "Australia/Perth",
+                "value": "TZ091"
+            },
+            {
+                "label": "Canada/Atlantic",
+                "value": "TZ016"
+            },
+            {
+                "label": "Canada/Newfoundland",
+                "value": "TZ087"
+            },
+            {
+                "label": "Canada/Saskatchewan",
+                "value": "TZ098"
+            },
+            {
+                "label": "Etc/GMT+12",
+                "value": "TZ063"
+            },
+            {
+                "label": "Etc/GMT+2",
+                "value": "TZ080"
+            },
+            {
+                "label": "Europe/Amsterdam",
+                "value": "TZ012"
+            },
+            {
+                "label": "Europe/Athens",
+                "value": "TZ015"
+            },
+            {
+                "label": "Europe/Belgrade",
+                "value": "TZ025"
+            },
+            {
+                "label": "Europe/Berlin",
+                "value": "TZ026"
+            },
+            {
+                "label": "Europe/Berlin",
+                "value": "TZ027"
+            },
+            {
+                "label": "Europe/Bratislava",
+                "value": "TZ031"
+            },
+            {
+                "label": "Europe/Brussels",
+                "value": "TZ033"
+            },
+            {
+                "label": "Europe/Budapest",
+                "value": "TZ034"
+            },
+            {
+                "label": "Europe/Copenhagen",
+                "value": "TZ046"
+            },
+            {
+                "label": "Europe/Dublin",
+                "value": "TZ048"
+            },
+            {
+                "label": "Europe/Helsinki",
+                "value": "TZ060"
+            },
+            {
+                "label": "Europe/Lisbon",
+                "value": "TZ074"
+            },
+            {
+                "label": "Europe/Ljubljana",
+                "value": "TZ075"
+            },
+            {
+                "label": "Europe/London",
+                "value": "TZ049"
+            },
+            {
+                "label": "Europe/London",
+                "value": "TZ076"
+            },
+            {
+                "label": "Europe/Madrid",
+                "value": "TZ077"
+            },
+            {
+                "label": "Europe/Minsk",
+                "value": "TZ082"
+            },
+            {
+                "label": "Europe/Moscow",
+                "value": "TZ085"
+            },
+            {
+                "label": "Europe/Paris",
+                "value": "TZ090"
+            },
+            {
+                "label": "Europe/Prague",
+                "value": "TZ093"
+            },
+            {
+                "label": "Europe/Rome",
+                "value": "TZ095"
+            },
+            {
+                "label": "Europe/Sarajevo",
+                "value": "TZ097"
+            },
+            {
+                "label": "Europe/Sofia",
+                "value": "TZ100"
+            },
+            {
+                "label": "Europe/Stockholm",
+                "value": "TZ102"
+            },
+            {
+                "label": "Europe/Vienna",
+                "value": "TZ109"
+            },
+            {
+                "label": "Indian/Mauritius",
+                "value": "TZ092"
+            },
+            {
+                "label": "Pacific/Auckland",
+                "value": "TZ017"
+            },
+            {
+                "label": "Pacific/Fiji",
+                "value": "TZ051"
+            },
+            {
+                "label": "Pacific/Guam",
+                "value": "TZ058"
+            },
+            {
+                "label": "Pacific/Honolulu",
+                "value": "TZ108"
+            },
+            {
+                "label": "Pacific/Marquesas",
+                "value": "TZ089"
+            },
+            {
+                "label": "Pacific/Samoa",
+                "value": "TZ081"
+            },
+            {
+                "label": "Pacific/Tongatapu",
+                "value": "TZ052"
+            },
+            {
+                "label": "US/Alaska",
+                "value": "TZ009"
+            },
+            {
+                "label": "US/Arizona",
+                "value": "TZ013"
+            }
+        ],
+        "STATE_US_OTHER": [
+            {
+                "stateName": "American Samoa",
+                "fromLookup": "true",
+                "stateCode": "AS"
+            },
+            {
+                "stateName": "District Of Columbia",
+                "fromLookup": "true",
+                "stateCode": "DC"
+            },
+            {
+                "stateName": "Federated States Of Micronesia",
+                "fromLookup": "true",
+                "stateCode": "FM"
+            },
+            {
+                "stateName": "Guam",
+                "fromLookup": "true",
+                "stateCode": "GU"
+            },
+            {
+                "stateName": "Marshall Islands",
+                "fromLookup": "true",
+                "stateCode": "MH"
+            },
+            {
+                "stateName": "Northern Marianas",
+                "fromLookup": "true",
+                "stateCode": "MP"
+            },
+            {
+                "stateName": "Palau",
+                "fromLookup": "true",
+                "stateCode": "PW"
+            },
+            {
+                "stateName": "Puerto Rico",
+                "fromLookup": "true",
+                "stateCode": "PR"
+            },
+            {
+                "stateName": "U.S. Virgin Islands",
+                "fromLookup": "true",
+                "stateCode": "VI"
+            }
+        ],
+        	"AP_INFORMATION_EEO_CODE": [{
+			"label": "Disabled Veteran Owned Business",
+			"value": "ECDVO"
+		}, {
+			"label": "Female Business Enterprise (FBE)",
+			"value": "ECFBE"
+		}, {
+			"label": "Foreign Business",
+			"value": "ECFB"
+		}, {
+			"label": "Hub Zone Vendor",
+			"value": "ECHZV"
+		}, {
+			"label": "Large Business",
+			"value": "ECLB"
+		}, {
+			"label": "Minority Business Enterprise (MBE)",
+			"value": "ECMBE"
+		}, {
+			"label": "Nonprofit",
+			"value": "ECNP"
+		}, {
+			"label": "Small Business (Less than 500)",
+			"value": "ECSB"
+		}, {
+			"label": "Small Disadvantaged",
+			"value": "ECSD"
+		}, {
+			"label": "Veteran Owned Business",
+			"value": "ECVOB"
+		}],
+		"AP_INFORMATION_FOB_CODE": [{
+			"label": "Destination - Freight Collect",
+			"value": "FCDFC"
+		}, {
+			"label": "Destination - Freight Prepaid",
+			"value": "FCDFP"
+		}, {
+			"label": "Destination - Freight Prepaid \u0026 Added",
+			"value": "FCDFA"
+		}, {
+			"label": "No Shipment Involved (N/A)",
+			"value": "FCNSI"
+		}, {
+			"label": "Shipping - Freight Collect",
+			"value": "FCSFC"
+		}, {
+			"label": "Shipping - Freight Prepaid",
+			"value": "FCSFP"
+		}, {
+			"label": "Shipping - Freight Prepaid \u0026 Added",
+			"value": "FCSFA"
+		}],
+		"AP_INFORMATION_PAYMENT_TERMS_CODE": [{
+			"label": "1% 10 days",
+			"value": "PTC13"
+		}, {
+			"label": "1% 10 prox",
+			"value": "PTC23"
+		}, {
+			"label": "1% 15 days",
+			"value": "PTC14"
+		}, {
+			"label": "1% 15 prox",
+			"value": "PTC24"
+		}, {
+			"label": "1% 20 days",
+			"value": "PTC15"
+		}, {
+			"label": "1% 30 days",
+			"value": "PTC16"
+		}, {
+			"label": "1% 45 days",
+			"value": "PTC17"
+		}, {
+			"label": "1/2% 10 days",
+			"value": "PTC9"
+		}, {
+			"label": "1/2% 15 days",
+			"value": "PTC10"
+		}, {
+			"label": "1/2% 20 days",
+			"value": "PTC11"
+		}, {
+			"label": "1/2% 30 days",
+			"value": "PTC12"
+		}, {
+			"label": "2% 10 days",
+			"value": "PTC18"
+		}, {
+			"label": "2% 10 prox",
+			"value": "PTC25"
+		}, {
+			"label": "2% 15 days",
+			"value": "PTC19"
+		}, {
+			"label": "2% 15 prox",
+			"value": "PTC26"
+		}, {
+			"label": "2% 20 days",
+			"value": "PTC20"
+		}, {
+			"label": "2% 30 days",
+			"value": "PTC21"
+		}, {
+			"label": "2% 45 days",
+			"value": "PTC22"
+		}, {
+			"label": "Fully Prepaid",
+			"value": "PTC27"
+		}, {
+			"label": "N/A",
+			"value": "PTC0"
+		}, {
+			"label": "NET",
+			"value": "PTC1"
+		}, {
+			"label": "NET 10",
+			"value": "PTC2"
+		}, {
+			"label": "NET 15",
+			"value": "PTC3"
+		}, {
+			"label": "NET 20",
+			"value": "PTC4"
+		}, {
+			"label": "NET 30",
+			"value": "PTC5"
+		}, {
+			"label": "NET 45",
+			"value": "PTC6"
+		}, {
+			"label": "NET 60",
+			"value": "PTC7"
+		}, {
+			"label": "NET 90",
+			"value": "PTC8"
+		}, {
+			"label": "Partially Prepaid",
+			"value": "PTC28"
+		}, {
+			"label": "Special Payment",
+			"value": "PTC29"
+		}]
+    }
+}

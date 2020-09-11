@@ -1,0 +1,234 @@
+<div ng-controller="googleAnalyticsController" data-ng-init="callGAPageTrack('callCompanyInfo');"></div>
+<div class="row">
+	<div class="col-sm-12 col-md-12 col-lg-12"
+		data-ng-class="{'dNone':!loading}">
+		<img align="absmiddle" src="app/ng1/img/partial-loading.gif">&nbsp;{{'common.loading'
+		| translate}}
+	</div>
+	<div ng-controller="companyProfileController">
+		<vision-action> <get-data
+			service="companyProfileServices"
+			root-node="data.successData"
+			form-node="companyInfo" callback='restrictCompanyDocumentsVendorLevel'
+			operation="getVendorDetailandVendorGPOs"></get-data>
+		<div class="col-sm-10 col-md-10 col-lg-10 marginB1 marginT1">
+			<h3 class="modal-title">{{'companyProfile.companyInformation.header.companyInformation'
+				| translate}}</h3>
+		</div>
+		<div class="col-sm-2 col-md-2 col-lg-2 text-right marginTP5">
+			<sup class="asterisk">*</sup>&nbsp;{{'common.required' |
+				translate}}&nbsp;
+			<a data-ui-sref="companyProfile.viewInformation.help" ng-show="!isFromManageReps">{{'common.help' | translate}}</a>
+			<a data-ui-sref="manage.repAccountDetails.companyProfile.viewInformation.help" ng-show="isFromManageReps">{{'common.help' | translate}}</a>
+		</div>
+		<div class="table-responsive col-sm-12 col-md-12 col-lg-12"
+			data-ng-if="getError.status === 'error'">
+			<div class="alert alert-danger">
+				{{getError.errorData.ResponseError[0].errorCode | translate}}</div>
+		</div>
+		<div class="col-sm-12 col-md-12 col-lg-12 marginB1">
+			<div class="col-sm-6 col-md-6 col-lg-6 marginB1">
+				<div class="form-group col-sm-12 col-md-12 col-lg-12" data-ng-if="canAccess('vm','Company.LegalNameOfBusiness')">
+					<label class="col-sm-6 col-md-6 col-lg-6 text-right control-label">{{'companyProfile.companyInformation.label.legalNameofBusiness'
+						| translate}}&nbsp;<sup class="asterisk">*</sup> <span tooltip-append-to-body="true"
+						tooltip="{{'companyProfile.companyInformation.label.legalNameTooltip' | translate}}"
+						tooltip-placement="bottom"> <i
+							class="fa fa-question-circle fa-lg"></i>
+					</span>
+					</label>
+					<div class="col-sm-6 col-md-6 col-lg-6 break-word">
+						{{companyInfo.VendorDetail.legalName}}</div>
+				</div>
+				<div class="form-group col-sm-12 col-md-12 col-lg-12" data-ng-if="canAccess('vm','Company.DoingBusinessAs')">
+					<label class="col-sm-6 col-md-6 col-lg-6 text-right control-label">{{'companyProfile.companyInformation.label.doingBusinessAs'
+						| translate}} </label>
+					<div class="col-sm-6 col-md-6 col-lg-6">
+						{{companyInfo.VendorDetail.dbaName}}</div>
+				</div>
+				<div class="form-group col-sm-12  col-md-12 col-lg-12" data-ng-if="canAccess('vm','Company.TaxID')">
+					<label class="col-sm-6 col-md-6 col-lg-6 text-right control-label">{{'companyProfile.companyInformation.label.taxId'
+						| translate}}&nbsp;<sup class="asterisk">*</sup>
+					</label>
+					<div class="col-sm-6 col-md-6 col-lg-6">
+						{{companyInfo.VendorDetail.einOrSsn}}</div>
+				</div>
+				<div class="form-group col-sm-12 col-md-12 col-lg-12" data-ng-if="canAccess('vm','Company.BradstreetNumber')">
+					<label class="col-sm-6 col-md-6 col-lg-6 text-right control-label">{{'companyProfile.companyInformation.label.dbDunsNumber'
+						| translate}} <span tooltip-append-to-body="true"
+						tooltip="{{'companyProfile.companyInformation.label.dbDunsTooltip' | translate}}"
+						tooltip-placement="bottom"> <i
+							class="fa fa-question-circle fa-lg"></i>
+					</span>
+					</label>
+					<div class="col-sm-6 col-md-6 col-lg-6 break-word">
+						{{companyInfo.VendorDetail.dnbListingNumber}}</div>
+				</div>
+				<div class="form-group col-sm-12 col-md-12 col-lg-12" data-ng-if="canAccess('vm','Company.PubliclyTraded')">
+					<label class="col-sm-6 col-md-6 col-lg-6 text-right control-label">{{'companyProfile.companyInformation.label.publiclyTraded'
+						| translate}}</label>
+					<div class="col-sm-6 col-md-6 col-lg-6"
+						ng-if="companyInfo.VendorDetail.publiclyTradedStr === 'true' ">
+						{{'common.yes' | translate}}</div>
+					<div class="col-sm-6 col-md-6 col-lg-6"
+						ng-if="companyInfo.VendorDetail.publiclyTradedStr === 'false'">
+						{{'common.no' | translate}}</div>
+				</div>
+
+				<div class="form-group col-sm-12 col-md-12 col-lg-12"
+					ng-if="companyInfo.VendorDetail.publiclyTradedStr=='true' && canAccess('vm','Company.PublicSymbol')">
+					<label class="col-sm-6 col-md-6 col-lg-6 text-right control-label">{{'companyProfile.companyInformation.label.stockSymbol'
+						| translate}}&nbsp;<sup class="asterisk">*</sup>
+					</label>
+					<div class="col-sm-6 col-md-6 col-lg-6 break-word">
+						{{companyInfo.VendorDetail.publicSymbol}}</div>
+				</div>
+				<div class="form-group col-sm-12 col-md-12 col-lg-12" data-ng-if="canAccess('vm','Company.TypeOfBusiness')">
+					<label class="col-sm-6 col-md-6 col-lg-6 text-right control-label">{{'companyProfile.companyInformation.label.typeofBusiness'
+						| translate}}&nbsp;<sup class="asterisk">*</sup>
+					</label>
+					<div class="col-sm-6 col-md-6 col-lg-6 break-word">
+						<span
+							ng-repeat="item in vendorBusinessLookup | filter:{value:companyInfo.VendorDetail.typeOfBusinessCode}:true">
+							{{item.label}} </span>
+					</div>
+				</div>
+				<div class="form-group col-sm-12 col-md-12 col-lg-12" data-ng-if="canAccess('vm','Company.ParentCompany')">
+					<label class="col-sm-6 col-md-6 col-lg-6 text-right control-label">{{'companyProfile.companyInformation.label.parentCompany'
+						| translate}}</label>
+					<div class="col-sm-6 col-md-6 col-lg-6 break-word">
+						{{companyInfo.VendorDetail.parentCompany}}</div>
+				</div>
+				<div class="form-group col-sm-12 col-md-12 col-lg-12" data-ng-if="canAccess('vm','Company.DescOfYourBusiness')">
+					<label class="col-sm-6 col-md-6 col-lg-6 text-right control-label">{{'companyProfile.companyInformation.label.descriptionBusiness'
+						| translate}} <span tooltip-append-to-body="true"
+						tooltip="{{'companyProfile.companyInformation.label.descriptionTooltip' | translate}}"
+						tooltip-placement="bottom"> <i
+							class="fa fa-question-circle fa-lg"></i>
+					</span>
+					</label>
+					<div class="col-sm-6 col-md-6 col-lg-6 break-word">
+						<textarea name="allowedSpecialCharacters" readonly
+								class="form-control input-sm resizeN" rows="3" col="2"
+								ng-model="companyInfo.VendorDetail.vendorDescription" maxLength="1024"
+								validator="validateAlphanumSpecial" valid-method="submit"
+								validate-alphanum-special-error-message="{{'common.errorMessage.allowedSpecialCharacters' | translate}}" ng-bind-html="companyInfo.VendorDetail.vendorDescription"></textarea>
+					</div>
+				</div>
+				<div class="form-group col-sm-12 col-md-12 col-lg-12" data-ng-if="canAccess('vm','Company.EDICapabilitiesForOrdAndInv')">
+					<label class="col-sm-6 col-md-6 col-lg-6 text-right control-label">{{'companyProfile.companyInformation.label.ediCapablityOrder'
+						| translate}} <span tooltip-append-to-body="true"
+						tooltip="{{'companyProfile.companyInformation.label.ediTooltip' | translate}}"
+						tooltip-placement="bottom"> <i
+							class="fa fa-question-circle fa-lg"></i>
+					</span>
+					</label>
+					<div class="col-sm-6 col-md-6 col-lg-6 break-word">
+						<span
+							ng-repeat="item in ediCapabilitiesLookup | filter:{value:companyInfo.VendorDetail.ediCapableCode}:true">
+							{{item.label}} </span>
+					</div>
+				</div>
+				<div class="form-group col-sm-12 col-md-12 col-lg-12" data-ng-if="canAccess('vm','Company.HasYouCompEverFailToFillBid')">
+					<label class="col-sm-6 col-md-6 col-lg-6 text-right control-label">{{'companyProfile.companyInformation.label.failedtoCompleteBid'
+						| translate}} </label>
+					<div class="col-sm-6 col-md-6 col-lg-6 break-word">
+						<span
+							ng-repeat="item in failedBidsLookup | filter:{value:companyInfo.VendorDetail.failedBidCode}:true">
+							{{item.label}} </span>
+					</div>
+				</div>
+				<div class="form-group col-sm-12 col-md-12 col-lg-12"
+						data-ng-show="companyInfo.VendorDetail.failedBidCode == 'Y'">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right">
+							{{'companyProfile.companyInformation.label.pleaseExplainIfYes' |
+							translate}}&nbsp;<sup class="asterisk">*</sup>
+						</label>
+						<div class="col-sm-6 col-md-6 col-lg-6">
+							<span data-ng-if="companyInfo.VendorDetail.failedBidCode == 'Y'">
+								<div class="boderedDiv">{{companyInfo.VendorDetail.failedBidExplanation}}</div>
+							</span> 
+						</div>
+					</div>
+			</div>
+			<div class="col-sm-6 col-md-6 col-lg-6 marginB1">
+				<div class="form-group col-sm-12 col-md-12 col-lg-12" data-ng-if="canAccess('vm','Company.ProvinceOfIncorporation')">
+					<label class="col-sm-6 col-md-6 col-lg-6 text-right control-label">{{'companyProfile.companyInformation.label.stateProvince'
+						| translate}}</label>
+					<div class="col-sm-6 col-md-6 col-lg-6 break-word">
+						<span
+							ng-repeat="item in stateLookup | filter:{stateName:companyInfo.VendorDetail.stateOrProvinceOfInc}:true">
+							{{item.stateName}} </span> <span
+							ng-repeat="item in stateCanLookup | filter:{stateName:companyInfo.VendorDetail.stateOrProvinceOfInc}:true">
+							{{item.stateName}} </span> <span
+							ng-repeat="item in stateUsOtherLookup | filter:{stateName:companyInfo.VendorDetail.stateOrProvinceOfInc}:true">
+							{{item.stateName}} </span>
+					</div>
+				</div>
+				<div class="form-group col-sm-12 col-md-6 col-lg-12" data-ng-if="canAccess('vm','Company.DateYouWereFounded')">
+					<label class="col-sm-6 col-md-6 col-lg-6 text-right control-label">{{'companyProfile.companyInformation.label.dateFounded'
+						| translate}}&nbsp;<sup class="asterisk">*</sup>
+					</label>
+					<div class="col-sm-6 col-md-6 col-lg-6 break-word">
+						<span data-ng-if="companyInfo.VendorDetail.foundedMonthCode<=9">0{{companyInfo.VendorDetail.foundedMonthCode}}/{{companyInfo.VendorDetail.foundedYearStr}}</span>
+						<span data-ng-if="companyInfo.VendorDetail.foundedMonthCode>9">{{companyInfo.VendorDetail.foundedMonthCode}}/{{companyInfo.VendorDetail.foundedYearStr}}</span>
+					</div>
+				</div>
+				<div class="form-group col-sm-12 col-md-12 col-lg-12" data-ng-if="canAccess('vm','Company.NoOfEmployees')">
+					<label class="col-sm-6 col-md-6 col-lg-6 text-right control-label">{{'companyProfile.companyInformation.label.totalEmployees'
+						| translate}}</label>
+					<div class="col-sm-6 col-md-6 col-lg-6 break-word">
+						{{companyInfo.VendorDetail.numberOfEmployeesStr}}</div>
+				</div>
+				<div class="form-group col-sm-12 col-md-12 col-lg-12" data-ng-if="canAccess('vm','Company.BestDescOfCompanyFunc')">
+					<label class="col-sm-6 col-md-6 col-lg-6 text-right control-label">{{'companyProfile.companyInformation.label.bestDescribesCompany'
+						| translate}}</label>
+					<div class="col-sm-6 col-md-6 col-lg-6 break-word">
+						<div
+							ng-if="companyInfo.VendorDetail.functionBrokerStr == 'true'">
+							{{'companyProfile.companyInformation.label.broker' | translate}}</div>
+						<div
+							ng-if="companyInfo.VendorDetail.functionDistributorStr == 'true'">
+							{{'companyProfile.companyInformation.label.distributor' |
+							translate}}</div>
+						<div
+							ng-if="companyInfo.VendorDetail.functionManufStr == 'true'">
+							{{'companyProfile.companyInformation.label.manufacturer' |
+							translate}}</div>
+						<div
+							ng-if="companyInfo.VendorDetail.functionManufRepStr == 'true'">
+							{{'companyProfile.companyInformation.label.manufacturerRepresentative'
+							| translate}}</div>
+						<div
+							ng-if="companyInfo.VendorDetail.functionServicesStr == 'true'">
+							{{'companyProfile.companyInformation.label.services' |
+							translate}}</div>
+					</div>
+				</div>
+				<div class="form-group col-sm-12 col-md-12 col-lg-12" data-ng-if="canAccess('vm','Company.DollarAmtOfLargestContract')">
+					<label class="col-sm-6 col-md-6 col-lg-6 text-right control-label">{{'companyProfile.companyInformation.label.dollarAmount'
+						| translate}}</label>
+					<div class="col-sm-6 col-md-6 col-lg-6 break-word">
+						{{companyInfo.VendorDetail.largestContractAmountStr |
+						currency}}</div>
+				</div>
+
+				<div class="form-group col-sm-12 col-md-12 col-lg-12" data-ng-if="canAccess('vm','Company.AreYouMemberOfGPO')">
+					<label class="col-sm-6 col-md-6 col-lg-6 text-right control-label">{{'companyProfile.companyInformation.label.contractGroupPurchasing'
+						| translate}}</label>
+					
+					<div class="col-sm-6 col-md-6 col-lg-6 break-word">
+						<div ng-show="companyInfo.VendorDetail.gpoMember==true"> 
+								<div>{{'common.yes'| translate}}</div>
+							<div class="boderedDiv">
+								<div ng-repeat="gpo in companyInfo.vendorGPOList">{{gpo.name}}</div>
+								<div ng-show="companyInfo.VendorDetail.gpoOther != ''">{{companyInfo.VendorDetail.gpoOther}}</div>
+								<div ng-if="!companyInfo.vendorGPOList && !companyInfo.VendorDetail.gpoOther">{{'companyProfile.companyInformation.errorMessage.noSelectedGPO'| translate}}</div>
+							</div>
+						</div>
+						<div ng-show="companyInfo.VendorDetail.gpoMember == false" >{{'common.no'| translate}} </div>
+				</div>
+			</div>
+		</div>
+		</vision-action>
+	</div>
+</div>

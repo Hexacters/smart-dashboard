@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<module id="resourceCenterModule">
+	<routers>
+		<router id="resourceCenter" sticky="true" url="/resourceCenter">
+			<views>
+				<view containerId="vendordash" templateUrl="app/ng1/views/resourceCenter/resourceCenter.html"></view>
+			</views>
+		</router>
+		<router id="resourceCenter.feinAdminResource" url="/feinAdminResources">
+			<views>
+				<view containerId="feinAdminResources" templateUrl="app/ng1/views/resourceCenter/feinAdminResource.html"></view>
+			</views>
+		</router>
+		<router id="resourceCenter.feinRepResource" url="/feinRepResources">
+			<views>
+				<view containerId="fienRepResources" templateUrl="app/ng1/views/resourceCenter/feinRepResources.html"></view>
+			</views>
+		</router>
+		<router id="resourceCenter.vendormateAdminResources" url="/userAdminResources">
+			<views>
+				<view containerId="vendormateAdminResources" templateUrl="app/ng1/views/resourceCenter/vendormateAdminResources.html"></view>
+			</views>
+		</router>
+		<router id="resourceCenter.vendormateRepResources" url="/userRepResources">
+			<views>
+				<view containerId="vendormateRepResources" templateUrl="app/ng1/views/resourceCenter/vendormateRepResources.html"></view>
+			</views>
+		</router>
+		<router id="resourceCenter.healthSystem" url="/healthSystemPoliciesLibrary">
+			<views>
+				<view containerId="healthSystemPoliciesLibrary" templateUrl="app/ng1/views/resourceCenter/healthSystemPoliciesLibrary.html"></view>
+			</views>
+		</router>
+	</routers>
+	<services id="resourceCenterServices">
+		<operations>
+			<operation name="feinAdminResource" requestWrapper="request" responseWrapper="response" requestType="json" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/resourceCenter/feinAdminResource.json" mock="false"></operation>
+			<operation name="feinRepResource" requestWrapper="request" responseWrapper="response" requestType="json" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/resourceCenter/feinRepResource.json" mock="false"></operation>
+			<operation name="vendormateRepResource" requestWrapper="request" responseWrapper="response" requestType="json" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/resourceCenter/vendormateRepResource.json" mock="false"></operation>
+			<operation name="getAssociatedCompanies" serviceName="vendor" requestWrapper="request" responseWrapper="response" requestType="json" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/resourceCenter/getAssociatedCompanies.json" mock="false">
+				<params>
+					<param name="userOid" source="userProfile" key="id"></param>					
+				</params>
+			</operation>
+			<operation name="getResourceMetaData" serviceName="common" requestWrapper="request" responseWrapper="response" requestType="json" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/resourceCenter/getResourceMetaData.json" mock="false">
+				<params>
+					<param name="vendorOid" source="userProfile" key="detail.vendorOid"></param>
+					<param name="resourceCategory" source="static" value="FA"></param>					
+				</params>
+			</operation>
+			<operation name="getVendormateAdminRepResource" targetOperation="getResourceMetaData" serviceName="common" requestWrapper="request" responseWrapper="response" requestType="json" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/resourceCenter/getResourceMetaData.json" mock="false">
+				<params>
+					<param name="vendorOid" source="userProfile" key="detail.vendorOid"></param>
+				</params>
+			</operation>
+			<operation name="getFeinAdminRepResourceMetaData" targetOperation="getResourceMetaData" serviceName="common" requestWrapper="request" responseWrapper="response" requestType="json" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/resourceCenter/getResourceMetaData.json" mock="false"></operation>
+			<operation name="getCustomers" serviceName="customers" requestWrapper="request" responseWrapper="response" requestType="json" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/resourceCenter/getCustomers.json" mock="false">
+				<params>
+					<param name="dir" source="static" value="asc"></param>
+					<param name="isVisionSearchableCustomer" source="static" value="true"></param>
+					<param name="sort" source="static" value="companyName_sort"></param>
+					<param name="searchFields" source="static" value="verticalCode"></param>
+					<param name="searchMode" source="static" value="vendor"></param>
+					<param name="searchString" source="static" value="HLTH"></param>
+					<param name="searchType" source="static" value="Exact"></param>
+				</params>
+			</operation>
+			<operation name="getCustomerPolicies" serviceName="customers" requestWrapper="request" responseWrapper="response" requestType="json" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/resourceCenter/getCustomerPolicies.json" mock="false">
+				<params>
+					<param name="configDocType" source="static" value="POLF"></param>
+					<param name="customerOid" source="data" key="customerOid" module="SinglePolicy"></param>
+				</params>
+			</operation>
+			<operation name="getCustomerPoliciesMetaData" serviceName="customers" requestWrapper="request" responseWrapper="response" requestType="json" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/resourceCenter/vendormateAdminResource.json" mock="false">
+				<params>
+					<param name="customerOid" source="data" key="customerOid" module="SinglePolicy"></param>
+				</params>
+			</operation>
+			<operation name="getCustomerConfigDocMetaData" serviceName="customers" requestWrapper="request" responseWrapper="response" requestType="json" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/resourceCenter/vendormateAdminResource.json" mock="false">
+				<params>
+					<param name="configDocType" source="static" value="POLF"></param>
+					<param name="customerOid" source="data" key="customerOid" module="SinglePolicy"></param>
+				</params>
+			</operation>
+		</operations>
+	</services>
+</module>

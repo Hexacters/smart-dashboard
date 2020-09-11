@@ -1,0 +1,399 @@
+{
+	"mock": true,
+	"locale": "en-US",
+	"supportedLanguages": "",
+	"synchronousCall": true,
+	"initModule": {
+		"file": [
+			"app/ng1/config/users/users.xml",
+			"app/ng1/config/home/home.xml",
+			"app/ng1/config/myDocuments/myDocuments.xml",
+			"app/ng1/config/accounts/accounts.xml",
+			"app/ng1/config/manageReps/manageReps.xml",
+			"app/ng1/config/resourceCenter/resourceCenter.xml",
+			"app/ng1/config/extras/extras.xml",
+			"app/ng1/config/myProfile/myProfile.xml",
+			"app/ng1/config/manageRepProfile/manageRepProfile.xml",
+			"app/ng1/config/manageRepMyDocuments/manageRepMyDocuments.xml",
+			"app/ng1/config/manageRepCompanyProfile/manageRepCompanyProfile.xml",
+			"app/ng1/config/shareCredentials/shareCredentials.xml",
+			"app/ng1/config/printBadge/printBadge.xml",
+			"app/ng1/config/repRequestAppointment/repRequestAppointment.xml",
+			"app/ng1/config/signOut/signOut.xml",
+			"app/ng1/config/documentAlert/documentAlert.xml",
+			"app/ng1/config/companyProfile/companyProfile.xml",
+			"app/ng1/config/registration/registration.xml",
+			"app/ng1/config/reports/reports.xml",
+			"app/ng1/config/cardProfile/cardProfile.xml",
+			"app/ng1/config/shoppingCart/shoppingCart.xml",
+			"app/ng1/config/addNewRep/addNewRep.xml",
+			"app/ng1/config/accountDetails/accountDetails.xml",
+			"app/ng1/config/paymentReceipt/paymentReceipt.xml",
+			"app/ng1/config/cardManagement/cardManagement.xml"
+		]
+	},
+	"defaultDashboard": "decideLanding",
+	"defaultLandingPage": "decideLanding",
+	"serviceBaseURL": "",
+	"file": {
+		"downloadURL": "VMClientProxyServlet?service=blob&operation=getBlob",
+		"uploadURL": "services/uploadFile?service=fileupload&operation=uploadFile",
+		"maxFileSize": "5",
+		"autoUpload": true
+	},
+	"request": {
+		"param": "visionRequest",
+		"value": "VisionRequest"
+	},
+	"response": {
+		"param": "VisionResponse",
+		"successFlag": "Status=Ok",
+		"failureFlag": "Status=Error"
+	},
+	"requestHeader": {
+		"param": "Authorization",
+		"value": "Bearer "
+	},
+	"authentication": {
+		"mode":"SSO",
+		"required": true,
+		"page": "login",
+		"SSOLogoutUrl": "logout",
+		"passwordExpired": "resetPassword",
+		"accessDenied": "login",
+		"attemptFailure": "login/loginAttemptFailure",
+		"attemptLock": "login/userAttemptLock",
+		"entryPointUrls": "goToDashboard,dashBoard"
+	},
+	"authorization": {
+		"required": true,
+		"page": "permissionDenied"
+	},
+	"googleAnalytics": {
+		"required": false,
+		"accountId": "UA-33166864-1",
+		"domainName": "none",
+		"trackPrefix": ""
+	},
+	"dashboards": {
+		"dashboardKey": "userProfile.detail.actorType",
+		"VREP": {
+			"authTrueUrlLandingPage": "home"
+		}
+	},
+	"sessionExpiration": {
+		"alertBeforeSec": 60,
+		"sessionTimeoutInSec": 2400,
+		"service": "users",
+		"operation": "setSessionAlive"
+	},
+	"html5Mode": false,
+	"ghxPortalUrl":"https://login.ghx.com",
+	"publicSymbolFinLink": "http://finance.yahoo.com/q/is?s=PUBLIC_SYMBOL+Income+Statement&annual",
+	"system": {
+		"production": "local"
+	},
+	"allow": {
+		"login": {
+			"attempt": "3"
+		},
+		"invitations": {
+			"reps": "10",
+			"accounts": "10"
+		}
+	},
+	"selected": {
+		"products": {
+			"maxLimit": "1500"
+		}
+	},
+	"services": {
+		"config": {
+			"file": {
+				"path": "app/ng1/config/Services.xml"
+			}
+		},
+		"ip": "visionServices:9090",
+		"readendpoint": "/visionServices/services/rest/",
+		"secureendpoint": "/visionServices/services/rest/secure/"
+	},
+	"service": {
+		"def": {
+			"schema": {
+				"version": "1.1"
+			}
+		}
+	},
+	"auth": {
+		"type": "TOKEN"
+	},
+	"client": {
+		"id": "VD"
+	},
+	"google": {
+		"analytics": {
+			"pageTrack": "true",
+			"eventTrack": "true",
+			"accountNumber": "UA-33166864-1-11111"
+		}
+	},
+	"appointment": {
+		"time": "1"
+	},
+	"maximum": {
+		"sharecredential": {
+			"document": "25"
+		}
+	},
+	"reportDash": {
+		"synchronized": {
+			"call": "true"
+		}
+	},
+	"vendorDash": {
+		"postMessage": {
+			"enabled": "true"
+		}
+	},
+	"visionCore": {
+		"synchronized": {
+			"call": "true"
+		},
+		"alive": {
+			"contextroot": "vm"
+		}
+	},
+	"uploaded": {
+		"doc": {
+			"byte": {
+				"size": "200"
+			}
+		}
+	},
+	"http": {
+		"client": {
+			"timeout": "60"
+		}
+	},
+	"pcmservices": {
+		"ip": "pcmServices:5050",
+		"readendpoint": "/pcmServices/services/rest/",
+		"secureendpoint": "/pcmServices/services/rest/secure/"
+	},
+	"shoppingCartservices": {
+		"ip": "cartServices:5050",
+		"readendpoint": "/cartServices/services/rest/",
+		"secureendpoint": "/cartServices/services/rest/secure/"
+	},
+	"cardManagementApi": {
+		"ip": "https://iwddwi3up5.execute-api.us-east-1.amazonaws.com/dev/v1",
+		"readendpoint": "/",
+		"secureendpoint": "/"
+	},
+	"paymentTechApi": {
+		"ip": "localhost:https://7so5qo3rad.execute-api.us-east-1.amazonaws.com/dev/v1",
+		"readendpoint": "/",
+		"secureendpoint": "/"
+	},
+	"context": {
+		"root": "vm"
+	},
+	"base": {
+		"domain": {
+			"url": "vendormate:8080"
+		}
+	},
+	"forcehttps": "false",
+	"sharedrepclient": {
+		"username": "share@externalclient.com",
+		"password": "G2dd0vPYt/vYRF71JwFOqXE6mEijzSut9Ffp2/kOokSAPPGI/q0VIQ==",
+		"apikey": "94B63DEA9D88FB61"
+	},
+	"reportdash": {
+		"url": "http://rd.local:6060/rd/showReports",
+		"token": "sLsWwChRjnSPL42oXZn8VKaxsRkXEGJE",
+		"alive": {
+			"contextroot": "rd"
+		}
+	},
+	"vdbindex": {
+		"token": "sLsWwChRjnRT6q5VrxWrmeyVz43rEn+D"
+	},
+	"core": {
+		"token": "sLsWwChRjnRT6q5VrxWrmZgV/uEQfC5l"
+	},
+	"cr": {
+		"secure": {
+			"entryPoint": {
+				"url": "http://pcm.local:5050/pcm/secure/goToPCM"
+			}
+		}
+	},
+	"mongo": {
+		"dbname": "vision_rc",
+		"readPreference": "primary"
+	},
+	"customerSearch": {
+		"url": "http://cs.local:6060/cs/"
+	},
+	"medzo": {
+		"secure": {
+			"entryPoint": {
+				"url": "http://medzo.local:5050/medzo/#/goToHDM"
+			}
+		}
+	},
+	"buyerDash": {
+		"access": {
+			"url": "http://bdb.local:6060/bdb"
+		}
+	},
+	"public": {
+		"symbol": {
+			"fin": {
+				"link": "http://finance.yahoo.com/q/is?s=PUBLIC_SYMBOL+Income+Statement&annual"
+			}
+		}
+	},
+	"kioskServices": {
+		"ip": "http://kioskServices:9090",
+		"readendpoint": "/kioskServices/services/rest/",
+		"secureendpoint": "/kioskServices/services/rest/secure/"
+	},
+	"allowed": {
+		"xframe": {
+			"hosts": "vendormate:880"
+		}
+	},
+	"rm": {
+		"access": {
+			"url": "http://vendormate:8080/vm"
+		}
+	},
+	"enable": {
+		"new": {
+			"registration": "true"
+		}
+	},
+	"registrationUI": {
+		"url": "http://reg.local:7070/reg"
+	},
+	"footer": {
+		"termsOfUse": "http://www.ghx.com/terms-of-use/",
+		"privacyPolicy": "http://www.ghx.com/privacy-policy/",
+		"support": "http://www.ghx.com/support/",
+		"salesforce": {
+			"support": {
+				"url": "https://dev-ghxcommunity.cs26.force.com/community/apex/webtocaseform",
+				"token": "3248deab8723123e987gd43fq1q0p"
+			}
+		}
+	},
+	"header": {
+		"supplierURL": "http://www.ghx.com/GHX_Learning_Center/Help/VendormateCredentialing_Supplier/Default.htm"
+	},
+	"unspsc": {
+		"url": "http://www.unspsc.org/CodeDownloadExpand.asp?PageID=4&MenuLoc=1"
+	},
+	"ghxPurchasePlan": {
+		"url": "http://ghx.com/vendormate/purchase-plans"
+	},
+	"ghx": {
+		"systemInfo": {
+			"url": "//systemstatus.ghx.com"
+		}
+	},
+	"extAppName": "",
+	"cpm": {
+		"login": {
+			"url": "http://cpm.local:7070/cpm"
+		}
+	},
+	"idp": {
+		"client": {
+			"id": "F1CF9FF6A4E667C2243F6D950509ACA608F526E6",
+			"secret": "439B029CE0EF86A4A2D27BBD44F1CA429EE5939E"
+		},
+		"scope": "openid profile offline_access email",
+		"redirect": {
+			"uri": "http://vdb.local:6060/vdb/openid_connect_login"
+		},
+		"token": {
+			"grant": {
+				"type": "authorization_code"
+			}
+		},
+		"logout": {
+			"redirect": {
+				"uri": "http://vdb.local:6060/vdb/openid_connect_login"
+			}
+		}
+	},
+	"static": {
+		"client": {
+			"id": "B28E073EF48C2C98D1D6ADF114FECD05EADDBDD7",
+			"secret": "F918944E19B3D0EFF9D7891FF18E7BC05D8D7947",
+			"refresh": {
+				"token": "eyJhbGciOiJub25lIn0.eyJqdGkiOiI4ZDk1ODE1My0xNzY1LTQ4YmQtOTBkMS1mYjEzZThjOGE5MzAifQ."
+			}
+		}
+	},
+	"ghxEducationVideo": {
+		"supplierSetup": "http://www.ghx.com/GHX_Learning_Center/VideoTutorials/VMC_Supplier/VMC_Supplier_Reg/Vendormate_Credentialing_Supplier_Registration_Setup_Storyline_output/story_html5.html",
+		"supplierRegister": "http://www.ghx.com/GHX_Learning_Center/VideoTutorials/VMC_Supplier/VMC_Supplier_Reg/Vendormate_Credentialing_Supplier_Registration_Storyline_output/story_html5.html"
+	},
+	"background": {
+		"checks": {
+			"registration": "https://partners.backgroundsonline.com/CreateAccount.aspx?FlowID=89&CompanyID=154&",
+			"renewal": "https://partners.backgroundsonline.com/Login.aspx?CompanyID=154&",
+			"cbcRegistration": "https://partners.backgroundsonline.com/CreateAccount.aspx?FlowID=98&CompanyID=158&",
+			"cbcRenewal": "https://partners.backgroundsonline.com/Login.aspx?CompanyID=158&"
+		}
+	},
+	"pci": {
+		"enable": "true",
+		"paymentTechGetUIDUrl": "https://www.chasepaymentechhostedpay-var.com/direct/services/request/init?",
+		"hostedSecureID": "cpt560340738017SB",
+		"hostedSecureAPIToken": "1ab67dc3aaa7516e7c477d930b06565f",
+		"callback_url": "http://vdb.local:6060/vdb/callBack.html",
+		"cardprofile_callback_url": "http://vdb.local:6060/vdb/cardProfileCallBack.html",
+		"css_url": "http://vdb.local:6060/vdb/css/app.css",
+		"cardprofile_css_url": "https://dev.vendormate.net/vdb/css/cardprofile.css",
+		"shoppingCart_callback_url": "https://dev.vendormate.net/vdb/shoppingCartCallBack.html",
+		"shoppingCart_css_url": "https://dev.vendormate.net/vdb/css/shoppingCartPayment.css",
+		"shoppingCartCardProfile_callback_url": "https://dev.vendormate.net/vdb/shoppingCartCardProfileCallBack.html",
+		"cardManagement_callback_url": "https://dev.vendormate.net/vdb/cardManagementCallBack.html",
+		"cardManagement_css_url": "https://dev.vendormate.net/vdb/css/cardprofile.css",
+		"max_user_retries": "3",
+		"hosted_tokenize": "store_authorize",
+		"trans_type": "auth_capture",
+		"payment_type": "Credit_Card",
+		"allowed_types": "Visa|MasterCard|American Express",
+		"collectAddress": "0",
+		"cardIndicators": "N",
+		"order_desc": "Vendormate",
+		"order_id": "Vendormate",
+		"submit": "Create payment form",
+		"customerCareURL": "http://ghx.com/customer-care",
+		"paymentTechFrameURL": "https://www.chasepaymentechhostedpay-var.com/hpf/1_1?",
+		"shopping_cart_order_id": "Open Access",
+		"shopping_cart_order_desc": "Open Access",
+		"addNewRep_callback_url": "https://dev.vendormate.net/vdb/addNewRepCallBack.html"
+	},
+	"event": {
+		"log": {
+			"enabled": "true"
+		}
+	},
+	"openAccessPlan": {
+		"maxRepCount": "9"
+	},
+	"ringCentralChat": {
+		"startTime": "9",
+		"endTime": "20",
+		"officeWorkingDays": "1,2,3,4,5"
+	},
+	"pricingTier": {
+		"enabled": "true"
+	}
+}

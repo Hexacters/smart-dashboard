@@ -1,0 +1,13 @@
+<div class="modal-content">
+	<div class="modal-body padding0">
+		<div class="margin" id="displayloader"><img src="app/ng1/img/ajax-loader-autocomplete.gif" class="marginBt"></div>
+	    <iframe id="siteInformatationUrl"
+			src="{{systemInfoUrl}}"
+			class="site-iframe"
+			onLoad="desktopIconFrame()"></iframe>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-primary" id="systemInformationClose" data-dismiss="modal"
+			ng-click="closeInformation()">{{'common.close' | translate}}</button>
+	</div>
+</div>

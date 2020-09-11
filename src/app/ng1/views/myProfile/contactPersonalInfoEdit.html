@@ -1,0 +1,295 @@
+<div class="row">
+	<div class="col-sm-12 col-md-12 col-lg-12"
+		data-ng-class="{'dNone':!loading}">
+		<img align="absmiddle" src="app/ng1/img/partial-loading.gif">&nbsp;{{'common.loading'
+		| translate}}
+	</div>
+	<div class="col-sm-12 col-md-12 col-lg-12">
+		<div class="col-sm-8 col-md-6 col-lg-6">
+			<h3>{{'myProfile.contactAndPersonalInformation.label.contactPersonalInformation'
+				| translate}}</h3>
+		</div>
+		<div class="col-sm-4 col-md-6 col-lg-6">
+			<div class="pull-right marginT2">
+				<sup class="asterisk">*</sup>&nbsp;{{'common.required' |
+				translate}}&nbsp;&nbsp; <a
+					data-ui-sref="myProfile.contactPersonalInfoEdit.help"
+					ng-show="!isFromManageReps">{{'common.help' |
+					translate}}</a> <a
+					data-ui-sref="manage.repAccountDetails.manageRepProfile.contactPersonalInfoEdit.help"
+					ng-show="isFromManageReps">{{'common.help' |
+					translate}}</a>
+			</div>
+		</div>
+		<div class="col-sm-12 col-md-12 col-lg-12">
+			<p>{{'myProfile.contactAndPersonalInformation.label.contactPersonalInfoUsedGov'
+				| translate}}</p>
+		</div>
+		<div class="col-sm-12 col-md-12 col-lg-12"
+			ng-controller="myProfileController">
+			<vision-action> <get-data service="myProfileServices"
+				operation="getUser" root-Node="data.successData" response-formatter="formateDobString"
+				></get-data> <submit-data request-formatter="changeDobToDobString"
+				service="myProfileServices" operation="updateUserProcess"
+				callback="contactEditInfo"
+				remove-keys="User.passwordExpDate,User.professionalLicenseExemptStr,User.professionalLicenseExempt,User.professionalLicense,User.professionalDesignationExempt,User.professionalDesignationExemptStr,User.professionalDesignation">
+			</submit-data>
+			<form novalidate name="contactPersonalInformationEdit"
+				autocomplete="off" class="form-horizontal">
+				<div class="table-responsive"
+					data-ng-if="contactPersonalInfoSubmitError.status === 'error'">
+					<div class="alert alert-danger">
+						{{contactPersonalInfoSubmitError.errorData.ResponseError[0].errorCode | translate}}</div>
+				</div>
+				<div class="col-sm-6 col-md-6 col-lg-6">
+					<div class="form-group">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right">{{'myProfile.contactAndPersonalInformation.label.socialTitle'
+							| translate}}</label>
+						<div class="col-sm-6 col-md-6 col-lg-6">
+							<select class="form-control col-md-12 input-sm" name="salutation"
+								focus-me="true" id="salutation" ng-model="data.User.salutation">
+								<option value=""></option>
+								<option ng-repeat="option in saluationLookup"
+									value="{{option.value}}">{{option.label}}</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right">
+							{{'myProfile.contactAndPersonalInformation.label.firstName' |
+							translate}}&nbsp;<sup class="asterisk">*</sup>
+						</label>
+						<div class="col-sm-6 col-md-6 col-lg-6">
+							<input type="text" maxLength="50"
+								id="myProfile.contactPersonalInfoView.firstName"
+								class="form-control input-sm required" name="socialTitle"
+								data-ng-model="data.User.firstName"
+								validator="required, validateAlphaWithOneSpaceAndPunctuation"
+								required-error-message="{{'myProfile.contactAndPersonalInformation.errorMessage.firstNameRequired' | translate}}"
+								validate-Alpha-With-One-Space-And-Punctuation-error-message="{{'common.errorMessage.firstNameValidateAlpha' | translate}}"
+								valid-method="watch" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right">
+							{{'myProfile.contactAndPersonalInformation.label.middleName' |
+							translate}}&nbsp;<sup class="asterisk">*</sup> <span
+							tooltip-append-to-body="true" tooltip-placement="bottom"
+							tooltip="{{'myProfile.contactAndPersonalInformation.label.middleNameTooltip' | translate}}">
+								<i class="fa fa-question-circle fa-lg"></i>
+						</span>
+						</label>
+						<div class="col-sm-6 col-md-6 col-lg-6">
+							<span ng-if="data.User.middleInitialExempt === true"><input
+								type="text" id="myProfile.contactPersonalInfoView.middleInitial"
+								maxLength="50" readonly="true" class="form-control input-sm"
+								name="middleName" data-ng-model="data.User.middleInitial"
+								ng-init="data.User.middleInitial = ''"></span> <span
+								ng-if="data.User.middleInitialExempt === false"><input
+								type="text" id="myProfile.contactPersonalInfoView.middleInitial"
+								maxLength="50" class="form-control input-sm required"
+								name="middleName" data-ng-model="data.User.middleInitial"
+								validator="required, validateAlphaWithOneSpaceAndPunctuation"
+								required-error-message="{{'myProfile.contactAndPersonalInformation.errorMessage.middleNameRequired' | translate}}"
+								validate-Alpha-With-One-Space-And-Punctuation-error-message="{{'common.errorMessage.middleNameValidateAlpha' | translate}}"
+								valid-method="watch"></span>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right">{{'myProfile.contactAndPersonalInformation.label.iDoNotHaveMiddleName'
+							| translate}} <span tooltip-append-to-body="true"
+							tooltip-placement="bottom"
+							tooltip="{{'myProfile.contactAndPersonalInformation.label.notHaveaMiddleNameTooltip' | translate}}">
+								<i class="fa fa-question-circle fa-lg"></i>
+						</span>
+						</label>
+						<div class="col-sm-6 col-md-6 col-lg-6">
+							<input name="middleInitialExemptStr" type="checkbox"
+								class="input-sm"
+								ng-checked="data.User.middleInitialExemptStr = data.User.middleInitialExempt"
+								ng-model="data.User.middleInitialExempt" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right">
+							{{'myProfile.contactAndPersonalInformation.label.lastName' |
+							translate}}&nbsp;<sup class="asterisk">*</sup>
+						</label>
+						<div class="col-sm-6 col-md-6 col-lg-6">
+							<input type="text"
+								id="myProfile.contactPersonalInfoView.lastName" maxLength="50"
+								class="form-control input-sm required" name="lastName"
+								data-ng-model="data.User.lastName"
+								validator="required, validateAlphaWithOneSpaceAndPunctuation"
+								required-error-message="{{'myProfile.contactAndPersonalInformation.errorMessage.lastNameRequired' | translate}}"
+								validate-Alpha-With-One-Space-And-Punctuation-error-message="{{'common.errorMessage.lastNameValidateAlpha' | translate}}"
+								valid-method="watch" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right">
+							{{'myProfile.contactAndPersonalInformation.label.suffix' |
+							translate}}&nbsp;<sup class="asterisk">*</sup> <span
+							tooltip-append-to-body="true" tooltip-placement="bottom"
+							tooltip="{{'myProfile.contactAndPersonalInformation.label.suffixTooltip' | translate}}">
+								<i class="fa fa-question-circle fa-lg"></i>
+						</span>
+						</label>
+						<div class="col-sm-6 col-md-6 col-lg-6">
+							<span ng-if="data.User.suffixExempt === true"><input
+								type="text" id="myProfile.contactPersonalInfoView.suffix"
+								maxLength="10" readonly="true" class="form-control input-sm"
+								name="suffix" data-ng-model="data.User.suffix"
+								data-ng-init="data.User.suffix = ''"></span> <span
+								ng-if="data.User.suffixExempt === false"><input
+								type="text" id="myProfile.contactPersonalInfoView.suffix"
+								maxLength="10" class="form-control input-sm required"
+								name="suffix" data-ng-model="data.User.suffix"
+								validator="required, validateAlphanumSpecial"
+								required-error-message="{{'myProfile.contactAndPersonalInformation.errorMessage.suffixRequired' | translate}}"
+								validate-alphanum-special-error-message="{{'common.errorMessage.allowedSpecialCharacters' | translate}}"
+								valid-method="watch"></span>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right">{{'myProfile.contactAndPersonalInformation.label.iDoNotHaveSuffix'
+							| translate}} <span tooltip-append-to-body="true"
+							tooltip-placement="bottom"
+							tooltip="{{'myProfile.contactAndPersonalInformation.label.notHaveaSuffixTooltip' | translate}}">
+								<i class="fa fa-question-circle fa-lg"></i>
+						</span>
+						</label>
+						<div class="col-sm-6 col-md-6 col-lg-6">
+							<input name="suffixExemptStr" type="checkbox" class="input-sm"
+								ng-checked="data.User.suffixExemptStr=data.User.suffixExempt"
+								ng-model="data.User.suffixExempt" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right">{{'myProfile.contactAndPersonalInformation.label.nickname'
+							| translate}}</label>
+						<div class="col-sm-6 col-md-6 col-lg-6">
+							<input type="text"
+								id="myProfile.contactPersonalInfoView.nickname" maxLength="50"
+								class="form-control input-sm" name="nickname"
+								validator="validateAlphaWithOneSpaceAndPunctuation"
+								validate-Alpha-With-One-Space-And-Punctuation-error-message="{{'common.errorMessage.nickNameValidateAlpha' | translate}}"
+								data-ng-model="data.User.nickName" />
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6 col-md-6 col-lg-6">
+					<div class="form-group">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right">
+							{{'myProfile.contactAndPersonalInformation.label.phone' |
+							translate}}&nbsp;<sup class="asterisk">*</sup>
+						</label>
+						<div class="col-sm-6 col-md-6 col-lg-6">
+							<input type="text"
+								id="myProfile.contactPersonalInfoView.contactPhone"
+								maxLength="20" class="form-control input-sm required"
+								name="contactPhone" data-ng-model="data.User.workPhone"
+								validator="required, validateAlphanumSpecial"
+								required-error-message="{{'myProfile.contactAndPersonalInformation.errorMessage.phoneRequired' | translate}}"
+								validate-alphanum-special-error-message="{{'common.errorMessage.allowedSpecialCharacters' | translate}}"
+								valid-method="watch" />
+						</div>
+					</div>
+					<!-- <div class="form-group">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right">{{'myProfile.contactAndPersonalInformation.label.cellPhone'
+							| translate}}</label>
+						<div class="col-sm-6 col-md-6 col-lg-6">
+							<input type="text"
+								id="myProfile.contactPersonalInfoView.cellPhone" maxLength="20"
+								validator="validateAlphanumSpecial"
+								validate-alphanum-special-error-message="{{'common.errorMessage.allowedSpecialCharacters' | translate}}"
+								class="form-control input-sm" name="cellPhone"
+								data-ng-model="data.User.cellPhone" />
+						</div>
+					</div> -->
+					<div class="form-group">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right">{{'myProfile.contactAndPersonalInformation.label.dateofBirth'
+							| translate}}&nbsp;<sup class="asterisk">*</sup> <span
+							tooltip-append-to-body="true" tooltip-placement="bottom"
+							tooltip="{{'myProfile.contactAndPersonalInformation.label.dateofBirthTooltip' | translate}}">
+								<i class="fa fa-question-circle fa-lg"></i>
+						</span>
+						</label>
+						<div class="col-sm-6 col-md-6 col-lg-6">
+							<input type="text"
+								id="myProfile.contactPersonalInfoView.dateofBirth"
+								class="form-control input-sm required" maxlength="10"
+								name="dateofBirth" data-ng-model="data.User.dob"
+								validator="required,validateDateWithYear,validateAlphanumSpecial"
+								required-error-message="{{'myProfile.contactAndPersonalInformation.errorMessage.dateOfBirthRequired' | translate}}"
+								validate-date-with-year-error-message="{{'myProfile.contactAndPersonalInformation.errorMessage.dobvalidateDate' | translate}}"
+								valid-method="watch" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right">{{'myProfile.contactAndPersonalInformation.label.homeResidenceCounty'
+							| translate}}</label>
+						<div class="col-sm-6 col-md-6 col-lg-6">
+							<input type="text"
+								id="myProfile.contactPersonalInfoView.homeResidenceCounty"
+								maxLength="50" class="form-control input-sm"
+								name="homeResidenceCounty"
+								validator="validateAlphaWithOneSpaceAndPunctuation"
+								validate-Alpha-With-One-Space-And-Punctuation-error-message="{{'common.errorMessage.homeResidenceValidateAlpha' | translate}}"
+								data-ng-model="data.User.residenceCounty" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right">{{'myProfile.contactAndPersonalInformation.label.homeResidenceState'
+							| translate}}</label>
+						<div class="col-sm-6 col-md-6 col-lg-6">
+							<select class="form-control col-md-12 input-sm"
+								name="countryCode" id="salutation"
+								ng-model="data.User.residenceState">
+								<option value=""></option>
+								<option ng-repeat="option in stateLookup"
+									value="{{option.stateCode}}">{{option.stateName}}</option>
+								<option value="">---------------</option>
+								<option ng-repeat="option in stateCanLookup"
+									value="{{option.stateCode}}">{{option.stateName}}</option>
+								<option value="">---------------</option>
+								<option ng-repeat="option in stateUsOtherLookup"
+									value="{{option.stateCode}}">{{option.stateName}}</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right">{{'myProfile.contactAndPersonalInformation.label.homeResidenceZipCode'
+							| translate}}</label>
+						<div class="col-sm-6 col-md-6 col-lg-6">
+							<input type="text"
+								id="myProfile.contactPersonalInfoView.homeResidenceZipCode"
+								maxLength="10" class="form-control input-sm" min-value="5" max-value="10"
+								name="homeResidenceZipCode" validator="validateAlphanumSpecial,validateMinMaxValue,validateAlphanumSpecial"
+								validate-alphanum-special-error-message="{{'common.errorMessage.allowedSpecialCharacters' | translate}}"
+								data-ng-model="data.User.residenceZip" validate-min-max-value-error-message="{{'common.errorMessage.invalidZipCodeLength' | translate}}" 
+								validate-alphanum-special-error-message="{{'common.specialCharactersNotAllowed' | translate}}"/>
+						</div>
+					</div>
+					<input type="hidden"
+						id="myProfile.contactPersonalInfoView.editFromAdmin"
+						name="isFromAdmin" data-ng-model="data.isFromAdmin" value="false" />
+					<input type="hidden" id="myProfile.contactPersonalInfoView.userOid"
+						name="userOid" data-ng-model="data.userOid"
+						value="{{userProfile.userOid}}" />
+					<div class="form-group">
+						<div
+							class="col-sm-6 col-md-6 col-lg-6 col-lg-offset-6 col-sm-offset-6 col-md-offset-6 text-left">
+							<button class="btn btn-success"
+								id="contactPersonalInformationEdit"
+								validation-submit="contactPersonalInformationEdit"
+								ng-click="submit();updateUserDetails(data.User.firstName, data.User.lastName, data.User.workPhone);callGAPageTrack('saveContactPersonalInfo');">{{'common.save'
+								| translate}}</button>
+						</div>
+					</div>
+				</div>
+			</form>
+			</vision-action>
+		</div>
+	</div>
+</div>

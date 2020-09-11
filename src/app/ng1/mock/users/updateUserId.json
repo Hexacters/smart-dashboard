@@ -1,0 +1,10 @@
+{
+    "VisionResponse": {
+        "Status": "Ok",
+        "ResponseError": [],
+        "userId": "ps101553@test.vm",
+        "password": "admin@123",
+        "mailSendStatus": "false",
+        "userOid": "000000530100000014b7"
+    }
+}

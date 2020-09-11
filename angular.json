@@ -1,0 +1,250 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "cpm-ui": {
+      "root": "",
+      "sourceRoot": "src",
+      "projectType": "application",
+      "prefix": "app",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "aot": true,
+            "outputPath": "dist/cpm-ui",
+            "index": "src/index.html",
+            "main": "src/main.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "src/tsconfig.app.json",
+            "assets": [
+              "src/favicon.ico",
+              "src/assets",
+              "src/app/ng1"
+            ],
+            "styles": [
+              "src/app/ng1/bower_components/fonts/glyphicons/css/site.css",
+              "src/app/ng1/css/app.css",
+              "src/app/ng1/css/style.css",
+              "src/app/ng1/bower_components/angular-ng-table/ng-table.min.css",
+              "src/styles.scss"
+            ],
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/popper.js/dist/umd/popper.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "src/app/ng1/js/moduleInitialize.js",
+              "src/app/ng1/bower_components/app-config-ui-router.js",
+              "src/app/ng1/bower_components/app-utils.js",
+              "src/app/ng1/bower_components/jquery/jquery-1.11.0.js",
+              "src/app/ng1/bower_components/1.3.13/angular/angular.js",
+              "src/app/ng1/bower_components/angular-bootstrap/ui-bootstrap-tpls.js",
+              "src/app/ng1/bower_components/xml2json/xml2json.js",
+              "src/app/ng1/bower_components/lodash/lodash.min.js",
+              "src/app/ng1/bower_components/angular-validation/angular-validation.min.js",
+              "src/app/ng1/bower_components/angular-validation/angular-validation-rule.min.js",
+              "src/app/ng1/bower_components/angular-validation/angular-validation-match.min.js",
+              "src/app/ng1/bower_components/angular-validation/creditcard.js",
+              "src/app/ng1/bower_components/angular-file-upload/angular-file-upload.min.js",
+              "src/app/ng1/bower_components/angular-ui-utils/ui-utils.min.js",
+              "src/app/ng1/bower_components/angular-ui-router/angular-ui-router.min.js",
+              "src/app/ng1/bower_components/angular-ui-router/ct-ui-router-extras.min.js",
+              "src/app/ng1/bower_components/angular-ui-router/statevis.min.js",
+              "src/app/ng1/bower_components/angular-acl/angular-acl.js",
+              "src/app/ng1/bower_components/1.3.13/angular-cookies/angular-cookies.min.js",
+              "src/app/ng1/bower_components/1.3.13/angular-sanitize/angular-sanitize.min.js",
+              "src/app/ng1/bower_components/1.3.13/angular-animate/angular-animate.min.js",
+              "src/app/ng1/bower_components/1.3.13/angular-translate/angular-translate.min.js",
+              "src/app/ng1/bower_components/angular-autocomplete/angucomplete.js",
+              "src/app/ng1/bower_components/angular-ng-table/ng-table.min.js",
+              "src/app/ng1/bower_components/bootstrap/bootstrap.min.js",
+              "src/app/ng1/bower_components/jquery-ui/jquery-ui.min.js",
+              "src/app/ng1/bower_components/jquery-smartmenu/jquery.smartmenus.min.js",
+              "src/app/ng1/bower_components/jquery-smartmenu/jquery.smartmenus.bootstrap.min.js",
+              "src/app/ng1/bower_components/angular-jqcloud/jqcloud-1.0.4.min.js",
+              "src/app/ng1/bower_components/angular-jqcloud/angular-jqcloud.js",
+              "src/app/ng1/bower_components/angular-calendar/gcal.min.js",
+              "src/app/ng1/bower_components/angular-calendar/angular-calendar.min.js",
+              "src/app/ng1/bower_components/angular-jwt/angular-jwt.js",
+              "src/app/ng1/bower_components/angular-google-analytics/angular-google-analytics.js",
+              "src/app/ng1/bower_components/angular-ui-select/select.js",
+              "src/app/ng1/bower_components/1.3.13/custom/bootstrap.js",
+              "src/app/ng1/bower_components/1.3.13/custom/providers.js",
+              "src/app/ng1/bower_components/1.3.13/custom/filters.js",
+              "src/app/ng1/bower_components/1.3.13/custom/security.js",
+              "src/app/ng1/bower_components/1.3.13/custom/components/visionDatatable-directive.js",
+              "src/app/ng1/bower_components/1.3.13/custom/components/visionAction-directive.js",
+              "src/app/ng1/bower_components/1.3.13/custom/components/visionFormExtras-directive.js",
+              "src/app/ng1/bower_components/1.3.13/custom/components/login-directive.js",
+              "src/app/ng1/bower_components/1.3.13/custom/components/fileUpload-directive.js",
+              "src/app/ng1/bower_components/1.3.13/custom/components/multiSelect-directive.js",
+              "src/app/ng1/bower_components/1.3.13/custom/components/loadingContainer-directive.js",
+              "src/app/ng1/bower_components/1.3.13/custom/components/verticalScroll-directive.js",
+              "src/app/ng1/bower_components/1.3.13/custom/components/imageCropper-directive.js",
+              "src/app/ng1/bower_components/1.3.13/custom/components/visionCheckAll-directive.js",
+              "src/app/ng1/bower_components/1.3.13/custom/components/setData-directive.js",
+              "src/app/ng1/bower_components/1.3.13/custom/components/autofocus-directive.js",
+              "src/app/ng1/bower_components/jquery-fileDownload/jquery.fileDownload.js",
+              "src/app/ng1/bower_components/angular-calendar/moment.min.js",
+              "src/app/ng1/bower_components/angular-datepicker-popup/datepickerPopup-directive.js",
+              "src/app/ng1/bower_components/1.3.13/custom/factories.js",
+              "src/app/ng1/bower_components/1.3.13/custom/templates.js",
+              "src/app/ng1/bower_components/1.3.13/custom/components/auto-login-directive.js",
+              "src/app/ng1/bower_components/jcrop/jquery.Jcrop.min.js",
+              "src/app/ng1/bower_components/jquery-maskedinput/jquery.maskedinput.min.js",
+              "src/app/ng1/bower_components/1.3.13/custom/components/interAppPopOver-directive.js",
+              "src/app/ng1/js/commonController.js",
+              "src/app/ng1/js/userController.js",
+              "src/app/ng1/js/homeController.js",
+              "src/app/ng1/js/signOutBadgeController.js",
+              "src/app/ng1/js/resourceCenterController.js",
+              "src/app/ng1/js/myProfileController.js",
+              "src/app/ng1/js/myDocumentController.js",
+              "src/app/ng1/js/manageRepController.js",
+              "src/app/ng1/js/documentAlertController.js",
+              "src/app/ng1/js/accountController.js",
+              "src/app/ng1/js/companyProfileController.js",
+              "src/app/ng1/js/printBadgeController.js",
+              "src/app/ng1/js/requestappointmentController.js",
+              "src/app/ng1/js/shareMyCredentialController.js",
+              "src/app/ng1/js/badgePhotoController.js",
+              "src/app/ng1/js/companyLogoController.js",
+              "src/app/ng1/js/inviteRepController.js",
+              "src/app/ng1/js/reportsController.js",
+              "src/app/ng1/js/registrationController.js",
+              "src/app/ng1/js/footerController.js",
+              "src/app/ng1/js/analyticsController.js",
+              "src/app/ng1/js/cardProfileController.js",
+              "src/app/ng1/js/shoppingCartController.js",
+              "src/app/ng1/js/addNewRepController.js",
+              "src/app/ng1/js/decideLandingController.js",
+              "src/app/ng1/js/paymentReceiptController.js",
+              "src/app/ng1/js/accountDetailController.js",
+              "src/app/ng1/js/cardManagementController.js",
+              "src/app/ng1/js/templates.js",
+              "src/app/ng1/js/auditService.js"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "cpm-ui:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "cpm-ui:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "cpm-ui:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "src/test.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "src/tsconfig.spec.json",
+            "karmaConfig": "src/karma.conf.js",
+            "styles": [
+              "src/styles.scss"
+            ],
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/popper.js/dist/umd/popper.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js"
+            ],
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "src/tsconfig.app.json",
+              "src/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "cpm-ui-e2e": {
+      "root": "e2e/",
+      "projectType": "application",
+      "prefix": "",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "e2e/protractor.conf.js",
+            "devServerTarget": "cpm-ui:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "cpm-ui:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "cpm-ui",
+  "cli": {
+    "analytics": "2d1e38d0-1218-4b1d-a897-6b9ceb0956cc"
+  }
+}

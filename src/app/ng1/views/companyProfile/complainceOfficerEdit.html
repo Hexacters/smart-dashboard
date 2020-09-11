@@ -1,0 +1,264 @@
+<div class="row" ng-controller="companyProfileController">
+	<div class="col-sm-12 col-md-12 col-lg-12"
+		ng-if="loading || enableSaveLoading">
+		<img align="absmiddle" src="app/ng1/img/partial-loading.gif">&nbsp;{{'common.loading'
+		| translate}}
+	</div>
+	<div class="col-sm-12 col-md-12 col-lg-12 padding0" id="complanceOfficerEditForm">
+		<div class="col-sm-10 col-md-10 col-lg-10 marginB1 marginT1">
+			<h3 class="modal-title">{{'companyProfile.complianceOfficer.header.complianceOfficer'
+				| translate}}</h3>
+		</div>
+		<div class="col-sm-2 col-md-2 col-lg-2 text-right marginTP5">
+			<a data-ui-sref="companyProfile.complainceOfficerEdit.help" ng-show="!isFromManageReps">{{'common.help' | translate}}</a>
+			<a data-ui-sref="manage.repAccountDetails.companyProfile.complainceOfficerEdit.help" ng-show="isFromManageReps">{{'common.help' | translate}}</a>
+		</div>
+	       <vision-action> <get-data
+			service="companyProfileServices" root-node="data.successData"
+			form-node="data" operation="getComplianceOfficerInformation"></get-data>
+		<form novalidate name="editComplianceOfficer" autocomplete="off"
+			class="form-horizontal">
+			<div class="col-sm-12 col-md-12 col-lg-12 marginB1">
+				<div class="table-responsive"
+					data-ng-if="complainceOfficerSubmitError.status=='error'">
+					<div class="alert alert-danger">
+						{{complainceOfficerSubmitError.errorData.ResponseError[0].longMessage
+						| translate}}</div>
+				</div>
+				<div class="col-sm-6 col-md-6 col-lg-6 marginB1">
+					<div class="form-group col-sm-12 col-md-12 col-lg-12">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right control-label">{{'companyProfile.complianceOfficer.label.socialTitle'
+							| translate}}</label>
+						<div class="col-sm-6 col-md-6 col-lg-6">
+							<select class="form-control input-sm" name="socialTitle"
+								autofocus="true" ng-model="data.ComplianceOfficer.salutation">
+								<option value=""></option>
+								<option ng-repeat="option in saluationLookup"
+									value="{{option.value}}">{{option.label}}</option>
+							</select> <input type="hidden" name="ComplianceOfficer.oid" maxlength="50"
+								ng-model="data.ComplianceOfficer.oid"
+								ng-init="data.ComplianceOfficer.officerContactOid  = data.ComplianceOfficer.oid" />
+							<input type="hidden" ng-if="!data.ComplianceOfficer.firstName"
+								ng-init="data.ComplianceOfficer.firstName = ''"
+								name="firstNameHidden" /> <input type="hidden"
+								ng-if="!data.ComplianceOfficer.lastName"
+								ng-init="data.ComplianceOfficer.lastName = ''"
+								name="lastNameHidden" /> <input type="hidden"
+								ng-if="!data.ComplianceOfficer.email"
+								ng-init="data.ComplianceOfficer.email = ''" name="emailHidden" />
+							<input type="hidden" ng-if="!data.Address.addressLine1"
+								ng-init="data.Address.addressLine1 = ''"
+								name="streetAddressHidden" /> <input type="hidden"
+								ng-if="!data.Address.addressLine2"
+								ng-init="data.Address.addressLine2 = ''"
+								name="streetAddressHidden" /> <input type="hidden"
+								ng-if="!data.Address.addressLine3"
+								ng-init="data.Address.addressLine3 = ''"
+								name="streetAddressHidden" /> <input
+								ng-if="!data.ComplianceOfficer.officerContactTypeCode"
+								type="hidden" name="officerContactTypeCodeHidden"
+								ng-model="data.ComplianceOfficer.officerContactTypeCode"
+								ng-init="data.ComplianceOfficer.officerContactTypeCode = 'VOCOM'" />
+						</div>
+					</div>
+					<div class="form-group col-sm-12 col-md-12 col-lg-12">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right control-label">{{'companyProfile.complianceOfficer.label.firstName'
+							| translate}}
+						</label>
+						<div class="col-sm-6 col-md-6 col-lg-6">
+							<input type="text" class="form-control input-sm" name="firstName"
+								maxlength="50"
+								validator="validateCustomField,validateAlphanumSpecial,validateAlphaWithOneSpaceAndPunctuation"
+								validate-Alpha-With-One-Space-And-Punctuation-error-message="{{'companyProfile.complianceOfficer.errorMessage.firstNameValidateAlpha' | translate}}"
+								validate-alphanum-special-error-message="{{'companyProfile.complianceOfficer.errorMessage.firstNameValidateAlpha' | translate}}"
+								validate-custom-field-error-message="{{'companyProfile.complianceOfficer.errorMessage.firstNameRequired' | translate}}"
+								custom-validate="{{data.ComplianceOfficer.lastName}},{{data.ComplianceOfficer.email}}"
+								ng-model="data.ComplianceOfficer.firstName" />
+						</div>
+					</div>
+					<div class="form-group col-sm-12 col-md-12 col-lg-12">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right control-label">{{'companyProfile.complianceOfficer.label.middleInitial'
+							| translate}}</label>
+						<div class="col-sm-6 col-md-6 col-lg-6">
+							<input type="text" class="form-control input-sm"
+								name="middleInitial" maxlength="50"
+								validator="validateAlphanumSpecial,validateAlphaWithOneSpaceAndPunctuation"
+								validate-Alpha-With-One-Space-And-Punctuation-error-message="{{'companyProfile.complianceOfficer.errorMessage.middleNameValidateAlpha' | translate}}"
+								validate-alphanum-special-error-message="{{'companyProfile.complianceOfficer.errorMessage.middleNameValidateAlpha' | translate}}"
+								ng-model="data.ComplianceOfficer.middleInitial" />
+						</div>
+					</div>
+					<div class="form-group col-sm-12 col-md-12 col-lg-12">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right control-label">{{'companyProfile.complianceOfficer.label.lastName'
+							| translate}}
+						</label>
+						<div class="col-sm-6 col-md-6 col-lg-6">
+							<input type="text" class="form-control input-sm" name="lastName"
+								maxlength="50"
+								validator="validateCustomField,validateAlphanumSpecial,validateAlphaWithOneSpaceAndPunctuation"
+								validate-Alpha-With-One-Space-And-Punctuation-error-message="{{'companyProfile.complianceOfficer.errorMessage.lastNameValidateAlpha' | translate}}"
+								validate-alphanum-special-error-message="{{'companyProfile.complianceOfficer.errorMessage.lastNameValidateAlpha' | translate}}"
+								validate-custom-field-error-message="{{'companyProfile.complianceOfficer.errorMessage.lastNameRequired' | translate}}"
+								custom-validate="{{data.ComplianceOfficer.firstName}},{{data.ComplianceOfficer.email}}"
+								ng-model="data.ComplianceOfficer.lastName" />
+						</div>
+					</div>
+					<div class="form-group col-sm-12 col-md-12 col-lg-12">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right control-label">{{'companyProfile.complianceOfficer.label.suffix'
+							| translate}} <span tooltip-append-to-body="true"
+							tooltip-placement="bottom"
+							tooltip="{{'companyProfile.complianceOfficer.label.suffixTooltip' | translate}}">
+								<i class="fa fa-question-circle fa-lg"></i>
+						</span>
+						</label>
+						<div class="col-sm-6 col-md-6 col-lg-6">
+							<input type="text" class="form-control input-sm " name="suffix"
+								validator="validateAlphanumSpecial"
+								validate-alphanum-special-error-message="{{'common.errorMessage.allowedSpecialCharacters' | translate}}"
+								maxlength="10" ng-model="data.ComplianceOfficer.suffix" />
+						</div>
+					</div>
+					<div class="form-group col-sm-12 col-md-12 col-lg-12">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right control-label">{{'companyProfile.complianceOfficer.label.nickName'
+							| translate}}</label>
+						<div class="col-sm-6 col-md-6 col-lg-6">
+							<input type="text" class="form-control input-sm " name="nickName"
+								validator="validateAlphanumSpecial,validateAlphaWithOneSpaceAndPunctuation"
+								validate-Alpha-With-One-Space-And-Punctuation-error-message="{{'companyProfile.complianceOfficer.errorMessage.nickNameValidateAlpha' | translate}}"
+								validate-alphanum-special-error-message="{{'companyProfile.complianceOfficer.errorMessage.nickNameValidateAlpha' | translate}}"
+								maxlength="50" ng-model="data.ComplianceOfficer.nickName" />
+						</div>
+					</div>
+					<div class="form-group col-sm-12 col-md-12 col-lg-12">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right control-label">{{'common.email'
+							| translate}} <span
+							tooltip-append-to-body="true" tooltip-placement="bottom"
+							tooltip="{{'companyProfile.complianceOfficer.label.complianceEmailTooltip' | translate}}">
+								<i class="fa fa-question-circle fa-lg"></i>
+						</span>
+						</label>
+						<div class="col-sm-6 col-md-6 col-lg-6">
+							<input type="text" class="form-control input-sm" name="email"
+								maxlength="100" ng-model="data.ComplianceOfficer.email"
+								validator="validateEmail,validateCustomField,validateAlphanumSpecial"
+								validate-alphanum-special-error-message="{{'common.errorMessage.allowedSpecialCharacters' | translate}}"
+								validate-custom-field-error-message="{{'companyProfile.complianceOfficer.errorMessage.emailRequired' | translate}}"
+								custom-validate="{{data.ComplianceOfficer.firstName}},{{data.ComplianceOfficer.email}}"
+								validate-email-error-message="{{'companyProfile.complianceOfficer.errorMessage.properlyFormattedEmail'|translate}}" />
+
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6 col-md-6 col-lg-6 marginB1">
+					<div class="form-group col-sm-12 col-md-12 col-lg-12">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right control-label">{{'companyProfile.complianceOfficer.label.streetAddress'
+							| translate}}</label>
+						<div class="col-sm-6 col-md-6 col-lg-6">
+							<input type="text" class="form-control input-sm"
+								name="streetAddress" maxlength="255"
+								validator="validateAlphanumSpecial"
+								validate-alphanum-special-error-message="{{'common.errorMessage.allowedSpecialCharacters' | translate}}"
+								ng-model="data.Address.addressLine1" />
+						</div>
+						<div class="col-sm-6 col-md-6 col-lg-6 col-sm-offset-6 col-md-offset-6 col-lg-offset-6">
+							<input type="text" class="form-control input-sm"
+								name="addressLine2" maxlength="255"
+								validator="validateAlphanumSpecial"
+								validate-alphanum-special-error-message="{{'common.errorMessage.allowedSpecialCharacters' | translate}}"
+								ng-model="data.Address.addressLine2" />
+						</div>
+						<div class="col-sm-6 col-md-6 col-lg-6 col-sm-offset-6 col-md-offset-6 col-lg-offset-6">
+							<input type="text" class="form-control input-sm"
+								name="addressLine3" maxlength="255"
+								validator="validateAlphanumSpecial"
+								validate-alphanum-special-error-message="{{'common.errorMessage.allowedSpecialCharacters' | translate}}"
+								ng-model="data.Address.addressLine3" />
+						</div>
+					</div>
+					<div class="form-group col-sm-12 col-md-12 col-lg-12">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right control-label">{{'companyProfile.complianceOfficer.label.city'
+							| translate}}</label>
+						<div class="col-sm-6 col-md-6 col-lg-6">
+							<input type="text" class="form-control input-sm" name="city"
+								validator="validateAlphanumSpecial"
+								validate-alphanum-special-error-message="{{'common.errorMessage.allowedSpecialCharacters' | translate}}"
+								maxlength="50" ng-model="data.Address.city" />
+						</div>
+					</div>
+					<div class="form-group col-sm-12 col-md-12 col-lg-12">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right control-label">{{'companyProfile.complianceOfficer.label.zipPostal'
+							| translate}} </label>
+						<div class="col-sm-6 col-md-6 col-lg-6">
+							<input type="text" class="form-control input-sm" name="zipPostal"
+								validator="validateAlphanumSpecial, validateMinMaxValue,validateAlphanumSpecial"
+								validate-alphanum-special-error-message="{{'common.errorMessage.allowedSpecialCharacters' | translate}}"
+								min-value="5" max-value="10" maxlength="10" ng-model="data.Address.zip" validate-min-max-value-error-message="{{'common.errorMessage.invalidZipCodeLength' | translate}}"
+								validate-alphanum-special-error-message="{{'common.specialCharactersNotAllowed' | translate}}"/>
+						</div>
+					</div>
+					<div class="form-group col-sm-12 col-md-12 col-lg-12">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right control-label">{{'companyProfile.complianceOfficer.label.country'
+							| translate}}</label>
+						<div class="col-sm-6 col-md-6 col-lg-6">
+							<select name="countryCode" ng-model="data.Address.countryCode"
+								class="form-control input-sm">
+								<option ng-repeat="option in countryLookup" ng-selected="option.countryCode=='US'"
+									value="{{option.countryCode}}">{{option.countryName}}</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group col-sm-12 col-md-12 col-lg-12">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right control-label">{{'companyProfile.complianceOfficer.label.stateProvinceDivision'
+							| translate}}</label>
+						<div class="col-sm-6 col-md-6 col-lg-6">
+							<select name="stateCode" ng-model="data.Address.stateCode"
+								class="form-control input-sm">
+								<option value=""></option>
+								<option ng-repeat="option in stateLookup"
+									value="{{option.stateCode}}">{{option.stateName}}</option>
+								<option disabled value=""></option>
+								<option ng-repeat="option in stateCanLookup"
+									value="{{option.stateCode}}">{{option.stateName}}</option>
+								<option disabled value=""></option>
+								<option ng-repeat="option in stateUsOtherLookup" 
+									value="{{option.stateCode}}">{{option.stateName}}</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group col-sm-12 col-md-12 col-lg-12">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right control-label">{{'companyProfile.complianceOfficer.label.phone'
+							| translate}} </label>
+						<div class="col-sm-6 col-md-6 col-lg-6">
+							<input type="text" class="form-control input-sm " name="phone"
+								validator="validateAlphanumSpecial"
+								validate-alphanum-special-error-message="{{'common.errorMessage.allowedSpecialCharacters' | translate}}"
+								maxlength="12" ng-model="data.ComplianceOfficer.workPhone" />
+						</div>
+					</div>
+					<div class="form-group col-sm-12 col-md-12 col-lg-12">
+						<label class="col-sm-6 col-md-6 col-lg-6 text-right control-label">{{'companyProfile.complianceOfficer.label.dateofBirth'
+							| translate}} (MM/DD only) <span tooltip-append-to-body="true"
+							tooltip-placement="bottom"
+							tooltip="{{'companyProfile.complianceOfficer.label.dobTooltip' | translate}}">
+								<i class="fa fa-question-circle fa-lg"></i>
+						</span>
+						</label>
+						<div class="col-sm-6 col-md-6 col-lg-6">
+							<input type="text" class="form-control input-sm" name="dobstring" validator="validateDateWithYear"
+								maxlength="10" ng-model="data.ComplianceOfficer.dobstring" validate-date-with-year-error-message="{{'companyProfile.complianceOfficer.errorMessage.dobvalidateDate' | translate}}" />
+						</div>
+					</div>
+					<div class="form-group col-sm-12 col-md-12 col-lg-12">
+						<div
+							class="col-lg-6 col-lg-offset-6 col-sm-offset-6 col-md-offset-6 col-md-6 col-sm-6 text-left">
+							<button type="submit" class="btn btn-success"
+								validation-submit="editComplianceOfficer"
+								ng-click="saveComplianceOfficerInformation(data);callGAPageTrack('saveComplianceOfficer');">{{'common.save'| translate}}</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+		</vision-action>
+	</div>
+</div>

@@ -1,0 +1,221 @@
+/***loading image****/
+html {
+	font-family:sans-serif;
+	-ms-text-size-adjust:100%;
+	-webkit-text-size-adjust:100%
+}
+
+body {
+	font-family:'Open Sans'
+}
+
+.loading {
+	zoom: 1;
+	filter: alpha(opacity=50);
+	opacity: 0.5;
+	
+}
+.showLoading {
+  margin: auto;
+  position: absolute;
+  top : 0;
+  left: 0;
+  bottom: 0; 
+  right: 0;
+  background:#fff;
+  z-index:10;
+  opacity:0.8;
+  padding:10px;
+  color:#000;
+}
+
+.dNone{
+ display:none;
+}
+
+.btn-noBg {
+	background:none!important;
+	border:none;
+	box-shadow:none!important;
+	margin-top:15px;
+	font-size:13px
+}
+
+a {
+   outline: 0 !important;;
+}
+
+.margin-top-15 {
+	margin-top:15px
+}
+
+/*****vertical scroll********/
+#fixedVertical {
+	height: 400px;
+	width:90%;
+	overflow: auto;
+	border:1px #CCCCCC solid;
+	margin:0 auto;
+}
+
+.verticalscroll p{
+	margin:5px;
+}
+.verticalscroll ul{
+  padding:5px;
+  margin:0;
+}
+.verticalscroll li {
+  height: 100px;
+  border: 1px solid #CCCCCC;
+  list-style:none;
+  font-family:verdana;
+  font-size:12px;
+  padding:5px;
+  margin:5px;
+  width:98%;
+  float:left;
+}
+
+.verticalscroll label{
+	font-weight:bold;
+}
+
+/*****Tab*****/
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{background-color:#0076c2 !important;color:#fff;}
+.nav-tabs > li > a{background:#eee;}
+.nav.nav-tabs {
+	margin-bottom:15px
+}
+
+/*********table********/
+.table-bordered > thead > tr:first-child > th {
+	border-bottom:0
+}
+
+.pagination {
+	margin:0
+}
+
+/*********Form Validation********/
+.validation-invalid {
+	color:red
+}
+
+/**** angular bootstrap ****/
+.nav,.pagination,.carousel,.panel-title a {
+	cursor:pointer
+}
+
+/********* Sagam Tree Component ********/
+/* style for the angular-bootstrap-nav-tree
+   for both Bootstrap 2 and Bootstrap 3 
+   
+AngularJS Animations...
+
+The first selector is for Angular 1.1.5
+The second selector is for Angular 1.2.0
+
+*/
+.abn-tree-animate-enter,
+li.abn-tree-row.ng-enter {
+  transition: 200ms linear all;
+  position: relative;
+  display: block;
+  opacity: 0;
+  max-height:0px;
+}
+.abn-tree-animate-enter.abn-tree-animate-enter-active,
+li.abn-tree-row.ng-enter-active{
+  opacity: 1;
+  max-height:30px;
+}
+
+.abn-tree-animate-leave,
+li.abn-tree-row.ng-leave {
+  transition: 200ms linear all;
+  position: relative;
+  display: block;
+  height:30px;
+  max-height: 30px;
+  opacity: 1;
+}
+.abn-tree-animate-leave.abn-tree-animate-leave-active,
+li.abn-tree-row.ng-leave-active {  
+  height: 0px;
+  max-height:0px;
+  opacity: 0;
+}
+
+
+/* 
+---------------------------
+Angular 1.2.0 Animation 
+*/
+
+
+.abn-tree-animate.ng-enter{
+
+}
+.abn-tree-animate.ng-enter{
+
+}
+
+/* end animation stuff
+----------------------------
+   begin normal css stuff */
+   
+ul.abn-tree li.abn-tree-row {  
+  padding: 0px;
+  margin:0px;
+}
+
+ul.abn-tree li.abn-tree-row a {
+  padding: 3px 10px;
+}
+
+ul.abn-tree i.indented {
+  padding: 2px;
+}
+
+.abn-tree {
+  cursor: pointer;
+}
+ul.nav.abn-tree .level-1 .indented {
+  position: relative;
+  left: 0px;
+}
+ul.nav.abn-tree .level-2 .indented {
+  position: relative;
+  left: 20px;
+}
+ul.nav.abn-tree .level-3 .indented {
+  position: relative;
+  left: 40px;
+}
+ul.nav.abn-tree .level-4 .indented {
+  position: relative;
+  left: 60px;
+}
+ul.nav.abn-tree .level-5 .indented {
+  position: relative;
+  left: 80px;
+}
+ul.nav.abn-tree .level-6 .indented {
+  position: relative;
+  left: 100px;
+}
+ul.nav.nav-list.abn-tree .level-7 .indented {
+  position: relative;
+  left: 120px;
+}
+ul.nav.nav-list.abn-tree .level-8 .indented {
+  position: relative;
+  left: 140px;
+}
+ul.nav.nav-list.abn-tree .level-9 .indented {
+  position: relative;
+  left: 160px;
+}
+
+/********* Tree End ********/

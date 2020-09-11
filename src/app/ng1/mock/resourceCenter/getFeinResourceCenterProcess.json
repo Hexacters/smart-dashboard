@@ -1,0 +1,20 @@
+{
+    "VisionResponse": {
+        "Status": "Ok",
+        "ResourceList": [
+            {
+                "oid": "eb696983434be8e1f825298bda901b20",
+                "resourceName": "Nature in the broadest sense",
+                "resourceDescription": "Nature, in the broadest sense, is the natural, physical, or material world or universe. \"Nature\" can refer to the phenomena of the physical world, and also to life in general. The study of nature is a large part of science. Although humans are part of nature, human activity is often understood as a separate category from other natural phenomena.Nature, in the broadest sense, is the natural, physical, or material world or universe. \"Nature\" can refer to the phenomena of the physical world, and al",
+                "resourceType": "URL",
+                "resourceUrl": "www.ram.com",
+                "vendorOid": "000000530800000014bd",
+                "resourceCategory": "FA",
+                "sequenceNumber": 99,
+                "updateAction": false,
+                "deleteAction": false
+            }
+        ],
+        "contentType": "application/json"
+    }
+}

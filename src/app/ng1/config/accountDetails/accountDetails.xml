@@ -1,0 +1,151 @@
+<?xml version="1.0"?>
+<module id="accountDetailsModule">
+	<routers>
+		<router id="accounts.accountDetails.documents" url="/documents">
+			<views>
+				<view containerId="accountDetailDocuments" templateUrl="app/ng1/views/accountDetails/documents.html"></view>
+			</views>
+		</router>
+		<router id="accounts.accountDetails.documents.commonDocuments" url="/commonDocuments/{tabsState}/{random}">
+			<views>
+				<view containerId="accountDetailCommonDocuments" templateUrl="app/ng1/views/accountDetails/commonDocuments.html"></view>
+			</views>
+		</router>
+		<router id="accounts.accountDetails.documents.backgroundCheck" url="/backgroundCheck">
+			<views>
+				<view containerId="accountDetailBackgroundCheck" templateUrl="app/ng1/views/accountDetails/backgroundCheck.html"></view>
+			</views>
+		</router>
+		<router id="accounts.accountDetails.documents.optionalDocuments" url="/optionalDocuments/{tabsState}/{random}">
+			<views>
+				<view containerId="accountDetailOptionalDocuments" templateUrl="app/ng1/views/accountDetails/optionalDocuments.html"></view>
+			</views>
+		</router>
+		<router id="accounts.accountDetails.documents.commonDocuments.cautionPopupUpdate" url="updateDocument" type="dialog">
+			<views>
+				<view containerId="model" templateUrl="app/ng1/views/myDocuments/commonDocumentsUpdate.html"></view>
+			</views>
+		</router>
+		<router id="accounts.accountDetails.documents.commonDocuments.commonDialog" type="dialog">
+			<views>
+				<view containerId="modal" templateUrl="app/ng1/views/myDocuments/commonDocumentsCommonDialog.html"></view>
+			</views>
+		</router>
+		<router id="accounts.accountDetails.documents.commonDocuments.commonDialog.cautions" url="/cautions">
+			<views>
+				<view containerId="CommonDocument@" templateUrl="app/ng1/views/myDocuments/commonDocumentsCaution.html"></view>
+			</views>
+		</router>
+		<router id="accounts.accountDetails.documents.commonDocuments.commonDialog.updateDocument" url="/updateDocument">
+			<views>
+				<view containerId="CommonDocument@" templateUrl="app/ng1/views/myDocuments/commonDocumentsUpdate.html"></view>
+			</views>
+		</router>
+		<router id="accounts.accountDetails.documents.commonDocuments.commonDialog.documentAlert" url="/documentAlert">
+			<views>
+				<view containerId="CommonDocument@" templateUrl="app/ng1/views/myDocuments/commonDocumentsDocumentAlert.html"></view>
+			</views>
+		</router>
+		<router id="accounts.accountDetails.documents.commonDocuments.commonDialog.documentAlertSteps" url="/documentAlertSteps">
+			<views>
+				<view containerId="CommonDocument@" templateUrl="app/ng1/views/myDocuments/commonDocumentsDocumentAlertSteps.html"></view>
+			</views>
+		</router>
+		<router id="accounts.accountDetails.documents.commonDocuments.deleteDocument" url="/delete/{id}" type="dialog">
+			<views>
+				<view containerId="modal" templateUrl="app/ng1/views/myDocuments/commonDocumentsDelete.html"></view>
+			</views>
+		</router>
+		<router id="accounts.accountDetails.userReleationship" url="/userReleationship">
+			<views>
+				<view containerId="accountDetailUserRelationship" templateUrl="app/ng1/views/accountDetails/userRelationship.html"></view>
+			</views>
+		</router>
+		<router id="accounts.accountDetails.conflictsOfInterest" url="/conflictsOfInterest/{randomNumber}">
+			<views>
+				<view containerId="accountDetailConflictsOfInterest" templateUrl="app/ng1/views/accountDetails/agreements.html"></view>
+			</views>
+		</router>
+		<router id="accounts.accountDetails.apInformation" url="/apInformation/{randomNumber}">
+			<views>
+				<view containerId="accountDetailAPInformation" templateUrl="app/ng1/views/accountDetails/APInformation.html"></view>
+			</views>
+		</router>
+		<router id="accounts.accountDetails.apInformationSendMail" url="/apInformationSendEmail">
+			<views>
+				<view containerId="accountDetailAPInformation" templateUrl="app/ng1/views/accountDetails/apInformationSendMail.html"></view>
+			</views>
+		</router>
+		<router id="accounts.accountDetails.businessRelationshipPHI" url="/businessRelationshipPHI">
+			<views>
+				<view containerId="accountDetailBusinessRelationshipPHI" templateUrl="app/ng1/views/accountDetails/businessRelationshipPHI.html"></view>
+			</views>
+		</router>
+	</routers>
+	<services id="accountDetailServices">
+		<operations>
+			<operation name="getGeneralInformation" requestType="json" requestWrapper="request" responseWrapper="response" serviceName="vendor" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/accountDetails/getGeneralInfo.json" mock="false">
+				<params>
+					<param name="vendorRepOid" source="data" module="repDetails" key="repOid"></param>
+				</params>
+			</operation>
+			<operation name="getAPOnBoardingDetails" requestType="json" requestWrapper="request" responseWrapper="response" serviceName="vendor" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/accountDetails/getAPOnBoardingDetails.json" mock="false">
+				<params>
+					<param name="vcRelationOid" source="data" module="repDetails" key="vcOid"></param>
+				</params>
+			</operation>
+			<operation name="savePHISecurity" requestType="json" requestWrapper="request" responseWrapper="response" serviceName="registration" method="post" url="VMClientProxyServlet" mockUrl="app/ng1/mock/accountDetails/saveUpdate.json" mock="false">
+				<params>
+					<param name="repOid" source="data" module="repDetails" key="repOid"></param>
+				</params>
+			</operation>
+			<operation name="saveOrUpdateAPOnBoardingDetails" requestType="json" requestWrapper="request" responseWrapper="response" serviceName="vendor" method="post" url="VMClientProxyServlet" mockUrl="app/ng1/mock/accountDetails/saveOrUpdateAPOnBoardingDetails.json" mock="false">
+				<params>
+					<param name="apOnboardingDetails.vcrelationOid" source="data" module="repDetails" key="vcOid"></param>
+				</params>
+			</operation>
+			<operation name="sendAPInfoEmailToRep" requestType="json" requestWrapper="request" responseWrapper="response" serviceName="vendor" method="post" url="VMClientProxyServlet" mockUrl="app/ng1/mock/accountDetails/sendAPInfoEmailToRep.json" mock="false">
+				<params>
+					<param name="vcRelationOid" source="data" module="repDetails" key="vcOid"></param>
+				</params>
+			</operation>
+			<operation name="getRepRiskProfileAndLocDeptProcess" requestType="json" requestWrapper="request" responseWrapper="response" serviceName="registration" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/accountDetails/getRepRiskProfileAndLocDeptProcess.json" mock="false">
+				<params>
+					<param name="customerOid" source="data" module="repDetails" key="customerOid"></param>
+					<param name="repOid" source="data" module="repDetails" key="repOid"></param>
+				</params>
+			</operation>
+			<operation name="saveRepRiskProfile" requestType="json" requestWrapper="request" responseWrapper="response" method="post" serviceName="registration" url="VMClientProxyServlet" mockUrl="app/ng1/mock/accountDetails/saveRepRiskProfile.json" mock="false">
+			</operation>
+			<operation name="updateVrpRrp" requestType="json" requestWrapper="request" responseWrapper="response" method="post" serviceName="registration" url="VMClientProxyServlet" mockUrl="app/ng1/mock/accountDetails/updateVrpRrp.json" mock="false">
+				<params>
+					<param name="customerOid" source="data" module="repDetails" key="customerOid"></param>
+					<param name="vcOid" source="data" module="repDetails" key="vcOid"></param>
+					<param name="vendorRepOid" source="data" module="repDetails" key="repOid"></param>
+				</params>
+			</operation>
+			<operation name="updateRepRiskProfile" requestType="json" requestWrapper="request" responseWrapper="response" method="post" serviceName="vendorrep" url="VMClientProxyServlet" mockUrl="app/ng1/mock/accountDetails/updateVrpRrp.json" mock="false">
+				<params>
+					<param name="vendorRepOid" source="data" module="repDetails" key="repOid"></param>
+				</params>
+			</operation>
+			<operation name="getVendorRepAgreement" requestType="json" requestWrapper="request" responseWrapper="response" serviceName="vendorrep" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/accountDetails/getVendorRepAgreement.json" mock="false">
+				<params>
+					<param name="vendorRepOid" source="data" module="repDetails" key="repOid"></param>
+				</params>
+			</operation>
+			<operation name="saveVendorRepAgreement" requestType="json" requestWrapper="request" responseWrapper="response" method="post" serviceName="registration" url="VMClientProxyServlet" mockUrl="app/ng1/mock/accountDetails/saveVendorRepAgreement.json" mock="false">
+			</operation>
+			<operation name="getBusinessRelationship" requestType="json" requestWrapper="request" responseWrapper="response" serviceName="vendor" method="get" url="VMClientProxyServlet" mockUrl="app/ng1/mock/accountDetails/getBusinessRelationship.json" mock="false">
+				<params>
+					<param name="vcOid" source="data" module="repDetails" key="vcOid"></param>
+				</params>
+			</operation>
+			<operation name="updateBusinessRelationship" requestType="json" requestWrapper="request" responseWrapper="response" serviceName="vendor" method="post" url="VMClientProxyServlet" mockUrl="app/ng1/mock/accountDetails/updateBusinessRelationship.json" mock="false">
+				<params>
+					<param name="vcOid" source="data" module="repDetails" key="vcOid"></param>
+				</params>
+			</operation>
+		</operations>
+	</services>
+</module>

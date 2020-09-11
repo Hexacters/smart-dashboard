@@ -1,0 +1,1603 @@
+{
+    "VisionResponse": {
+        "Status": "Ok",
+        "salesTerritory": {
+            "states": [
+                {
+					"stateCode" :"AL ",
+					"status" : "required",
+					"stateName":"Alabama"
+				},
+				{
+					"stateCode" :"AK",
+					"status" : "required",
+					"stateName":"Alaska"
+				},
+				{
+					"stateCode" :"AB",
+					"status" : "required",
+					"stateName":"Alberta"
+				},
+				{
+					"stateCode" :"AS",
+					"status" : "required",
+					"stateName":"American Samoa"
+				},
+				{
+					"stateCode" :"AZ",
+					"status" : "required",
+					"stateName":"Arizona"
+				},
+				{
+					"stateCode" :"AR",
+					"status" : "required",
+					"stateName":"Arkansas"
+				},
+				{
+					"stateCode" :"BC",
+					"status" : "required",
+					"stateName":"British Columbia"
+				},
+				{
+					"stateCode" :"CA",
+					"status" : "required",
+					"stateName":"California"
+				},
+				{
+					"stateCode" :"CO",
+					"status" : "required",
+					"stateName":"Colorado"
+				},
+				{
+					"stateCode" :"CT",
+					"status" : "required",
+					"stateName":"Connecticut"
+				},
+				{
+					"stateCode" :"DE",
+					"status" : "required",
+					"stateName":"Delaware"
+				},
+				{
+					"stateCode" :"DC",
+					"status" : "required",
+					"stateName":"District Of Columbia"
+				},
+				{
+					"stateCode" :"FM",
+					"status" : "required",
+					"stateName":"Federated States Of Micronesia"
+				},
+				{
+					"stateCode" :"FL",
+					"status" : "required",
+					"stateName":"Florida"
+				},
+				{
+					"stateCode" :"GA",
+					"status" : "required",
+					"stateName":"Georgia"
+				},
+				{
+					"stateCode" :"GU",
+					"status" : "required",
+					"stateName":"Guam"
+				},
+				{
+					"stateCode" :"HI",
+					"status" : "required",
+					"stateName":"Hawaii"
+				},
+				{
+					"stateCode" :"ID",
+					"status" : "required",
+					"stateName":"Idaho"
+				},
+				{
+					"stateCode" :"IL",
+					"status" : "required",
+					"stateName":"Illinois"
+				},
+				{
+					"stateCode" :"IN",
+					"status" : "required",
+					"stateName":"Indiana"
+				},
+				{
+					"stateCode" :"IA",
+					"status" : "required",
+					"stateName":"Iowa"
+				},
+				{
+					"stateCode" :"KS",
+					"status" : "required",
+					"stateName":"Kansas"
+				},
+				{
+					"stateCode" :"KY",
+					"status" : "required",
+					"stateName":"Kentucky"
+				},
+				{
+					"stateCode" :"LA",
+					"status" : "required",
+					"stateName":"Louisiana"
+				},
+				{
+					"stateCode" :"ME",
+					"status" : "required",
+					"stateName":"Maine"
+				},
+				{
+					"stateCode" :"MB",
+					"status" : "required",
+					"stateName":"Manitoba"
+				},
+				{
+					"stateCode" :"MH",
+					"status" : "required",
+					"stateName":"Marshall Islands"
+				},
+				{
+					"stateCode" :"MD",
+					"status" : "required",
+					"stateName":"Maryland"
+				},
+				{
+					"stateCode" :"MA",
+					"status" : "required",
+					"stateName":"Massachusetts"
+				},
+				{
+					"stateCode" :"MI",
+					"status" : "required",
+					"stateName":"Michigan"
+				},
+				{
+					"stateCode" :"MN",
+					"status" : "required",
+					"stateName":"Minnesota"
+				},
+				{
+					"stateCode" :"MS",
+					"status" : "required",
+					"stateName":"Mississippi"
+				},
+				{
+					"stateCode" :"MO",
+					"status" : "required",
+					"stateName":"Missouri"
+				},
+				{
+					"stateCode" :"MT",
+					"status" : "required",
+					"stateName":"Montana"
+				},
+				{
+					"stateCode" :"NE",
+					"status" : "required",
+					"stateName":"Nebraska"
+				},
+				{
+					"stateCode" :"NV",
+					"status" : "required",
+					"stateName":"Nevada"
+				},
+				{
+					"stateCode" :"NB",
+					"status" : "required",
+					"stateName":"New Brunswick"
+				},
+				{
+					"stateCode" :"NH",
+					"status" : "required",
+					"stateName":"New Hampshire"
+				},
+				{
+					"stateCode" :"NJ",
+					"status" : "required",
+					"stateName":"New Jersey"
+				},
+				{
+					"stateCode" :"NM",
+					"status" : "required",
+					"stateName":"New Mexico"
+				},
+				{
+					"stateCode" :"NY",
+					"status" : "required",
+					"stateName":"New York"
+				},
+				{
+					"stateCode" :"NL",
+					"status" : "required",
+					"stateName":"Newfoundland and Labrador"
+				},
+				{
+					"stateCode" :"NC",
+					"status" : "required",
+					"stateName":"North Carolina"
+				},
+				{
+					"stateCode" :"ND",
+					"status" : "required",
+					"stateName":"North Dakota"
+				},
+				{
+					"stateCode" :"MP",
+					"status" : "required",
+					"stateName":"Northern Marianas"
+				},
+				{
+					"stateCode" :"NT",
+					"status" : "required",
+					"stateName":"Northwest Territories"
+				},
+				{
+					"stateCode" :"NS",
+					"status" : "required",
+					"stateName":"Nova Scotia"
+				},
+				{
+					"stateCode" :"NU",
+					"status" : "required",
+					"stateName":"Nunavut"
+				},
+				{
+					"stateCode" :"OH",
+					"status" : "required",
+					"stateName":"Ohio"
+				},
+				{
+					"stateCode" :"OK",
+					"status" : "required",
+					"stateName":"Oklahoma"
+				},
+				{
+					"stateCode" :"ON",
+					"status" : "required",
+					"stateName":"Ontario"
+				},
+				{
+					"stateCode" :"OR",
+					"status" : "required",
+					"stateName":"Oregon"
+				},
+				{
+					"stateCode" :"PW",
+					"status" : "required",
+					"stateName":"Palau"
+				},
+				{
+					"stateCode" :"PA",
+					"status" : "required",
+					"stateName":"Pennsylvania"
+				},
+				{
+					"stateCode" :"PE",
+					"status" : "required",
+					"stateName":"Prince Edward Island"
+				},
+				{
+					"stateCode" :"PR",
+					"status" : "required",
+					"stateName":"Puerto Rico"
+				},
+				{
+					"stateCode" :"QC",
+					"status" : "required",
+					"stateName":"Quebec"
+				},
+				{
+					"stateCode" :"RI",
+					"status" : "required",
+					"stateName":"Rhode Island"
+				},
+				{
+					"stateCode" :"SK",
+					"status" : "required",
+					"stateName":"Saskatchewan"
+				},
+				{
+					"stateCode" :"SC",
+					"status" : "required",
+					"stateName":"South Carolina"
+				},
+				{
+					"stateCode" :"SD",
+					"status" : "required",
+					"stateName":"South Dakota"
+				},
+				{
+					"stateCode" :"TN",
+					"status" : "required",
+					"stateName":"Tennessee"
+				},
+				{
+					"stateCode" :"TX",
+					"status" : "required",
+					"stateName":"Texas"
+				},
+				{
+					"stateCode" :"VI",
+					"status" : "required",
+					"stateName":"U.S. Virgin Islands"
+				},
+				{
+					"stateCode" :"UT",
+					"status" : "required",
+					"stateName":"Utah"
+				},
+				{
+					"stateCode" :"VT",
+					"status" : "required",
+					"stateName":"Vermont"
+				},
+				{
+					"stateCode" :"VA",
+					"status" : "required",
+					"stateName":"Virginia"
+				},
+				{
+					"stateCode" :"WA",
+					"status" : "required",
+					"stateName":"Washington"
+				},
+				{
+					"stateCode" :"WV",
+					"status" : "required",
+					"stateName":"West Virginia"
+				},
+				{
+					"stateCode" :"WI",
+					"status" : "required",
+					"stateName":"Wisconsin"
+				},
+				{
+					"stateCode" :"WY",
+					"status" : "required",
+					"stateName":"Wyoming"
+				},
+				{
+					"stateCode" :"YT",
+					"status" : "required",
+					"stateName":"Yukon"
+				}
+			],
+			"Countries": [
+                {
+					"countryId":"AF",
+					"countryName":"Afghanistan",
+					"status" : "required"
+				},
+				{
+					"countryId":"AL",
+					"countryName":"Albania",
+					"status" : "required"
+				},
+				{
+					"countryId":"DZ",
+					"countryName":"Algeria",
+					"status" : "required"
+				},
+				{
+					"countryId":"AS",
+					"countryName":"American Samoa",
+					"status" : "required"
+				},
+				{
+					"countryId":"AD",
+					"countryName":"Andorra",
+					"status" : "required"
+				},
+				{
+					"countryId":"AO",
+					"countryName":"Angola",
+					"status" : "required"
+				},
+				{
+					"countryId":"AI",
+					"countryName":"Anguilla",
+					"status" : "required"
+				},
+				{
+					"countryId":"AQ",
+					"countryName":"Antarctica",
+					"status" : "required"
+				},
+				{
+					"countryId":"AG",
+					"countryName":"Antigua And Barbuda",
+					"status" : "required"
+				},
+				{
+					"countryId":"AR",
+					"countryName":"Argentina",
+					"status" : "required"
+				},
+				{
+					"countryId":"AM",
+					"countryName":"Armenia",
+					"status" : "required"
+				},
+				{
+					"countryId":"AW",
+					"countryName":"Aruba",
+					"status" : "required"
+				},
+				{
+					"countryId":"AU",
+					"countryName":"Australia",
+					"status" : "required"
+				},
+				{
+					"countryId":"AT",
+					"countryName":"Austria",
+					"status" : "required"
+				},
+				{
+					"countryId":"AZ",
+					"countryName":"Azerbaidjan",
+					"status" : "required"
+				},
+				{
+					"countryId":"BS",
+					"countryName":"Bahamas",
+					"status" : "required"
+				},
+				{
+					"countryId":"BH",
+					"countryName":"Bahrain",
+					"status" : "required"
+				},
+				{
+					"countryId":"BD",
+					"countryName":"Bangladesh",
+					"status" : "required"
+				},
+				{
+					"countryId":"BB",
+					"countryName":"Barbados",
+					"status" : "required"
+				},
+				{
+					"countryId":"BY",
+					"countryName":"Belarus",
+					"status" : "required"
+				},
+				{
+					"countryId":"BE",
+					"countryName":"Belgium",
+					"status" : "required"
+				},
+				{
+					"countryId":"BZ",
+					"countryName":"Belize",
+					"status" : "required"
+				},
+				{
+					"countryId":"BJ",
+					"countryName":"Benin",
+					"status" : "required"
+				},
+				{
+					"countryId":"BM",
+					"countryName":"Bermuda",
+					"status" : "required"
+				},
+				{
+					"countryId":"BT",
+					"countryName":"Bhutan",
+					"status" : "required"
+				},
+				{
+					"countryId":"BO",
+					"countryName":"Bolivia",
+					"status" : "required"
+				},
+				{
+					"countryId":"BA",
+					"countryName":"Bosnia-Herzegovina",
+					"status" : "required"
+				},
+				{
+					"countryId":"BW",
+					"countryName":"Botswana",
+					"status" : "required"
+				},
+				{
+					"countryId":"BV",
+					"countryName":"Bouvet Island",
+					"status" : "required"
+				},
+				{
+					"countryId":"BR",
+					"countryName":"Brazil",
+					"status" : "required"
+				},
+				{
+					"countryId":"IO",
+					"countryName":"British Indian Ocean Territory",
+					"status" : "required"
+				},
+				{
+					"countryId":"BN",
+					"countryName":"Brunei Darussalam",
+					"status" : "required"
+				},
+				{
+					"countryId":"BG",
+					"countryName":"Bulgaria",
+					"status" : "required"
+				},
+				{
+					"countryId":"BF",
+					"countryName":"Burkina Faso",
+					"status" : "required"
+				},
+				{
+					"countryId":"BI",
+					"countryName":"Burundi",
+					"status" : "required"
+				},
+				{
+					"countryId":"KH",
+					"countryName":"Cambodia",
+					"status" : "required"
+				},
+				{
+					"countryId":"CM",
+					"countryName":"Cameroon",
+					"status" : "required"
+				},
+				{
+					"countryId":"CA",
+					"countryName":"Canada",
+					"status" : "required"
+				},
+				{
+					"countryId":"CV",
+					"countryName":"Cape Verde",
+					"status" : "required"
+				},
+				{
+					"countryId":"KY",
+					"countryName":"Cayman Islands",
+					"status" : "required"
+				},
+				{
+					"countryId":"CF",
+					"countryName":"Central African Republic",
+					"status" : "required"
+				},
+				{
+					"countryId":"TD",
+					"countryName":"Chad",
+					"status" : "required"
+				},
+				{
+					"countryId":"CL",
+					"countryName":"Chile",
+					"status" : "required"
+				},
+				{
+					"countryId":"CN",
+					"countryName":"China",
+					"status" : "required"
+				},
+				{
+					"countryId":"CX",
+					"countryName":"Christmas Island",
+					"status" : "required"
+				},
+				{
+					"countryId":"CC",
+					"countryName":"Cocos (Keeling) Islands",
+					"status" : "required"
+				},
+				{
+					"countryId":"CO",
+					"countryName":"Colombia",
+					"status" : "required"
+				},
+				{
+					"countryId":"COM",
+					"countryName":"Commercial",
+					"status" : "required"
+				},
+				{
+					"countryId":"KM",
+					"countryName":"Comoros",
+					"status" : "required"
+				},
+				{
+					"countryId":"CG",
+					"countryName":"Congo",
+					"status" : "required"
+				},
+				{
+					"countryId":"CK",
+					"countryName":"Cook Islands",
+					"status" : "required"
+				},
+				{
+					"countryId":"CR",
+					"countryName":"Costa Rica",
+					"status" : "required"
+				},
+				{
+					"countryId":"HR",
+					"countryName":"Croatia",
+					"status" : "required"
+				},
+				{
+					"countryId":"CU",
+					"countryName":"Cuba",
+					"status" : "required"
+				},
+				{
+					"countryId":"CY",
+					"countryName":"Cyprus",
+					"status" : "required"
+				},
+				{
+					"countryId":"CZ",
+					"countryName":"Czech Republic",
+					"status" : "required"
+				},
+				{
+					"countryId":"DK",
+					"countryName":"Denmark",
+					"status" : "required"
+				},
+				{
+					"countryId":"DJ",
+					"countryName":"Djibouti",
+					"status" : "required"
+				},
+				{
+					"countryId":"DM",
+					"countryName":"Dominica",
+					"status" : "required"
+				},
+				{
+					"countryId":"DO",
+					"countryName":"Dominican Republic",
+					"status" : "required"
+				},
+				{
+					"countryId":"TP",
+					"countryName":"East Timor",
+					"status" : "required"
+				},
+				{
+					"countryId":"EC",
+					"countryName":"Ecuador",
+					"status" : "required"
+				},
+				{
+					"countryId":"EG",
+					"countryName":"Egypt",
+					"status" : "required"
+				},
+				{
+					"countryId":"SV",
+					"countryName":"El Salvador",
+					"status" : "required"
+				},
+				{
+					"countryId":"GQ",
+					"countryName":"Equatorial Guinea",
+					"status" : "required"
+				},
+				{
+					"countryId":"ER",
+					"countryName":"Eritrea",
+					"status" : "required"
+				},
+				{
+					"countryId":"EE",
+					"countryName":"Estonia",
+					"status" : "required"
+				},
+				{
+					"countryId":"ET",
+					"countryName":"Ethiopia",
+					"status" : "required"
+				},
+				{
+					"countryId":"FK",
+					"countryName":"Falkland Islands",
+					"status" : "required"
+				},
+				{
+					"countryId":"FO",
+					"countryName":"Faroe Islands",
+					"status" : "required"
+				},
+				{
+					"countryId":"FJ",
+					"countryName":"Fiji",
+					"status" : "required"
+				},
+				{
+					"countryId":"FI",
+					"countryName":"Finland",
+					"status" : "required"
+				},
+				{
+					"countryId":"CS",
+					"countryName":"Former Czechoslovakia",
+					"status" : "required"
+				},
+				{
+					"countryId":"SU",
+					"countryName":"Former Ussr",
+					"status" : "required"
+				},
+				{
+					"countryId":"FR",
+					"countryName":"France",
+					"status" : "required"
+				},
+				{
+					"countryId":"FX",
+					"countryName":"France (European Territory)",
+					"status" : "required"
+				},
+				{
+					"countryId":"GF",
+					"countryName":"French Guyana",
+					"status" : "required"
+				},
+				{
+					"countryId":"TF",
+					"countryName":"French Southern Territories",
+					"status" : "required"
+				},
+				{
+					"countryId":"GA",
+					"countryName":"Gabon",
+					"status" : "required"
+				},
+				{
+					"countryId":"GM",
+					"countryName":"Gambia",
+					"status" : "required"
+				},
+				{
+					"countryId":"GE",
+					"countryName":"Georgia",
+					"status" : "required"
+				},
+				{
+					"countryId":"DE",
+					"countryName":"Germany",
+					"status" : "required"
+				},
+				{
+					"countryId":"GH",
+					"countryName":"Ghana",
+					"status" : "required"
+				},
+				{
+					"countryId":"GI",
+					"countryName":"Gibraltar",
+					"status" : "required"
+				},
+				{
+					"countryId":"GB",
+					"countryName":"Great Britain",
+					"status" : "required"
+				},
+				{
+					"countryId":"GR",
+					"countryName":"Greece",
+					"status" : "required"
+				},
+				{
+					"countryId":"GL",
+					"countryName":"Greenland",
+					"status" : "required"
+				},
+				{
+					"countryId":"GD",
+					"countryName":"Grenada",
+					"status" : "required"
+				},
+				{
+					"countryId":"GP",
+					"countryName":"Guadeloupe (French)",
+					"status" : "required"
+				},
+				{
+					"countryId":"GU",
+					"countryName":"Guam (Usa)",
+					"status" : "required"
+				},
+				{
+					"countryId":"GT",
+					"countryName":"Guatemala",
+					"status" : "required"
+				},
+				{
+					"countryId":"GN",
+					"countryName":"Guinea",
+					"status" : "required"
+				},
+				{
+					"countryId":"GW",
+					"countryName":"Guinea Bissau",
+					"status" : "required"
+				},
+				{
+					"countryId":"GY",
+					"countryName":"Guyana",
+					"status" : "required"
+				},
+				{
+					"countryId":"HT",
+					"countryName":"Haiti",
+					"status" : "required"
+				},
+				{
+					"countryId":"HM",
+					"countryName":"Heard And Mcdonald Islands",
+					"status" : "required"
+				},
+				{
+					"countryId":"HN",
+					"countryName":"Honduras",
+					"status" : "required"
+				},
+				{
+					"countryId":"HK",
+					"countryName":"Hong Kong",
+					"status" : "required"
+				},
+				{
+					"countryId":"HU",
+					"countryName":"Hungary",
+					"status" : "required"
+				},
+				{
+					"countryId":"IS",
+					"countryName":"Iceland",
+					"status" : "required"
+				},
+				{
+					"countryId":"IN",
+					"countryName":"India",
+					"status" : "required"
+				},
+				{
+					"countryId":"ID",
+					"countryName":"Indonesia",
+					"status" : "required"
+				},
+				{
+					"countryId":"INT",
+					"countryName":"International",
+					"status" : "required"
+				},
+				{
+					"countryId":"IR",
+					"countryName":"Iran",
+					"status" : "required"
+				},
+				{
+					"countryId":"IQ",
+					"countryName":"Iraq",
+					"status" : "required"
+				},
+				{
+					"countryId":"IE",
+					"countryName":"Ireland",
+					"status" : "required"
+				},
+				{
+					"countryId":"IL",
+					"countryName":"Israel",
+					"status" : "required"
+				},
+				{
+					"countryId":"IT",
+					"countryName":"Italy",
+					"status" : "required"
+				},
+				{
+					"countryId":"CI",
+					"countryName":"Ivory Coast (Cote D'ivoire)",
+					"status" : "required"
+				},
+				{
+					"countryId":"JM",
+					"countryName":"Jamaica",
+					"status" : "required"
+				},
+				{
+					"countryId":"JP",
+					"countryName":"Japan",
+					"status" : "required"
+				},
+				{
+					"countryId":"JO",
+					"countryName":"Jordan",
+					"status" : "required"
+				},
+				{
+					"countryId":"KZ",
+					"countryName":"Kazakhstan",
+					"status" : "required"
+				},
+				{
+					"countryId":"KE",
+					"countryName":"Kenya",
+					"status" : "required"
+				},
+				{
+					"countryId":"KI",
+					"countryName":"Kiribati",
+					"status" : "required"
+				},
+				{
+					"countryId":"KW",
+					"countryName":"Kuwait",
+					"status" : "required"
+				},
+				{
+					"countryId":"KG",
+					"countryName":"Kyrgyzstan",
+					"status" : "required"
+				},
+				{
+					"countryId":"LA",
+					"countryName":"Laos",
+					"status" : "required"
+				},
+				{
+					"countryId":"LV",
+					"countryName":"Latvia",
+					"status" : "required"
+				},
+				{
+					"countryId":"LB",
+					"countryName":"Lebanon",
+					"status" : "required"
+				},
+				{
+					"countryId":"LS",
+					"countryName":"Lesotho",
+					"status" : "required"
+				},
+				{
+					"countryId":"LR",
+					"countryName":"Liberia",
+					"status" : "required"
+				},
+				{
+					"countryId":"LY",
+					"countryName":"Libya",
+					"status" : "required"
+				},
+				{
+					"countryId":"LI",
+					"countryName":"Liechtenstein",
+					"status" : "required"
+				},
+				{
+					"countryId":"LT",
+					"countryName":"Lithuania",
+					"status" : "required"
+				},
+				{
+					"countryId":"LU",
+					"countryName":"Luxembourg",
+					"status" : "required"
+				},
+				{
+					"countryId":"MO",
+					"countryName":"Macau",
+					"status" : "required"
+				},
+				{
+					"countryId":"MK",
+					"countryName":"Macedonia",
+					"status" : "required"
+				},
+				{
+					"countryId":"MG",
+					"countryName":"Madagascar",
+					"status" : "required"
+				},
+				{
+					"countryId":"MW",
+					"countryName":"Malawi",
+					"status" : "required"
+				},
+				{
+					"countryId":"MY",
+					"countryName":"Malaysia",
+					"status" : "required"
+				},
+				{
+					"countryId":"MV",
+					"countryName":"Maldives",
+					"status" : "required"
+				},
+				{
+					"countryId":"ML",
+					"countryName":"Mali",
+					"status" : "required"
+				},
+				{
+					"countryId":"MT",
+					"countryName":"Malta",
+					"status" : "required"
+				},
+				{
+					"countryId":"MH",
+					"countryName":"Marshall Islands",
+					"status" : "required"
+				},
+				{
+					"countryId":"MQ",
+					"countryName":"Martinique (French)",
+					"status" : "required"
+				},
+				{
+					"countryId":"MR",
+					"countryName":"Mauritania",
+					"status" : "required"
+				},
+				{
+					"countryId":"MU",
+					"countryName":"Mauritius",
+					"status" : "required"
+				},
+				{
+					"countryId":"YT",
+					"countryName":"Mayotte",
+					"status" : "required"
+				},
+				{
+					"countryId":"MX",
+					"countryName":"Mexico",
+					"status" : "required"
+				},
+				{
+					"countryId":"FM",
+					"countryName":"Micronesia",
+					"status" : "required"
+				},
+				{
+					"countryId":"MD",
+					"countryName":"Moldavia",
+					"status" : "required"
+				},
+				{
+					"countryId":"MC",
+					"countryName":"Monaco",
+					"status" : "required"
+				},
+				{
+					"countryId":"MN",
+					"countryName":"Mongolia",
+					"status" : "required"
+				},
+				{
+					"countryId":"MS",
+					"countryName":"Montserrat",
+					"status" : "required"
+				},
+				{
+					"countryId":"MA",
+					"countryName":"Morocco",
+					"status" : "required"
+				},
+				{
+					"countryId":"MZ",
+					"countryName":"Mozambique",
+					"status" : "required"
+				},
+				{
+					"countryId":"MM",
+					"countryName":"Myanmar",
+					"status" : "required"
+				},
+				{
+					"countryId":"NA",
+					"countryName":"Namibia",
+					"status" : "required"
+				},
+				{
+					"countryId":"NR",
+					"countryName":"Nauru",
+					"status" : "required"
+				},
+				{
+					"countryId":"NP",
+					"countryName":"Nepal",
+					"status" : "required"
+				},
+				{
+					"countryId":"NL",
+					"countryName":"Netherlands",
+					"status" : "required"
+				},
+				{
+					"countryId":"AN",
+					"countryName":"Netherlands Antilles",
+					"status" : "required"
+				},
+				{
+					"countryId":"NET",
+					"countryName":"Network",
+					"status" : "required"
+				},
+				{
+					"countryId":"NT",
+					"countryName":"Neutral Zone",
+					"status" : "required"
+				},
+				{
+					"countryId":"NC",
+					"countryName":"New Caledonia (French)",
+					"status" : "required"
+				},
+				{
+					"countryId":"NZ",
+					"countryName":"New Zealand",
+					"status" : "required"
+				},
+				{
+					"countryId":"NI",
+					"countryName":"Nicaragua",
+					"status" : "required"
+				},
+				{
+					"countryId":"NE",
+					"countryName":"Niger",
+					"status" : "required"
+				},
+				{
+					"countryId":"NG",
+					"countryName":"Nigeria",
+					"status" : "required"
+				},
+				{
+					"countryId":"NU",
+					"countryName":"Niue",
+					"status" : "required"
+				},
+				{
+					"countryId":"NF",
+					"countryName":"Norfolk Island",
+					"status" : "required"
+				},
+				{
+					"countryId":"KP",
+					"countryName":"North Korea",
+					"status" : "required"
+				},
+				{
+					"countryId":"MP",
+					"countryName":"Northern Mariana Islands",
+					"status" : "required"
+				},
+				{
+					"countryId":"NO",
+					"countryName":"Norway",
+					"status" : "required"
+				},
+				{
+					"countryId":"OM",
+					"countryName":"Oman",
+					"status" : "required"
+				},
+				{
+					"countryId":"OTHR",
+					"countryName":"Other",
+					"status" : "required"
+				},
+				{
+					"countryId":"PK",
+					"countryName":"Pakistan",
+					"status" : "required"
+				},
+				{
+					"countryId":"PW",
+					"countryName":"Palau",
+					"status" : "required"
+				},
+				{
+					"countryId":"PA",
+					"countryName":"Panama",
+					"status" : "required"
+				},
+				{
+					"countryId":"PG",
+					"countryName":"Papua New Guinea",
+					"status" : "required"
+				},
+				{
+					"countryId":"PY",
+					"countryName":"Paraguay",
+					"status" : "required"
+				},
+				{
+					"countryId":"PE",
+					"countryName":"Peru",
+					"status" : "required"
+				},
+				{
+					"countryId":"PH",
+					"countryName":"Philippines",
+					"status" : "required"
+				},
+				{
+					"countryId":"PN",
+					"countryName":"Pitcairn Island",
+					"status" : "required"
+				},
+				{
+					"countryId":"PL",
+					"countryName":"Poland",
+					"status" : "required"
+				},
+				{
+					"countryId":"PF",
+					"countryName":"Polynesia (French)",
+					"status" : "required"
+				},
+				{
+					"countryId":"PT",
+					"countryName":"Portugal",
+					"status" : "required"
+				},
+				{
+					"countryId":"PR",
+					"countryName":"Puerto Rico",
+					"status" : "required"
+				},
+				{
+					"countryId":"QA",
+					"countryName":"Qatar",
+					"status" : "required"
+				},
+				{
+					"countryId":"RE",
+					"countryName":"Reunion (French)",
+					"status" : "required"
+				},
+				{
+					"countryId":"RO",
+					"countryName":"Romania",
+					"status" : "required"
+				},
+				{
+					"countryId":"RU",
+					"countryName":"Russian Federation",
+					"status" : "required"
+				},
+				{
+					"countryId":"RW",
+					"countryName":"Rwanda",
+					"status" : "required"
+				},
+				{
+					"countryId":"GS",
+					"countryName":"S. Georgia & S. Sandwich Isls.",
+					"status" : "required"
+				},
+				{
+					"countryId":"SH",
+					"countryName":"Saint Helena",
+					"status" : "required"
+				},
+				{
+					"countryId":"KN",
+					"countryName":"Saint Kitts & Nevis Anguilla",
+					"status" : "required"
+				},
+				{
+					"countryId":"LC",
+					"countryName":"Saint Lucia",
+					"status" : "required"
+				},
+				{
+					"countryId":"PM",
+					"countryName":"Saint Pierre And Miquelon",
+					"status" : "required"
+				},
+				{
+					"countryId":"ST",
+					"countryName":"Saint Tome (Sao Tome) And Principe",
+					"status" : "required"
+				},
+				{
+					"countryId":"VC",
+					"countryName":"Saint Vincent & Grenadines",
+					"status" : "required"
+				},
+				{
+					"countryId":"WS",
+					"countryName":"Samoa",
+					"status" : "required"
+				},
+				{
+					"countryId":"SM",
+					"countryName":"San Marino",
+					"status" : "required"
+				},
+				{
+					"countryId":"SA",
+					"countryName":"Saudi Arabia",
+					"status" : "required"
+				},
+				{
+					"countryId":"SN",
+					"countryName":"Senegal",
+					"status" : "required"
+				},
+				{
+					"countryId":"SC",
+					"countryName":"Seychelles",
+					"status" : "required"
+				},
+				{
+					"countryId":"SL",
+					"countryName":"Sierra Leone",
+					"status" : "required"
+				},
+				{
+					"countryId":"SG",
+					"countryName":"Singapore",
+					"status" : "required"
+				},
+				{
+					"countryId":"SK",
+					"countryName":"Slovak Republic",
+					"status" : "required"
+				},
+				{
+					"countryId":"SI",
+					"countryName":"Slovenia",
+					"status" : "required"
+				},
+				{
+					"countryId":"SB",
+					"countryName":"Solomon Islands",
+					"status" : "required"
+				},
+				{
+					"countryId":"SO",
+					"countryName":"Somalia",
+					"status" : "required"
+				},
+				{
+					"countryId":"ZA",
+					"countryName":"South Africa",
+					"status" : "required"
+				},
+				{
+					"countryId":"KR",
+					"countryName":"South Korea",
+					"status" : "required"
+				},
+				{
+					"countryId":"ES",
+					"countryName":"Spain",
+					"status" : "required"
+				},
+				{
+					"countryId":"LK",
+					"countryName":"Sri Lanka",
+					"status" : "required"
+				},
+				{
+					"countryId":"SD",
+					"countryName":"Sudan",
+					"status" : "required"
+				},
+				{
+					"countryId":"SR",
+					"countryName":"Suriname",
+					"status" : "required"
+				},
+				{
+					"countryId":"SJ",
+					"countryName":"Svalbard And Jan Mayen Islands",
+					"status" : "required"
+				},
+				{
+					"countryId":"SZ",
+					"countryName":"Swaziland",
+					"status" : "required"
+				},
+				{
+					"countryId":"SE",
+					"countryName":"Sweden",
+					"status" : "required"
+				},
+				{
+					"countryId":"CH",
+					"countryName":"Switzerland",
+					"status" : "required"
+				},
+				{
+					"countryId":"SY",
+					"countryName":"Syria",
+					"status" : "required"
+				},
+				{
+					"countryId":"TJ",
+					"countryName":"Tadjikistan",
+					"status" : "required"
+				},
+				{
+					"countryId":"TW",
+					"countryName":"Taiwan",
+					"status" : "required"
+				},
+				{
+					"countryId":"TZ",
+					"countryName":"Tanzania",
+					"status" : "required"
+				},
+				{
+					"countryId":"TH",
+					"countryName":"Thailand",
+					"status" : "required"
+				},
+				{
+					"countryId":"TG",
+					"countryName":"Togo",
+					"status" : "required"
+				},
+				{
+					"countryId":"TK",
+					"countryName":"Tokelau",
+					"status" : "required"
+				},
+				{
+					"countryId":"TO",
+					"countryName":"Tonga",
+					"status" : "required"
+				},
+				{
+					"countryId":"TT",
+					"countryName":"Trinidad And Tobago",
+					"status" : "required"
+				},
+				{
+					"countryId":"TN",
+					"countryName":"Tunisia",
+					"status" : "required"
+				},
+				{
+					"countryId":"TR",
+					"countryName":"Turkey",
+					"status" : "required"
+				},
+				{
+					"countryId":"TM",
+					"countryName":"Turkmenistan",
+					"status" : "required"
+				},
+				{
+					"countryId":"TC",
+					"countryName":"Turks And Caicos Islands",
+					"status" : "required"
+				},
+				{
+					"countryId":"TV",
+					"countryName":"Tuvalu",
+					"status" : "required"
+				},
+				{
+					"countryId":"UG",
+					"countryName":"Uganda",
+					"status" : "required"
+				},
+				{
+					"countryId":"UA",
+					"countryName":"Ukraine",
+					"status" : "required"
+				},
+				{
+					"countryId":"AE",
+					"countryName":"United Arab Emirates",
+					"status" : "required"
+				},
+				{
+					"countryId":"UK",
+					"countryName":"United Kingdom",
+					"status" : "required"
+				},
+				{
+					"countryId":"US",
+					"countryName":"United States",
+					"status" : "required"
+				},
+				{
+					"countryId":"UY",
+					"countryName":"Uruguay",
+					"status" : "required"
+				},
+				{
+					"countryId":"UZ",
+					"countryName":"Uzbekistan",
+					"status" : "required"
+				},
+				{
+					"countryId":"VU",
+					"countryName":"Vanuatu",
+					"status" : "required"
+				},
+				{
+					"countryId":"VA",
+					"countryName":"Vatican City State",
+					"status" : "required"
+				},
+				{
+					"countryId":"VE",
+					"countryName":"Venezuela",
+					"status" : "required"
+				},
+				{
+					"countryId":"VN",
+					"countryName":"Vietnam",
+					"status" : "required"
+				},
+				{
+					"countryId":"VG",
+					"countryName":"Virgin Islands (British)",
+					"status" : "required"
+				},
+				{
+					"countryId":"VI",
+					"countryName":"Virgin Islands (USA)",
+					"status" : "required"
+				},
+				{
+					"countryId":"WF",
+					"countryName":"Wallis And Futuna Islands",
+					"status" : "required"
+				},
+				{
+					"countryId":"EH",
+					"countryName":"Western Sahara",
+					"status" : "required"
+				},
+				{
+					"countryId":"YE",
+					"countryName":"Yemen",
+					"status" : "required"
+				},
+				{
+					"countryId":"YU",
+					"countryName":"Yugoslavia",
+					"status" : "required"
+				},
+				{
+					"countryId":"ZR",
+					"countryName":"Zaire",
+					"status" : "required"
+				},
+				{
+					"countryId":"ZM",
+					"countryName":"Zambia",
+					"status" : "required"
+				},
+				{
+					"countryId":"ZW",
+					"countryName":"Zimbabwe",
+					"status" : "required"
+				}
+
+            ]
+        },
+        "contentType": "xml"
+    }
+}

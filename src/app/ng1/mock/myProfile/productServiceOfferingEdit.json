@@ -1,0 +1,10 @@
+{
+    "VisionResponse": {
+        "Status": "Ok",
+        "myProductDesc": "I sell a lot of things made of steel. The high quality stuff, not the run of the mill stuff you find on the streets.",
+        "productAndServiceCodes": "",
+        "userOid": "000000530100000014b7",
+        "ContentType": "text/xml",
+        "ResponseErrors": ""
+    }
+}

@@ -1,0 +1,53 @@
+.account-search {
+    .search-data {
+        .mat-form-field {
+            width: calc(100% - 98px);
+        }
+        .mat-form-field-appearance-fill .mat-form-field-infix {
+            padding: 0;
+        }
+        .mat-form-field-appearance-fill .mat-form-field-flex {
+            padding: 0.25em .75em;
+        }
+        .mat-raised-button {
+            position: relative;
+            bottom: 6px;
+            margin-left: 15px;
+        }
+    }
+
+    .recent-search {
+        .search-results {
+            .footer {
+                padding-right: 21px;
+                font-size: 13px;
+            }
+            .title {
+                font-size: 13px;
+                padding: 0;
+                margin: 0;
+            }
+            .address {
+                font-size: 10px;
+            }
+            .material-icons.more {
+                vertical-align: middle;
+                font-size: 15px;
+            }
+            .material-icons.rating-star {
+                font-size: 20px;
+                vertical-align: middle;
+                color: #facc01;
+            }
+            .register {
+                margin: 0 5px;
+                color: #006eff;
+                padding: 3px 6px;
+                line-height: 20px;
+                font-size: 13px;
+                border-radius: 20px;
+                background-color: #006eff2a;
+            }
+        }
+    }
+}

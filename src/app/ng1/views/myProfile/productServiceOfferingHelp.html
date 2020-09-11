@@ -1,0 +1,65 @@
+<div class="modal-content">
+	<div class="modal-header">
+		<button id="commonDocumentAlertCloseIcon" type="button" class="close"
+			data-dismiss="modal" aria-hidden="true"
+			data-ng-click="cancelDialog();">&times;</button>
+		<h4 class="modal-title">
+			<b>{{'myProfile.productAndServiceOffering.header.UNSPSCSearchHelp'
+				| translate}}</b>
+		</h4>
+	</div>
+	<div class="modal-body">
+		<p>Help on UNSPSC (United Nations Standard Products and Services
+			Code) Search</p>
+		<br>
+		<p>
+			<u>Example</u>
+		</p>
+		<p>
+			A search for "uniform rental" will return all commodities using the
+			terms "uniform" <b>OR</b> "rental".
+		</p>
+		<br> <u>Returns</u>
+		<p class="marginL3">
+			91111501 - <b>Uniform rental</b> <br />53102709 - Ambulance officers
+			<b>uniforms</b> <br />60105407 - Apartment <b>rental</b>
+			instructional materials
+		</p>
+		<br>
+		<ul>
+			<li>Clicking the check box labeled "Search for ALL terms only"
+				and performing a search will find commodities that contain ALL terms
+				entered.</li>
+		</ul>
+		<p>
+			<u>Example</u>
+		</p>
+		<p>
+			A search for "uniform rental" will return all commodities using the
+			terms "uniform" <b>AND</b> "rental".
+		</p>
+		<p>
+			<u>Returns</u>
+		</p>
+		<p>91111501 - Uniform rental</p>
+		<br>
+		<ul>
+			<li>Searching for a UNSPSC Commodity Code (number) will return
+				every code that begins with the numbers you enter.</li>
+		</ul>
+		<br>
+		<p>
+			<u>Example</u>
+		</p>
+		<p>If you enter 321, all codes that begin with the combination 321
+			will appear in the search results.</p>
+		<p>
+			<u>Returns</u>
+		</p>
+		<p class="marginL3">
+			32100000 - Printed circuits and integrated circuits and micro
+			assemblies <br />32101500 - Circuit assemblies and radio frequency RF
+			components <br />32101502 - Printed circuit assemblies PCAs
+		</p>
+	</div>
+</div>

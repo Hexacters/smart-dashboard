@@ -1,0 +1,20 @@
+{
+	"VisionResponse": {
+		"Status": "Ok",
+		"nonSharableDocumentComplianceAlertStatus": true,
+		"sharableDocumentComplianceAlertStatus": true,
+		"nsorEnabled": true,
+		"bcGracePeriod": "No",
+		"nsorGracePeriod": "No",
+		"cbcEnabled": true,
+		"nsorStatus": "incomplete",
+		"bcExpired": false,
+		"cbcStatus": "incomplete",
+		"policyComplianceAlertStatus": true,
+		"cbcGracePeriod": "No",
+		"contentType": "application/json",
+		"cbcExpired": false,
+		"bcStatus": "InComplete",
+		"nsorExpired": false
+	}
+}

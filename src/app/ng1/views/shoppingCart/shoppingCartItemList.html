@@ -1,0 +1,23 @@
+<div class="modal-content">
+	<div class="modal-header commonDialogHeader">
+		<button id="viewLocationCloseIcon" id="viewAccountCloseIcon"
+			type="button" class="close" data-dismiss="modal" aria-hidden="true"
+			data-ng-click="$close()">&times;</button>
+		<h3 class="modal-title">
+			<b>{{'shoppingCart.header.shoppingCart' | translate}}</b>
+		</h3>
+	</div>
+	<div class="modal-body ng-scope">
+		<div data-ng-show="cartItemErrorCode !==''" class="alert alert-danger">
+			<i class="fa fa-exclamation-triangle"></i> {{cartItemErrorCode| translate }}
+		</div>
+		<div ng-if="cartItemErrorCode ===''" class="col-sm-6 col-md-6 col-lg-6">
+			<a ng-click="selectShoppingItem();">Open Access Plan</a>
+		</div>
+		<div ng-if="cartItemErrorCode ===''" class="col-sm-6 col-md-6 col-lg-6">
+			{{'shoppingCart.label.oaspBody1' | translate}} {{maxRepCount}} {{'shoppingCart.label.oaspBody2' | translate}}</div>
+		<div class="text-right col-sm-12 col-md-12 col-lg-12">
+			<button class="btn btn-grey" type="button" data-ng-click="$close()">{{'common.cancel'|
+				translate}}</button>
+		</div>
+	</div>

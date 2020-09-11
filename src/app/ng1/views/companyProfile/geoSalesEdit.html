@@ -1,0 +1,105 @@
+<div class="row">
+	<div class="col-sm-12 col-md-12 col-lg-12"
+		data-ng-class="{'dNone':!loading}">
+		<img align="absmiddle" src="app/ng1/img/partial-loading.gif" />&nbsp;{{'common.loading'
+		| translate}}
+	</div>
+	<div class="col-sm-12 col-md-12 col-lg-12" id="geoSalesEdit" ng-controller="myProfileController">
+		<div class="col-sm-8 col-md-6 col-lg-6">
+			<h3>
+				<b><sup class="asterisk">*</sup>{{'companyProfile.geographicSalesCapability.header.geographicSalesCapability'
+					| translate}}</b>
+			</h3>
+		</div>
+		<div class="col-sm-4 col-md-6 col-lg-6">
+			<div class="pull-right marginT2">
+				<sup class="asterisk">*</sup>&nbsp;{{'common.required' | translate}}
+				<a data-ui-sref="companyProfile.editGeographicSalesCapability.help"
+					ng-show="!isFromManageReps">{{'common.help' |
+					translate}}</a> <a
+					data-ui-sref="manage.repAccountDetails.companyProfile.editGeographicSalesCapability.help"
+					ng-show="isFromManageReps">{{'common.help'
+					| translate}}</a>
+			</div>
+		</div>
+		<div class="col-sm-12 col-md-12 col-lg-12">
+			<p class="padding0">{{'companyProfile.geographicSalesCapability.label.toWhatLocationIs'|translate}}&nbsp;{{userProfile.detail.legalName}}&nbsp;{{'companyProfile.geographicSalesCapability.label.AuthorizedTosell'|translate}}</p>
+		</div>
+		<vision-action> <get-data
+			service="companyProfileServices"
+			operation="getGeoSalesTerritoriesProcess"
+			request-formatter="getGeoSalesTerritoriesaParam"
+			root-node="data.successData" form-node="geoSalesTerritoriesList"
+			></get-data>
+		<div class="col-sm-12 col-md-12 col-lg-12">
+			<div class="table-responsive"
+				data-ng-if="saveSalesTerritoriesSubmitError.status === 'error'">
+				<div class="alert alert-danger">
+					{{saveSalesTerritoriesSubmitError.errorData.ResponseError[0].errorCode
+					| translate}}</div>
+			</div>
+			<form novalidate name="geoSalesForm" autocomplete="off"
+				class="form-horizontal">
+				<h5>
+					<b>{{'companyProfile.geographicSalesCapability.label.statesTerritoriesProvinces'
+						| translate}}</b>
+				</h5>
+				<div class="form-group text-left">
+					<div class="col-sm-12 col-md-11 col-lg-8 col-lg-offset-2">
+						<input type="text" class="displayN" name="satesSelected"
+							ng-model="geoSalesTerritoriesList.stateSalesTerritories"
+							id="countryCodes" validator="required"
+							required-error-message="{{'companyProfile.geographicSalesCapability.errorMessage.pleaseSelectState' | translate}}"
+							valid-method="watch" />
+						<multi-select mode='1-1' return-type="object"
+							return-fields="stateCode,stateName"
+							local-data="salesTerritoryLookup"
+							parent-data-field="$parent.geoSalesTerritoriesList.stateSalesTerritories"
+							initial-data-load="true"> <lpanel
+							filter="fromLookup=true" class-Name="MultiSelecterPanelHeight" id="lpanelgeoSalesStates" label=""
+							size="7" order-by="stateName" value="stateCode" text="stateName"></lpanel>
+						<cpanel id="cpanelgeoSalesStates" class-Name="col-sm-1 cPanelMargin"></cpanel> <rpanel
+							id="assignedgeoSalesStates" label="" size="7" class-Name="MultiSelecterPanelHeight"
+							order-by="stateName" value="stateCode" text="stateName"></rpanel>
+						</multi-select>
+					</div>
+				</div>
+				<h5>
+					<b>{{'companyProfile.geographicSalesCapability.label.country' |
+						translate}}</b>
+				</h5>
+				<div class="form-group text-left">
+					<div class="col-sm-12 col-md-11 col-lg-8 col-lg-offset-2">
+						<input type="text" class="displayN" name="countriesSelected"
+							ng-model="geoSalesTerritoriesList.countrySalesTerritories"
+							id="countryCodes" validator="required"
+							required-error-message="{{'companyProfile.geographicSalesCapability.errorMessage.pleaseSelectCountry' | translate}}"
+							valid-method="watch" />
+						<multi-select mode='1-1' return-type="object"
+							return-fields="countryCode,countryName"
+							local-data="countryLookup"
+							parent-data-field="$parent.geoSalesTerritoriesList.countrySalesTerritories"
+							initial-data-load="true"> <lpanel class-Name="MultiSelecterPanelHeight"
+							filter="fromLookup=true" id="lpanelgeoSalesCountries" label=""
+							size="7" order-by="countryName" value="countryCode"
+							text="countryName"></lpanel> <cpanel class-Name="col-sm-1 cPanelMargin" id="cpanelgeoSalesCountries"></cpanel>
+						<rpanel id="assignedgeoSalesCountries" label="" size="7" class-Name="MultiSelecterPanelHeight"
+							order-by="countryName" value="countryCode" text="countryName"></rpanel>
+						</multi-select>
+					</div>
+				</div>
+				<div
+					class="text-left col-sm-8 col-md-8 col-lg-8 col-lg-offset-2 col-md-offset-2 col-sm-offset-2">
+					<div
+						class="col-sm-5 col-md-5 col-lg-5 col-lg-offset-7 col-sm-offset-7 col-md-offset-7 padding0">
+						<button class="btn btn-success" id="geoSalesFormBtn" type="submit"
+							validation-submit="geoSalesForm" autofocus="true"
+							data-ng-click="saveSalesTerritories(geoSalesTerritoriesList.countrySalesTerritories,geoSalesTerritoriesList.stateSalesTerritories,'companyProfile.viewGeographicSalesCapability','companyProfile');callGAPageTrack('saveGeoSalesCap');">{{'common.save'
+							| translate}}</button>
+					</div>
+				</div>
+			</form>
+		</div>
+		</vision-action>
+	</div>
+</div>

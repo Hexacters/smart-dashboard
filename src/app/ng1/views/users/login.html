@@ -1,0 +1,76 @@
+<div ng-form="loginForm">
+	<div ng-controller="userController" login form-id="loginForm">
+		<submit-data service="users" operation="login" callback="afterLoginCallbackFn"></submit-data>
+		<div data-ng-class="{'dNone':loading}"
+			class="mainbox col-sm-12 col-md-12 col-lg-12">
+			<div class="col-sm-7 col-md-7 col-lg-7">
+				<div autocomplete="off" class="form-signin">
+					<h3 class="form-signin-heading-global">{{'login.header.existingUsersTitle'
+						| translate}}</h3>
+					<div data-ng-if="loggedOutMsg" id="loginError"
+						class="alert alert-danger">
+						<strong><i class="fa fa-warning"></i></strong>&nbsp; <span
+							data-ng-if="loggedOutMsg=='LOGGED_OUT'">{{'login.label.logoutMessage'|
+							translate}} </span> <span data-ng-if="loggedOutMsg=='SESSION_EXPIRED'">{{'login.label.loginSessionExpired'|
+							translate}}</span> <span data-ng-if="loggedOutMsg=='PASSWORD_EXPIRED'">{{'login.label.loginUserPasswordExpired'|
+							translate}}</span>
+							<span data-ng-if="loggedOutMsg=='INVALID_CREDENTIALS'">{{'login.label.loginBadCredential'|
+							translate}}</span>
+							<span data-ng-if="loggedOutMsg==='FORBIDDEN'">{{'login.label.forbiddenErrorMessage'| translate}}</span>
+							<span data-ng-if="loggedOutMsg==='ACCESS_DENIED'">{{'login.label.logoutMessage'| translate}}</span>
+					</div>
+					<!-- <div
+						ng-show="loginError && loginError.errorData.ResponseError[0].errorCode != '8270' && loginError.errorData.ResponseError[0].errorCode != '8278' && loginError.errorData.ResponseError[0].errorCode != '8279'"
+						id="loginError" class="alert alert-danger">
+						{{loginError.errorData.ResponseError[0].errorCode | translate}}</div> -->
+					<div class="form-group">
+						<input type="text" name="j_username" class="form-control"
+							data-ng-model="data.j_username" required autofocus id="j_username"
+							placeholder="{{'common.username' | translate}}"
+							validator="validateEmail" maxlength="100"
+							validate-email-error-message="{{'login.errorMessage.userNameInvalid' | translate}}"
+							ng-keydown="$event.keyCode == 13 && submit(); " title=""/>
+						<span class="validation-invalid"
+							ng-show="loginFormSubmitted && loginForm.j_username.$error.required">{{'login.errorMessage.emailRequired'
+							| translate}}</span>
+					</div>
+					<div class="form-group">
+						<input type="password" name="password" class="form-control"
+							data-ng-model="data.j_password" required id="password" maxlength="100"
+							placeholder="{{'login.label.password' | translate}}"
+							ng-keydown="$event.keyCode == 13 && submit();" title=""/>
+						<span class="validation-invalid"
+							ng-show="loginFormSubmitted && loginForm.password.$error.required">{{'login.errorMessage.passwordRequired'
+							| translate}}</span>
+					</div>
+					<div class="form-group">
+						<input id="rememberUsername" type="checkbox"
+							data-ng-model="data.rememberUsername" name="remember"
+							data-ng-keydown="$event.keyCode == 13 && submit();" />
+						<span>{{'login.label.rememberMe' | translate}}</span>
+					</div>
+					<button type="submit"
+						data-ng-click="submit();"
+						class="btn btn-success input-sm" id="loginInSubmit">{{'common.login'
+						| translate}}</button>
+					<div class="form-group">
+						<h5 class="ng-binding cursorpointer">
+							<a data-ui-sref="login.forgotForm" id="forgotPasswordLink">{{'login.label.forgotPassword'|
+								translate}}?</a>
+						</h5>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-5 col-md-5 col-lg-5">
+				<div class="form-signin">
+					<h3 class="form-signin-heading-global">{{'login.header.newUsersTitle'
+						| translate}}</h3>
+					<h5 class="form-signin-heading subtitle">{{'login.header.newUsersSubTitle'
+						| translate}}</h5>
+					<button type="submit" class="btn btn-primary input-sm" ng-click="showCustomerSearchScreen()"
+						id="newUserAction">{{'common.search' | translate}}</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

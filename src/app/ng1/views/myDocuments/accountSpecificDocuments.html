@@ -1,0 +1,368 @@
+<div class="row"
+     ng-controller="commonController">
+	<div class="col-sm-12 col-md-12 col-lg-12 myDocumentMaxHeight">
+		<vision-data-table service="myDocumentServices"
+		                   operation="getUserDocuments"
+		                   root-node="data.successData.UserDocumentList"
+		                   total-records-node="data.successData.totalRecords"
+		                   type="server"
+		                   id="accountSpecDocumentGrid"
+		                   initial-request='{"count":10,"page":1,"filter":{"autoAssignable":false,"requiredDoc":true},"sorting":{"sortKey":"asc"}}'>
+			<div data-ng-class="{'dNone':!loading}">
+				<img align="absmiddle"
+				     src="app/ng1/img/partial-loading.gif">  {{::'common.loading' | translate}}
+			</div>
+			<div ng-show="!loading">
+				<div class="row">
+					<div class="clearfix ng-table-counts-hide marginBP5 marginTP5 col-sm-12 col-md-12 col-lg-12"
+					     ng-table-pagination="accountSpecDocumentGrid"
+					     template-url="'ng-table/style3.html'"></div>
+				</div>
+				<div class="table-responsive"
+				     ng-controller="myDocumentController"
+				     ng-init="documentStatus()">
+					<table ng-table="accountSpecDocumentGrid"
+					       template-pagination="style3"
+					       class="table table-striped table-bordered"
+					       show-filter="true">
+						<tbody ng-if="accountSpecDocumentGrid.data.length>0">
+							<tr ng-repeat="accountSpecificDocs in $data">
+								<td data-title="'myDocuments.label.status' | translate"
+								    class="text-center col-sm-1 vAlignMiddle"
+								    filter="{ 'docStatus': 'select' }"
+								    filter-data="[{id:'',title:'ALL'},{id:'Rejected',title:'Rejected'},{id:'Expired',title:'Expired'},{id:'Missing',title:'Missing'},{id:'Expiring',title:'Expiring'},{id:'Completed',title:'Completed'}]">
+									<span ng-if="accountSpecificDocs.sortKey === 1">
+										<span ng-if="!accountSpecificDocs.docNote">
+											<img src="app/ng1/img/no.png"
+											     width="20" /><br /><a class="cursorPointer"
+											   ng-click="docRejectedReasonDialog('Reason', accountSpecificDocs.docRejectionString, '')">{{::'myDocuments.label.rejected'
+												| translate}}</a>
+										</span>
+										<span ng-if="accountSpecificDocs.docNote !== '' && accountSpecificDocs.docNote !=null">
+											<img src="app/ng1/img/no.png"
+											     width="20" /><br /><a class="cursorPointer"
+											   ng-click="docRejectedReasonDialog('Reason', accountSpecificDocs.docRejectionString, accountSpecificDocs.docNote)">{{::'myDocuments.label.rejected'
+												| translate}}</a>
+										</span>
+									</span>
+									<span ng-if="accountSpecificDocs.sortKey === 4">
+										<span ng-if="accountSpecificDocs.templateAutoAssignable === false">
+											<img src="app/ng1/img/no.png"
+											     width="20" /><br />{{::'myDocuments.label.Missing' | translate}}
+										</span>
+										<span ng-if="accountSpecificDocs.templateAutoAssignable === true">
+											<img src="app/ng1/img/no.png"
+											     width="20" /><br />{{::'myDocuments.label.Missing' | translate}}
+										</span>
+									</span>
+									<span ng-if="accountSpecificDocs.sortKey === 2">
+										<img src="app/ng1/img/no.png"
+										     width="20" /><br />{{::'myDocuments.label.expired' | translate}}</span>
+									<span ng-if="accountSpecificDocs.sortKey === 5">
+										<img src="app/ng1/img/okay.png"
+										     width="20" /><br />{{::'myDocuments.label.expiring' | translate}}
+									</span>
+									<span ng-if="accountSpecificDocs.docVerificationCode !== 'VERA' && accountSpecificDocs.sortKey !== 1 && accountSpecificDocs.sortKey !== 2 && accountSpecificDocs.sortKey !== 4 && accountSpecificDocs.sortKey !== 5">
+										<img src="app/ng1/img/okay.png"
+										     width="22" /><span
+											ng-if="accountSpecificDocs.docVerificationCode === 'UNVER'"> <br />{{::'myDocuments.label.unverified'
+												| translate}}
+										</span> <span ng-if="accountSpecificDocs.docVerificationCode !== 'UNVER'">
+												<br />{{::'myDocuments.label.verified' | translate}}
+										</span>
+									</span>
+									<span ng-if="accountSpecificDocs.docVerificationCode === 'VERA' && accountSpecificDocs.sortKey !== 1 && accountSpecificDocs.sortKey !== 2 && accountSpecificDocs.sortKey !== 4 && accountSpecificDocs.sortKey !== 5">
+										<img src="app/ng1/img/okay.png"
+										     width="22" /><br />{{::'myDocuments.label.verifiedAlternate'
+												| translate}}
+									</span>
+								</td>
+								<td header="'myDocumentWhat.html'"
+								    class="text-left col-sm-3">
+									<span ng-if="accountSpecificDocs.templateAutoAssignable === true">
+										<span ng-if="accountSpecificDocs.docDefName">{{accountSpecificDocs.docDefName}}</span>
+										<span ng-if="!accountSpecificDocs.docDefName">{{accountSpecificDocs.templateName}}</span>
+									</span>
+									<span ng-if="accountSpecificDocs.templateAutoAssignable !== true">
+										{{accountSpecificDocs.docDefName}}
+										<span ng-if="accountSpecificDocs.docDefHasTemplate && accountSpecificDocs.docDefHasTemplate === true">
+											<a class="fontSize11px getTemplate"
+											   ng-click="viewTemplateDocument(accountSpecificDocs.docDefOid)">{{::'myDocuments.getTemplate' | translate}}</a>
+										</span>
+									</span>
+									<br />
+									<div class="marginT1">
+										<span class="noLinkSpan"
+										      ng-if="(accountSpecificDocs.documentOid && accountSpecificDocs.documentOid !== '') && !accountSpecificDocs.providerTemplate">
+											<i tooltip-append-to-body="true"
+											   tooltip-placement="top"
+											   tooltip="Upload"
+											   class="fa fa-lg fa-upload document-icon"
+											   aria-hidden="true"></i>
+											<span ng-if="accountSpecificDocs.templateOid && accountSpecificDocs.templateOid=='BADGE_PHOTO-Rep'">
+												<a ui-sref="expressionRegistration.badgePhoto">
+													<i tooltip-append-to-body="true"
+													   tooltip-placement="top"
+													   tooltip="View/Update"
+													   class="fa fa-lg fa-picture-o document-icon"
+													   aria-hidden="true"></i></a>
+											</span>
+											<span ng-if="accountSpecificDocs.templateOid !== 'BADGE_PHOTO-Rep'">
+												<span ng-if="accountSpecificDocs.uploadedDocSize && accountSpecificDocs.uploadedDocSize >='200'">
+													<a ng-click="viewComplianceDocument(accountSpecificDocs.documentOid)">
+														<i tooltip-append-to-body="true"
+														   tooltip-placement="top"
+														   tooltip="View"
+														   class="fa fa-lg fa-eye document-icon"
+														   aria-hidden="true"></i></a>
+												</span>
+												<span ng-if="!accountSpecificDocs.uploadedDocSize || accountSpecificDocs.uploadedDocSize < '200'">
+													<i tooltip-append-to-body="true"
+													   tooltip-placement="top"
+													   tooltip="View"
+													   class="fa fa-lg fa-eye document-icon"
+													   aria-hidden="true"></i>
+												</span>
+												<span ng-if="accountSpecificDocs.templateDocCategoryCode && accountSpecificDocs.templateDocCategoryCode === 'OPVC'">
+													<a ng-click="showCautionPopup(accountSpecificDocs.documentOid,accountSpecificDocs.docDefOid,accountSpecificDocs.templateAutoAssignable,'','update')"><i
+														   tooltip-append-to-body="true"
+														   tooltip-placement="top"
+														   tooltip="Update"
+														   class="fa fa-lg fa-pencil-square-o document-icon"
+														   aria-hidden="true"></i></a>
+												</span>
+												<span ng-if="accountSpecificDocs.templateDocCategoryCode && accountSpecificDocs.templateDocCategoryCode === 'OPREP'">
+													<a ng-click="loadUploadDocumentForm(accountSpecificDocs.documentOid,accountSpecificDocs.docDefOid,accountSpecificDocs.templateAutoAssignable,'','update', 'accSpacifDocument')"><i
+														   tooltip-append-to-body="true"
+														   tooltip-placement="top"
+														   tooltip="Update"
+														   class="fa fa-lg fa-pencil-square-o document-icon"
+														   aria-hidden="true"></i></a>
+												</span>
+											</span>
+											<span ng-if="accountSpecificDocs.uploadedDocSize && accountSpecificDocs.uploadedDocSize >= '200'">
+												<a ng-click="downloadComplianceDocument(accountSpecificDocs.documentOid);">
+													<i tooltip-append-to-body="true"
+													   tooltip-placement="top"
+													   tooltip="Download"
+													   class="fa fa-lg fa-download document-icon"
+													   aria-hidden="true"></i></a>
+											</span>
+											<span ng-if="!accountSpecificDocs.uploadedDocSize || accountSpecificDocs.uploadedDocSize < '200'">
+												<i tooltip-append-to-body="true"
+												   tooltip-placement="top"
+												   tooltip="Download"
+												   class="fa fa-lg fa-download document-icon"
+												   aria-hidden="true"></i>
+											</span>
+											<a ng-click="showDeleteDocuments((accountSpecificDocs.docDefName && accountSpecificDocs.docDefName !== '') ? accountSpecificDocs.docDefName : accountSpecificDocs.templateName,accountSpecificDocs.documentOid,'accountSpecificDoc',accountSpecificDocs.templateDocCategoryCode)"><i
+												   tooltip-append-to-body="true"
+												   tooltip-placement="top"
+												   tooltip="Delete"
+												   class="fa fa-lg fa-trash-o"
+												   aria-hidden="true"></i></a>
+										</span>
+										<span ng-if="!accountSpecificDocs.documentOid && !accountSpecificDocs.providerTemplate">
+											<span ng-if="accountSpecificDocs.templateOid && accountSpecificDocs.templateOid === 'BADGE_PHOTO-Rep'">
+												<a ng-click="showCautionPopup(accountSpecificDocs.documentOid,accountSpecificDocs.docDefOid,accountSpecificDocs.templateAutoAssignable,'','upload')">
+													<i tooltip-append-to-body="true"
+													   tooltip-placement="top"
+													   tooltip="Upload"
+													   class="fa fa-lg fa-upload document-icon"
+													   aria-hidden="true"></i></a>
+												<span class="noLinkSpan ">
+													<i tooltip-append-to-body="true"
+													   tooltip-placement="top"
+													   tooltip="View/Update"
+													   class="fa fa-lg fa-picture-o document-icon"
+													   aria-hidden="true"></i>
+												</span>
+											</span>
+											<span ng-if="accountSpecificDocs.templateOid !== 'BADGE_PHOTO-Rep'">
+												<span ng-if="accountSpecificDocs.templateDocCategoryCode && accountSpecificDocs.templateDocCategoryCode === 'OPVC'">
+													<a ng-click="showCautionPopup(accountSpecificDocs.documentOid,accountSpecificDocs.docDefOid,accountSpecificDocs.templateAutoAssignable,'','upload')">
+														<i tooltip-append-to-body="true"
+														   tooltip-placement="top"
+														   tooltip="Upload"
+														   class="fa fa-lg fa-upload document-icon"
+														   aria-hidden="true"></i></a>
+												</span>
+												<span ng-if="accountSpecificDocs.templateDocCategoryCode && accountSpecificDocs.templateDocCategoryCode === 'OPREP'">
+													<a ng-click="loadUploadDocumentForm(accountSpecificDocs.documentOid,accountSpecificDocs.docDefOid,accountSpecificDocs.templateAutoAssignable,'','upload', 'accSpacifDocument')">
+														<i tooltip-append-to-body="true"
+														   tooltip-placement="top"
+														   tooltip="Upload"
+														   class="fa fa-lg fa-upload document-icon"
+														   aria-hidden="true"></i></a>
+												</span>
+												<span class="noLinkSpan">
+													<i tooltip-append-to-body="true"
+													   tooltip-placement="top"
+													   tooltip="View"
+													   class="fa fa-lg fa-eye document-icon"
+													   aria-hidden="true"></i>
+													<i tooltip-append-to-body="true"
+													   tooltip-placement="top"
+													   tooltip="Update"
+													   class="fa fa-lg fa-pencil-square-o document-icon"
+													   aria-hidden="true"></i>
+												</span>
+											</span>
+											<span class="noLinkSpan">
+												<i tooltip-append-to-body="true"
+												   tooltip-placement="top"
+												   tooltip="Download"
+												   class="fa fa-lg fa-download document-icon"
+												   aria-hidden="true"></i>
+												<i tooltip-append-to-body="true"
+												   tooltip-placement="top"
+												   tooltip="Delete"
+												   class="fa fa-lg fa-trash-o"
+												   aria-hidden="true"></i>
+											</span>
+										</span>
+										<span ng-if="accountSpecificDocs.documentOid && accountSpecificDocs.providerTemplate">
+											<span class="noLinkSpan">
+												<i tooltip-append-to-body="true"
+												   tooltip-placement="top"
+												   tooltip="Upload"
+												   class="fa fa-lg fa-upload document-icon"
+												   aria-hidden="true"></i>
+												<a ng-click="viewComplianceDocument(accountSpecificDocs.documentOid)">
+													<i tooltip-append-to-body="true"
+													   tooltip-placement="top"
+													   tooltip="View"
+													   class="fa fa-lg fa-eye document-icon"
+													   aria-hidden="true"></i></a>
+												<i tooltip-append-to-body="true"
+												   tooltip-placement="top"
+												   tooltip="Update"
+												   class="fa fa-lg fa-pencil-square-o document-icon"
+												   aria-hidden="true"></i>
+												<a ng-click="downloadComplianceDocument(accountSpecificDocs.documentOid);">
+													<i tooltip-append-to-body="true"
+													   tooltip-placement="top"
+													   tooltip="Download"
+													   class="fa fa-lg fa-download document-icon"
+													   aria-hidden="true"></i></a>
+												<i tooltip-append-to-body="true"
+												   tooltip-placement="top"
+												   tooltip="Delete"
+												   class="fa fa-lg fa-trash-o"
+												   aria-hidden="true"></i>
+											</span>
+										</span>
+										<span ng-if="!accountSpecificDocs.documentOid && accountSpecificDocs.providerTemplate">
+											<span class="noLinkSpan">
+												<i tooltip-append-to-body="true"
+												   tooltip-placement="top"
+												   tooltip="Upload"
+												   class="fa fa-lg fa-upload document-icon"
+												   aria-hidden="true"></i>
+												<i tooltip-append-to-body="true"
+												   tooltip-placement="top"
+												   tooltip="View"
+												   class="fa fa-lg fa-eye document-icon"
+												   aria-hidden="true"></i>
+												<i tooltip-append-to-body="true"
+												   tooltip-placement="top"
+												   tooltip="Update"
+												   class="fa fa-lg fa-pencil-square-o document-icon"
+												   aria-hidden="true"></i>
+												<i tooltip-append-to-body="true"
+												   tooltip-placement="top"
+												   tooltip="Download"
+												   class="fa fa-lg fa-download document-icon"
+												   aria-hidden="true"></i>
+												<i tooltip-append-to-body="true"
+												   tooltip-placement="top"
+												   tooltip="Delete"
+												   class="fa fa-lg fa-trash-o"
+												   aria-hidden="true"></i>
+											</span>
+										</span>
+									</div>
+								</td>
+								<td header="'myDocumentWhy.html'"
+								    class="text-left col-sm-3">
+									<span ng-if="accountSpecificDocs.templateAutoAssignable === true">
+										<span ng-if="accountSpecificDocs.docDefWhy && accountSpecificDocs.docDefWhy !== ''">
+											<span class="whiteSpacePre"
+											      ng-bind-html="accountSpecificDocs.docDefWhy | limitHtml:45 | trustAsHtml"></span>
+											<span data-ng-if="accountSpecificDocs.docDefWhy.length>45">
+												<a class="cursorPointer"
+												   ng-click="moreDialog(accountSpecificDocs.docDefWhy,'Why?')">  {{::'common.more' | translate}}...</a>
+											</span>
+										</span>
+										<span ng-if="!accountSpecificDocs.docDefWhy || accountSpecificDocs.docDefWhy === ''">
+											<span class="whiteSpacePre"
+											      ng-bind-html="accountSpecificDocs.templateWhy | limitHtml:45 | trustAsHtml"></span>
+											<span data-ng-if="accountSpecificDocs.templateWhy.length>45">
+												<a class="cursorPointer"
+												   ng-click="moreDialog(accountSpecificDocs.templateWhy,'Why?')">  {{::'common.more' | translate}}...</a>
+											</span>
+										</span>
+									</span>
+									<span ng-if="accountSpecificDocs.templateAutoAssignable === false">
+										<span class="whiteSpacePre"
+										      ng-bind-html="accountSpecificDocs.docDefWhy | limitHtml:45 | trustAsHtml"></span>
+										<span data-ng-if="accountSpecificDocs.docDefWhy.length>45">
+											<a class="cursorPointer"
+											   ng-click="moreDialog(accountSpecificDocs.docDefWhy,'Why?')">  {{::'common.more' | translate}}...</a>
+										</span>
+									</span>
+								</td>
+								<td header="'myDocumentHow.html'"
+								    class="text-left col-sm-3">
+									<span ng-if="accountSpecificDocs.templateAutoAssignable ==true">
+										<span ng-if="accountSpecificDocs.docDefName && accountSpecificDocs.docDefName !== '' || accountSpecificDocs.docDefWhy && accountSpecificDocs.docDefWhy !== ''">
+											<span class="whiteSpacePre"
+											      ng-bind-html="accountSpecificDocs.docDefHow | limitHtml:45 | trustAsHtml"></span>
+											<span data-ng-if="accountSpecificDocs.docDefHow.length>45">
+												<a class="cursorPointer"
+												   ng-click="moreDialog(accountSpecificDocs.docDefHow,'How?')">  {{::'common.more' | translate}}...</a>
+											</span>
+										</span>
+										<span ng-if="!accountSpecificDocs.docDefName || accountSpecificDocs.docDefName === '' || !accountSpecificDocs.docDefWhy || accountSpecificDocs.docDefWhy === ''">
+											<span class="whiteSpacePre"
+											      ng-bind-html="accountSpecificDocs.templateHow | limitHtml:45 | trustAsHtml"></span>
+											<span data-ng-if="accountSpecificDocs.templateHow.length>45">
+												<a class="cursorPointer"
+												   ng-click="moreDialog(accountSpecificDocs.templateHow,'How?')">  {{::'common.more' | translate}}...</a>
+											</span>
+										</span>
+									</span>
+									<span ng-if="accountSpecificDocs.templateAutoAssignable === false">
+										<span class="whiteSpacePre"
+										      ng-bind-html="accountSpecificDocs.docDefHow | limitHtml:45 | trustAsHtml"></span>
+										<span data-ng-if="accountSpecificDocs.docDefHow.length>45">
+											<a class="cursorPointer"
+											   ng-click="moreDialog(accountSpecificDocs.docDefHow,'How?')">  {{::'common.more' | translate}}...</a>
+										</span>
+									</span>
+								</td>
+								<td header="'myDocumentWhere.html'"
+								    class="text-left col-sm-2">
+									<a ng-click="opencAccountSpecViewAccount(accountSpecificDocs.customerName,accountSpecificDocs.customerVerticalCode)">
+										{{::'myDocuments.viewAccounts' | translate}}
+									</a>
+								</td>
+							</tr>
+						</tbody>
+						<tbody ng-if="accountSpecDocumentGrid.data.errorData.Status === 'Error'">
+							<tr>
+								<td colspan="5">
+									<div class="text-danger">
+										<span class="fa fa-warning"
+										      aria-hidden="true"></span> {{accountSpecDocumentGrid.data.errorData.ResponseError[0].errorCode |
+										translate}}
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</vision-data-table>
+	</div>
+</div>

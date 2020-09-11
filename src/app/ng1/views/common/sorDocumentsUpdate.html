@@ -1,0 +1,127 @@
+<div class="modal-content">
+	<div class="modal-body">
+		<div class="row">
+			<vision-action>
+			<get-data service="complianceServices" operation="getBackgroundCheckDetails"
+				root-node="data.successData.BCDetails" form-node="BCDetails"
+				params='{"userOid":"{{nsorObject.userOid}}","bcStatus":"{{nsorObject.bcStatus}}","typeCode":"{{nsorObject.typeCode}}"}'>
+			</get-data>
+			<div class="col-sm-12 col-md-12 col-lg-12"
+				data-ng-if="getError.status == 'error'">
+				<div class="alert alert-danger text-danger">
+					<span class="fa fa-warning" aria-hidden="true"></span>
+					{{getError.errorData.ResponseError[0].errorCode | translate}}
+				</div>
+				<div class="text-center">
+					<button type="button" ng-click="$close();"
+						class="btn btn-warning">{{'common.close' |
+						translate}}</button>
+				</div>
+			</div>
+			<div class="col-sm-12 col-md-12 col-lg-12">
+				<div data-ng-class="{'dNone':!loading}">
+					<img align="absmiddle" src="app/ng1/img/partial-loading.gif">&nbsp;{{'common.loading'
+					| translate}}
+				</div>
+			</div>
+			<div ng-if="BCDetails.length > 0">
+				<div ng-show="!loading">
+					<form novalidate name="nsorDocumentUploadForm" autocomplete="off"
+						class="form-horizontal">
+						<div class="col-sm-12 col-md-12 col-lg-12">
+							<div class="form-group">
+								<div class="col-sm-9 col-md-10 col-lg-10">
+									<span>
+										<h5>
+											<b>{{BCDetails[0].name}}</b>
+										</h5>
+									</span>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-12 col-md-12 col-lg-12 padLeft0 marginT1"
+							ng-controller="commonController">
+							<div class="form-group" ng-init="numLimit =50">
+								<div class="col-sm-4 col-md-4 col-lg-4 text-right">
+									<label>{{'myDocuments.label.why' | translate}}</label>
+								</div>
+								<div class="col-sm-8 col-md-8 col-lg-8">
+									<span ng-if="BCDetails[0].tempWhy" ng-init="nsorWhyRedirect = nsorTempHowWhyformate(BCDetails[0], (BCDetails[0].tempWhy+('nsor.label.nsorRedirectUrlText'|translate)))"> <span class="whiteSpacePre break-word"
+										ng-bind-html="nsorWhyRedirect | limitHtml:numLimit | trustAsHtml"></span>
+										<span
+										data-ng-if="nsorWhyRedirect.length>'50'"><a
+											ng-hide="showLess" class="readMoreLess cursorPointer"
+											ng-click="readMore(nsorWhyRedirect.length)">more...</a><a ng-show="showLess"
+											class="readMoreLess cursorPointer break-word" ng-click="readLess('50')">less</a></span>
+									</span>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-12 col-md-12 col-lg-12 padLeft0 marginT1"
+							ng-controller="commonController">
+							<div class="form-group" ng-init="numLimit =50">
+								<div class="col-sm-4 col-md-4 col-lg-4 text-right">
+									<label>{{'myDocuments.label.how' | translate}}</label>
+								</div>
+								<div class="col-sm-8 col-md-8 col-lg-8">
+									<span ng-if="BCDetails[0].tempHow" ng-init="nsorHowRedirect = nsorTempHowWhyformate(BCDetails[0], (BCDetails[0].tempHow+('nsor.label.nsorRedirectUrlText'|translate)))"> <span class="whiteSpacePre break-word"
+										ng-bind-html="nsorHowRedirect | limitHtml:numLimit | trustAsHtml"></span>
+										<span
+										data-ng-if="nsorHowRedirect.length>'50'"><a
+											ng-hide="showLess" class="readMoreLess cursorPointer"
+											ng-click="readMore(nsorHowRedirect.length)">more...</a><a ng-show="showLess"
+											class="readMoreLess cursorPointer break-word" ng-click="readLess('50')">less</a></span>
+									</span>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-12 col-md-12 col-lg-12 padLeft0 marginT1">
+							<div class="form-group">
+								<div class="col-sm-4 col-md-4 col-lg-4 text-right">
+									<label>{{'myDocuments.label.category' | translate}}</label>
+								</div>
+								<div class="col-sm-8 col-md-8 col-lg-8">
+									<span>{{BCDetails[0].typeCode}}</span>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-12 col-md-12 col-lg-12 padLeft0 marginT1">
+							<div class="form-group">
+								<div class="col-sm-4 col-md-4 col-lg-4"></div>
+								<div class="col-sm-8 col-md-8 col-lg-8">
+								<div ng-if="BCDetails[0].typeCode === 'CBC'">
+									<button type="button" ng-if="(BCDetails[0].isCbcExpired && (BCDetails[0].cbcStatus | lowercase) === 'pass' ) || ((BCDetails[0].cbcStatus | lowercase) === 'incomplete')"
+										validation-submit="nsorDocumentUploadForm" autofocus
+										ng-click="showCbcInternationalUserCheckPopup(nsorObject);" class="btn btn-primary">{{
+										'common.continue' | translate}}</button>
+									<button type="button" ng-if="(!BCDetails[0].intlRep && !BCDetails[0].isCbcExpired && (BCDetails[0].cbcStatus | lowercase) === 'pass' ) || (!BCDetails[0].intlRep && (BCDetails[0].cbcStatus | lowercase) === 'fail')"
+										validation-submit="nsorDocumentUploadForm" autofocus
+										ng-click="goToBackgroundCheck(nsorObject);" class="btn btn-success">{{
+										'nsor.label.goToBackgroundOnline' | translate}}</button>
+									<button id="nsorCheckDetailPopup" type="button" ng-click="$close();"
+										class="btn btn-warning">{{'common.cancel' |
+										translate}}</button>
+								</div>
+								<div ng-if="BCDetails[0].typeCode !== 'CBC'">
+									<button type="button" ng-if="(BCDetails[0].isNsorExpired && (BCDetails[0].nsorStatus | lowercase) === 'pass' ) || ((BCDetails[0].nsorStatus | lowercase) === 'incomplete')"
+										validation-submit="nsorDocumentUploadForm" autofocus
+										ng-click="showSORAcknowlegePopup(nsorObject);" class="btn btn-primary">{{
+										'common.continue' | translate}}</button>
+									<button type="button" ng-if="(!BCDetails[0].isNsorExpired && (BCDetails[0].nsorStatus | lowercase) === 'pass' ) || ((BCDetails[0].nsorStatus | lowercase) === 'fail')"
+										validation-submit="nsorDocumentUploadForm" autofocus
+										ng-click="goToBackgroundCheck(nsorObject);" class="btn btn-success">{{
+										'nsor.label.goToBackgroundOnline' | translate}}</button>
+									<button id="nsorCheckDetailPopup" type="button" ng-click="$close();"
+										class="btn btn-warning">{{'common.cancel' |
+										translate}}</button>
+								</div>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+			</vision-action>
+		</div>
+	</div>
+</div>
