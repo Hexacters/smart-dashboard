@@ -42,15 +42,57 @@ export class ActivityComponent extends ASettings implements OnInit {
     public charts: any[] = [
         {
             name: 'Badge Activity',
-            title: 'BADGE ACTIVITY'
+            title: 'BADGE ACTIVITY',
+            filters: [
+                {
+                    name: '7d',
+                    active: true,
+                },
+                {
+                    name: '15d',
+                    active: false,
+                },
+                {
+                    name: '1m',
+                    active: false,
+                },
+            ]
         },
         {
             name: 'Location Activity',
-            title: 'LOCATION ACTIVITY'
+            title: 'LOCATION ACTIVITY',
+            filters: [
+                {
+                    name: 'Today',
+                    active: false,
+                },
+                {
+                    name: '7d',
+                    active: true,
+                },
+                {
+                    name: '15d',
+                    active: false,
+                },
+                {
+                    name: '1m',
+                    active: false,
+                },
+            ]
         },
         {
-            name: 'Sign in Event',
-            title: 'SIGN IN EVENT'
+            name: 'Last Activity',
+            title: 'LAST ACTIVITY',
+            filters: [
+                {
+                    name: 'More then 30 Days',
+                    active: true,
+                },
+                {
+                    name: 'More then 60 Days',
+                    active: false,
+                },
+            ]
         }
     ];
 

@@ -8,10 +8,10 @@
                 <span>Graph View</span>
             </div> -->
             <div class="chart-filter">
-                <button class="btn filter">Today</button>
-                <button class="btn filter active">7d</button>
-                <button class="btn filter">15d</button>
-                <button class="btn filter">1m</button>
+                <button class="btn filter" [ngClass]="{'active': data.active}"
+                    *ngFor="let data of charts[matCarousel.currentIndex].filters">
+                    {{data.name}}
+                </button>
                 <span class="action float-right" aria-haspopup="true">
                     <label>{{charts[matCarousel.currentIndex].name}}</label>
                     <span class="btn events-action" data-toggle="dropdown" aria-expanded="false">
@@ -68,6 +68,16 @@
                                         [legendPosition]="'right'" [centerLabels]="'Total'" [isView]="true"
                                         [labels]="['Freeman', 'Wesley Medical Center', 'Johns Hospital', 'Hopkins Hospital', 'UCLA Medical Center']">
                                     </app-donut-chart>
+                                </div>
+                            </div>
+                        </div>
+                    </mat-carousel-slide>
+                    <mat-carousel-slide #matCarouselSlide overlayColor="#00000040" [hideOverlay]="true"
+                        *ngIf="chartOptions">
+                        <div class="container">
+                            <div class="row">
+                                <div class="offset-md-1 col-md-10">
+                                    <app-last-activity></app-last-activity>
                                 </div>
                             </div>
                         </div>

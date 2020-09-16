@@ -17,6 +17,7 @@ import { NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
 import { SharedModule } from 'src/@cpm/shared/shared.module';
 import { SettingsComponent } from './settings/settings.component';
 import { MatCarouselModule } from '@ngmodule/material-carousel';
+import { LastActivityComponent } from './activity/last-activity/last-activity.component';
 
 const routes: Routes = [
     {
@@ -27,7 +28,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-    declarations: [HomeComponent, InformationComponent, TrandsComponent, CalendarComponent, UpcomingComponent, DonutChartComponent, AccountSearchComponent, AccountsComponent, ActivityComponent, RecentActivityComponent, SettingsComponent],
+    declarations: [HomeComponent, InformationComponent, TrandsComponent, CalendarComponent, UpcomingComponent, DonutChartComponent, AccountSearchComponent, AccountsComponent, ActivityComponent, RecentActivityComponent, SettingsComponent, LastActivityComponent],
     imports: [
         RouterModule.forChild(routes),
         MatCarouselModule.forRoot(),

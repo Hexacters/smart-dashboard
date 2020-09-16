@@ -16,7 +16,7 @@ export class InformationComponent extends ASettings implements OnInit {
         this.announcementBanner = [
             { 'title': 'COVID-19 Updates', 'description': 'Due to heightened concerns, routinely acknowledge new related policies and check in for updates.', 'actions': 'View Policy' },
             { 'title': 'New Health Systems', 'description': 'Providence St. Joseph Health locations have joined Vendormate: AK, CA, MT, OR, TX, WA.', 'actions': 'Register' },
-            { 'title': 'Monthly Training Webinars', 'description': 'Looking for additional guidance and information on the Vendormate Credentialing process?.', 'actions': 'See Courses' }
+            { 'title': 'Monthly Training Webinars', 'description': 'Looking for additional guidance and information on the Vendormate Credentialing process?.', 'actions': 'View' }
         ];
     }
 
