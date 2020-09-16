@@ -36,7 +36,7 @@
                 font-size: 12px;
             }
         }
-        
+
         padding: 10px 15px 10px 0;
         background-color: none;
         background: linear-gradient(207.79deg, #005be2 -1.4%, rgba(1, 11, 98, 0.8) 76.82%);
@@ -68,6 +68,11 @@
         .description {
             font-size: 12px;
             padding-right: 10px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .actions {

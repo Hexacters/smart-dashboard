@@ -8,36 +8,40 @@
                         <b>Background Check Alerts</b>
                         <span class="ml-2 badge badge-success">2</span>
                     </p>
-                    <mat-carousel #matCarousel timings="250ms ease-in" [slideHeight]="'10px'" [autoplay]="false"
-                        interval="5000" color="accent" slides="2" [loop]="false" [hideArrows]="false"
+                    <mat-carousel #matCarousel timings="250ms ease-in" [slideHeight]="'10px'" [autoplay]="true"
+                        interval="5000" color="accent" slides="2" [loop]="true" [hideArrows]="false"
                         [hideIndicators]="true" [useKeyboard]="true" [useMouseWheel]="false" orientation="ltr">
                         <mat-carousel-slide #matCarouselSlide overlayColor="#00000040" [hideOverlay]="true">
                             <div>
                                 <div class="d-flex flex-row">
-                                    <label class="description">
-                                        Providence St. Joseph Health locations
-                                        have joined Vendormate: AK, CA, MT,
-                                        OR, TX, WA
+                                    <label class="description" [matTooltipPosition]="'above'" matTooltip="Background screening is required as part of one of your health system’s credentialing requirements.
+                                    The health system will not accept an attestation from your employer in lieu of screening.
+                                    Click ‘Complete’ to access the Backgrounds Online portal and complete the screening.">
+                                        Background screening is required as part of one of your health system’s credentialing requirements.
+                                        The health system will not accept an attestation from your employer in lieu of screening.
+                                        Click ‘Complete’ to access the Backgrounds Online portal and complete the screening.
                                     </label>
 
                                 </div>
                                 <div class="actions">
-                                    <button class="btn btn-primary">View</button>
+                                    <button class="btn btn-primary">Complete</button>
                                 </div>
                             </div>
                         </mat-carousel-slide>
                         <mat-carousel-slide #matCarouselSlide overlayColor="#00000040" [hideOverlay]="true">
                             <div>
                                 <div class="d-flex flex-row">
-                                    <label class="description">
-                                        Due to heightened concerns,
-                                        routinely acknowledge new related
-                                        policies and check in for updates.
+                                    <label class="description" [matTooltipPosition]="'above'" matTooltip="Background screening is required as part of one of your health system’s credentialing requirements.
+                                    The health system will not accept an attestation from your employer in lieu of screening.
+                                    Click ‘Complete’ to access the Backgrounds Online portal and complete the screening.">
+                                        Background screening is required as part of one of your health system’s credentialing requirements.
+                                        The health system will not accept an attestation from your employer in lieu of screening.
+                                        Click ‘Complete’ to access the Backgrounds Online portal and complete the screening.
                                     </label>
 
                                 </div>
                                 <div class="actions">
-                                    <button class="btn btn-primary">View</button>
+                                    <button class="btn btn-primary">Complete</button>
                                 </div>
                             </div>
                         </mat-carousel-slide>
