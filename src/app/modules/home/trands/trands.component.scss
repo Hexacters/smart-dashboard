@@ -1,5 +1,4 @@
 .trands {
-    
     .content {
         box-shadow: 0px 3px 30px rgba(0, 0, 0, 0.125);
         padding: 15px 0 10px 0;
@@ -32,13 +31,54 @@
     .register {
         .info {
             padding: 0 15px;
-
+            box-shadow: none !important;
             label {
                 font-size: 12px;
             }
         }
-        padding: 15px 15px 10px 0;
-        background: linear-gradient(207.79deg, #005BE2 -1.4%, rgba(1, 11, 98, 0.8) 76.82%);
+        
+        padding: 10px 15px 10px 0;
+        background-color: none;
+        background: linear-gradient(207.79deg, #005be2 -1.4%, rgba(1, 11, 98, 0.8) 76.82%);
         color: #ffffff;
+    }
+
+    .info {
+        box-shadow: 0px 3px 30px rgba(0, 0, 0, 0.125);
+        padding: 15px 10px;
+        border-radius: 5px;
+
+        .carousel {
+            height: 72px !important;
+            > button {
+                top: 53px !important;
+            }
+            > button.mat-icon-button:first-of-type {
+                left: unset !important;
+                right: 40px !important;
+            }
+        }
+
+        .info-content {
+            p {
+                margin-bottom: 3px;
+            }
+        }
+
+        .description {
+            font-size: 12px;
+            padding-right: 10px;
+        }
+
+        .actions {
+            button {
+                width: 100px;
+                margin: 0px 0 5px 0;
+
+                padding: 2px;
+                border-radius: 20px;
+                font-size: 12px;
+            }
+        }
     }
 }

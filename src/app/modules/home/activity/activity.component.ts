@@ -83,13 +83,13 @@ export class ActivityComponent extends ASettings implements OnInit {
                     show: false
                 },
                 type: 'bar',
+                stacked: true,
                 height: '200px'
             },
             plotOptions: {
                 bar: {
                     horizontal: false,
                     columnWidth: '55%',
-                    endingShape: 'rounded'
                 }
             },
             dataLabels: {

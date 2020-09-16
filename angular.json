@@ -33,7 +33,8 @@
               "src/app/ng1/css/app.css",
               "src/app/ng1/css/style.css",
               "src/app/ng1/bower_components/angular-ng-table/ng-table.min.css",
-              "src/styles.scss"
+              "src/styles.scss",
+              "src/assets/custom-materiel.css"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",

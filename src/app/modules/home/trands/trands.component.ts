@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-trands',
   templateUrl: './trands.component.html',
-  styleUrls: ['./trands.component.scss']
+  styleUrls: ['./trands.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class TrandsComponent implements OnInit {
 
