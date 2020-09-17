@@ -2,7 +2,7 @@
     <div class="row m-0">
         <div class="col-md-12 p-4 content-shadow content">
             <h5 class="m-0 text-primary"><b>{{charts[matCarousel.currentIndex].title}}</b></h5>
-            <p class="text-light desc">Your most visited accounts</p>
+            <p class="text-light desc" *ngIf="!charts[matCarousel.currentIndex].isCustome">Your most visited accounts</p>
             <!-- <div class="hint">
                 <p>Sign-ins & Compliance</p>
                 <span>Graph View</span>
@@ -12,6 +12,9 @@
                     *ngFor="let data of charts[matCarousel.currentIndex].filters">
                     {{data.name}}
                 </button>
+                <div *ngIf="charts[matCarousel.currentIndex].isCustome">
+
+                </div>
                 <span class="action float-right" aria-haspopup="true">
                     <label>{{charts[matCarousel.currentIndex].name}}</label>
                     <span class="btn events-action" data-toggle="dropdown" aria-expanded="false">
@@ -51,7 +54,7 @@
                         *ngIf="chartOptions">
                         <div class="container">
                             <div class="row">
-                                <div class="offset-md-1 col-md-10">
+                                <div class="col-md-12">
                                     <div class="mt-2">
                                         <h6>Top 5 Most visited Health System</h6>
                                     </div>

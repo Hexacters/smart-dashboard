@@ -88,16 +88,8 @@ export class ActivityComponent extends ASettings implements OnInit {
         {
             name: 'Last Activity',
             title: 'LAST ACTIVITY',
-            filters: [
-                {
-                    name: 'More then 30 Days',
-                    active: true,
-                },
-                {
-                    name: 'More then 60 Days',
-                    active: false,
-                },
-            ]
+            filters: [],
+            isCustome: true,
         }
     ];
 
