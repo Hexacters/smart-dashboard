@@ -2,18 +2,29 @@
     <div class="row m-0">
         <div class="col-md-12 p-4 content-shadow content">
             <h5 class="m-0 text-primary"><b>{{charts[matCarousel.currentIndex].title}}</b></h5>
-            <p class="text-light desc" *ngIf="!charts[matCarousel.currentIndex].isCustome">Your most visited accounts</p>
+            <p class="text-light desc" *ngIf="!charts[matCarousel.currentIndex].isCustome">Your most visited accounts
+            </p>
             <!-- <div class="hint">
                 <p>Sign-ins & Compliance</p>
                 <span>Graph View</span>
             </div> -->
-            <div class="chart-filter">
+            <div class="chart-filter" [ngClass]="{'mt-4': charts[matCarousel.currentIndex].isCustome}">
                 <button class="btn filter" [ngClass]="{'active': data.active}"
                     *ngFor="let data of charts[matCarousel.currentIndex].filters">
                     {{data.name}}
                 </button>
-                <div *ngIf="charts[matCarousel.currentIndex].isCustome">
-
+                <div class="float-left" *ngIf="charts[matCarousel.currentIndex].isCustome">
+                    <div fxflex="40">
+                        <span style="font-size: 14px; margin-right: 5px;">Last activity more then</span>
+                        <mat-form-field appearance="fill" style="width: 90px; font-size: 10px;">
+                            <mat-label>Days</mat-label>
+                            <mat-select >
+                                <mat-option [value]="'30 Days'">30 Days</mat-option>
+                                <mat-option [value]="'60 Days'">60 Days</mat-option>
+                                <mat-option [value]="'150 Days'">150 Days</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
                 </div>
                 <span class="action float-right" aria-haspopup="true">
                     <label>{{charts[matCarousel.currentIndex].name}}</label>
@@ -79,7 +90,7 @@
                         *ngIf="chartOptions">
                         <div class="container">
                             <div class="row">
-                                <div class="offset-md-1 col-md-10">
+                                <div class="col-md-12">
                                     <app-last-activity></app-last-activity>
                                 </div>
                             </div>

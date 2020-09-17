@@ -68,7 +68,7 @@ export class ActivityComponent extends ASettings implements OnInit {
         },
         {
             name: 'Location Activity',
-            title: 'LOCATION ACTIVITY',
+            title: 'ACTIVITY BY HEALTH SYSTEM',
             filters: [
                 {
                     name: 'Today',
@@ -89,8 +89,8 @@ export class ActivityComponent extends ASettings implements OnInit {
             ]
         },
         {
-            name: 'Last Activity',
-            title: 'LAST ACTIVITY',
+            name: 'Activity by last location visit',
+            title: 'ACTIVITY BY LAST LOCATION VISIT',
             filters: [],
             isCustome: true,
         }

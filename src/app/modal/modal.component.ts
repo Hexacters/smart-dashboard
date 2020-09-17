@@ -16,7 +16,7 @@ interface DialogData {
 })
 export class ModalComponent implements OnInit {
   displayedColumns: string[] = ['Rep Information', 'Department', 'Sign-In Location', 'Sign-In By'];
-  selectedCar;
+  selectedCar = 'Success';
    ELEMENTDATA = [
     {'RepInformation': 'AmalaPandian@mookambikainfo.com 80822', Department: 'Accounting', sighInLoc: 'Avon', signInBy: 'amala@mookambikainfo.com'},
     {'RepInformation': 'AmalaPandian@mookambikainfo.com 80822', Department: 'EP Lab', sighInLoc: 'Avon', signInBy: 'ravi@mookambikainfo.com'},

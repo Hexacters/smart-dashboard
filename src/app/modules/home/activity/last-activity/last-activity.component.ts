@@ -13,7 +13,9 @@ import {
 type ApexXAxis = {
   type?: "category" | "datetime" | "numeric";
   categories?: any;
+  title: any;
   labels?: {
+    show: boolean;
     style?: {
       colors?: string | string[];
       fontSize?: string;
@@ -31,6 +33,7 @@ export type ChartOptions = {
   grid: ApexGrid;
   colors: string[];
   legend: ApexLegend;
+  tooltip: any;
 };
 
 @Component({
@@ -44,17 +47,43 @@ export class LastActivityComponent {
 
   constructor() {
     this.chartOptions = {
+      tooltip: {
+        // custom: function({ series, seriesIndex, dataPointIndex, w }) {
+        //   return (
+        //     '<div class="container">' +
+        //     "<span>" +
+        //     w.globals.labels[dataPointIndex] +
+        //     ": " +
+        //     series[seriesIndex][dataPointIndex] +
+        //     "</span>" +
+        //     "</div>"
+        //   );
+        // },
+        x: {
+          show: true,
+          formatter: (data) => `Johns Hospital - ${data}`,
+        },
+        y: {
+          formatter: (data) => `${data}-09-2020`,
+          title: {
+            formatter: (seriesName) => seriesName,
+          },
+        }
+      },
       series: [
         {
-          name: "Last Activity",
-          data: [21, 22, 10, 28, 16, 21]
+          name: "Last Visited",
+          data: [21, 22, 10, 28, 16, 21, 20, 8, 10]
         }
       ],
       chart: {
+        toolbar: {
+          show: false
+        },
         height: 200,
         type: "bar",
         events: {
-          click: function(chart, w, e) {
+          click: function (chart, w, e) {
             // console.log(chart, w, e)
           }
         }
@@ -67,7 +96,6 @@ export class LastActivityComponent {
         "#775DD0",
         "#546E7A",
         "#26a69a",
-        "#D10CE8"
       ],
       plotOptions: {
         bar: {
@@ -92,13 +120,28 @@ export class LastActivityComponent {
           ['San Diego'],
           ['Dallas'],
           "San Jose",
+          "Chicago",
+          "Lose Angel",
         ],
         labels: {
+          show: false,
           style: {
-            fontSize: "12px"
+            fontSize: '12px',
           }
+        },
+        title: {
+          text: 'Accounts',
+          offsetY: 10,
+          style: {
+            color: undefined,
+            fontSize: '14px',
+            fontWeight: 'bold',
+          },
         }
-      }
+      },
+      yaxis: {
+        show: false,
+      },
     };
   }
 }
