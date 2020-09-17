@@ -15,15 +15,18 @@
                 </button>
                 <div class="float-left" *ngIf="charts[matCarousel.currentIndex].isCustome">
                     <div fxflex="40">
-                        <span style="font-size: 14px; margin-right: 5px;">Last activity more then</span>
-                        <mat-form-field appearance="fill" style="width: 90px; font-size: 10px;">
+                        <span style="font-size: 14px; margin-right: 5px;">Last activity is more than</span>
+                        <mat-form-field appearance="fill" style="width: 60px; font-size: 10px;">
                             <mat-label>Days</mat-label>
                             <mat-select >
-                                <mat-option [value]="'30 Days'">30 Days</mat-option>
-                                <mat-option [value]="'60 Days'">60 Days</mat-option>
-                                <mat-option [value]="'150 Days'">150 Days</mat-option>
+                                <mat-option selected [value]="'30 Days'">30</mat-option>
+                                <mat-option [value]="'60 Days'">60</mat-option>
+                                <mat-option [value]="'90 Days'">90</mat-option>
+                                <mat-option [value]="'120 Days'">120</mat-option>
+                                <mat-option [value]="'150 Days'">150</mat-option>
                             </mat-select>
                         </mat-form-field>
+                        <span style="font-size: 14px; margin-left: 5px;">Days</span>
                     </div>
                 </div>
                 <span class="action float-right" aria-haspopup="true">
@@ -90,7 +93,7 @@
                         *ngIf="chartOptions">
                         <div class="container">
                             <div class="row">
-                                <div class="col-md-12">
+                                <div class="offset-md-1 col-md-10">
                                     <app-last-activity></app-last-activity>
                                 </div>
                             </div>

@@ -140,7 +140,15 @@ export class LastActivityComponent {
         }
       },
       yaxis: {
-        show: false,
+        show: true,
+        title: {
+          text: 'Sum of days Since Last Visit',
+          style: {
+            color: undefined,
+            fontSize: '10px',
+            fontWeight: '500',
+          },
+        }
       },
     };
   }
