@@ -5,6 +5,7 @@ interface DialogData {
   Properties:any;
   selectedSeries;
   selectedCategories;
+  VisitedDate;
 }
 
 @Component({
@@ -14,20 +15,25 @@ interface DialogData {
   encapsulation: ViewEncapsulation.None,
 })
 export class ModalComponent implements OnInit {
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
- 
+  displayedColumns: string[] = ['Rep Information', 'Department', 'Sign-In Location', 'Sign-In By'];
+  selectedCar;
    ELEMENTDATA = [
-    {STATUS:  'Rejected', HOW: 'RC-templete_certificate', WHAT: 'how', WHERE: 'View Accounts'},
-    {STATUS: 'Rejected', HOW: 'Secretary_of_State_Filing', WHAT: 'how', WHERE: 'View Accounts'},
-    {STATUS: 'Expired', HOW: 'Secretary_of_State_Filing', WHAT: 'how', WHERE: 'View Accounts'},
-    {STATUS: 'Rejected', HOW: 'Edit_Doc_temp', WHAT: 'how', WHERE: 'View Accounts'},
-    {STATUS: 'Expired', HOW: 'RC-templete_certificate', WHAT: 'how', WHERE: 'View Accounts'},
-    {STATUS: 'Rejected', HOW: 'Secretary_of_State_Filing', WHAT: 'how', WHERE: 'View Accounts'},
-    {STATUS: 'Expired', HOW: 'RC-templete_certificate', WHAT: 'how', WHERE: 'View Accounts'},
-    {STATUS: 'Expired', HOW: 'RC-templete_certificate', WHAT: 'how', WHERE: 'View Accounts'},
-    {STATUS: 'Expired', HOW: 'Edit_Doc_temp', WHAT: 'how', WHERE: 'View Accounts'},
-    {STATUS: 'Rejected', HOW: 'RC-templete_certificate', WHAT: 'how', WHERE: 'View Accounts'},
-    {STATUS: 'Expired', HOW: 'Edit_Doc_temp', WHAT: 'how', WHERE: 'View Accounts'},
+    {'RepInformation': 'AmalaPandian@mookambikainfo.com 80822', Department: 'Accounting', sighInLoc: 'Avon', signInBy: 'amala@mookambikainfo.com'},
+    {'RepInformation': 'AmalaPandian@mookambikainfo.com 80822', Department: 'EP Lab', sighInLoc: 'Avon', signInBy: 'ravi@mookambikainfo.com'},
+    {'RepInformation': 'AmalaPandian@mookambikainfo.com 80822', Department: 'Administration', sighInLoc: 'Avon', signInBy: 'subburaj@mookambikainfo.com'},
+    {'RepInformation': 'AmalaPandian@mookambikainfo.com 80822', Department: 'Administration', sighInLoc: 'Avon', signInBy: 'saravanan@mookambikainfo.com'},
+    {'RepInformation': 'AmalaPandian@mookambikainfo.com 80822', Department: 'Administration', sighInLoc: 'Avon', signInBy: 'pandi@mookambikainfo.com'},
+    {'RepInformation': 'AmalaPandian@mookambikainfo.com 80822', Department: 'EP Lab', sighInLoc: 'Avon', signInBy: 'vasanth@mookambikainfo.com'},
+    {'RepInformation': 'AmalaPandian@mookambikainfo.com 80822', Department: 'Accounting', sighInLoc: 'Avon', signInBy: 'venkat@mookambikainfo.com'},
+    {'RepInformation': 'AmalaPandian@mookambikainfo.com 80822', Department: 'Accounting', sighInLoc: 'Avon', signInBy: 'poormnima@mookambikainfo.com'},
+    {'RepInformation': 'AmalaPandian@mookambikainfo.com 80822', Department: 'Administration', sighInLoc: 'Avon', signInBy: 'venkat@mookambikainfo.com'},
+    {'RepInformation': 'AmalaPandian@mookambikainfo.com 80822', Department: 'EP Lab', sighInLoc: 'Avon', signInBy: 'ravi@mookambikainfo.com'},
+    {'RepInformation': 'AmalaPandian@mookambikainfo.com 80822', Department: 'Administration', sighInLoc: 'Avon', signInBy: 'ravi@mookambikainfo.com'},
+  ];
+  cars = [
+    {value: 'Success', viewValue: 'Success'},
+    {value: 'Warning', viewValue: 'Warning'},
+    {value: 'Denied', viewValue: 'Denied'}
   ];
   dataSource = this.ELEMENTDATA;
   constructor(public dialogRef: MatDialogRef<ModalComponent>, @Inject(MAT_DIALOG_DATA) public dialogdata: DialogData) {

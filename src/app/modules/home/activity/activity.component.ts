@@ -44,6 +44,9 @@ export class ActivityComponent extends ASettings implements OnInit {
     email: string;
     selectedCategories;
     selectedSeries;
+    VisitedDate;
+  
+ // subtract one day from current time                           
     public charts: any[] = [
         {
             name: 'Badge Activity',
@@ -126,8 +129,12 @@ export class ActivityComponent extends ASettings implements OnInit {
                       console.log('barClick' + event + chartContext + config);
                       console.log('series' + config.w.config.series[config.seriesIndex].data[config.dataPointIndex]);
                       console.log('categories' + config.w.config.xaxis.categories[config.dataPointIndex]);
+                      let dateObj = new Date(); 
                       this.selectedSeries = config.w.config.series[config.seriesIndex].data[config.dataPointIndex];
                       this.selectedCategories = config.w.config.xaxis.categories[config.dataPointIndex];
+                      this.VisitedDate=dateObj.setDate(dateObj.getDate() - this.selectedSeries);
+                      this.VisitedDate=new Date(this.VisitedDate);
+                      this.VisitedDate = this.VisitedDate.getDate() + "-" + (this.VisitedDate.getMonth() + 1) + "-" + this.VisitedDate.getFullYear()
                       this.openDialog(config);
                     }
                   },
@@ -181,8 +188,8 @@ export class ActivityComponent extends ASettings implements OnInit {
 
     openDialog(props) {
         const dialogRef = this.dialog.open(ModalComponent, {
-          width: '500px',
-          data: {"Properties":props,'selectedSeries':this.selectedSeries,'selectedCategories':this.selectedCategories }
+          width: '65%',
+          data: {"Properties":props,'selectedSeries':this.selectedSeries,'selectedCategories':this.selectedCategories,'VisitedDate':this.VisitedDate }
         });
     
         dialogRef.afterClosed().subscribe(result => {
