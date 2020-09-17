@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NotificationComponent implements OnInit {
 
+  public expand: boolean;
   constructor() { }
 
   ngOnInit(): void {
