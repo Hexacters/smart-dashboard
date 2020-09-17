@@ -89,8 +89,8 @@ export class ActivityComponent extends ASettings implements OnInit {
             ]
         },
         {
-            name: 'Activity by last location visit',
-            title: 'ACTIVITY BY LAST LOCATION VISIT',
+            name: 'Account Last Visit Activity Report',
+            title: 'ACCOUNT LAST VISIT ACTIVITY REPORT',
             filters: [],
             isCustome: true,
         }
