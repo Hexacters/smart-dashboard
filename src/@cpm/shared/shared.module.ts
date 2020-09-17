@@ -22,6 +22,10 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { MatDialogModule } from '@angular/material/dialog';
+import {MatTableModule} from '@angular/material/table'
+    import { from } from 'rxjs';
+
 
 @NgModule({
     imports  : [
@@ -36,6 +40,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
         MatNativeDateModule,
         MatFormFieldModule,
         MatToolbarModule,
+        MatTableModule,
     ],
     exports  : [
         CommonModule,
@@ -61,6 +66,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
         MatSnackBarModule,
         FlexLayoutModule,
         MatIconModule,
+        MatDialogModule,
+        MatTableModule,
     ]
 })
 export class SharedModule { }

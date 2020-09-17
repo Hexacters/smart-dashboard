@@ -1,0 +1,43 @@
+<h1 mat-dialog-title class="m-0 text-primary" style="font-weight: 600;">BADGE ACTIVITY</h1>
+<div mat-dialog-content>
+        <div style="font-size: 12px;padding: 5px 0px; margin: 10px 0px;">
+            <span style="font-weight: 800;">Day : </span> <span>{{dialogdata.selectedCategories}}</span><br>
+            <span style="font-weight: 800;">Count : </span> <span>{{dialogdata.selectedSeries}}</span>
+        </div>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+        <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
+      
+        <!-- Position Column -->
+        <ng-container matColumnDef="position">
+          <th mat-header-cell *matHeaderCellDef style="text-align: center;"> STATUS </th>
+          <td mat-cell *matCellDef="let element"> {{element.STATUS}} </td>
+        </ng-container>
+      
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef style="text-align: center;"> HOW </th>
+          <td mat-cell *matCellDef="let element"> {{element.HOW}} </td>
+        </ng-container>
+      
+        <!-- Weight Column -->
+        <ng-container matColumnDef="weight">
+          <th mat-header-cell *matHeaderCellDef style="text-align: center;"> WHAT </th>
+          <td mat-cell *matCellDef="let element"> {{element.WHAT}} </td>
+        </ng-container>
+      
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="symbol">
+          <th mat-header-cell *matHeaderCellDef style="text-align: center;"> WHERE </th>
+          <td mat-cell *matCellDef="let element"> {{element.WHERE}} </td>
+        </ng-container>
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+</div>
+<div mat-dialog-actions style="float: right;">
+  <button mat-button (click)="onNoClick()">No</button>
+  <button mat-button [mat-dialog-close]="dialogdata" cdkFocusInitial>Yes</button>
+</div>

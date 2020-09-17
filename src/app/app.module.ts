@@ -15,6 +15,7 @@ import { NotificationComponent } from './core/header/notification/notification.c
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { UrlHandlingStrategy } from '@angular/router';
 import { LocationUpgradeModule } from '@angular/common/upgrade';
+import { ModalComponent } from './modal/modal.component';
 
 export class CustomHandlingStrategy implements UrlHandlingStrategy {
   shouldProcessUrl(url) {
@@ -36,7 +37,8 @@ export class CustomHandlingStrategy implements UrlHandlingStrategy {
     HeaderComponent,
     SidenavComponent,
     FooterComponent,
-    NotificationComponent
+    NotificationComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
@@ -55,6 +57,7 @@ export class CustomHandlingStrategy implements UrlHandlingStrategy {
   providers: [{
     provide: UrlHandlingStrategy, useClass: CustomHandlingStrategy
   }],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ModalComponent]
 })
 export class AppModule { }

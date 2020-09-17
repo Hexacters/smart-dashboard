@@ -13,6 +13,8 @@ import {
     ApexTooltip
 } from 'ng-apexcharts';
 import { MatCarousel, MatCarouselComponent } from '@ngmodule/material-carousel';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { ModalComponent } from '../../../modal/modal.component';
 
 import { ASettings } from '../settings/settings.service';
 
@@ -39,6 +41,9 @@ export interface IChartOptions {
 export class ActivityComponent extends ASettings implements OnInit {
     @ViewChild('chart') chart: ChartComponent;
     public chartOptions: Partial<IChartOptions>;
+    email: string;
+    selectedCategories;
+    selectedSeries;
     public charts: any[] = [
         {
             name: 'Badge Activity',
@@ -97,7 +102,7 @@ export class ActivityComponent extends ASettings implements OnInit {
     ];
 
     slides = [{ 'image': 'https://gsr.dev/material2-carousel/assets/demo.png' }, { 'image': 'https://gsr.dev/material2-carousel/assets/demo.png' }, { 'image': 'https://gsr.dev/material2-carousel/assets/demo.png' }, { 'image': 'https://gsr.dev/material2-carousel/assets/demo.png' }, { 'image': 'https://gsr.dev/material2-carousel/assets/demo.png' }];
-    constructor() {
+    constructor(public dialog: MatDialog) {
         super();
         this.title = 'Branding Activity';
         this.chartOptions = {
@@ -124,6 +129,16 @@ export class ActivityComponent extends ASettings implements OnInit {
                 toolbar: {
                     show: false
                 },
+                events: {
+                    dataPointSelection: (event, chartContext, config) => {
+                      console.log('barClick' + event + chartContext + config);
+                      console.log('series' + config.w.config.series[config.seriesIndex].data[config.dataPointIndex]);
+                      console.log('categories' + config.w.config.xaxis.categories[config.dataPointIndex]);
+                      this.selectedSeries = config.w.config.series[config.seriesIndex].data[config.dataPointIndex];
+                      this.selectedCategories = config.w.config.xaxis.categories[config.dataPointIndex];
+                      this.openDialog(config);
+                    }
+                  },
                 type: 'bar',
                 stacked: true,
                 height: '200px'
@@ -171,4 +186,15 @@ export class ActivityComponent extends ASettings implements OnInit {
     }
 
     ngOnInit(): void { }
+
+    openDialog(props) {
+        const dialogRef = this.dialog.open(ModalComponent, {
+          width: '500px',
+          data: {"Properties":props,'selectedSeries':this.selectedSeries,'selectedCategories':this.selectedCategories }
+        });
+    
+        dialogRef.afterClosed().subscribe(result => {
+          this.email = result;
+        });
+      }
 }
