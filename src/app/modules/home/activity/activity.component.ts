@@ -72,10 +72,10 @@ export class ActivityComponent extends ASettings implements OnInit {
             name: 'Activity By Health System',
             title: 'ACTIVITY BY HEALTH SYSTEM',
             filters: [
-                {
+                /* {
                     name: 'Today',
                     active: false,
-                },
+                }, */
                 {
                     name: '7d',
                     active: true,

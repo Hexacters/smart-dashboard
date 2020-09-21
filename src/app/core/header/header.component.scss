@@ -66,6 +66,10 @@
     .cpm-icon {
         margin-right: 20px;
     }
+
+    btn-primary :hover{
+        border: 10px solid red !important;
+    }
 }
 
 .header .navbar {
@@ -81,4 +85,10 @@
 
 .profile .dropdown-menu {
     left: 45%;
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open>.dropdown-toggle.btn-primary {
+    color: #fff !important;
+   /*  background-color: #11378b !important; */
+    border-color: #d0dfff !important; /*set the color you want here*/
 }

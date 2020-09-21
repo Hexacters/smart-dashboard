@@ -73,7 +73,7 @@ export class LastActivityComponent {
       series: [
         {
           name: "Last Visited",
-          data: [21, 22, 10, 28, 16, 21, 20, 8, 10]
+          data:  [35, 40, 49, 51, 61, 73, 89, 95, 123]
         }
       ],
       chart: {
