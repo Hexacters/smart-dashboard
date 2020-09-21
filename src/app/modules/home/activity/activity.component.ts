@@ -45,6 +45,8 @@ export class ActivityComponent extends ASettings implements OnInit {
     selectedCategories;
     selectedSeries;
     VisitedDate;
+    selectedSeriesName;
+    activtyDaysList;
   
  // subtract one day from current time                           
     public charts: any[] = [
@@ -67,7 +69,7 @@ export class ActivityComponent extends ASettings implements OnInit {
             ]
         },
         {
-            name: 'Location Activity',
+            name: 'Activity By Health System',
             title: 'ACTIVITY BY HEALTH SYSTEM',
             filters: [
                 {
@@ -129,8 +131,10 @@ export class ActivityComponent extends ASettings implements OnInit {
                       console.log('barClick' + event + chartContext + config);
                       console.log('series' + config.w.config.series[config.seriesIndex].data[config.dataPointIndex]);
                       console.log('categories' + config.w.config.xaxis.categories[config.dataPointIndex]);
+                      console.log('seriesName' + config.w.config.series[config.seriesIndex].name);
                       let dateObj = new Date(); 
                       this.selectedSeries = config.w.config.series[config.seriesIndex].data[config.dataPointIndex];
+                      this.selectedSeriesName = config.w.config.series[config.seriesIndex].name
                       this.selectedCategories = config.w.config.xaxis.categories[config.dataPointIndex];
                       this.VisitedDate=dateObj.setDate(dateObj.getDate() - this.selectedSeries);
                       this.VisitedDate=new Date(this.VisitedDate);
@@ -184,12 +188,26 @@ export class ActivityComponent extends ASettings implements OnInit {
         };
     }
 
-    ngOnInit(): void { }
+    ngOnInit(): void { 
+        this.activtyDaysList = [
+            {value: '30', viewValue: '30'},
+            {value: '60', viewValue: '60'},
+            {value: '90', viewValue: '90'},
+            {value: '120', viewValue: '120'},
+            {value: '150', viewValue: '150'}
+        ];
+    }
 
     openDialog(props) {
         const dialogRef = this.dialog.open(ModalComponent, {
           width: '65%',
-          data: {"Properties":props,'selectedSeries':this.selectedSeries,'selectedCategories':this.selectedCategories,'VisitedDate':this.VisitedDate }
+            data: {
+                'Properties': props,
+                'selectedSeries': this.selectedSeries,
+                'selectedCategories': this.selectedCategories,
+                'VisitedDate': this.VisitedDate,
+                'selectedSeriesName' : this.selectedSeriesName
+            }
         });
     
         dialogRef.afterClosed().subscribe(result => {

@@ -30,8 +30,8 @@
     <div fxflex="40">
       <mat-form-field appearance="fill" style="font-size: 12px;">
         <mat-label>Filter Status</mat-label>
-        <mat-select [(ngModel)]="selectedCar" name="car">
-          <mat-option value="" selected></mat-option>
+        <mat-select [(ngModel)]="dialogdata.selectedSeriesName" name="car">
+          <!-- <mat-option value="" selected></mat-option> -->
           <mat-option *ngFor="let car of cars" [value]="car.value">
             {{car.viewValue}}
           </mat-option>

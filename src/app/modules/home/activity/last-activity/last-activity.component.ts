@@ -148,7 +148,9 @@ export class LastActivityComponent {
             fontSize: '10px',
             fontWeight: '500',
           },
-        }
+        },
+        forceNiceScale: true,
+        max: 150,
       },
     };
   }

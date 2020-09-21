@@ -18,13 +18,17 @@
                         <span style="font-size: 14px; margin-right: 5px;">Last activity is more than</span>
                         <mat-form-field appearance="fill" style="width: 60px; font-size: 10px;">
                             <mat-label>Days</mat-label>
-                            <mat-select >
-                                <mat-option selected [value]="'30 Days'">30</mat-option>
+                            <select matNativeControl name="days">
+                           <!--  <select matNativeControl [(ngModel)]="selectedDay" name="days"> -->
+                               <!--  <mat-option selected [value]="'30'">30</mat-option>
                                 <mat-option [value]="'60 Days'">60</mat-option>
                                 <mat-option [value]="'90 Days'">90</mat-option>
                                 <mat-option [value]="'120 Days'">120</mat-option>
-                                <mat-option [value]="'150 Days'">150</mat-option>
-                            </mat-select>
+                                <mat-option [value]="'150 Days'">150</mat-option> -->
+                                <option *ngFor="let mainList of activtyDaysList" [value]="mainList.value" style="font-size: 14px;">
+                                    {{mainList.viewValue}}
+                                </option>
+                            </select>
                         </mat-form-field>
                         <span style="font-size: 14px; margin-left: 5px;">Days</span>
                     </div>

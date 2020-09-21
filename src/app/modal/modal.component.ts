@@ -6,6 +6,7 @@ interface DialogData {
   selectedSeries;
   selectedCategories;
   VisitedDate;
+  selectedSeriesName;
 }
 
 @Component({
