@@ -89,6 +89,31 @@
 
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open>.dropdown-toggle.btn-primary {
     color: #fff !important;
-   /*  background-color: #11378b !important; */
-    border-color: #d0dfff !important; /*set the color you want here*/
+    background-color: #1545ad !important;
+    border-color: #D0Dfff !important; /*set the color you want here*/
+    border-width: 3px;
+}
+.btn-primary{
+    border-color:transparent !important; /*set the color you want here*/
+    border-width: 3px;
+}
+
+.btn-success:hover, .btn-success:focus, .btn-success:active, .btn-success.active, .open>.dropdown-toggle.btn-success {
+    color: #fff !important;
+    border-color: #f3c25b !important; /*set the color you want here*/
+    border-width: 3px;
+}
+.btn-success{
+    border-color:transparent !important; /*set the color you want here*/
+    border-width: 3px;
+}
+
+.btn-secondary:hover, .btn-secondary:focus, .btn-secondary:active, .btn-secondary.active, .open>.dropdown-toggle.btn-secondary {
+    color: #fff !important;
+    border-color: #D0Dfff !important; /*set the color you want here*/
+    border-width: 3px;
+}
+.btn-secondary{
+    border-color:transparent !important; /*set the color you want here*/
+    border-width: 3px;
 }
