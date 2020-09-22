@@ -6,6 +6,28 @@
     <mat-icon class="mat-icon-no-color" style="background-color: transparent;">close</mat-icon>
   </button>
 </div>
+<div fxLayout="row" fxLayoutAlign="space-between center">
+    <div fxflex="60" style="font-size: 14px;">Date: {{dialogdata.VisitedDate}} <br>
+        <span>
+           <!--  Day :{{dialogdata.selectedCategories}}</span>&nbsp;&nbsp;<span>Day : {{dialogdata.selectedSeries}}     -->
+               Total Number of Records : 17
+        </span>
+    </div>
+
+    <div fxflex="40">
+        <span style="font-size: 13px;">Filter Status : </span> &nbsp;&nbsp;
+        <span><mat-form-field appearance="fill" style="font-size: 12px;">
+        <mat-label>Action</mat-label>
+        <mat-select [(ngModel)]="dialogdata.selectedSeriesName" name="car">
+          <!-- <mat-option value="" selected></mat-option> -->
+          <mat-option *ngFor="let car of cars" [value]="car.value">
+            {{car.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </span>
+    </div>
+  </div>
 <div mat-dialog-content>
   <!-- <div style="font-size: 12px;padding: 5px 0px; margin: 10px 0px;">
             <span>
@@ -23,32 +45,23 @@
                 </span>
             </span>
         </div> -->
-  <div fxLayout="row" fxLayoutAlign="space-between center">
-    <div fxflex="60" style="font-size: 14px;">Date: {{dialogdata.VisitedDate}} <br><span>Day :
-        {{dialogdata.selectedCategories}}</span>&nbsp;&nbsp;<span>Day : {{dialogdata.selectedSeries}}</span></div>
-
-    <div fxflex="40">
-      <mat-form-field appearance="fill" style="font-size: 12px;">
-        <mat-label>Filter Status</mat-label>
-        <mat-select [(ngModel)]="dialogdata.selectedSeriesName" name="car">
-          <!-- <mat-option value="" selected></mat-option> -->
-          <mat-option *ngFor="let car of cars" [value]="car.value">
-            {{car.viewValue}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
-  </div>
+  
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
     <!--- Note that these columns can be defined in any order.
               The actual rendered columns are set as a property on the row definition" -->
 
     <!-- Position Column -->
-    <ng-container matColumnDef="Rep Information">
-      <th mat-header-cell *matHeaderCellDef> Rep Information</th>
-      <td mat-cell *matCellDef="let element"> {{element.RepInformation}} </td>
+    <ng-container matColumnDef="Sign-In">
+      <th mat-header-cell *matHeaderCellDef>Sign-In</th>
+      <td mat-cell *matCellDef="let element"> {{element.signIn}} </td>
     </ng-container>
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="Sign-Out">
+        <th mat-header-cell *matHeaderCellDef>Sign-Out</th>
+        <td mat-cell *matCellDef="let element"> {{element.signOut}} </td>
+      </ng-container>
 
     <!-- Name Column -->
     <ng-container matColumnDef="Department">
@@ -56,23 +69,47 @@
       <td mat-cell *matCellDef="let element"> {{element.Department}} </td>
     </ng-container>
 
+     <!-- Name Column -->
+     <ng-container matColumnDef="Event-Type">
+        <th mat-header-cell *matHeaderCellDef> Event Type </th>
+        <td mat-cell *matCellDef="let element"> {{element.eventType}} </td>
+      </ng-container>
+
     <!-- Weight Column -->
-    <ng-container matColumnDef="Sign-In Location">
+    <ng-container matColumnDef="Sign-In-Location">
       <th mat-header-cell *matHeaderCellDef> Sign-In Location </th>
       <td mat-cell *matCellDef="let element"> {{element.sighInLoc}} </td>
     </ng-container>
 
     <!-- Symbol Column -->
-    <ng-container matColumnDef="Sign-In By">
-      <th mat-header-cell *matHeaderCellDef> Sign-In By </th>
-      <td mat-cell *matCellDef="let element"> {{element.signInBy}} </td>
+    <ng-container matColumnDef="Sign-Out-Location">
+      <th mat-header-cell *matHeaderCellDef>Sign-Out Location</th>
+      <td mat-cell *matCellDef="let element"> {{element.signOutLoc}} </td>
     </ng-container>
+
+     <!-- Symbol Column -->
+     <ng-container matColumnDef="Purpose-of-visit">
+        <th mat-header-cell *matHeaderCellDef>Purpose of visit</th>
+        <td mat-cell *matCellDef="let element"> {{element.poVisit}} </td>
+      </ng-container>
+    
+      <!-- Symbol Column -->
+     <ng-container matColumnDef="Override-Guest-Pass-Reason">
+        <th mat-header-cell *matHeaderCellDef>Override/Guest Pass Reason</th>
+        <td mat-cell *matCellDef="let element"> {{element.guestPassReason}} </td>
+      </ng-container>
+
+       <!-- Symbol Column -->
+     <ng-container matColumnDef="Badge-Printed">
+        <th mat-header-cell *matHeaderCellDef>Badge Printed</th>
+        <td mat-cell *matCellDef="let element"> {{element.badgePrinted}} </td>
+      </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
 </div>
 <div mat-dialog-actions style="float: right;">
-  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button (click)="onNoClick()">Close</button>
   <!-- <button mat-button [mat-dialog-close]="dialogdata" cdkFocusInitial>Yes</button> -->
 </div>

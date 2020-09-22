@@ -12,3 +12,17 @@ table {
   .mat-form-field-appearance-fill .mat-form-field-flex{
     padding: .30em .75em 0 .75em;
   }
+
+  .mat-column-Sign-In {
+   max-width: 180px !important; 
+   overflow-wrap: break-word;
+   padding: 15px;
+  }
+
+  .mat-column-Sign-Out , .mat-column-Event-Type,.mat-column-Department,
+  .mat-column-Sign-In-Location,.mat-column-Sign-Out-Location,
+  .mat-column-Purpose-of-visit,.mat-column-Override-Guest-Pass-Reason,.mat-column-Badge-Printed{
+    max-width: 180px !important; 
+    overflow-wrap: break-word;
+    padding: 10px !important;
+   }
