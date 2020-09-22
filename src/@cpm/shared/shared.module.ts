@@ -23,7 +23,8 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { MatDialogModule } from '@angular/material/dialog';
-import {MatTableModule} from '@angular/material/table'
+import {MatTableDataSource, MatTableModule} from '@angular/material/table'
+import { MatTableFilterModule } from 'mat-table-filter';
     import { from } from 'rxjs';
 
 
@@ -41,6 +42,8 @@ import {MatTableModule} from '@angular/material/table'
         MatFormFieldModule,
         MatToolbarModule,
         MatTableModule,
+        MatTableFilterModule,
+        MatInputModule,
     ],
     exports  : [
         CommonModule,
@@ -68,6 +71,8 @@ import {MatTableModule} from '@angular/material/table'
         MatIconModule,
         MatDialogModule,
         MatTableModule,
+        MatTableFilterModule,
+        MatInputModule
     ]
 })
 export class SharedModule { }

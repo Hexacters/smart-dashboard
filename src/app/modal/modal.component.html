@@ -53,55 +53,86 @@
 
     <!-- Position Column -->
     <ng-container matColumnDef="Sign-In">
-      <th mat-header-cell *matHeaderCellDef>Sign-In</th>
+      <th mat-header-cell *matHeaderCellDef>Sign-In <br> <br>
+        <mat-form-field style="width: 100px;">
+        <input matInput placeholder="Sign-In">
+      </mat-form-field></th>
       <td mat-cell *matCellDef="let element"> {{element.signIn}} </td>
     </ng-container>
 
     <!-- Position Column -->
     <ng-container matColumnDef="Sign-Out">
-        <th mat-header-cell *matHeaderCellDef>Sign-Out</th>
+        <th mat-header-cell *matHeaderCellDef>Sign-Out <br> <br>
+            <mat-form-field style="width: 100px;">
+            <input matInput placeholder="Sign-Out"> </mat-form-field></th>
         <td mat-cell *matCellDef="let element"> {{element.signOut}} </td>
       </ng-container>
 
     <!-- Name Column -->
     <ng-container matColumnDef="Department">
-      <th mat-header-cell *matHeaderCellDef> Department </th>
+      <th mat-header-cell *matHeaderCellDef> Department <br> <br>
+        <mat-form-field style="width: 100px;">
+        <input matInput placeholder="Department"> </mat-form-field></th>
       <td mat-cell *matCellDef="let element"> {{element.Department}} </td>
     </ng-container>
 
      <!-- Name Column -->
      <ng-container matColumnDef="Event-Type">
-        <th mat-header-cell *matHeaderCellDef> Event Type </th>
+        <th mat-header-cell *matHeaderCellDef> Event Type  <br><br>
+            <mat-form-field style="width: 100px;">
+                <mat-select [(value)]="selected">
+                  <mat-option value="option1">All</mat-option>
+                  <mat-option value="option2">Printed on site</mat-option>
+                  <mat-option value="option3">Print Remotely</mat-option>
+                  <mat-option value="option4">Guest Pass</mat-option>
+                </mat-select>
+              </mat-form-field></th>
         <td mat-cell *matCellDef="let element"> {{element.eventType}} </td>
       </ng-container>
 
     <!-- Weight Column -->
     <ng-container matColumnDef="Sign-In-Location">
-      <th mat-header-cell *matHeaderCellDef> Sign-In Location </th>
+      <th mat-header-cell *matHeaderCellDef> Sign-In Location <br> <br>
+        <mat-form-field style="width: 100px;">
+        <input matInput placeholder="Sign-In Location"> </mat-form-field></th>
       <td mat-cell *matCellDef="let element"> {{element.sighInLoc}} </td>
     </ng-container>
 
     <!-- Symbol Column -->
     <ng-container matColumnDef="Sign-Out-Location">
-      <th mat-header-cell *matHeaderCellDef>Sign-Out Location</th>
+      <th mat-header-cell *matHeaderCellDef>Sign-Out Location <br> <br>
+        <mat-form-field style="width: 100px;">
+        <input matInput placeholder="Sign-Out Location"></mat-form-field></th>
       <td mat-cell *matCellDef="let element"> {{element.signOutLoc}} </td>
     </ng-container>
 
      <!-- Symbol Column -->
      <ng-container matColumnDef="Purpose-of-visit">
-        <th mat-header-cell *matHeaderCellDef>Purpose of visit</th>
+        <th mat-header-cell *matHeaderCellDef>Purpose of visit <br> <br>
+            <mat-form-field style="width: 100px;">
+            <input matInput placeholder="Purpose of visit"> </mat-form-field></th>
         <td mat-cell *matCellDef="let element"> {{element.poVisit}} </td>
       </ng-container>
     
       <!-- Symbol Column -->
      <ng-container matColumnDef="Override-Guest-Pass-Reason">
-        <th mat-header-cell *matHeaderCellDef>Override/Guest Pass Reason</th>
+        <th mat-header-cell *matHeaderCellDef>Override/Guest Pass Reason<br>
+            <mat-form-field style="width: 100px;">
+            <input matInput placeholder="Guest Pass Reason"> </mat-form-field></th>
         <td mat-cell *matCellDef="let element"> {{element.guestPassReason}} </td>
       </ng-container>
 
        <!-- Symbol Column -->
      <ng-container matColumnDef="Badge-Printed">
-        <th mat-header-cell *matHeaderCellDef>Badge Printed</th>
+        <th mat-header-cell *matHeaderCellDef>Badge Printed <br><br>
+            <mat-form-field style="width: 100px;">
+                <mat-select [(value)]="selected">
+                  <mat-option value="option1">All</mat-option>
+                  <mat-option value="option2">True</mat-option>
+                  <mat-option value="option3">False</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </th>
         <td mat-cell *matCellDef="let element"> {{element.badgePrinted}} </td>
       </ng-container>
 

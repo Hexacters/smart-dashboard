@@ -17,6 +17,7 @@ import { UrlHandlingStrategy } from '@angular/router';
 import { LocationUpgradeModule } from '@angular/common/upgrade';
 import { ModalComponent } from './modal/modal.component';
 
+
 export class CustomHandlingStrategy implements UrlHandlingStrategy {
   shouldProcessUrl(url) {
     console.log(url.toString(), !!url.toString().startsWith('/home'));
